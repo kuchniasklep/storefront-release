@@ -1,0 +1,54 @@
+ks-navbar-button {
+    display: block;
+    position: relative;
+}
+
+ks-navbar-button > div {
+    position: absolute;
+    bottom: -28px;
+    z-index: 2147483649;
+
+    width: 250%;
+    left: -75%;
+
+    font-size: 14px;
+    text-transform: uppercase;
+    text-align: center;
+    color: rgb(255, 255, 255);
+
+    opacity: 0;
+    -webkit-transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
+}
+
+ks-navbar-button > a:hover + div {
+    opacity: 1;
+}
+
+ks-navbar-contact > div ks-navbar-button > div {
+    display: none;
+}
+
+@media only screen and (max-width: 1000px) {
+    ks-navbar-button > div {
+        display: none;
+    }
+}
+
+ks-navbar-button .count {
+    box-sizing: border-box;
+    min-width: 30px;
+    height: 30px;
+    padding: 0px 0px;
+    border-radius: 500px;
+    vertical-align: middle;
+    background: var(--ks-color-secondary);
+    color: #fff;
+    font-size: 16px;
+    display: -webkit-inline-box;
+    display: inline-flex;
+    -webkit-box-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+            align-items: center;
+}

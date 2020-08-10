@@ -1,0 +1,68 @@
+ks-cart-discount-ticket {
+    display: -webkit-box;
+    display: flex;
+
+    width: 100%;
+    min-height: 70px;
+
+    box-sizing: border-box;
+
+    background-color: #ff3838;
+    color: white;
+
+    font-size: 20px;
+}
+
+ks-cart-discount-ticket .content {
+    -webkit-box-flex: 1;
+            flex: 1;
+
+    display: -webkit-box;
+
+    display: flex;
+    -webkit-box-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+            align-items: center;
+
+    padding: 10px 20px;
+}
+
+ks-cart-discount-ticket .name {
+    -webkit-box-flex: 1;
+            flex: 1;
+    font-weight: 700;
+}
+
+ks-cart-discount-ticket .remove {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+            align-items: center;
+
+    width: 70px;
+
+    background-color: transparent;
+    -webkit-transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease;
+}
+
+ks-cart-discount-ticket .remove:hover {
+    background-color: rgba(0, 0, 0, 0.068);
+}
+
+ks-cart-discount-ticket .remove:active {
+    background-color: rgba(0, 0, 0, 0.137);
+}
+
+@media only screen and (max-width: 560px) {
+    ks-cart-discount-ticket .content {
+        display: block;
+    }
+
+    ks-cart-discount-ticket .value {
+        font-size: 16px;
+    }
+}

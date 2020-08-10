@@ -1,0 +1,52 @@
+ks-img {
+    display: -webkit-box;
+    display: flex;
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+    -webkit-box-align: center;
+
+            align-items: center;
+}
+
+ks-img img {
+    max-width: initial;
+    height: initial;
+    box-sizing: border-box;
+
+    opacity: 1;
+    -webkit-transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
+}
+
+ks-img .horizontal {
+    width: 100%;
+    height: auto;
+}
+
+ks-img .vertical {
+    width: auto;
+    height: 100%;
+}
+
+ks-img.left {
+    -webkit-box-pack: start;
+            justify-content: flex-start;
+}
+
+ks-img.right {
+    -webkit-box-pack: end;
+            justify-content: flex-end;
+}
+
+ks-img.center {
+    -webkit-box-pack: center;
+            justify-content: center;
+}
+
+ks-img img.loading {
+    opacity: 0;
+}

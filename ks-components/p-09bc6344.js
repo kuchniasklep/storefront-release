@@ -1,0 +1,1 @@
+import{h as r}from"./p-cb802b7f.js";import{c as o}from"./p-83f217d4.js";const s=o({},(o,s)=>r("context-consumer",{subscribe:o,renderer:s}));export{s as T}

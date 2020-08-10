@@ -1,0 +1,15 @@
+ks-footer-button {
+    opacity: 1.0;
+    -webkit-transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease;
+}
+
+ks-footer-button:hover {
+    opacity: 0.9;
+}
+
+ks-footer-button a {
+    padding: 0px 20px !important;
+	margin: 4px 2px !important;
+    font-size: 16px !important;
+}

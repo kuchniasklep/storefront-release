@@ -1,0 +1,10 @@
+ks-article-card {
+    display: block;
+}
+
+@media screen and (min-width: 960px) and (max-width: 1200px) {
+    ks-article-card[hide-on-odd] {
+        display: none !important;
+    }
+}
+

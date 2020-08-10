@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Strona główna</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A page's description, usually one or two sentences.">
+    <meta name="theme-color" content="#015b97">
+    <meta http-equiv="Cache-control" content="no-cache">
+
+    <link rel="stylesheet" href="uikit/site.css?version=11" />
+    <link rel="stylesheet" type="text/css" href="build/ks-components.css">
+    <script type="module" src="build/ks-components.esm.js"></script>
+    <script nomodule src="build/ks-components.js"></script>
+    
+    <link rel="prefetch" as="image" href="res/cartCentered/inpost.svg" />
+
+    <script>
+        const ksCartToken = "test";
+        const ksCartCountToken = "countTest";
+        const ksFavouritesToken = "favTest";
+    </script>
+</head>
+<body>
+<section style="display: flex; flex-direction: column; justify-content: space-between; min-height: 100vh; background-color: #f2f2f2; overflow: hidden;">
+
+    <ks-navbar logo="res/logoLight.svg" category-url="res/categories.json"
+               cart-link="#" cart-count="2" heart-link="#" heart-count="1" account-link="#" logout-link="#"
+               phone="504 557 555" email="sklep@kuchniasklep.pl"
+               contact = "Insparo Patrycja Ordyk <br/> ul. Poznańska 23 <br/> 58-500 Jelenia Góra <br/> NIP: 611-260-33-04">
+    </ks-navbar>
+
+    <ks-newsletter-popup api="#"></ks-newsletter-popup>
+
+    <ks-section muted margin-top mobile-collapse mobile-margin>
+        <ks-card>
+            <ks-order-progress current=0></ks-order-progress>
+
+            <ks-cart
+                api="res/cart.json"
+                product-remove="res/cart.json"
+                product-count="res/cart.json"
+                add-deal="res/cart.json"
+                
+                country-change="res/cart.json"
+                shipping-change="res/cart.json"
+                payment-change="res/cart.json"
+
+                discount-code="res/cart.json"
+                discount-points="res/cart.json"
+                discount-remove="res/cart.json"
+            >
+                <ks-cart-progress-bar></ks-cart-progress-bar>
+                <br />
+
+                <div class="uk-padding@m uk-padding-small">
+                    <ks-cart-product-container></ks-cart-product-container>
+                </div>
+
+                <ks-cart-deal-container></ks-cart-deal-container>
+
+                <div class="uk-padding@m uk-padding-small">
+                    <ks-cart-country-select heading="WYSYŁKA I PŁATNOŚĆ">
+                        <option value="PL" selected>Polska</option>
+                        <option value="HU">Węgry</option>
+                        <option value="DE">Niemcy</option>
+                        <option value="GB">Wielka Brytania</option>
+                        <option value="IR">Irlandia</option>
+                        <option value="FR">Francja</option>
+                    </ks-cart-country-select>
+
+                    <ks-cart-select-shipping name="Wysylka"></ks-cart-select-shipping>
+                    <br />
+                    
+                    <ks-cart-select-payment name="Platnosc"></ks-cart-select-payment>
+                    <br />
+                    
+                    <ks-cart-shipping-message></ks-cart-shipping-message>
+                    <br /><br />
+
+                    
+                    <ks-cart-discount-container
+                        logged-in
+                        code-banner="res/cartCentered/newsletterBanner.svg"
+                        code-placeholder="Wpisz kod rabatowy"
+                        points-placeholder="Ile punktów przeznaczyć na zakupy?"
+                        points-message="Możesz wykorzystać {available} punków na kwotę {value} zł. Za to zamówienie otrzymasz {points} punktów do wykorzystania na następne zakupy."
+                        login-message="Za to zamówienie otrzymasz {points} punktów do wykorzystania na następne zakupy. Dotyczy tylko zalogowanych klientów. Wartość 20 punktów wynosi 1 zł."
+                        info-message="Tylko jedna forma rabatu może być aktywna w tym samym momencie."
+                        no-points-heading="Brak punktów na koncie"
+                        no-points-message="Na twoim koncie nie ma punktów lub nie zostały jeszcze zaakceptowane. Za to zamówienie otrzymasz {points} punktów do wykorzystania na następne zakupy."
+                        threshold-heading="Zamówienie nie spełnia warunków"
+                        threshold-message="Punkty można wykorzystać przy łącznej wartości produktów od {threshold} zł. Za to zamówienie otrzymasz {points} punktów na następne zakupy."
+                        login-url="login"
+                    ></ks-cart-discount-container>
+                </div>
+
+                <div class="uk-padding">
+                    <ks-cart-summary-container></ks-cart-summary-container>
+                </div>
+
+                <ks-cart-buttons href="test"></ks-cart-buttons>
+            </ks-cart>
+            
+            
+
+        </ks-card>
+    </ks-section>
+
+    <footer>
+        <ks-footer>
+            <div slot="buttons">
+                <ks-footer-button href="" color="#62AA36">OPINEO</ks-footer-button>
+                <ks-footer-button href="" color="#f7941d">CENEO</ks-footer-button>
+                <ks-footer-button href="" color="#ff5d00">ALLEGRO</ks-footer-button>
+            </div>
+
+            <ks-footer-links>
+                <li><a href="#">Polityka Prywatności</a></li>
+                <li><a href="#">Regulamin</a></li>
+                <li><a href="#">Formularze</a></li>
+                <li><a href="#">Zwroty</a></li>
+            </ks-footer-links>
+
+            <ks-footer-links>
+                <li><a href="#">Poradnik Kuchenny</a></li>
+                <li><a href="#">Opinie</a></li>
+                <li><a href="#">Płatność</a></li>
+                <li><a href="#">Dostawa</a></li>
+            </ks-footer-links>
+        </ks-footer>
+    </footer>
+
+    <script src="uikit/js/uikit.min.js?version=custom2"></script>
+    <script src="uikit/js/uikit-icons.min.js"></script>
+
+</section>
+</body>
+</html>

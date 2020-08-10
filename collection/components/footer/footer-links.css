@@ -1,0 +1,6 @@
+@media only screen and (max-width: 640px) {
+    ks-footer-links li > a {
+        font-size: 17px;
+        padding: 4px;
+    }
+}

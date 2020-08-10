@@ -1,0 +1,59 @@
+ks-info-message[disabled] {
+    display: none;
+}
+
+ks-info-message {
+    display: -webkit-box;
+    display: flex;
+    overflow: hidden;
+    
+    background-color: var(--ks-color-secondary);
+    color: #ffffff;
+
+    max-height: 100px;
+    -webkit-transition: max-height 0.3s ease;
+    transition: max-height 0.3s ease;
+}
+
+ks-info-message[animating] {
+    max-height: 0;
+}
+
+ks-info-message .content {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+            justify-content: center;
+    text-align: center;
+
+    margin: 10px;
+    -webkit-box-flex: 1;
+            flex: 1;
+}
+
+ks-info-message .close {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+            align-items: center;
+
+    padding: 10px;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.12);
+
+    -webkit-transition: background-color 0.3s ease;
+
+    transition: background-color 0.3s ease;
+}
+
+ks-info-message .close:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+@media only screen and (max-width: 639px) {
+    ks-info-message .content {
+        font-size: 13px;
+    }
+}

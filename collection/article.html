@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Strona główna</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A page's description, usually one or two sentences.">
+    <meta name="theme-color" content="#015b97">
+    <meta http-equiv="Cache-control" content="no-cache">
+
+    <link rel="stylesheet" href="uikit/site.css?version=11" />
+    <link rel="stylesheet" type="text/css" href="build/ks-components.css">
+    <script type="module" src="build/ks-components.esm.js"></script>
+    <script nomodule src="build/ks-components.js"></script>
+</head>
+<body>
+
+    <ks-navbar logo="res/logoLight.svg" category-url="res/categories.json"
+               cart-link="#" cart-count="2" heart-link="#" heart-count="1" account-link="#" logout-link="#"
+               phone="504 557 555" email="sklep@kuchniasklep.pl"
+               contact = "Insparo Patrycja Ordyk <br/> ul. Poznańska 23 <br/> 58-500 Jelenia Góra <br/> NIP: 611-260-33-04">
+    </ks-navbar>
+
+
+    <ks-section muted margin-top>
+        <ks-card padding>
+            <h1 class="uk-heading-line uk-text-center uk-margin-medium-bottom"><span>Jesienne zapachy WoodWick</span></h1>
+            <ks-image src="res/articles/bg.jpg"></ks-image>
+            <p>Jesienią dni stają się coraz krótsze, wieczory coraz dłuższe. Coraz niższe temperatury nie zachęcają do wychodzenia na zewnątrz, każdy z nas schował by się pod kocem w domowym zaciszu z ciepłą herbatą bądź kawą. Warto zadbać również o odpowiednią temperaturę otoczenia. Jeśli nie masz kominka, a chciałbyś się wyciszyć przy uspakajającym dźwięku iskrzącego drewna świetnym rozwiązaniem będą świece zapachowe WoodWick. Posiadają one specjalnie zaprojektowany naturalny, drewniany knot. Dzięki temu, wydają one kojący dźwięk przypominający skwierczenie drewna w domowym kominku, paląc się przy tym długo, równo i czysto. Świeczki w szkle o eleganckim kształcie klepsydry oraz starannie wykonaną drewnianą pokrywką, stanowią doskonale pasujący dodatek do każdego wnętrza.</p>
+            
+            <div class="uk-child-width-1-2@s uk-margin-medium-top" uk-grid>
+                <div>
+                    <h3>Lemongrass & Lilly</h3>
+                    <p>Zielone i kwiatowe nuty lilii otoczone subtelnymi półtonami świeżej cytryny, grejpfruta i trawy cytrynowej gwarantują odprężające i niezwykle doznania.</p>
+                    <ks-image src="res/articles/p1.jpg"></ks-image>
+                </div>
+
+                <div>
+                    <h3>White Teak </h3>
+                    <p>Świeże gałązki jodły otoczone aromatem drzewa sandałowego, dębu z odrobiną nut leśnego mchu i drzewa cedrowego.</p>
+                    <ks-image src="res/articles/p2.jpg"></ks-image>
+                </div>
+            </div>
+
+            <ks-flex center gutter small>
+                <ks-product-simple name="KitchenAid - Mikser Artisan 5/175 Niebieski Mat"
+                    img="res/products/1.jpg" current-price="2399.00" previous-price="2799.00">
+                </ks-product-simple>
+
+                <ks-product-simple name="KitchenAid - Mikser Artisan 5/175 Niebieski Mat"
+                    img="res/products/1.jpg" current-price="2399.00" previous-price="2799.00">
+                </ks-product-simple>
+
+                <ks-product-simple name="KitchenAid - Mikser Artisan 5/175 Niebieski Mat"
+                    img="res/products/1.jpg" current-price="2399.00">
+                </ks-product-simple>
+            </ks-flex>
+        
+        </ks-card>
+    </ks-section>
+
+    <footer>
+        <ks-about first-image="res/about/opineo.svg" first-link=""
+                  second-image="res/about/ceneo.svg" second-link=""
+                  third-image="res/about/allegro.svg" third-link="">
+            Kuchniasklep.pl to jeden z wiodących sklepów internetowych z asortymentem kuchennym. Oferujemy ekspresową dostawę, a dla nowych klientów rabat w kwocie 10 zł za zapisanie się do naszego newslettera. Dołącz do grupy zadowolonych klientów! W naszej bogatej ofercie posiadamy serwisy obiadowe, akcesoria kuchenne oraz drobne AGD. Prowadzimy sprzedaż produktów Villeroy&Boch, WMF, Brabantia, Silit, Hurom, Kuvings, Smeg, Lubiana, Bialetti, Microplane oraz La Cuisine. Jeżeli chcesz być informowany o nowościach i promocjach zapisz się do naszego newslettera. Służymy fachową pomocą w doborze odpowiedniego produktu oraz chętnie odpowiemy na wszelkie zadane pytania. Kuchniasklep.pl - z nami wyposażysz swoją kuchnię od zera!
+        </ks-about>
+
+        <ks-footer phone="504 557 555" email="sklep@kuchniasklep.pl">
+            <ks-footer-links>
+                <li><a href="#">Polityka Prywatności</a></li>
+                <li><a href="#">Regulamin</a></li>
+                <li><a href="#">Formularze</a></li>
+                <li><a href="#">Zwroty</a></li>
+            </ks-footer-links>
+
+            <ks-footer-links>
+                <li><a href="#">Poradnik Kuchenny</a></li>
+                <li><a href="#">Opinie</a></li>
+                <li><a href="#">Płatność</a></li>
+                <li><a href="#">Dostawa</a></li>
+            </ks-footer-links>
+        </ks-footer>
+    </footer>
+
+    <script src="uikit/js/uikit.min.js?version=custom2"></script>
+    <script src="uikit/js/uikit-icons.min.js"></script>
+</body>
+</html>

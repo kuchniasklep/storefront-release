@@ -1,0 +1,8 @@
+ks-product-admin-distributor {
+    color: #ffffff;
+    display: table-row;
+}
+
+ks-product-admin-distributor[overwrite] {
+    color: var(--ks-color-secondary);
+}

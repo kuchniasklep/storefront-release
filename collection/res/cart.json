@@ -1,0 +1,143 @@
+{ 
+    "totalValue":837,
+    "productValue":99,
+    "productAmount":2,
+    "pointsForOrder":399,
+    "totalShippingTime": "14 dni",
+
+    "shippingMessage": "W związku z rozprzestrzenianiem się COVID-19 odradzamy wybór płatności przy odbiorze. Przedpłacone paczki kurier może zostawić w ustalonym miejscu, dzięki czemu unikniemy bezpośredniego kontaktu.",
+
+    "activePayment":"6",
+    "activeShipping":"12",
+    "otherValues":[ 
+      { 
+        "name":"Koszt wysy\u0142ki",
+        "value":0
+      }
+    ],
+    "shipping":[ 
+      { 
+        "id":"11",
+        "name":"Kurier InPost",
+        "price":0,
+        "logo":"res\/cartCentered\/inpost.svg",
+        "color":"#f9a000"
+      },
+      { 
+        "id":"12",
+        "name":"Paczkomat",
+        "price":0,
+        "logo":"res\/cartCentered\/inpost.svg",
+        "color":"#f9a000"
+      },
+      { 
+        "id":"13",
+        "name":"Kurier 24",
+        "price":"19.90",
+        "logo":"res\/cartCentered\/dpd.svg",
+        "color":"#ff0d2f"
+      },
+      { 
+        "id":"14",
+        "name":"Odbi\u00f3r w punkcie",
+        "price":"12.90",
+        "logo":"res\/cartCentered\/pocztex.svg",
+        "color":"#ff3434"
+      },
+      { 
+        "id":"15",
+        "name":"Paczka Pocztowa",
+        "price":"12.90",
+        "logo":"res\/cartCentered\/pocztex.svg",
+        "color":"#ff3434"
+      }
+    ],
+    "shippingProgress":{ 
+      "heading":"Darmowa wysy\u0142ka Pocztex",
+      "threshold":1000,
+      "color":"#ff3434"
+    },
+    "payment":[ 
+      { 
+        "id":"5",
+        "name":"Przelew bankowy",
+        "logo":"res\/cartCentered\/transfer.svg",
+        "color":"#ff3434"
+      },
+      { 
+        "id":"6",
+        "name":"P\u0142atno\u015b\u0107 przy odbiorze + 5 z\u0142",
+        "logo":"res\/cartCentered\/cash.svg",
+        "color":"#14616d"
+      },
+      { 
+        "id":"7",
+        "name":"P\u0142atno\u015bci elektroniczne",
+        "logo":"res\/cartCentered\/payu.svg",
+        "color":"#5EB009"
+      },
+      { 
+        "id":"8",
+        "name":"P\u0142atno\u015b\u0107 na raty",
+        "logo":"res\/cartCentered\/creditagricole.svg",
+        "color":"#009b9d"
+      }
+    ],
+    "products":[ 
+      { 
+        "id":"25",
+        "name":"La Cuisine - Garnek \u017celiwny owalny Pro 29 cm 4.75 l Czerwony",
+        "link":"la-cuisine-garnek-zeliwny-owalny-pro-29-cm-475-l-czerwony-p-4091.html",
+        "img":"res\/products\/2.jpg",
+        "price":399,
+        "amount":6,
+        "maxAmount":11,
+        "shippingTime":""
+      },
+      { 
+        "id":"26",
+        "name":"La Cuisine - Garnek \u017celiwny owalny Pro 33cm 6.5l Zielony",
+        "link":"la-cuisine-garnek-zeliwny-owalny-pro-33cm-65l-zielony-p-4094.html",
+        "img":"res\/products\/1.jpg",
+        "price":448,
+        "amount":3,
+        "maxAmount":14,
+        "shippingTime":"Wysyłka do 14 dni"
+      }
+    ],
+    "deals":[ 
+      { 
+        "id":"5806",
+        "name":"Smeg - M\u0142ynek do kawy 50's Retro Style Czarny",
+        "link":"smeg-mlynek-do-kawy-50s-retro-style-czarny-p-5806.html",
+        "img":"images\/Smeg\/CGF01BLEU.jpg",
+        "price":"549,50 z\u0142"
+      }
+    ],
+    "dealGroups":[ 
+      { 
+        "name":"Smeg - Spieniacz do mleka 50's Retro Style",
+        "deals":[ 
+          { 
+            "id":"5805",
+            "name":"Bia\u0142y",
+            "link":"smeg-spieniacz-do-mleka-50s-retro-style-bialy-p-5805.html",
+            "img":"images\/Smeg\/MFF01WHEU.jpg",
+            "price":"399,50 z\u0142"
+          },
+          { 
+            "id":"5804",
+            "name":"Czerwony",
+            "link":"smeg-spieniacz-do-mleka-50s-retro-style-czerwony-p-5804.html",
+            "img":"images\/Smeg\/MFF01RDEU.jpg",
+            "price":"399,50 z\u0142"
+          }
+        ]
+      }
+    ],
+    "points":{ 
+      "threshold":100,
+      "available":1000,
+      "value":100
+    }
+  }

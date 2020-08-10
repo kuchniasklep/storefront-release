@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Strona główna</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A page's description, usually one or two sentences.">
+    <meta name="theme-color" content="#015b97">
+    <meta http-equiv="Cache-control" content="no-cache">
+
+    <link rel="stylesheet" href="uikit/site.css?version=11" />
+    <link rel="stylesheet" type="text/css" href="build/ks-components.css">
+    <script type="module" src="build/ks-components.esm.js"></script>
+    <script nomodule src="build/ks-components.js"></script>
+
+    <script>
+        const ksCartToken = "test";
+        const ksCartCountToken = "countTest";
+        const ksFavouritesToken = "favTest";
+    </script>
+</head>
+<body>
+
+    <ks-navbar logo="res/logoLight.svg" category-url="res/categories.json"
+               cart-link="#" cart-count="2" heart-link="#" heart-count="1" account-link="#" logout-link="#"
+               phone="504 557 555" email="sklep@kuchniasklep.pl"
+               contact = "Insparo Patrycja Ordyk <br/> ul. Poznańska 23 <br/> 58-500 Jelenia Góra <br/> NIP: 611-260-33-04">
+    </ks-navbar>
+
+    <ks-section muted margin-top>
+        <ks-card padding>
+
+            <h1>Szybki zwrot</h1><hr/>
+
+            <ks-form action="#" method="post">
+                <ks-input-date required label="Data Wysyłki"></ks-input-date>
+                <br/>
+
+                <ks-input-text required min=5 max=20 label="Tekst"></ks-input-text>
+                <ks-input-text price required label="Cena"></ks-input-text>
+                <ks-input-text digits required label="Liczba"></ks-input-text>
+                <ks-input-text email required label="Email"></ks-input-text>
+
+                <ks-input-select label="Wybór">
+                    <option>Wybór pierwszy</option>
+                    <option>Wybór drugi</option>
+                    <option>Wybór trzeci</option>
+                </ks-input-select>
+                <br/>
+
+                <ks-input-textarea required rows=5 label="Komentarz"></ks-input-textarea>
+                <br/>
+
+
+                <ks-input-check radio name="radio1" label="Radio" checked></ks-input-check>
+                <ks-input-check radio name="radio1" label="Radio"></ks-input-check>
+                <br/>
+
+                <ks-input-check checkbox required label="Checkbox" checked></ks-input-check>
+                <ks-input-check checkbox required label="Checkbox"></ks-input-check>
+            </ks-form>
+
+        </ks-card>
+    </ks-section>
+
+    <footer>
+        <ks-about first-image="res/about/opineo.svg" first-link=""
+                  second-image="res/about/ceneo.svg" second-link=""
+                  third-image="res/about/allegro.svg" third-link="">
+            <span>
+                Kuchniasklep.pl to jeden z wiodących sklepów internetowych z asortymentem kuchennym. Oferujemy ekspresową dostawę, a dla nowych klientów rabat w kwocie 10 zł za zapisanie się do naszego newslettera. Dołącz do grupy zadowolonych klientów! W naszej bogatej ofercie posiadamy serwisy obiadowe, akcesoria kuchenne oraz drobne AGD. Prowadzimy sprzedaż produktów Villeroy&Boch, WMF, Brabantia, Silit, Hurom, Kuvings, Smeg, Lubiana, Bialetti, Microplane oraz La Cuisine. Jeżeli chcesz być informowany o nowościach i promocjach zapisz się do naszego newslettera. Służymy fachową pomocą w doborze odpowiedniego produktu oraz chętnie odpowiemy na wszelkie zadane pytania. Kuchniasklep.pl - z nami wyposażysz swoją kuchnię od zera!
+            </span>
+        </ks-about>
+
+        <ks-footer phone="504 557 555" email="sklep@kuchniasklep.pl">
+            <ks-footer-links>
+                <li><a href="#">Polityka Prywatności</a></li>
+                <li><a href="#">Regulamin</a></li>
+                <li><a href="#">Formularze</a></li>
+                <li><a href="#">Zwroty</a></li>
+            </ks-footer-links>
+
+            <ks-footer-links>
+                <li><a href="#">Poradnik Kuchenny</a></li>
+                <li><a href="#">Opinie</a></li>
+                <li><a href="#">Płatność</a></li>
+                <li><a href="#">Dostawa</a></li>
+            </ks-footer-links>
+        </ks-footer>
+    </footer>
+
+    <script src="uikit/js/uikit.min.js?version=custom2"></script>
+    <script src="uikit/js/uikit-icons.min.js"></script>
+</body>
+</html>

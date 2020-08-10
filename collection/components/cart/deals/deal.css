@@ -1,0 +1,218 @@
+ks-cart-deal {
+    display: -webkit-box;
+    display: flex;
+    overflow: hidden;
+
+    -webkit-box-pack: space-evenly;
+
+            justify-content: space-evenly;
+    -webkit-box-align: center;
+            align-items: center;
+
+    background-color: #252525;
+    padding: 0 30px;
+    box-sizing: border-box;
+
+    margin: 0 0 30px 0;
+}
+
+ks-cart-deal .image {
+    position: relative;
+    box-sizing: border-box;
+
+    width: 180px;
+    height: 180px;
+
+    -webkit-transform: translateX(-20px);
+
+            transform: translateX(-20px);
+}
+
+ks-cart-deal .circle {
+    position: absolute;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    width: 145px;
+    height: 145px;
+    padding: 10px;
+
+    border-radius: 100%;
+    background-color: white;
+}
+
+ks-cart-deal .fx {
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    max-width: initial;
+    -webkit-animation-name: rotate;
+            animation-name: rotate;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+            animation-timing-function: linear;
+}
+
+ks-cart-deal .fx1 {
+    -webkit-animation-duration: 50s;
+            animation-duration: 50s;
+}
+
+ks-cart-deal .fx2 {
+    -webkit-animation-duration: 40s;
+            animation-duration: 40s;
+    animation-direction: reverse;
+}
+
+ks-cart-deal .fx3 {
+    -webkit-animation-duration: 40s;
+            animation-duration: 40s;
+}
+
+ks-cart-deal .fx4 {
+    -webkit-animation-duration: 50s;
+            animation-duration: 50s;
+    animation-direction: reverse;
+}
+
+@-webkit-keyframes rotate {
+    from {-webkit-transform: translate(-50%, -50%) rotate(0deg);transform: translate(-50%, -50%) rotate(0deg)}
+    to {-webkit-transform: translate(-50%, -50%) rotate(360deg);transform: translate(-50%, -50%) rotate(360deg)}
+}
+
+@keyframes rotate {
+    from {-webkit-transform: translate(-50%, -50%) rotate(0deg);transform: translate(-50%, -50%) rotate(0deg)}
+    to {-webkit-transform: translate(-50%, -50%) rotate(360deg);transform: translate(-50%, -50%) rotate(360deg)}
+}
+
+ks-cart-deal .center {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+}
+
+
+ks-cart-deal .text {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+}
+
+ks-cart-deal .top > a {
+    color: white;
+    text-decoration: none;
+}
+
+ks-cart-deal .text > .bottom {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+            align-items: center;
+
+    font-size: 34px;
+    font-weight: 700;
+}
+
+ks-cart-deal button {
+    margin-left: 20px;
+    padding: 8px 30px 10px 30px;
+
+    border-radius: 50px;
+    border-style: none;
+    outline-style: none;
+
+    font-weight: 700;
+    font-size: 18px;
+    width: 260px;
+
+    background-color: #ff3838;
+    color: white;
+
+    -webkit-transition: background-color 0.3s;
+
+    transition: background-color 0.3s;
+}
+
+ks-cart-deal button:hover {
+    background-color: #e62c2c;
+}
+
+ks-cart-deal button:active {
+    background-color: #d41e1e;
+    -webkit-transition: background-color 0.1s;
+    transition: background-color 0.1s;
+}
+
+
+@media only screen and (max-width: 760px) {
+    ks-cart-deal {
+        display: block;
+        padding: 20px;
+    }
+
+    ks-cart-deal .image {
+        -webkit-transform: translateX(0px);
+                transform: translateX(0px);
+        margin: 10px auto 30px auto;
+    }
+}
+
+@media only screen and (max-width: 460px) {
+    ks-cart-deal .text > .bottom {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+                flex-direction: column;
+        font-size: 34px;
+    }
+
+    ks-cart-deal button {
+        margin: 5px 0 0 0;
+    }
+}
+
+
+
+ks-cart-deal .large {
+    display: none;
+}
+
+@media only screen and (min-width: 1100px) {
+    ks-cart-deal {
+        justify-content: space-around;
+    }
+
+    ks-cart-deal .large { display: block; }
+    ks-cart-deal .small { display: none; }
+
+    ks-cart-deal .text {
+        text-align: left;
+        min-width: 400px;
+    }
+
+    ks-cart-deal .text > .bottom { 
+        display: block;
+        font-size: 34px;
+        line-height: 34px;
+    }
+
+    ks-cart-deal button {
+        margin-left: 0;
+        padding: 15px 30px 17px 30px;
+    
+        border-radius: 50px;
+        border-style: none;
+        outline-style: none;
+    
+        font-weight: 700;
+        font-size: 18px;
+    
+        background-color: #ff3838;
+        color: white;
+    }
+}

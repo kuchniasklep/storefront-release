@@ -1,0 +1,19 @@
+ks-product-card {
+    display: block;
+}
+
+ks-product-card > div {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+            justify-content: space-between;
+    padding: 0;
+    height: 100%;
+
+    background: #ffffff;
+    color: #373737;
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+}

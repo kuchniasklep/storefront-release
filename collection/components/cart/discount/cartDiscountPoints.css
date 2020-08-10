@@ -1,0 +1,122 @@
+ks-cart-discount-points {
+    display: block;
+}
+
+ks-cart-discount-points > form {
+    display: -webkit-box;
+    display: flex;
+}
+
+ks-cart-discount-points ks-input-number {
+    display: block;
+    -webkit-box-flex: 1;
+            flex: 1;
+}
+
+ks-cart-discount-points ks-input-number input {
+    height: 50px !important;
+}
+
+ks-cart-discount-points ks-input-number > div {
+    margin-bottom: 3px !important;
+}
+
+ks-cart-discount-points button {
+    padding: 0 30px !important;
+    height: 50px;
+}
+
+
+@media only screen and (max-width: 600px) {
+    ks-cart-discount-points > form {
+        display: block;
+    }
+
+    ks-cart-discount-points button {
+        width: 100%;
+    }
+}
+
+
+ks-cart-discount-points .messsage {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+            flex-direction: row-reverse;
+    -webkit-box-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+            justify-content: center;
+
+    height: 100px;
+
+    margin-top: 7px;
+    background-color: #222222; 
+    color: white;
+}
+
+ks-cart-discount-points .messsage:hover {
+    color: white;
+    text-decoration: none;
+}
+
+ks-cart-discount-points .messsage:visited {
+    color: white;
+    text-decoration: none;
+}
+
+
+ks-cart-discount-points .messsage > .bottom {
+    -webkit-box-flex: 1;
+            flex: 1;
+    padding: 10px 20px;
+    font-size: 15px;
+}
+
+ks-cart-discount-points .messsage .points {
+    height: 100%;
+}
+
+ks-cart-discount-points .points > div {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+            justify-content: center;
+
+    box-sizing: border-box;
+    padding: 6px 30px;
+
+    height: 50%;
+
+    font-size: 26px;
+    font-weight: 700;
+}
+
+ks-cart-discount-points .points > div > span {
+    -webkit-transform: translateX(-5px);
+            transform: translateX(-5px);
+}
+
+ks-cart-discount-points .points > .top {
+    background-color: #303030;
+}
+
+ks-cart-discount-points .points > .bottom {
+    background-color: #ff3c3c;
+}
+
+@media only screen and (max-width: 600px) {
+    ks-cart-discount-points .messsage {
+        display: block;
+        height: auto;
+
+        text-align: center;
+    }
+
+    ks-cart-discount-points .messsage .points {
+        display: none;
+    }
+}
