@@ -414,35 +414,40 @@ var Flex = /** @class */ (function () {
     };
     return Flex;
 }());
+var footerCss = "ks-footer{display:block;background-color:var(--ks-color-footer);color:var(--ks-text-footer);font-size:16px}ks-footer .about{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;padding:40px;max-width:1200px;margin:auto}ks-footer .info{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}ks-footer .contact{padding:0 10px 20px 10px}ks-footer .contact a{display:block;text-decoration:none !important;font-size:18px;color:var(--ks-text-footer);-webkit-transition:var(--ks-transition-text);transition:var(--ks-transition-text)}ks-footer .contact a:hover{color:var(--ks-text-footer-hover)}ks-footer .contact a:active{color:var(--ks-text-footer-active)}ks-footer .logo{max-width:250px;height:auto;margin-bottom:10px}ks-footer .links{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;-webkit-box-flex:1;-ms-flex:1;flex:1}ks-footer .reviews{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}ks-footer .reviews p{margin:0 0 5px 0}ks-footer .software{background-color:var(--ks-color-footer-darker);color:var(--ks-text-footer-darker);font-size:13px;text-align:center;padding:10px}ks-footer .software>a{color:var(--ks-text-footer-darker)}@media only screen and (max-width: 1060px){ks-footer .about{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;padding:30px}ks-footer .info{-webkit-box-align:center;-ms-flex-align:center;align-items:center;text-align:center}ks-footer .logo{margin-left:10px}ks-footer .reviews{margin:20px 0 10px 0}ks-footer .links{margin-top:50px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}}@media only screen and (max-width: 640px){ks-footer .about{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;padding:30px}ks-footer .info{-webkit-box-align:center;-ms-flex-align:center;align-items:center;text-align:center}ks-footer .links{margin-top:0px;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-ms-flex-align:center;align-items:center;text-align:center}ks-footer .links>*{margin-top:40px;padding:0}}";
 var Footer = /** @class */ (function () {
     function Footer(hostRef) {
         registerInstance(this, hostRef);
     }
     Footer.prototype.render = function () {
-        return (h("div", { class: "uk-section-secondary" }, h("div", { "uk-margin": true, class: "uk-flex uk-flex-center uk-flex-wrap uk-padding", "uk-toggle": "cls: uk-flex-row-reverse uk-flex-between uk-flex-middle; mode: media; media: 960" }, h("div", { class: "uk-text-center uk-text-right@m uk-width-1-1 uk-width-expand@m", "uk-margin": true }, h("p", { style: { color: "white", fontSize: "16px", margin: "0 0 5px 0" } }, "Zobacz opinie:"), h("slot", { name: "buttons" })), h("div", { class: "uk-width-auto" }, h("slot", null))), h("div", { class: "uk-text-center uk-text-small", style: { backgroundColor: '#181818', padding: '5px' } }, h("a", { href: this.softwareLink, rel: "nofollow", style: { color: '#A3A3A3' } }, "Oprogramowanie sklepu ShopGold"))));
+        return [
+            h("div", { class: "about" }, h("div", { class: "info" }, h("div", { class: "contact" }, h("ks-img", { class: "logo", src: this.logo }), h("a", { href: "mailto:" + this.email }, " ", this.email, " "), h("a", { href: "tel:" + this.phone }, " ", this.phone, " ")), h("div", { class: "reviews" }, h("slot", { name: "buttons" }))), h("div", { class: "links" }, h("slot", null))),
+            h("div", { class: "software" }, h("a", { href: this.softwareLink, rel: "nofollow" }, "Oprogramowanie sklepu ShopGold"))
+        ];
     };
     return Footer;
 }());
-var footerButtonCss = "ks-footer-button{opacity:1.0;-webkit-transition:opacity 0.2s ease;transition:opacity 0.2s ease}ks-footer-button:hover{opacity:0.9}ks-footer-button a{padding:0px 20px !important;margin:4px 2px !important;font-size:16px !important}";
+Footer.style = footerCss;
+var footerButtonCss = "ks-footer-button{display:inline-block;max-width:120px;opacity:1.0;-webkit-transition:opacity 0.3s ease;transition:opacity 0.3s ease}ks-footer-button:hover{opacity:0.4}";
 var FooterButton = /** @class */ (function () {
     function FooterButton(hostRef) {
         registerInstance(this, hostRef);
     }
     FooterButton.prototype.render = function () {
-        return (h("a", { href: this.href, rel: "nofollow", class: "uk-button uk-button-danger ks-text-decorated uk-text-bold", style: { backgroundColor: this.color } }, h("slot", null)));
+        return (h("a", { href: this.href, rel: "nofollow" }, h("ks-img", { src: this.image })));
     };
     return FooterButton;
 }());
 FooterButton.style = footerButtonCss;
-var footerLinksCss = "@media only screen and (max-width: 640px){ks-footer-links li>a{font-size:17px;padding:4px}}";
+var footerLinksCss = "ks-footer-links{display:block;padding:0 20px;margin:0}ks-footer-links h4{color:var(--ks-text-footer-heading);font-family:var(--font-emphasis);font-weight:700;font-size:18px}ks-footer-links ul{display:block;list-style-type:none;margin:0;padding:0}ks-footer-links ul a{color:var(--ks-text-footer);text-decoration:none !important;-webkit-transition:var(--ks-transition-text);transition:var(--ks-transition-text)}ks-footer-links ul a:hover{color:var(--ks-text-footer-hover)}ks-footer-links ul a:active{color:var(--ks-text-footer-active)}@media only screen and (max-width: 640px){ks-footer-links h4{font-size:20px}ks-footer-links ul li{margin-bottom:5px}}";
 var FooterLinks = /** @class */ (function () {
     function FooterLinks(hostRef) {
         registerInstance(this, hostRef);
     }
     FooterLinks.prototype.render = function () {
         return [
-            h("br", { class: "uk-hidden@s" }),
-            h("ul", { class: "uk-subnav uk-child-width-1-1 uk-child-width-auto@s uk-text-center uk-margin-small uk-flex-center uk-flex-left@m", "uk-toggle": "cls: uk-subnav-divider; mode: media; media: 640" }, h("slot", null))
+            h("h4", null, this.heading),
+            h("ul", null, h("slot", null))
         ];
     };
     return FooterLinks;

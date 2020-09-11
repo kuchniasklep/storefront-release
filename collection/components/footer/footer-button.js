@@ -1,8 +1,8 @@
 import { Component, h, Prop } from '@stencil/core';
 export class FooterButton {
     render() {
-        return (h("a", { href: this.href, rel: "nofollow", class: "uk-button uk-button-danger ks-text-decorated uk-text-bold", style: { backgroundColor: this.color } },
-            h("slot", null)));
+        return (h("a", { href: this.href, rel: "nofollow" },
+            h("ks-img", { src: this.image })));
     }
     static get is() { return "ks-footer-button"; }
     static get originalStyleUrls() { return {
@@ -12,7 +12,7 @@ export class FooterButton {
         "$": ["footer-button.css"]
     }; }
     static get properties() { return {
-        "color": {
+        "image": {
             "type": "string",
             "mutable": false,
             "complexType": {
@@ -26,7 +26,7 @@ export class FooterButton {
                 "tags": [],
                 "text": ""
             },
-            "attribute": "color",
+            "attribute": "image",
             "reflect": false
         },
         "href": {

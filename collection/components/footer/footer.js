@@ -1,17 +1,34 @@
 import { Component, h, Prop } from '@stencil/core';
 export class Footer {
     render() {
-        return (h("div", { class: "uk-section-secondary" },
-            h("div", { "uk-margin": true, class: "uk-flex uk-flex-center uk-flex-wrap uk-padding", "uk-toggle": "cls: uk-flex-row-reverse uk-flex-between uk-flex-middle; mode: media; media: 960" },
-                h("div", { class: "uk-text-center uk-text-right@m uk-width-1-1 uk-width-expand@m", "uk-margin": true },
-                    h("p", { style: { color: "white", fontSize: "16px", margin: "0 0 5px 0" } }, "Zobacz opinie:"),
-                    h("slot", { name: "buttons" })),
-                h("div", { class: "uk-width-auto" },
+        return [
+            h("div", { class: "about" },
+                h("div", { class: "info" },
+                    h("div", { class: "contact" },
+                        h("ks-img", { class: "logo", src: this.logo }),
+                        h("a", { href: `mailto:${this.email}` },
+                            " ",
+                            this.email,
+                            " "),
+                        h("a", { href: `tel:${this.phone}` },
+                            " ",
+                            this.phone,
+                            " ")),
+                    h("div", { class: "reviews" },
+                        h("slot", { name: "buttons" }))),
+                h("div", { class: "links" },
                     h("slot", null))),
-            h("div", { class: "uk-text-center uk-text-small", style: { backgroundColor: '#181818', padding: '5px' } },
-                h("a", { href: this.softwareLink, rel: "nofollow", style: { color: '#A3A3A3' } }, "Oprogramowanie sklepu ShopGold"))));
+            h("div", { class: "software" },
+                h("a", { href: this.softwareLink, rel: "nofollow" }, "Oprogramowanie sklepu ShopGold"))
+        ];
     }
     static get is() { return "ks-footer"; }
+    static get originalStyleUrls() { return {
+        "$": ["footer.css"]
+    }; }
+    static get styleUrls() { return {
+        "$": ["footer.css"]
+    }; }
     static get properties() { return {
         "softwareLink": {
             "type": "string",
@@ -28,6 +45,57 @@ export class Footer {
                 "text": ""
             },
             "attribute": "software-link",
+            "reflect": false
+        },
+        "logo": {
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "logo",
+            "reflect": false
+        },
+        "phone": {
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "phone",
+            "reflect": false
+        },
+        "email": {
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "email",
             "reflect": false
         }
     }; }

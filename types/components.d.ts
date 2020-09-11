@@ -8,14 +8,6 @@ import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
 import { CartDataDeal, CartDataDealGroup, CartDataDiscount, CartDataPoints, CartDataProduct, CartDataSelectItem, CartDataShippingProgress, CartDataSummaryItem, } from "./components/cart/cartData";
 import { ProductButtonData, } from "./components/product/product-data";
 export namespace Components {
-    interface KsAbout {
-        "firstImage": string;
-        "firstLink": string;
-        "secondImage": string;
-        "secondLink": string;
-        "thirdImage": string;
-        "thirdLink": string;
-    }
     interface KsAlert {
         "message": string;
     }
@@ -330,13 +322,17 @@ export namespace Components {
         "small": boolean;
     }
     interface KsFooter {
+        "email": string;
+        "logo": string;
+        "phone": string;
         "softwareLink": string;
     }
     interface KsFooterButton {
-        "color": string;
         "href": string;
+        "image": string;
     }
     interface KsFooterLinks {
+        "heading": string;
     }
     interface KsForm {
         "action": string;
@@ -856,12 +852,6 @@ export namespace Components {
     }
 }
 declare global {
-    interface HTMLKsAboutElement extends Components.KsAbout, HTMLStencilElement {
-    }
-    var HTMLKsAboutElement: {
-        prototype: HTMLKsAboutElement;
-        new (): HTMLKsAboutElement;
-    };
     interface HTMLKsAlertElement extends Components.KsAlert, HTMLStencilElement {
     }
     var HTMLKsAlertElement: {
@@ -1757,7 +1747,6 @@ declare global {
         new (): HTMLKsSortingElement;
     };
     interface HTMLElementTagNameMap {
-        "ks-about": HTMLKsAboutElement;
         "ks-alert": HTMLKsAlertElement;
         "ks-article-card": HTMLKsArticleCardElement;
         "ks-banner": HTMLKsBannerElement;
@@ -1910,14 +1899,6 @@ declare global {
     }
 }
 declare namespace LocalJSX {
-    interface KsAbout {
-        "firstImage"?: string;
-        "firstLink"?: string;
-        "secondImage"?: string;
-        "secondLink"?: string;
-        "thirdImage"?: string;
-        "thirdLink"?: string;
-    }
     interface KsAlert {
         "message"?: string;
     }
@@ -2227,13 +2208,17 @@ declare namespace LocalJSX {
         "small"?: boolean;
     }
     interface KsFooter {
+        "email"?: string;
+        "logo"?: string;
+        "phone"?: string;
         "softwareLink"?: string;
     }
     interface KsFooterButton {
-        "color"?: string;
         "href"?: string;
+        "image"?: string;
     }
     interface KsFooterLinks {
+        "heading"?: string;
     }
     interface KsForm {
         "action"?: string;
@@ -2721,7 +2706,6 @@ declare namespace LocalJSX {
         "post"?: string;
     }
     interface IntrinsicElements {
-        "ks-about": KsAbout;
         "ks-alert": KsAlert;
         "ks-article-card": KsArticleCard;
         "ks-banner": KsBanner;
@@ -2877,7 +2861,6 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "ks-about": LocalJSX.KsAbout & JSXBase.HTMLAttributes<HTMLKsAboutElement>;
             "ks-alert": LocalJSX.KsAlert & JSXBase.HTMLAttributes<HTMLKsAlertElement>;
             "ks-article-card": LocalJSX.KsArticleCard & JSXBase.HTMLAttributes<HTMLKsArticleCardElement>;
             "ks-banner": LocalJSX.KsBanner & JSXBase.HTMLAttributes<HTMLKsBannerElement>;

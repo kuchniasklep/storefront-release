@@ -41,7 +41,6 @@
     "./components/elements/section-heading.js",
     "./components/elements/section.js",
     "./components/elements/icon/icon.js",
-    "./components/footer/about.js",
     "./components/footer/footer-button.js",
     "./components/footer/footer-links.js",
     "./components/footer/footer.js",

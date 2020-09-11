@@ -1,9 +1,9 @@
-import { Component, h } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 export class FooterLinks {
     render() {
         return [
-            h("br", { class: "uk-hidden@s" }),
-            h("ul", { class: "uk-subnav uk-child-width-1-1 uk-child-width-auto@s uk-text-center uk-margin-small uk-flex-center uk-flex-left@m", "uk-toggle": "cls: uk-subnav-divider; mode: media; media: 640" },
+            h("h4", null, this.heading),
+            h("ul", null,
                 h("slot", null))
         ];
     }
@@ -13,5 +13,24 @@ export class FooterLinks {
     }; }
     static get styleUrls() { return {
         "$": ["footer-links.css"]
+    }; }
+    static get properties() { return {
+        "heading": {
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "attribute": "heading",
+            "reflect": false
+        }
     }; }
 }

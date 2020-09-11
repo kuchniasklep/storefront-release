@@ -1,4 +1,7 @@
 export declare class Footer {
     softwareLink: string;
-    render(): any;
+    logo: string;
+    phone: string;
+    email: string;
+    render(): any[];
 }
