@@ -28,7 +28,7 @@ export class NavbarCategoryView {
         bar.style.borderBottom = bar.style.borderTop;
     }
     CalculateHeight() {
-        return (this.count * 40);
+        return Math.max(40 * 6, (this.count * 40));
     }
     SetActive(index, children) {
         if (children)

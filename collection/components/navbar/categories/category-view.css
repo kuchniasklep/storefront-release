@@ -35,6 +35,10 @@
     box-shadow: 0 10px 15px -10px rgba(0, 0, 0, 0.26)
 }
 
+.ks-buttons {
+    background-color: rgb(0, 59, 99);
+}
+
 .ks-category-view .ks-buttons a {
     display: block;
     padding: 10px 15px;
