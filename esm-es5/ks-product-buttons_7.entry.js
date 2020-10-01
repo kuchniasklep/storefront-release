@@ -261,14 +261,20 @@ var ProductTrait = /** @class */ (function () {
                         return [4 /*yield*/, this.fetchTraits("inne/produkt_cecha_zdjecie.php", ksTraitImageToken, productId, traitIDs)];
                     case 2:
                         traitImage = _a.sent();
-                        data.update({
-                            currentPrice: traitData.cena,
-                            previousPrice: traitData.cenapoprzednia,
-                            //shippingTime: traitData.czaswysylki,
-                            ean: traitData.ean,
-                            catalog: traitData.nrkat,
-                            traitIDs: traitIDs
-                        });
+                        if (traitData.cena != null && traitData.cenapoprzednia != null)
+                            data.update({
+                                currentPrice: traitData.cena,
+                                previousPrice: traitData.cenapoprzednia,
+                                ean: traitData.ean,
+                                catalog: traitData.nrkat,
+                                traitIDs: traitIDs
+                            });
+                        else
+                            data.update({
+                                ean: traitData.ean,
+                                catalog: traitData.nrkat,
+                                traitIDs: traitIDs
+                            });
                         data.updateImage({
                             full: traitImage.duze,
                             preview: traitImage.duze,

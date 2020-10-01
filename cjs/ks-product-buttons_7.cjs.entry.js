@@ -211,14 +211,20 @@ const ProductTrait = class {
         const traitIDs = this.selectedTraits(data);
         const traitData = await this.fetchTraits("inne/produkt.php", ksTraitsToken, productId, traitIDs);
         const traitImage = await this.fetchTraits("inne/produkt_cecha_zdjecie.php", ksTraitImageToken, productId, traitIDs);
-        data.update({
-            currentPrice: traitData.cena,
-            previousPrice: traitData.cenapoprzednia,
-            //shippingTime: traitData.czaswysylki,
-            ean: traitData.ean,
-            catalog: traitData.nrkat,
-            traitIDs: traitIDs
-        });
+        if (traitData.cena != null && traitData.cenapoprzednia != null)
+            data.update({
+                currentPrice: traitData.cena,
+                previousPrice: traitData.cenapoprzednia,
+                ean: traitData.ean,
+                catalog: traitData.nrkat,
+                traitIDs: traitIDs
+            });
+        else
+            data.update({
+                ean: traitData.ean,
+                catalog: traitData.nrkat,
+                traitIDs: traitIDs
+            });
         data.updateImage({
             full: traitImage.duze,
             preview: traitImage.duze,
