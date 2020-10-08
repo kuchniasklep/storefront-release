@@ -1,13 +1,13 @@
-import { r as registerInstance, h } from './index-20a680bb.js';
+import { r as registerInstance, h } from './index-22b73bd9.js';
 
 const Filter = class {
-    constructor(hostRef) {
-        registerInstance(this, hostRef);
-        this.active = false;
-    }
-    render() {
-        return (h("ul", { "uk-accordion": "animation: false;" }, h("li", { class: this.active ? "uk-open" : null }, h("a", { class: "uk-accordion-title", href: "#" }, this.name), h("div", { class: "uk-accordion-content" }, h("slot", null)))));
-    }
+  constructor(hostRef) {
+    registerInstance(this, hostRef);
+    this.active = false;
+  }
+  render() {
+    return (h("ul", { "uk-accordion": "animation: false;" }, h("li", { class: this.active ? "uk-open" : null }, h("a", { class: "uk-accordion-title", href: "#" }, this.name), h("div", { class: "uk-accordion-content" }, h("slot", null)))));
+  }
 };
 
 export { Filter as ks_filter };

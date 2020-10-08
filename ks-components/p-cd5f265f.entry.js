@@ -1,1 +1,0 @@
-import{r as t,h as s}from"./p-cb802b7f.js";const r=class{constructor(s){t(this,s)}render(){return s("div",{class:"uk-tile uk-padding-remove uk-flex uk-flex-center uk-margin-bottom",style:{backgroundColor:this.color}},s("ks-image",{alt:this.alt,src:this.image,width:this.width,height:this.height}))}};export{r as ks_product_banner}

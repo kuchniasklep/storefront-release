@@ -1,12 +1,16 @@
 ks-cart-deal {
     display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     overflow: hidden;
 
     -webkit-box-pack: space-evenly;
 
+        -ms-flex-pack: space-evenly;
+
             justify-content: space-evenly;
     -webkit-box-align: center;
+        -ms-flex-align: center;
             align-items: center;
 
     background-color: #252525;
@@ -24,6 +28,8 @@ ks-cart-deal .image {
     height: 180px;
 
     -webkit-transform: translateX(-20px);
+
+        -ms-transform: translateX(-20px);
 
             transform: translateX(-20px);
 }
@@ -92,6 +98,7 @@ ks-cart-deal .center {
     top: 50%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
 }
 
@@ -109,10 +116,13 @@ ks-cart-deal .top > a {
 
 ks-cart-deal .text > .bottom {
     display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: center;
+        -ms-flex-pack: center;
             justify-content: center;
     -webkit-box-align: center;
+        -ms-flex-align: center;
             align-items: center;
 
     font-size: 34px;
@@ -158,6 +168,7 @@ ks-cart-deal button:active {
 
     ks-cart-deal .image {
         -webkit-transform: translateX(0px);
+            -ms-transform: translateX(0px);
                 transform: translateX(0px);
         margin: 10px auto 30px auto;
     }
@@ -167,6 +178,7 @@ ks-cart-deal button:active {
     ks-cart-deal .text > .bottom {
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
+            -ms-flex-direction: column;
                 flex-direction: column;
         font-size: 34px;
     }
@@ -184,7 +196,8 @@ ks-cart-deal .large {
 
 @media only screen and (min-width: 1100px) {
     ks-cart-deal {
-        justify-content: space-around;
+        -ms-flex-pack: distribute;
+            justify-content: space-around;
     }
 
     ks-cart-deal .large { display: block; }

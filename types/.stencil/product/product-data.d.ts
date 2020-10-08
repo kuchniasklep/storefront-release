@@ -1,92 +1,90 @@
 export interface SuggestedProductData {
-    name: string;
-    image: string;
-    link: string;
-    currentPrice: string;
-    previousPrice: string;
+  name: string;
+  image: string;
+  link: string;
+  currentPrice: string;
+  previousPrice: string;
 }
 export interface ProductData {
-    name?: string;
-    breadcrumbs?: BreadcrumbData[];
-    brand?: string;
-    brandLink?: string;
-    description?: string;
-    previousPrice?: string;
-    currentPrice?: string;
-    shippingPrice?: string;
-    shippingTime?: string;
-    availability?: number;
-    warranty?: string;
-    warrantyLink?: string;
-    images?: ProductImageData[];
-    traitIDs?: string;
-    traits?: TraitData[];
-    catalog?: string;
-    model?: string;
-    ean?: string;
-    reviews?: ReviewCollectionData;
-    buttons?: ProductButtonData;
-    update?: (data: ProductData) => void;
-    updateImage?: (data: ProductImageData) => void;
-    updateShippingTime?: (id: string, count: number) => void;
+  id?: string;
+  name?: string;
+  breadcrumbs?: BreadcrumbData[];
+  brand?: string;
+  brandLink?: string;
+  description?: string;
+  attributes?: AttributeData[];
+  previousPrice?: string;
+  currentPrice?: string;
+  shippingPrice?: string;
+  shippingTime?: string;
+  shippingMessage?: string;
+  availability?: number;
+  count?: number;
+  cartLoading?: boolean;
+  favouritesLoading?: boolean;
+  favouritesCompleted?: boolean;
+  images?: ProductImageData[];
+  traitIDs?: string;
+  traits?: TraitData[];
+  catalog?: string;
+  model?: string;
+  ean?: string;
+  negotiate?: boolean;
+  reviews?: ReviewCollectionData;
 }
 export interface ReviewCollectionData {
-    score: string;
-    count: string;
-    review: ReviewData[];
+  score: string;
+  count: string;
+  review: ReviewData[];
+}
+export interface AttributeData {
+  name?: string;
+  text?: string;
+  link?: string;
+  image?: string;
+  emphasis?: boolean;
 }
 export interface ReviewData {
-    name: string;
-    text: string;
-    overallScore: string;
-    bestScore: string;
+  name: string;
+  text: string;
+  overallScore: string;
+  bestScore: string;
 }
 export interface BreadcrumbData {
-    name: string;
-    link: string;
+  name: string;
+  link: string;
 }
 export interface ProductImageData {
-    thumb: string;
-    preview: string;
-    full: string;
+  thumb: ProductImageProperties;
+  preview: ProductImageProperties;
+  full: ProductImageProperties;
+}
+export interface ProductImageProperties {
+  url: string;
+  width?: number;
+  height?: number;
 }
 export interface TraitData {
-    name: string;
-    id: string;
-    selected: string;
-    items: TraitDataItem[];
+  name: string;
+  id: string;
+  items: TraitDataItem[];
 }
 export interface TraitDataItem {
-    name: string;
-    id: string;
-}
-export interface ProductButtonData {
-    id: string;
-    available: boolean;
-    contact: string;
-    CreditAgricole: string;
-    PayU: string;
+  name: string;
+  id: string;
 }
 export interface FetchedTraitData {
-    kupowanie: string;
-    dostepnosc: string;
-    czaswysylki: string;
-    nrkat: string;
-    ean: string;
-    ilosc: string;
-    cena: string;
-    cenapoprzednia: string;
+  kupowanie: string;
+  dostepnosc: string;
+  czaswysylki: string;
+  nrkat: string;
+  ean: string;
+  ilosc: string;
+  cena: string;
+  cenapoprzednia: string;
 }
 export interface FetchedTraitImageData {
-    male: string;
-    srednie: string;
-    duze: string;
+  male: string;
+  srednie: string;
+  duze: string;
 }
-declare const _default: {
-    Provider: import("@stencil/state-tunnel/dist/types/stencil.core").FunctionalComponent<{
-        state: ProductData;
-    }>;
-    Consumer: import("@stencil/state-tunnel/dist/types/stencil.core").FunctionalComponent<{}>;
-    injectProps: (Cstr: any, fieldList: import("@stencil/state-tunnel/dist/types/declarations").PropList<ProductData>) => void;
-};
-export default _default;

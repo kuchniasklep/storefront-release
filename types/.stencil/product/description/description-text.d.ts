@@ -1,3 +1,3 @@
 export declare class DescriptionText {
-    render(): any;
+  render(): any;
 }

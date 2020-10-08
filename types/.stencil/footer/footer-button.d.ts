@@ -1,5 +1,5 @@
 export declare class FooterButton {
-    image: string;
-    href: string;
-    render(): any;
+  image: string;
+  href: string;
+  render(): any;
 }

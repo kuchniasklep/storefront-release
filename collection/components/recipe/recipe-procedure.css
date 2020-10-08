@@ -1,5 +1,6 @@
 ks-recipe-procedure {
     display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 }
 

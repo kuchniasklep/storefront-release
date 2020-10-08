@@ -1,4 +1,4 @@
 export declare class DescriptionImage {
-    image: string;
-    render(): any;
+  image: string;
+  render(): any;
 }

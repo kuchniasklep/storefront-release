@@ -1,15 +1,1 @@
-import { r as registerInstance, h } from './index-20a680bb.js';
-import './index-2db7bf78.js';
-import { T as Tunnel } from './cartData-be1433a0.js';
-var CartShippingMessage = /** @class */ (function () {
-    function CartShippingMessage(hostRef) {
-        registerInstance(this, hostRef);
-        this.shippingMessage = "";
-    }
-    CartShippingMessage.prototype.render = function () {
-        return (h("ks-cart-message", { message: this.shippingMessage }));
-    };
-    return CartShippingMessage;
-}());
-Tunnel.injectProps(CartShippingMessage, ['shippingMessage']);
-export { CartShippingMessage as ks_cart_shipping_message };
+import{r as registerInstance,h}from"./index-22b73bd9.js";import"./state-tunnel-04c0b67a.js";import{T as Tunnel}from"./cartData-c83db97f.js";var CartShippingMessage=function(){function s(s){registerInstance(this,s);this.shippingMessage=""}s.prototype.render=function(){return h("ks-cart-message",{message:this.shippingMessage})};return s}();Tunnel.injectProps(CartShippingMessage,["shippingMessage"]);export{CartShippingMessage as ks_cart_shipping_message};

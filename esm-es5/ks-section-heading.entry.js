@@ -1,13 +1,1 @@
-import { r as registerInstance, h } from './index-20a680bb.js';
-var SectionHeading = /** @class */ (function () {
-    function SectionHeading(hostRef) {
-        registerInstance(this, hostRef);
-    }
-    SectionHeading.prototype.render = function () {
-        return [
-            h("h3", { class: "uk-text-center uk-margin-medium-bottom" }, h("slot", null))
-        ];
-    };
-    return SectionHeading;
-}());
-export { SectionHeading as ks_section_heading };
+import{r as registerInstance,h}from"./index-22b73bd9.js";var SectionHeading=function(){function e(e){registerInstance(this,e)}e.prototype.render=function(){return[h("h3",{class:"uk-text-center uk-margin-medium-bottom"},h("slot",null))]};return e}();export{SectionHeading as ks_section_heading};

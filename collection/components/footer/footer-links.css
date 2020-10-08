@@ -6,7 +6,7 @@ ks-footer-links {
 }
 
 ks-footer-links h4 {
-    color: var(--ks-text-footer-heading);
+    color: var(--footer-heading-color);
     font-family: var(--font-emphasis);
     font-weight: 700;
     font-size: 18px;
@@ -20,16 +20,16 @@ ks-footer-links ul {
 }
 
 ks-footer-links ul a {
-    color: var(--ks-text-footer);
+    color: var(--footer-text-color);
     text-decoration: none !important;
 
-    -webkit-transition: var(--ks-transition-text);
+    -webkit-transition: var(--transition-color);
 
-    transition: var(--ks-transition-text);
+    transition: var(--transition-color);
 }
 
-ks-footer-links ul a:hover  { color: var(--ks-text-footer-hover); }
-ks-footer-links ul a:active { color: var(--ks-text-footer-active); }
+ks-footer-links ul a:hover  { color: var(--footer-text-color-hover); }
+ks-footer-links ul a:active { color: var(--footer-text-color-active); }
 
 @media only screen and (max-width: 640px) {
     ks-footer-links h4 {

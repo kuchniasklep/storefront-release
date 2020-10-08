@@ -1,31 +1,45 @@
 ks-navbar {
     display: block;
+    min-height: 104px;
+}
+
+ks-navbar.hydrated {
+    -webkit-animation: 300ms fade-in;
+            animation: 300ms fade-in;
 }
 
 ks-navbar > nav {
     display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
             justify-content: space-between;
     -webkit-box-align: center;
+        -ms-flex-align: center;
             align-items: center;
 
     position: relative;
 
-    color: var(--ks-text-color-primary);
-    background-color: var(--ks-color-primary);
+    color: var(--text-color-primary);
+    background-color: var(--color-primary);
 }
 
 #ks-navbar-menu-buttons {
     -webkit-box-flex: 0;
+        -ms-flex: none;
             flex: none;
 
     display: -webkit-box;
 
+    display: -ms-flexbox;
+
     display: flex;
     -webkit-box-pack: center;
+        -ms-flex-pack: center;
             justify-content: center;
     -webkit-box-align: center;
+        -ms-flex-align: center;
             align-items: center;
     box-sizing: border-box;
     min-height: 70px;

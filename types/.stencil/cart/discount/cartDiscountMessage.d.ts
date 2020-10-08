@@ -1,4 +1,4 @@
 export declare class CartDiscountTicket {
-    name: string;
-    render(): any[];
+  name: string;
+  render(): any[];
 }

@@ -117,6 +117,7 @@
 @media only screen and (min-width: 1360px) {
     .ks-category-view .ks-graphic {
         display: -webkit-box !important;
+        display: -ms-flexbox !important;
         display: flex !important;
     }
 }

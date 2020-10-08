@@ -4,5 +4,5 @@ ks-product-admin-distributor {
 }
 
 ks-product-admin-distributor[overwrite] {
-    color: var(--ks-color-secondary);
+    color: var(--color-secondary);
 }

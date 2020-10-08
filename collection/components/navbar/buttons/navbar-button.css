@@ -1,6 +1,7 @@
 ks-navbar-button {
     display: block;
     position: relative;
+    height: 70px;
 }
 
 ks-navbar-button > div {
@@ -19,6 +20,11 @@ ks-navbar-button > div {
     opacity: 0;
     -webkit-transition: opacity 0.3s ease;
     transition: opacity 0.3s ease;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    pointer-events: none;
 }
 
 ks-navbar-button > a:hover + div {
@@ -42,13 +48,33 @@ ks-navbar-button .count {
     padding: 0px 0px;
     border-radius: 500px;
     vertical-align: middle;
-    background: var(--ks-color-secondary);
+    background: var(--color-secondary);
     color: #fff;
     font-size: 16px;
     display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
     display: inline-flex;
     -webkit-box-pack: center;
+        -ms-flex-pack: center;
             justify-content: center;
     -webkit-box-align: center;
+        -ms-flex-align: center;
             align-items: center;
+}
+
+ks-navbar-button > a {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    height: 100%;
+}
+
+ks-navbar-button ks-icon svg.medium {
+    stroke-width: 1.2;
 }

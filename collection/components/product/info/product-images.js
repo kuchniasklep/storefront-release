@@ -1,19 +1,52 @@
-import { Component, h, } from '@stencil/core';
-import Tunnel from '../product-data';
+import { Component, h, Element } from '@stencil/core';
+import { store } from "../product-store";
+import Swiper, { Thumbs } from 'swiper';
+Swiper.use([Thumbs]);
 export class ProductImages {
-    render() {
-        let thumbnailIndex = 0;
-        return (h(Tunnel.Consumer, null, ({ images }) => {
-            return (h("div", { "uk-slideshow": "max-height: 500; ratio: 1:1; animation: slide" },
-                h("div", { class: "uk-position-relative" },
-                    h("ul", { class: "uk-slideshow-items", "uk-lightbox": true }, images.map(image => h("li", null,
-                        h("a", { href: image.full, "aria-label": "Podgl\u0105d zdj\u0119cia" },
-                            h("ks-img", { vertical: true, center: true, src: image.preview, alt: "Zdj\u0119cie produktu" })))))),
-                h("div", { class: "uk-position-small" },
-                    h("ul", { class: "uk-thumbnav uk-flex-center" }, images.map(image => h("li", { "uk-slideshow-item": thumbnailIndex++ },
-                        h("a", { href: "#", "aria-label": "miniaturka zdj\u0119cia" },
-                            h("ks-image", { src: image.thumb, alt: "Miniaturka zdj\u0119cia", width: "50", height: "50" }))))))));
-        }));
-    }
-    static get is() { return "ks-product-images"; }
+  componentDidRender() {
+    this.lightbox = this.root.querySelector("ks-lightbox");
+    this.thumbs = new Swiper('.thumb', {
+      observer: true,
+      observeParents: true,
+      grabCursor: true,
+      slidesPerView: "auto",
+      preventInteractionOnTransition: true,
+      centerInsufficientSlides: true,
+      watchSlidesVisibility: true,
+      watchSlidesProgress: true,
+      spaceBetween: 3,
+    });
+    this.carousel = new Swiper('.preview', {
+      observer: true,
+      observeParents: true,
+      spaceBetween: 30,
+      grabCursor: true,
+      autoHeight: true,
+      thumbs: {
+        swiper: this.thumbs
+      }
+    });
+  }
+  render() {
+    return [
+      h("div", { class: "swiper-container preview" },
+        h("div", { class: "swiper-wrapper" }, store.get("images").map((image, index) => h("div", { class: "swiper-slide" },
+          h("canvas", { width: image.preview.width, height: image.preview.height }),
+          h("ks-img", { contained: true, center: true, src: image.preview.url, width: image.preview.width, height: image.preview.height, onClick: () => this.lightbox.show(index) }))))),
+      store.get("images").length > 1 ?
+        h("div", { class: "swiper-container thumb" },
+          h("div", { class: "swiper-wrapper" }, store.get("images").map(image => h("div", { class: "swiper-slide" },
+            h("ks-img", { contained: true, center: true, src: image.thumb.url, width: image.thumb.width, height: image.thumb.height })))))
+        : null,
+      h("ks-lightbox", { data: store.get("images") })
+    ];
+  }
+  static get is() { return "ks-product-images"; }
+  static get originalStyleUrls() { return {
+    "$": ["product-images.css"]
+  }; }
+  static get styleUrls() { return {
+    "$": ["product-images.css"]
+  }; }
+  static get elementRef() { return "root"; }
 }

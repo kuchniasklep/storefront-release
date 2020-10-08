@@ -1,3 +1,9 @@
+import Swiper from 'swiper';
 export declare class ProductImages {
-    render(): any;
+  root: HTMLElement;
+  carousel: Swiper;
+  thumbs: Swiper;
+  lightbox: HTMLKsLightboxElement;
+  componentDidRender(): void;
+  render(): any[];
 }

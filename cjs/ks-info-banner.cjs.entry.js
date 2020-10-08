@@ -2,24 +2,32 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-b1f42468.js');
+const index = require('./index-18d28dc7.js');
+
+const infoBannerCss = "ks-info-banner{display:block;position:relative;max-height:100px;height:100%}ks-info-banner{display:block}ks-info-banner.hydrated{-webkit-animation:300ms fade-in;animation:300ms fade-in}ks-info-banner a{display:-webkit-box;display:-ms-flexbox;display:flex;max-height:100px;height:100%}ks-info-banner ks-img{height:auto}ks-info-banner button{position:absolute;top:10px;right:10px;border-style:none;outline-style:none;background-color:transparent;color:white;opacity:1;-webkit-transition:var(--transition-opacity);transition:var(--transition-opacity)}ks-info-banner button:hover{opacity:0.7}ks-info-banner button:active{opacity:0.5}";
 
 const InfoBanner = class {
-    constructor(hostRef) {
-        index.registerInstance(this, hostRef);
-    }
-    disable() {
-        const id = "ks-info-banner-" + this.name.replace(" ", "");
-        sessionStorage.setItem(id, "true");
-    }
-    render() {
-        const id = "ks-info-banner-" + this.name.replace(" ", "");
-        let disabled = sessionStorage.getItem(id);
-        if (disabled == null)
-            return (index.h("div", { id: id, class: "uk-position-relative", style: { backgroundColor: this.color } }, index.h("a", { href: this.link, "aria-label": this.name }, index.h("div", { class: "uk-flex uk-flex-center" }, index.h("ks-image", { width: "600", height: "100", src: this.image, alt: this.name }))), index.h("button", { type: "button", "aria-label": "Schowaj banner", onClick: () => this.disable(), class: "uk-light uk-position-small uk-position-top-right", "uk-close": true, "uk-toggle": "target: #" + id })));
-        else
-            return;
-    }
+  constructor(hostRef) {
+    index.registerInstance(this, hostRef);
+    this.disabled = false;
+  }
+  disable() {
+    const id = "ks-info-banner-" + this.name.replace(" ", "");
+    sessionStorage.setItem(id, "true");
+    this.disabled = true;
+  }
+  componentWillLoad() {
+    const id = "ks-info-banner-" + this.name.replace(" ", "");
+    if (sessionStorage.getItem(id))
+      this.disabled = true;
+  }
+  render() {
+    if (!this.disabled)
+      return (index.h(index.Host, { style: { backgroundColor: this.color } }, index.h("a", { href: this.link, "aria-label": this.name }, index.h("ks-img", { contained: true, center: true, width: this.width, height: this.height, src: this.image, alt: this.name })), index.h("button", { type: "button", "aria-label": "Schowaj banner", onClick: () => this.disable() }, index.h("ks-icon", { name: "x", size: 1.2 }))));
+    else
+      return;
+  }
 };
+InfoBanner.style = infoBannerCss;
 
 exports.ks_info_banner = InfoBanner;

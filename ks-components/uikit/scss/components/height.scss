@@ -1,0 +1,82 @@
+// Name:            Height
+// Description:     Utilities for heights
+//
+// Component:       `uk-height-*`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$height-small-height:                            200px !default;
+$height-medium-height:                           300px !default;
+$height-large-height:                            450px !default;
+$height-xlarge-height:                           560px !default;
+
+
+/* ========================================================================
+   Component: Height
+ ========================================================================== */
+
+[class*='uk-height'] { box-sizing: border-box; }
+
+/*
+ * Only works if parent element has a height set
+ */
+
+.uk-height-1-1 { height: 100%; }
+
+.uk-height-none { height: unset; }
+
+/*
+ * Useful to create image teasers
+ */
+
+.uk-height-viewport { min-height: 100vh; }
+
+/*
+ * Pixel
+ * Useful for `overflow: auto`
+ */
+
+.uk-height-small { height: $height-small-height; }
+.uk-height-medium { height: $height-medium-height; }
+.uk-height-large { height: $height-large-height; }
+.uk-height-xlarge { height: $height-xlarge-height; }
+
+.uk-height-max-small { max-height: $height-small-height; }
+.uk-height-max-medium { max-height: $height-medium-height; }
+.uk-height-max-large { max-height: $height-large-height; }
+.uk-height-max-xlarge { max-height: $height-xlarge-height; }
+
+
+$responsive-suffix:
+    $breakpoint-xsmall \@xs,
+    $breakpoint-small \@s,
+    $breakpoint-medium \@m,
+    $breakpoint-large \@l,
+    $breakpoint-xlarge \@xl;
+
+@each $tuple in $responsive-suffix {
+    @media (min-width: #{nth($tuple, 1)}) {
+        .uk-height-none#{nth($tuple, 2)} { height: unset !important; }
+
+        .uk-height-small#{nth($tuple, 2)} { height: $height-small-height !important; }
+        .uk-height-medium#{nth($tuple, 2)} { height: $height-medium-height !important; }
+        .uk-height-large#{nth($tuple, 2)} { height: $height-large-height !important; }
+        .uk-height-xlarge#{nth($tuple, 2)} { height: $height-xlarge-height !important; }
+
+        .uk-height-max-small#{nth($tuple, 2)} { max-height: $height-small-height !important; }
+        .uk-height-max-medium#{nth($tuple, 2)} { max-height: $height-medium-height !important; }
+        .uk-height-max-large#{nth($tuple, 2)} { max-height: $height-large-height !important; }
+        .uk-height-max-xlarge#{nth($tuple, 2)} { max-height: $height-xlarge-height !important; }
+    }
+}
+
+// Hooks
+// ========================================================================
+
+@if(mixin-exists(hook-height-misc)) {@include hook-height-misc();}
+
+// @mixin hook-height-misc(){}

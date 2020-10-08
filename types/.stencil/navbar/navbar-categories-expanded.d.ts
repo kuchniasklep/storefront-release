@@ -1,3 +1,3 @@
 export declare class NavbarCategoriesExpanded {
-    render(): any;
+  render(): any;
 }

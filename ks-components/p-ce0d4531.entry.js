@@ -1,0 +1,1 @@
+import{r,h as e}from"./p-f66c687e.js";const s=class{constructor(e){r(this,e),this.center=!1,this.mobile=!1}render(){return e("ul",{class:"uk-breadcrumb uk-margin-remove "+(this.center?this.mobile?"uk-flex-center uk-flex-left@m":"uk-flex-center":"")},e("slot",null))}};export{s as ks_breadcrumbs}

@@ -1,3 +1,3 @@
 export declare class FeaturedContainer {
-    render(): any;
+  render(): any;
 }

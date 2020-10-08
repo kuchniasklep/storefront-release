@@ -1,3 +1,3 @@
 export declare class NavbarSidebar {
-    render(): any;
+  render(): any;
 }

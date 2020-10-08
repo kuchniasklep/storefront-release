@@ -1,5 +1,5 @@
 export declare class OrderGuest {
-    root: HTMLElement;
-    componentDidLoad(): void;
-    render(): any[];
+  root: HTMLElement;
+  componentDidLoad(): void;
+  render(): any[];
 }

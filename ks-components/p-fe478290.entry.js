@@ -1,1 +1,0 @@
-import{r as s,h as r}from"./p-cb802b7f.js";const t=class{constructor(r){s(this,r)}render(){return r("div",{class:"uk-margin-medium"},r("slot",null))}};export{t as ks_description_text}

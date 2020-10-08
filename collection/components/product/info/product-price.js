@@ -1,37 +1,95 @@
-import { Component, h } from '@stencil/core';
-import Tunnel from '../product-data';
+import { Component, h, State, Element, Event } from '@stencil/core';
+import { store } from "../product-store";
 export class ProductPrice {
-    render() {
-        return (h(Tunnel.Consumer, null, (data) => {
-            let previousPrice = data.previousPrice.replace(".", ",") + " zł";
-            let currentPrice = data.currentPrice.replace(".", ",") + " zł";
-            let shippingPrice = data.shippingPrice.replace(".", ",") + " zł";
-            return (h("div", { class: "uk-margin-small-bottom" },
-                h("hr", null),
-                h("div", { class: "uk-flex uk-flex-wrap uk-flex-center uk-flex-between@s uk-flex-middle uk-text-center", "uk-grid": true },
-                    h("div", { class: "uk-text-left@s" },
-                        data.previousPrice ? h("h4", { style: { margin: "0" } },
-                            h("s", null,
-                                h("b", null, previousPrice))) : null,
-                        h("h3", { style: { color: "rgb(255, 27, 57)", margin: "0" } },
-                            h("b", null, currentPrice))),
-                    h("div", { class: "uk-visible@s" },
-                        "Koszt wysy\u0142ki:",
-                        h("h4", { style: { margin: "0" } },
-                            h("b", null, shippingPrice))),
-                    h("div", { class: "uk-visible@s" },
-                        "Czas wysy\u0142ki:",
-                        h("h4", { style: { margin: "0" } },
-                            h("b", null, data.shippingTime)))),
-                h("div", { class: "uk-hidden@s uk-text-center uk-margin-top" },
-                    h("div", null,
-                        "Koszt wysy\u0142ki: ",
-                        h("b", null, shippingPrice)),
-                    h("div", null,
-                        "Czas wysy\u0142ki: ",
-                        h("b", null, data.shippingTime))),
-                h("hr", null)));
-        }));
+  constructor() {
+    this.cartAnimation = false;
+    this.favouritesAnimation = false;
+  }
+  addToCartHandler() {
+    if (store.get("availability") > 0 && !store.get("cartLoading"))
+      this.addToCart.emit();
+  }
+  addToFavouritesHandler() {
+    if (!store.get("favouritesLoading") && !store.get("favouritesCompleted")) {
+      this.addToFavourites.emit();
     }
-    static get is() { return "ks-product-price"; }
+  }
+  render() {
+    const previousPrice = store.get("previousPrice").replace('.', ',');
+    const currentPrice = store.get("currentPrice").replace('.', ',') + " zł";
+    const available = store.get("availability") > 0;
+    if (store.get("cartLoading"))
+      this.cartAnimation = true;
+    else
+      setTimeout(() => {
+        this.cartAnimation = false;
+      }, 300);
+    if (store.get("favouritesLoading"))
+      this.favouritesAnimation = true;
+    else
+      setTimeout(() => {
+        this.favouritesAnimation = false;
+      }, 300);
+    const favClass = [
+      "fav",
+      store.get("favouritesCompleted") ? "completed" : null,
+      store.get("favouritesLoading") ? "loading" : null
+    ];
+    return [
+      h("div", { class: "price" },
+        previousPrice ? h("div", { class: "previous" }, previousPrice) : null,
+        h("div", { class: "current" }, currentPrice)),
+      available ? h("ks-product-count", null) : null,
+      h("button", { disabled: !available, onClick: () => this.addToCartHandler(), class: store.get("cartLoading") ? "loading" : "" },
+        available ? "DO KOSZYKA" : "NIEDOSTĘPNY",
+        h("ks-loader", { oversized: true, running: this.cartAnimation })),
+      h("button", { onClick: () => this.addToFavouritesHandler(), class: favClass.join(" ") },
+        h("ks-icon", { name: "star" }),
+        h("ks-loader", { running: this.favouritesAnimation }),
+        h("ks-icon", { class: "completed", name: "check" }))
+    ];
+  }
+  static get is() { return "ks-product-price"; }
+  static get originalStyleUrls() { return {
+    "$": ["product-price.css"]
+  }; }
+  static get styleUrls() { return {
+    "$": ["product-price.css"]
+  }; }
+  static get states() { return {
+    "cartAnimation": {},
+    "favouritesAnimation": {}
+  }; }
+  static get events() { return [{
+      "method": "addToCart",
+      "name": "addToCart",
+      "bubbles": true,
+      "cancelable": true,
+      "composed": true,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "complexType": {
+        "original": "any",
+        "resolved": "any",
+        "references": {}
+      }
+    }, {
+      "method": "addToFavourites",
+      "name": "addToFavourites",
+      "bubbles": true,
+      "cancelable": true,
+      "composed": true,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "complexType": {
+        "original": "any",
+        "resolved": "any",
+        "references": {}
+      }
+    }]; }
+  static get elementRef() { return "root"; }
 }

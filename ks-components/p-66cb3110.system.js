@@ -1,1 +1,0 @@
-System.register(["./p-526368ae.system.js","./p-e847e88b.system.js"],(function(e){"use strict";var t,n;return{setters:[function(e){t=e.h},function(e){n=e.c}],execute:function(){var r=e("T",n({},(function(e,n){return t("context-consumer",{subscribe:e,renderer:n})})))}}}));

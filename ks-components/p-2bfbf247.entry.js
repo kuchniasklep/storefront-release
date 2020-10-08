@@ -1,0 +1,1 @@
+import{r as t,h as r,g as s}from"./p-f66c687e.js";const i=class{constructor(r){t(this,r)}render(){return r("a",{href:this.link},r("div",{style:{margin:"5px",padding:"5px",width:"60px",height:"60px",backgroundColor:"white",borderRadius:"4px"}},r("ks-image",{src:this.img,alt:this.name,contain:!0,width:"60",height:"60"})))}get root(){return s(this)}};export{i as ks_recent_card}

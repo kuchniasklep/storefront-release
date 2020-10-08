@@ -6,11 +6,14 @@ ks-recipe-card {
 
 ks-recipe-card > a {
     display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
             justify-content: space-between;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
+        -ms-flex-direction: column;
             flex-direction: column;
 
     position: relative;
@@ -18,8 +21,10 @@ ks-recipe-card > a {
 
 ks-recipe-card .views {
     display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;
+        -ms-flex-align: center;
             align-items: center;
 
     position: absolute;
@@ -61,8 +66,8 @@ ks-recipe-card h3 {
 ks-recipe-card .dot { margin: 0 8px; }
 
 ks-recipe-card a:hover { text-decoration: none }
-ks-recipe-card > a:hover .info { color: var(--ks-color-secondary) }
-ks-recipe-card > a:hover h3 { color: var(--ks-color-secondary) }
+ks-recipe-card > a:hover .info { color: var(--color-secondary) }
+ks-recipe-card > a:hover h3 { color: var(--color-secondary) }
 ks-recipe-card > a:hover .views { color: #ffffff }
 
 

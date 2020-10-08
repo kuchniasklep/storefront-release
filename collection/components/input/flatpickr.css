@@ -15,9 +15,12 @@
     border-radius: 5px;
     position: absolute;
     width: 307.875px;
-    box-sizing: border-box;
-    touch-action: manipulation;
-    box-shadow: 0 3px 13px rgba(0,0,0,0.28);
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    -ms-touch-action: manipulation;
+        touch-action: manipulation;
+    -webkit-box-shadow: 0 3px 13px rgba(0, 0, 0, 0.28);
+            box-shadow: 0 3px 13px rgba(0,0,0,0.28);
   }
   .flatpickr-calendar.open,
   .flatpickr-calendar.inline {
@@ -47,10 +50,12 @@
     display: block;
   }
   .flatpickr-calendar.multiMonth .flatpickr-days .dayContainer:nth-child(n+1) .flatpickr-day.inRange:nth-child(7n+7) {
-    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+            box-shadow: none !important;
   }
   .flatpickr-calendar.multiMonth .flatpickr-days .dayContainer:nth-child(n+2) .flatpickr-day.inRange:nth-child(7n+1) {
-    box-shadow: -2px 0 0 #e6e6e6, 5px 0 0 #e6e6e6;
+    -webkit-box-shadow: -2px 0 0 #e6e6e6, 5px 0 0 #e6e6e6;
+            box-shadow: -2px 0 0 #e6e6e6, 5px 0 0 #e6e6e6;
   }
   .flatpickr-calendar .hasWeeks .dayContainer,
   .flatpickr-calendar .hasTime .dayContainer {
@@ -127,6 +132,8 @@
   }
   .flatpickr-months {
     display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
   }
   .flatpickr-months .flatpickr-month {
@@ -144,6 +151,8 @@
             user-select: none;
     overflow: hidden;
     -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
             flex: 1;
   }
   .flatpickr-months .flatpickr-prev-month,
@@ -247,7 +256,8 @@
     opacity: 0;
     cursor: pointer;
     border: 1px solid rgba(72,72,72,0.15);
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
   }
   .numInputWrapper span:hover {
     background: rgba(0,0,0,0.1);
@@ -332,7 +342,8 @@
   }
   .flatpickr-current-month input.cur-year {
     background: transparent;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     color: inherit;
     cursor: text;
     padding: 0 0 0 0.5ch;
@@ -366,15 +377,23 @@
     overflow: hidden;
     width: 100%;
     display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
             align-items: center;
     height: 28px;
   }
   .flatpickr-weekdays .flatpickr-weekdaycontainer {
     display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
     -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
             flex: 1;
   }
   span.flatpickr-weekday {
@@ -387,6 +406,8 @@
     text-align: center;
     display: block;
     -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
             flex: 1;
     font-weight: bold;
   }
@@ -398,8 +419,12 @@
     position: relative;
     overflow: hidden;
     display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
     -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+        -ms-flex-align: start;
             align-items: flex-start;
     width: 307.875px;
     border-left: 1px solid rgba(72,72,72,0.2);
@@ -415,30 +440,40 @@
     width: 307.875px;
     min-width: 307.875px;
     max-width: 307.875px;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     display: inline-block;
+    display: -ms-flexbox;
     display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
-    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+            flex-wrap: wrap;
     -ms-flex-wrap: wrap;
-    justify-content: space-around;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-around;
+            justify-content: space-around;
     -webkit-transform: translate3d(0px, 0px, 0px);
             transform: translate3d(0px, 0px, 0px);
     opacity: 1;
   }
   .dayContainer + .dayContainer {
-    box-shadow: -1px 0 0 rgba(72,72,72,0.2);
+    -webkit-box-shadow: -1px 0 0 rgba(72,72,72,0.2);
+            box-shadow: -1px 0 0 rgba(72,72,72,0.2);
   }
   .flatpickr-day {
     background: none;
     border: 1px solid transparent;
     border-radius: 150px;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     color: #484848;
     cursor: pointer;
     font-weight: 400;
     width: 14.2857143%;
-    flex-basis: 14.2857143%;
+    -webkit-flex-basis: 14.2857143%;
+        -ms-flex-preferred-size: 14.2857143%;
+            flex-basis: 14.2857143%;
     max-width: 39px;
     height: 39px;
     line-height: 39px;
@@ -446,6 +481,8 @@
     display: inline-block;
     position: relative;
     -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
             justify-content: center;
     text-align: center;
   }
@@ -494,7 +531,8 @@
   .flatpickr-day.startRange.nextMonthDay,
   .flatpickr-day.endRange.nextMonthDay {
     background: #42a5f5;
-    box-shadow: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
     color: #fff;
     border-color: #42a5f5;
   }
@@ -511,7 +549,8 @@
   .flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n+1)),
   .flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n+1)),
   .flatpickr-day.endRange.startRange + .endRange:not(:nth-child(7n+1)) {
-    box-shadow: -10px 0 0 #42a5f5;
+    -webkit-box-shadow: -10px 0 0 #42a5f5;
+            box-shadow: -10px 0 0 #42a5f5;
   }
   .flatpickr-day.selected.startRange.endRange,
   .flatpickr-day.startRange.startRange.endRange,
@@ -520,7 +559,8 @@
   }
   .flatpickr-day.inRange {
     border-radius: 0;
-    box-shadow: -5px 0 0 #e2e2e2, 5px 0 0 #e2e2e2;
+    -webkit-box-shadow: -5px 0 0 #e2e2e2, 5px 0 0 #e2e2e2;
+            box-shadow: -5px 0 0 #e2e2e2, 5px 0 0 #e2e2e2;
   }
   .flatpickr-day.disabled,
   .flatpickr-day.disabled:hover,
@@ -541,7 +581,8 @@
   }
   .flatpickr-day.week.selected {
     border-radius: 0;
-    box-shadow: -5px 0 0 #42a5f5, 5px 0 0 #42a5f5;
+    -webkit-box-shadow: -5px 0 0 #42a5f5, 5px 0 0 #42a5f5;
+            box-shadow: -5px 0 0 #42a5f5, 5px 0 0 #42a5f5;
   }
   .flatpickr-day.hidden {
     visibility: hidden;
@@ -575,8 +616,11 @@
   .flatpickr-innerContainer {
     display: block;
     display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     overflow: hidden;
     background: #fff;
     border-bottom: 1px solid rgba(72,72,72,0.2);
@@ -584,7 +628,8 @@
   .flatpickr-rContainer {
     display: inline-block;
     padding: 0;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
   }
   .flatpickr-time {
     text-align: center;
@@ -593,9 +638,12 @@
     height: 0;
     line-height: 40px;
     max-height: 40px;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     overflow: hidden;
     display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
     background: #fff;
     border-radius: 0 0 5px 5px;
@@ -607,6 +655,8 @@
   }
   .flatpickr-time .numInputWrapper {
     -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
             flex: 1;
     width: 40%;
     height: 40px;
@@ -626,7 +676,8 @@
   }
   .flatpickr-time input {
     background: transparent;
-    box-shadow: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
     border: 0;
     border-radius: 0;
     text-align: center;
@@ -637,7 +688,8 @@
     color: #484848;
     font-size: 14px;
     position: relative;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     -webkit-appearance: textfield;
     -moz-appearance: textfield;
     appearance: textfield;
@@ -667,7 +719,9 @@
         -ms-user-select: none;
             user-select: none;
     -webkit-align-self: center;
-            align-self: center;
+        -ms-flex-item-align: center;
+            -ms-grid-row-align: center;
+        align-self: center;
   }
   .flatpickr-time .flatpickr-am-pm {
     outline: 0;

@@ -2,8 +2,8 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-b1f42468.js');
-const _commonjsHelpers = require('./_commonjsHelpers-72d386ba.js');
+const index = require('./index-18d28dc7.js');
+const _commonjsHelpers = require('./_commonjsHelpers-2e75ad90.js');
 
 var nouislider = _commonjsHelpers.createCommonjsModule(function (module, exports) {
 /*! nouislider - 12.1.0 - 10/25/2018 */
@@ -2308,82 +2308,82 @@ var nouislider = _commonjsHelpers.createCommonjsModule(function (module, exports
 });
 });
 
-const nouisliderCss = "/*! nouislider - 12.1.0 - 10/25/2018 */.noUi-target,.noUi-target *{-webkit-touch-callout:none;-webkit-tap-highlight-color:rgba(0, 0, 0, 0);-webkit-user-select:none;-ms-touch-action:none;touch-action:none;-ms-user-select:none;-moz-user-select:none;user-select:none;-webkit-box-sizing:border-box;box-sizing:border-box}.noUi-target{position:relative;direction:ltr;padding:0 15px;margin:30px 0 10px 0}.noUi-base,.noUi-connects{width:100%;height:100%;position:relative;z-index:1}.noUi-base:before,.noUi-base:after{width:15px;content:\"\";position:absolute;top:0;height:100%;display:block}.noUi-base:before{left:-15px}.noUi-base:after{left:100%}.noUi-connects{overflow:hidden;z-index:0}.noUi-connect,.noUi-origin{will-change:transform;position:absolute;z-index:1;top:0;left:0;height:100%;width:100%;-webkit-transform-origin:0 0;transform-origin:0 0}html:not([dir=\"rtl\"]) .noUi-horizontal .noUi-origin{left:auto;right:0}.noUi-vertical .noUi-origin{width:0}.noUi-horizontal .noUi-origin{height:0}.noUi-handle{position:absolute}.noUi-state-tap .noUi-connect,.noUi-state-tap .noUi-origin{-webkit-transition:transform 0.3s;-webkit-transition:-webkit-transform 0.3s;transition:-webkit-transform 0.3s;transition:transform 0.3s;transition:transform 0.3s, -webkit-transform 0.3s}.noUi-state-drag *{cursor:inherit !important}.noUi-horizontal{height:18px}.noUi-horizontal .noUi-handle{width:34px;height:28px;left:-17px;top:-6px}.noUi-vertical{width:18px}.noUi-vertical .noUi-handle{width:28px;height:34px;left:-6px;top:-17px}html:not([dir=\"rtl\"]) .noUi-horizontal .noUi-handle{right:-17px;left:auto}.noUi-target{background:#FAFAFA;border-radius:4px;border:1px solid #D3D3D3;-webkit-box-shadow:inset 0 1px 1px #F0F0F0, 0 3px 6px -5px #BBB;box-shadow:inset 0 1px 1px #F0F0F0, 0 3px 6px -5px #BBB}.noUi-connects{border-radius:3px}.noUi-connect{background:rgb(54, 54, 54)}.noUi-draggable{cursor:ew-resize}.noUi-vertical .noUi-draggable{cursor:ns-resize}.noUi-handle{border:1px solid #D9D9D9;border-radius:3px;background:#FFF;cursor:default;-webkit-box-shadow:inset 0 0 1px #FFF, inset 0 1px 7px #EBEBEB, 0 3px 6px -3px #BBB;box-shadow:inset 0 0 1px #FFF, inset 0 1px 7px #EBEBEB, 0 3px 6px -3px #BBB}.noUi-active{-webkit-box-shadow:inset 0 0 1px #FFF, inset 0 1px 7px #DDD, 0 3px 6px -3px #BBB;box-shadow:inset 0 0 1px #FFF, inset 0 1px 7px #DDD, 0 3px 6px -3px #BBB}.noUi-handle:before,.noUi-handle:after{content:\"\";display:block;position:absolute;height:14px;width:1px;background:rgb(231, 231, 231);left:14px;top:6px}.noUi-handle:after{left:17px}.noUi-vertical .noUi-handle:before,.noUi-vertical .noUi-handle:after{width:14px;height:1px;left:6px;top:14px}.noUi-vertical .noUi-handle:after{top:17px}[disabled] .noUi-connect{background:#B8B8B8}[disabled].noUi-target,[disabled].noUi-handle,[disabled] .noUi-handle{cursor:not-allowed}.noUi-pips,.noUi-pips *{-webkit-box-sizing:border-box;box-sizing:border-box}.noUi-pips{position:absolute;color:#AAA}.noUi-value{position:absolute;white-space:nowrap;text-align:center;font-size:14px}.noUi-value-sub{color:#ccc;font-size:10px}.noUi-marker{position:absolute;background:#CCC}.noUi-marker-sub{background:#AAA}.noUi-marker-large{background:#AAA}.noUi-pips-horizontal{padding:15px 0;height:40px;top:100%;left:0;width:90%;margin:0 5%}.noUi-value-horizontal{-webkit-transform:translate(-50%, 50%);transform:translate(-50%, 50%)}.noUi-rtl .noUi-value-horizontal{-webkit-transform:translate(50%, 50%);transform:translate(50%, 50%)}.noUi-marker-horizontal.noUi-marker{margin-left:-1px;width:1px;height:5px}.noUi-marker-horizontal.noUi-marker-sub{height:10px}.noUi-marker-horizontal.noUi-marker-large{height:10px}.noUi-pips-vertical{padding:0 10px;height:100%;top:0;left:100%}.noUi-value-vertical{-webkit-transform:translate(0, -50%);transform:translate(0, -50%, 0);padding-left:25px}.noUi-rtl .noUi-value-vertical{-webkit-transform:translate(0, 50%);transform:translate(0, 50%)}.noUi-marker-vertical.noUi-marker{width:5px;height:2px;margin-top:-1px}.noUi-marker-vertical.noUi-marker-sub{width:10px}.noUi-marker-vertical.noUi-marker-large{width:15px}.noUi-tooltip{font-size:13px;display:block;position:absolute;border:1px solid #D9D9D9;border-radius:3px;background:#fff;color:#000;padding:4px 7px 3px 7px;text-align:center;white-space:nowrap}.noUi-horizontal .noUi-tooltip{-webkit-transform:translate(-50%, 0);transform:translate(-50%, 0);left:50%;bottom:120%}.noUi-vertical .noUi-tooltip{-webkit-transform:translate(0, -50%);transform:translate(0, -50%);top:50%;right:120%}";
+const nouisliderCss = "/*! nouislider - 12.1.0 - 10/25/2018 */.noUi-target,.noUi-target *{-webkit-touch-callout:none;-webkit-tap-highlight-color:rgba(0, 0, 0, 0);-webkit-user-select:none;-ms-touch-action:none;touch-action:none;-ms-user-select:none;-moz-user-select:none;user-select:none;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}.noUi-target{position:relative;direction:ltr;padding:0 15px;margin:30px 0 10px 0}.noUi-base,.noUi-connects{width:100%;height:100%;position:relative;z-index:1}.noUi-base:before,.noUi-base:after{width:15px;content:\"\";position:absolute;top:0;height:100%;display:block}.noUi-base:before{left:-15px}.noUi-base:after{left:100%}.noUi-connects{overflow:hidden;z-index:0}.noUi-connect,.noUi-origin{will-change:transform;position:absolute;z-index:1;top:0;left:0;height:100%;width:100%;-ms-transform-origin:0 0;-webkit-transform-origin:0 0;transform-origin:0 0}html:not([dir=\"rtl\"]) .noUi-horizontal .noUi-origin{left:auto;right:0}.noUi-vertical .noUi-origin{width:0}.noUi-horizontal .noUi-origin{height:0}.noUi-handle{position:absolute}.noUi-state-tap .noUi-connect,.noUi-state-tap .noUi-origin{-webkit-transition:transform 0.3s;-webkit-transition:-webkit-transform 0.3s;transition:-webkit-transform 0.3s;transition:transform 0.3s;transition:transform 0.3s, -webkit-transform 0.3s}.noUi-state-drag *{cursor:inherit !important}.noUi-horizontal{height:18px}.noUi-horizontal .noUi-handle{width:34px;height:28px;left:-17px;top:-6px}.noUi-vertical{width:18px}.noUi-vertical .noUi-handle{width:28px;height:34px;left:-6px;top:-17px}html:not([dir=\"rtl\"]) .noUi-horizontal .noUi-handle{right:-17px;left:auto}.noUi-target{background:#FAFAFA;border-radius:4px;border:1px solid #D3D3D3;-webkit-box-shadow:inset 0 1px 1px #F0F0F0, 0 3px 6px -5px #BBB;box-shadow:inset 0 1px 1px #F0F0F0, 0 3px 6px -5px #BBB}.noUi-connects{border-radius:3px}.noUi-connect{background:rgb(54, 54, 54)}.noUi-draggable{cursor:ew-resize}.noUi-vertical .noUi-draggable{cursor:ns-resize}.noUi-handle{border:1px solid #D9D9D9;border-radius:3px;background:#FFF;cursor:default;-webkit-box-shadow:inset 0 0 1px #FFF, inset 0 1px 7px #EBEBEB, 0 3px 6px -3px #BBB;box-shadow:inset 0 0 1px #FFF, inset 0 1px 7px #EBEBEB, 0 3px 6px -3px #BBB}.noUi-active{-webkit-box-shadow:inset 0 0 1px #FFF, inset 0 1px 7px #DDD, 0 3px 6px -3px #BBB;box-shadow:inset 0 0 1px #FFF, inset 0 1px 7px #DDD, 0 3px 6px -3px #BBB}.noUi-handle:before,.noUi-handle:after{content:\"\";display:block;position:absolute;height:14px;width:1px;background:rgb(231, 231, 231);left:14px;top:6px}.noUi-handle:after{left:17px}.noUi-vertical .noUi-handle:before,.noUi-vertical .noUi-handle:after{width:14px;height:1px;left:6px;top:14px}.noUi-vertical .noUi-handle:after{top:17px}[disabled] .noUi-connect{background:#B8B8B8}[disabled].noUi-target,[disabled].noUi-handle,[disabled] .noUi-handle{cursor:not-allowed}.noUi-pips,.noUi-pips *{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}.noUi-pips{position:absolute;color:#AAA}.noUi-value{position:absolute;white-space:nowrap;text-align:center;font-size:14px}.noUi-value-sub{color:#ccc;font-size:10px}.noUi-marker{position:absolute;background:#CCC}.noUi-marker-sub{background:#AAA}.noUi-marker-large{background:#AAA}.noUi-pips-horizontal{padding:15px 0;height:40px;top:100%;left:0;width:90%;margin:0 5%}.noUi-value-horizontal{-webkit-transform:translate(-50%, 50%);-ms-transform:translate(-50%, 50%);transform:translate(-50%, 50%)}.noUi-rtl .noUi-value-horizontal{-webkit-transform:translate(50%, 50%);-ms-transform:translate(50%, 50%);transform:translate(50%, 50%)}.noUi-marker-horizontal.noUi-marker{margin-left:-1px;width:1px;height:5px}.noUi-marker-horizontal.noUi-marker-sub{height:10px}.noUi-marker-horizontal.noUi-marker-large{height:10px}.noUi-pips-vertical{padding:0 10px;height:100%;top:0;left:100%}.noUi-value-vertical{-webkit-transform:translate(0, -50%);-ms-transform:translate(0, -50%, 0);transform:translate(0, -50%, 0);padding-left:25px}.noUi-rtl .noUi-value-vertical{-webkit-transform:translate(0, 50%);-ms-transform:translate(0, 50%);transform:translate(0, 50%)}.noUi-marker-vertical.noUi-marker{width:5px;height:2px;margin-top:-1px}.noUi-marker-vertical.noUi-marker-sub{width:10px}.noUi-marker-vertical.noUi-marker-large{width:15px}.noUi-tooltip{font-size:13px;display:block;position:absolute;border:1px solid #D9D9D9;border-radius:3px;background:#fff;color:#000;padding:4px 7px 3px 7px;text-align:center;white-space:nowrap}.noUi-horizontal .noUi-tooltip{-webkit-transform:translate(-50%, 0);-ms-transform:translate(-50%, 0);transform:translate(-50%, 0);left:50%;bottom:120%}.noUi-vertical .noUi-tooltip{-webkit-transform:translate(0, -50%);-ms-transform:translate(0, -50%);transform:translate(0, -50%);top:50%;right:120%}";
 
 const FilterSlider = class {
-    constructor(hostRef) {
-        index.registerInstance(this, hostRef);
-        this.snap = false;
-        this.step = 0;
-        this.handleActive = false;
-    }
-    swipeLeftHandler(event) {
-        event.stopPropagation();
-    }
-    clickHandler(event) {
-        event.stopPropagation();
-    }
-    componentDidLoad() {
-        const slider = this.el.firstElementChild;
-        if (this.ids)
-            this.idArray = this.ids.split(", ");
-        this.valueArray = this.values.replace(",", ".").split("; ");
-        const rangeMap = this.convertValuesToRangeMap(this.valueArray);
-        nouislider.create(slider, {
-            start: [rangeMap["min"], rangeMap["max"]],
-            snap: this.snap,
-            step: this.step,
-            tooltips: true,
-            connect: true,
-            range: rangeMap,
-            format: {
-                to: function (value) {
-                    return value;
-                },
-                from: function (value) {
-                    return value;
-                }
-            }
-        });
-        const sliderInstance = slider;
-        if (this.ids) {
-            sliderInstance.noUiSlider.on("set", () => {
-                const range = sliderInstance.noUiSlider.get();
-                const from = this.valueArray.findIndex(value => parseFloat(value) == parseFloat(range[0]));
-                const to = this.valueArray.findIndex(value => parseFloat(value) == parseFloat(range[1]));
-                this.fromId = this.idArray[from];
-                this.toId = this.idArray[to];
-            });
+  constructor(hostRef) {
+    index.registerInstance(this, hostRef);
+    this.snap = false;
+    this.step = 0;
+    this.handleActive = false;
+  }
+  swipeLeftHandler(event) {
+    event.stopPropagation();
+  }
+  clickHandler(event) {
+    event.stopPropagation();
+  }
+  componentDidLoad() {
+    const slider = this.el.firstElementChild;
+    if (this.ids)
+      this.idArray = this.ids.split(", ");
+    this.valueArray = this.values.replace(",", ".").split("; ");
+    const rangeMap = this.convertValuesToRangeMap(this.valueArray);
+    nouislider.create(slider, {
+      start: [rangeMap["min"], rangeMap["max"]],
+      snap: this.snap,
+      step: this.step,
+      tooltips: true,
+      connect: true,
+      range: rangeMap,
+      format: {
+        to: function (value) {
+          return value;
+        },
+        from: function (value) {
+          return value;
         }
-        const fromIndex = this.idArray.findIndex(id => parseInt(id) == this.from);
-        const toIndex = this.idArray.findIndex(id => parseInt(id) == this.to);
-        const from = this.from ? parseFloat(this.valueArray[fromIndex]) : null;
-        const to = this.to ? parseFloat(this.valueArray[toIndex]) : null;
-        sliderInstance.noUiSlider.set([from, to]);
+      }
+    });
+    const sliderInstance = slider;
+    if (this.ids) {
+      sliderInstance.noUiSlider.on("set", () => {
+        const range = sliderInstance.noUiSlider.get();
+        const from = this.valueArray.findIndex(value => parseFloat(value) == parseFloat(range[0]));
+        const to = this.valueArray.findIndex(value => parseFloat(value) == parseFloat(range[1]));
+        this.fromId = this.idArray[from];
+        this.toId = this.idArray[to];
+      });
     }
-    convertValuesToRangeMap(values) {
-        let rangeMap = {};
-        let step = 100 / (values.length - 1);
-        let length = values.length;
-        for (let i = 0; i < length; i++) {
-            const value = parseFloat(values[i]);
-            if (i == 0)
-                rangeMap["min"] = value;
-            else if (i == length - 1)
-                rangeMap["max"] = value;
-            else
-                rangeMap[(step * i).toString() + "%"] = value;
-        }
-        return rangeMap;
+    const fromIndex = this.idArray.findIndex(id => parseInt(id) == this.from);
+    const toIndex = this.idArray.findIndex(id => parseInt(id) == this.to);
+    const from = this.from ? parseFloat(this.valueArray[fromIndex]) : null;
+    const to = this.to ? parseFloat(this.valueArray[toIndex]) : null;
+    sliderInstance.noUiSlider.set([from, to]);
+  }
+  convertValuesToRangeMap(values) {
+    let rangeMap = {};
+    let step = 100 / (values.length - 1);
+    let length = values.length;
+    for (let i = 0; i < length; i++) {
+      const value = parseFloat(values[i]);
+      if (i == 0)
+        rangeMap["min"] = value;
+      else if (i == length - 1)
+        rangeMap["max"] = value;
+      else
+        rangeMap[(step * i).toString() + "%"] = value;
     }
-    render() {
-        const disabled = !this.fromId || !this.toId;
-        return [
-            index.h("div", null),
-            index.h("input", { type: "hidden", name: this.name, value: this.fromId + "," + this.toId, disabled: disabled })
-        ];
-    }
-    get el() { return index.getElement(this); }
+    return rangeMap;
+  }
+  render() {
+    const disabled = !this.fromId || !this.toId;
+    return [
+      index.h("div", null),
+      index.h("input", { type: "hidden", name: this.name, value: this.fromId + "," + this.toId, disabled: disabled })
+    ];
+  }
+  get el() { return index.getElement(this); }
 };
 FilterSlider.style = nouisliderCss;
 

@@ -3,7 +3,7 @@ ks-cart-message {
 
     text-align: center;
     color: white;
-    background-color: var(--ks-color-secondary);
+    background-color: var(--color-secondary);
     overflow: hidden;
 
     opacity: 0.0;

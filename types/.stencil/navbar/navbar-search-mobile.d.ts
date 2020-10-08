@@ -1,5 +1,5 @@
 export declare class NavbarSearchMobile {
-    root: HTMLElement;
-    submit(): void;
-    render(): any;
+  root: HTMLElement;
+  submit(): void;
+  render(): any;
 }

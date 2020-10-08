@@ -5,8 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
-import { CartDataDeal, CartDataDealGroup, CartDataDiscount, CartDataPoints, CartDataProduct, CartDataSelectItem, CartDataShippingProgress, CartDataSummaryItem, } from "./components/cart/cartData";
-import { ProductButtonData, } from "./components/product/product-data";
+import { CartDataDeal, CartDataDealGroup, CartDataDiscount, CartDataPoints, CartDataProduct, CartDataSelectItem, CartDataShippingProgress, CartDataSummaryItem } from "./components/cart/cartData";
+import { LightboxImageData } from "./components/elements/modal/lightbox-data";
+import { TraitData, TraitDataItem } from "./components/product/product-data";
 export namespace Components {
     interface KsAlert {
         "message": string;
@@ -101,10 +102,10 @@ export namespace Components {
         "placeholder": string;
     }
     interface KsCartDiscountContainer {
-        "DiscountCodeAdd": (string) => void;
-        "DiscountPointsAdd": (number) => void;
-        "DiscountRemove": () => void;
-        "RemoveDiscount": () => void;
+        "DiscountCodeAdd": (string)=>void;
+        "DiscountPointsAdd": (number)=>void;
+        "DiscountRemove": ()=>void;
+        "RemoveDiscount": ()=>void;
         "codeBanner": string;
         "codePlaceholder": string;
         "disablePoints": boolean;
@@ -262,6 +263,9 @@ export namespace Components {
         "email": string;
         "phone": string;
     }
+    interface KsContainer {
+        "padding": boolean;
+    }
     interface KsDescriptionImage {
         "image": string;
     }
@@ -271,6 +275,10 @@ export namespace Components {
         "align": string;
         "image": string;
         "size": string;
+    }
+    interface KsErrorPopup {
+        "hide": () => Promise<void>;
+        "show": (error: Error) => Promise<void>;
     }
     interface KsFavouritesHeader {
         "value": string;
@@ -362,19 +370,23 @@ export namespace Components {
     interface KsImg {
         "alt": string;
         "center": boolean;
+        "contained": boolean;
+        "height": number;
         "left": boolean;
-        "loadHandler": (e: Event) => Promise<void>;
         "right": boolean;
         "src": string;
         "sync": boolean;
         "target": string;
         "vertical": boolean;
+        "width": number;
     }
     interface KsInfoBanner {
         "color": string;
+        "height": number;
         "image": string;
         "link": string;
         "name": string;
+        "width": number;
     }
     interface KsInfoMessage {
         "animating": boolean;
@@ -472,7 +484,16 @@ export namespace Components {
         "required": boolean;
         "rows": number;
     }
+    interface KsLightbox {
+        "data": LightboxImageData[];
+        "hide": () => Promise<void>;
+        "show": (index?: number) => Promise<void>;
+    }
     interface KsListingHeader {
+    }
+    interface KsLoader {
+        "oversized": boolean;
+        "running": boolean;
     }
     interface KsMiniCart {
     }
@@ -657,6 +678,11 @@ export namespace Components {
         "right": string;
         "value": string;
     }
+    interface KsOverlay {
+        "dark": boolean;
+        "hide": () => Promise<void>;
+        "show": () => Promise<void>;
+    }
     interface KsPagination {
         "base": string;
         "count": number;
@@ -679,20 +705,26 @@ export namespace Components {
         "unavailableMode": string;
         "warning": string;
     }
-    interface KsProductBanner {
-        "alt": string;
-        "color": string;
-        "height": string;
+    interface KsProductAttribute {
+        "emphasis": boolean;
+        "href": string;
         "image": string;
-        "width": string;
+        "name": string;
     }
-    interface KsProductButtons {
-        "availability"?: number;
-        "buttons"?: ProductButtonData;
-        "currentPrice"?: string;
-        "name"?: string;
-        "traitIDs"?: string;
-        "updateShippingTime"?: (id: string, count: number) => void;
+    interface KsProductButton {
+        "large": boolean;
+        "medium": boolean;
+    }
+    interface KsProductCalculatorCa {
+        "height": number;
+        "parameters": string;
+        "price": string;
+        "width": number;
+    }
+    interface KsProductCalculatorPayu {
+        "apiKey": string;
+        "posId": string;
+        "price": string;
     }
     interface KsProductCard {
         "currentPrice": string;
@@ -705,22 +737,31 @@ export namespace Components {
         "unavailable": boolean;
         "uniqueId": string;
     }
-    interface KsProductCodes {
-    }
     interface KsProductComments {
         "link": string;
         "message": string;
     }
-    interface KsProductCreditagricole {
-        "button": string;
-        "price": string;
+    interface KsProductContainer {
+    }
+    interface KsProductCount {
     }
     interface KsProductImages {
     }
     interface KsProductInfo {
+        "cartApi": string;
+        "cartCountApi": string;
         "dataId": string;
-        "shippingTimeApi": string;
-        "traitId": string;
+        "favouritesApi": string;
+        "shippingApi": string;
+        "suggestionApi": string;
+        "traitApi": string;
+    }
+    interface KsProductInfoPoints {
+        "count": string;
+        "external": boolean;
+        "internal": boolean;
+        "message": string;
+        "value": string;
     }
     interface KsProductNegotiate {
         "api": string;
@@ -731,17 +772,13 @@ export namespace Components {
         "price": string;
         "successInfo": string;
     }
-    interface KsProductPayu {
-        "button": string;
-        "price": string;
-    }
     interface KsProductPoints {
         "count": number;
         "value": number;
     }
     interface KsProductPrice {
     }
-    interface KsProductSchema {
+    interface KsProductShipping {
     }
     interface KsProductSimple {
         "currentPrice": string;
@@ -763,7 +800,7 @@ export namespace Components {
     }
     interface KsProductTitle {
     }
-    interface KsProductTrait {
+    interface KsProductTraits {
     }
     interface KsProductVariant {
         "active": boolean;
@@ -849,6 +886,11 @@ export namespace Components {
     }
     interface KsSorting {
         "post": string;
+    }
+    interface KsTopBanner {
+        "name": string;
+        "newsletter": Function;
+        "shipping": string;
     }
 }
 declare global {
@@ -1098,6 +1140,12 @@ declare global {
         prototype: HTMLKsContactButtonsElement;
         new (): HTMLKsContactButtonsElement;
     };
+    interface HTMLKsContainerElement extends Components.KsContainer, HTMLStencilElement {
+    }
+    var HTMLKsContainerElement: {
+        prototype: HTMLKsContainerElement;
+        new (): HTMLKsContainerElement;
+    };
     interface HTMLKsDescriptionImageElement extends Components.KsDescriptionImage, HTMLStencilElement {
     }
     var HTMLKsDescriptionImageElement: {
@@ -1115,6 +1163,12 @@ declare global {
     var HTMLKsDescriptionTextImageElement: {
         prototype: HTMLKsDescriptionTextImageElement;
         new (): HTMLKsDescriptionTextImageElement;
+    };
+    interface HTMLKsErrorPopupElement extends Components.KsErrorPopup, HTMLStencilElement {
+    }
+    var HTMLKsErrorPopupElement: {
+        prototype: HTMLKsErrorPopupElement;
+        new (): HTMLKsErrorPopupElement;
     };
     interface HTMLKsFavouritesHeaderElement extends Components.KsFavouritesHeader, HTMLStencilElement {
     }
@@ -1290,11 +1344,23 @@ declare global {
         prototype: HTMLKsInputTextareaElement;
         new (): HTMLKsInputTextareaElement;
     };
+    interface HTMLKsLightboxElement extends Components.KsLightbox, HTMLStencilElement {
+    }
+    var HTMLKsLightboxElement: {
+        prototype: HTMLKsLightboxElement;
+        new (): HTMLKsLightboxElement;
+    };
     interface HTMLKsListingHeaderElement extends Components.KsListingHeader, HTMLStencilElement {
     }
     var HTMLKsListingHeaderElement: {
         prototype: HTMLKsListingHeaderElement;
         new (): HTMLKsListingHeaderElement;
+    };
+    interface HTMLKsLoaderElement extends Components.KsLoader, HTMLStencilElement {
+    }
+    var HTMLKsLoaderElement: {
+        prototype: HTMLKsLoaderElement;
+        new (): HTMLKsLoaderElement;
     };
     interface HTMLKsMiniCartElement extends Components.KsMiniCart, HTMLStencilElement {
     }
@@ -1518,6 +1584,12 @@ declare global {
         prototype: HTMLKsOrderToggleSectionElement;
         new (): HTMLKsOrderToggleSectionElement;
     };
+    interface HTMLKsOverlayElement extends Components.KsOverlay, HTMLStencilElement {
+    }
+    var HTMLKsOverlayElement: {
+        prototype: HTMLKsOverlayElement;
+        new (): HTMLKsOverlayElement;
+    };
     interface HTMLKsPaginationElement extends Components.KsPagination, HTMLStencilElement {
     }
     var HTMLKsPaginationElement: {
@@ -1536,17 +1608,29 @@ declare global {
         prototype: HTMLKsProductAdminDistributorElement;
         new (): HTMLKsProductAdminDistributorElement;
     };
-    interface HTMLKsProductBannerElement extends Components.KsProductBanner, HTMLStencilElement {
+    interface HTMLKsProductAttributeElement extends Components.KsProductAttribute, HTMLStencilElement {
     }
-    var HTMLKsProductBannerElement: {
-        prototype: HTMLKsProductBannerElement;
-        new (): HTMLKsProductBannerElement;
+    var HTMLKsProductAttributeElement: {
+        prototype: HTMLKsProductAttributeElement;
+        new (): HTMLKsProductAttributeElement;
     };
-    interface HTMLKsProductButtonsElement extends Components.KsProductButtons, HTMLStencilElement {
+    interface HTMLKsProductButtonElement extends Components.KsProductButton, HTMLStencilElement {
     }
-    var HTMLKsProductButtonsElement: {
-        prototype: HTMLKsProductButtonsElement;
-        new (): HTMLKsProductButtonsElement;
+    var HTMLKsProductButtonElement: {
+        prototype: HTMLKsProductButtonElement;
+        new (): HTMLKsProductButtonElement;
+    };
+    interface HTMLKsProductCalculatorCaElement extends Components.KsProductCalculatorCa, HTMLStencilElement {
+    }
+    var HTMLKsProductCalculatorCaElement: {
+        prototype: HTMLKsProductCalculatorCaElement;
+        new (): HTMLKsProductCalculatorCaElement;
+    };
+    interface HTMLKsProductCalculatorPayuElement extends Components.KsProductCalculatorPayu, HTMLStencilElement {
+    }
+    var HTMLKsProductCalculatorPayuElement: {
+        prototype: HTMLKsProductCalculatorPayuElement;
+        new (): HTMLKsProductCalculatorPayuElement;
     };
     interface HTMLKsProductCardElement extends Components.KsProductCard, HTMLStencilElement {
     }
@@ -1554,23 +1638,23 @@ declare global {
         prototype: HTMLKsProductCardElement;
         new (): HTMLKsProductCardElement;
     };
-    interface HTMLKsProductCodesElement extends Components.KsProductCodes, HTMLStencilElement {
-    }
-    var HTMLKsProductCodesElement: {
-        prototype: HTMLKsProductCodesElement;
-        new (): HTMLKsProductCodesElement;
-    };
     interface HTMLKsProductCommentsElement extends Components.KsProductComments, HTMLStencilElement {
     }
     var HTMLKsProductCommentsElement: {
         prototype: HTMLKsProductCommentsElement;
         new (): HTMLKsProductCommentsElement;
     };
-    interface HTMLKsProductCreditagricoleElement extends Components.KsProductCreditagricole, HTMLStencilElement {
+    interface HTMLKsProductContainerElement extends Components.KsProductContainer, HTMLStencilElement {
     }
-    var HTMLKsProductCreditagricoleElement: {
-        prototype: HTMLKsProductCreditagricoleElement;
-        new (): HTMLKsProductCreditagricoleElement;
+    var HTMLKsProductContainerElement: {
+        prototype: HTMLKsProductContainerElement;
+        new (): HTMLKsProductContainerElement;
+    };
+    interface HTMLKsProductCountElement extends Components.KsProductCount, HTMLStencilElement {
+    }
+    var HTMLKsProductCountElement: {
+        prototype: HTMLKsProductCountElement;
+        new (): HTMLKsProductCountElement;
     };
     interface HTMLKsProductImagesElement extends Components.KsProductImages, HTMLStencilElement {
     }
@@ -1584,17 +1668,17 @@ declare global {
         prototype: HTMLKsProductInfoElement;
         new (): HTMLKsProductInfoElement;
     };
+    interface HTMLKsProductInfoPointsElement extends Components.KsProductInfoPoints, HTMLStencilElement {
+    }
+    var HTMLKsProductInfoPointsElement: {
+        prototype: HTMLKsProductInfoPointsElement;
+        new (): HTMLKsProductInfoPointsElement;
+    };
     interface HTMLKsProductNegotiateElement extends Components.KsProductNegotiate, HTMLStencilElement {
     }
     var HTMLKsProductNegotiateElement: {
         prototype: HTMLKsProductNegotiateElement;
         new (): HTMLKsProductNegotiateElement;
-    };
-    interface HTMLKsProductPayuElement extends Components.KsProductPayu, HTMLStencilElement {
-    }
-    var HTMLKsProductPayuElement: {
-        prototype: HTMLKsProductPayuElement;
-        new (): HTMLKsProductPayuElement;
     };
     interface HTMLKsProductPointsElement extends Components.KsProductPoints, HTMLStencilElement {
     }
@@ -1608,11 +1692,11 @@ declare global {
         prototype: HTMLKsProductPriceElement;
         new (): HTMLKsProductPriceElement;
     };
-    interface HTMLKsProductSchemaElement extends Components.KsProductSchema, HTMLStencilElement {
+    interface HTMLKsProductShippingElement extends Components.KsProductShipping, HTMLStencilElement {
     }
-    var HTMLKsProductSchemaElement: {
-        prototype: HTMLKsProductSchemaElement;
-        new (): HTMLKsProductSchemaElement;
+    var HTMLKsProductShippingElement: {
+        prototype: HTMLKsProductShippingElement;
+        new (): HTMLKsProductShippingElement;
     };
     interface HTMLKsProductSimpleElement extends Components.KsProductSimple, HTMLStencilElement {
     }
@@ -1644,11 +1728,11 @@ declare global {
         prototype: HTMLKsProductTitleElement;
         new (): HTMLKsProductTitleElement;
     };
-    interface HTMLKsProductTraitElement extends Components.KsProductTrait, HTMLStencilElement {
+    interface HTMLKsProductTraitsElement extends Components.KsProductTraits, HTMLStencilElement {
     }
-    var HTMLKsProductTraitElement: {
-        prototype: HTMLKsProductTraitElement;
-        new (): HTMLKsProductTraitElement;
+    var HTMLKsProductTraitsElement: {
+        prototype: HTMLKsProductTraitsElement;
+        new (): HTMLKsProductTraitsElement;
     };
     interface HTMLKsProductVariantElement extends Components.KsProductVariant, HTMLStencilElement {
     }
@@ -1746,6 +1830,12 @@ declare global {
         prototype: HTMLKsSortingElement;
         new (): HTMLKsSortingElement;
     };
+    interface HTMLKsTopBannerElement extends Components.KsTopBanner, HTMLStencilElement {
+    }
+    var HTMLKsTopBannerElement: {
+        prototype: HTMLKsTopBannerElement;
+        new (): HTMLKsTopBannerElement;
+    };
     interface HTMLElementTagNameMap {
         "ks-alert": HTMLKsAlertElement;
         "ks-article-card": HTMLKsArticleCardElement;
@@ -1788,9 +1878,11 @@ declare global {
         "ks-comment": HTMLKsCommentElement;
         "ks-contact": HTMLKsContactElement;
         "ks-contact-buttons": HTMLKsContactButtonsElement;
+        "ks-container": HTMLKsContainerElement;
         "ks-description-image": HTMLKsDescriptionImageElement;
         "ks-description-text": HTMLKsDescriptionTextElement;
         "ks-description-text-image": HTMLKsDescriptionTextImageElement;
+        "ks-error-popup": HTMLKsErrorPopupElement;
         "ks-favourites-header": HTMLKsFavouritesHeaderElement;
         "ks-featured": HTMLKsFeaturedElement;
         "ks-featured-container": HTMLKsFeaturedContainerElement;
@@ -1820,7 +1912,9 @@ declare global {
         "ks-input-select-dynamic": HTMLKsInputSelectDynamicElement;
         "ks-input-text": HTMLKsInputTextElement;
         "ks-input-textarea": HTMLKsInputTextareaElement;
+        "ks-lightbox": HTMLKsLightboxElement;
         "ks-listing-header": HTMLKsListingHeaderElement;
+        "ks-loader": HTMLKsLoaderElement;
         "ks-mini-cart": HTMLKsMiniCartElement;
         "ks-navbar": HTMLKsNavbarElement;
         "ks-navbar-button": HTMLKsNavbarButtonElement;
@@ -1858,28 +1952,31 @@ declare global {
         "ks-order-summary-payment": HTMLKsOrderSummaryPaymentElement;
         "ks-order-toggle": HTMLKsOrderToggleElement;
         "ks-order-toggle-section": HTMLKsOrderToggleSectionElement;
+        "ks-overlay": HTMLKsOverlayElement;
         "ks-pagination": HTMLKsPaginationElement;
         "ks-product-admin": HTMLKsProductAdminElement;
         "ks-product-admin-distributor": HTMLKsProductAdminDistributorElement;
-        "ks-product-banner": HTMLKsProductBannerElement;
-        "ks-product-buttons": HTMLKsProductButtonsElement;
+        "ks-product-attribute": HTMLKsProductAttributeElement;
+        "ks-product-button": HTMLKsProductButtonElement;
+        "ks-product-calculator-ca": HTMLKsProductCalculatorCaElement;
+        "ks-product-calculator-payu": HTMLKsProductCalculatorPayuElement;
         "ks-product-card": HTMLKsProductCardElement;
-        "ks-product-codes": HTMLKsProductCodesElement;
         "ks-product-comments": HTMLKsProductCommentsElement;
-        "ks-product-creditagricole": HTMLKsProductCreditagricoleElement;
+        "ks-product-container": HTMLKsProductContainerElement;
+        "ks-product-count": HTMLKsProductCountElement;
         "ks-product-images": HTMLKsProductImagesElement;
         "ks-product-info": HTMLKsProductInfoElement;
+        "ks-product-info-points": HTMLKsProductInfoPointsElement;
         "ks-product-negotiate": HTMLKsProductNegotiateElement;
-        "ks-product-payu": HTMLKsProductPayuElement;
         "ks-product-points": HTMLKsProductPointsElement;
         "ks-product-price": HTMLKsProductPriceElement;
-        "ks-product-schema": HTMLKsProductSchemaElement;
+        "ks-product-shipping": HTMLKsProductShippingElement;
         "ks-product-simple": HTMLKsProductSimpleElement;
         "ks-product-suggestions": HTMLKsProductSuggestionsElement;
         "ks-product-tab": HTMLKsProductTabElement;
         "ks-product-tabs": HTMLKsProductTabsElement;
         "ks-product-title": HTMLKsProductTitleElement;
-        "ks-product-trait": HTMLKsProductTraitElement;
+        "ks-product-traits": HTMLKsProductTraitsElement;
         "ks-product-variant": HTMLKsProductVariantElement;
         "ks-product-variants": HTMLKsProductVariantsElement;
         "ks-product-wide": HTMLKsProductWideElement;
@@ -1896,6 +1993,7 @@ declare global {
         "ks-section-heading": HTMLKsSectionHeadingElement;
         "ks-see-more": HTMLKsSeeMoreElement;
         "ks-sorting": HTMLKsSortingElement;
+        "ks-top-banner": HTMLKsTopBannerElement;
     }
 }
 declare namespace LocalJSX {
@@ -1991,10 +2089,10 @@ declare namespace LocalJSX {
         "placeholder"?: string;
     }
     interface KsCartDiscountContainer {
-        "DiscountCodeAdd"?: (string) => void;
-        "DiscountPointsAdd"?: (number) => void;
-        "DiscountRemove"?: () => void;
-        "RemoveDiscount"?: () => void;
+        "DiscountCodeAdd"?: (string)=>void;
+        "DiscountPointsAdd"?: (number)=>void;
+        "DiscountRemove"?: ()=>void;
+        "RemoveDiscount"?: ()=>void;
         "codeBanner"?: string;
         "codePlaceholder"?: string;
         "disablePoints"?: boolean;
@@ -2148,6 +2246,9 @@ declare namespace LocalJSX {
         "email"?: string;
         "phone"?: string;
     }
+    interface KsContainer {
+        "padding"?: boolean;
+    }
     interface KsDescriptionImage {
         "image"?: string;
     }
@@ -2157,6 +2258,8 @@ declare namespace LocalJSX {
         "align"?: string;
         "image"?: string;
         "size"?: string;
+    }
+    interface KsErrorPopup {
     }
     interface KsFavouritesHeader {
         "value"?: string;
@@ -2247,18 +2350,24 @@ declare namespace LocalJSX {
     interface KsImg {
         "alt"?: string;
         "center"?: boolean;
+        "contained"?: boolean;
+        "height"?: number;
         "left"?: boolean;
+        "onLazyLoaded"?: (event: CustomEvent<any>) => void;
         "right"?: boolean;
         "src"?: string;
         "sync"?: boolean;
         "target"?: string;
         "vertical"?: boolean;
+        "width"?: number;
     }
     interface KsInfoBanner {
         "color"?: string;
+        "height"?: number;
         "image"?: string;
         "link"?: string;
         "name"?: string;
+        "width"?: number;
     }
     interface KsInfoMessage {
         "animating"?: boolean;
@@ -2340,7 +2449,14 @@ declare namespace LocalJSX {
         "required"?: boolean;
         "rows"?: number;
     }
+    interface KsLightbox {
+        "data"?: LightboxImageData[];
+    }
     interface KsListingHeader {
+    }
+    interface KsLoader {
+        "oversized"?: boolean;
+        "running"?: boolean;
     }
     interface KsMiniCart {
     }
@@ -2512,6 +2628,9 @@ declare namespace LocalJSX {
         "right"?: string;
         "value"?: string;
     }
+    interface KsOverlay {
+        "dark"?: boolean;
+    }
     interface KsPagination {
         "base"?: string;
         "count"?: number;
@@ -2534,20 +2653,26 @@ declare namespace LocalJSX {
         "unavailableMode"?: string;
         "warning"?: string;
     }
-    interface KsProductBanner {
-        "alt"?: string;
-        "color"?: string;
-        "height"?: string;
+    interface KsProductAttribute {
+        "emphasis"?: boolean;
+        "href"?: string;
         "image"?: string;
-        "width"?: string;
-    }
-    interface KsProductButtons {
-        "availability"?: number;
-        "buttons"?: ProductButtonData;
-        "currentPrice"?: string;
         "name"?: string;
-        "traitIDs"?: string;
-        "updateShippingTime"?: (id: string, count: number) => void;
+    }
+    interface KsProductButton {
+        "large"?: boolean;
+        "medium"?: boolean;
+    }
+    interface KsProductCalculatorCa {
+        "height"?: number;
+        "parameters"?: string;
+        "price"?: string;
+        "width"?: number;
+    }
+    interface KsProductCalculatorPayu {
+        "apiKey"?: string;
+        "posId"?: string;
+        "price"?: string;
     }
     interface KsProductCard {
         "currentPrice"?: string;
@@ -2560,22 +2685,32 @@ declare namespace LocalJSX {
         "unavailable"?: boolean;
         "uniqueId"?: string;
     }
-    interface KsProductCodes {
-    }
     interface KsProductComments {
         "link"?: string;
         "message"?: string;
     }
-    interface KsProductCreditagricole {
-        "button"?: string;
-        "price"?: string;
+    interface KsProductContainer {
+    }
+    interface KsProductCount {
+        "onCountChange"?: (event: CustomEvent<number>) => void;
     }
     interface KsProductImages {
     }
     interface KsProductInfo {
+        "cartApi"?: string;
+        "cartCountApi"?: string;
         "dataId"?: string;
-        "shippingTimeApi"?: string;
-        "traitId"?: string;
+        "favouritesApi"?: string;
+        "shippingApi"?: string;
+        "suggestionApi"?: string;
+        "traitApi"?: string;
+    }
+    interface KsProductInfoPoints {
+        "count"?: string;
+        "external"?: boolean;
+        "internal"?: boolean;
+        "message"?: string;
+        "value"?: string;
     }
     interface KsProductNegotiate {
         "api"?: string;
@@ -2586,17 +2721,15 @@ declare namespace LocalJSX {
         "price"?: string;
         "successInfo"?: string;
     }
-    interface KsProductPayu {
-        "button"?: string;
-        "price"?: string;
-    }
     interface KsProductPoints {
         "count"?: number;
         "value"?: number;
     }
     interface KsProductPrice {
+        "onAddToCart"?: (event: CustomEvent<any>) => void;
+        "onAddToFavourites"?: (event: CustomEvent<any>) => void;
     }
-    interface KsProductSchema {
+    interface KsProductShipping {
     }
     interface KsProductSimple {
         "currentPrice"?: string;
@@ -2618,7 +2751,8 @@ declare namespace LocalJSX {
     }
     interface KsProductTitle {
     }
-    interface KsProductTrait {
+    interface KsProductTraits {
+        "onTraitChange"?: (event: CustomEvent<[TraitData, TraitDataItem][]>) => void;
     }
     interface KsProductVariant {
         "active"?: boolean;
@@ -2705,6 +2839,11 @@ declare namespace LocalJSX {
     interface KsSorting {
         "post"?: string;
     }
+    interface KsTopBanner {
+        "name"?: string;
+        "newsletter"?: Function;
+        "shipping"?: string;
+    }
     interface IntrinsicElements {
         "ks-alert": KsAlert;
         "ks-article-card": KsArticleCard;
@@ -2747,9 +2886,11 @@ declare namespace LocalJSX {
         "ks-comment": KsComment;
         "ks-contact": KsContact;
         "ks-contact-buttons": KsContactButtons;
+        "ks-container": KsContainer;
         "ks-description-image": KsDescriptionImage;
         "ks-description-text": KsDescriptionText;
         "ks-description-text-image": KsDescriptionTextImage;
+        "ks-error-popup": KsErrorPopup;
         "ks-favourites-header": KsFavouritesHeader;
         "ks-featured": KsFeatured;
         "ks-featured-container": KsFeaturedContainer;
@@ -2779,7 +2920,9 @@ declare namespace LocalJSX {
         "ks-input-select-dynamic": KsInputSelectDynamic;
         "ks-input-text": KsInputText;
         "ks-input-textarea": KsInputTextarea;
+        "ks-lightbox": KsLightbox;
         "ks-listing-header": KsListingHeader;
+        "ks-loader": KsLoader;
         "ks-mini-cart": KsMiniCart;
         "ks-navbar": KsNavbar;
         "ks-navbar-button": KsNavbarButton;
@@ -2817,28 +2960,31 @@ declare namespace LocalJSX {
         "ks-order-summary-payment": KsOrderSummaryPayment;
         "ks-order-toggle": KsOrderToggle;
         "ks-order-toggle-section": KsOrderToggleSection;
+        "ks-overlay": KsOverlay;
         "ks-pagination": KsPagination;
         "ks-product-admin": KsProductAdmin;
         "ks-product-admin-distributor": KsProductAdminDistributor;
-        "ks-product-banner": KsProductBanner;
-        "ks-product-buttons": KsProductButtons;
+        "ks-product-attribute": KsProductAttribute;
+        "ks-product-button": KsProductButton;
+        "ks-product-calculator-ca": KsProductCalculatorCa;
+        "ks-product-calculator-payu": KsProductCalculatorPayu;
         "ks-product-card": KsProductCard;
-        "ks-product-codes": KsProductCodes;
         "ks-product-comments": KsProductComments;
-        "ks-product-creditagricole": KsProductCreditagricole;
+        "ks-product-container": KsProductContainer;
+        "ks-product-count": KsProductCount;
         "ks-product-images": KsProductImages;
         "ks-product-info": KsProductInfo;
+        "ks-product-info-points": KsProductInfoPoints;
         "ks-product-negotiate": KsProductNegotiate;
-        "ks-product-payu": KsProductPayu;
         "ks-product-points": KsProductPoints;
         "ks-product-price": KsProductPrice;
-        "ks-product-schema": KsProductSchema;
+        "ks-product-shipping": KsProductShipping;
         "ks-product-simple": KsProductSimple;
         "ks-product-suggestions": KsProductSuggestions;
         "ks-product-tab": KsProductTab;
         "ks-product-tabs": KsProductTabs;
         "ks-product-title": KsProductTitle;
-        "ks-product-trait": KsProductTrait;
+        "ks-product-traits": KsProductTraits;
         "ks-product-variant": KsProductVariant;
         "ks-product-variants": KsProductVariants;
         "ks-product-wide": KsProductWide;
@@ -2855,6 +3001,7 @@ declare namespace LocalJSX {
         "ks-section-heading": KsSectionHeading;
         "ks-see-more": KsSeeMore;
         "ks-sorting": KsSorting;
+        "ks-top-banner": KsTopBanner;
     }
 }
 export { LocalJSX as JSX };
@@ -2902,9 +3049,11 @@ declare module "@stencil/core" {
             "ks-comment": LocalJSX.KsComment & JSXBase.HTMLAttributes<HTMLKsCommentElement>;
             "ks-contact": LocalJSX.KsContact & JSXBase.HTMLAttributes<HTMLKsContactElement>;
             "ks-contact-buttons": LocalJSX.KsContactButtons & JSXBase.HTMLAttributes<HTMLKsContactButtonsElement>;
+            "ks-container": LocalJSX.KsContainer & JSXBase.HTMLAttributes<HTMLKsContainerElement>;
             "ks-description-image": LocalJSX.KsDescriptionImage & JSXBase.HTMLAttributes<HTMLKsDescriptionImageElement>;
             "ks-description-text": LocalJSX.KsDescriptionText & JSXBase.HTMLAttributes<HTMLKsDescriptionTextElement>;
             "ks-description-text-image": LocalJSX.KsDescriptionTextImage & JSXBase.HTMLAttributes<HTMLKsDescriptionTextImageElement>;
+            "ks-error-popup": LocalJSX.KsErrorPopup & JSXBase.HTMLAttributes<HTMLKsErrorPopupElement>;
             "ks-favourites-header": LocalJSX.KsFavouritesHeader & JSXBase.HTMLAttributes<HTMLKsFavouritesHeaderElement>;
             "ks-featured": LocalJSX.KsFeatured & JSXBase.HTMLAttributes<HTMLKsFeaturedElement>;
             "ks-featured-container": LocalJSX.KsFeaturedContainer & JSXBase.HTMLAttributes<HTMLKsFeaturedContainerElement>;
@@ -2934,7 +3083,9 @@ declare module "@stencil/core" {
             "ks-input-select-dynamic": LocalJSX.KsInputSelectDynamic & JSXBase.HTMLAttributes<HTMLKsInputSelectDynamicElement>;
             "ks-input-text": LocalJSX.KsInputText & JSXBase.HTMLAttributes<HTMLKsInputTextElement>;
             "ks-input-textarea": LocalJSX.KsInputTextarea & JSXBase.HTMLAttributes<HTMLKsInputTextareaElement>;
+            "ks-lightbox": LocalJSX.KsLightbox & JSXBase.HTMLAttributes<HTMLKsLightboxElement>;
             "ks-listing-header": LocalJSX.KsListingHeader & JSXBase.HTMLAttributes<HTMLKsListingHeaderElement>;
+            "ks-loader": LocalJSX.KsLoader & JSXBase.HTMLAttributes<HTMLKsLoaderElement>;
             "ks-mini-cart": LocalJSX.KsMiniCart & JSXBase.HTMLAttributes<HTMLKsMiniCartElement>;
             "ks-navbar": LocalJSX.KsNavbar & JSXBase.HTMLAttributes<HTMLKsNavbarElement>;
             "ks-navbar-button": LocalJSX.KsNavbarButton & JSXBase.HTMLAttributes<HTMLKsNavbarButtonElement>;
@@ -2972,28 +3123,31 @@ declare module "@stencil/core" {
             "ks-order-summary-payment": LocalJSX.KsOrderSummaryPayment & JSXBase.HTMLAttributes<HTMLKsOrderSummaryPaymentElement>;
             "ks-order-toggle": LocalJSX.KsOrderToggle & JSXBase.HTMLAttributes<HTMLKsOrderToggleElement>;
             "ks-order-toggle-section": LocalJSX.KsOrderToggleSection & JSXBase.HTMLAttributes<HTMLKsOrderToggleSectionElement>;
+            "ks-overlay": LocalJSX.KsOverlay & JSXBase.HTMLAttributes<HTMLKsOverlayElement>;
             "ks-pagination": LocalJSX.KsPagination & JSXBase.HTMLAttributes<HTMLKsPaginationElement>;
             "ks-product-admin": LocalJSX.KsProductAdmin & JSXBase.HTMLAttributes<HTMLKsProductAdminElement>;
             "ks-product-admin-distributor": LocalJSX.KsProductAdminDistributor & JSXBase.HTMLAttributes<HTMLKsProductAdminDistributorElement>;
-            "ks-product-banner": LocalJSX.KsProductBanner & JSXBase.HTMLAttributes<HTMLKsProductBannerElement>;
-            "ks-product-buttons": LocalJSX.KsProductButtons & JSXBase.HTMLAttributes<HTMLKsProductButtonsElement>;
+            "ks-product-attribute": LocalJSX.KsProductAttribute & JSXBase.HTMLAttributes<HTMLKsProductAttributeElement>;
+            "ks-product-button": LocalJSX.KsProductButton & JSXBase.HTMLAttributes<HTMLKsProductButtonElement>;
+            "ks-product-calculator-ca": LocalJSX.KsProductCalculatorCa & JSXBase.HTMLAttributes<HTMLKsProductCalculatorCaElement>;
+            "ks-product-calculator-payu": LocalJSX.KsProductCalculatorPayu & JSXBase.HTMLAttributes<HTMLKsProductCalculatorPayuElement>;
             "ks-product-card": LocalJSX.KsProductCard & JSXBase.HTMLAttributes<HTMLKsProductCardElement>;
-            "ks-product-codes": LocalJSX.KsProductCodes & JSXBase.HTMLAttributes<HTMLKsProductCodesElement>;
             "ks-product-comments": LocalJSX.KsProductComments & JSXBase.HTMLAttributes<HTMLKsProductCommentsElement>;
-            "ks-product-creditagricole": LocalJSX.KsProductCreditagricole & JSXBase.HTMLAttributes<HTMLKsProductCreditagricoleElement>;
+            "ks-product-container": LocalJSX.KsProductContainer & JSXBase.HTMLAttributes<HTMLKsProductContainerElement>;
+            "ks-product-count": LocalJSX.KsProductCount & JSXBase.HTMLAttributes<HTMLKsProductCountElement>;
             "ks-product-images": LocalJSX.KsProductImages & JSXBase.HTMLAttributes<HTMLKsProductImagesElement>;
             "ks-product-info": LocalJSX.KsProductInfo & JSXBase.HTMLAttributes<HTMLKsProductInfoElement>;
+            "ks-product-info-points": LocalJSX.KsProductInfoPoints & JSXBase.HTMLAttributes<HTMLKsProductInfoPointsElement>;
             "ks-product-negotiate": LocalJSX.KsProductNegotiate & JSXBase.HTMLAttributes<HTMLKsProductNegotiateElement>;
-            "ks-product-payu": LocalJSX.KsProductPayu & JSXBase.HTMLAttributes<HTMLKsProductPayuElement>;
             "ks-product-points": LocalJSX.KsProductPoints & JSXBase.HTMLAttributes<HTMLKsProductPointsElement>;
             "ks-product-price": LocalJSX.KsProductPrice & JSXBase.HTMLAttributes<HTMLKsProductPriceElement>;
-            "ks-product-schema": LocalJSX.KsProductSchema & JSXBase.HTMLAttributes<HTMLKsProductSchemaElement>;
+            "ks-product-shipping": LocalJSX.KsProductShipping & JSXBase.HTMLAttributes<HTMLKsProductShippingElement>;
             "ks-product-simple": LocalJSX.KsProductSimple & JSXBase.HTMLAttributes<HTMLKsProductSimpleElement>;
             "ks-product-suggestions": LocalJSX.KsProductSuggestions & JSXBase.HTMLAttributes<HTMLKsProductSuggestionsElement>;
             "ks-product-tab": LocalJSX.KsProductTab & JSXBase.HTMLAttributes<HTMLKsProductTabElement>;
             "ks-product-tabs": LocalJSX.KsProductTabs & JSXBase.HTMLAttributes<HTMLKsProductTabsElement>;
             "ks-product-title": LocalJSX.KsProductTitle & JSXBase.HTMLAttributes<HTMLKsProductTitleElement>;
-            "ks-product-trait": LocalJSX.KsProductTrait & JSXBase.HTMLAttributes<HTMLKsProductTraitElement>;
+            "ks-product-traits": LocalJSX.KsProductTraits & JSXBase.HTMLAttributes<HTMLKsProductTraitsElement>;
             "ks-product-variant": LocalJSX.KsProductVariant & JSXBase.HTMLAttributes<HTMLKsProductVariantElement>;
             "ks-product-variants": LocalJSX.KsProductVariants & JSXBase.HTMLAttributes<HTMLKsProductVariantsElement>;
             "ks-product-wide": LocalJSX.KsProductWide & JSXBase.HTMLAttributes<HTMLKsProductWideElement>;
@@ -3010,6 +3164,7 @@ declare module "@stencil/core" {
             "ks-section-heading": LocalJSX.KsSectionHeading & JSXBase.HTMLAttributes<HTMLKsSectionHeadingElement>;
             "ks-see-more": LocalJSX.KsSeeMore & JSXBase.HTMLAttributes<HTMLKsSeeMoreElement>;
             "ks-sorting": LocalJSX.KsSorting & JSXBase.HTMLAttributes<HTMLKsSortingElement>;
+            "ks-top-banner": LocalJSX.KsTopBanner & JSXBase.HTMLAttributes<HTMLKsTopBannerElement>;
         }
     }
 }

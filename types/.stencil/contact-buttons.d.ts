@@ -1,5 +1,5 @@
 export declare class ContactButtons {
-    phone: string;
-    email: string;
-    render(): any[];
+  phone: string;
+  email: string;
+  render(): any[];
 }

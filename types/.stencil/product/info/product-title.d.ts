@@ -1,3 +1,4 @@
 export declare class ProductTitle {
-    render(): any;
+  render(): any[];
+  brandIndex(): number;
 }

@@ -1,13 +1,14 @@
 ks-img {
     display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     position: relative;
-    top: 0;
-    left: 0;
     height: 100%;
     width: 100%;
 
     -webkit-box-align: center;
+
+        -ms-flex-align: center;
 
             align-items: center;
 }
@@ -32,18 +33,33 @@ ks-img .vertical {
     height: 100%;
 }
 
+ks-img .contained {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+}
+
+ks-img[src*=".svg"] .contained {
+    width: 100%;
+    height: 100%;
+}
+
 ks-img.left {
     -webkit-box-pack: start;
+        -ms-flex-pack: start;
             justify-content: flex-start;
 }
 
 ks-img.right {
     -webkit-box-pack: end;
+        -ms-flex-pack: end;
             justify-content: flex-end;
 }
 
 ks-img.center {
     -webkit-box-pack: center;
+        -ms-flex-pack: center;
             justify-content: center;
 }
 

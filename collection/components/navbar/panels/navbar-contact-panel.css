@@ -1,5 +1,6 @@
 ks-navbar-contact-panel {
     display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 
     position: absolute;
@@ -7,27 +8,34 @@ ks-navbar-contact-panel {
 
     width: 100%;
 
-    background-color: var(--ks-color-primary-dark);
+    background-color: var(--color-primary-dark);
     color: white;
     box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2);
 }
 
 ks-navbar-contact-panel .map {
     -webkit-box-flex: 0;
+        -ms-flex: none;
             flex: none;
     background-color: #eeeeee;
 }
 
 ks-navbar-contact-panel .info {
     display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
     -webkit-box-pack: center;
+        -ms-flex-pack: center;
             justify-content: center;
     -webkit-box-align: center;
+        -ms-flex-align: center;
             align-items: center;
 
     -webkit-box-flex: 1;
+
+        -ms-flex: 1;
 
             flex: 1;
     padding: 20px;
@@ -89,6 +97,7 @@ ks-navbar-contact-panel .buttons a {
     ks-navbar-contact-panel {
         -webkit-box-orient: vertical;
         -webkit-box-direction: reverse;
+            -ms-flex-direction: column-reverse;
                 flex-direction: column-reverse;
     }
 

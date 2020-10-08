@@ -1,18 +1,1 @@
-import { r as registerInstance, h } from './index-20a680bb.js';
-var Breadcrumbs = /** @class */ (function () {
-    function Breadcrumbs(hostRef) {
-        registerInstance(this, hostRef);
-        this.center = false;
-        this.mobile = false;
-    }
-    Breadcrumbs.prototype.render = function () {
-        var alignment = this.center ?
-            this.mobile ?
-                "uk-flex-center uk-flex-left@m" :
-                "uk-flex-center" :
-            "";
-        return (h("ul", { class: "uk-breadcrumb uk-margin-remove " + alignment }, h("slot", null)));
-    };
-    return Breadcrumbs;
-}());
-export { Breadcrumbs as ks_breadcrumbs };
+import{r as registerInstance,h}from"./index-22b73bd9.js";var Breadcrumbs=function(){function e(e){registerInstance(this,e);this.center=false;this.mobile=false}e.prototype.render=function(){var e=this.center?this.mobile?"uk-flex-center uk-flex-left@m":"uk-flex-center":"";return h("ul",{class:"uk-breadcrumb uk-margin-remove "+e},h("slot",null))};return e}();export{Breadcrumbs as ks_breadcrumbs};

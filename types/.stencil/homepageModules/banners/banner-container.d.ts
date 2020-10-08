@@ -1,3 +1,3 @@
 export declare class ArticleCard {
-    render(): any;
+  render(): any;
 }

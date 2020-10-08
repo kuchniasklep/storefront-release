@@ -1,1 +1,0 @@
-System.register(["./p-526368ae.system.js"],(function(e){"use strict";var t,r;return{setters:[function(e){t=e.r;r=e.h}],execute:function(){var n=e("ks_description_image",function(){function e(e){t(this,e)}e.prototype.render=function(){return r("div",{class:"uk-flex uk-flex-center"},r("ks-image",{src:this.image}))};return e}())}}}));

@@ -9,8 +9,10 @@ ks-cart-progress-bar {
 
 ks-cart-progress-bar .heading {
   display: -webkit-box;
+  display: -ms-flexbox;
   display: flex; 
   -webkit-box-pack: justify; 
+      -ms-flex-pack: justify; 
           justify-content: space-between;
 
   margin-bottom: 10px;
@@ -22,8 +24,10 @@ ks-cart-progress-bar .heading {
 
 ks-cart-progress-bar .progress {
   display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
+      -ms-flex-align: center;
           align-items: center;
 
   width: 100%;
@@ -44,11 +48,15 @@ ks-cart-progress-bar .progress-fill {
 
   display: -webkit-box;
 
+  display: -ms-flexbox;
+
   display: flex;
   -webkit-box-align: center;
+      -ms-flex-align: center;
           align-items: center;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
           flex-direction: row-reverse;
 
   padding: 0 15px;

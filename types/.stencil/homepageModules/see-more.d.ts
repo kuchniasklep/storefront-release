@@ -1,5 +1,5 @@
 export declare class SeeMore {
-    href: string;
-    text: string;
-    render(): any;
+  href: string;
+  text: string;
+  render(): any;
 }

@@ -1,4 +1,4 @@
 interface InputInterface {
-    IsValid(): Promise<boolean>;
-    Validate(): Promise<void>;
+  IsValid(): Promise<boolean>;
+  Validate(): Promise<void>;
 }
