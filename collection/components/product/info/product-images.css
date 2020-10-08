@@ -63,3 +63,13 @@ ks-product-images .thumb .swiper-slide-thumb-active {
         margin-bottom: 20px;
     }
 }
+
+@media only screen and (max-width: 460px) {
+    ks-product-images .swiper-slide canvas {
+        max-height: 300px;
+    }
+    
+    ks-product-images .preview ks-img {
+        max-height: 300px;
+    }
+}
