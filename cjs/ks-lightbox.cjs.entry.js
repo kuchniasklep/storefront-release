@@ -18,35 +18,35 @@ const Lightbox = class {
   }
   async show(index = 0) {
     this.overlay.show().then(() => {
-      if (this.carousel) {
-        this.carousel.slideTo(index, 0, false);
-        return;
+      var _a;
+      if (this.carousel == undefined) {
+        this.thumbs = new thumbs.Swiper('.lightbox-thumb', {
+          observer: true,
+          observeParents: true,
+          grabCursor: true,
+          slidesPerView: "auto",
+          centerInsufficientSlides: true,
+          watchSlidesVisibility: true,
+          watchSlidesProgress: true,
+          spaceBetween: 10,
+          resistanceRatio: 0.7
+        });
+        this.carousel = new thumbs.Swiper('.lightbox-full', {
+          observer: true,
+          observeParents: true,
+          centeredSlides: true,
+          slidesPerView: "auto",
+          spaceBetween: 20,
+          preventInteractionOnTransition: true,
+          thumbs: {
+            swiper: this.thumbs
+          },
+          pagination: {
+            el: '.swiper-pagination',
+          },
+        });
       }
-      this.thumbs = new thumbs.Swiper('.lightbox-thumb', {
-        observer: true,
-        observeParents: true,
-        grabCursor: true,
-        slidesPerView: "auto",
-        centerInsufficientSlides: true,
-        watchSlidesVisibility: true,
-        watchSlidesProgress: true,
-        spaceBetween: 10,
-        resistanceRatio: 0.7
-      });
-      this.carousel = new thumbs.Swiper('.lightbox-full', {
-        observer: true,
-        observeParents: true,
-        centeredSlides: true,
-        slidesPerView: "auto",
-        spaceBetween: 20,
-        preventInteractionOnTransition: true,
-        thumbs: {
-          swiper: this.thumbs
-        },
-        pagination: {
-          el: '.swiper-pagination',
-        },
-      });
+      (_a = this.carousel) === null || _a === void 0 ? void 0 : _a.slideTo(index, 0, false);
     });
   }
   async hide() {
