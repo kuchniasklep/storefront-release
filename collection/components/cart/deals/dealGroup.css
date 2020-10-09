@@ -159,15 +159,34 @@ ks-cart-deal-group button:active {
     transition: background-color 0.1s;
 }
 
+ks-cart-deal-group .variants {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+ks-cart-deal-group .variants label {
+    display: block;
+    box-sizing: border-box;
+    padding: 6px 20px 8px 15px;
+    font-size: 15px;
+    background-color: #4d4d4d;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    height: 36px;
+}
 
 ks-cart-deal-group select {
     display: block;
-    margin: 10px auto 15px auto;
+    margin: 15px 0;
     padding: 8px 40px 10px 10px;
     width: 100%;
-    
-    text-align: center;
-    font-size: 18px;
+    height: 36px;
+
+    font-size: 15px;
     -webkit-appearance: none;
        -moz-appearance: none;
             appearance: none;
@@ -217,8 +236,16 @@ ks-cart-deal-group select option {
         margin: 10px auto 30px auto;
     }
 
+    ks-cart-deal-group .variants {
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+    }
+
     ks-cart-deal-group select {
-        max-width: 420px;
+        max-width: 220px;
+        text-align: center;
+        text-align-last: center;
     }
 }
 
@@ -281,7 +308,6 @@ ks-cart-deal-group .large {
     ks-cart-deal-group select {
         margin: 8px 0px 8px 0px;
         width: auto;
-        text-align: left;
     }
 }
 
