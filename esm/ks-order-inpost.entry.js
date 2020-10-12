@@ -40,7 +40,7 @@ const OrderInpost = class {
           const punktodbioru = point.name;
           let formData = new FormData();
           formData.append("rodzaj", "wysylka_inpost");
-          formData.append("koszyk", "1");
+          formData.append("koszyk", "0");
           formData.append("value", value);
           formData.append("punktodbioru", punktodbioru);
           var headers = new Headers();
