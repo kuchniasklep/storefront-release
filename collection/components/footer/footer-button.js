@@ -2,7 +2,7 @@ import { Component, h, Prop } from '@stencil/core';
 export class FooterButton {
   render() {
     return (h("a", { href: this.href, rel: "nofollow" },
-      h("ks-img", { src: this.image })));
+      h("ks-img", { src: this.image, target: "body" })));
   }
   static get is() { return "ks-footer-button"; }
   static get originalStyleUrls() { return {

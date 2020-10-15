@@ -337,7 +337,7 @@ const Footer = class {
   }
   render() {
     return [
-      h("div", { class: "about" }, h("div", { class: "info" }, h("div", { class: "contact" }, h("ks-img", { class: "logo", src: this.logo }), h("a", { href: `mailto:${this.email}` }, " ", this.email, " "), h("a", { href: `tel:${this.phone}` }, " ", this.phone, " ")), h("div", { class: "reviews" }, h("slot", { name: "buttons" }))), h("div", { class: "links" }, h("slot", null))),
+      h("div", { class: "about" }, h("div", { class: "info" }, h("div", { class: "contact" }, h("ks-img", { target: "body", class: "logo", src: this.logo }), h("a", { href: `mailto:${this.email}` }, " ", this.email, " "), h("a", { href: `tel:${this.phone}` }, " ", this.phone, " ")), h("div", { class: "reviews" }, h("slot", { name: "buttons" }))), h("div", { class: "links" }, h("slot", null))),
       h("div", { class: "newsletter", onClick: () => document.querySelector('ks-newsletter-popup').Show() }, h("div", null, "Zapisz si\u0119 do naszego newslettera i zyskaj"), h("div", null, "KUPON 10Z\u0141")),
       h("div", { class: "software" }, h("a", { href: this.softwareLink, rel: "nofollow" }, "Oprogramowanie sklepu ShopGold"))
     ];
@@ -352,7 +352,7 @@ const FooterButton = class {
     registerInstance(this, hostRef);
   }
   render() {
-    return (h("a", { href: this.href, rel: "nofollow" }, h("ks-img", { src: this.image })));
+    return (h("a", { href: this.href, rel: "nofollow" }, h("ks-img", { src: this.image, target: "body" })));
   }
 };
 FooterButton.style = footerButtonCss;

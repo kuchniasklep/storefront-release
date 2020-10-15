@@ -45,3 +45,8 @@ ks-product-shipping .message {
         margin-bottom: 20px;
     }
 }
+
+ks-product-shipping .time-animation {
+    -webkit-animation: blink 1.5s ease-in-out infinite;
+            animation: blink 1.5s ease-in-out infinite
+}

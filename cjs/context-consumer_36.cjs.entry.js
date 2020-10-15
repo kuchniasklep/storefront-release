@@ -341,7 +341,7 @@ const Footer = class {
   }
   render() {
     return [
-      index.h("div", { class: "about" }, index.h("div", { class: "info" }, index.h("div", { class: "contact" }, index.h("ks-img", { class: "logo", src: this.logo }), index.h("a", { href: `mailto:${this.email}` }, " ", this.email, " "), index.h("a", { href: `tel:${this.phone}` }, " ", this.phone, " ")), index.h("div", { class: "reviews" }, index.h("slot", { name: "buttons" }))), index.h("div", { class: "links" }, index.h("slot", null))),
+      index.h("div", { class: "about" }, index.h("div", { class: "info" }, index.h("div", { class: "contact" }, index.h("ks-img", { target: "body", class: "logo", src: this.logo }), index.h("a", { href: `mailto:${this.email}` }, " ", this.email, " "), index.h("a", { href: `tel:${this.phone}` }, " ", this.phone, " ")), index.h("div", { class: "reviews" }, index.h("slot", { name: "buttons" }))), index.h("div", { class: "links" }, index.h("slot", null))),
       index.h("div", { class: "newsletter", onClick: () => document.querySelector('ks-newsletter-popup').Show() }, index.h("div", null, "Zapisz si\u0119 do naszego newslettera i zyskaj"), index.h("div", null, "KUPON 10Z\u0141")),
       index.h("div", { class: "software" }, index.h("a", { href: this.softwareLink, rel: "nofollow" }, "Oprogramowanie sklepu ShopGold"))
     ];
@@ -356,7 +356,7 @@ const FooterButton = class {
     index.registerInstance(this, hostRef);
   }
   render() {
-    return (index.h("a", { href: this.href, rel: "nofollow" }, index.h("ks-img", { src: this.image })));
+    return (index.h("a", { href: this.href, rel: "nofollow" }, index.h("ks-img", { src: this.image, target: "body" })));
   }
 };
 FooterButton.style = footerButtonCss;

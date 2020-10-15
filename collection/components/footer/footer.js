@@ -5,7 +5,7 @@ export class Footer {
       h("div", { class: "about" },
         h("div", { class: "info" },
           h("div", { class: "contact" },
-            h("ks-img", { class: "logo", src: this.logo }),
+            h("ks-img", { target: "body", class: "logo", src: this.logo }),
             h("a", { href: `mailto:${this.email}` },
               " ",
               this.email,

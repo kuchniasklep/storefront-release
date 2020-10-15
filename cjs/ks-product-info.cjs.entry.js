@@ -32,8 +32,9 @@ const ProductInfo = class {
     Object.keys(data).map(key => {
       productStore.store.set(key, data[key]);
     });
-    if (productStore.store.get("negotiate") && productStore.store.get("shippingMessage"))
+    if (productStore.store.get("images")[0].preview.height <= 400 || (productStore.store.get("negotiate") && productStore.store.get("shippingMessage"))) {
       productStore.store.set("externalPoints", true);
+    }
   }
   componentDidLoad() {
     this.navbar = document.querySelector("ks-navbar");

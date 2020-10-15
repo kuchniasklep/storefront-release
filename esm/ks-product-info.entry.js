@@ -28,8 +28,9 @@ const ProductInfo = class {
     Object.keys(data).map(key => {
       store.set(key, data[key]);
     });
-    if (store.get("negotiate") && store.get("shippingMessage"))
+    if (store.get("images")[0].preview.height <= 400 || (store.get("negotiate") && store.get("shippingMessage"))) {
       store.set("externalPoints", true);
+    }
   }
   componentDidLoad() {
     this.navbar = document.querySelector("ks-navbar");

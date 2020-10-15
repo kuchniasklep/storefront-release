@@ -3,16 +3,21 @@ import { store } from "../product-store";
 export class ProductShipping {
   render() {
     const time = store.get("shippingTime");
-    const timeprefix = time.search("godzin") != -1 || time.search("dni") != -1 ?
-      "Wysyłka w" : "";
-    const price = parseFloat(store.get("shippingPrice")) == 0 ?
-      "darmowa wysyłka" :
-      store.get("shippingPrice").replace(".", ",") + " zł";
-    const priceprefix = parseFloat(store.get("shippingPrice")) == 0 ?
-      "" : "od";
+    const freeShipping = parseFloat(store.get("shippingPrice")) == 0;
+    const knownShipping = time.search("godzin") != -1 || time.search("dni") != -1;
+    const instantShipping = time.search("24 godziny") != -1;
+    let timeprefix = knownShipping ? "wysyłka w" : "";
+    if (timeprefix && freeShipping)
+      timeprefix = "darmowa " + timeprefix;
+    timeprefix = timeprefix.charAt(0).toUpperCase() + timeprefix.slice(1);
+    const timeAnimation = instantShipping ? "" : " time-animation";
+    let price = freeShipping ? "" : store.get("shippingPrice").replace(".", ",") + " zł";
+    if (freeShipping && !knownShipping)
+      price = "darmowa wysyłka";
+    const priceprefix = freeShipping ? "" : "od";
     return [
       h("div", { class: "shipping" },
-        h("span", { class: "time" },
+        h("span", { class: "time" + timeAnimation },
           " ",
           timeprefix,
           " ",
