@@ -17,7 +17,7 @@ export class ProductInfo {
     Object.keys(data).map(key => {
       store.set(key, data[key]);
     });
-    if (store.get("images")[0].preview.height <= 400 || (store.get("negotiate") && store.get("shippingMessage"))) {
+    if (store.get("negotiate") && store.get("shippingMessage")) {
       store.set("externalPoints", true);
     }
   }
