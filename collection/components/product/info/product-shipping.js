@@ -6,15 +6,10 @@ export class ProductShipping {
     const freeShipping = parseFloat(store.get("shippingPrice")) == 0;
     const knownShipping = time.search("godzin") != -1 || time.search("dni") != -1;
     const instantShipping = time.search("24 godziny") != -1;
-    let timeprefix = knownShipping ? "wysyłka w" : "";
-    if (timeprefix && freeShipping)
-      timeprefix = "darmowa " + timeprefix;
-    timeprefix = timeprefix.charAt(0).toUpperCase() + timeprefix.slice(1);
+    let timeprefix = knownShipping ? "Wysyłka w" : "";
     const timeAnimation = instantShipping ? "" : " time-animation";
-    let price = freeShipping ? "" : store.get("shippingPrice").replace(".", ",") + " zł";
-    if (freeShipping && !knownShipping)
-      price = "darmowa wysyłka";
-    const priceprefix = freeShipping ? "" : "od";
+    let price = freeShipping ? "Darmowa dostawa" : store.get("shippingPrice").replace(".", ",") + " zł";
+    const priceprefix = freeShipping ? "" : "Dostawa od";
     return [
       h("div", { class: "shipping" },
         h("span", { class: "time" + timeAnimation },
@@ -23,12 +18,11 @@ export class ProductShipping {
           " ",
           time,
           " "),
-        " \u00A0",
+        h("span", { class: "separator" }, " \u2022 "),
         h("span", { class: "price" },
           priceprefix,
           " ",
-          price,
-          " ")),
+          price)),
       store.get("shippingMessage") ?
         h("div", { class: "message" }, store.get("shippingMessage"))
         : null
