@@ -25,6 +25,7 @@ export namespace Components {
         "image": string;
         "link": string;
         "name": string;
+        "sync": boolean;
     }
     interface KsBannerContainer {
     }
@@ -1991,6 +1992,7 @@ declare namespace LocalJSX {
         "image"?: string;
         "link"?: string;
         "name"?: string;
+        "sync"?: boolean;
     }
     interface KsBannerContainer {
     }

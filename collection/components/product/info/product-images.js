@@ -32,11 +32,11 @@ export class ProductImages {
       h("div", { class: "swiper-container preview" },
         h("div", { class: "swiper-wrapper" }, store.get("images").map((image, index) => h("div", { class: "swiper-slide" },
           h("canvas", { width: image.preview.width, height: image.preview.height }),
-          h("ks-img", { contained: true, center: true, src: image.preview.url, width: image.preview.width, height: image.preview.height, onClick: () => this.lightbox.show(index) }))))),
+          h("ks-img", { contained: true, center: true, sync: index == 0, src: image.preview.url, width: image.preview.width, height: image.preview.height, onClick: () => this.lightbox.show(index) }))))),
       store.get("images").length > 1 ?
         h("div", { class: "swiper-container thumb" },
-          h("div", { class: "swiper-wrapper" }, store.get("images").map(image => h("div", { class: "swiper-slide" },
-            h("ks-img", { contained: true, center: true, src: image.thumb.url, width: image.thumb.width, height: image.thumb.height })))))
+          h("div", { class: "swiper-wrapper" }, store.get("images").map((image, index) => h("div", { class: "swiper-slide" },
+            h("ks-img", { sync: index < 6, contained: true, center: true, src: image.thumb.url, width: image.thumb.width, height: image.thumb.height })))))
         : null,
       h("ks-lightbox", { data: store.get("images") })
     ];

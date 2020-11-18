@@ -3,5 +3,6 @@ export declare class Banner {
   color: string;
   image: string;
   link: string;
+  sync: boolean;
   render(): any;
 }

@@ -3,7 +3,7 @@ export class Banner {
   render() {
     return (h("div", { class: "uk-position-cover", style: { backgroundColor: this.color } },
       h("a", { href: this.link },
-        h("ks-img", { vertical: true, center: true, src: this.image, alt: this.name }))));
+        h("ks-img", { sync: this.sync, vertical: true, center: true, src: this.image, alt: this.name }))));
   }
   static get is() { return "ks-banner"; }
   static get properties() { return {
@@ -73,6 +73,23 @@ export class Banner {
         "text": ""
       },
       "attribute": "link",
+      "reflect": false
+    },
+    "sync": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "sync",
       "reflect": false
     }
   }; }

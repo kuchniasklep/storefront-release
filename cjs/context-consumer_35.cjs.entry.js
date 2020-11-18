@@ -49,7 +49,7 @@ const Banner = class {
     index.registerInstance(this, hostRef);
   }
   render() {
-    return (index.h("div", { class: "uk-position-cover", style: { backgroundColor: this.color } }, index.h("a", { href: this.link }, index.h("ks-img", { vertical: true, center: true, src: this.image, alt: this.name }))));
+    return (index.h("div", { class: "uk-position-cover", style: { backgroundColor: this.color } }, index.h("a", { href: this.link }, index.h("ks-img", { sync: this.sync, vertical: true, center: true, src: this.image, alt: this.name }))));
   }
 };
 
@@ -3088,7 +3088,7 @@ const Navbar = class {
     const favouritesCount = this.data.links.favouritesCount;
     const cartCount = this.data.links.cartCount;
     return [
-      index.h("nav", null, index.h("ks-img", { contained: true, class: "logo", sync: true, src: this.logo, width: 217, height: 35, alt: "kuchniasklep.pl" }), index.h("ks-navbar-search", null), index.h("ks-navbar-contact-panel", { phone: this.phone, email: this.email, contact: this.contact }), index.h("div", { id: "ks-navbar-menu-buttons" }, index.h("ks-navbar-button", { name: "Kontakt", icon: "phone", onClick: () => this.root.querySelector("ks-navbar-contact-panel").Toggle() }), this.accountLink ?
+      index.h("nav", null, index.h("a", { href: "/" }, index.h("ks-img", { contained: true, class: "logo", sync: true, src: this.logo, width: 217, height: 35, alt: "kuchniasklep.pl" })), index.h("ks-navbar-search", null), index.h("ks-navbar-contact-panel", { phone: this.phone, email: this.email, contact: this.contact }), index.h("div", { id: "ks-navbar-menu-buttons" }, index.h("ks-navbar-button", { name: "Kontakt", icon: "phone", onClick: () => this.root.querySelector("ks-navbar-contact-panel").Toggle() }), this.accountLink ?
         index.h("ks-navbar-button", { name: "Twoje konto", link: this.accountLink, icon: "user", class: "desktop" })
         : null, index.h("ks-navbar-button", { name: "Schowek", link: this.heartLink, icon: "star", count: favouritesCount, class: "tablet-desktop" }), index.h("ks-navbar-button", { name: "Koszyk", link: this.cartLink, icon: "shopping-bag", count: cartCount, class: "tablet-desktop" }), this.loginLink ?
         index.h("ks-navbar-button", { name: "Zaloguj", link: this.loginLink, icon: "key", class: "desktop" })

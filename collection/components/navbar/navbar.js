@@ -65,7 +65,8 @@ export class Navbar {
     const cartCount = this.data.links.cartCount;
     return [
       h("nav", null,
-        h("ks-img", { contained: true, class: "logo", sync: true, src: this.logo, width: 217, height: 35, alt: "kuchniasklep.pl" }),
+        h("a", { href: "/" },
+          h("ks-img", { contained: true, class: "logo", sync: true, src: this.logo, width: 217, height: 35, alt: "kuchniasklep.pl" })),
         h("ks-navbar-search", null),
         h("ks-navbar-contact-panel", { phone: this.phone, email: this.email, contact: this.contact }),
         h("div", { id: "ks-navbar-menu-buttons" },

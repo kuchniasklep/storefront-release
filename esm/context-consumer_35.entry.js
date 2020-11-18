@@ -45,7 +45,7 @@ const Banner = class {
     registerInstance(this, hostRef);
   }
   render() {
-    return (h("div", { class: "uk-position-cover", style: { backgroundColor: this.color } }, h("a", { href: this.link }, h("ks-img", { vertical: true, center: true, src: this.image, alt: this.name }))));
+    return (h("div", { class: "uk-position-cover", style: { backgroundColor: this.color } }, h("a", { href: this.link }, h("ks-img", { sync: this.sync, vertical: true, center: true, src: this.image, alt: this.name }))));
   }
 };
 
@@ -3084,7 +3084,7 @@ const Navbar = class {
     const favouritesCount = this.data.links.favouritesCount;
     const cartCount = this.data.links.cartCount;
     return [
-      h("nav", null, h("ks-img", { contained: true, class: "logo", sync: true, src: this.logo, width: 217, height: 35, alt: "kuchniasklep.pl" }), h("ks-navbar-search", null), h("ks-navbar-contact-panel", { phone: this.phone, email: this.email, contact: this.contact }), h("div", { id: "ks-navbar-menu-buttons" }, h("ks-navbar-button", { name: "Kontakt", icon: "phone", onClick: () => this.root.querySelector("ks-navbar-contact-panel").Toggle() }), this.accountLink ?
+      h("nav", null, h("a", { href: "/" }, h("ks-img", { contained: true, class: "logo", sync: true, src: this.logo, width: 217, height: 35, alt: "kuchniasklep.pl" })), h("ks-navbar-search", null), h("ks-navbar-contact-panel", { phone: this.phone, email: this.email, contact: this.contact }), h("div", { id: "ks-navbar-menu-buttons" }, h("ks-navbar-button", { name: "Kontakt", icon: "phone", onClick: () => this.root.querySelector("ks-navbar-contact-panel").Toggle() }), this.accountLink ?
         h("ks-navbar-button", { name: "Twoje konto", link: this.accountLink, icon: "user", class: "desktop" })
         : null, h("ks-navbar-button", { name: "Schowek", link: this.heartLink, icon: "star", count: favouritesCount, class: "tablet-desktop" }), h("ks-navbar-button", { name: "Koszyk", link: this.cartLink, icon: "shopping-bag", count: cartCount, class: "tablet-desktop" }), this.loginLink ?
         h("ks-navbar-button", { name: "Zaloguj", link: this.loginLink, icon: "key", class: "desktop" })
