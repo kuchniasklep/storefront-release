@@ -23,7 +23,7 @@ const InfoBanner = class {
   }
   render() {
     if (!this.disabled)
-      return (index.h(index.Host, { style: { backgroundColor: this.color } }, index.h("a", { href: this.link, "aria-label": this.name }, index.h("ks-img", { contained: true, center: true, width: this.width, height: this.height, src: this.image, alt: this.name })), index.h("button", { type: "button", "aria-label": "Schowaj banner", onClick: () => this.disable() }, index.h("ks-icon", { name: "x", size: 1.2 }))));
+      return (index.h(index.Host, { style: { backgroundColor: this.color } }, index.h("a", { href: this.link, "aria-label": this.name }, index.h("ks-img", { sync: true, contained: true, center: true, width: this.width, height: this.height, src: this.image, alt: this.name })), index.h("button", { type: "button", "aria-label": "Schowaj banner", onClick: () => this.disable() }, index.h("ks-icon", { name: "x", size: 1.2 }))));
     else
       return;
   }

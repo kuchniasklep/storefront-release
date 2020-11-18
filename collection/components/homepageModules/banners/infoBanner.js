@@ -17,7 +17,7 @@ export class InfoBanner {
     if (!this.disabled)
       return (h(Host, { style: { backgroundColor: this.color } },
         h("a", { href: this.link, "aria-label": this.name },
-          h("ks-img", { contained: true, center: true, width: this.width, height: this.height, src: this.image, alt: this.name })),
+          h("ks-img", { sync: true, contained: true, center: true, width: this.width, height: this.height, src: this.image, alt: this.name })),
         h("button", { type: "button", "aria-label": "Schowaj banner", onClick: () => this.disable() },
           h("ks-icon", { name: "x", size: 1.2 }))));
     else
