@@ -1,16 +1,12 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-const index = require('./index-18d28dc7.js');
-const functions = require('./functions-1cea3142.js');
-require('./state-tunnel-786a62ce.js');
-const navbarData = require('./navbar-data-43917c65.js');
-const _commonjsHelpers = require('./_commonjsHelpers-2e75ad90.js');
+import { r as registerInstance, g as getElement, h, H as Host, c as createEvent } from './index-22b73bd9.js';
+import { A as AddToCart, R as RemoveFromFavourites, a as AddToFavourites } from './functions-b10da890.js';
+import './state-tunnel-04c0b67a.js';
+import { T as Tunnel } from './navbar-data-e8a846b1.js';
+import { c as createCommonjsModule, a as commonjsGlobal, g as getDefaultExportFromCjs } from './_commonjsHelpers-84ca41fa.js';
 
 const ContextConsumer = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.context = {};
     this.renderer = () => null;
   }
@@ -27,45 +23,45 @@ const ContextConsumer = class {
   render() {
     return this.renderer(Object.assign({}, this.context));
   }
-  get el() { return index.getElement(this); }
+  get el() { return getElement(this); }
 };
 
 const articleCardCss = "ks-article-card{display:block}@media screen and (min-width: 960px) and (max-width: 1200px){ks-article-card[hide-on-odd]{display:none !important}}";
 
 const ArticleCard = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.hideOnOdd = false;
   }
   render() {
-    return (index.h("ks-card", { height: true }, index.h("div", { class: "uk-flex uk-flex-column uk-flex-between uk-height-1-1" }, index.h("a", { href: this.link }, index.h("ks-image", { src: this.image, alt: this.heading, cover: true, width: "600", height: "300" })), index.h("div", { class: "uk-padding-small uk-text-small uk-flex-1" }, index.h("h3", { class: "uk-margin-small-bottom" }, index.h("a", { class: "uk-link-heading", href: this.link }, this.heading)), index.h("div", { class: "uk-text-meta" }, index.h("span", { "uk-icon": "icon: calendar" }), " ", this.date, index.h("span", { "uk-icon": "search", class: "uk-margin-left" }), " ", this.views), index.h("p", { class: "uk-margin-remove-bottom" }, index.h("slot", null))), index.h("div", { class: "uk-card-footer uk-padding-small uk-text-center" }, index.h("a", { class: "uk-button uk-button-text", href: this.link }, "Zobacz wi\u0119cej")))));
+    return (h("ks-card", { height: true }, h("div", { class: "uk-flex uk-flex-column uk-flex-between uk-height-1-1" }, h("a", { href: this.link }, h("ks-image", { src: this.image, alt: this.heading, cover: true, width: "600", height: "300" })), h("div", { class: "uk-padding-small uk-text-small uk-flex-1" }, h("h3", { class: "uk-margin-small-bottom" }, h("a", { class: "uk-link-heading", href: this.link }, this.heading)), h("div", { class: "uk-text-meta" }, h("span", { "uk-icon": "icon: calendar" }), " ", this.date, h("span", { "uk-icon": "search", class: "uk-margin-left" }), " ", this.views), h("p", { class: "uk-margin-remove-bottom" }, h("slot", null))), h("div", { class: "uk-card-footer uk-padding-small uk-text-center" }, h("a", { class: "uk-button uk-button-text", href: this.link }, "Zobacz wi\u0119cej")))));
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 ArticleCard.style = articleCardCss;
 
 const Banner = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
   }
   render() {
-    return (index.h("div", { class: "uk-position-cover", style: { backgroundColor: this.color } }, index.h("a", { href: this.link }, index.h("ks-img", { vertical: true, center: true, src: this.image, alt: this.name }))));
+    return (h("div", { class: "uk-position-cover", style: { backgroundColor: this.color } }, h("a", { href: this.link }, h("ks-img", { vertical: true, center: true, src: this.image, alt: this.name }))));
   }
 };
 
 const ArticleCard$1 = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
   }
   render() {
     const dotnavBG = '#dfdfdf';
-    return (index.h("div", { class: "uk-section uk-padding-remove" }, index.h("div", { "uk-slideshow": "max-height: 550; ratio: 1:1; autoplay: true; animation: slide", class: "uk-dark" }, index.h("div", { class: "uk-position-relative" }, index.h("div", { class: "uk-slideshow-items" }, index.h("slot", null)), index.h("div", { class: "uk-flex uk-flex-center uk-position-bottom uk-visible@s", style: { height: '36px', transform: 'translateY(36px)' } }, index.h("svg", { height: "36", width: "36", style: { fill: dotnavBG } }, index.h("polygon", { points: "0,0 36,0 36,36" })), index.h("div", { style: { backgroundColor: dotnavBG, padding: '13px 30px' } }, index.h("ul", { class: "uk-slideshow-nav uk-dotnav" })), index.h("svg", { height: "36", width: "36", style: { fill: dotnavBG } }, index.h("polygon", { points: "0,0 36,0 0,36" })))))));
+    return (h("div", { class: "uk-section uk-padding-remove" }, h("div", { "uk-slideshow": "max-height: 550; ratio: 1:1; autoplay: true; animation: slide", class: "uk-dark" }, h("div", { class: "uk-position-relative" }, h("div", { class: "uk-slideshow-items" }, h("slot", null)), h("div", { class: "uk-flex uk-flex-center uk-position-bottom uk-visible@s", style: { height: '36px', transform: 'translateY(36px)' } }, h("svg", { height: "36", width: "36", style: { fill: dotnavBG } }, h("polygon", { points: "0,0 36,0 36,36" })), h("div", { style: { backgroundColor: dotnavBG, padding: '13px 30px' } }, h("ul", { class: "uk-slideshow-nav uk-dotnav" })), h("svg", { height: "36", width: "36", style: { fill: dotnavBG } }, h("polygon", { points: "0,0 36,0 0,36" })))))));
   }
 };
 
 const ButtonCart = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.count = "1";
     this.traits = "";
     this.expand = false;
@@ -84,7 +80,7 @@ const ButtonCart = class {
     const productCount = count || this.count;
     if (!this.disabled && !this.loading) {
       this.loading = true;
-      functions.AddToCart(this.productId, productCount, this.traits, this.product ? "0" : "1", this.name, (s) => this.ResultHandler(s));
+      AddToCart(this.productId, productCount, this.traits, this.product ? "0" : "1", this.name, (s) => this.ResultHandler(s));
     }
   }
   ResultHandler(state) {
@@ -107,18 +103,18 @@ const ButtonCart = class {
   }
   render() {
     const padding = { padding: "5px" };
-    return (index.h("button", { class: "uk-button uk-button-danger uk-position-relative uk-width-expand " + (this.padding ? "uk-padding-small@s" : ""), style: this.padding ? padding : null, disabled: this.disabled, "aria-label": "Do koszyka", onClick: () => this.ClickHandler() }, this.loading ?
-      index.h("div", { "uk-spinner": "ratio: 0.6" }) :
+    return (h("button", { class: "uk-button uk-button-danger uk-position-relative uk-width-expand " + (this.padding ? "uk-padding-small@s" : ""), style: this.padding ? padding : null, disabled: this.disabled, "aria-label": "Do koszyka", onClick: () => this.ClickHandler() }, this.loading ?
+      h("div", { "uk-spinner": "ratio: 0.6" }) :
       this.icon ?
-        index.h("span", { "uk-icon": "icon: cart" }) :
-        index.h("span", null, "DO KOSZYKA")));
+        h("span", { "uk-icon": "icon: cart" }) :
+        h("span", null, "DO KOSZYKA")));
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 
 const ButtonFav = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.subtract = false;
     this.expand = false;
     this.padding = false;
@@ -134,9 +130,9 @@ const ButtonFav = class {
     if (!this.loading && !this.success) {
       this.loading = true;
       if (this.subtract)
-        functions.RemoveFromFavourites(this.productId, () => this.ResultHandler());
+        RemoveFromFavourites(this.productId, () => this.ResultHandler());
       else
-        functions.AddToFavourites(this.productId, () => this.ResultHandler());
+        AddToFavourites(this.productId, () => this.ResultHandler());
     }
   }
   ResultHandler() {
@@ -150,18 +146,18 @@ const ButtonFav = class {
   }
   render() {
     const padding = { padding: "5px" };
-    return (index.h("button", { class: "uk-button uk-button-danger uk-button-danger-darker uk-position-relative uk-width-expand " + (this.padding ? "uk-padding-small@s" : ""), style: this.padding ? padding : null, "aria-label": "Do koszyka", onClick: () => { this.ClickHandler(); } }, this.loading ?
-      index.h("div", { "uk-spinner": "ratio: 0.6" }) :
-      index.h("span", { "uk-icon": this.subtract ? "trash" : "heart" }), this.success ?
-      index.h("div", { class: "ks-success-check uk-position-cover uk-animation-fade", style: { backgroundColor: "#c10e2c" } }, index.h("span", { "uk-icon": "check", class: "uk-position-center" }))
+    return (h("button", { class: "uk-button uk-button-danger uk-button-danger-darker uk-position-relative uk-width-expand " + (this.padding ? "uk-padding-small@s" : ""), style: this.padding ? padding : null, "aria-label": "Do koszyka", onClick: () => { this.ClickHandler(); } }, this.loading ?
+      h("div", { "uk-spinner": "ratio: 0.6" }) :
+      h("span", { "uk-icon": this.subtract ? "trash" : "heart" }), this.success ?
+      h("div", { class: "ks-success-check uk-position-cover uk-animation-fade", style: { backgroundColor: "#c10e2c" } }, h("span", { "uk-icon": "check", class: "uk-position-center" }))
       : null));
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 
 const Card = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.padding = false;
     this.small = false;
     this.margin = false;
@@ -176,16 +172,16 @@ const Card = class {
     const padding = this.padding ? this.small ? "uk-padding-small" : "" : "uk-padding-remove";
     const margin = this.margin ? "uk-margin-bottom" : "";
     const height = this.height ? "uk-height-1-1" : "";
-    return (index.h("div", { class: "uk-card uk-card-default uk-card-body " + padding + " " + margin + " " + height }, index.h("slot", null)));
+    return (h("div", { class: "uk-card uk-card-default uk-card-body " + padding + " " + margin + " " + height }, h("slot", null)));
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 
 const categorySimpleCss = ".ks-category-simple{display:inline-block;position:relative;height:32px;outline:1px solid transparent}.ks-category-simple>a{margin:0 10px;line-height:35px;text-decoration:none;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;color:white}.ks-category-simple>a:hover{text-decoration:none;color:#ffffffbb}.ks-category-simple>div{background-color:white;color:#252525;position:absolute;z-index:10000;top:33px;left:0px;min-width:200px;opacity:0.0;-webkit-transition:opacity 0.2s ease;transition:opacity 0.2s ease;-webkit-box-shadow:0 5px 15px rgba(0, 0, 0, 0.26);box-shadow:0 5px 15px rgba(0, 0, 0, 0.26)}.ks-category-simple>div a{display:block;padding:9px 15px;text-decoration:none;font-size:14px;text-align:left;-webkit-box-sizing:border-box;box-sizing:border-box;border-bottom:1px solid #f2f2f2;-webkit-transition:background-color 0.3s ease;transition:background-color 0.3s ease;color:#252525}.ks-category-simple>div a:hover{text-decoration:none;color:#252525;background-color:#f9f9f9}.ks-category-simple>div a:active{text-decoration:none;background-color:#e6e6e6}";
 
 const NavbarCategorySimple = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.hidden = true;
     this.hiddenO = true;
   }
@@ -201,24 +197,24 @@ const NavbarCategorySimple = class {
     }, 200);
   }
   render() {
-    return (index.h(navbarData.Tunnel.Consumer, null, ({ categories }) => {
+    return (h(Tunnel.Consumer, null, ({ categories }) => {
       const category = categories[this.category];
-      return (index.h("div", { class: "ks-category-simple", style: {
+      return (h("div", { class: "ks-category-simple", style: {
           backgroundColor: category.backgroundColor ? category.backgroundColor : "",
           outlineColor: category.backgroundColor ? category.backgroundColor : ""
-        } }, index.h("a", { href: category.url, class: "uk-text-small", style: {
+        } }, h("a", { href: category.url, class: "uk-text-small", style: {
           color: category.color ? category.color : "",
           marginLeft: this.category == 0 ? "0" :
             category.children ? "15px" : ""
-        } }, category.name, category.children ? index.h("span", { "uk-icon": "triangle-down" }) : null), category.children ?
-        index.h("div", { style: {
+        } }, category.name, category.children ? h("span", { "uk-icon": "triangle-down" }) : null), category.children ?
+        h("div", { style: {
             visibility: this.hidden ? "hidden" : "visible",
             opacity: this.hiddenO ? "0.0" : "1.0"
-          } }, index.h("div", null, category.children.map((child) => index.h("a", { href: child.url }, child.name))))
+          } }, h("div", null, category.children.map((child) => h("a", { href: child.url }, child.name))))
         : null));
     }));
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 NavbarCategorySimple.style = categorySimpleCss;
 
@@ -226,7 +222,7 @@ const categoryViewCss = ".ks-category-view{display:inline-block;height:32px;outl
 
 const NavbarCategoryView = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.hidden = true;
     this.hiddenO = true;
     this.active = 0;
@@ -260,53 +256,53 @@ const NavbarCategoryView = class {
       this.active = index;
   }
   render() {
-    return (index.h(navbarData.Tunnel.Consumer, null, ({ categories }) => {
+    return (h(Tunnel.Consumer, null, ({ categories }) => {
       const category = categories[this.category];
-      return (index.h("div", { class: "ks-category-view", style: {
+      return (h("div", { class: "ks-category-view", style: {
           backgroundColor: category.backgroundColor ? category.backgroundColor : "",
           outlineColor: category.backgroundColor ? category.backgroundColor : ""
-        } }, index.h("a", { href: category.url, class: "uk-text-small", style: {
+        } }, h("a", { href: category.url, class: "uk-text-small", style: {
           color: category.color ? category.color : "",
           marginLeft: this.category == 0 ? "0" : ""
-        } }, category.name, category.children ? index.h("span", { "uk-icon": "triangle-down" }) : null), category.children ?
-        index.h("div", { class: "uk-width-1-1", style: {
+        } }, category.name, category.children ? h("span", { "uk-icon": "triangle-down" }) : null), category.children ?
+        h("div", { class: "uk-width-1-1", style: {
             display: this.hidden ? "none" : "block",
             opacity: this.hiddenO ? "0.0" : "1.0"
-          } }, index.h("div", { class: "uk-flex" }, index.h("div", { class: "ks-buttons uk-width-small" }, category.children.map((child, index$1) => index.h("a", { href: child.url, class: this.active == index$1 && child.children ? "uk-active" : "", onMouseOver: () => this.SetActive(index$1, !!child.children) }, child.name, !child.children ? index.h("span", { "uk-icon": "link", class: "uk-float-right" }) : null))), index.h("div", { class: "ks-content uk-width-expand", style: { maxHeight: this.CalculateHeight() + "px" } }, category.children.map((child, index$1) => index.h("div", { style: { display: this.active == index$1 && !this.hidden ? "flex" : "none" }, class: "uk-flex uk-flex-column uk-flex-wrap uk-flex-wrap-top uk-flex-top uk-height-1-1 uk-child-width-small" }, child.children ? child.children.map((item) => index.h("a", { href: item.url }, item.name)) : null))), index.h("div", { class: "ks-graphic uk-width-expand", style: { maxHeight: this.CalculateHeight() + "px" } }, category.children.map((child, index$1) => child.image ?
-          index.h("ks-img", { vertical: true, right: true, target: ".ks-category-view > div", src: child.image, style: { display: (this.active == index$1) ? "flex" : "none" } })
+          } }, h("div", { class: "uk-flex" }, h("div", { class: "ks-buttons uk-width-small" }, category.children.map((child, index) => h("a", { href: child.url, class: this.active == index && child.children ? "uk-active" : "", onMouseOver: () => this.SetActive(index, !!child.children) }, child.name, !child.children ? h("span", { "uk-icon": "link", class: "uk-float-right" }) : null))), h("div", { class: "ks-content uk-width-expand", style: { maxHeight: this.CalculateHeight() + "px" } }, category.children.map((child, index) => h("div", { style: { display: this.active == index && !this.hidden ? "flex" : "none" }, class: "uk-flex uk-flex-column uk-flex-wrap uk-flex-wrap-top uk-flex-top uk-height-1-1 uk-child-width-small" }, child.children ? child.children.map((item) => h("a", { href: item.url }, item.name)) : null))), h("div", { class: "ks-graphic uk-width-expand", style: { maxHeight: this.CalculateHeight() + "px" } }, category.children.map((child, index) => child.image ?
+          h("ks-img", { vertical: true, right: true, target: ".ks-category-view > div", src: child.image, style: { display: (this.active == index) ? "flex" : "none" } })
           : null))))
         : null));
     }));
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 NavbarCategoryView.style = categoryViewCss;
 
 const Featured = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
   }
   componentWillLoad() {
     this.root.style.display = "block";
   }
   render() {
-    return (index.h("a", { href: this.link }, index.h("div", { class: "uk-inline-clip uk-transition-toggle uk-light", tabindex: "0" }, index.h("ks-image", { style: { display: "block" }, src: this.image, alt: this.alt }), index.h("div", { class: "uk-position-center" }, index.h("span", { class: "uk-transition-fade", "uk-icon": "icon: link; ratio: 2", style: { backgroundColor: "rgba(0, 0, 0, 0.5)", borderRadius: "50px", padding: "10px" } })))));
+    return (h("a", { href: this.link }, h("div", { class: "uk-inline-clip uk-transition-toggle uk-light", tabindex: "0" }, h("ks-image", { style: { display: "block" }, src: this.image, alt: this.alt }), h("div", { class: "uk-position-center" }, h("span", { class: "uk-transition-fade", "uk-icon": "icon: link; ratio: 2", style: { backgroundColor: "rgba(0, 0, 0, 0.5)", borderRadius: "50px", padding: "10px" } })))));
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 
 const FeaturedContainer = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
   }
   render() {
-    return (index.h("div", { class: "uk-container uk-padding-remove uk-margin-medium-bottom" }, index.h("div", { class: "uk-grid-small uk-child-width-1-1 uk-child-width-1-2@m", "uk-grid": "masonry: true" }, index.h("slot", null))));
+    return (h("div", { class: "uk-container uk-padding-remove uk-margin-medium-bottom" }, h("div", { class: "uk-grid-small uk-child-width-1-1 uk-child-width-1-2@m", "uk-grid": "masonry: true" }, h("slot", null))));
   }
 };
 
 const Flex = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.center = false;
     this.between = false;
     this.around = false;
@@ -329,7 +325,7 @@ const Flex = class {
       : (this.reverse ? "uk-flex-row-reverse" : "");
     const height = this.height ? "uk-height-1-1" : "";
     const match = this.match ? "uk-grid-match" : "";
-    return (index.h("div", { class: [justify, alignment, gutter, size, direction, height, match].join(" "), "uk-grid": true }, index.h("slot", null)));
+    return (h("div", { class: [justify, alignment, gutter, size, direction, height, match].join(" "), "uk-grid": true }, h("slot", null)));
   }
 };
 
@@ -337,13 +333,13 @@ const footerCss = "ks-footer{display:block;background-color:var(--footer-color);
 
 const Footer = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
   }
   render() {
     return [
-      index.h("div", { class: "about" }, index.h("div", { class: "info" }, index.h("div", { class: "contact" }, index.h("ks-img", { target: "body", class: "logo", src: this.logo }), index.h("a", { href: `mailto:${this.email}` }, " ", this.email, " "), index.h("a", { href: `tel:${this.phone}` }, " ", this.phone, " ")), index.h("div", { class: "reviews" }, index.h("slot", { name: "buttons" }))), index.h("div", { class: "links" }, index.h("slot", null))),
-      index.h("div", { class: "newsletter", onClick: () => document.querySelector('ks-newsletter-popup').Show() }, index.h("div", null, "Zapisz si\u0119 do naszego newslettera i zyskaj"), index.h("div", null, "KUPON 10Z\u0141")),
-      index.h("div", { class: "software" }, index.h("a", { href: this.softwareLink, rel: "nofollow" }, "Oprogramowanie sklepu ShopGold"))
+      h("div", { class: "about" }, h("div", { class: "info" }, h("div", { class: "contact" }, h("ks-img", { target: "body", class: "logo", src: this.logo }), h("a", { href: `mailto:${this.email}` }, " ", this.email, " "), h("a", { href: `tel:${this.phone}` }, " ", this.phone, " ")), h("div", { class: "reviews" }, h("slot", { name: "buttons" }))), h("div", { class: "links" }, h("slot", null))),
+      h("div", { class: "newsletter", onClick: () => document.querySelector('ks-newsletter-popup').Show() }, h("div", null, "Zapisz si\u0119 do naszego newslettera i zyskaj"), h("div", null, "KUPON 10Z\u0141")),
+      h("div", { class: "software" }, h("a", { href: this.softwareLink, rel: "nofollow" }, "Oprogramowanie sklepu ShopGold"))
     ];
   }
 };
@@ -353,10 +349,10 @@ const footerButtonCss = "ks-footer-button{display:inline-block;max-width:120px;o
 
 const FooterButton = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
   }
   render() {
-    return (index.h("a", { href: this.href, rel: "nofollow" }, index.h("ks-img", { src: this.image, target: "body" })));
+    return (h("a", { href: this.href, rel: "nofollow" }, h("ks-img", { src: this.image, target: "body" })));
   }
 };
 FooterButton.style = footerButtonCss;
@@ -365,12 +361,12 @@ const footerLinksCss = "ks-footer-links{display:block;padding:0 20px;margin:0}ks
 
 const FooterLinks = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
   }
   render() {
     return [
-      index.h("h4", null, this.heading),
-      index.h("ul", null, index.h("slot", null))
+      h("h4", null, this.heading),
+      h("ul", null, h("slot", null))
     ];
   }
 };
@@ -380,10 +376,10 @@ const gridCss = "ks-grid{display:-webkit-box;display:-ms-flexbox;display:flex;-m
 
 const Grid = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
   }
   render() {
-    return index.h("slot", null);
+    return h("slot", null);
   }
 };
 Grid.style = gridCss;
@@ -392,7 +388,7 @@ const homepageInfoCss = "ks-homepage-info{display:block}ks-homepage-info h1,h2{f
 
 const HomepageInfo = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.mobile = 0;
   }
   resizeHandler() {
@@ -413,30 +409,30 @@ const HomepageInfo = class {
     if (this.mobile == 3)
       containerPadding = "40px 10px 40px 10px";
     const itemPadding = this.mobile != 3 ? { padding: "0 50px" } : {};
-    return (index.h("div", { class: "uk-section uk-padding-remove-vertical" }, index.h("div", { class: "uk-container uk-container-medium" }, index.h("div", { style: { padding: containerPadding } }, index.h("div", null, index.h("slot", { name: "mainHeading" }), index.h("p", { style: { margin: "0 auto 40px auto", maxWidth: "800px" } }, index.h("slot", { name: "mainContent" }))), this.mobile > 0 ?
-      index.h("section", { "uk-slider": "center: true; finite: true", class: "uk-position-relative uk-visible-toggle" }, index.h("div", { class: "uk-overflow-hidden" }, index.h("ul", { class: "uk-slider-items uk-child-width-1-1 uk-text-justify" }, index.h("li", { style: itemPadding }, index.h("slot", { name: "firstHeading" }), index.h("slot", { name: "firstContent" })), index.h("li", { style: itemPadding }, index.h("slot", { name: "secondHeading" }), index.h("slot", { name: "secondContent" })), index.h("li", { style: itemPadding }, index.h("slot", { name: "thirdHeading" }), index.h("slot", { name: "thirdContent" })))), this.mobile != 3 ?
-        index.h("div", null, index.h("a", { class: "uk-position-center-left", href: "#", "uk-slidenav-previous": true, "uk-slider-item": "previous" }), index.h("a", { class: "uk-position-center-right", href: "#", "uk-slidenav-next": true, "uk-slider-item": "next" }))
+    return (h("div", { class: "uk-section uk-padding-remove-vertical" }, h("div", { class: "uk-container uk-container-medium" }, h("div", { style: { padding: containerPadding } }, h("div", null, h("slot", { name: "mainHeading" }), h("p", { style: { margin: "0 auto 40px auto", maxWidth: "800px" } }, h("slot", { name: "mainContent" }))), this.mobile > 0 ?
+      h("section", { "uk-slider": "center: true; finite: true", class: "uk-position-relative uk-visible-toggle" }, h("div", { class: "uk-overflow-hidden" }, h("ul", { class: "uk-slider-items uk-child-width-1-1 uk-text-justify" }, h("li", { style: itemPadding }, h("slot", { name: "firstHeading" }), h("slot", { name: "firstContent" })), h("li", { style: itemPadding }, h("slot", { name: "secondHeading" }), h("slot", { name: "secondContent" })), h("li", { style: itemPadding }, h("slot", { name: "thirdHeading" }), h("slot", { name: "thirdContent" })))), this.mobile != 3 ?
+        h("div", null, h("a", { class: "uk-position-center-left", href: "#", "uk-slidenav-previous": true, "uk-slider-item": "previous" }), h("a", { class: "uk-position-center-right", href: "#", "uk-slidenav-next": true, "uk-slider-item": "next" }))
         :
-          index.h("ul", { class: "uk-slider-nav uk-dotnav uk-flex-center" }))
+          h("ul", { class: "uk-slider-nav uk-dotnav uk-flex-center" }))
       :
-        index.h("div", { class: "uk-child-width-1-3 uk-text-justify", "uk-grid": true }, index.h("div", null, index.h("slot", { name: "firstHeading" }), index.h("slot", { name: "firstContent" })), index.h("div", null, index.h("slot", { name: "secondHeading" }), index.h("slot", { name: "secondContent" })), index.h("div", null, index.h("slot", { name: "thirdHeading" }), index.h("slot", { name: "thirdContent" })))))));
+        h("div", { class: "uk-child-width-1-3 uk-text-justify", "uk-grid": true }, h("div", null, h("slot", { name: "firstHeading" }), h("slot", { name: "firstContent" })), h("div", null, h("slot", { name: "secondHeading" }), h("slot", { name: "secondContent" })), h("div", null, h("slot", { name: "thirdHeading" }), h("slot", { name: "thirdContent" })))))));
   }
 };
 HomepageInfo.style = homepageInfoCss;
 
 const ProductContainer = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
   }
   render() {
-    return (index.h("div", { class: "uk-margin-medium-bottom" }, index.h("div", { class: "uk-flex uk-flex-center" }, index.h("ul", { class: "uk-subnav uk-subnav-pill uk-padding-small uk-padding-remove-horizontal uk-text-small uk-text-normal@s", "uk-switcher": "connect: #ks-homepage-products; toggle: > *; animation: uk-animation-slide-top-small, uk-animation-slide-bottom-small" }, index.h("li", { class: "uk-active" }, index.h("a", { href: "#" }, "Promocje")), index.h("li", { class: "uk-padding-remove" }, index.h("a", { href: "#" }, "Popularne")), index.h("li", { class: "uk-padding-remove" }, index.h("a", { href: "#" }, "Nowo\u015Bci")))), index.h("ul", { class: "uk-switcher uk-margin-top@l", id: "ks-homepage-products" }, index.h("slot", null))));
+    return (h("div", { class: "uk-margin-medium-bottom" }, h("div", { class: "uk-flex uk-flex-center" }, h("ul", { class: "uk-subnav uk-subnav-pill uk-padding-small uk-padding-remove-horizontal uk-text-small uk-text-normal@s", "uk-switcher": "connect: #ks-homepage-products; toggle: > *; animation: uk-animation-slide-top-small, uk-animation-slide-bottom-small" }, h("li", { class: "uk-active" }, h("a", { href: "#" }, "Promocje")), h("li", { class: "uk-padding-remove" }, h("a", { href: "#" }, "Popularne")), h("li", { class: "uk-padding-remove" }, h("a", { href: "#" }, "Nowo\u015Bci")))), h("ul", { class: "uk-switcher uk-margin-top@l", id: "ks-homepage-products" }, h("slot", null))));
   }
 };
 
-var feather = _commonjsHelpers.createCommonjsModule(function (module, exports) {
+var feather = createCommonjsModule(function (module, exports) {
 (function webpackUniversalModuleDefinition(root, factory) {
 	module.exports = factory();
-})(typeof self !== 'undefined' ? self : _commonjsHelpers.commonjsGlobal, function() {
+})(typeof self !== 'undefined' ? self : commonjsGlobal, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -2817,13 +2813,13 @@ module.exports = __webpack_require__(/*! /home/travis/build/feathericons/feather
 
 });
 
-const feather$1 = /*@__PURE__*/_commonjsHelpers.getDefaultExportFromCjs(feather);
+const feather$1 = /*@__PURE__*/getDefaultExportFromCjs(feather);
 
 const iconCss = "ks-icon{display:inline-block;color:inherit}ks-icon svg{stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;fill:none;vertical-align:top}ks-icon svg.thin{stroke-width:1}ks-icon svg.medium{stroke-width:1.3}";
 
 const Icon = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.name = "alert-octagon";
     this.size = 1;
   }
@@ -2848,15 +2844,15 @@ const Icon = class {
     svg.setAttribute("viewBox", `0 0 ${this.attrs.width} ${this.attrs.height}`);
     svg.setAttribute("class", stroke);
     svg.innerHTML = this.svg;
-    return index.h(index.Host, { innerHTML: svg.outerHTML });
+    return h(Host, { innerHTML: svg.outerHTML });
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 Icon.style = iconCss;
 
 const Image = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.sync = false;
     this.cover = false;
     this.contain = false;
@@ -2885,16 +2881,16 @@ const Image = class {
     else if (!this.loadAnimated)
       imageStyle = "uk-animation-fade";
     if (this.sync)
-      return index.h("img", { src: this.src, width: this.width, height: this.height, alt: this.alt });
+      return h("img", { src: this.src, width: this.width, height: this.height, alt: this.alt });
     else if (this.cover)
-      return (index.h("div", { class: "uk-cover-container" }, index.h("canvas", { width: this.width, height: this.height }), !this.loaded ? index.h("div", { class: "ks-spinner uk-position-center" }) : null, index.h("img", { "uk-cover": true, onLoad: e => this.loadCheck(e), class: imageStyle, width: this.width, height: this.height, "data-src": this.src, alt: this.alt, "uk-img": "target: !ks-image" })));
+      return (h("div", { class: "uk-cover-container" }, h("canvas", { width: this.width, height: this.height }), !this.loaded ? h("div", { class: "ks-spinner uk-position-center" }) : null, h("img", { "uk-cover": true, onLoad: e => this.loadCheck(e), class: imageStyle, width: this.width, height: this.height, "data-src": this.src, alt: this.alt, "uk-img": "target: !ks-image" })));
     else if (this.contain)
-      return (index.h("div", { class: "uk-position-relative" }, index.h("canvas", { width: this.width, height: this.height }), !this.loaded ? index.h("div", { class: "ks-spinner uk-position-center" }) : null, index.h("img", { onLoad: e => this.loadCheck(e), class: imageStyle + " uk-position-center uk-responsive-height", "data-src": this.src, width: this.width, height: this.height, alt: this.alt, "uk-img": "target: !ks-image" })));
+      return (h("div", { class: "uk-position-relative" }, h("canvas", { width: this.width, height: this.height }), !this.loaded ? h("div", { class: "ks-spinner uk-position-center" }) : null, h("img", { onLoad: e => this.loadCheck(e), class: imageStyle + " uk-position-center uk-responsive-height", "data-src": this.src, width: this.width, height: this.height, alt: this.alt, "uk-img": "target: !ks-image" })));
     else
-      return (index.h("div", { class: "uk-position-relative" }, !this.loaded ? [
-        index.h("canvas", { width: this.width, height: this.height }),
-        index.h("div", { class: "ks-spinner uk-position-center" })
-      ] : null, index.h("img", { onLoad: e => this.loadCheck(e), class: imageStyle, "data-src": this.src, width: this.width, height: this.height, alt: this.alt, "uk-img": "target: !ks-image" })));
+      return (h("div", { class: "uk-position-relative" }, !this.loaded ? [
+        h("canvas", { width: this.width, height: this.height }),
+        h("div", { class: "ks-spinner uk-position-center" })
+      ] : null, h("img", { onLoad: e => this.loadCheck(e), class: imageStyle, "data-src": this.src, width: this.width, height: this.height, alt: this.alt, "uk-img": "target: !ks-image" })));
   }
   static get watchers() { return {
     "src": ["srcListener"]
@@ -2905,8 +2901,8 @@ const imgCss = "ks-img{display:-webkit-box;display:-ms-flexbox;display:flex;posi
 
 const Img = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
-    this.lazyLoaded = index.createEvent(this, "lazyLoaded", 7);
+    registerInstance(this, hostRef);
+    this.lazyLoaded = createEvent(this, "lazyLoaded", 7);
     this.sync = false;
     this.vertical = false;
     this.contained = false;
@@ -2975,15 +2971,15 @@ const Img = class {
     const loading = this.loadAnimated ? "" : "loading";
     const classes = [responsive].join(" ");
     if (this.sync)
-      return (index.h("img", { class: classes, src: this.src, alt: this.alt }));
+      return (h("img", { class: classes, src: this.src, alt: this.alt }));
     return [
       (!this.loadAnimated ? [
-        index.h("div", { class: "ks-spinner uk-position-center" })
+        h("div", { class: "ks-spinner uk-position-center" })
       ] : null),
-      index.h("img", { class: classes + " " + loading, alt: this.alt, onLoad: (e) => this.loadHandler(e), "data-src": this.src, width: this.width, height: this.height })
+      h("img", { class: classes + " " + loading, alt: this.alt, onLoad: (e) => this.loadHandler(e), "data-src": this.src, width: this.width, height: this.height })
     ];
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
   static get watchers() { return {
     "src": ["srcListener"]
   }; }
@@ -2994,7 +2990,7 @@ const infoMessageCss = "ks-info-message[disabled]{display:none}ks-info-message{d
 
 const InfoMessage = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.disabled = false;
     this.animating = false;
     this.id = "";
@@ -3013,19 +3009,19 @@ const InfoMessage = class {
   }
   render() {
     return [
-      index.h("div", { class: "content" }, index.h("slot", null)),
-      index.h("div", { class: "close" }, index.h("ks-icon", { name: "x", onClick: () => this.disable() }))
+      h("div", { class: "content" }, h("slot", null)),
+      h("div", { class: "close" }, h("ks-icon", { name: "x", onClick: () => this.disable() }))
     ];
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 InfoMessage.style = infoMessageCss;
 
-const navbarCss = "ks-navbar{display:block;min-height:104px}ks-navbar.hydrated{-webkit-animation:300ms fade-in;animation:300ms fade-in}ks-navbar>nav{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:relative;color:var(--text-color-primary);background-color:var(--color-primary)}#ks-navbar-menu-buttons{-webkit-box-flex:0;-ms-flex:none;flex:none;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-sizing:border-box;box-sizing:border-box;min-height:70px;padding:0 15px;text-decoration:none}@media only screen and (max-width: 639px){ks-navbar .tablet-desktop{display:none}}@media only screen and (max-width: 959px){ks-navbar .desktop{display:none}}@media only screen and (min-width: 960px){ks-navbar .mobile-tablet{display:none}}";
+const navbarCss = "ks-navbar{display:block;min-height:104px}ks-navbar>nav{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:relative;color:var(--text-color-primary);background-color:var(--color-primary)}ks-navbar .logo{margin:0px 30px 0px 15px;max-width:217px}#ks-navbar-menu-buttons{-webkit-box-flex:0;-ms-flex:none;flex:none;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-sizing:border-box;box-sizing:border-box;min-height:70px;padding:0 15px;text-decoration:none}@media only screen and (max-width: 639px){ks-navbar .tablet-desktop{display:none}}@media only screen and (max-width: 959px){ks-navbar .desktop{display:none}}@media only screen and (min-width: 960px){ks-navbar .mobile-tablet{display:none}}";
 
 const Navbar = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.data = { links: {}, categories: [] };
     this.mobile = false;
   }
@@ -3088,21 +3084,22 @@ const Navbar = class {
     const favouritesCount = this.data.links.favouritesCount;
     const cartCount = this.data.links.cartCount;
     return [
-      index.h("nav", null, index.h("ks-navbar-logo", { image: this.logo, width: "217", height: "35" }), index.h("ks-navbar-search", null), index.h("div", { id: "ks-navbar-menu-buttons" }, index.h("ks-navbar-contact", { slot: "panel", phone: this.phone, email: this.email, contact: this.contact }), this.accountLink ?
-        index.h("ks-navbar-button", { name: "Twoje konto", link: this.accountLink, icon: "user", class: "desktop" })
-        : null, index.h("ks-navbar-button", { name: "Schowek", link: this.heartLink, icon: "star", count: favouritesCount, class: "tablet-desktop" }), index.h("ks-navbar-button", { name: "Koszyk", link: this.cartLink, icon: "shopping-bag", count: cartCount, class: "tablet-desktop" }), this.loginLink ?
-        index.h("ks-navbar-button", { name: "Zaloguj", link: this.loginLink, icon: "key", class: "desktop" })
+      h("nav", null, h("ks-img", { contained: true, class: "logo", sync: true, src: this.logo, width: 217, height: 35, alt: "kuchniasklep.pl" }), h("ks-navbar-search", null), h("ks-navbar-contact-panel", { phone: this.phone, email: this.email, contact: this.contact }), h("div", { id: "ks-navbar-menu-buttons" }, h("ks-navbar-button", { name: "Kontakt", icon: "phone", onClick: () => this.root.querySelector("ks-navbar-contact-panel").Toggle() }), this.accountLink ?
+        h("ks-navbar-button", { name: "Twoje konto", link: this.accountLink, icon: "user", class: "desktop" })
+        : null, h("ks-navbar-button", { name: "Schowek", link: this.heartLink, icon: "star", count: favouritesCount, class: "tablet-desktop" }), h("ks-navbar-button", { name: "Koszyk", link: this.cartLink, icon: "shopping-bag", count: cartCount, class: "tablet-desktop" }), this.loginLink ?
+        h("ks-navbar-button", { name: "Zaloguj", link: this.loginLink, icon: "key", class: "desktop" })
         : null, this.logoutLink ?
-        index.h("ks-navbar-button", { name: "Wyloguj", link: this.logoutLink, icon: "log-out", class: "desktop" })
-        : null, index.h("ks-navbar-button", { name: "Menu", link: "#navbar-sidebar", toggle: true, icon: "menu", class: "mobile-tablet" }))),
-      index.h(navbarData.Tunnel.Provider, { state: this.data }, !this.mobile ?
-        index.h("ks-navbar-categories-expanded", null)
+        h("ks-navbar-button", { name: "Wyloguj", link: this.logoutLink, icon: "log-out", class: "desktop" })
+        : null, h("ks-navbar-button", { name: "Menu", link: "#navbar-sidebar", toggle: true, icon: "menu", class: "mobile-tablet" }))),
+      h(Tunnel.Provider, { state: this.data }, !this.mobile ?
+        h("ks-navbar-categories-expanded", null)
         : [
-          index.h("ks-navbar-search-mobile", null),
-          index.h("ks-navbar-sidebar", null)
+          h("ks-navbar-search-mobile", null),
+          h("ks-navbar-sidebar", null)
         ])
     ];
   }
+  get root() { return getElement(this); }
 };
 Navbar.style = navbarCss;
 
@@ -3110,16 +3107,16 @@ const navbarButtonCss = "ks-navbar-button{display:block;position:relative;height
 
 const NavbarButton = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
   }
   render() {
     const toggleString = `target: ${this.link}; animation: uk-animation-fade`;
     const toggle = this.animatedToggle ? toggleString : this.toggle;
     return [
-      index.h("a", { href: this.link, class: "uk-button uk-button-primary uk-position-relative", "uk-toggle": toggle, style: { lineHeight: "70px", minWidth: "60px" }, "aria-label": this.name }, index.h("ks-icon", { name: this.icon, size: 1.4 }), this.count && this.count != 0 ?
-        index.h("span", { class: "count uk-position-top-right", style: { marginTop: "5px" } }, this.count)
+      h("a", { href: this.link, class: "uk-button uk-button-primary uk-position-relative", "uk-toggle": toggle, style: { lineHeight: "70px", minWidth: "60px" }, "aria-label": this.name }, h("ks-icon", { name: this.icon, size: 1.4 }), this.count && this.count != 0 ?
+        h("span", { class: "count uk-position-top-right", style: { marginTop: "5px" } }, this.count)
         : null),
-      index.h("div", null, this.name)
+      h("div", null, this.name)
     ];
   }
 };
@@ -3127,10 +3124,10 @@ NavbarButton.style = navbarButtonCss;
 
 const NavbarCategoriesExpanded = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
   }
   render() {
-    return (index.h(navbarData.Tunnel.Consumer, null, ({ categories }) => (index.h("nav", { class: "uk-visible@m", style: {
+    return (h(Tunnel.Consumer, null, ({ categories }) => (h("nav", { class: "uk-visible@m", style: {
         backgroundColor: '#00426e',
         transition: "background-color 0.2s ease",
         height: "32px",
@@ -3138,7 +3135,7 @@ const NavbarCategoriesExpanded = class {
         borderBottom: "1px solid transparent",
         position: "relative",
         padding: "0 15px"
-      } }, categories.map((category, index$1) => {
+      } }, categories.map((category, index) => {
       let subcategoriesWithChildren = false;
       if (category.children)
         for (let x = 0; x < category.children.length; x++) {
@@ -3149,22 +3146,25 @@ const NavbarCategoriesExpanded = class {
           }
         }
       if (subcategoriesWithChildren)
-        return (index.h("ks-category-view", { count: category.children ? category.children.length : 0, category: index$1 }));
+        return (h("ks-category-view", { count: category.children ? category.children.length : 0, category: index }));
       else
-        return (index.h("ks-category-simple", { category: index$1 }));
+        return (h("ks-category-simple", { category: index }));
     })))));
   }
 };
 
-const NavbarContact = class {
+const navbarContactPanelCss = "ks-navbar-contact-panel{display:none;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end;position:absolute;top:0px;left:0px;overflow:hidden;width:100%;color:white;z-index:100000}ks-navbar-contact-panel.visible{-webkit-animation:fade-in 0.3s ease 1;animation:fade-in 0.3s ease 1}ks-navbar-contact-panel.hidden{-webkit-animation:fade-out 0.3s ease 1;animation:fade-out 0.3s ease 1}ks-navbar-contact-panel[toggled]{display:-webkit-box;display:-ms-flexbox;display:flex}ks-navbar-contact-panel .navbar{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse;position:relative;right:0px;height:70px;background-color:var(--color-primary)}ks-navbar-contact-panel .content{display:-webkit-box;display:-ms-flexbox;display:flex;width:100%;background-color:var(--color-primary-dark);-webkit-box-shadow:0 6px 6px rgba(0, 0, 0, 0.2);box-shadow:0 6px 6px rgba(0, 0, 0, 0.2)}ks-navbar-contact-panel .map{-webkit-box-flex:0;-ms-flex:none;flex:none;background-color:#eeeeee}ks-navbar-contact-panel .info{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-flex:1;-ms-flex:1;flex:1;padding:20px;font-size:16px;text-align:center}ks-navbar-contact-panel .address,ks-navbar-contact-panel .buttons{width:100%}ks-navbar-contact-panel .buttons a{-webkit-box-sizing:border-box;box-sizing:border-box;width:100%;margin:2px;padding:3px;font-size:18px;color:#ffffff;background-color:transparent;border:1px solid #ffffff;border-radius:500px}@media only screen and (max-width: 639px){ks-navbar-contact-panel .address{font-size:14px}ks-navbar-contact-panel .buttons a{font-size:14px}}@media only screen and (min-width: 640px){ks-navbar-contact-panel .margin{margin-right:10%}ks-navbar-contact-panel .address{width:calc(100% * 1 / 3.001)}ks-navbar-contact-panel .buttons{width:calc(100% * 2 / 3.001)}}@media only screen and (min-width: 1200px){ks-navbar-contact-panel .info>*{width:50%}}@media only screen and (max-width: 1200px){ks-navbar-contact-panel .content{-webkit-box-orient:vertical;-webkit-box-direction:reverse;-ms-flex-direction:column-reverse;flex-direction:column-reverse;height:calc(100vh - 72px)}}";
+
+const NavbarContactPanel = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
+    this.toggled = false;
     this.mobile = 0;
     this.height = 0;
     this.width = 0;
     this.menuWidth = 0;
-    this.active = false;
     this.initialized = false;
+    this.visible = "hidden";
   }
   resizeHandler() {
     this.mobile = (window.innerWidth <= 1200) ?
@@ -3177,7 +3177,7 @@ const NavbarContact = class {
     this.FreezeScrolling();
     this.MenuWidth();
   }
-  componentWillLoad() {
+  componentWillRender() {
     this.resizeHandler();
   }
   mapDimensions() {
@@ -3186,7 +3186,7 @@ const NavbarContact = class {
       this.width = Math.floor(document.documentElement.clientWidth * 0.6) - 1;
     }
     else if (this.mobile == 3) {
-      this.height = document.documentElement.clientHeight - 340;
+      this.height = document.documentElement.clientHeight - 350;
       this.width = document.documentElement.clientWidth;
     }
     else {
@@ -3198,15 +3198,8 @@ const NavbarContact = class {
     const buttons = document.getElementById("ks-navbar-menu-buttons");
     this.menuWidth = buttons.clientWidth;
   }
-  Toggle() {
-    this.active = !this.active;
-    this.initialized = true;
-    this.mapDimensions();
-    this.FreezeScrolling();
-    this.MenuWidth();
-  }
   FreezeScrolling() {
-    if (this.active && this.mobile) {
+    if (this.toggled && this.mobile) {
       window.scrollTo(0, 0);
       document.querySelector('html').style.overflowY = "hidden";
     }
@@ -3214,99 +3207,88 @@ const NavbarContact = class {
       document.querySelector('html').style.overflowY = "";
     }
   }
-  render() {
-    const buttonStyle = {
-      margin: "2px", padding: "3px",
-      backgroundColor: "transparent",
-      fontSize: this.mobile == 3 ? "14px" : "18px"
-    };
-    const menuStyle = {
-      position: "absolute",
-      width: this.menuWidth + "px",
-      top: "0", right: "0", zIndex: "2147483647",
-      backgroundColor: "#015b97"
-    };
-    const contactStyle = {
-      top: "72px", left: "0", zIndex: "2147483647",
-      width: "100%"
-    };
-    const contactContainerStyle = {
-      backgroundColor: "rgb(0, 66, 110)",
-      height: this.mobile ? "calc(100vh - 72px)" : ""
-    };
-    return [
-      index.h("ks-navbar-button", { name: "Kontakt", link: "#ks-navbar-contact", "animated-toggle": true, icon: "phone", onClick: () => this.Toggle() }),
-      index.h("div", { style: { zIndex: "2147483647" } }, index.h("div", { hidden: !this.active, style: menuStyle }, index.h("ks-navbar-button", { style: { float: "right", marginRight: "15px" }, link: "#ks-navbar-contact", "animated-toggle": true, name: "Kontakt close", icon: "x", onClick: () => this.Toggle() })), index.h("div", { id: "ks-navbar-contact", hidden: true, class: "uk-position-absolute uk-overflow-hidden uk-light", style: contactStyle }, index.h("div", { class: "uk-flex uk-flex-wrap uk-width-1-1 " + (this.mobile == 0 ? "" : "uk-flex-column-reverse"), style: contactContainerStyle }, this.initialized ?
-        index.h("div", { class: "uk-flex-none", style: { backgroundColor: "#eeeeee" } }, index.h("iframe", { frameborder: "0", height: this.height, width: this.width, src: "https://maps.google.pl/maps?ie=UTF8&q=Pozna%C5%84ska+23%2C+58-500+Jelenia+G%C3%B3ra&gl=PL&hl=pl&t=m&iwloc=A&output=embed" }))
-        : null, index.h("div", { class: "uk-flex-1 uk-padding-small uk-flex uk-flex-wrap uk-flex-center uk-flex-middle" }, index.h("div", { class: "uk-width-1-1 uk-width-1-3@s uk-width-1-2@l uk-text-center uk-text-small uk-text-normal@s ks-text-decorated", style: { color: "white" }, innerHTML: this.contact }), index.h("div", { class: "uk-width-1-1 uk-width-2-3@s uk-width-1-2@l ks-text-decorated" }, index.h("div", { style: { marginRight: this.mobile < 3 ? "10%" : "" } }, index.h("a", { href: "tel:" + this.phone, class: "uk-button uk-width-1-1 uk-button-default uk-border-pill", style: buttonStyle }, this.phone), index.h("br", null), index.h("a", { href: "mailto:" + this.email, class: "uk-button uk-width-1-1 uk-button-default uk-border-pill", style: buttonStyle }, this.email)))))))
-    ];
-  }
-};
-
-const NavbarLogo = class {
-  constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+  async Toggle() {
+    clearTimeout(this.fadeTimeout);
+    this.FreezeScrolling();
+    if (!this.initialized) {
+      this.initialized = true;
+      this.mapDimensions();
+    }
+    if (this.toggled) {
+      this.visible = "hidden";
+      this.fadeTimeout = setTimeout(() => {
+        this.toggled = !this.toggled;
+      }, 300);
+    }
+    else {
+      this.visible = "visible";
+      this.toggled = !this.toggled;
+    }
   }
   render() {
-    return (index.h("div", { class: "uk-margin-left-small" }, index.h("a", { class: "uk-navbar-item uk-logo", href: "/" }, index.h("ks-image", { sync: true, src: this.image, width: this.width, height: this.height, alt: "kuchniasklep.pl" }))));
+    return h(Host, { class: this.visible }, h("div", { class: "navbar", style: { width: `${this.menuWidth}px` } }, h("ks-navbar-button", { icon: "x", onClick: () => this.Toggle() })), h("div", { class: "content" }, this.initialized ?
+      h("div", { class: "map" }, h("iframe", { frameborder: "0", height: this.height, width: this.width, src: "https://maps.google.pl/maps?ie=UTF8&q=Pozna%C5%84ska+23%2C+58-500+Jelenia+G%C3%B3ra&gl=PL&hl=pl&t=m&iwloc=A&output=embed" }))
+      : null, h("div", { class: "info ks-text-decorated" }, h("div", { class: "address", innerHTML: this.contact }), h("div", { class: "buttons" }, h("div", { class: "margin" }, h("a", { href: "tel:" + this.phone, class: "uk-button" }, this.phone), h("br", null), h("a", { href: "mailto:" + this.email, class: "uk-button" }, this.email))))));
   }
+  get root() { return getElement(this); }
 };
+NavbarContactPanel.style = navbarContactPanelCss;
 
-const navbarSearchCss = "ks-navbar-search{display:block}@media only screen and (max-width: 959px){ks-navbar-search{display:none}}ks-navbar-search form{display:inline-block;position:relative;-webkit-box-sizing:border-box;box-sizing:border-box;width:400px;max-width:100%;height:40px;margin:0}ks-navbar-search a{display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:absolute;top:0;bottom:0;left:auto;right:0;padding-right:10px;color:#151515}ks-navbar-search input{width:100%;height:100%;-webkit-box-sizing:border-box;box-sizing:border-box;overflow:visible;-webkit-appearance:none;vertical-align:middle;margin:0;padding-right:50px;font-size:16px;text-align:center;background-color:#fff;border-radius:20px;border:none}ks-navbar-search input:focus{outline:0}";
+const navbarSearchCss = "ks-navbar-search{display:block}@media only screen and (max-width: 959px){ks-navbar-search{display:none}}ks-navbar-search form{display:inline-block;position:relative;-webkit-box-sizing:border-box;box-sizing:border-box;width:350px;max-width:100%;height:40px;margin:0}ks-navbar-search a{display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:absolute;top:0;bottom:0;left:auto;right:0;padding-right:10px;color:#151515}ks-navbar-search input{width:100%;height:100%;-webkit-box-sizing:border-box;box-sizing:border-box;overflow:visible;-webkit-appearance:none;vertical-align:middle;margin:0;padding-right:50px;font-size:16px;text-align:center;background-color:#fff;border-radius:20px;border:none}ks-navbar-search input:focus{outline:0}";
 
 const NavbarSearch = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
   }
   submit() {
     const form = this.root.querySelector("form");
     form.submit();
   }
   render() {
-    return (index.h("form", { method: "post", action: "szukaj.html" }, index.h("a", { onClick: () => this.submit() }, index.h("span", { "uk-icon": "icon: search; ratio: 1.3" })), index.h("input", { "aria-label": "Szukaj produkt\u00F3w", name: "szukaj", type: "search" }), index.h("input", { type: "hidden", name: "postget", value: "tak" }), index.h("input", { type: "hidden", name: "opis", value: "nie" }), index.h("input", { type: "hidden", name: "nrkat", value: "tak" }), index.h("input", { type: "hidden", name: "kodprod", value: "tak" })));
+    return (h("form", { method: "post", action: "szukaj.html" }, h("a", { onClick: () => this.submit() }, h("span", { "uk-icon": "icon: search; ratio: 1.3" })), h("input", { "aria-label": "Szukaj produkt\u00F3w", name: "szukaj", type: "search" }), h("input", { type: "hidden", name: "postget", value: "tak" }), h("input", { type: "hidden", name: "opis", value: "nie" }), h("input", { type: "hidden", name: "nrkat", value: "tak" }), h("input", { type: "hidden", name: "kodprod", value: "tak" })));
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 NavbarSearch.style = navbarSearchCss;
 
 const NavbarSearchMobile = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
   }
   submit() {
     const form = this.root.querySelector("form");
     form.submit();
   }
   render() {
-    return (index.h("nav", { class: "uk-section uk-padding-remove uk-light", style: { backgroundColor: '#00426e' } }, index.h("div", { class: "uk-hidden@m uk-padding-small" }, index.h("form", { method: "post", action: "szukaj.html", class: "uk-search uk-search-large uk-width-1-1" }, index.h("a", { onClick: () => this.submit(), class: "uk-search-icon-flip uk-margin-small-right", "uk-search-icon": "ratio: 0.6" }), index.h("input", { class: "uk-search-input uk-text-center", "aria-label": "Szukaj produkt\u00F3w", name: "szukaj", type: "search" }), index.h("input", { type: "hidden", name: "postget", value: "tak" }), index.h("input", { type: "hidden", name: "opis", value: "nie" }), index.h("input", { type: "hidden", name: "nrkat", value: "tak" }), index.h("input", { type: "hidden", name: "kodprod", value: "tak" })))));
+    return (h("nav", { class: "uk-section uk-padding-remove uk-light", style: { backgroundColor: '#00426e' } }, h("div", { class: "uk-hidden@m uk-padding-small" }, h("form", { method: "post", action: "szukaj.html", class: "uk-search uk-search-large uk-width-1-1" }, h("a", { onClick: () => this.submit(), class: "uk-search-icon-flip uk-margin-small-right", "uk-search-icon": "ratio: 0.6" }), h("input", { class: "uk-search-input uk-text-center", "aria-label": "Szukaj produkt\u00F3w", name: "szukaj", type: "search" }), h("input", { type: "hidden", name: "postget", value: "tak" }), h("input", { type: "hidden", name: "opis", value: "nie" }), h("input", { type: "hidden", name: "nrkat", value: "tak" }), h("input", { type: "hidden", name: "kodprod", value: "tak" })))));
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 
 const NavbarSidebar = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
   }
   render() {
-    return (index.h(navbarData.Tunnel.Consumer, null, ({ categories, links }) => (index.h("nav", null, index.h("div", { id: "navbar-sidebar", class: "uk-hidden@m", "uk-offcanvas": "flip: true; overlay: true", style: { zIndex: "2147483648" } }, index.h("div", { class: "uk-offcanvas-bar uk-width-expand uk-width-medium@s" }, index.h("button", { class: "uk-offcanvas-close", type: "button", "uk-close": true }), index.h("ul", { class: "uk-nav-default uk-nav-parent-icon", "uk-nav": true }, index.h("li", { class: "uk-nav-header uk-hidden@m" }, "Menu"), index.h("li", { class: "uk-nav-divider uk-hidden@m" }), links.loginLink ?
-      index.h("li", null, index.h("a", { href: links.loginLink }, "Zaloguj si\u0119 ", index.h("ks-icon", { name: "log-in", class: "uk-float-right" })))
-      : null, index.h("li", { class: "uk-hidden@s" }, index.h("a", { href: links.cartLink }, "Koszyk", links.cartCount && links.cartCount != "0" ?
-      index.h("span", { class: "uk-badge uk-float-right", style: { transform: "translateX(4px)" } }, links.cartCount) :
-      index.h("ks-icon", { name: "shopping-bag", class: "uk-float-right" }))), index.h("li", { class: "uk-hidden@s" }, index.h("a", { href: links.favouritesLink }, "Schowek", links.favouritesCount && links.favouritesCount != "0" ?
-      index.h("span", { class: "uk-badge uk-float-right", style: { transform: "translateX(4px)" } }, links.favouritesCount) :
-      index.h("ks-icon", { name: "star", class: "uk-float-right" }))), links.accountLink ?
-      index.h("li", null, index.h("a", { href: links.accountLink }, "Panel Klienta", index.h("ks-icon", { name: "user", class: "uk-float-right" })))
+    return (h(Tunnel.Consumer, null, ({ categories, links }) => (h("nav", null, h("div", { id: "navbar-sidebar", class: "uk-hidden@m", "uk-offcanvas": "flip: true; overlay: true", style: { zIndex: "2147483648" } }, h("div", { class: "uk-offcanvas-bar uk-width-expand uk-width-medium@s" }, h("button", { class: "uk-offcanvas-close", type: "button", "uk-close": true }), h("ul", { class: "uk-nav-default uk-nav-parent-icon", "uk-nav": true }, h("li", { class: "uk-nav-header uk-hidden@m" }, "Menu"), h("li", { class: "uk-nav-divider uk-hidden@m" }), links.loginLink ?
+      h("li", null, h("a", { href: links.loginLink }, "Zaloguj si\u0119 ", h("ks-icon", { name: "log-in", class: "uk-float-right" })))
+      : null, h("li", { class: "uk-hidden@s" }, h("a", { href: links.cartLink }, "Koszyk", links.cartCount && links.cartCount != "0" ?
+      h("span", { class: "uk-badge uk-float-right", style: { transform: "translateX(4px)" } }, links.cartCount) :
+      h("ks-icon", { name: "shopping-bag", class: "uk-float-right" }))), h("li", { class: "uk-hidden@s" }, h("a", { href: links.favouritesLink }, "Schowek", links.favouritesCount && links.favouritesCount != "0" ?
+      h("span", { class: "uk-badge uk-float-right", style: { transform: "translateX(4px)" } }, links.favouritesCount) :
+      h("ks-icon", { name: "star", class: "uk-float-right" }))), links.accountLink ?
+      h("li", null, h("a", { href: links.accountLink }, "Panel Klienta", h("ks-icon", { name: "user", class: "uk-float-right" })))
       : null, links.logoutLink ?
-      index.h("li", null, index.h("a", { href: links.logoutLink }, "Wyloguj si\u0119", index.h("ks-icon", { name: "log-out", class: "uk-float-right" })))
-      : null, index.h("li", { class: "uk-nav-header uk-margin-top" }, "Kategorie"), index.h("li", { class: "uk-nav-divider" }), categories.map(category => index.h("li", { class: category.children ? "uk-parent" : "" }, index.h("a", { href: category.children ? "#" : category.url }, category.name), category.children ?
-      index.h("ul", { class: "uk-nav-sub" }, category.children.map(child => index.h("li", null, index.h("a", { href: child.url }, child.name))))
+      h("li", null, h("a", { href: links.logoutLink }, "Wyloguj si\u0119", h("ks-icon", { name: "log-out", class: "uk-float-right" })))
+      : null, h("li", { class: "uk-nav-header uk-margin-top" }, "Kategorie"), h("li", { class: "uk-nav-divider" }), categories.map(category => h("li", { class: category.children ? "uk-parent" : "" }, h("a", { href: category.children ? "#" : category.url }, category.name), category.children ?
+      h("ul", { class: "uk-nav-sub" }, category.children.map(child => h("li", null, h("a", { href: child.url }, child.name))))
       : null)))))))));
   }
 };
 
 const NewsletterPopup = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.loggedIn = false;
     this.mobile = false;
     this.loading = false;
@@ -3365,28 +3347,28 @@ const NewsletterPopup = class {
   render() {
     const closeVisibility = !this.loading || this.success || this.failure;
     return [
-      index.h("div", { id: "ksNewsletterModal", class: this.mobile ? "uk-modal-full" : "uk-modal-container", "uk-modal": "bg-close: false; esc-close; false;" }, index.h("div", { class: "uk-modal-dialog uk-margin-auto-vertical uk-flex uk-flex-column", style: this.mobile ? { height: "100%" } : { width: "720px" } }, closeVisibility ?
-        index.h("button", { class: "uk-modal-close-default", type: "button", onClick: () => this.SetCookie(), "uk-close": true })
-        : null, index.h("div", { class: "uk-flex-1", style: { padding: "60px 60px 40px 60px", fill: "#252525" } }, index.h("svg", { class: "uk-visible@s", viewBox: "0 0 303 15", style: { width: "100%", marginBottom: "20px" } }, index.h("text", { x: "0", y: "12" }, "Zapisz si\u0119 do naszego Newslettera i zyskaj")), index.h("svg", { class: "ks-text-decorated", viewBox: "0 0 98 15", style: { width: "100%" } }, index.h("text", { x: "0", y: "12" }, "KUPON 10Z\u0141")), index.h("p", { class: "uk-text-center", style: { marginTop: "20px" } }, "Aby otrzyma\u0107 kupon rabatowy musisz posiada\u0107 konto w naszym sklepie. Minimalna warto\u015B\u0107 zam\u00F3wienia wynosi: 100,00 z\u0142")), !this.loggedIn ?
-        index.h("div", { class: "uk-child-width-1-1 uk-child-width-1-2@s" }, index.h("a", { href: this.loginLink, class: "uk-button uk-button-secondary", style: { padding: "8px 20px" } }, "ZALOGUJ SI\u0118"), index.h("a", { href: this.registerLink, class: "uk-button uk-button-secondary", style: { padding: "8px 20px" } }, "NOWE KONTO"))
+      h("div", { id: "ksNewsletterModal", class: this.mobile ? "uk-modal-full" : "uk-modal-container", "uk-modal": "bg-close: false; esc-close; false;" }, h("div", { class: "uk-modal-dialog uk-margin-auto-vertical uk-flex uk-flex-column", style: this.mobile ? { height: "100%" } : { width: "720px" } }, closeVisibility ?
+        h("button", { class: "uk-modal-close-default", type: "button", onClick: () => this.SetCookie(), "uk-close": true })
+        : null, h("div", { class: "uk-flex-1", style: { padding: "60px 60px 40px 60px", fill: "#252525" } }, h("svg", { class: "uk-visible@s", viewBox: "0 0 303 15", style: { width: "100%", marginBottom: "20px" } }, h("text", { x: "0", y: "12" }, "Zapisz si\u0119 do naszego Newslettera i zyskaj")), h("svg", { class: "ks-text-decorated", viewBox: "0 0 98 15", style: { width: "100%" } }, h("text", { x: "0", y: "12" }, "KUPON 10Z\u0141")), h("p", { class: "uk-text-center", style: { marginTop: "20px" } }, "Aby otrzyma\u0107 kupon rabatowy musisz posiada\u0107 konto w naszym sklepie. Minimalna warto\u015B\u0107 zam\u00F3wienia wynosi: 100,00 z\u0142")), !this.loggedIn ?
+        h("div", { class: "uk-child-width-1-1 uk-child-width-1-2@s" }, h("a", { href: this.loginLink, class: "uk-button uk-button-secondary", style: { padding: "8px 20px" } }, "ZALOGUJ SI\u0118"), h("a", { href: this.registerLink, class: "uk-button uk-button-secondary", style: { padding: "8px 20px" } }, "NOWE KONTO"))
         :
-          index.h("form", { onSubmit: e => this.requestHandler(e) }, index.h("label", { class: "uk-flex uk-flex-middle uk-text-small", style: { padding: "10px 15px" } }, index.h("input", { class: "uk-checkbox", type: "checkbox", required: true, name: "zgoda", style: { padding: "15px 15px", marginRight: "10px" } }), index.h("p", null, "Wyra\u017Cam zgod\u0119 na przetwarzanie danych osobowych do cel\u00F3w marketingowych oraz otrzymywanie informacji handlowych na wskazany adres e-mail. ")), index.h("div", { class: "uk-flex uk-text-center" }, index.h("input", { class: "uk-input uk-width-expand", style: { height: "52px" }, type: "email", name: "email", required: true, placeholder: "Adres email", value: this.email ? this.email : null }), index.h("input", { class: "uk-button uk-button-secondary uk-width-auto", style: { padding: "5px 50px" }, type: "submit", value: "ZAPISZ SI\u0118" }))), this.loading ?
-        index.h("div", { class: "uk-overlay uk-overlay-default uk-position-cover" }, index.h("div", { class: "uk-position-center" }, index.h("div", { "uk-spinner": "ratio: 3" })))
+          h("form", { onSubmit: e => this.requestHandler(e) }, h("label", { class: "uk-flex uk-flex-middle uk-text-small", style: { padding: "10px 15px" } }, h("input", { class: "uk-checkbox", type: "checkbox", required: true, name: "zgoda", style: { padding: "15px 15px", marginRight: "10px" } }), h("p", null, "Wyra\u017Cam zgod\u0119 na przetwarzanie danych osobowych do cel\u00F3w marketingowych oraz otrzymywanie informacji handlowych na wskazany adres e-mail. ")), h("div", { class: "uk-flex uk-text-center" }, h("input", { class: "uk-input uk-width-expand", style: { height: "52px" }, type: "email", name: "email", required: true, placeholder: "Adres email", value: this.email ? this.email : null }), h("input", { class: "uk-button uk-button-secondary uk-width-auto", style: { padding: "5px 50px" }, type: "submit", value: "ZAPISZ SI\u0118" }))), this.loading ?
+        h("div", { class: "uk-overlay uk-overlay-default uk-position-cover" }, h("div", { class: "uk-position-center" }, h("div", { "uk-spinner": "ratio: 3" })))
         : null, this.success ?
-        index.h("div", { class: "uk-overlay uk-overlay-default uk-position-cover uk-animation-fade uk-animation-fast", style: { backgroundColor: "white" } }, index.h("div", { class: "uk-position-center uk-text-center uk-padding-small" }, index.h("span", { "uk-icon": "icon: check; ratio: 4", class: "uk-animation-slide-top-small" }), index.h("p", { class: "ks-text-decorated uk-animation-slide-top-small", innerHTML: this.message })))
+        h("div", { class: "uk-overlay uk-overlay-default uk-position-cover uk-animation-fade uk-animation-fast", style: { backgroundColor: "white" } }, h("div", { class: "uk-position-center uk-text-center uk-padding-small" }, h("span", { "uk-icon": "icon: check; ratio: 4", class: "uk-animation-slide-top-small" }), h("p", { class: "ks-text-decorated uk-animation-slide-top-small", innerHTML: this.message })))
         : null, this.failure ?
-        index.h("div", { class: "uk-overlay uk-overlay-default uk-position-cover uk-animation-fade uk-animation-fast", style: { backgroundColor: "white" } }, index.h("div", { class: "uk-position-center uk-text-center uk-padding-small" }, index.h("span", { "uk-icon": "icon: ban; ratio: 4", class: "uk-animation-slide-top-small" }), index.h("p", { class: "uk-h1 ks-text-decorated uk-animation-slide-top-small", innerHTML: this.message })))
+        h("div", { class: "uk-overlay uk-overlay-default uk-position-cover uk-animation-fade uk-animation-fast", style: { backgroundColor: "white" } }, h("div", { class: "uk-position-center uk-text-center uk-padding-small" }, h("span", { "uk-icon": "icon: ban; ratio: 4", class: "uk-animation-slide-top-small" }), h("p", { class: "uk-h1 ks-text-decorated uk-animation-slide-top-small", innerHTML: this.message })))
         : null))
     ];
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 
 const productCardCss = "ks-product-card{display:block}ks-product-card>div{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;padding:0;height:100%;background:#ffffff;color:#373737;-webkit-box-shadow:0 2px 8px rgba(0,0,0,.15);box-shadow:0 2px 8px rgba(0,0,0,.15)}";
 
 const ProductCard = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.unavailable = false;
     this.linkOnly = false;
     this.cartLoading = false;
@@ -3406,28 +3388,28 @@ const ProductCard = class {
     let previousPrice;
     if (this.previousPrice)
       previousPrice = this.previousPrice.replace(".", ",") + " zł";
-    return (index.h("div", null, index.h("a", { href: this.link, "aria-label": this.name, class: "uk-padding-small uk-text-xsmall uk-text-center uk-link-reset uk-position-relative" }, this.unavailable ?
-      index.h("div", { class: "uk-position-cover uk-overlay uk-overlay-default uk-position-z-index", style: { opacity: "0.7" } })
-      : null, index.h("ks-image", { style: { display: "block", marginBottom: "10px" }, src: this.img, width: "280", height: "280", contain: true, alt: "zdj\u0119cie produktu" }), this.name), index.h("div", { class: "uk-text-xsmall uk-text-center uk-position-relative", style: { pointerEvents: "none" } }, this.unavailable ?
-      index.h("div", { class: "uk-position-cover uk-overlay uk-overlay-default uk-position-z-index", style: { opacity: "0.7" } })
+    return (h("div", null, h("a", { href: this.link, "aria-label": this.name, class: "uk-padding-small uk-text-xsmall uk-text-center uk-link-reset uk-position-relative" }, this.unavailable ?
+      h("div", { class: "uk-position-cover uk-overlay uk-overlay-default uk-position-z-index", style: { opacity: "0.7" } })
+      : null, h("ks-image", { style: { display: "block", marginBottom: "10px" }, src: this.img, width: "280", height: "280", contain: true, alt: "zdj\u0119cie produktu" }), this.name), h("div", { class: "uk-text-xsmall uk-text-center uk-position-relative", style: { pointerEvents: "none" } }, this.unavailable ?
+      h("div", { class: "uk-position-cover uk-overlay uk-overlay-default uk-position-z-index", style: { opacity: "0.7" } })
       : null, this.previousPrice ? [
-      index.h("s", { class: "uk-text-muted" }, previousPrice), index.h("br", null)
-    ] : null, index.h("span", { class: "uk-text-bold uk-text-normal uk-text-danger" }, currentPrice)), index.h("div", { class: "uk-button-group uk-margin-small-top uk-width-1-1" }, this.unavailable ?
-      index.h("a", { href: this.link, class: "uk-button uk-button-danger uk-width-expand", style: { zIndex: "100" } }, "NIEDOST\u0118PNY")
+      h("s", { class: "uk-text-muted" }, previousPrice), h("br", null)
+    ] : null, h("span", { class: "uk-text-bold uk-text-normal uk-text-danger" }, currentPrice)), h("div", { class: "uk-button-group uk-margin-small-top uk-width-1-1" }, this.unavailable ?
+      h("a", { href: this.link, class: "uk-button uk-button-danger uk-width-expand", style: { zIndex: "100" } }, "NIEDOST\u0118PNY")
       : this.linkOnly ?
-        index.h("a", { href: this.link, class: "uk-button uk-button-danger uk-width-expand" }, "ZOBACZ WI\u0118CEJ")
+        h("a", { href: this.link, class: "uk-button uk-button-danger uk-width-expand" }, "ZOBACZ WI\u0118CEJ")
         : [
-          index.h("ks-button-fav", { "product-id": this.productId }),
-          index.h("ks-button-cart", { expand: true, "product-id": this.productId, name: this.name })
+          h("ks-button-fav", { "product-id": this.productId }),
+          h("ks-button-cart", { expand: true, "product-id": this.productId, name: this.name })
         ])));
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 ProductCard.style = productCardCss;
 
 const ProductSuggestions = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.loaded = false;
     this.products = new Array();
   }
@@ -3460,30 +3442,30 @@ const ProductSuggestions = class {
     window.location.href = 'koszyk.html';
   }
   render() {
-    return (index.h("div", { id: "ks-product-suggestions-" + this.productId, class: "uk-modal-full", "uk-modal": true }, index.h("div", { class: "uk-modal-dialog" }, index.h("div", { class: "uk-background-cover uk-flex uk-flex-between uk-flex-column", "uk-height-viewport": true }, index.h("div", { class: "uk-padding-small uk-flex-auto uk-flex uk-flex-center uk-flex-middle uk-flex-column" }, index.h("div", { class: "uk-text-center" }, index.h("span", { class: "uk-h2 uk-text-bold" }, "Dodano do koszyka"), index.h("br", null), index.h("span", { class: "uk-h4 uk-margin-top" }, this.name)), index.h("div", { class: "uk-margin-top" }, index.h("button", { onClick: () => this.Hide(), class: "uk-button uk-button-secondary", style: { padding: "5px 15px" } }, "Przegl\u0105daj dalej"), index.h("button", { onClick: () => this.ToCart(), class: "uk-button uk-button-danger", style: { padding: "5px 15px" } }, "Przejd\u017A do koszyka"))), index.h("div", { class: "uk-padding-small uk-flex-1 uk-flex uk-flex-center uk-flex-middle uk-padding-remove-horizontal", style: { backgroundColor: "#f2f2f2", height: "40%" } }, index.h("div", { "uk-spinner": "ratio: 3", style: { color: "black", display: this.loaded ? "none" : "block" } }), this.loaded ?
-      index.h("div", { class: "uk-position-relative uk-visible-toggle uk-dark uk-width-1-1", tabindex: "-1", "uk-slider": "finite: true; center: true; index: 1", style: { outline: "none" } }, index.h("div", { class: "uk-position-relative uk-margin-left uk-margin-right" }, index.h("div", { class: "uk-slider-container" }, index.h("ul", { class: "uk-slider-items uk-grid-small uk-grid-match", "uk-grid": true }, this.products.map((product) => index.h("ks-product-card", { style: { maxWidth: "200px" }, "link-only": true, name: product.name, img: product.image, link: product.link, currentPrice: product.currentPrice, previousPrice: product.previousPrice != "0.00" ? product.previousPrice : null })))), index.h("div", { class: "uk-position-center-left", style: { height: "100%", width: "50px", backgroundImage: "linear-gradient(to right, #f2f2f2, rgba(242, 242, 242, 0))" } }), index.h("div", { class: "uk-position-center-right", style: { height: "100%", width: "50px", backgroundImage: "linear-gradient(to left, #f2f2f2, rgba(242, 242, 242, 0))" } })))
+    return (h("div", { id: "ks-product-suggestions-" + this.productId, class: "uk-modal-full", "uk-modal": true }, h("div", { class: "uk-modal-dialog" }, h("div", { class: "uk-background-cover uk-flex uk-flex-between uk-flex-column", "uk-height-viewport": true }, h("div", { class: "uk-padding-small uk-flex-auto uk-flex uk-flex-center uk-flex-middle uk-flex-column" }, h("div", { class: "uk-text-center" }, h("span", { class: "uk-h2 uk-text-bold" }, "Dodano do koszyka"), h("br", null), h("span", { class: "uk-h4 uk-margin-top" }, this.name)), h("div", { class: "uk-margin-top" }, h("button", { onClick: () => this.Hide(), class: "uk-button uk-button-secondary", style: { padding: "5px 15px" } }, "Przegl\u0105daj dalej"), h("button", { onClick: () => this.ToCart(), class: "uk-button uk-button-danger", style: { padding: "5px 15px" } }, "Przejd\u017A do koszyka"))), h("div", { class: "uk-padding-small uk-flex-1 uk-flex uk-flex-center uk-flex-middle uk-padding-remove-horizontal", style: { backgroundColor: "#f2f2f2", height: "40%" } }, h("div", { "uk-spinner": "ratio: 3", style: { color: "black", display: this.loaded ? "none" : "block" } }), this.loaded ?
+      h("div", { class: "uk-position-relative uk-visible-toggle uk-dark uk-width-1-1", tabindex: "-1", "uk-slider": "finite: true; center: true; index: 1", style: { outline: "none" } }, h("div", { class: "uk-position-relative uk-margin-left uk-margin-right" }, h("div", { class: "uk-slider-container" }, h("ul", { class: "uk-slider-items uk-grid-small uk-grid-match", "uk-grid": true }, this.products.map((product) => h("ks-product-card", { style: { maxWidth: "200px" }, "link-only": true, name: product.name, img: product.image, link: product.link, currentPrice: product.currentPrice, previousPrice: product.previousPrice != "0.00" ? product.previousPrice : null })))), h("div", { class: "uk-position-center-left", style: { height: "100%", width: "50px", backgroundImage: "linear-gradient(to right, #f2f2f2, rgba(242, 242, 242, 0))" } }), h("div", { class: "uk-position-center-right", style: { height: "100%", width: "50px", backgroundImage: "linear-gradient(to left, #f2f2f2, rgba(242, 242, 242, 0))" } })))
       : null)))));
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 
 const recipeCardCss = "ks-recipe-card{display:block;background-color:#ffffff;-webkit-box-shadow:0 2px 8px rgba(0,0,0,0.15);box-shadow:0 2px 8px rgba(0,0,0,0.15)}ks-recipe-card>a{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;position:relative}ks-recipe-card .views{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:absolute;top:8px;right:12px;color:transparent;-webkit-transition:color 0.3s ease;transition:color 0.3s ease}ks-recipe-card .views ks-icon{margin-right:3px}ks-recipe-card .info{padding:15px;font-family:var(--font-regular);font-size:14px;text-align:center;text-decoration:none !important;color:#707070;-webkit-transition:color 0.3s ease;transition:color 0.3s ease}ks-recipe-card h3{font-family:var(--font-emphasis);font-size:20px;color:#252525;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;margin-bottom:5px}ks-recipe-card .dot{margin:0 8px}ks-recipe-card a:hover{text-decoration:none}ks-recipe-card>a:hover .info{color:var(--color-secondary)}ks-recipe-card>a:hover h3{color:var(--color-secondary)}ks-recipe-card>a:hover .views{color:#ffffff}@media screen and (min-width: 960px) and (max-width: 1199px){ks-recipe-card[hide-on-odd]{display:none !important}}";
 
 const RecipeCard = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.hideOnOdd = false;
   }
   render() {
-    return (index.h("a", { href: this.link }, index.h("ks-img", { src: this.image, alt: this.heading, center: true }), index.h("div", { class: "info" }, index.h("h3", null, this.heading), index.h("div", null, index.h("span", null, this.cuisine), index.h("span", { class: "dot" }, "\u2022"), index.h("span", null, this.category))), index.h("div", { class: "views" }, index.h("ks-icon", { name: "search", size: 0.75 }), " ", this.views)));
+    return (h("a", { href: this.link }, h("ks-img", { src: this.image, alt: this.heading, center: true }), h("div", { class: "info" }, h("h3", null, this.heading), h("div", null, h("span", null, this.cuisine), h("span", { class: "dot" }, "\u2022"), h("span", null, this.category))), h("div", { class: "views" }, h("ks-icon", { name: "search", size: 0.75 }), " ", this.views)));
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 RecipeCard.style = recipeCardCss;
 
 const Section = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.muted = false;
     this.dark = false;
     this.darker = false;
@@ -3502,18 +3484,18 @@ const Section = class {
         "uk-padding-small uk-padding-remove-vertical ") +
       (this.marginTop ? this.mobileCollapse ? "uk-margin-top@s " : "uk-margin-top " : "");
     const darker = { backgroundColor: "rgb(24, 24, 24)" };
-    return (index.h("div", { class: "uk-section uk-padding-remove-vertical " + sectionStyle, style: this.darker ? darker : null }, index.h("div", { class: "uk-container " + containerSize + " " + margin }, index.h("slot", null))));
+    return (h("div", { class: "uk-section uk-padding-remove-vertical " + sectionStyle, style: this.darker ? darker : null }, h("div", { class: "uk-container " + containerSize + " " + margin }, h("slot", null))));
   }
 };
 
 const SeeMore = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.href = "";
     this.text = "";
   }
   render() {
-    return (index.h("div", { class: "uk-flex uk-flex-center uk-margin-top" }, index.h("a", { href: this.href, class: "uk-button uk-button-default uk-margin-auto", style: {
+    return (h("div", { class: "uk-flex uk-flex-center uk-margin-top" }, h("a", { href: this.href, class: "uk-button uk-button-default uk-margin-auto", style: {
         backgroundColor: "white",
         padding: "3px 30px",
         border: "none",
@@ -3523,39 +3505,4 @@ const SeeMore = class {
   }
 };
 
-exports.context_consumer = ContextConsumer;
-exports.ks_article_card = ArticleCard;
-exports.ks_banner = Banner;
-exports.ks_banner_container = ArticleCard$1;
-exports.ks_button_cart = ButtonCart;
-exports.ks_button_fav = ButtonFav;
-exports.ks_card = Card;
-exports.ks_category_simple = NavbarCategorySimple;
-exports.ks_category_view = NavbarCategoryView;
-exports.ks_featured = Featured;
-exports.ks_featured_container = FeaturedContainer;
-exports.ks_flex = Flex;
-exports.ks_footer = Footer;
-exports.ks_footer_button = FooterButton;
-exports.ks_footer_links = FooterLinks;
-exports.ks_grid = Grid;
-exports.ks_homepage_info = HomepageInfo;
-exports.ks_homepage_products = ProductContainer;
-exports.ks_icon = Icon;
-exports.ks_image = Image;
-exports.ks_img = Img;
-exports.ks_info_message = InfoMessage;
-exports.ks_navbar = Navbar;
-exports.ks_navbar_button = NavbarButton;
-exports.ks_navbar_categories_expanded = NavbarCategoriesExpanded;
-exports.ks_navbar_contact = NavbarContact;
-exports.ks_navbar_logo = NavbarLogo;
-exports.ks_navbar_search = NavbarSearch;
-exports.ks_navbar_search_mobile = NavbarSearchMobile;
-exports.ks_navbar_sidebar = NavbarSidebar;
-exports.ks_newsletter_popup = NewsletterPopup;
-exports.ks_product_card = ProductCard;
-exports.ks_product_suggestions = ProductSuggestions;
-exports.ks_recipe_card = RecipeCard;
-exports.ks_section = Section;
-exports.ks_see_more = SeeMore;
+export { ContextConsumer as context_consumer, ArticleCard as ks_article_card, Banner as ks_banner, ArticleCard$1 as ks_banner_container, ButtonCart as ks_button_cart, ButtonFav as ks_button_fav, Card as ks_card, NavbarCategorySimple as ks_category_simple, NavbarCategoryView as ks_category_view, Featured as ks_featured, FeaturedContainer as ks_featured_container, Flex as ks_flex, Footer as ks_footer, FooterButton as ks_footer_button, FooterLinks as ks_footer_links, Grid as ks_grid, HomepageInfo as ks_homepage_info, ProductContainer as ks_homepage_products, Icon as ks_icon, Image as ks_image, Img as ks_img, InfoMessage as ks_info_message, Navbar as ks_navbar, NavbarButton as ks_navbar_button, NavbarCategoriesExpanded as ks_navbar_categories_expanded, NavbarContactPanel as ks_navbar_contact_panel, NavbarSearch as ks_navbar_search, NavbarSearchMobile as ks_navbar_search_mobile, NavbarSidebar as ks_navbar_sidebar, NewsletterPopup as ks_newsletter_popup, ProductCard as ks_product_card, ProductSuggestions as ks_product_suggestions, RecipeCard as ks_recipe_card, Section as ks_section, SeeMore as ks_see_more };

@@ -10,11 +10,6 @@ ks-info-banner {
     display: block;
 }
 
-ks-info-banner.hydrated {
-    -webkit-animation: 300ms fade-in;
-            animation: 300ms fade-in;
-}
-
 ks-info-banner a {
     display: -webkit-box;
     display: -ms-flexbox;

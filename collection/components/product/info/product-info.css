@@ -13,11 +13,6 @@ ks-product-info {
     min-height: 420px;
 }
 
-ks-product-info.hydrated {
-    -webkit-animation: 500ms fade-in;
-            animation: 500ms fade-in;
-}
-
 ks-product-info > * {
     margin: 0px auto;
     width: 100%;

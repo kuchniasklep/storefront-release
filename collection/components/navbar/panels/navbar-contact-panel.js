@@ -1,11 +1,13 @@
-import { Component, h, State, Listen, Prop } from '@stencil/core';
+import { Component, h, State, Listen, Prop, Method, Element, Host } from '@stencil/core';
 export class NavbarContactPanel {
   constructor() {
+    this.toggled = false;
     this.mobile = 0;
     this.height = 0;
     this.width = 0;
     this.menuWidth = 0;
-    this.initialized = true;
+    this.initialized = false;
+    this.visible = "hidden";
   }
   resizeHandler() {
     this.mobile = (window.innerWidth <= 1200) ?
@@ -15,8 +17,10 @@ export class NavbarContactPanel {
         : 1
       : 0;
     this.mapDimensions();
+    this.FreezeScrolling();
+    this.MenuWidth();
   }
-  componentWillLoad() {
+  componentWillRender() {
     this.resizeHandler();
   }
   mapDimensions() {
@@ -25,32 +29,61 @@ export class NavbarContactPanel {
       this.width = Math.floor(document.documentElement.clientWidth * 0.6) - 1;
     }
     else if (this.mobile == 3) {
-      this.height = document.documentElement.clientHeight - 440;
+      this.height = document.documentElement.clientHeight - 350;
       this.width = document.documentElement.clientWidth;
     }
     else {
-      this.height = document.documentElement.clientHeight - 420;
+      this.height = document.documentElement.clientHeight - 350;
       this.width = document.documentElement.clientWidth;
     }
   }
-  Toggle() {
-    this.initialized = true;
-    this.mapDimensions();
+  MenuWidth() {
+    const buttons = document.getElementById("ks-navbar-menu-buttons");
+    this.menuWidth = buttons.clientWidth;
+  }
+  FreezeScrolling() {
+    if (this.toggled && this.mobile) {
+      window.scrollTo(0, 0);
+      document.querySelector('html').style.overflowY = "hidden";
+    }
+    else {
+      document.querySelector('html').style.overflowY = "";
+    }
+  }
+  async Toggle() {
+    clearTimeout(this.fadeTimeout);
+    this.FreezeScrolling();
+    if (!this.initialized) {
+      this.initialized = true;
+      this.mapDimensions();
+    }
+    if (this.toggled) {
+      this.visible = "hidden";
+      this.fadeTimeout = setTimeout(() => {
+        this.toggled = !this.toggled;
+      }, 300);
+    }
+    else {
+      this.visible = "visible";
+      this.toggled = !this.toggled;
+    }
   }
   render() {
-    return [
-      this.initialized ?
-        h("div", { class: "map" },
-          h("iframe", { frameborder: "0", height: this.height, width: this.width, src: "https://maps.google.pl/maps?ie=UTF8&q=Pozna%C5%84ska+23%2C+58-500+Jelenia+G%C3%B3ra&gl=PL&hl=pl&t=m&iwloc=A&output=embed" }))
-        : null,
-      h("div", { class: "info ks-text-decorated" },
-        h("div", { class: "address", innerHTML: this.contact }),
-        h("div", { class: "buttons" },
-          h("div", { class: "margin" },
-            h("a", { href: "tel:" + this.phone, class: "uk-button" }, this.phone),
-            h("br", null),
-            h("a", { href: "mailto:" + this.email, class: "uk-button" }, this.email))))
-    ];
+    return h(Host, { class: this.visible },
+      h("div", { class: "navbar", style: { width: `${this.menuWidth}px` } },
+        h("ks-navbar-button", { icon: "x", onClick: () => this.Toggle() })),
+      h("div", { class: "content" },
+        this.initialized ?
+          h("div", { class: "map" },
+            h("iframe", { frameborder: "0", height: this.height, width: this.width, src: "https://maps.google.pl/maps?ie=UTF8&q=Pozna%C5%84ska+23%2C+58-500+Jelenia+G%C3%B3ra&gl=PL&hl=pl&t=m&iwloc=A&output=embed" }))
+          : null,
+        h("div", { class: "info ks-text-decorated" },
+          h("div", { class: "address", innerHTML: this.contact }),
+          h("div", { class: "buttons" },
+            h("div", { class: "margin" },
+              h("a", { href: "tel:" + this.phone, class: "uk-button" }, this.phone),
+              h("br", null),
+              h("a", { href: "mailto:" + this.email, class: "uk-button" }, this.email))))));
   }
   static get is() { return "ks-navbar-contact-panel"; }
   static get originalStyleUrls() { return {
@@ -110,6 +143,24 @@ export class NavbarContactPanel {
       },
       "attribute": "contact",
       "reflect": false
+    },
+    "toggled": {
+      "type": "boolean",
+      "mutable": true,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "toggled",
+      "reflect": true,
+      "defaultValue": "false"
     }
   }; }
   static get states() { return {
@@ -117,8 +168,28 @@ export class NavbarContactPanel {
     "height": {},
     "width": {},
     "menuWidth": {},
-    "initialized": {}
+    "initialized": {},
+    "visible": {}
   }; }
+  static get methods() { return {
+    "Toggle": {
+      "complexType": {
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "references": {
+          "Promise": {
+            "location": "global"
+          }
+        },
+        "return": "Promise<void>"
+      },
+      "docs": {
+        "text": "",
+        "tags": []
+      }
+    }
+  }; }
+  static get elementRef() { return "root"; }
   static get listeners() { return [{
       "name": "resize",
       "method": "resizeHandler",

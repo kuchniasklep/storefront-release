@@ -1,4 +1,4 @@
-import { Component, h, Prop, State, Method, Listen } from '@stencil/core';
+import { Component, h, Prop, State, Method, Listen, Element } from '@stencil/core';
 import Tunnel from './navbar-data';
 export class Navbar {
   constructor() {
@@ -65,10 +65,11 @@ export class Navbar {
     const cartCount = this.data.links.cartCount;
     return [
       h("nav", null,
-        h("ks-navbar-logo", { image: this.logo, width: "217", height: "35" }),
+        h("ks-img", { contained: true, class: "logo", sync: true, src: this.logo, width: 217, height: 35, alt: "kuchniasklep.pl" }),
         h("ks-navbar-search", null),
+        h("ks-navbar-contact-panel", { phone: this.phone, email: this.email, contact: this.contact }),
         h("div", { id: "ks-navbar-menu-buttons" },
-          h("ks-navbar-contact", { slot: "panel", phone: this.phone, email: this.email, contact: this.contact }),
+          h("ks-navbar-button", { name: "Kontakt", icon: "phone", onClick: () => this.root.querySelector("ks-navbar-contact-panel").Toggle() }),
           this.accountLink ?
             h("ks-navbar-button", { name: "Twoje konto", link: this.accountLink, icon: "user", class: "desktop" })
             : null,
@@ -375,6 +376,7 @@ export class Navbar {
       }
     }
   }; }
+  static get elementRef() { return "root"; }
   static get listeners() { return [{
       "name": "resize",
       "method": "resizeHandler",

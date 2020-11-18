@@ -527,20 +527,12 @@ export namespace Components {
     }
     interface KsNavbarCategoriesExpanded {
     }
-    interface KsNavbarContact {
-        "contact": string;
-        "email": string;
-        "phone": string;
-    }
     interface KsNavbarContactPanel {
+        "Toggle": () => Promise<void>;
         "contact": string;
         "email": string;
         "phone": string;
-    }
-    interface KsNavbarLogo {
-        "height": string;
-        "image": string;
-        "width": string;
+        "toggled": boolean;
     }
     interface KsNavbarPanel {
         "hideMenu": boolean;
@@ -1392,23 +1384,11 @@ declare global {
         prototype: HTMLKsNavbarCategoriesExpandedElement;
         new (): HTMLKsNavbarCategoriesExpandedElement;
     };
-    interface HTMLKsNavbarContactElement extends Components.KsNavbarContact, HTMLStencilElement {
-    }
-    var HTMLKsNavbarContactElement: {
-        prototype: HTMLKsNavbarContactElement;
-        new (): HTMLKsNavbarContactElement;
-    };
     interface HTMLKsNavbarContactPanelElement extends Components.KsNavbarContactPanel, HTMLStencilElement {
     }
     var HTMLKsNavbarContactPanelElement: {
         prototype: HTMLKsNavbarContactPanelElement;
         new (): HTMLKsNavbarContactPanelElement;
-    };
-    interface HTMLKsNavbarLogoElement extends Components.KsNavbarLogo, HTMLStencilElement {
-    }
-    var HTMLKsNavbarLogoElement: {
-        prototype: HTMLKsNavbarLogoElement;
-        new (): HTMLKsNavbarLogoElement;
     };
     interface HTMLKsNavbarPanelElement extends Components.KsNavbarPanel, HTMLStencilElement {
     }
@@ -1920,9 +1900,7 @@ declare global {
         "ks-navbar-button": HTMLKsNavbarButtonElement;
         "ks-navbar-categories": HTMLKsNavbarCategoriesElement;
         "ks-navbar-categories-expanded": HTMLKsNavbarCategoriesExpandedElement;
-        "ks-navbar-contact": HTMLKsNavbarContactElement;
         "ks-navbar-contact-panel": HTMLKsNavbarContactPanelElement;
-        "ks-navbar-logo": HTMLKsNavbarLogoElement;
         "ks-navbar-panel": HTMLKsNavbarPanelElement;
         "ks-navbar-search": HTMLKsNavbarSearchElement;
         "ks-navbar-search-mobile": HTMLKsNavbarSearchMobileElement;
@@ -2486,20 +2464,11 @@ declare namespace LocalJSX {
     }
     interface KsNavbarCategoriesExpanded {
     }
-    interface KsNavbarContact {
-        "contact"?: string;
-        "email"?: string;
-        "phone"?: string;
-    }
     interface KsNavbarContactPanel {
         "contact"?: string;
         "email"?: string;
         "phone"?: string;
-    }
-    interface KsNavbarLogo {
-        "height"?: string;
-        "image"?: string;
-        "width"?: string;
+        "toggled"?: boolean;
     }
     interface KsNavbarPanel {
         "hideMenu"?: boolean;
@@ -2928,9 +2897,7 @@ declare namespace LocalJSX {
         "ks-navbar-button": KsNavbarButton;
         "ks-navbar-categories": KsNavbarCategories;
         "ks-navbar-categories-expanded": KsNavbarCategoriesExpanded;
-        "ks-navbar-contact": KsNavbarContact;
         "ks-navbar-contact-panel": KsNavbarContactPanel;
-        "ks-navbar-logo": KsNavbarLogo;
         "ks-navbar-panel": KsNavbarPanel;
         "ks-navbar-search": KsNavbarSearch;
         "ks-navbar-search-mobile": KsNavbarSearchMobile;
@@ -3091,9 +3058,7 @@ declare module "@stencil/core" {
             "ks-navbar-button": LocalJSX.KsNavbarButton & JSXBase.HTMLAttributes<HTMLKsNavbarButtonElement>;
             "ks-navbar-categories": LocalJSX.KsNavbarCategories & JSXBase.HTMLAttributes<HTMLKsNavbarCategoriesElement>;
             "ks-navbar-categories-expanded": LocalJSX.KsNavbarCategoriesExpanded & JSXBase.HTMLAttributes<HTMLKsNavbarCategoriesExpandedElement>;
-            "ks-navbar-contact": LocalJSX.KsNavbarContact & JSXBase.HTMLAttributes<HTMLKsNavbarContactElement>;
             "ks-navbar-contact-panel": LocalJSX.KsNavbarContactPanel & JSXBase.HTMLAttributes<HTMLKsNavbarContactPanelElement>;
-            "ks-navbar-logo": LocalJSX.KsNavbarLogo & JSXBase.HTMLAttributes<HTMLKsNavbarLogoElement>;
             "ks-navbar-panel": LocalJSX.KsNavbarPanel & JSXBase.HTMLAttributes<HTMLKsNavbarPanelElement>;
             "ks-navbar-search": LocalJSX.KsNavbarSearch & JSXBase.HTMLAttributes<HTMLKsNavbarSearchElement>;
             "ks-navbar-search-mobile": LocalJSX.KsNavbarSearchMobile & JSXBase.HTMLAttributes<HTMLKsNavbarSearchMobileElement>;

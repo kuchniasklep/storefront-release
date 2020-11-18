@@ -1,5 +1,6 @@
 import { NavbarData } from './navbar-data';
 export declare class Navbar {
+  root: HTMLElement;
   logo: string;
   cartLink: string;
   cartCount: number;

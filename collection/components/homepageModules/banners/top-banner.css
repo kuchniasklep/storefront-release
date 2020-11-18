@@ -19,11 +19,6 @@ ks-top-banner {
     transition: var(--transition-background-color);
 }
 
-ks-top-banner.hydrated {
-    -webkit-animation: 300ms fade-in;
-            animation: 300ms fade-in;
-}
-
 ks-top-banner:hover {
     background-color: var(--color-yellow-hover);
 }

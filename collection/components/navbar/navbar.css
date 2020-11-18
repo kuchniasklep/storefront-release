@@ -3,11 +3,6 @@ ks-navbar {
     min-height: 104px;
 }
 
-ks-navbar.hydrated {
-    -webkit-animation: 300ms fade-in;
-            animation: 300ms fade-in;
-}
-
 ks-navbar > nav {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -23,6 +18,11 @@ ks-navbar > nav {
 
     color: var(--text-color-primary);
     background-color: var(--color-primary);
+}
+
+ks-navbar .logo {
+    margin: 0px 30px 0px 15px;
+    max-width: 217px;
 }
 
 #ks-navbar-menu-buttons {
