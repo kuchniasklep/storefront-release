@@ -1,3 +1,4 @@
+import { EventEmitter } from '../../stencil-public-runtime';
 import { NavbarData } from './navbar-data';
 export declare class Navbar {
   root: HTMLElement;
@@ -15,6 +16,8 @@ export declare class Navbar {
   contact: string;
   data: NavbarData;
   componentDidLoad(): Promise<void>;
+  navbarRendered: EventEmitter;
+  componentDidRender(): void;
   componentWillLoad(): void;
   mobile: boolean;
   resizeHandler(): void;

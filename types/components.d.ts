@@ -2452,6 +2452,7 @@ declare namespace LocalJSX {
         "loginLink"?: string;
         "logo"?: string;
         "logoutLink"?: string;
+        "onNavbarRendered"?: (event: CustomEvent<any>) => void;
         "phone"?: string;
     }
     interface KsNavbarButton {

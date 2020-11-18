@@ -1,4 +1,4 @@
-import { Component, h, Prop, State, Method, Listen, Element } from '@stencil/core';
+import { Component, h, Prop, State, Method, Listen, Element, Event } from '@stencil/core';
 import Tunnel from './navbar-data';
 export class Navbar {
   constructor() {
@@ -19,6 +19,9 @@ export class Navbar {
     }
     this.data.categories = JSON.parse(cachedCategories);
     this.render();
+  }
+  componentDidRender() {
+    this.navbarRendered.emit();
   }
   componentWillLoad() {
     this.data.links = {
@@ -308,6 +311,22 @@ export class Navbar {
     "data": {},
     "mobile": {}
   }; }
+  static get events() { return [{
+      "method": "navbarRendered",
+      "name": "navbarRendered",
+      "bubbles": true,
+      "cancelable": true,
+      "composed": true,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "complexType": {
+        "original": "any",
+        "resolved": "any",
+        "references": {}
+      }
+    }]; }
   static get methods() { return {
     "IncrementCart": {
       "complexType": {

@@ -3026,6 +3026,7 @@ const navbarCss = "ks-navbar{display:block;min-height:104px}ks-navbar>nav{displa
 const Navbar = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
+    this.navbarRendered = index.createEvent(this, "navbarRendered", 7);
     this.data = { links: {}, categories: [] };
     this.mobile = false;
   }
@@ -3043,6 +3044,9 @@ const Navbar = class {
     }
     this.data.categories = JSON.parse(cachedCategories);
     this.render();
+  }
+  componentDidRender() {
+    this.navbarRendered.emit();
   }
   componentWillLoad() {
     this.data.links = {
