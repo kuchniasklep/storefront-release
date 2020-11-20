@@ -6,7 +6,7 @@ export declare class ProductSuggestions {
   api: string;
   loaded: boolean;
   products: SuggestedProductData[];
-  componentDidLoad(): Promise<void>;
+  componentDidRender(): Promise<void>;
   Hide(): void;
   ToCart(): void;
   render(): any;

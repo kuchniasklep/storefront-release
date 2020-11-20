@@ -3421,7 +3421,9 @@ const ProductSuggestions = class {
     this.loaded = false;
     this.products = new Array();
   }
-  async componentDidLoad() {
+  async componentDidRender() {
+    const element = document.querySelector("#ks-product-suggestions-" + this.productId);
+    UIkit.modal(element).show();
     if (this.products.length == 0) {
       const headers = new Headers();
       headers.append('pragma', 'no-cache');
@@ -3438,8 +3440,6 @@ const ProductSuggestions = class {
         this.loaded = true;
       });
     }
-    const element = document.querySelector("#ks-product-suggestions-" + this.productId);
-    UIkit.modal(element).show();
   }
   Hide() {
     //window.location.reload();
