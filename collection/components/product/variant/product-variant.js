@@ -2,11 +2,7 @@ import { Component, h, Prop } from '@stencil/core';
 export class ProductVariant {
   render() {
     return (h("a", { href: this.link, "aria-label": this.name },
-      h("div", { class: "uk-card uk-card-default uk-card-body uk-padding-small uk-position-relative uk-transition-toggle" },
-        h("div", { class: "uk-flex uk-flex-column uk-flex-middle uk-text-small", style: this.unavailable ? { opacity: "0.2" } : null },
-          h("ks-image", { src: this.image, width: "90", height: "90", alt: this.name })),
-        this.active ? h("div", { class: "uk-overlay-border uk-position-cover" }) : null,
-        h("div", { class: "uk-position-cover uk-transition-fade", style: { backgroundColor: "rgba(255, 255, 255, 0.3)" } }))));
+      h("ks-img", { center: true, contained: true, src: this.image, width: 90, height: 90, alt: this.name })));
   }
   static get is() { return "ks-product-variant"; }
   static get originalStyleUrls() { return {
@@ -82,7 +78,7 @@ export class ProductVariant {
         "text": ""
       },
       "attribute": "active",
-      "reflect": false
+      "reflect": true
     },
     "unavailable": {
       "type": "boolean",
@@ -99,7 +95,7 @@ export class ProductVariant {
         "text": ""
       },
       "attribute": "unavailable",
-      "reflect": false
+      "reflect": true
     }
   }; }
 }

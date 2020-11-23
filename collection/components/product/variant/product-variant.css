@@ -1,14 +1,37 @@
-ks-product-variant a {
+ks-product-variant {
     display: block;
-    height: 100%;
 }
 
-ks-product-variant .uk-card {
+ks-product-variant a {
+    display: block;
+    box-sizing: border-box;
     height: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+
+    background-color: white;
+    box-shadow: var(--card-shadow);
+
+    padding: 7px;
+}
+
+ks-product-variant[active] a {
+    border: 2px solid #222;
+}
+
+
+ks-product-variant ks-img {
+    opacity: 1;
+    -webkit-transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease;
+}
+
+ks-product-variant[unavailable] ks-img {
+    opacity: 0.2;
+}
+
+ks-product-variant:not([unavailable]) a:hover ks-img {
+    opacity: 0.8;
+}
+
+ks-product-variant[unavailable] a:hover ks-img {
+    opacity: 0.15;
 }
