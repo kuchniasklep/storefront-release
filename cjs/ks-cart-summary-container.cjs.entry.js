@@ -3,8 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-18d28dc7.js');
-require('./state-tunnel-786a62ce.js');
-const cartData = require('./cartData-a515eff7.js');
+const cartData = require('./cartData-7eb782a3.js');
 
 const CartSummaryContainer = class {
   constructor(hostRef) {

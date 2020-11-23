@@ -1,10 +1,12 @@
+import { CategoryData } from '../navbar-data';
 export declare class NavbarCategoryView {
   root: HTMLElement;
-  count: number;
-  category: number;
+  category: CategoryData;
   hidden: boolean;
   hiddenO: boolean;
+  count: number;
   timeout: number;
+  componentWillLoad(): void;
   MouseOverHandler(): void;
   MouseOutHandler(): void;
   NavbarColor(state: boolean): void;

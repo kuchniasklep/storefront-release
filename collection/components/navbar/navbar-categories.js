@@ -1,17 +1,31 @@
 import { Component, h } from '@stencil/core';
-import Tunnel from './navbar-data';
+import { store } from "./navbar-store";
 export class NavbarCategories {
   render() {
-    return (h(Tunnel.Consumer, null, ({ categories }) => (h("nav", { class: "uk-section uk-padding-remove uk-light", style: { backgroundColor: '#00426e', maxHeight: "32px" } },
-      h("ul", { class: "uk-subnav uk-visible@m uk-margin-remove uk-text-small", style: { padding: '5px 0' } }, categories.map(category => h("li", null,
-        h("a", { href: category.url },
-          category.name,
-          category.children ? h("span", { "uk-icon": "icon:  triangle-down" }) : null),
-        category.children ?
-          h("div", { "uk-dropdown": "offset: 5" },
-            h("ul", { class: "uk-nav uk-dropdown-nav" }, category.children.map(child => h("li", null,
-              h("a", { href: child.url }, child.name)))))
-          : null)))))));
+    return h("nav", null,
+      " ",
+      store.get("categories").map(category => {
+        let expanded = false;
+        if (category.children)
+          for (let x = 0; x < category.children.length; x++) {
+            const c = category.children[x];
+            if (c.children) {
+              expanded = true;
+              break;
+            }
+          }
+        if (expanded)
+          return h("ks-category-view", { category: category });
+        else
+          return h("ks-category-simple", { category: category });
+      }),
+      " ");
   }
   static get is() { return "ks-navbar-categories"; }
+  static get originalStyleUrls() { return {
+    "$": ["navbar-categories.css"]
+  }; }
+  static get styleUrls() { return {
+    "$": ["navbar-categories.css"]
+  }; }
 }

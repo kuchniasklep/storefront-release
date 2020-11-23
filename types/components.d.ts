@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
 import { CartDataDeal, CartDataDealGroup, CartDataDiscount, CartDataPoints, CartDataProduct, CartDataSelectItem, CartDataShippingProgress, CartDataSummaryItem } from "./components/cart/cartData";
+import { CategoryData } from "./components/navbar/navbar-data";
 import { LightboxImageData } from "./components/elements/modal/lightbox-data";
 import { TraitData, TraitDataItem } from "./components/product/product-data";
 export namespace Components {
@@ -245,11 +246,10 @@ export namespace Components {
         "price": string;
     }
     interface KsCategorySimple {
-        "category": number;
+        "category": CategoryData;
     }
     interface KsCategoryView {
-        "category": number;
-        "count": number;
+        "category": CategoryData;
     }
     interface KsComment {
         "author": string;
@@ -525,8 +525,6 @@ export namespace Components {
         "toggle": boolean;
     }
     interface KsNavbarCategories {
-    }
-    interface KsNavbarCategoriesExpanded {
     }
     interface KsNavbarContactPanel {
         "Toggle": () => Promise<void>;
@@ -1379,12 +1377,6 @@ declare global {
         prototype: HTMLKsNavbarCategoriesElement;
         new (): HTMLKsNavbarCategoriesElement;
     };
-    interface HTMLKsNavbarCategoriesExpandedElement extends Components.KsNavbarCategoriesExpanded, HTMLStencilElement {
-    }
-    var HTMLKsNavbarCategoriesExpandedElement: {
-        prototype: HTMLKsNavbarCategoriesExpandedElement;
-        new (): HTMLKsNavbarCategoriesExpandedElement;
-    };
     interface HTMLKsNavbarContactPanelElement extends Components.KsNavbarContactPanel, HTMLStencilElement {
     }
     var HTMLKsNavbarContactPanelElement: {
@@ -1900,7 +1892,6 @@ declare global {
         "ks-navbar": HTMLKsNavbarElement;
         "ks-navbar-button": HTMLKsNavbarButtonElement;
         "ks-navbar-categories": HTMLKsNavbarCategoriesElement;
-        "ks-navbar-categories-expanded": HTMLKsNavbarCategoriesExpandedElement;
         "ks-navbar-contact-panel": HTMLKsNavbarContactPanelElement;
         "ks-navbar-panel": HTMLKsNavbarPanelElement;
         "ks-navbar-search": HTMLKsNavbarSearchElement;
@@ -2207,11 +2198,10 @@ declare namespace LocalJSX {
         "price"?: string;
     }
     interface KsCategorySimple {
-        "category"?: number;
+        "category"?: CategoryData;
     }
     interface KsCategoryView {
-        "category"?: number;
-        "count"?: number;
+        "category"?: CategoryData;
     }
     interface KsComment {
         "author"?: string;
@@ -2464,8 +2454,6 @@ declare namespace LocalJSX {
         "toggle"?: boolean;
     }
     interface KsNavbarCategories {
-    }
-    interface KsNavbarCategoriesExpanded {
     }
     interface KsNavbarContactPanel {
         "contact"?: string;
@@ -2899,7 +2887,6 @@ declare namespace LocalJSX {
         "ks-navbar": KsNavbar;
         "ks-navbar-button": KsNavbarButton;
         "ks-navbar-categories": KsNavbarCategories;
-        "ks-navbar-categories-expanded": KsNavbarCategoriesExpanded;
         "ks-navbar-contact-panel": KsNavbarContactPanel;
         "ks-navbar-panel": KsNavbarPanel;
         "ks-navbar-search": KsNavbarSearch;
@@ -3060,7 +3047,6 @@ declare module "@stencil/core" {
             "ks-navbar": LocalJSX.KsNavbar & JSXBase.HTMLAttributes<HTMLKsNavbarElement>;
             "ks-navbar-button": LocalJSX.KsNavbarButton & JSXBase.HTMLAttributes<HTMLKsNavbarButtonElement>;
             "ks-navbar-categories": LocalJSX.KsNavbarCategories & JSXBase.HTMLAttributes<HTMLKsNavbarCategoriesElement>;
-            "ks-navbar-categories-expanded": LocalJSX.KsNavbarCategoriesExpanded & JSXBase.HTMLAttributes<HTMLKsNavbarCategoriesExpandedElement>;
             "ks-navbar-contact-panel": LocalJSX.KsNavbarContactPanel & JSXBase.HTMLAttributes<HTMLKsNavbarContactPanelElement>;
             "ks-navbar-panel": LocalJSX.KsNavbarPanel & JSXBase.HTMLAttributes<HTMLKsNavbarPanelElement>;
             "ks-navbar-search": LocalJSX.KsNavbarSearch & JSXBase.HTMLAttributes<HTMLKsNavbarSearchElement>;

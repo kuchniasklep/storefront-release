@@ -1,6 +1,5 @@
 import { r as registerInstance, h, g as getElement } from './index-22b73bd9.js';
-import './state-tunnel-04c0b67a.js';
-import { T as Tunnel } from './cartData-c83db97f.js';
+import { T as Tunnel } from './cartData-871fd2cb.js';
 
 const CartDealContainer = class {
   constructor(hostRef) {

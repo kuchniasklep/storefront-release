@@ -1,5 +1,6 @@
 import { r as registerInstance, h, g as getElement } from './index-22b73bd9.js';
-import { s as store } from './product-store-295640a9.js';
+import './index-fe9ed645.js';
+import { s as store } from './product-store-89a25286.js';
 
 function AppendSuggestions(api, id, name) {
   const suggestions = document.createElement("ks-product-suggestions");

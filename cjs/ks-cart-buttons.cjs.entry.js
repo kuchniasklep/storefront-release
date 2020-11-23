@@ -3,8 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-18d28dc7.js');
-require('./state-tunnel-786a62ce.js');
-const cartData = require('./cartData-a515eff7.js');
+const cartData = require('./cartData-7eb782a3.js');
 
 const cartButtonsCss = "ks-cart-buttons{display:block}ks-cart-buttons>.confirm{-webkit-box-flex:1;-ms-flex:1;flex:1;width:100%;font-size:28px;font-weight:700;padding:20px}";
 

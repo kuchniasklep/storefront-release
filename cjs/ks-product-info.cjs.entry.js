@@ -3,7 +3,8 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-18d28dc7.js');
-const productStore = require('./product-store-e1a028d5.js');
+require('./index-7cc854df.js');
+const productStore = require('./product-store-525142bc.js');
 
 function AppendSuggestions(api, id, name) {
   const suggestions = document.createElement("ks-product-suggestions");

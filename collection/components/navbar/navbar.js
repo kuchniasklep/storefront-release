@@ -1,8 +1,7 @@
 import { Component, h, Prop, State, Method, Listen, Element, Event } from '@stencil/core';
-import Tunnel from './navbar-data';
+import { store } from "./navbar-store";
 export class Navbar {
   constructor() {
-    this.data = { links: {}, categories: [] };
     this.mobile = false;
   }
   async componentDidLoad() {
@@ -17,22 +16,20 @@ export class Navbar {
       sessionStorage.setItem("category-data", jsonString);
       cachedCategories = jsonString;
     }
-    this.data.categories = JSON.parse(cachedCategories);
+    store.set("categories", JSON.parse(cachedCategories));
     this.render();
   }
   componentDidRender() {
     this.navbarRendered.emit();
   }
   componentWillLoad() {
-    this.data.links = {
-      cartLink: this.cartLink,
-      cartCount: this.cartCount,
-      favouritesCount: this.heartCount,
-      favouritesLink: this.heartLink,
-      loginLink: this.loginLink,
-      logoutLink: this.logoutLink,
-      accountLink: this.accountLink
-    };
+    store.set("cartLink", this.cartLink);
+    store.set("cartCount", this.cartCount);
+    store.set("favouritesCount", this.heartCount);
+    store.set("favouritesLink", this.heartLink);
+    store.set("loginLink", this.loginLink);
+    store.set("logoutLink", this.logoutLink);
+    store.set("accountLink", this.accountLink);
     this.resizeHandler();
   }
   resizeHandler() {
@@ -40,32 +37,26 @@ export class Navbar {
   }
   async IncrementCart(count = "1") {
     const countInt = parseInt(count);
-    const data = Object.assign({}, this.data);
-    data.links.cartCount += countInt;
-    this.data = data;
+    const incremented = store.get("cartCount") + countInt;
+    store.set("cartCount", incremented);
   }
   async DecrementCart() {
-    const data = Object.assign({}, this.data);
-    if (data.links.cartCount > 0) {
-      data.links.cartCount--;
-      this.data = data;
-    }
+    const count = store.get("cartCount");
+    if (count > 0)
+      store.set("cartCount", count - 1);
   }
   async IncrementHeart() {
-    const data = Object.assign({}, this.data);
-    data.links.favouritesCount++;
-    this.data = data;
+    const incremented = store.get("favouritesCount") + 1;
+    store.set("favouritesCount", incremented);
   }
   async DecrementHeart() {
-    const data = Object.assign({}, this.data);
-    if (data.links.favouritesCount > 0) {
-      data.links.favouritesCount--;
-      this.data = data;
-    }
+    const count = store.get("favouritesCount");
+    if (count > 0)
+      store.set("favouritesCount", count - 1);
   }
   render() {
-    const favouritesCount = this.data.links.favouritesCount;
-    const cartCount = this.data.links.cartCount;
+    const favouritesCount = store.get("favouritesCount");
+    const cartCount = store.get("cartCount");
     return [
       h("nav", null,
         h("a", { href: "/" },
@@ -86,12 +77,12 @@ export class Navbar {
             h("ks-navbar-button", { name: "Wyloguj", link: this.logoutLink, icon: "log-out", class: "desktop" })
             : null,
           h("ks-navbar-button", { name: "Menu", link: "#navbar-sidebar", toggle: true, icon: "menu", class: "mobile-tablet" }))),
-      h(Tunnel.Provider, { state: this.data }, !this.mobile ?
-        h("ks-navbar-categories-expanded", null)
+      !this.mobile ?
+        h("ks-navbar-categories", null)
         : [
           h("ks-navbar-search-mobile", null),
           h("ks-navbar-sidebar", null)
-        ])
+        ]
     ];
   }
   static get is() { return "ks-navbar"; }
@@ -308,7 +299,6 @@ export class Navbar {
     }
   }; }
   static get states() { return {
-    "data": {},
     "mobile": {}
   }; }
   static get events() { return [{

@@ -16,8 +16,8 @@ ks-navbar > nav {
 
     position: relative;
 
-    color: var(--text-color-primary);
-    background-color: var(--color-primary);
+    color: var(--navbar-text-color);
+    background-color: var(--navbar-color);
 }
 
 ks-navbar > nav > a {

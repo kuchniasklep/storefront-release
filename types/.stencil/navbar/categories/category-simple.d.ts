@@ -1,6 +1,7 @@
+import { CategoryData } from '../navbar-data';
 export declare class NavbarCategorySimple {
   root: HTMLElement;
-  category: number;
+  category: CategoryData;
   hidden: boolean;
   hiddenO: boolean;
   timeout: number;

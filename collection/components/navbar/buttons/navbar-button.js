@@ -4,7 +4,7 @@ export class NavbarButton {
     const toggleString = `target: ${this.link}; animation: uk-animation-fade`;
     const toggle = this.animatedToggle ? toggleString : this.toggle;
     return [
-      h("a", { href: this.link, class: "uk-button uk-button-primary uk-position-relative", "uk-toggle": toggle, style: { lineHeight: "70px", minWidth: "60px" }, "aria-label": this.name },
+      h("a", { href: this.link, "uk-toggle": toggle, style: { lineHeight: "70px", minWidth: "60px" }, "aria-label": this.name },
         h("ks-icon", { name: this.icon, size: 1.4 }),
         this.count && this.count != 0 ?
           h("span", { class: "count uk-position-top-right", style: { marginTop: "5px" } }, this.count)

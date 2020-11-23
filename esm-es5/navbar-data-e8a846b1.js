@@ -1,1 +1,0 @@
-import{h}from"./index-22b73bd9.js";import{c as createProviderConsumer}from"./state-tunnel-04c0b67a.js";var Tunnel=createProviderConsumer({},(function(e,r){return h("context-consumer",{subscribe:e,renderer:r})}));export{Tunnel as T};

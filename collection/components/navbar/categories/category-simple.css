@@ -1,11 +1,11 @@
-.ks-category-simple {
+ks-category-simple {
     display: inline-block;
     position: relative;
     height: 32px;
     outline: 1px solid transparent;
 }
 
-.ks-category-simple > a {
+ks-category-simple > a {
     margin: 0 10px;
     line-height: 35px;
     text-decoration: none;
@@ -14,14 +14,16 @@
 
     transition: color 0.3s ease;
     color: white;
+
+    font-size: .875rem;
 }
 
-.ks-category-simple > a:hover {
+ks-category-simple > a:hover {
     text-decoration: none;
     color: #ffffffbb;
 }
 
-.ks-category-simple > div {
+ks-category-simple > div {
     background-color: white;
     color: #252525;
     position: absolute;
@@ -39,7 +41,7 @@
 }
 
 
-.ks-category-simple > div a {
+ks-category-simple > div a {
     display: block;
     padding: 9px 15px;
     text-decoration: none;
@@ -56,14 +58,14 @@
     color: #252525;
 }
 
-.ks-category-simple > div a:hover {
+ks-category-simple > div a:hover {
     text-decoration: none;
     color: #252525;
 
     background-color: #f9f9f9;
 }
 
-.ks-category-simple > div a:active {
+ks-category-simple > div a:active {
     text-decoration: none;
     background-color: #e6e6e6;
 }

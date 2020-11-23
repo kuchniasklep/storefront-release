@@ -4,6 +4,24 @@ ks-navbar-button {
     height: 70px;
 }
 
+ks-navbar-button > a {
+    outline-style: none;
+    text-decoration: none !important;
+    color: var(--navbar-text-color) !important;
+
+    -webkit-transition: var(--transition-background-color);
+
+    transition: var(--transition-background-color);
+}
+
+ks-navbar-button > a:hover {
+    background-color: var(--navbar-color-hover);
+}
+
+ks-navbar-button > a:active {
+    background-color: var(--navbar-color-active);
+}
+
 ks-navbar-button > div {
     position: absolute;
     bottom: -28px;
@@ -15,7 +33,7 @@ ks-navbar-button > div {
     font-size: 14px;
     text-transform: uppercase;
     text-align: center;
-    color: rgb(255, 255, 255);
+    color: var(--navbar-text-color);
 
     opacity: 0;
     -webkit-transition: opacity 0.3s ease;
@@ -49,7 +67,7 @@ ks-navbar-button .count {
     border-radius: 500px;
     vertical-align: middle;
     background: var(--color-secondary);
-    color: #fff;
+    color: var(--navbar-text-color);
     font-size: 16px;
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;

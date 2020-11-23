@@ -16,7 +16,7 @@ ks-navbar-contact-panel {
 
     width: 100%;
 
-    color: white;
+    color: var(--navbar-category-text-color);;
 
     z-index: 100000;
 }
@@ -50,7 +50,7 @@ ks-navbar-contact-panel .navbar {
     right: 0px;
 
     height: 70px;
-    background-color: var(--color-primary);
+    background-color: var(--navbar-color);
 }
 
 ks-navbar-contact-panel .content {
@@ -59,7 +59,7 @@ ks-navbar-contact-panel .content {
     display: flex;
     width: 100%;
 
-    background-color: var(--color-primary-dark);
+    background-color: var(--navbar-category-color);
     box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2);
 }
 

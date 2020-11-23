@@ -1,5 +1,4 @@
-import { Component, h, Prop, State, Element, Listen } from '@stencil/core';
-import Tunnel from '../navbar-data';
+import { Component, h, Prop, State, Element, Listen, Host } from '@stencil/core';
 export class NavbarCategorySimple {
   constructor() {
     this.hidden = true;
@@ -17,27 +16,28 @@ export class NavbarCategorySimple {
     }, 200);
   }
   render() {
-    return (h(Tunnel.Consumer, null, ({ categories }) => {
-      const category = categories[this.category];
-      return (h("div", { class: "ks-category-simple", style: {
-          backgroundColor: category.backgroundColor ? category.backgroundColor : "",
-          outlineColor: category.backgroundColor ? category.backgroundColor : ""
-        } },
-        h("a", { href: category.url, class: "uk-text-small", style: {
-            color: category.color ? category.color : "",
-            marginLeft: this.category == 0 ? "0" :
-              category.children ? "15px" : ""
-          } },
-          category.name,
-          category.children ? h("span", { "uk-icon": "triangle-down" }) : null),
-        category.children ?
-          h("div", { style: {
-              visibility: this.hidden ? "hidden" : "visible",
-              opacity: this.hiddenO ? "0.0" : "1.0"
-            } },
-            h("div", null, category.children.map((child) => h("a", { href: child.url }, child.name))))
-          : null));
-    }));
+    const haschildren = this.category.children && this.category.children.length;
+    const divstyle = {
+      backgroundColor: this.category.backgroundColor || "",
+      outlineColor: this.category.backgroundColor || ""
+    };
+    const linkstyle = {
+      color: this.category.color || "",
+      marginLeft: this.category == 0 ? "0" :
+        haschildren ? "15px" : ""
+    };
+    const childrenstyle = {
+      visibility: this.hidden ? "hidden" : "visible",
+      opacity: this.hiddenO ? "0.0" : "1.0"
+    };
+    return h(Host, { style: divstyle },
+      h("a", { href: this.category.url, style: linkstyle },
+        this.category.name,
+        " ",
+        haschildren ? h("ks-icon", { name: "chevron-down", size: 0.8 }) : null),
+      haschildren ?
+        h("div", { style: childrenstyle }, this.category.children.map((child) => h("a", { href: child.url }, child.name)))
+        : null);
   }
   static get is() { return "ks-category-simple"; }
   static get originalStyleUrls() { return {
@@ -48,21 +48,24 @@ export class NavbarCategorySimple {
   }; }
   static get properties() { return {
     "category": {
-      "type": "number",
+      "type": "unknown",
       "mutable": false,
       "complexType": {
-        "original": "number",
-        "resolved": "number",
-        "references": {}
+        "original": "CategoryData",
+        "resolved": "CategoryData",
+        "references": {
+          "CategoryData": {
+            "location": "import",
+            "path": "../navbar-data"
+          }
+        }
       },
       "required": false,
       "optional": false,
       "docs": {
         "tags": [],
         "text": ""
-      },
-      "attribute": "category",
-      "reflect": false
+      }
     }
   }; }
   static get states() { return {

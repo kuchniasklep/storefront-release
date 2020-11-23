@@ -1,0 +1,7 @@
+ks-navbar-search-mobile {
+    display: block;
+}
+
+ks-navbar-search-mobile > nav {
+    background-color: var(--navbar-category-color);
+}

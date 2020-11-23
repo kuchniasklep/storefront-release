@@ -1,5 +1,4 @@
 import { EventEmitter } from '../../stencil-public-runtime';
-import { NavbarData } from './navbar-data';
 export declare class Navbar {
   root: HTMLElement;
   logo: string;
@@ -14,7 +13,6 @@ export declare class Navbar {
   phone: string;
   email: string;
   contact: string;
-  data: NavbarData;
   componentDidLoad(): Promise<void>;
   navbarRendered: EventEmitter;
   componentDidRender(): void;

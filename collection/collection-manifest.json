@@ -87,7 +87,6 @@
     "./components/listing/filter/filter-slider.js",
     "./components/listing/filter/filter.js",
     "./components/miniCart/miniCart.js",
-    "./components/navbar/navbar-categories-expanded.js",
     "./components/navbar/navbar-categories.js",
     "./components/navbar/navbar-search-mobile.js",
     "./components/navbar/navbar-search.js",

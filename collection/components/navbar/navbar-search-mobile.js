@@ -5,7 +5,7 @@ export class NavbarSearchMobile {
     form.submit();
   }
   render() {
-    return (h("nav", { class: "uk-section uk-padding-remove uk-light", style: { backgroundColor: '#00426e' } },
+    return (h("nav", { class: "uk-section uk-padding-remove uk-light" },
       h("div", { class: "uk-hidden@m uk-padding-small" },
         h("form", { method: "post", action: "szukaj.html", class: "uk-search uk-search-large uk-width-1-1" },
           h("a", { onClick: () => this.submit(), class: "uk-search-icon-flip uk-margin-small-right", "uk-search-icon": "ratio: 0.6" }),
@@ -16,5 +16,11 @@ export class NavbarSearchMobile {
           h("input", { type: "hidden", name: "kodprod", value: "tak" })))));
   }
   static get is() { return "ks-navbar-search-mobile"; }
+  static get originalStyleUrls() { return {
+    "$": ["navbar-search-mobile.css"]
+  }; }
+  static get styleUrls() { return {
+    "$": ["navbar-search-mobile.css"]
+  }; }
   static get elementRef() { return "root"; }
 }
