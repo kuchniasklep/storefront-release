@@ -2,6 +2,8 @@ import { EventEmitter } from '../../stencil-public-runtime';
 export declare class Navbar {
   root: HTMLElement;
   logo: string;
+  promo: string;
+  promoLink: string;
   cartLink: string;
   cartCount: number;
   heartLink: string;

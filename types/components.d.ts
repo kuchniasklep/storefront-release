@@ -515,6 +515,8 @@ export namespace Components {
         "logo": string;
         "logoutLink": string;
         "phone": string;
+        "promo": string;
+        "promoLink": string;
     }
     interface KsNavbarButton {
         "animatedToggle": boolean;
@@ -2444,6 +2446,8 @@ declare namespace LocalJSX {
         "logoutLink"?: string;
         "onNavbarRendered"?: (event: CustomEvent<any>) => void;
         "phone"?: string;
+        "promo"?: string;
+        "promoLink"?: string;
     }
     interface KsNavbarButton {
         "animatedToggle"?: boolean;

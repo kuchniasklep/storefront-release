@@ -7,12 +7,6 @@ ks-navbar > nav {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
 
     position: relative;
 
@@ -20,32 +14,129 @@ ks-navbar > nav {
     background-color: var(--navbar-color);
 }
 
-ks-navbar > nav > a {
-    max-width: 217px;
-    width: 100%;
-}
-
-ks-navbar .logo {
-    margin: 0px 30px 0px 15px;
-    max-width: 217px;
-}
-
-#ks-navbar-menu-buttons {
-    -webkit-box-flex: 0;
-        -ms-flex: none;
-            flex: none;
-
+ks-navbar > nav > .logo {
     display: -webkit-box;
-
     display: -ms-flexbox;
-
     display: flex;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+ks-navbar > nav > .search {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: unset;
+        -ms-flex: unset;
+            flex: unset;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+}
+
+ks-navbar > nav > .buttons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: unset;
+        -ms-flex: unset;
+            flex: unset;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+ks-navbar > nav > .logo > div {
+    margin-right: auto;
+    margin-left: 15px;
+    max-width: 217px;
+    width: 100%;
+
+    -webkit-box-pack: start;
+
+        -ms-flex-pack: start;
+
+            justify-content: flex-start;
+}
+
+ks-navbar > nav > .logo > div ks-img {
+    max-width: 217px;
+    margin-right: 15px;
+}
+
+ks-navbar > nav > .logo > div .promo {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--navbar-text-color);
+    white-space: nowrap;
+}
+
+
+@media only screen and (min-width: 640px) {
+    ks-navbar > nav > .logo { -webkit-box-flex: 1; -ms-flex: 1; flex: 1; }
+    ks-navbar > nav > .buttons { -webkit-box-flex: 1; -ms-flex: 1; flex: 1; }
+}
+
+@media only screen and (min-width: 1400px) {
+    ks-navbar > nav > .search { -webkit-box-flex: 1; -ms-flex: 1; flex: 1; }
+
+    ks-navbar > nav > .logo > div ks-img {
+        width: 217px;
+    }
+
+    ks-navbar > nav > .logo > div {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+
+        max-width: unset;
+        width: unset;
+    }
+
+    ks-navbar > nav > .logo > div .promo {
+        margin-left: 15px;
+        display: block;
+        padding: 8px 20px 5px 20px;
+        border-radius: 50px;
+
+        background-color: var(--navbar-text-color);
+        color: var(--navbar-color);
+
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    ks-navbar > nav > .logo > div a.promo {
+        box-shadow: 0 0 0px rgba(255, 255, 255, 0.529);
+        -webkit-transition: box-shadow 0.2s ease;
+        transition: box-shadow 0.2s ease;
+    }
+
+    ks-navbar > nav > .logo > div a.promo:hover {
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.529);
+    }
+
+    ks-navbar > nav > .logo > div a.promo:active {
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.529);
+    }
+}
+
+#ks-navbar-menu-buttons {
     box-sizing: border-box;
     min-height: 70px;
     padding: 0 15px;

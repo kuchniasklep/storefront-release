@@ -59,11 +59,17 @@ export class Navbar {
     const cartCount = store.get("cartCount");
     return [
       h("nav", null,
-        h("a", { href: "/" },
-          h("ks-img", { contained: true, class: "logo", sync: true, src: this.logo, width: 217, height: 35, alt: "kuchniasklep.pl" })),
-        h("ks-navbar-search", null),
-        h("ks-navbar-contact-panel", { phone: this.phone, email: this.email, contact: this.contact }),
-        h("div", { id: "ks-navbar-menu-buttons" },
+        h("div", { class: "logo" },
+          h("div", null,
+            h("a", { href: "/" },
+              h("ks-img", { contained: true, sync: true, src: this.logo, width: 217, height: 35, alt: "kuchniasklep.pl" })),
+            this.promo ? this.promoLink && !this.mobile ?
+              h("a", { class: "promo", href: this.promoLink }, this.promo) :
+              h("span", { class: "promo" }, this.promo)
+              : null)),
+        h("div", { class: "search" },
+          h("ks-navbar-search", null)),
+        h("div", { class: "buttons", id: "ks-navbar-menu-buttons" },
           h("ks-navbar-button", { name: "Kontakt", icon: "phone", onClick: () => this.root.querySelector("ks-navbar-contact-panel").Toggle() }),
           this.accountLink ?
             h("ks-navbar-button", { name: "Twoje konto", link: this.accountLink, icon: "user", class: "desktop" })
@@ -76,7 +82,8 @@ export class Navbar {
           this.logoutLink ?
             h("ks-navbar-button", { name: "Wyloguj", link: this.logoutLink, icon: "log-out", class: "desktop" })
             : null,
-          h("ks-navbar-button", { name: "Menu", link: "#navbar-sidebar", toggle: true, icon: "menu", class: "mobile-tablet" }))),
+          h("ks-navbar-button", { name: "Menu", link: "#navbar-sidebar", toggle: true, icon: "menu", class: "mobile-tablet" })),
+        h("ks-navbar-contact-panel", { phone: this.phone, email: this.email, contact: this.contact })),
       !this.mobile ?
         h("ks-navbar-categories", null)
         : [
@@ -108,6 +115,40 @@ export class Navbar {
         "text": ""
       },
       "attribute": "logo",
+      "reflect": false
+    },
+    "promo": {
+      "type": "string",
+      "mutable": false,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "promo",
+      "reflect": false
+    },
+    "promoLink": {
+      "type": "string",
+      "mutable": false,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "promo-link",
       "reflect": false
     },
     "cartLink": {
