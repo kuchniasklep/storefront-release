@@ -5,6 +5,7 @@ export declare class NewsletterPopup {
   registerLink: string;
   loggedIn: boolean;
   email: string;
+  agreement: string;
   mobile: boolean;
   resizeHandler(): void;
   loading: boolean;

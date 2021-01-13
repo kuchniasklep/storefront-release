@@ -2,6 +2,7 @@ import { Component, h, Prop, State, Element, Method, Listen } from '@stencil/cor
 export class NewsletterPopup {
   constructor() {
     this.loggedIn = false;
+    this.agreement = "Wyrażam zgodę na przetwarzanie danych osobowych do celów marketingowych, w celu zbadania opinii o sklepie oraz na otrzymywanie informacji handlowych na wskazany przeze mnie adres e-mail.";
     this.mobile = false;
     this.loading = false;
     this.success = false;
@@ -78,7 +79,7 @@ export class NewsletterPopup {
               h("form", { onSubmit: e => this.requestHandler(e) },
                 h("label", { class: "uk-flex uk-flex-middle uk-text-small", style: { padding: "10px 15px" } },
                   h("input", { class: "uk-checkbox", type: "checkbox", required: true, name: "zgoda", style: { padding: "15px 15px", marginRight: "10px" } }),
-                  h("p", null, "Wyra\u017Cam zgod\u0119 na przetwarzanie danych osobowych do cel\u00F3w marketingowych oraz otrzymywanie informacji handlowych na wskazany adres e-mail. ")),
+                  h("p", null, this.agreement)),
                 h("div", { class: "uk-flex uk-text-center" },
                   h("input", { class: "uk-input uk-width-expand", style: { height: "52px" }, type: "email", name: "email", required: true, placeholder: "Adres email", value: this.email ? this.email : null }),
                   h("input", { class: "uk-button uk-button-secondary uk-width-auto", style: { padding: "5px 50px" }, type: "submit", value: "ZAPISZ SI\u0118" }))),
@@ -188,6 +189,24 @@ export class NewsletterPopup {
       },
       "attribute": "email",
       "reflect": false
+    },
+    "agreement": {
+      "type": "string",
+      "mutable": false,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "agreement",
+      "reflect": false,
+      "defaultValue": "\"Wyra\u017Cam zgod\u0119 na przetwarzanie danych osobowych do cel\u00F3w marketingowych, w celu zbadania opinii o sklepie oraz na otrzymywanie informacji handlowych na wskazany przeze mnie adres e-mail.\""
     }
   }; }
   static get states() { return {
