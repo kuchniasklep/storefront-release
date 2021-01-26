@@ -296,7 +296,7 @@ export class Img {
         "text": ""
       },
       "attribute": "limit",
-      "reflect": false,
+      "reflect": true,
       "defaultValue": "false"
     }
   }; }

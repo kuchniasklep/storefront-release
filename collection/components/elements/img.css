@@ -13,6 +13,11 @@ ks-img {
             align-items: center;
 }
 
+ks-img[limit] {
+    height: unset;
+    width: unset;
+}
+
 ks-img img {
     max-width: initial;
     height: initial;

@@ -32,14 +32,14 @@ export class ProductTab {
       ksImage.setAttribute("limit", "limit");
       let height = image.style.height.replace("px", "");
       let width = image.style.width.replace("px", "");
-      if (height)
-        ksImage.setAttribute("height", height);
-      if (width)
-        ksImage.setAttribute("width", width);
       if (image.style.maxWidth) {
         ksImage.style.maxWidth = image.style.maxWidth;
         width = image.style.maxWidth;
       }
+      if (height)
+        ksImage.setAttribute("height", height);
+      if (width)
+        ksImage.setAttribute("width", width);
       const margin = image.style.margin;
       if (margin.includes("auto"))
         ksImage.style.margin = "auto";
