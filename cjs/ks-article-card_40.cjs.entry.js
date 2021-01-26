@@ -3047,10 +3047,8 @@ const Img = class {
     if (this.sync)
       return (index.h("img", { class: classes, src: this.src, alt: this.alt, width: this.width, height: this.height, style: max }));
     return [
-      (!this.loadAnimated ? [
-        index.h("ks-loader", { dark: true }),
-        index.h("canvas", { width: this.width, height: this.height, style: max })
-      ] : null),
+      (!this.loadAnimated ? index.h("ks-loader", { dark: true }) : null),
+      !this.loaded ? index.h("canvas", { width: this.width, height: this.height, style: max }) : null,
       index.h("img", { class: classes + " " + loading, alt: this.alt, onLoad: (e) => this.loadHandler(e), "data-src": this.src, width: this.width, height: this.height, style: max })
     ];
   }

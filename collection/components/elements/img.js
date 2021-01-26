@@ -73,10 +73,8 @@ export class Img {
     if (this.sync)
       return (h("img", { class: classes, src: this.src, alt: this.alt, width: this.width, height: this.height, style: max }));
     return [
-      (!this.loadAnimated ? [
-        h("ks-loader", { dark: true }),
-        h("canvas", { width: this.width, height: this.height, style: max })
-      ] : null),
+      (!this.loadAnimated ? h("ks-loader", { dark: true }) : null),
+      !this.loaded ? h("canvas", { width: this.width, height: this.height, style: max }) : null,
       h("img", { class: classes + " " + loading, alt: this.alt, onLoad: (e) => this.loadHandler(e), "data-src": this.src, width: this.width, height: this.height, style: max })
     ];
   }
