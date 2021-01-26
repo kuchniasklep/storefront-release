@@ -34,6 +34,9 @@ const ProductTab = class {
     for (let i = 0; i < images.length; i++) {
       const image = images[i];
       const ksImage = document.createElement("ks-img");
+      ksImage.setAttribute("src", image.getAttribute("data-src"));
+      ksImage.setAttribute("alt", image.getAttribute("alt"));
+      let height = image.style.height.replace("px", "");
       let width = image.style.width.replace("px", "");
       if (width.includes("%")) {
         if (width == "100%")
@@ -43,17 +46,19 @@ const ProductTab = class {
       }
       if (image.style.maxWidth)
         width = image.style.maxWidth.replace("px", "");
-      const margin = image.style.margin;
-      ksImage.setAttribute("src", image.getAttribute("data-src"));
-      ksImage.setAttribute("alt", image.getAttribute("alt"));
-      if (width)
+      if (height)
+        ksImage.setAttribute("height", height);
+      if (width) {
         ksImage.setAttribute("width", width);
+        ksImage.style.maxWidth = image.style.width;
+      }
       ksImage.style.display = "inline-block";
-      ksImage.style.margin = margin;
+      const margin = image.style.margin;
+      if (margin)
+        ksImage.style.padding = margin;
       if (margin.includes("auto")) {
         ksImage.style.textAlign = "center";
         ksImage.style.display = "block";
-        ksImage.style.maxWidth = `${width} px`;
       }
       image.parentNode.replaceChild(ksImage, image);
     }
