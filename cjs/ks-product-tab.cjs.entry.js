@@ -53,6 +53,7 @@ const ProductTab = class {
       if (margin.includes("auto")) {
         ksImage.style.textAlign = "center";
         ksImage.style.display = "block";
+        ksImage.style.maxWidth = `${width} px`;
       }
       image.parentNode.replaceChild(ksImage, image);
     }

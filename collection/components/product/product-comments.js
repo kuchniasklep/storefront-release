@@ -12,12 +12,12 @@ export class ProductTab {
         h("ks-icon", { name: "mail", size: 2.5 }),
         h("p", null, this.message)),
       h("slot", null),
+      h("div", { class: "more", hidden: !this.expand },
+        h("slot", { name: "hidden" })),
       this.hasMore ?
-        h("div", { class: "more", hidden: !this.expand },
-          h("slot", { name: "hidden" }))
+        h("button", { onClick: () => this.expand = !this.expand, class: "expand" },
+          h("ks-icon", { name: this.expand ? "chevron-up" : "chevron-down", size: 1.5 }))
         : null,
-      h("button", { onClick: () => this.expand = !this.expand, class: "expand" },
-        h("ks-icon", { name: this.expand ? "chevron-up" : "chevron-down", size: 1.5 })),
       this.link ?
         h("a", { href: this.link, rel: "nofollow", class: "add", "aria-label": "Napisz recenzj\u0119" },
           h("ks-icon", { name: "plus-circle", size: 1.5 }))
