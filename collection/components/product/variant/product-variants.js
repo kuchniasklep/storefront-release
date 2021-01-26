@@ -6,7 +6,7 @@ export class ProductVariants {
     this.variantCount = 0;
   }
   componentDidLoad() {
-    this.flex = this.root.querySelector("div.uk-flex-wrap");
+    this.flex = this.root.querySelector(".content");
     this.variantCount = this.root.querySelectorAll("ks-product-variant").length;
     this.ResizeHandler();
     this.ToggleWatcher(this.toggle);
@@ -30,32 +30,25 @@ export class ProductVariants {
       this.more = this.variantCount > count ? true : false;
   }
   render() {
-    return (h("div", null,
+    return [
       h("style", { innerHTML: `
-					ks-product-variants div.uk-flex-wrap {
-						max-width: calc(100% + 18px);
-						width: 200%;
-						margin: -9px;
-					}
+				ks-product-variants ks-product-variant {
+					width: ${this.width}%;
+				}
 
-					ks-product-variants ks-product-variant {
-						width: ${this.width}%;
-						padding: 9px;
-						box-sizing: border-box;
-					}
-
-					ks-product-variants .ks-variant-max-flex-height{
-						max-height: ${this.maxHeight}px;
-					}
-				` }),
-      h("div", { class: "uk-flex uk-flex-wrap uk-width-1-1 uk-overflow-hidden" },
+				ks-product-variants .ks-variant-max-flex-height{
+					max-height: ${this.maxHeight}px;
+				}
+			` }),
+      h("div", { class: "content" },
         h("slot", null)),
       this.more ?
-        h("div", { class: "uk-flex uk-flex-center uk-margin-top" },
-          h("button", { class: "uk-button uk-button-default", style: { backgroundColor: "white", padding: "3px 30px", border: "none", borderRadius: "50px", boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.18)" }, onClick: () => this.toggle = !this.toggle }, this.toggle ?
-            h("span", { "uk-icon": "chevron-down" }) :
-            h("span", { "uk-icon": "chevron-up" })))
-        : null));
+        h("div", { class: "more" },
+          h("button", { onClick: () => this.toggle = !this.toggle }, this.toggle ?
+            h("ks-icon", { name: "chevron-down" }) :
+            h("ks-icon", { name: "chevron-up" })))
+        : null
+    ];
   }
   static get is() { return "ks-product-variants"; }
   static get originalStyleUrls() { return {

@@ -23,6 +23,12 @@ ks-img img {
     transition: opacity 0.3s ease;
 }
 
+ks-img canvas {
+    max-width: 100%;
+    max-height: 100%;
+    box-sizing: border-box;
+}
+
 ks-img .horizontal {
     width: 100%;
     height: auto;

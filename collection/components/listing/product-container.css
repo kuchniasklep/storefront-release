@@ -1,8 +1,4 @@
 ks-product-container {
-    display: block;
-}
-
-ks-product-container > div {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -20,21 +16,21 @@ ks-product-container > div {
     margin-top: -15px;
 }
 
-ks-product-container > div > * {
-    padding-left: 15px;
+ks-product-container > * {
+    margin-left: 15px;
     margin-top: 15px;
     width: 100%;
     box-sizing: border-box;
 }
 
 @media (min-width: 360px) and (max-width: 640px) {
-    ks-product-container > div > * {
+    ks-product-container > * {
         width: 50%;
     }
 }
 
 @media (min-width: 640px) {
-    ks-product-container > div > * {
+    ks-product-container > * {
         width: 230px;
     }
 }

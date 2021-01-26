@@ -1,23 +1,26 @@
-import { Component, h, Prop, State, Element, Method, Listen } from '@stencil/core';
+import { Component, h, Prop, Element, Method } from '@stencil/core';
+import ValidateInput from '../input/validate';
 export class NewsletterPopup {
   constructor() {
-    this.loggedIn = false;
+    this.loggedIn = true;
     this.agreement = "Wyrażam zgodę na przetwarzanie danych osobowych do celów marketingowych, w celu zbadania opinii o sklepie oraz na otrzymywanie informacji handlowych na wskazany przeze mnie adres e-mail.";
-    this.mobile = false;
-    this.loading = false;
-    this.success = false;
-    this.failure = false;
-    this.message = "";
+    this.infoMessage = "Aby otrzymać kupon rabatowy musisz posiadać konto w naszym sklepie. Minimalna wartość zamówienia wynosi: 100,00 zł";
+    this.successHeading = "ZAPISANO DO NEWSLETTERA";
+    this.faliureHeading = "BŁĄD ZAPISU";
   }
-  resizeHandler() {
-    if (window.innerWidth <= 700)
-      this.mobile = true;
-    else
-      this.mobile = false;
+  componentDidLoad() {
+    this.dialog = this.root.querySelector("ks-dialog");
+    if (document.cookie.search("newsletterPopup=tak") == -1) {
+      setTimeout(() => {
+        this.Show();
+      }, 4000);
+    }
   }
-  requestHandler(event) {
+  async requestHandler(event) {
     event.preventDefault();
-    this.loading = true;
+    if (!await ValidateInput(this.root.querySelector('form')))
+      return;
+    this.dialog.showLoading();
     const target = event.target;
     const data = new FormData(target);
     data.append("zgoda_newsletter_marketing", "1");
@@ -27,20 +30,21 @@ export class NewsletterPopup {
       .then(async (response) => {
       const result = await response.text();
       if (result.search("SUCCESS") != -1)
-        this.success = true;
+        this.dialog.showSuccess(this.successHeading, result.replace("SUCCESS", ""));
       else
-        this.failure = true;
-      this.message = result.replace("SUCCESS", "");
+        this.dialog.showFailure(this.faliureHeading, result);
+    })
+      .catch(async (error) => {
+      let message = "";
+      if (!window.navigator.onLine)
+        message = "Brak internetu.";
+      if (error.messsage)
+        message = error.messsage;
+      this.dialog.showFailure(this.faliureHeading, message);
     });
   }
   async Show() {
-    if (this.success || this.failure) {
-      this.loading = false;
-      this.success = false;
-      this.failure = false;
-    }
-    const element = document.querySelector("#ksNewsletterModal");
-    UIkit.modal(element).show();
+    this.dialog.show();
   }
   SetCookie() {
     var expiration = "";
@@ -49,60 +53,35 @@ export class NewsletterPopup {
     expiration = "expires=" + expirationDate.toUTCString() + "; ";
     document.cookie = "newsletterPopup=tak; " + expiration + "path=/";
   }
-  componentDidLoad() {
-    this.resizeHandler();
-    if (document.cookie.search("newsletterPopup=tak") == -1) {
-      setTimeout(() => {
-        this.Show();
-      }, 4000);
-    }
-  }
   render() {
-    const closeVisibility = !this.loading || this.success || this.failure;
     return [
-      h("div", { id: "ksNewsletterModal", class: this.mobile ? "uk-modal-full" : "uk-modal-container", "uk-modal": "bg-close: false; esc-close; false;" },
-        h("div", { class: "uk-modal-dialog uk-margin-auto-vertical uk-flex uk-flex-column", style: this.mobile ? { height: "100%" } : { width: "720px" } },
-          closeVisibility ?
-            h("button", { class: "uk-modal-close-default", type: "button", onClick: () => this.SetCookie(), "uk-close": true })
-            : null,
-          h("div", { class: "uk-flex-1", style: { padding: "60px 60px 40px 60px", fill: "#252525" } },
-            h("svg", { class: "uk-visible@s", viewBox: "0 0 303 15", style: { width: "100%", marginBottom: "20px" } },
+      h("ks-dialog", { nopadding: true, onClosed: () => this.SetCookie() },
+        h("form", { onSubmit: e => this.requestHandler(e) },
+          h("div", { class: "info" },
+            h("svg", { class: "top", viewBox: "0 0 303 15", width: 909, height: 30 },
               h("text", { x: "0", y: "12" }, "Zapisz si\u0119 do naszego Newslettera i zyskaj")),
-            h("svg", { class: "ks-text-decorated", viewBox: "0 0 98 15", style: { width: "100%" } },
-              h("text", { x: "0", y: "12" }, "KUPON 10Z\u0141")),
-            h("p", { class: "uk-text-center", style: { marginTop: "20px" } }, "Aby otrzyma\u0107 kupon rabatowy musisz posiada\u0107 konto w naszym sklepie. Minimalna warto\u015B\u0107 zam\u00F3wienia wynosi: 100,00 z\u0142")),
+            h("svg", { class: "heading", viewBox: "0 0 96 12", width: 980, height: 80 },
+              h("text", { x: "-1", y: "12" }, "KUPON 10Z\u0141")),
+            h("p", null, this.infoMessage)),
           !this.loggedIn ?
-            h("div", { class: "uk-child-width-1-1 uk-child-width-1-2@s" },
-              h("a", { href: this.loginLink, class: "uk-button uk-button-secondary", style: { padding: "8px 20px" } }, "ZALOGUJ SI\u0118"),
-              h("a", { href: this.registerLink, class: "uk-button uk-button-secondary", style: { padding: "8px 20px" } }, "NOWE KONTO"))
-            :
-              h("form", { onSubmit: e => this.requestHandler(e) },
-                h("label", { class: "uk-flex uk-flex-middle uk-text-small", style: { padding: "10px 15px" } },
-                  h("input", { class: "uk-checkbox", type: "checkbox", required: true, name: "zgoda", style: { padding: "15px 15px", marginRight: "10px" } }),
-                  h("p", null, this.agreement)),
-                h("div", { class: "uk-flex uk-text-center" },
-                  h("input", { class: "uk-input uk-width-expand", style: { height: "52px" }, type: "email", name: "email", required: true, placeholder: "Adres email", value: this.email ? this.email : null }),
-                  h("input", { class: "uk-button uk-button-secondary uk-width-auto", style: { padding: "5px 50px" }, type: "submit", value: "ZAPISZ SI\u0118" }))),
-          this.loading ?
-            h("div", { class: "uk-overlay uk-overlay-default uk-position-cover" },
-              h("div", { class: "uk-position-center" },
-                h("div", { "uk-spinner": "ratio: 3" })))
-            : null,
-          this.success ?
-            h("div", { class: "uk-overlay uk-overlay-default uk-position-cover uk-animation-fade uk-animation-fast", style: { backgroundColor: "white" } },
-              h("div", { class: "uk-position-center uk-text-center uk-padding-small" },
-                h("span", { "uk-icon": "icon: check; ratio: 4", class: "uk-animation-slide-top-small" }),
-                h("p", { class: "ks-text-decorated uk-animation-slide-top-small", innerHTML: this.message })))
-            : null,
-          this.failure ?
-            h("div", { class: "uk-overlay uk-overlay-default uk-position-cover uk-animation-fade uk-animation-fast", style: { backgroundColor: "white" } },
-              h("div", { class: "uk-position-center uk-text-center uk-padding-small" },
-                h("span", { "uk-icon": "icon: ban; ratio: 4", class: "uk-animation-slide-top-small" }),
-                h("p", { class: "uk-h1 ks-text-decorated uk-animation-slide-top-small", innerHTML: this.message })))
-            : null))
+            h("div", { class: "buttons" },
+              h("ks-button", { tall: true, name: "ZALOGUJ SI\u0118", link: this.loginLink }),
+              h("ks-button", { tall: true, name: "NOWE KONTO", link: this.registerLink }))
+            : [
+              h("ks-input-check", { large: true, required: true, nomessage: true, name: "zgoda", label: this.agreement }),
+              h("div", { class: "email-form" },
+                h("ks-input-text", { email: true, required: true, nomessage: true, center: true, name: "email", placeholder: "Adres email", value: this.email ? this.email : null }),
+                h("ks-button", { submit: true, name: "ZAPISZ SI\u0118" }))
+            ]))
     ];
   }
   static get is() { return "ks-newsletter-popup"; }
+  static get originalStyleUrls() { return {
+    "$": ["newsletter-popup.css"]
+  }; }
+  static get styleUrls() { return {
+    "$": ["newsletter-popup.css"]
+  }; }
   static get properties() { return {
     "api": {
       "type": "string",
@@ -171,7 +150,7 @@ export class NewsletterPopup {
       },
       "attribute": "logged-in",
       "reflect": false,
-      "defaultValue": "false"
+      "defaultValue": "true"
     },
     "email": {
       "type": "string",
@@ -207,14 +186,61 @@ export class NewsletterPopup {
       "attribute": "agreement",
       "reflect": false,
       "defaultValue": "\"Wyra\u017Cam zgod\u0119 na przetwarzanie danych osobowych do cel\u00F3w marketingowych, w celu zbadania opinii o sklepie oraz na otrzymywanie informacji handlowych na wskazany przeze mnie adres e-mail.\""
+    },
+    "infoMessage": {
+      "type": "string",
+      "mutable": false,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "info-message",
+      "reflect": false,
+      "defaultValue": "\"Aby otrzyma\u0107 kupon rabatowy musisz posiada\u0107 konto w naszym sklepie. Minimalna warto\u015B\u0107 zam\u00F3wienia wynosi: 100,00 z\u0142\""
+    },
+    "successHeading": {
+      "type": "string",
+      "mutable": false,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "success-heading",
+      "reflect": false,
+      "defaultValue": "\"ZAPISANO DO NEWSLETTERA\""
+    },
+    "faliureHeading": {
+      "type": "string",
+      "mutable": false,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "faliure-heading",
+      "reflect": false,
+      "defaultValue": "\"B\u0141\u0104D ZAPISU\""
     }
-  }; }
-  static get states() { return {
-    "mobile": {},
-    "loading": {},
-    "success": {},
-    "failure": {},
-    "message": {}
   }; }
   static get methods() { return {
     "Show": {
@@ -235,11 +261,4 @@ export class NewsletterPopup {
     }
   }; }
   static get elementRef() { return "root"; }
-  static get listeners() { return [{
-      "name": "resize",
-      "method": "resizeHandler",
-      "target": "window",
-      "capture": false,
-      "passive": true
-    }]; }
 }

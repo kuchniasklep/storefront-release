@@ -3,31 +3,23 @@ export class ProductTab {
   constructor() {
     this.link = "";
     this.message = "";
-    this.hiddenComments = false;
+    this.expand = false;
   }
   render() {
-    return (h("ks-card", null,
-      h("div", { class: "uk-flex uk-flex-middle uk-padding uk-margin-remove" },
-        h("span", { "uk-icon": "icon: comments; ratio: 2.5;", style: { marginRight: "30px", minWidth: "40px" } }),
+    return [
+      h("div", { class: "message" },
+        h("ks-icon", { name: "mail", size: 2.5 }),
         h("p", null, this.message)),
-      h("hr", { class: "uk-margin-remove" }),
       h("slot", null),
-      h("div", { class: "ks-comments", hidden: true },
+      h("div", { class: "more", hidden: !this.expand },
         h("slot", { name: "hidden" })),
-      this.hiddenComments ?
-        h("button", { class: "uk-button uk-button-secondary uk-width-expand", "uk-toggle": "target: .ks-comments" },
-          h("span", { class: "ks-comments", "uk-icon": "icon: chevron-down; ratio: 1.5;" }),
-          h("span", { class: "ks-comments", "uk-icon": "icon: chevron-up; ratio: 1.5;", hidden: true }))
-        : null,
+      h("button", { onClick: () => this.expand = !this.expand, class: "expand" },
+        h("ks-icon", { name: this.expand ? "chevron-up" : "chevron-down", size: 1.5 })),
       this.link ?
-        h("a", { class: "uk-button uk-button-danger uk-width-expand", style: { padding: "5px 0 6px 0" }, href: this.link, rel: "nofollow", "aria-label": "Napisz recenzj\u0119" },
-          h("span", { "uk-icon": "icon: plus-circle; ratio: 1.5;" }))
-        : null));
-  }
-  componentDidLoad() {
-    const hiddenSlot = this.root.querySelector("div[slot='hidden']");
-    if (hiddenSlot != null && hiddenSlot.children.length != 0)
-      this.hiddenComments = true;
+        h("a", { href: this.link, rel: "nofollow", class: "add", "aria-label": "Napisz recenzj\u0119" },
+          h("ks-icon", { name: "plus-circle", size: 1.5 }))
+        : null
+    ];
   }
   static get is() { return "ks-product-comments"; }
   static get originalStyleUrls() { return {
@@ -75,7 +67,7 @@ export class ProductTab {
     }
   }; }
   static get states() { return {
-    "hiddenComments": {}
+    "expand": {}
   }; }
   static get elementRef() { return "root"; }
 }

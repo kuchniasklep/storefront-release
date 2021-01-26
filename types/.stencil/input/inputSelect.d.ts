@@ -1,3 +1,4 @@
+import InputInterface from './inputInterface';
 export declare class InputSelect implements InputInterface {
   name: string;
   label: string;

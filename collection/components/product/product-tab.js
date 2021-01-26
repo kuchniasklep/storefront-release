@@ -1,27 +1,26 @@
-import { Component, h, Prop, Element, State, Listen } from '@stencil/core';
+import { Component, h, Prop, Element } from '@stencil/core';
 export class ProductTab {
-  constructor() {
-    this.mobile = false;
-  }
-  ResizeHandler() {
-    if (window.innerWidth < 960)
-      this.mobile = true;
-    else
-      this.mobile = false;
-  }
   componentWillLoad() {
-    this.ResizeHandler();
     this.ImageReplacer();
   }
   render() {
-    const isOpen = this.open ? " uk-open" : null;
-    if (this.mobile)
-      return (h("div", { class: "uk-margin-small-top " + isOpen },
-        h("a", { class: "uk-accordion-title uk-h3", href: "#" }, this.name),
-        h("div", { class: "uk-accordion-content uk-margin-bottom" },
-          h("slot", null))));
-    else
-      return h("slot", null);
+    return [
+      h("button", { class: "accordion", onClick: () => this.onOpen() },
+        this.name,
+        h("ks-icon", { name: this.open ? "minus" : "plus" })),
+      h("div", { class: "tab-content" },
+        h("slot", null))
+    ];
+  }
+  onOpen() {
+    this.open = !this.open;
+    if (this.open) {
+      const tabs = Array.from(this.root.parentElement.children);
+      const index = tabs.indexOf(this.root);
+      tabs.forEach(element => element.removeAttribute("main"));
+      this.main = true;
+      this.root.closest('ks-product-tabs').active = index;
+    }
   }
   ImageReplacer() {
     const images = this.root.querySelectorAll("img");
@@ -52,10 +51,33 @@ export class ProductTab {
     }
   }
   static get is() { return "ks-product-tab"; }
+  static get originalStyleUrls() { return {
+    "$": ["product-tab.css"]
+  }; }
+  static get styleUrls() { return {
+    "$": ["product-tab.css"]
+  }; }
   static get properties() { return {
+    "main": {
+      "type": "boolean",
+      "mutable": true,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "main",
+      "reflect": true
+    },
     "open": {
       "type": "boolean",
-      "mutable": false,
+      "mutable": true,
       "complexType": {
         "original": "boolean",
         "resolved": "boolean",
@@ -68,7 +90,7 @@ export class ProductTab {
         "text": ""
       },
       "attribute": "open",
-      "reflect": false
+      "reflect": true
     },
     "name": {
       "type": "string",
@@ -88,15 +110,5 @@ export class ProductTab {
       "reflect": false
     }
   }; }
-  static get states() { return {
-    "mobile": {}
-  }; }
   static get elementRef() { return "root"; }
-  static get listeners() { return [{
-      "name": "resize",
-      "method": "ResizeHandler",
-      "target": "window",
-      "capture": false,
-      "passive": true
-    }]; }
 }

@@ -1,5 +1,5 @@
 import { Component, h, Prop, Element, Listen } from '@stencil/core';
-import { AppendSuggestions } from "../product-functions";
+import { OpenSuggestions } from "../../functions";
 import { store } from "../product-store";
 export class ProductInfo {
   constructor() {
@@ -98,7 +98,7 @@ export class ProductInfo {
       await this.fetch(this.cartApi, cartBody)
         .then(() => {
         this.navbar.IncrementCart(count);
-        AppendSuggestions(this.suggestionApi, id, name);
+        OpenSuggestions(id, name);
       })
         .catch(error => this.errorPopup.show(error));
     })

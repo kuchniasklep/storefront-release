@@ -1,0 +1,1 @@
+import{r as s,h as t}from"./p-f748ea6f.js";const e=class{constructor(t){s(this,t),this.active=!1}render(){return[t("label",null,t("input",{class:"uk-checkbox",name:this.name+"["+this.filterId+"]",type:"checkbox",checked:this.active})," ",t("slot",null)),t("br",null)]}};export{e as ks_filter_checkbox}

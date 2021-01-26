@@ -32,6 +32,23 @@ export class Loader {
       "reflect": true,
       "defaultValue": "true"
     },
+    "large": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "large",
+      "reflect": true
+    },
     "oversized": {
       "type": "boolean",
       "mutable": false,
@@ -47,6 +64,23 @@ export class Loader {
         "text": ""
       },
       "attribute": "oversized",
+      "reflect": true
+    },
+    "dark": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "dark",
       "reflect": true
     }
   }; }

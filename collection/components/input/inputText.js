@@ -4,27 +4,30 @@ export class InputText {
     this.sameAs = "";
     this.regex = "";
     this.regexMessage = "";
+    this.nomessage = false;
     this.novalidate = false;
     this.message = "";
+    this.invalid = false;
   }
   render() {
-    const isValid = this.message == "";
     const type = this.email ? "email" :
-      this.password ? "password" :
-        "text";
-    const valid = isValid ? "" : "uk-form-danger";
-    const validText = isValid ? "" : "uk-text-danger";
-    const center = this.center ? " uk-text-center" : "";
-    const size = this.large ? " uk-form-large" : "";
-    const emphasis = this.emphasis ? { borderColor: isValid ? "black" : "#e21334", backgroundColor: "white" } : null;
-    return (h("div", { class: "uk-margin" },
+      this.url ? "url" :
+        this.password ? "password" :
+          "text";
+    return [
       this.label ?
-        h("label", { class: "uk-form-label " + validText, style: { marginBottom: "3px", display: "block" } }, this.label)
+        h("label", null, this.label)
         : null,
-      h("input", { class: "uk-input " + valid + center + size, style: emphasis, name: this.name, type: type, placeholder: this.placeholder, value: this.value, onChange: () => this.Change() }),
-      this.message != "" ?
-        h("p", { class: "uk-text-danger", style: { marginTop: "5px" } }, this.message)
-        : null));
+      !!this.icon ?
+        h("div", { class: "wrapper" },
+          h("ks-icon", { name: this.icon, size: 0.95 }),
+          h("input", { name: this.name, type: type, value: this.value, placeholder: this.placeholder, onChange: () => this.Change() }))
+        :
+          h("input", { name: this.name, type: type, value: this.value, placeholder: this.placeholder, onChange: () => this.Change() }),
+      this.invalid && !this.nomessage ?
+        h("p", null, this.message)
+        : null
+    ];
   }
   Change() {
     this.value = this.root.querySelector("input").value;
@@ -32,7 +35,7 @@ export class InputText {
       this.Validate();
   }
   MessageWatcher() {
-    this.render();
+    this.invalid = this.message != "";
   }
   async IsValid() {
     return this.message == "" ? true : false;
@@ -78,6 +81,12 @@ export class InputText {
     return Promise.resolve();
   }
   static get is() { return "ks-input-text"; }
+  static get originalStyleUrls() { return {
+    "$": ["inputText.css"]
+  }; }
+  static get styleUrls() { return {
+    "$": ["inputText.css"]
+  }; }
   static get properties() { return {
     "name": {
       "type": "string",
@@ -130,6 +139,23 @@ export class InputText {
       "attribute": "label",
       "reflect": false
     },
+    "icon": {
+      "type": "string",
+      "mutable": false,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "icon",
+      "reflect": false
+    },
     "value": {
       "type": "string",
       "mutable": true,
@@ -145,7 +171,7 @@ export class InputText {
         "text": ""
       },
       "attribute": "value",
-      "reflect": false
+      "reflect": true
     },
     "digits": {
       "type": "boolean",
@@ -196,6 +222,23 @@ export class InputText {
         "text": ""
       },
       "attribute": "email",
+      "reflect": false
+    },
+    "url": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "url",
       "reflect": false
     },
     "password": {
@@ -335,7 +378,7 @@ export class InputText {
         "text": ""
       },
       "attribute": "center",
-      "reflect": false
+      "reflect": true
     },
     "large": {
       "type": "boolean",
@@ -352,7 +395,7 @@ export class InputText {
         "text": ""
       },
       "attribute": "large",
-      "reflect": false
+      "reflect": true
     },
     "emphasis": {
       "type": "boolean",
@@ -369,7 +412,25 @@ export class InputText {
         "text": ""
       },
       "attribute": "emphasis",
-      "reflect": false
+      "reflect": true
+    },
+    "nomessage": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "nomessage",
+      "reflect": false,
+      "defaultValue": "false"
     },
     "novalidate": {
       "type": "boolean",
@@ -406,6 +467,24 @@ export class InputText {
       "attribute": "message",
       "reflect": true,
       "defaultValue": "\"\""
+    },
+    "invalid": {
+      "type": "boolean",
+      "mutable": true,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "invalid",
+      "reflect": true,
+      "defaultValue": "false"
     }
   }; }
   static get methods() { return {

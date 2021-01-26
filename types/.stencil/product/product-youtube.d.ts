@@ -1,8 +1,8 @@
 export declare class ProductYoutube {
-  videoId: string;
   root: HTMLElement;
+  videoId: string;
   active: boolean;
   private observer;
-  componentDidLoad(): void;
+  componentDidRender(): void;
   render(): any;
 }

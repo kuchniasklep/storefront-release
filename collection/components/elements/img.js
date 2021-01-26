@@ -69,10 +69,11 @@ export class Img {
     const loading = this.loadAnimated ? "" : "loading";
     const classes = [responsive].join(" ");
     if (this.sync)
-      return (h("img", { class: classes, src: this.src, alt: this.alt }));
+      return (h("img", { class: classes, src: this.src, alt: this.alt, width: this.width, height: this.height }));
     return [
       (!this.loadAnimated ? [
-        h("div", { class: "ks-spinner uk-position-center" })
+        h("ks-loader", { dark: true }),
+        h("canvas", { width: this.width, height: this.height })
       ] : null),
       h("img", { class: classes + " " + loading, alt: this.alt, onLoad: (e) => this.loadHandler(e), "data-src": this.src, width: this.width, height: this.height })
     ];

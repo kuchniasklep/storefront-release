@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h } from './index-22b73bd9.js';
+import { r as registerInstance, c as createEvent, h } from './index-74ff0cef.js';
 
 const cartSpinnerCss = "ks-cart-spinner{display:inline-block;text-align:center}ks-cart-spinner input{width:50px !important;margin:0 !important;font-size:14px !important;text-align:center !important}";
 

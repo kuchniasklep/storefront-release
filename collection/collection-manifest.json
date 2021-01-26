@@ -1,7 +1,5 @@
 {
   "entries": [
-    "./components/button-cart.js",
-    "./components/button-fav.js",
     "./components/comment.js",
     "./components/contact-buttons.js",
     "./components/cart/cart.js",
@@ -43,9 +41,11 @@
     "./components/elements/section-heading.js",
     "./components/elements/section.js",
     "./components/elements/icon/icon.js",
+    "./components/elements/modal/dialog.js",
     "./components/elements/modal/error-popup.js",
     "./components/elements/modal/lightbox.js",
     "./components/elements/modal/overlay.js",
+    "./components/elements/modal/sidepanel.js",
     "./components/footer/footer-button.js",
     "./components/footer/footer-links.js",
     "./components/footer/footer.js",
@@ -61,6 +61,7 @@
     "./components/homepageModules/banners/top-banner.js",
     "./components/homepageModules/featured/featured-container.js",
     "./components/homepageModules/featured/featured.js",
+    "./components/input/button.js",
     "./components/input/form.js",
     "./components/input/inputCheck.js",
     "./components/input/inputDate.js",
@@ -71,11 +72,13 @@
     "./components/input/inputText.js",
     "./components/input/inputTextarea.js",
     "./components/listing/articleCard.js",
+    "./components/listing/button-cart.js",
+    "./components/listing/button-fav.js",
     "./components/listing/favouritesHeader.js",
     "./components/listing/listingHeader.js",
     "./components/listing/pagination.js",
+    "./components/listing/product-card.js",
     "./components/listing/product-container.js",
-    "./components/listing/productCard.js",
     "./components/listing/productSimple.js",
     "./components/listing/productWide.js",
     "./components/listing/recentCard.js",
@@ -87,13 +90,12 @@
     "./components/listing/filter/filter-slider.js",
     "./components/listing/filter/filter.js",
     "./components/miniCart/miniCart.js",
+    "./components/navbar/navbar-button.js",
     "./components/navbar/navbar-categories.js",
     "./components/navbar/navbar-search-mobile.js",
     "./components/navbar/navbar-search.js",
     "./components/navbar/navbar-sidebar.js",
     "./components/navbar/navbar.js",
-    "./components/navbar/buttons/navbar-button.js",
-    "./components/navbar/buttons/navbar-panel.js",
     "./components/navbar/categories/category-simple.js",
     "./components/navbar/categories/category-view.js",
     "./components/navbar/panels/navbar-contact-panel.js",
@@ -157,8 +159,8 @@
   ],
   "compiler": {
     "name": "@stencil/core",
-    "version": "2.0.3",
-    "typescriptVersion": "4.0.2"
+    "version": "2.3.0",
+    "typescriptVersion": "4.0.5"
   },
   "collections": [
     {

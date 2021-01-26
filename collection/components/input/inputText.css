@@ -1,0 +1,111 @@
+ks-input-text {
+    display: block;
+    margin-bottom: 15px;
+}
+
+ks-input-text label {
+    display: block;
+    margin-bottom: 3px;
+
+    color: #000000;
+    font-size: 14px;
+}
+
+ks-input-text[invalid] label {
+    color: var(--color-secondary-darker);
+}
+
+
+ks-input-text input {
+    height: 40px;
+    vertical-align: middle;
+    display: inline-block;
+
+    max-width: 100%;
+    width: 100%;
+    padding: 0 10px;
+    background: #f4f4f4;
+    color: #373737;
+    border: 1px solid #e5e5e5;
+    overflow: visible;
+
+    box-sizing: border-box;
+    border-radius: 0;
+    font: inherit;
+}
+
+ks-input-text input:focus {
+    outline: none;
+    background-color: #f4f4f4;
+    color: #373737;
+    border-color: #222222;
+}
+
+ks-input-text[emphasis] input {
+    border-color: black;
+    background-color: white;
+}
+
+ks-input-text[invalid] input {
+    border-color: var(--color-secondary-darker);
+    color: var(--color-secondary-darker);
+}
+
+ks-input-text[center] input {
+    text-align: center !important;
+}
+
+ks-input-text[large] input {
+    font-size: 17px;
+    height: 55px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+ks-input-text[invalid] p {
+    margin-top: 5px;
+    color: var(--color-secondary-darker);
+}
+
+ks-input-text[invalid] input::-webkit-input-placeholder {
+    color: var(--color-secondary);
+}
+
+ks-input-text[invalid] input:-ms-input-placeholder {
+    color: var(--color-secondary);
+}
+
+ks-input-text[invalid] input::-ms-input-placeholder {
+    color: var(--color-secondary);
+}
+
+ks-input-text[invalid] input::placeholder {
+    color: var(--color-secondary);
+}
+
+
+ks-input-text .wrapper {
+    position: relative;
+}
+
+ks-input-text .wrapper input {
+    padding-left: 45px;
+}
+
+ks-input-text .wrapper ks-icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+}
+
+ks-input-text[value=""] .wrapper ks-icon,
+ks-input-text:not([value]) .wrapper ks-icon {
+    color: #aaaaaa;
+}
+
+ks-input-text[invalid] .wrapper ks-icon {
+    color: var(--color-secondary);
+}

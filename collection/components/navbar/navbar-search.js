@@ -7,7 +7,7 @@ export class NavbarSearch {
   render() {
     return (h("form", { method: "post", action: "szukaj.html" },
       h("a", { onClick: () => this.submit() },
-        h("span", { "uk-icon": "icon: search; ratio: 1.3" })),
+        h("ks-icon", { name: "search", size: 1.1 })),
       h("input", { "aria-label": "Szukaj produkt\u00F3w", name: "szukaj", type: "search" }),
       h("input", { type: "hidden", name: "postget", value: "tak" }),
       h("input", { type: "hidden", name: "opis", value: "nie" }),

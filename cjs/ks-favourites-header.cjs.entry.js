@@ -2,8 +2,8 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-18d28dc7.js');
-const functions = require('./functions-1cea3142.js');
+const index = require('./index-3f13923b.js');
+const functions = require('./functions-80797821.js');
 
 const FavouritesHeader = class {
   constructor(hostRef) {

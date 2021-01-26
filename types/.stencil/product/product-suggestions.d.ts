@@ -1,13 +1,17 @@
 import { SuggestedProductData } from './product-data';
+import Swiper from 'swiper';
 export declare class ProductSuggestions {
   root: HTMLElement;
-  productId: string;
-  name: string;
+  overlay: HTMLKsOverlayElement;
+  carousel: Swiper;
   api: string;
-  loaded: boolean;
+  name: string;
+  loading: boolean;
   products: SuggestedProductData[];
-  componentDidRender(): Promise<void>;
-  Hide(): void;
-  ToCart(): void;
+  componentDidRender(): void;
+  show(productId: string, name: string): Promise<void>;
+  hide(): void;
+  toCart(): void;
+  showCarousel(): void;
   render(): any;
 }

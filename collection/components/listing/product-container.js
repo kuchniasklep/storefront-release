@@ -1,8 +1,7 @@
 import { Component, h } from '@stencil/core';
 export class Container {
   render() {
-    return h("div", null,
-      h("slot", null));
+    return h("slot", null);
   }
   static get is() { return "ks-product-container"; }
   static get originalStyleUrls() { return {

@@ -2,38 +2,18 @@ ks-product-negotiate {
     display: block;
 }
 
-ks-product-negotiate .content {
-    background-color: var(--card-background);
-    box-shadow: var(--big-shadow);
-    color: var(--card-text-color);
-
-    position: relative;
-    max-width: 720px;
-    padding: 30px;
+ks-product-negotiate fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
 }
 
-ks-product-negotiate ks-overlay .content {
-    -webkit-animation: 0.4s vertical-swipe-out 1;
-            animation: 0.4s vertical-swipe-out 1;
+ks-product-negotiate .info {
+    text-align: center;
 }
 
-ks-product-negotiate ks-overlay.active .content {
-    -webkit-animation: 0.4s vertical-swipe-in 1;
-            animation: 0.4s vertical-swipe-in 1;
-}
-
-ks-product-negotiate .close  {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-
-    border-style: none;
-    outline-style: none;
-    background-color: transparent;
-
-    z-index: 200;
-
-    -webkit-animation: fade-in 0.3s 1;
-
-            animation: fade-in 0.3s 1;
+ks-product-negotiate h3 {
+    font-family: var(--font-emphasis);
+    font-size: 20px;
+    font-weight: 700;
 }

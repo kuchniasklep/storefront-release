@@ -9,5 +9,5 @@ export declare class ProductVariants {
   width: number;
   maxHeight: number;
   ResizeHandler(): void;
-  render(): any;
+  render(): any[];
 }

@@ -1,9 +1,16 @@
-import { Component, h, Method, Element, Prop } from '@stencil/core';
+import { Component, h, Method, Element, Prop, Event } from '@stencil/core';
 export class Overlay {
   constructor() {
     this.dark = false;
+    this.close = true;
     this.timeoutLength = 300;
     this.body = document.body;
+  }
+  componentDidLoad() {
+    this.root.addEventListener('click', (e) => {
+      if (e.currentTarget == e.target && this.close)
+        this.hide();
+    }, false);
   }
   async show() {
     clearTimeout(this.timeout);
@@ -18,6 +25,7 @@ export class Overlay {
     this.timeout = setTimeout(() => {
       this.root.style.display = "none";
     }, this.timeoutLength);
+    this.closed.emit();
   }
   scrollToggle() {
     if (this.body.style.position == "fixed") {
@@ -61,8 +69,42 @@ export class Overlay {
       "attribute": "dark",
       "reflect": true,
       "defaultValue": "false"
+    },
+    "close": {
+      "type": "boolean",
+      "mutable": true,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "close",
+      "reflect": false,
+      "defaultValue": "true"
     }
   }; }
+  static get events() { return [{
+      "method": "closed",
+      "name": "closed",
+      "bubbles": true,
+      "cancelable": true,
+      "composed": true,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "complexType": {
+        "original": "any",
+        "resolved": "any",
+        "references": {}
+      }
+    }]; }
   static get methods() { return {
     "show": {
       "complexType": {

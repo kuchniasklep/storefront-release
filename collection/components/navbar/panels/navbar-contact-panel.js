@@ -81,9 +81,9 @@ export class NavbarContactPanel {
           h("div", { class: "address", innerHTML: this.contact }),
           h("div", { class: "buttons" },
             h("div", { class: "margin" },
-              h("a", { href: "tel:" + this.phone, class: "uk-button" }, this.phone),
+              h("a", { href: "tel:" + this.phone }, this.phone),
               h("br", null),
-              h("a", { href: "mailto:" + this.email, class: "uk-button" }, this.email))))));
+              h("a", { href: "mailto:" + this.email }, this.email))))));
   }
   static get is() { return "ks-navbar-contact-panel"; }
   static get originalStyleUrls() { return {

@@ -1,10 +1,7 @@
 export declare class ProductTabs {
   root: HTMLElement;
-  mobile: boolean;
-  ResizeHandler(): void;
-  componentWillLoad(): void;
+  names: string;
   active: number;
   render(): any[];
-  nameList: string[];
-  componentDidLoad(): void;
+  click(index: number): void;
 }

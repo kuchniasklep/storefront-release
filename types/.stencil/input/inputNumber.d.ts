@@ -1,3 +1,4 @@
+import InputInterface from './inputInterface';
 export declare class InputNumber implements InputInterface {
   name: string;
   placeholder: string;

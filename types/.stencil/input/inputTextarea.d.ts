@@ -1,4 +1,6 @@
+import InputInterface from './inputInterface';
 export declare class InputTextarea implements InputInterface {
+  root: HTMLElement;
   name: string;
   placeholder: string;
   label: string;
@@ -6,10 +8,10 @@ export declare class InputTextarea implements InputInterface {
   min: number;
   max: number;
   required: boolean;
-  root: HTMLElement;
-  valid: boolean;
-  validMessage: string;
-  render(): any;
+  noresize: boolean;
+  invalid: boolean;
+  invalidMessage: string;
+  render(): any[];
   IsValid(): Promise<boolean>;
   Validate(): Promise<void>;
 }

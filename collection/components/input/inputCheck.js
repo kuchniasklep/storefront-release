@@ -1,30 +1,31 @@
 import { Component, h, Prop, Element, State, Method } from '@stencil/core';
 export class InputCheck {
   constructor() {
-    this.valid = true;
-    this.validMessage = "";
+    this.nomessage = false;
+    this.invalid = false;
+    this.invalidMessage = "";
   }
   render() {
     const type = this.radio ? "radio" :
       this.checkbox ? "checkbox" :
         "checkbox";
-    const valid = this.valid ? "" : "uk-form-danger";
-    return (h("div", { class: "uk-margin" },
-      h("label", { class: valid },
-        h("input", { class: "uk-margin-small-right uk-" + type, name: this.name, type: type, checked: this.currentCheck, value: this.value, onChange: (event) => {
+    return [
+      h("label", null,
+        h("input", { name: this.name, type: type, checked: this.currentCheck, value: this.value, onChange: (event) => {
             this.currentCheck = event.target.checked;
             this.Validate();
           } }),
         h("span", { innerHTML: this.label })),
-      !this.valid ?
-        h("p", { class: "uk-text-danger uk-text-bold", style: { marginTop: "10px" } }, this.validMessage)
-        : null));
+      this.invalid && this.required && !this.nomessage ?
+        h("p", null, this.invalidMessage)
+        : null
+    ];
   }
   componentWillLoad() {
     this.currentCheck = this.checked;
   }
   async IsValid() {
-    return this.valid;
+    return !this.invalid;
   }
   async Validate() {
     const input = this.root.querySelector("input");
@@ -34,11 +35,17 @@ export class InputCheck {
       valid = false;
       message = "Pole wymagane.";
     }
-    this.valid = valid;
-    this.validMessage = message;
+    this.invalid = !valid;
+    this.invalidMessage = message;
     return Promise.resolve();
   }
   static get is() { return "ks-input-check"; }
+  static get originalStyleUrls() { return {
+    "$": ["inputCheck.css"]
+  }; }
+  static get styleUrls() { return {
+    "$": ["inputCheck.css"]
+  }; }
   static get properties() { return {
     "name": {
       "type": "string",
@@ -91,6 +98,23 @@ export class InputCheck {
       "attribute": "value",
       "reflect": false
     },
+    "large": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "large",
+      "reflect": true
+    },
     "radio": {
       "type": "boolean",
       "mutable": false,
@@ -142,6 +166,24 @@ export class InputCheck {
       "attribute": "checked",
       "reflect": false
     },
+    "nomessage": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "nomessage",
+      "reflect": false,
+      "defaultValue": "false"
+    },
     "required": {
       "type": "boolean",
       "mutable": false,
@@ -158,11 +200,28 @@ export class InputCheck {
       },
       "attribute": "required",
       "reflect": false
+    },
+    "invalid": {
+      "type": "boolean",
+      "mutable": true,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "invalid",
+      "reflect": true,
+      "defaultValue": "false"
     }
   }; }
   static get states() { return {
-    "valid": {},
-    "validMessage": {}
+    "invalidMessage": {}
   }; }
   static get methods() { return {
     "IsValid": {

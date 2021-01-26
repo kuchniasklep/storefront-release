@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-22b73bd9.js';
+import { r as registerInstance, h } from './index-74ff0cef.js';
 
 const Contact = class {
   constructor(hostRef) {

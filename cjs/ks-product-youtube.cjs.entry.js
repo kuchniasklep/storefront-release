@@ -2,7 +2,9 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-18d28dc7.js');
+const index = require('./index-3f13923b.js');
+
+const productYoutubeCss = "ks-product-youtube{display:block;position:relative;overflow:hidden;-webkit-box-sizing:border-box;box-sizing:border-box;padding-top:56.25%;background-color:black}ks-product-youtube iframe{position:absolute;top:0;left:0;bottom:0;right:0;width:100%;height:100%}";
 
 const ProductYoutube = class {
   constructor(hostRef) {
@@ -10,30 +12,27 @@ const ProductYoutube = class {
     this.videoId = "";
     this.active = false;
   }
-  componentDidLoad() {
-    const onIntersection = (entries) => {
+  componentDidRender() {
+    this.observer = new IntersectionObserver((entries) => {
       for (const entry of entries) {
         if (entry.isIntersecting) {
-          if (this.observer) {
-            this.observer.disconnect();
-          }
           this.active = true;
+          if (this.observer)
+            this.observer.disconnect();
         }
       }
-    };
-    addEventListener("load", () => {
-      this.observer = new IntersectionObserver(onIntersection, {
-        rootMargin: "500px"
-      });
-      this.observer.observe(this.root);
+    }, {
+      rootMargin: "500px"
     });
+    this.observer.observe(this.root);
   }
   render() {
     return (this.active ?
-      index.h("iframe", { src: "https://www.youtube-nocookie.com/embed/" + this.videoId + "?autoplay=0&amp;showinfo=0&amp;rel=0&amp;modestbranding=1&amp;playsinline=1", width: "1280", height: "720", frameborder: "0", allowFullScreen: true, "uk-responsive": true })
+      index.h("iframe", { width: "1280", height: "720", src: "https://www.youtube.com/embed/" + this.videoId, frameborder: "0", allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture", allowFullScreen: true })
       : null);
   }
   get root() { return index.getElement(this); }
 };
+ProductYoutube.style = productYoutubeCss;
 
 exports.ks_product_youtube = ProductYoutube;

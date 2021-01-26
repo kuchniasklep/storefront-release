@@ -39,6 +39,16 @@ ks-navbar-search a {
     padding-right: 10px;
 
     color: #151515;
+    -webkit-transition: color 0.2s ease;
+    transition: color 0.2s ease;
+}
+
+ks-navbar-search a:hover {
+    color: #858585;
+}
+
+ks-navbar-search a:active {
+    color: #b5b5b5;
 }
 
 ks-navbar-search input {

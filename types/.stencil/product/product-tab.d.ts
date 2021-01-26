@@ -1,10 +1,10 @@
 export declare class ProductTab {
+  root: HTMLKsProductTabElement;
+  main: boolean;
   open: boolean;
   name: string;
-  root: HTMLElement;
-  mobile: boolean;
-  ResizeHandler(): void;
   componentWillLoad(): void;
-  render(): any;
+  render(): any[];
+  onOpen(): void;
   ImageReplacer(): void;
 }

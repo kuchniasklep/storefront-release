@@ -102,9 +102,6 @@ export function RemoveAllFavourites(finished) {
 }
 ;
 export function OpenSuggestions(id, name) {
-  const suggestions = document.createElement("ks-product-suggestions");
-  suggestions.setAttribute("product-id", id);
-  suggestions.setAttribute("name", name);
-  suggestions.setAttribute("api", "api/suggested_products.php");
-  document.body.appendChild(suggestions);
+  const suggestions = document.querySelector("ks-product-suggestions");
+  suggestions.show(id, name);
 }

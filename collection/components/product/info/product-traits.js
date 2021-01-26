@@ -10,7 +10,8 @@ export class ProductCount {
     this.traitChange.emit(data);
   }
   componentDidRender() {
-    this.traitChangeHandler();
+    if (store.get("traits").length > 0)
+      this.traitChangeHandler();
   }
   render() {
     return store.get("traits").map((trait) => h("div", { class: "trait" },

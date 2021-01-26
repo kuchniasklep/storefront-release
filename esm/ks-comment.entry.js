@@ -1,13 +1,15 @@
-import { r as registerInstance, h } from './index-22b73bd9.js';
+import { r as registerInstance, h } from './index-74ff0cef.js';
+
+const commentCss = "ks-comment{display:block}ks-comment article{padding:30px}@media (min-width: 1200px){ks-comment article{padding:30px 40px}}ks-comment header{display:-webkit-box;display:-ms-flexbox;display:flex}ks-comment header>div{width:100%}ks-comment header .title{margin:0}ks-comment header .info{font-size:.875rem;line-height:1.4;color:#707070}ks-comment ks-icon{margin-right:20px}ks-comment p{margin-bottom:0px}";
 
 const Comment = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
-    this.separator = false;
   }
   render() {
-    return (h("div", null, h("article", { class: "uk-comment uk-padding" }, h("header", { class: "uk-comment-header uk-grid-medium uk-flex-middle", "uk-grid": true }, h("div", { class: "uk-width-auto" }, h("span", { "uk-icon": "icon: user; ratio: 2;" })), h("div", { class: "uk-width-expand" }, h("span", { class: "uk-comment-title uk-margin-remove uk-h4" }, this.author), h("div", { class: "uk-comment-meta uk-margin-remove-top" }, this.when))), h("div", { class: "uk-comment-body" }, h("p", null, h("slot", null)))), this.separator ? h("hr", { class: "uk-margin-remove" }) : null));
+    return h("article", null, h("header", null, h("ks-icon", { name: "user", size: 2 }), h("div", null, h("h3", { class: "title" }, this.author), h("div", { class: "info" }, this.when))), h("slot", null));
   }
 };
+Comment.style = commentCss;
 
 export { Comment as ks_comment };

@@ -1,5 +1,5 @@
-import { r as registerInstance, h, g as getElement } from './index-22b73bd9.js';
-import { c as createCommonjsModule } from './_commonjsHelpers-84ca41fa.js';
+import { r as registerInstance, h, g as getElement } from './index-74ff0cef.js';
+import { c as createCommonjsModule } from './_commonjsHelpers-ba3f0406.js';
 
 var nouislider = createCommonjsModule(function (module, exports) {
 /*! nouislider - 12.1.0 - 10/25/2018 */

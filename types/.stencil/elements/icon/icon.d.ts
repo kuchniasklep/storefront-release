@@ -7,5 +7,6 @@ export declare class Icon {
     [key: string]: string | number;
   };
   componentWillLoad(): void;
+  componentWillUpdate(): void;
   render(): any;
 }

@@ -2,15 +2,18 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-18d28dc7.js');
+const index = require('./index-3f13923b.js');
+
+const descriptionImageCss = "ks-description-image{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;margin-bottom:40px}";
 
 const DescriptionImage = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
   }
   render() {
-    return (index.h("div", { class: "uk-flex uk-flex-center" }, index.h("ks-image", { src: this.image })));
+    return index.h("ks-img", { src: this.image });
   }
 };
+DescriptionImage.style = descriptionImageCss;
 
 exports.ks_description_image = DescriptionImage;

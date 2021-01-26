@@ -1,4 +1,6 @@
-import { r as registerInstance, h } from './index-22b73bd9.js';
+import { r as registerInstance, h } from './index-74ff0cef.js';
+
+const descriptionTextImageCss = "ks-description-text-image{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-ms-flex-wrap:wrap;flex-wrap:wrap;margin:0;padding:0;margin-bottom:40px}ks-description-text-image[align=\"top\"]{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}ks-description-text-image[align=\"middle\"]{-webkit-box-align:center;-ms-flex-align:center;align-items:center}ks-description-text-image[align=\"bottom\"]{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}ks-description-text-image .image{width:100%}@media (min-width: 960px){ks-description-text-image[size=\"small\"] .image{width:25%;margin-left:30px}ks-description-text-image[size=\"medium\"] .image{width:calc(100% * 1 / 3.001);margin-left:30px}ks-description-text-image[size=\"large\"] .image{width:50%;margin-left:30px}}@media (min-width: 640px){ks-description-text-image .text{-webkit-box-flex:1 !important;-ms-flex:1 !important;flex:1 !important}}@media (min-width: 360px){ks-description-text-image[size=\"small\"] .image{width:230px}ks-description-text-image[size=\"medium\"] .image{width:300px}}";
 
 const DescriptionTextImage = class {
   constructor(hostRef) {
@@ -7,38 +9,12 @@ const DescriptionTextImage = class {
     this.size = "medium";
   }
   render() {
-    let gridclass = "uk-margin-medium uk-flex uk-flex-center uk-flex-warp";
-    switch (this.align) {
-      case "top": {
-        gridclass += " uk-flex-top";
-        break;
-      }
-      case "middle": {
-        gridclass += " uk-flex-middle";
-        break;
-      }
-      case "bottom": {
-        gridclass += " uk-flex-bottom";
-        break;
-      }
-    }
-    let sizeclass = "";
-    switch (this.size) {
-      case "small": {
-        sizeclass = "uk-width-small@xs uk-width-1-4@m";
-        break;
-      }
-      case "medium": {
-        sizeclass = "uk-width-medium@xs uk-width-1-3@m";
-        break;
-      }
-      case "large": {
-        sizeclass = "uk-width-1-2@m";
-        break;
-      }
-    }
-    return (h("div", { class: gridclass, "uk-grid": true }, h("div", { class: "uk-width-1-1 uk-flex-1@s uk-text-left" }, h("slot", null)), h("div", { class: sizeclass }, h("ks-image", { src: this.image }))));
+    return [
+      h("div", { class: "text" }, h("slot", null)),
+      h("div", { class: "image" }, h("ks-img", { src: this.image }))
+    ];
   }
 };
+DescriptionTextImage.style = descriptionTextImageCss;
 
 export { DescriptionTextImage as ks_description_text_image };

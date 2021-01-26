@@ -1,0 +1,1 @@
+import{r as e,h as s}from"./p-f748ea6f.js";const t=class{constructor(s){e(this,s)}render(){return s("ks-img",{src:this.image})}};t.style="ks-description-image{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;margin-bottom:40px}";export{t as ks_description_image}

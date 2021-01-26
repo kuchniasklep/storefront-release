@@ -1,6 +1,7 @@
-import { r as registerInstance, h, g as getElement } from './index-22b73bd9.js';
-import { S as Swiper, T as Thumbs } from './thumbs-5d6990a9.js';
-import { P as Pagination } from './pagination-443e2188.js';
+import { r as registerInstance, h, g as getElement } from './index-74ff0cef.js';
+import { S as Swiper } from './core-class-8ec5acbb.js';
+import { P as Pagination } from './pagination-e9e54d22.js';
+import { T as Thumbs } from './thumbs-2713736d.js';
 
 const errorPopupCss = "ks-error-popup{display:block}ks-error-popup .content{max-width:800px;width:100%;background-color:var(--card-background);-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow)}ks-error-popup .bar{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:var(--color-secondary)}ks-error-popup .title{-webkit-box-flex:1;-ms-flex:1;flex:1;padding:10px 20px;font-size:20px;font-weight:700;font-family:var(--font-emphasis)}ks-error-popup .close{padding:10px;background-color:var(--color-secondary);opacity:1;-webkit-transition:var(--transition-opacity);transition:var(--transition-opacity)}ks-error-popup .close:hover{opacity:0.6}ks-error-popup .message{padding:30px 30px;color:var(--card-text-color);text-align:center;font-size:18px}ks-error-popup .data{text-align:center;border-top:1px solid #e2e2e2;padding:20px;color:var(--card-text-color);background-color:#f2f2f2;font-size:14px}ks-error-popup .data .stack{display:block;margin-top:10px}ks-error-popup .content.visible{-webkit-animation:0.4s vertical-swipe-in 1;animation:0.4s vertical-swipe-in 1}ks-error-popup .content.hidden{-webkit-animation:0.4s vertical-swipe-out 1;animation:0.4s vertical-swipe-out 1}";
 

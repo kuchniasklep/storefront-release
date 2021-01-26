@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-18d28dc7.js');
+const index = require('./index-3f13923b.js');
 
 const infoBannerCss = "ks-info-banner{display:block;position:relative;max-height:100px;height:100%}ks-info-banner{display:block}ks-info-banner a{display:-webkit-box;display:-ms-flexbox;display:flex;max-height:100px;height:100%}ks-info-banner ks-img{height:auto}ks-info-banner button{position:absolute;top:10px;right:10px;border-style:none;outline-style:none;background-color:transparent;color:white;opacity:1;-webkit-transition:var(--transition-opacity);transition:var(--transition-opacity)}ks-info-banner button:hover{opacity:0.7}ks-info-banner button:active{opacity:0.5}";
 

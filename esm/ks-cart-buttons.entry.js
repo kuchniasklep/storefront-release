@@ -1,5 +1,5 @@
-import { r as registerInstance, h, g as getElement } from './index-22b73bd9.js';
-import { T as Tunnel } from './cartData-871fd2cb.js';
+import { r as registerInstance, h, g as getElement } from './index-74ff0cef.js';
+import { T as Tunnel } from './cartData-7990ed49.js';
 
 const cartButtonsCss = "ks-cart-buttons{display:block}ks-cart-buttons>.confirm{-webkit-box-flex:1;-ms-flex:1;flex:1;width:100%;font-size:28px;font-weight:700;padding:20px}";
 

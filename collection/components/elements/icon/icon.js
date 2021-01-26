@@ -6,6 +6,9 @@ export class Icon {
     this.size = 1;
   }
   componentWillLoad() {
+    this.componentWillUpdate();
+  }
+  componentWillUpdate() {
     const icon = feather.icons[this.name];
     this.svg = icon.contents;
     this.attrs = icon.attrs;

@@ -34,6 +34,15 @@ export namespace Components {
         "center": boolean;
         "mobile": boolean;
     }
+    interface KsButton {
+        "link": string;
+        "name": string;
+        "primary": boolean;
+        "round": boolean;
+        "secondary": boolean;
+        "submit": boolean;
+        "tall": boolean;
+    }
     interface KsButtonCart {
         "AddToCart": (count?: string) => Promise<void>;
         "SetCount": (count?: string) => Promise<void>;
@@ -253,7 +262,6 @@ export namespace Components {
     }
     interface KsComment {
         "author": string;
-        "separator": boolean;
         "when": string;
     }
     interface KsContact {
@@ -276,6 +284,14 @@ export namespace Components {
         "align": string;
         "image": string;
         "size": string;
+    }
+    interface KsDialog {
+        "hide": () => Promise<void>;
+        "nopadding": boolean;
+        "show": () => Promise<void>;
+        "showFailure": (heading: string, message: string) => Promise<void>;
+        "showLoading": () => Promise<void>;
+        "showSuccess": (heading: string, message: string) => Promise<void>;
     }
     interface KsErrorPopup {
         "hide": () => Promise<void>;
@@ -337,8 +353,10 @@ export namespace Components {
         "softwareLink": string;
     }
     interface KsFooterButton {
+        "height": number;
         "href": string;
         "image": string;
+        "width": number;
     }
     interface KsFooterLinks {
         "heading": string;
@@ -399,8 +417,11 @@ export namespace Components {
         "Validate": () => Promise<void>;
         "checkbox": boolean;
         "checked": boolean;
+        "invalid": boolean;
         "label": string;
+        "large": boolean;
         "name": string;
+        "nomessage": boolean;
         "radio": boolean;
         "required": boolean;
         "value": string;
@@ -458,12 +479,15 @@ export namespace Components {
         "digits": boolean;
         "email": boolean;
         "emphasis": boolean;
+        "icon": string;
+        "invalid": boolean;
         "label": string;
         "large": boolean;
         "max": number;
         "message": string;
         "min": number;
         "name": string;
+        "nomessage": boolean;
         "novalidate": boolean;
         "password": boolean;
         "placeholder": string;
@@ -472,15 +496,18 @@ export namespace Components {
         "regexMessage": string;
         "required": boolean;
         "sameAs": string;
+        "url": boolean;
         "value": string;
     }
     interface KsInputTextarea {
         "IsValid": () => Promise<boolean>;
         "Validate": () => Promise<void>;
+        "invalid": boolean;
         "label": string;
         "max": number;
         "min": number;
         "name": string;
+        "noresize": boolean;
         "placeholder": string;
         "required": boolean;
         "rows": number;
@@ -493,6 +520,8 @@ export namespace Components {
     interface KsListingHeader {
     }
     interface KsLoader {
+        "dark": boolean;
+        "large": boolean;
         "oversized": boolean;
         "running": boolean;
     }
@@ -519,12 +548,10 @@ export namespace Components {
         "promoLink": string;
     }
     interface KsNavbarButton {
-        "animatedToggle": boolean;
         "count": number;
         "icon": string;
         "link": string;
         "name": string;
-        "toggle": boolean;
     }
     interface KsNavbarCategories {
     }
@@ -535,23 +562,24 @@ export namespace Components {
         "phone": string;
         "toggled": boolean;
     }
-    interface KsNavbarPanel {
-        "hideMenu": boolean;
-    }
     interface KsNavbarSearch {
     }
     interface KsNavbarSearchMobile {
     }
     interface KsNavbarSidebar {
+        "toggle": () => Promise<void>;
     }
     interface KsNewsletterPopup {
         "Show": () => Promise<void>;
         "agreement": string;
         "api": string;
         "email": string;
+        "faliureHeading": string;
+        "infoMessage": string;
         "loggedIn": boolean;
         "loginLink": string;
         "registerLink": string;
+        "successHeading": string;
     }
     interface KsOrderAddressField {
         "name": string;
@@ -673,6 +701,7 @@ export namespace Components {
         "value": string;
     }
     interface KsOverlay {
+        "close": boolean;
         "dark": boolean;
         "hide": () => Promise<void>;
         "show": () => Promise<void>;
@@ -758,13 +787,17 @@ export namespace Components {
         "value": string;
     }
     interface KsProductNegotiate {
+        "agreement": string;
         "api": string;
+        "faliureHeading": string;
+        "faliureMessage": string;
         "heading": string;
         "name": string;
         "oldPrice": string;
         "paragraph": string;
         "price": string;
-        "successInfo": string;
+        "successHeading": string;
+        "successMessage": string;
     }
     interface KsProductPoints {
         "count": number;
@@ -783,14 +816,16 @@ export namespace Components {
     }
     interface KsProductSuggestions {
         "api": string;
-        "name": string;
-        "productId": string;
+        "show": (productId: string, name: string) => Promise<void>;
     }
     interface KsProductTab {
+        "main": boolean;
         "name": string;
         "open": boolean;
     }
     interface KsProductTabs {
+        "active": number;
+        "names": string;
     }
     interface KsProductTitle {
     }
@@ -878,6 +913,10 @@ export namespace Components {
         "href": string;
         "text": string;
     }
+    interface KsSidepanel {
+        "hide": () => Promise<void>;
+        "show": () => Promise<void>;
+    }
     interface KsSorting {
         "post": string;
     }
@@ -917,6 +956,12 @@ declare global {
     var HTMLKsBreadcrumbsElement: {
         prototype: HTMLKsBreadcrumbsElement;
         new (): HTMLKsBreadcrumbsElement;
+    };
+    interface HTMLKsButtonElement extends Components.KsButton, HTMLStencilElement {
+    }
+    var HTMLKsButtonElement: {
+        prototype: HTMLKsButtonElement;
+        new (): HTMLKsButtonElement;
     };
     interface HTMLKsButtonCartElement extends Components.KsButtonCart, HTMLStencilElement {
     }
@@ -1158,6 +1203,12 @@ declare global {
         prototype: HTMLKsDescriptionTextImageElement;
         new (): HTMLKsDescriptionTextImageElement;
     };
+    interface HTMLKsDialogElement extends Components.KsDialog, HTMLStencilElement {
+    }
+    var HTMLKsDialogElement: {
+        prototype: HTMLKsDialogElement;
+        new (): HTMLKsDialogElement;
+    };
     interface HTMLKsErrorPopupElement extends Components.KsErrorPopup, HTMLStencilElement {
     }
     var HTMLKsErrorPopupElement: {
@@ -1385,12 +1436,6 @@ declare global {
     var HTMLKsNavbarContactPanelElement: {
         prototype: HTMLKsNavbarContactPanelElement;
         new (): HTMLKsNavbarContactPanelElement;
-    };
-    interface HTMLKsNavbarPanelElement extends Components.KsNavbarPanel, HTMLStencilElement {
-    }
-    var HTMLKsNavbarPanelElement: {
-        prototype: HTMLKsNavbarPanelElement;
-        new (): HTMLKsNavbarPanelElement;
     };
     interface HTMLKsNavbarSearchElement extends Components.KsNavbarSearch, HTMLStencilElement {
     }
@@ -1800,6 +1845,12 @@ declare global {
         prototype: HTMLKsSeeMoreElement;
         new (): HTMLKsSeeMoreElement;
     };
+    interface HTMLKsSidepanelElement extends Components.KsSidepanel, HTMLStencilElement {
+    }
+    var HTMLKsSidepanelElement: {
+        prototype: HTMLKsSidepanelElement;
+        new (): HTMLKsSidepanelElement;
+    };
     interface HTMLKsSortingElement extends Components.KsSorting, HTMLStencilElement {
     }
     var HTMLKsSortingElement: {
@@ -1818,6 +1869,7 @@ declare global {
         "ks-banner": HTMLKsBannerElement;
         "ks-banner-container": HTMLKsBannerContainerElement;
         "ks-breadcrumbs": HTMLKsBreadcrumbsElement;
+        "ks-button": HTMLKsButtonElement;
         "ks-button-cart": HTMLKsButtonCartElement;
         "ks-button-fav": HTMLKsButtonFavElement;
         "ks-card": HTMLKsCardElement;
@@ -1858,6 +1910,7 @@ declare global {
         "ks-description-image": HTMLKsDescriptionImageElement;
         "ks-description-text": HTMLKsDescriptionTextElement;
         "ks-description-text-image": HTMLKsDescriptionTextImageElement;
+        "ks-dialog": HTMLKsDialogElement;
         "ks-error-popup": HTMLKsErrorPopupElement;
         "ks-favourites-header": HTMLKsFavouritesHeaderElement;
         "ks-featured": HTMLKsFeaturedElement;
@@ -1896,7 +1949,6 @@ declare global {
         "ks-navbar-button": HTMLKsNavbarButtonElement;
         "ks-navbar-categories": HTMLKsNavbarCategoriesElement;
         "ks-navbar-contact-panel": HTMLKsNavbarContactPanelElement;
-        "ks-navbar-panel": HTMLKsNavbarPanelElement;
         "ks-navbar-search": HTMLKsNavbarSearchElement;
         "ks-navbar-search-mobile": HTMLKsNavbarSearchMobileElement;
         "ks-navbar-sidebar": HTMLKsNavbarSidebarElement;
@@ -1965,6 +2017,7 @@ declare global {
         "ks-section": HTMLKsSectionElement;
         "ks-section-heading": HTMLKsSectionHeadingElement;
         "ks-see-more": HTMLKsSeeMoreElement;
+        "ks-sidepanel": HTMLKsSidepanelElement;
         "ks-sorting": HTMLKsSortingElement;
         "ks-top-banner": HTMLKsTopBannerElement;
     }
@@ -1993,6 +2046,15 @@ declare namespace LocalJSX {
     interface KsBreadcrumbs {
         "center"?: boolean;
         "mobile"?: boolean;
+    }
+    interface KsButton {
+        "link"?: string;
+        "name"?: string;
+        "primary"?: boolean;
+        "round"?: boolean;
+        "secondary"?: boolean;
+        "submit"?: boolean;
+        "tall"?: boolean;
     }
     interface KsButtonCart {
         "count"?: string;
@@ -2208,7 +2270,6 @@ declare namespace LocalJSX {
     }
     interface KsComment {
         "author"?: string;
-        "separator"?: boolean;
         "when"?: string;
     }
     interface KsContact {
@@ -2231,6 +2292,10 @@ declare namespace LocalJSX {
         "align"?: string;
         "image"?: string;
         "size"?: string;
+    }
+    interface KsDialog {
+        "nopadding"?: boolean;
+        "onClosed"?: (event: CustomEvent<any>) => void;
     }
     interface KsErrorPopup {
     }
@@ -2290,8 +2355,10 @@ declare namespace LocalJSX {
         "softwareLink"?: string;
     }
     interface KsFooterButton {
+        "height"?: number;
         "href"?: string;
         "image"?: string;
+        "width"?: number;
     }
     interface KsFooterLinks {
         "heading"?: string;
@@ -2350,8 +2417,11 @@ declare namespace LocalJSX {
     interface KsInputCheck {
         "checkbox"?: boolean;
         "checked"?: boolean;
+        "invalid"?: boolean;
         "label"?: string;
+        "large"?: boolean;
         "name"?: string;
+        "nomessage"?: boolean;
         "radio"?: boolean;
         "required"?: boolean;
         "value"?: string;
@@ -2397,12 +2467,15 @@ declare namespace LocalJSX {
         "digits"?: boolean;
         "email"?: boolean;
         "emphasis"?: boolean;
+        "icon"?: string;
+        "invalid"?: boolean;
         "label"?: string;
         "large"?: boolean;
         "max"?: number;
         "message"?: string;
         "min"?: number;
         "name"?: string;
+        "nomessage"?: boolean;
         "novalidate"?: boolean;
         "password"?: boolean;
         "placeholder"?: string;
@@ -2411,13 +2484,16 @@ declare namespace LocalJSX {
         "regexMessage"?: string;
         "required"?: boolean;
         "sameAs"?: string;
+        "url"?: boolean;
         "value"?: string;
     }
     interface KsInputTextarea {
+        "invalid"?: boolean;
         "label"?: string;
         "max"?: number;
         "min"?: number;
         "name"?: string;
+        "noresize"?: boolean;
         "placeholder"?: string;
         "required"?: boolean;
         "rows"?: number;
@@ -2428,6 +2504,8 @@ declare namespace LocalJSX {
     interface KsListingHeader {
     }
     interface KsLoader {
+        "dark"?: boolean;
+        "large"?: boolean;
         "oversized"?: boolean;
         "running"?: boolean;
     }
@@ -2451,12 +2529,10 @@ declare namespace LocalJSX {
         "promoLink"?: string;
     }
     interface KsNavbarButton {
-        "animatedToggle"?: boolean;
         "count"?: number;
         "icon"?: string;
         "link"?: string;
         "name"?: string;
-        "toggle"?: boolean;
     }
     interface KsNavbarCategories {
     }
@@ -2465,9 +2541,6 @@ declare namespace LocalJSX {
         "email"?: string;
         "phone"?: string;
         "toggled"?: boolean;
-    }
-    interface KsNavbarPanel {
-        "hideMenu"?: boolean;
     }
     interface KsNavbarSearch {
     }
@@ -2479,9 +2552,12 @@ declare namespace LocalJSX {
         "agreement"?: string;
         "api"?: string;
         "email"?: string;
+        "faliureHeading"?: string;
+        "infoMessage"?: string;
         "loggedIn"?: boolean;
         "loginLink"?: string;
         "registerLink"?: string;
+        "successHeading"?: string;
     }
     interface KsOrderAddressField {
         "name"?: string;
@@ -2595,7 +2671,9 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface KsOverlay {
+        "close"?: boolean;
         "dark"?: boolean;
+        "onClosed"?: (event: CustomEvent<any>) => void;
     }
     interface KsPagination {
         "base"?: string;
@@ -2679,13 +2757,17 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface KsProductNegotiate {
+        "agreement"?: string;
         "api"?: string;
+        "faliureHeading"?: string;
+        "faliureMessage"?: string;
         "heading"?: string;
         "name"?: string;
         "oldPrice"?: string;
         "paragraph"?: string;
         "price"?: string;
-        "successInfo"?: string;
+        "successHeading"?: string;
+        "successMessage"?: string;
     }
     interface KsProductPoints {
         "count"?: number;
@@ -2706,14 +2788,15 @@ declare namespace LocalJSX {
     }
     interface KsProductSuggestions {
         "api"?: string;
-        "name"?: string;
-        "productId"?: string;
     }
     interface KsProductTab {
+        "main"?: boolean;
         "name"?: string;
         "open"?: boolean;
     }
     interface KsProductTabs {
+        "active"?: number;
+        "names"?: string;
     }
     interface KsProductTitle {
     }
@@ -2802,6 +2885,8 @@ declare namespace LocalJSX {
         "href"?: string;
         "text"?: string;
     }
+    interface KsSidepanel {
+    }
     interface KsSorting {
         "post"?: string;
     }
@@ -2816,6 +2901,7 @@ declare namespace LocalJSX {
         "ks-banner": KsBanner;
         "ks-banner-container": KsBannerContainer;
         "ks-breadcrumbs": KsBreadcrumbs;
+        "ks-button": KsButton;
         "ks-button-cart": KsButtonCart;
         "ks-button-fav": KsButtonFav;
         "ks-card": KsCard;
@@ -2856,6 +2942,7 @@ declare namespace LocalJSX {
         "ks-description-image": KsDescriptionImage;
         "ks-description-text": KsDescriptionText;
         "ks-description-text-image": KsDescriptionTextImage;
+        "ks-dialog": KsDialog;
         "ks-error-popup": KsErrorPopup;
         "ks-favourites-header": KsFavouritesHeader;
         "ks-featured": KsFeatured;
@@ -2894,7 +2981,6 @@ declare namespace LocalJSX {
         "ks-navbar-button": KsNavbarButton;
         "ks-navbar-categories": KsNavbarCategories;
         "ks-navbar-contact-panel": KsNavbarContactPanel;
-        "ks-navbar-panel": KsNavbarPanel;
         "ks-navbar-search": KsNavbarSearch;
         "ks-navbar-search-mobile": KsNavbarSearchMobile;
         "ks-navbar-sidebar": KsNavbarSidebar;
@@ -2963,6 +3049,7 @@ declare namespace LocalJSX {
         "ks-section": KsSection;
         "ks-section-heading": KsSectionHeading;
         "ks-see-more": KsSeeMore;
+        "ks-sidepanel": KsSidepanel;
         "ks-sorting": KsSorting;
         "ks-top-banner": KsTopBanner;
     }
@@ -2976,6 +3063,7 @@ declare module "@stencil/core" {
             "ks-banner": LocalJSX.KsBanner & JSXBase.HTMLAttributes<HTMLKsBannerElement>;
             "ks-banner-container": LocalJSX.KsBannerContainer & JSXBase.HTMLAttributes<HTMLKsBannerContainerElement>;
             "ks-breadcrumbs": LocalJSX.KsBreadcrumbs & JSXBase.HTMLAttributes<HTMLKsBreadcrumbsElement>;
+            "ks-button": LocalJSX.KsButton & JSXBase.HTMLAttributes<HTMLKsButtonElement>;
             "ks-button-cart": LocalJSX.KsButtonCart & JSXBase.HTMLAttributes<HTMLKsButtonCartElement>;
             "ks-button-fav": LocalJSX.KsButtonFav & JSXBase.HTMLAttributes<HTMLKsButtonFavElement>;
             "ks-card": LocalJSX.KsCard & JSXBase.HTMLAttributes<HTMLKsCardElement>;
@@ -3016,6 +3104,7 @@ declare module "@stencil/core" {
             "ks-description-image": LocalJSX.KsDescriptionImage & JSXBase.HTMLAttributes<HTMLKsDescriptionImageElement>;
             "ks-description-text": LocalJSX.KsDescriptionText & JSXBase.HTMLAttributes<HTMLKsDescriptionTextElement>;
             "ks-description-text-image": LocalJSX.KsDescriptionTextImage & JSXBase.HTMLAttributes<HTMLKsDescriptionTextImageElement>;
+            "ks-dialog": LocalJSX.KsDialog & JSXBase.HTMLAttributes<HTMLKsDialogElement>;
             "ks-error-popup": LocalJSX.KsErrorPopup & JSXBase.HTMLAttributes<HTMLKsErrorPopupElement>;
             "ks-favourites-header": LocalJSX.KsFavouritesHeader & JSXBase.HTMLAttributes<HTMLKsFavouritesHeaderElement>;
             "ks-featured": LocalJSX.KsFeatured & JSXBase.HTMLAttributes<HTMLKsFeaturedElement>;
@@ -3054,7 +3143,6 @@ declare module "@stencil/core" {
             "ks-navbar-button": LocalJSX.KsNavbarButton & JSXBase.HTMLAttributes<HTMLKsNavbarButtonElement>;
             "ks-navbar-categories": LocalJSX.KsNavbarCategories & JSXBase.HTMLAttributes<HTMLKsNavbarCategoriesElement>;
             "ks-navbar-contact-panel": LocalJSX.KsNavbarContactPanel & JSXBase.HTMLAttributes<HTMLKsNavbarContactPanelElement>;
-            "ks-navbar-panel": LocalJSX.KsNavbarPanel & JSXBase.HTMLAttributes<HTMLKsNavbarPanelElement>;
             "ks-navbar-search": LocalJSX.KsNavbarSearch & JSXBase.HTMLAttributes<HTMLKsNavbarSearchElement>;
             "ks-navbar-search-mobile": LocalJSX.KsNavbarSearchMobile & JSXBase.HTMLAttributes<HTMLKsNavbarSearchMobileElement>;
             "ks-navbar-sidebar": LocalJSX.KsNavbarSidebar & JSXBase.HTMLAttributes<HTMLKsNavbarSidebarElement>;
@@ -3123,6 +3211,7 @@ declare module "@stencil/core" {
             "ks-section": LocalJSX.KsSection & JSXBase.HTMLAttributes<HTMLKsSectionElement>;
             "ks-section-heading": LocalJSX.KsSectionHeading & JSXBase.HTMLAttributes<HTMLKsSectionHeadingElement>;
             "ks-see-more": LocalJSX.KsSeeMore & JSXBase.HTMLAttributes<HTMLKsSeeMoreElement>;
+            "ks-sidepanel": LocalJSX.KsSidepanel & JSXBase.HTMLAttributes<HTMLKsSidepanelElement>;
             "ks-sorting": LocalJSX.KsSorting & JSXBase.HTMLAttributes<HTMLKsSortingElement>;
             "ks-top-banner": LocalJSX.KsTopBanner & JSXBase.HTMLAttributes<HTMLKsTopBannerElement>;
         }

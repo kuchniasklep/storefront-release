@@ -2,50 +2,29 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-18d28dc7.js');
+const index = require('./index-3f13923b.js');
 
-const productTabsCss = "ks-product-tabs{display:block}";
+const productTabsCss = "ks-product-tabs{display:block;position:relative;-webkit-box-sizing:border-box;box-sizing:border-box;padding:0;background:var(--card-background);color:var(--card-text-color);-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow)}ks-product-tabs nav{background-color:#f6f6f6;border-bottom:1px solid #e8e8e8}@media only screen and (max-width: 960px){ks-product-tabs nav{display:none}}ks-product-tabs button{position:relative;padding:20px 40px;margin:0;font-family:inherit;font-size:18px;color:#252525;background-color:#f6f6f6;-webkit-transition:background-color 0.3s ease, color 0.3s ease;transition:background-color 0.3s ease, color 0.3s ease;border:none;outline:none;border-right:1px solid #e8e8e8}ks-product-tabs button.active{color:#252525 !important;background-color:#FFFFFF}ks-product-tabs button:hover{color:#808080}ks-product-tabs>.content{padding:30px}@media only screen and (max-width: 520px){ks-product-tabs>.content{padding:30px 20px}}";
 
 const ProductTabs = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
-    this.mobile = false;
+    this.names = "";
     this.active = 0;
-    this.nameList = new Array();
-  }
-  ResizeHandler() {
-    if (this.mobile == false && window.innerWidth < 960)
-      this.mobile = true;
-    if (this.mobile == true && window.innerWidth >= 960)
-      this.mobile = false;
-  }
-  componentWillLoad() {
-    this.ResizeHandler();
   }
   render() {
     return [
-      index.h("style", { innerHTML: "\n                ks-product-tabs button {\n                    position: relative;\n                    padding: 20px 40px;\n\n                    font-family: inherit;\n                    font-size: 18px;\n\n                    color: #252525;\n                    background-color: #f6f6f6;\n                    transition: background-color 0.3s ease, color 0.3s ease;\n                    \n                    border: none;\n                    outline: none;\n\n                    border-right: 1px solid #e8e8e8;\n                }\n\n                ks-product-tabs button:hover {\n                    color: #808080;\n                }\n\n                ks-product-tabs button.uk-active {\n                    color: #252525 !important;\n                    background-color: #FFFFFF;\n                }\n            " }),
-      index.h("ks-card", null, this.mobile ? null : [
-        index.h("nav", { style: { backgroundColor: "#f6f6f6" }, "uk-switcher": "toggle: > *" }, this.nameList.map((value, index$1) => {
-          return index.h("button", { class: "uk-margin-remove" + (index$1 == this.active ? " uk-active" : ""), onClick: () => { this.active = index$1; } }, value);
-        })),
-        index.h("hr", { class: "uk-margin-remove" })
-      ], index.h("div", { class: this.mobile ? "uk-padding" : "uk-padding uk-switcher", "uk-accordion": this.mobile ? "animation: false; multiple: true; targets: > ks-product-tab > div" : null, "uk-margin": true }, index.h("slot", null)))
+      index.h("nav", null, " ", this.names.split(", ").map((value, index$1) => index.h("button", { class: index$1 == this.active ? "active" : "", onClick: () => this.click(index$1) }, value)), " "),
+      index.h("div", { class: "content" }, index.h("slot", null))
     ];
   }
-  componentDidLoad() {
-    const interval = setInterval(() => {
-      const components = this.root.querySelectorAll("ks-product-tab");
-      if (components.length > 0) {
-        let nameList = new Array();
-        for (let i = 0; i < components.length; i++) {
-          const name = components[i].getAttribute("name");
-          nameList.push(name);
-        }
-        this.nameList = nameList;
-        clearInterval(interval);
-      }
-    }, 200);
+  click(index) {
+    this.active = index;
+    Array.from(this.root.querySelector(".content").children).forEach((element, i) => {
+      const target = element;
+      target.main = i == index;
+      target.open = i == index;
+    });
   }
   get root() { return index.getElement(this); }
 };

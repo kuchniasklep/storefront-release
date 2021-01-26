@@ -2,8 +2,8 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-18d28dc7.js');
-const cartData = require('./cartData-7eb782a3.js');
+const index = require('./index-3f13923b.js');
+const cartData = require('./cartData-abc6c385.js');
 
 const cartButtonsCss = "ks-cart-buttons{display:block}ks-cart-buttons>.confirm{-webkit-box-flex:1;-ms-flex:1;flex:1;width:100%;font-size:28px;font-weight:700;padding:20px}";
 

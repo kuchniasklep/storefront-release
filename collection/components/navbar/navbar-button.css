@@ -1,0 +1,112 @@
+ks-navbar-button {
+    display: block;
+    position: relative;
+    height: 70px;
+}
+
+ks-navbar-button > a {
+    outline-style: none;
+    text-decoration: none !important;
+    line-height: 70px;
+    min-width: 60px;
+
+    color: var(--navbar-text-color) !important;
+
+    -webkit-transition: var(--transition-background-color);
+
+    transition: var(--transition-background-color);
+}
+
+ks-navbar-button > a:hover {
+    background-color: var(--navbar-color-hover);
+}
+
+ks-navbar-button > a:active {
+    background-color: var(--navbar-color-active);
+}
+
+ks-navbar-button > div {
+    position: absolute;
+    bottom: -28px;
+    z-index: 2147483649;
+
+    width: 250%;
+    left: -75%;
+
+    font-size: 14px;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--navbar-text-color);
+
+    opacity: 0;
+    -webkit-transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    pointer-events: none;
+}
+
+ks-navbar-button > a:hover + div {
+    opacity: 1;
+}
+
+ks-navbar-contact > div ks-navbar-button > div {
+    display: none;
+}
+
+@media only screen and (max-width: 1000px) {
+    ks-navbar-button > div {
+        display: none;
+    }
+}
+
+ks-navbar-button .count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    
+    min-width: 30px;
+    height: 30px;
+
+    padding: 0px 0px;
+    margin-top: 5px;
+
+    border-radius: 500px;
+    box-sizing: border-box;
+    vertical-align: middle;
+
+    background: var(--color-secondary);
+    color: var(--navbar-text-color);
+    font-size: 16px;
+
+    display: -webkit-inline-box;
+
+    display: -ms-inline-flexbox;
+
+    display: inline-flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+ks-navbar-button > a {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    height: 100%;
+}
+
+ks-navbar-button ks-icon svg.medium {
+    stroke-width: 1.2;
+}

@@ -1,20 +1,18 @@
 export declare class NewsletterPopup {
   root: HTMLElement;
+  dialog: HTMLKsDialogElement;
   api: string;
   loginLink: string;
   registerLink: string;
   loggedIn: boolean;
   email: string;
   agreement: string;
-  mobile: boolean;
-  resizeHandler(): void;
-  loading: boolean;
-  success: boolean;
-  failure: boolean;
-  message: string;
-  requestHandler(event: Event): void;
+  infoMessage: string;
+  successHeading: string;
+  faliureHeading: string;
+  componentDidLoad(): void;
+  requestHandler(event: Event): Promise<void>;
   Show(): Promise<void>;
   SetCookie(): void;
-  componentDidLoad(): void;
   render(): any[];
 }

@@ -1,5 +1,5 @@
-import { r as registerInstance, h, g as getElement } from './index-22b73bd9.js';
-import { b as RemoveAllFavourites } from './functions-b10da890.js';
+import { r as registerInstance, h, g as getElement } from './index-74ff0cef.js';
+import { b as RemoveAllFavourites } from './functions-33a63d52.js';
 
 const FavouritesHeader = class {
   constructor(hostRef) {

@@ -82,7 +82,7 @@ export class Navbar {
           this.logoutLink ?
             h("ks-navbar-button", { name: "Wyloguj", link: this.logoutLink, icon: "log-out", class: "desktop" })
             : null,
-          h("ks-navbar-button", { name: "Menu", link: "#navbar-sidebar", toggle: true, icon: "menu", class: "mobile-tablet" })),
+          h("ks-navbar-button", { name: "Menu", icon: "menu", class: "mobile-tablet", onClick: () => this.root.querySelector("ks-navbar-sidebar").toggle() })),
         h("ks-navbar-contact-panel", { phone: this.phone, email: this.email, contact: this.contact })),
       !this.mobile ?
         h("ks-navbar-categories", null)
