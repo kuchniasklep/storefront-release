@@ -38,28 +38,15 @@ const ProductTab = class {
       ksImage.setAttribute("alt", image.getAttribute("alt"));
       let height = image.style.height.replace("px", "");
       let width = image.style.width.replace("px", "");
-      if (width.includes("%")) {
-        if (width == "100%")
-          width = "1200";
-        else
-          width = null;
-      }
-      if (image.style.maxWidth)
-        width = image.style.maxWidth.replace("px", "");
       if (height)
         ksImage.setAttribute("height", height);
-      if (width) {
+      if (width)
         ksImage.setAttribute("width", width);
-        ksImage.style.maxWidth = image.style.width;
-      }
-      ksImage.style.display = "inline-block";
+      if (image.style.maxWidth)
+        ksImage.style.maxWidth = image.style.maxWidth;
       const margin = image.style.margin;
       if (margin)
         ksImage.style.padding = margin;
-      if (margin.includes("auto")) {
-        ksImage.style.textAlign = "center";
-        ksImage.style.display = "block";
-      }
       image.parentNode.replaceChild(ksImage, image);
     }
   }
