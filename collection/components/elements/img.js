@@ -69,14 +69,15 @@ export class Img {
       this.vertical ? "vertical" : "horizontal";
     const loading = this.loadAnimated ? "" : "loading";
     const classes = [responsive].join(" ");
+    const max = this.limit ? { maxWidth: `${this.width}px` } : null;
     if (this.sync)
-      return (h("img", { class: classes, src: this.src, alt: this.alt, width: this.width, height: this.height }));
+      return (h("img", { class: classes, src: this.src, alt: this.alt, width: this.width, height: this.height, style: max }));
     return [
       (!this.loadAnimated ? [
         h("ks-loader", { dark: true }),
-        h("canvas", { width: this.width, height: this.height })
+        h("canvas", { width: this.width, height: this.height, style: max })
       ] : null),
-      h("img", { class: classes + " " + loading, alt: this.alt, onLoad: (e) => this.loadHandler(e), "data-src": this.src, width: this.width, height: this.height, style: this.limit ? { maxWidth: `${this.width} px` } : null })
+      h("img", { class: classes + " " + loading, alt: this.alt, onLoad: (e) => this.loadHandler(e), "data-src": this.src, width: this.width, height: this.height, style: max })
     ];
   }
   static get is() { return "ks-img"; }

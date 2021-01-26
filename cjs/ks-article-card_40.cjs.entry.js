@@ -3043,14 +3043,15 @@ const Img = class {
       this.vertical ? "vertical" : "horizontal";
     const loading = this.loadAnimated ? "" : "loading";
     const classes = [responsive].join(" ");
+    const max = this.limit ? { maxWidth: `${this.width}px` } : null;
     if (this.sync)
-      return (index.h("img", { class: classes, src: this.src, alt: this.alt, width: this.width, height: this.height }));
+      return (index.h("img", { class: classes, src: this.src, alt: this.alt, width: this.width, height: this.height, style: max }));
     return [
       (!this.loadAnimated ? [
         index.h("ks-loader", { dark: true }),
-        index.h("canvas", { width: this.width, height: this.height })
+        index.h("canvas", { width: this.width, height: this.height, style: max })
       ] : null),
-      index.h("img", { class: classes + " " + loading, alt: this.alt, onLoad: (e) => this.loadHandler(e), "data-src": this.src, width: this.width, height: this.height, style: this.limit ? { maxWidth: `${this.width} px` } : null })
+      index.h("img", { class: classes + " " + loading, alt: this.alt, onLoad: (e) => this.loadHandler(e), "data-src": this.src, width: this.width, height: this.height, style: max })
     ];
   }
   get root() { return index.getElement(this); }
