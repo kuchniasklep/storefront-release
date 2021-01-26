@@ -390,6 +390,7 @@ export namespace Components {
         "alt": string;
         "center": boolean;
         "contained": boolean;
+        "fill": boolean;
         "height": number;
         "left": boolean;
         "limit": boolean;
@@ -2392,6 +2393,7 @@ declare namespace LocalJSX {
         "alt"?: string;
         "center"?: boolean;
         "contained"?: boolean;
+        "fill"?: boolean;
         "height"?: number;
         "left"?: boolean;
         "limit"?: boolean;

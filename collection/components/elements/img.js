@@ -4,6 +4,7 @@ export class Img {
     this.sync = false;
     this.vertical = false;
     this.contained = false;
+    this.fill = false;
     this.left = false;
     this.right = false;
     this.center = false;
@@ -72,6 +73,12 @@ export class Img {
     const max = this.limit ? { maxWidth: `${this.width}px` } : null;
     if (this.sync)
       return (h("img", { class: classes, src: this.src, alt: this.alt, width: this.width, height: this.height, style: max }));
+    if (this.fill)
+      return [
+        h("canvas", { width: this.width, height: this.height }),
+        (!this.loadAnimated ? h("ks-loader", { dark: true }) : null),
+        h("img", { class: classes + " " + loading, alt: this.alt, onLoad: (e) => this.loadHandler(e), "data-src": this.src, width: this.width, height: this.height })
+      ];
     return [
       (!this.loadAnimated ? h("ks-loader", { dark: true }) : null),
       !this.loaded ? h("canvas", { width: this.width, height: this.height, style: max }) : null,
@@ -189,6 +196,24 @@ export class Img {
       },
       "attribute": "contained",
       "reflect": false,
+      "defaultValue": "false"
+    },
+    "fill": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "fill",
+      "reflect": true,
       "defaultValue": "false"
     },
     "left": {

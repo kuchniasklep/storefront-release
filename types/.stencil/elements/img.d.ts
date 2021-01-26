@@ -6,6 +6,7 @@ export declare class Img {
   sync: boolean;
   vertical: boolean;
   contained: boolean;
+  fill: boolean;
   left: boolean;
   right: boolean;
   center: boolean;

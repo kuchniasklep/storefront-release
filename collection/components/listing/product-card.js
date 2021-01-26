@@ -9,7 +9,7 @@ export class ProductCard {
     const previousPrice = this.previousPrice ? this.previousPrice.replace(".", ",") + " zł" : "";
     return [
       h("a", { href: this.link, "aria-label": this.name, class: "top" },
-        h("ks-img", { src: this.img, width: 280, height: 280, alt: "zdj\u0119cie produktu" }),
+        h("ks-img", { fill: true, src: this.img, width: 280, height: 280, alt: "zdj\u0119cie produktu" }),
         this.name),
       h("div", { class: "price" },
         this.previousPrice ?
