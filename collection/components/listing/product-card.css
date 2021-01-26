@@ -39,6 +39,7 @@ ks-product-card .top {
 
 ks-product-card ks-img {
     height: auto;
+    margin-bottom: 10px;
 }
 
 ks-product-card .price > * {
