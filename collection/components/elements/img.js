@@ -7,6 +7,7 @@ export class Img {
     this.left = false;
     this.right = false;
     this.center = false;
+    this.limit = false;
     this.loaded = false;
     this.loadAnimated = false;
   }
@@ -75,7 +76,7 @@ export class Img {
         h("ks-loader", { dark: true }),
         h("canvas", { width: this.width, height: this.height })
       ] : null),
-      h("img", { class: classes + " " + loading, alt: this.alt, onLoad: (e) => this.loadHandler(e), "data-src": this.src, width: this.width, height: this.height })
+      h("img", { class: classes + " " + loading, alt: this.alt, onLoad: (e) => this.loadHandler(e), "data-src": this.src, width: this.width, height: this.height, style: this.limit ? { maxWidth: `${this.width} px` } : null })
     ];
   }
   static get is() { return "ks-img"; }
@@ -278,6 +279,24 @@ export class Img {
       },
       "attribute": "height",
       "reflect": false
+    },
+    "limit": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "limit",
+      "reflect": false,
+      "defaultValue": "false"
     }
   }; }
   static get states() { return {

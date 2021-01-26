@@ -29,6 +29,7 @@ export class ProductTab {
       const ksImage = document.createElement("ks-img");
       ksImage.setAttribute("src", image.getAttribute("data-src"));
       ksImage.setAttribute("alt", image.getAttribute("alt"));
+      ksImage.setAttribute("limit", "limit");
       let height = image.style.height.replace("px", "");
       let width = image.style.width.replace("px", "");
       if (height)
@@ -38,8 +39,10 @@ export class ProductTab {
       if (image.style.maxWidth)
         ksImage.style.maxWidth = image.style.maxWidth;
       const margin = image.style.margin;
-      if (margin)
+      if (margin) {
         ksImage.style.padding = margin;
+        ksImage.style.boxSizing = "border-box";
+      }
       image.parentNode.replaceChild(ksImage, image);
     }
   }

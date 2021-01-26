@@ -2977,6 +2977,7 @@ const Img = class {
     this.left = false;
     this.right = false;
     this.center = false;
+    this.limit = false;
     this.loaded = false;
     this.loadAnimated = false;
   }
@@ -3045,7 +3046,7 @@ const Img = class {
         h("ks-loader", { dark: true }),
         h("canvas", { width: this.width, height: this.height })
       ] : null),
-      h("img", { class: classes + " " + loading, alt: this.alt, onLoad: (e) => this.loadHandler(e), "data-src": this.src, width: this.width, height: this.height })
+      h("img", { class: classes + " " + loading, alt: this.alt, onLoad: (e) => this.loadHandler(e), "data-src": this.src, width: this.width, height: this.height, style: this.limit ? { maxWidth: `${this.width} px` } : null })
     ];
   }
   get root() { return getElement(this); }

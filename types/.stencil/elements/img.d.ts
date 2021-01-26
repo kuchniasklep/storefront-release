@@ -11,6 +11,7 @@ export declare class Img {
   center: boolean;
   width: number;
   height: number;
+  limit: boolean;
   loaded: boolean;
   loadAnimated: boolean;
   root: HTMLElement;
