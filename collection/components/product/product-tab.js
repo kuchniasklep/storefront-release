@@ -36,10 +36,14 @@ export class ProductTab {
         ksImage.setAttribute("height", height);
       if (width)
         ksImage.setAttribute("width", width);
-      if (image.style.maxWidth)
+      if (image.style.maxWidth) {
         ksImage.style.maxWidth = image.style.maxWidth;
+        width = image.style.maxWidth;
+      }
       const margin = image.style.margin;
-      if (margin) {
+      if (margin.includes("auto"))
+        ksImage.style.margin = "auto";
+      else if (margin) {
         ksImage.style.padding = margin;
         ksImage.style.boxSizing = "border-box";
       }
