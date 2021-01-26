@@ -3551,7 +3551,7 @@ const newsletterPopupCss = "ks-newsletter-popup{display:block}ks-newsletter-popu
 const NewsletterPopup = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
-    this.loggedIn = true;
+    this.loggedIn = false;
     this.agreement = "Wyrażam zgodę na przetwarzanie danych osobowych do celów marketingowych, w celu zbadania opinii o sklepie oraz na otrzymywanie informacji handlowych na wskazany przeze mnie adres e-mail.";
     this.infoMessage = "Aby otrzymać kupon rabatowy musisz posiadać konto w naszym sklepie. Minimalna wartość zamówienia wynosi: 100,00 zł";
     this.successHeading = "ZAPISANO DO NEWSLETTERA";
