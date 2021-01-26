@@ -33,7 +33,7 @@ const ProductTab = class {
     const images = this.root.querySelectorAll("img");
     for (let i = 0; i < images.length; i++) {
       const image = images[i];
-      const ksImage = document.createElement("ks-image");
+      const ksImage = document.createElement("ks-img");
       let width = image.style.width.replace("px", "");
       if (width.includes("%")) {
         if (width == "100%")

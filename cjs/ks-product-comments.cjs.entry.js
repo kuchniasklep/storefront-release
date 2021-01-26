@@ -11,13 +11,16 @@ const ProductTab = class {
     index.registerInstance(this, hostRef);
     this.link = "";
     this.message = "";
+    this.hasMore = false;
     this.expand = false;
   }
   render() {
     return [
       index.h("div", { class: "message" }, index.h("ks-icon", { name: "mail", size: 2.5 }), index.h("p", null, this.message)),
       index.h("slot", null),
-      index.h("div", { class: "more", hidden: !this.expand }, index.h("slot", { name: "hidden" })),
+      this.hasMore ?
+        index.h("div", { class: "more", hidden: !this.expand }, index.h("slot", { name: "hidden" }))
+        : null,
       index.h("button", { onClick: () => this.expand = !this.expand, class: "expand" }, index.h("ks-icon", { name: this.expand ? "chevron-up" : "chevron-down", size: 1.5 })),
       this.link ?
         index.h("a", { href: this.link, rel: "nofollow", class: "add", "aria-label": "Napisz recenzj\u0119" }, index.h("ks-icon", { name: "plus-circle", size: 1.5 }))

@@ -3,6 +3,7 @@ export class ProductTab {
   constructor() {
     this.link = "";
     this.message = "";
+    this.hasMore = false;
     this.expand = false;
   }
   render() {
@@ -11,8 +12,10 @@ export class ProductTab {
         h("ks-icon", { name: "mail", size: 2.5 }),
         h("p", null, this.message)),
       h("slot", null),
-      h("div", { class: "more", hidden: !this.expand },
-        h("slot", { name: "hidden" })),
+      this.hasMore ?
+        h("div", { class: "more", hidden: !this.expand },
+          h("slot", { name: "hidden" }))
+        : null,
       h("button", { onClick: () => this.expand = !this.expand, class: "expand" },
         h("ks-icon", { name: this.expand ? "chevron-up" : "chevron-down", size: 1.5 })),
       this.link ?
@@ -67,6 +70,7 @@ export class ProductTab {
     }
   }; }
   static get states() { return {
+    "hasMore": {},
     "expand": {}
   }; }
   static get elementRef() { return "root"; }
