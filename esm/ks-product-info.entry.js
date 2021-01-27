@@ -1,4 +1,4 @@
-import { r as registerInstance, h, g as getElement } from './index-74ff0cef.js';
+import { r as registerInstance, c as createEvent, h, g as getElement } from './index-74ff0cef.js';
 import { O as OpenSuggestions } from './functions-33a63d52.js';
 import './index-b4f14e2e.js';
 import { s as store } from './product-store-44debc87.js';
@@ -8,6 +8,7 @@ const productInfoCss = "ks-product-info{display:block;-webkit-box-sizing:border-
 const ProductInfo = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
+    this.productRendered = createEvent(this, "productRendered", 7);
     this.dataId = "";
     this.shippingApi = "";
     this.traitApi = "";
@@ -135,6 +136,9 @@ const ProductInfo = class {
         throw { name: response.status, message: response.statusText };
       return response;
     });
+  }
+  componentDidRender() {
+    this.productRendered.emit();
   }
   render() {
     return [

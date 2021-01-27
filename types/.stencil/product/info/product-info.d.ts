@@ -1,3 +1,4 @@
+import { EventEmitter } from '../../../stencil-public-runtime';
 import { TraitData, TraitDataItem } from "../product-data";
 export declare class ProductInfo {
   root: HTMLElement;
@@ -17,5 +18,7 @@ export declare class ProductInfo {
   AddToCart(): Promise<void>;
   AddToFavourites(): Promise<void>;
   fetch(url: string, body: BodyInit): Promise<Response>;
+  productRendered: EventEmitter;
+  componentDidRender(): void;
   render(): any[];
 }

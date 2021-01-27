@@ -12,6 +12,7 @@ const productInfoCss = "ks-product-info{display:block;-webkit-box-sizing:border-
 const ProductInfo = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
+    this.productRendered = index.createEvent(this, "productRendered", 7);
     this.dataId = "";
     this.shippingApi = "";
     this.traitApi = "";
@@ -139,6 +140,9 @@ const ProductInfo = class {
         throw { name: response.status, message: response.statusText };
       return response;
     });
+  }
+  componentDidRender() {
+    this.productRendered.emit();
   }
   render() {
     return [

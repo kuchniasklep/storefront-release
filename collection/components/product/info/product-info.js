@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element, Listen } from '@stencil/core';
+import { Component, h, Prop, Element, Listen, Event } from '@stencil/core';
 import { OpenSuggestions } from "../../functions";
 import { store } from "../product-store";
 export class ProductInfo {
@@ -130,6 +130,9 @@ export class ProductInfo {
         throw { name: response.status, message: response.statusText };
       return response;
     });
+  }
+  componentDidRender() {
+    this.productRendered.emit();
   }
   render() {
     return [
@@ -280,6 +283,22 @@ export class ProductInfo {
       "defaultValue": "\"\""
     }
   }; }
+  static get events() { return [{
+      "method": "productRendered",
+      "name": "productRendered",
+      "bubbles": true,
+      "cancelable": true,
+      "composed": true,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "complexType": {
+        "original": "any",
+        "resolved": "any",
+        "references": {}
+      }
+    }]; }
   static get elementRef() { return "root"; }
   static get listeners() { return [{
       "name": "countChange",

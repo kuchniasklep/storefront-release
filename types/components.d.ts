@@ -2749,6 +2749,7 @@ declare namespace LocalJSX {
         "cartCountApi"?: string;
         "dataId"?: string;
         "favouritesApi"?: string;
+        "onProductRendered"?: (event: CustomEvent<any>) => void;
         "shippingApi"?: string;
         "suggestionApi"?: string;
         "traitApi"?: string;
