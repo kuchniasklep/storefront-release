@@ -6,5 +6,6 @@ export declare class ProductAdmin {
   overwrite: boolean;
   distributors: boolean;
   expanded: boolean;
+  expand(): void;
   render(): any[];
 }

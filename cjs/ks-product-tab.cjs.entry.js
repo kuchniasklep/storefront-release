@@ -39,10 +39,13 @@ const ProductTab = class {
       ksImage.setAttribute("limit", "limit");
       let height = image.style.height.replace("px", "");
       let width = image.style.width.replace("px", "");
+      if (width)
+        ksImage.style.maxWidth = image.style.width;
       if (image.style.maxWidth) {
         ksImage.style.maxWidth = image.style.maxWidth;
         width = image.style.maxWidth;
       }
+      ksImage.style.display = "inline-block";
       if (height)
         ksImage.setAttribute("height", height);
       if (width)

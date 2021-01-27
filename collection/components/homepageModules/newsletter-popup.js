@@ -58,9 +58,9 @@ export class NewsletterPopup {
       h("ks-dialog", { nopadding: true, onClosed: () => this.SetCookie() },
         h("form", { onSubmit: e => this.requestHandler(e) },
           h("div", { class: "info" },
-            h("svg", { class: "top", viewBox: "0 0 303 15", width: 909, height: 30 },
+            h("svg", { class: "top", viewBox: "0 0 303 15", width: 909, height: 45 },
               h("text", { x: "0", y: "12" }, "Zapisz si\u0119 do naszego Newslettera i zyskaj")),
-            h("svg", { class: "heading", viewBox: "0 0 96 12", width: 980, height: 80 },
+            h("svg", { class: "heading", viewBox: "0 0 96 12", width: 960, height: 130 },
               h("text", { x: "-1", y: "12" }, "KUPON 10Z\u0141")),
             h("p", null, this.infoMessage)),
           !this.loggedIn ?

@@ -88,4 +88,10 @@ ks-img[fill] img {
     max-height: 100%;
     width: auto;
     height: auto;
+
+    top: 0px;
+    bottom: 0px;
+	left: 0px;
+	right: 0px;
+    margin: auto;
 }

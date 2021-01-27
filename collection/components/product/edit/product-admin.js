@@ -9,6 +9,10 @@ export class ProductAdmin {
     this.distributors = false;
     this.expanded = false;
   }
+  expand() {
+    this.expanded = !this.expanded;
+    console.log("EXPAND");
+  }
   render() {
     return [
       h("div", { class: "bar" },
@@ -37,7 +41,7 @@ export class ProductAdmin {
           h("a", { class: "button", href: this.editLink },
             h("ks-icon", { name: "edit" })),
           this.distributors ?
-            h("button", { class: "button", onClick: () => this.expanded = !this.expanded },
+            h("button", { class: "button", onClick: () => this.expand() },
               h("ks-icon", { name: this.expanded ? "chevron-up" : "chevron-down" }))
             : null)),
       this.distributors ?

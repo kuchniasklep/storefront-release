@@ -91,6 +91,11 @@ ks-product-admin .distributors {
     overflow: hidden;
 }
 
+ks-product-admin .distributors[hidden] {
+    display: none !important;
+    visibility: hidden !important;
+}
+
 ks-product-admin .distributors th {    
     font-weight: 700;
     font-size: 15.5px !important;

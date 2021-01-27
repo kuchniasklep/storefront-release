@@ -35,12 +35,15 @@ ks-newsletter-popup .info .top {
     width: 100%;
     margin-bottom: 10px;
     font-size: initial;
+    max-height: 30px;
 }
 
 ks-newsletter-popup .info .heading {
     width: 100%;
     font-family: var(--font-emphasis);
     font-size: initial;
+    max-height: 80px;
+    margin-bottom: 10px;
 }
 
 ks-newsletter-popup .info p {
@@ -55,6 +58,7 @@ ks-newsletter-popup .buttons {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     min-height: 10px;
+    margin-top: 30px;
 }
 
 ks-newsletter-popup .buttons > * {
