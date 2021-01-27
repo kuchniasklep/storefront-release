@@ -7,5 +7,6 @@ export declare class Button {
   tall: boolean;
   primary: boolean;
   secondary: boolean;
+  border: boolean;
   render(): any;
 }

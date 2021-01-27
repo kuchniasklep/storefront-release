@@ -40,7 +40,7 @@ const ArticleCard$1 = class {
   }
 };
 
-const buttonCss = "ks-button{display:block}ks-button>*{display:block;text-align:center;-webkit-box-sizing:border-box;box-sizing:border-box;font-size:var(--product-button-size);width:100%;padding:12px 20px;outline-style:none;border-style:none;text-decoration:none !important;cursor:pointer;border-radius:0px;font-family:var(--font-regular);font-size:15px;background-color:var(--color-dark);color:var(--text-color-dark) !important;-webkit-transition:var(--transition-background-color);transition:var(--transition-background-color)}ks-button>*:hover{background-color:var(--color-dark-hover)}ks-button>*:active{background-color:var(--color-dark-active)}ks-button[round]>*{border-radius:100px}ks-button[tall]>*{padding:18px 20px}ks-button[primary]>*{color:var(--text-color-primary) !important;background-color:var(--color-primary) !important}ks-button[primary]>*:hover{background-color:var(--color-primary-hover)}ks-button[primary]>*:active{background-color:var(--color-primary-active)}ks-button[secondary]>*{color:var(--text-color-secondary) !important;background-color:var(--color-secondary) !important}ks-button[secondary]>*:hover{background-color:var(--color-secondary-hover)}ks-button[secondary]>*:active{background-color:var(--color-secondary-active)}";
+const buttonCss = "ks-button{display:block}ks-button>*{display:block;text-align:center;-webkit-box-sizing:border-box;box-sizing:border-box;font-size:var(--product-button-size);width:100%;padding:12px 20px;outline-style:none;border-style:none;text-decoration:none !important;cursor:pointer;border-radius:0px;font-family:var(--font-regular);font-size:15px;background-color:var(--color-dark);color:var(--text-color-dark) !important;-webkit-transition:var(--transition-background-color);transition:var(--transition-background-color)}ks-button>*:hover{background-color:var(--color-dark-hover)}ks-button>*:active{background-color:var(--color-dark-active)}ks-button[round]>*{border-radius:100px}ks-button[tall]>*{padding:18px 20px}ks-button[primary]>*{color:var(--text-color-primary) !important;background-color:var(--color-primary) !important}ks-button[primary]>*:hover{background-color:var(--color-primary-hover)}ks-button[primary]>*:active{background-color:var(--color-primary-active)}ks-button[secondary]>*{color:var(--text-color-secondary) !important;background-color:var(--color-secondary) !important}ks-button[secondary]>*:hover{background-color:var(--color-secondary-hover)}ks-button[secondary]>*:active{background-color:var(--color-secondary-active)}ks-button[border]>*{border:1px solid #ffffff;background-color:rgba(255, 255, 255, 0)}ks-button[border]>*:hover{background-color:rgba(255, 255, 255, 0.096)}ks-button[border]>*:active{background-color:rgba(255, 255, 255, 0.336)}";
 
 const Button = class {
   constructor(hostRef) {
@@ -275,6 +275,42 @@ const NavbarCategoryView = class {
   get root() { return getElement(this); }
 };
 NavbarCategoryView.style = categoryViewCss;
+
+const cookiePopupCss = "ks-cookie-popup{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:fixed;overflow:hidden;padding:15px;bottom:0px;left:0px;right:0px;z-index:1000;background-color:var(--overlay-dark-background);-webkit-backdrop-filter:var(--overlay-dark-filter);backdrop-filter:var(--overlay-dark-filter);border-top:solid 1px #000000;color:white;text-align:center;font-size:15px;line-height:17px}ks-cookie-popup:not([hide]){-webkit-animation:cookie-popup-swipe-in 0.4s ease-out;animation:cookie-popup-swipe-in 0.4s ease-out}ks-cookie-popup[hide]{-webkit-animation:cookie-popup-swipe-out 0.4s ease-out;animation:cookie-popup-swipe-out 0.4s ease-out}ks-cookie-popup[hidden]{display:none}ks-cookie-popup p{margin:0;max-width:100%}ks-cookie-popup ks-button{margin:0 0 0 20px}@media (max-width: 1400px){ks-cookie-popup{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}ks-cookie-popup p{margin:0 0 8px 0}ks-cookie-popup ks-button{margin:0}}@-webkit-keyframes cookie-popup-swipe-in{0%{-webkit-transform:translateY(180px);transform:translateY(180px)}100%{-webkit-transform:translateY(0px);transform:translateY(0px)}}@keyframes cookie-popup-swipe-in{0%{-webkit-transform:translateY(180px);transform:translateY(180px)}100%{-webkit-transform:translateY(0px);transform:translateY(0px)}}@-webkit-keyframes cookie-popup-swipe-out{0%{-webkit-transform:translateY(0px);transform:translateY(0px)}100%{-webkit-transform:translateY(180px);transform:translateY(180px)}}@keyframes cookie-popup-swipe-out{0%{-webkit-transform:translateY(0px);transform:translateY(0px)}100%{-webkit-transform:translateY(180px);transform:translateY(180px)}}";
+
+const CookiePopup = class {
+  constructor(hostRef) {
+    registerInstance(this, hostRef);
+    this.delay = 2000;
+    this.hide = false;
+    this.hidden = true;
+  }
+  hidepanel() {
+    this.hide = true;
+    this.cookie();
+    setTimeout(() => {
+      this.hidden = true;
+      this.hide = false;
+    }, 400);
+  }
+  cookie() {
+    var expiration = "";
+    var expirationDate = new Date();
+    expirationDate.setMonth(expirationDate.getMonth() + 12 * 2);
+    expiration = "expires=" + expirationDate.toUTCString() + "; ";
+    document.cookie = "akceptCookie=tak; " + expiration + "path=/";
+  }
+  componentDidLoad() {
+    setTimeout(() => {
+      this.hidden = false;
+    }, this.delay);
+  }
+  render() {
+    return h(Host, { hidden: this.hidden, hide: this.hide }, h("p", null, this.message), h("ks-button", { round: true, border: true, name: this.button, onClick: () => this.hidepanel() }));
+  }
+  get root() { return getElement(this); }
+};
+CookiePopup.style = cookiePopupCss;
 
 const dialogCss = "ks-dialog{display:block}ks-dialog .content{background-color:var(--card-background);-webkit-box-shadow:var(--big-shadow);box-shadow:var(--big-shadow);color:var(--card-text-color);position:relative;-webkit-box-sizing:border-box;box-sizing:border-box;max-width:720px;padding:30px;line-height:24px}ks-dialog[nopadding] .content{padding:0px !important}@media (max-width: 720px){ks-dialog .content{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:100%;padding:20px}}@media (max-width: 420px){ks-dialog .content{font-size:13px;line-height:18px;padding:15px}}ks-dialog ks-overlay .content{-webkit-animation:0.4s vertical-swipe-out 1;animation:0.4s vertical-swipe-out 1}ks-dialog ks-overlay.active .content{-webkit-animation:0.4s vertical-swipe-in 1;animation:0.4s vertical-swipe-in 1}ks-dialog .close{position:absolute;top:20px;right:20px;border-style:none;outline-style:none;background-color:transparent;z-index:200;-webkit-animation:fade-in 0.3s 1;animation:fade-in 0.3s 1}ks-dialog .overlay{position:absolute;top:0;bottom:0;left:0;right:0;z-index:100;padding:30px;background-color:rgba(255,255,255, 0.8);-webkit-animation:fade-in 0.3s 1;animation:fade-in 0.3s 1}ks-dialog .opaque{background-color:#ffffff}ks-dialog .overlay>div{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%, -50%);-ms-transform:translate(-50%, -50%);transform:translate(-50%, -50%);-webkit-box-sizing:border-box;box-sizing:border-box;max-width:800px;width:80%;text-align:center}ks-dialog .overlay>div>*{-webkit-animation:vertical-swipe-in-short 0.5s;animation:vertical-swipe-in-short 0.5s}ks-dialog .overlay .header{font-family:var(--font-emphasis);font-size:20px;font-weight:700}";
 
@@ -3771,4 +3807,4 @@ const SidePanel = class {
 };
 SidePanel.style = sidepanelCss;
 
-export { ArticleCard as ks_article_card, Banner as ks_banner, ArticleCard$1 as ks_banner_container, Button as ks_button, ButtonCart as ks_button_cart, ButtonFav as ks_button_fav, Card as ks_card, NavbarCategorySimple as ks_category_simple, NavbarCategoryView as ks_category_view, dialog as ks_dialog, Featured as ks_featured, FeaturedContainer as ks_featured_container, Footer as ks_footer, FooterButton as ks_footer_button, FooterLinks as ks_footer_links, Grid as ks_grid, HomepageInfo as ks_homepage_info, ProductContainer as ks_homepage_products, Icon as ks_icon, Image as ks_image, Img as ks_img, InfoMessage as ks_info_message, InputCheck as ks_input_check, InputText as ks_input_text, Loader as ks_loader, Navbar as ks_navbar, NavbarButton as ks_navbar_button, NavbarCategories as ks_navbar_categories, NavbarContactPanel as ks_navbar_contact_panel, NavbarSearch as ks_navbar_search, NavbarSearchMobile as ks_navbar_search_mobile, NavbarSidebar as ks_navbar_sidebar, NewsletterPopup as ks_newsletter_popup, Overlay as ks_overlay, ProductCard as ks_product_card, Container as ks_product_container, RecipeCard as ks_recipe_card, Section as ks_section, SeeMore as ks_see_more, SidePanel as ks_sidepanel };
+export { ArticleCard as ks_article_card, Banner as ks_banner, ArticleCard$1 as ks_banner_container, Button as ks_button, ButtonCart as ks_button_cart, ButtonFav as ks_button_fav, Card as ks_card, NavbarCategorySimple as ks_category_simple, NavbarCategoryView as ks_category_view, CookiePopup as ks_cookie_popup, dialog as ks_dialog, Featured as ks_featured, FeaturedContainer as ks_featured_container, Footer as ks_footer, FooterButton as ks_footer_button, FooterLinks as ks_footer_links, Grid as ks_grid, HomepageInfo as ks_homepage_info, ProductContainer as ks_homepage_products, Icon as ks_icon, Image as ks_image, Img as ks_img, InfoMessage as ks_info_message, InputCheck as ks_input_check, InputText as ks_input_text, Loader as ks_loader, Navbar as ks_navbar, NavbarButton as ks_navbar_button, NavbarCategories as ks_navbar_categories, NavbarContactPanel as ks_navbar_contact_panel, NavbarSearch as ks_navbar_search, NavbarSearchMobile as ks_navbar_search_mobile, NavbarSidebar as ks_navbar_sidebar, NewsletterPopup as ks_newsletter_popup, Overlay as ks_overlay, ProductCard as ks_product_card, Container as ks_product_container, RecipeCard as ks_recipe_card, Section as ks_section, SeeMore as ks_see_more, SidePanel as ks_sidepanel };

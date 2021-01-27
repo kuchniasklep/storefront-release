@@ -50,6 +50,7 @@
     "./components/footer/footer-links.js",
     "./components/footer/footer.js",
     "./components/homepageModules/contact.js",
+    "./components/homepageModules/cookie-popup.js",
     "./components/homepageModules/homepage-info.js",
     "./components/homepageModules/homepage-products.js",
     "./components/homepageModules/info-message.js",

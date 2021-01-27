@@ -35,6 +35,7 @@ export namespace Components {
         "mobile": boolean;
     }
     interface KsButton {
+        "border": boolean;
         "link": string;
         "name": string;
         "primary": boolean;
@@ -274,6 +275,11 @@ export namespace Components {
     }
     interface KsContainer {
         "padding": boolean;
+    }
+    interface KsCookiePopup {
+        "button": string;
+        "delay": number;
+        "message": string;
     }
     interface KsDescriptionImage {
         "image": string;
@@ -1187,6 +1193,12 @@ declare global {
         prototype: HTMLKsContainerElement;
         new (): HTMLKsContainerElement;
     };
+    interface HTMLKsCookiePopupElement extends Components.KsCookiePopup, HTMLStencilElement {
+    }
+    var HTMLKsCookiePopupElement: {
+        prototype: HTMLKsCookiePopupElement;
+        new (): HTMLKsCookiePopupElement;
+    };
     interface HTMLKsDescriptionImageElement extends Components.KsDescriptionImage, HTMLStencilElement {
     }
     var HTMLKsDescriptionImageElement: {
@@ -1909,6 +1921,7 @@ declare global {
         "ks-contact": HTMLKsContactElement;
         "ks-contact-buttons": HTMLKsContactButtonsElement;
         "ks-container": HTMLKsContainerElement;
+        "ks-cookie-popup": HTMLKsCookiePopupElement;
         "ks-description-image": HTMLKsDescriptionImageElement;
         "ks-description-text": HTMLKsDescriptionTextElement;
         "ks-description-text-image": HTMLKsDescriptionTextImageElement;
@@ -2050,6 +2063,7 @@ declare namespace LocalJSX {
         "mobile"?: boolean;
     }
     interface KsButton {
+        "border"?: boolean;
         "link"?: string;
         "name"?: string;
         "primary"?: boolean;
@@ -2284,6 +2298,11 @@ declare namespace LocalJSX {
     }
     interface KsContainer {
         "padding"?: boolean;
+    }
+    interface KsCookiePopup {
+        "button"?: string;
+        "delay"?: number;
+        "message"?: string;
     }
     interface KsDescriptionImage {
         "image"?: string;
@@ -2944,6 +2963,7 @@ declare namespace LocalJSX {
         "ks-contact": KsContact;
         "ks-contact-buttons": KsContactButtons;
         "ks-container": KsContainer;
+        "ks-cookie-popup": KsCookiePopup;
         "ks-description-image": KsDescriptionImage;
         "ks-description-text": KsDescriptionText;
         "ks-description-text-image": KsDescriptionTextImage;
@@ -3106,6 +3126,7 @@ declare module "@stencil/core" {
             "ks-contact": LocalJSX.KsContact & JSXBase.HTMLAttributes<HTMLKsContactElement>;
             "ks-contact-buttons": LocalJSX.KsContactButtons & JSXBase.HTMLAttributes<HTMLKsContactButtonsElement>;
             "ks-container": LocalJSX.KsContainer & JSXBase.HTMLAttributes<HTMLKsContainerElement>;
+            "ks-cookie-popup": LocalJSX.KsCookiePopup & JSXBase.HTMLAttributes<HTMLKsCookiePopupElement>;
             "ks-description-image": LocalJSX.KsDescriptionImage & JSXBase.HTMLAttributes<HTMLKsDescriptionImageElement>;
             "ks-description-text": LocalJSX.KsDescriptionText & JSXBase.HTMLAttributes<HTMLKsDescriptionTextElement>;
             "ks-description-text-image": LocalJSX.KsDescriptionTextImage & JSXBase.HTMLAttributes<HTMLKsDescriptionTextImageElement>;

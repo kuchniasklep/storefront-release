@@ -137,6 +137,23 @@ export class Button {
       },
       "attribute": "secondary",
       "reflect": true
+    },
+    "border": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "border",
+      "reflect": true
     }
   }; }
   static get elementRef() { return "root"; }

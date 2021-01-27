@@ -1,0 +1,94 @@
+ks-cookie-popup {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+
+    position: fixed;
+    overflow: hidden;
+
+    padding: 15px;
+
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+
+    z-index: 1000;
+    
+    background-color: var(--overlay-dark-background);
+    -webkit-backdrop-filter: var(--overlay-dark-filter);
+            backdrop-filter: var(--overlay-dark-filter);
+    border-top: solid 1px #000000;
+    color: white;
+
+    text-align: center;
+    font-size: 15px;
+    line-height: 17px;
+}
+
+ks-cookie-popup:not([hide]) {
+    -webkit-animation: cookie-popup-swipe-in 0.4s ease-out;
+            animation: cookie-popup-swipe-in 0.4s ease-out;
+}
+
+ks-cookie-popup[hide] {
+    -webkit-animation: cookie-popup-swipe-out 0.4s ease-out;
+            animation: cookie-popup-swipe-out 0.4s ease-out;
+}
+
+ks-cookie-popup[hidden] {
+    display: none;
+}
+
+ks-cookie-popup p {
+    margin: 0;
+    max-width: 100%;
+}
+
+ks-cookie-popup ks-button {
+    margin: 0 0 0 20px;
+}
+
+@media (max-width: 1400px) {
+    ks-cookie-popup {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+    }
+
+    ks-cookie-popup p {
+        margin: 0 0 8px 0;
+    }
+
+    ks-cookie-popup ks-button {
+        margin: 0;
+    }
+}
+
+
+@-webkit-keyframes cookie-popup-swipe-in {
+    0% { -webkit-transform: translateY(180px); transform: translateY(180px); }
+    100% { -webkit-transform: translateY(0px); transform: translateY(0px); }
+}
+
+
+@keyframes cookie-popup-swipe-in {
+    0% { -webkit-transform: translateY(180px); transform: translateY(180px); }
+    100% { -webkit-transform: translateY(0px); transform: translateY(0px); }
+}
+
+@-webkit-keyframes cookie-popup-swipe-out {
+    0% { -webkit-transform: translateY(0px); transform: translateY(0px); }
+    100% { -webkit-transform: translateY(180px); transform: translateY(180px); }
+}
+
+@keyframes cookie-popup-swipe-out {
+    0% { -webkit-transform: translateY(0px); transform: translateY(0px); }
+    100% { -webkit-transform: translateY(180px); transform: translateY(180px); }
+}
