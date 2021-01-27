@@ -10,6 +10,8 @@ export class ProductCalculatorPayU {
       h("slot", null),
       h("span", { id: "calculator-payu", style: { display: "none" } }),
       h("script", null,
+        "document.addEventListener(\"payu-widget-loaded\", function()",
+        '{',
         "var openpayu = openpayu || ",
         "{}",
         "; openpayu.options = ",
@@ -27,6 +29,8 @@ export class ProductCalculatorPayU {
         " *:first-child\"); let payuLink = document.querySelector(\"#calculator-payu a\"); payuButton.addEventListener(\"click\", function(event)",
         "{",
         "event.stopPropagation(); payuLink.click();",
+        '}',
+        ");",
         '}',
         ");")
     ];
