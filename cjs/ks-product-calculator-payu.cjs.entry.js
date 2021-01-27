@@ -15,7 +15,7 @@ const ProductCalculatorPayU = class {
     return [
       index.h("slot", null),
       index.h("span", { id: "calculator-payu", style: { display: "none" } }),
-      index.h("script", null, "document.addEventListener(\"payu-widget-loaded\", function()", '{', "var openpayu = openpayu || ", "{}", "; openpayu.options = ", '{', "creditAmount: ", this.price, ", posId: '", this.posId, "', key: '", this.apiKey, "', showLongDescription: true", '}', "; OpenPayU.Installments.miniInstallment(\"#calculator-payu\"); let payuButton = document.querySelector(\"ks-product-calculator-payu ", '>', " *:first-child\"); let payuLink = document.querySelector(\"#calculator-payu a\"); payuButton.addEventListener(\"click\", function(event)", "{", "event.stopPropagation(); payuLink.click();", '}', ");", '}', ");")
+      index.h("script", null, "var openpayu = openpayu || ", "{}", "; openpayu.options = ", '{', "creditAmount: ", this.price, ", posId: '", this.posId, "', key: '", this.apiKey, "', showLongDescription: true", '}', "; document.addEventListener(\"payu-widget-loaded\", function()", '{', "OpenPayU.Installments.miniInstallment(\"#calculator-payu\"); let payuButton = document.querySelector(\"ks-product-calculator-payu ", '>', " *:first-child\"); let payuLink = document.querySelector(\"#calculator-payu a\"); payuButton.addEventListener(\"click\", function(event)", "{", "event.stopPropagation(); payuLink.click();", '}', ");", '}', ");")
     ];
   }
   get root() { return index.getElement(this); }
