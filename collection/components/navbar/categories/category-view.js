@@ -47,7 +47,6 @@ export class NavbarCategoryView {
       marginLeft: this.category == 0 ? "0" : ""
     };
     const childrenstyle = {
-      visibility: this.hidden ? "hidden" : "visible",
       opacity: this.hiddenO ? "0.0" : "1.0"
     };
     return h(Host, { style: divstyle },
@@ -55,14 +54,14 @@ export class NavbarCategoryView {
         this.category.name,
         haschildren ? h("ks-icon", { name: "chevron-down", size: 0.8 }) : null),
       haschildren ?
-        h("div", { class: "children", style: childrenstyle },
+        h("div", { class: "children", style: childrenstyle, hidden: this.hidden },
           h("div", { class: "buttons" }, this.category.children.map((child, index) => h("a", { href: child.url, class: this.active == index && child.children ? "active" : "", onMouseOver: () => this.SetActive(index, !!child.children) },
             child.name,
             " ",
             !child.children ? h("ks-icon", { name: "link", size: 0.65 }) : null))),
           h("div", { class: "content", style: { maxHeight: this.CalculateHeight() + "px" } }, this.category.children.map((child, index) => h("div", { hidden: this.active != index || this.hidden }, child.children ? child.children.map((item) => h("a", { href: item.url }, item.name)) : null))),
           h("div", { class: "graphic", style: { maxHeight: this.CalculateHeight() + "px" } }, this.category.children.map((child, index) => child.image ?
-            h("ks-img", { vertical: true, right: true, target: "ks-category-view > div", src: child.image, style: { display: (this.active == index) ? "flex" : "none" } })
+            h("ks-img", { vertical: true, right: true, target: "ks-category-view > .children", src: child.image, style: { display: (this.active == index) ? "flex" : "none" } })
             : null)))
         : null);
   }

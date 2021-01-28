@@ -172,4 +172,11 @@ ks-category-view .children {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+
+    visibility: visible;
+}
+
+ks-category-view .children[hidden] {
+    visibility: hidden;
+    display: none;
 }
