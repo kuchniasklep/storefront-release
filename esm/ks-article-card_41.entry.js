@@ -423,7 +423,7 @@ const FooterButton = class {
     this.height = 50;
   }
   render() {
-    return (h("a", { href: this.href, rel: "nofollow" }, h("ks-img", { sync: true, src: this.image, target: "body", width: this.width, height: this.height })));
+    return (h("a", { href: this.href, rel: "nofollow" }, h("ks-img", { src: this.image, observerMargin: "500px", width: this.width, height: this.height })));
   }
 };
 FooterButton.style = footerButtonCss;
@@ -3029,7 +3029,9 @@ const Img = class {
       }
     };
     if (this.image) {
-      this.observer = new IntersectionObserver(onIntersection);
+      this.observer = new IntersectionObserver(onIntersection, {
+        rootMargin: this.observerMargin
+      });
       this.observer.observe(target);
     }
     this.SetAlignment();

@@ -3,6 +3,7 @@ export declare class Img {
   src: string;
   alt: string;
   target: string;
+  observerMargin: string;
   sync: boolean;
   vertical: boolean;
   contained: boolean;

@@ -43,7 +43,7 @@ const ProductImages = class {
     return [
       index.h("div", { class: "swiper-container preview" }, index.h("div", { class: "swiper-wrapper" }, productStore.store.get("images").map((image, index$1) => index.h("div", { class: "swiper-slide" }, index.h("canvas", { width: image.preview.width, height: image.preview.height }), index.h("ks-img", { contained: true, center: true, sync: index$1 == 0, src: image.preview.url, width: image.preview.width, height: image.preview.height, onClick: () => this.lightbox.show(index$1) }))))),
       productStore.store.get("images").length > 1 ?
-        index.h("div", { class: "swiper-container thumb" }, index.h("div", { class: "swiper-wrapper" }, productStore.store.get("images").map(image => index.h("div", { class: "swiper-slide" }, index.h("ks-img", { contained: true, center: true, src: image.thumb.url, width: image.thumb.width, height: image.thumb.height })))))
+        index.h("div", { class: "swiper-container thumb" }, index.h("div", { class: "swiper-wrapper" }, productStore.store.get("images").map((image, index$1) => index.h("div", { class: "swiper-slide" }, index.h("ks-img", { sync: index$1 < 6, contained: true, center: true, src: image.thumb.url, width: image.thumb.width, height: image.thumb.height })))))
         : null,
       index.h("ks-lightbox", { data: productStore.store.get("images") })
     ];

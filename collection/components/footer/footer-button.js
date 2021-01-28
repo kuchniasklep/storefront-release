@@ -6,7 +6,7 @@ export class FooterButton {
   }
   render() {
     return (h("a", { href: this.href, rel: "nofollow" },
-      h("ks-img", { sync: true, src: this.image, target: "body", width: this.width, height: this.height })));
+      h("ks-img", { src: this.image, observerMargin: "500px", width: this.width, height: this.height })));
   }
   static get is() { return "ks-footer-button"; }
   static get originalStyleUrls() { return {

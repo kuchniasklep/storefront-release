@@ -400,6 +400,7 @@ export namespace Components {
         "height": number;
         "left": boolean;
         "limit": boolean;
+        "observerMargin": string;
         "right": boolean;
         "src": string;
         "sync": boolean;
@@ -2416,6 +2417,7 @@ declare namespace LocalJSX {
         "height"?: number;
         "left"?: boolean;
         "limit"?: boolean;
+        "observerMargin"?: string;
         "onLazyLoaded"?: (event: CustomEvent<any>) => void;
         "right"?: boolean;
         "src"?: string;

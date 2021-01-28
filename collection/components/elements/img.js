@@ -53,7 +53,9 @@ export class Img {
       }
     };
     if (this.image) {
-      this.observer = new IntersectionObserver(onIntersection);
+      this.observer = new IntersectionObserver(onIntersection, {
+        rootMargin: this.observerMargin
+      });
       this.observer.observe(target);
     }
     this.SetAlignment();
@@ -142,6 +144,23 @@ export class Img {
         "text": ""
       },
       "attribute": "target",
+      "reflect": false
+    },
+    "observerMargin": {
+      "type": "string",
+      "mutable": false,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "observer-margin",
       "reflect": false
     },
     "sync": {
