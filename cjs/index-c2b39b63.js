@@ -1,3 +1,25 @@
+'use strict';
+
+function _interopNamespace(e) {
+  if (e && e.__esModule) return e;
+  var n = Object.create(null);
+  if (e) {
+    Object.keys(e).forEach(function (k) {
+      if (k !== 'default') {
+        var d = Object.getOwnPropertyDescriptor(e, k);
+        Object.defineProperty(n, k, d.get ? d : {
+          enumerable: true,
+          get: function () {
+            return e[k];
+          }
+        });
+      }
+    });
+  }
+  n['default'] = e;
+  return Object.freeze(n);
+}
+
 const NAMESPACE = 'ks-components';
 
 let contentRef;
@@ -7,7 +29,6 @@ let checkSlotFallbackVisibility = false;
 let checkSlotRelocate = false;
 let isSvgMode = false;
 let renderingRef = null;
-let queuePending = false;
 const win = typeof window !== 'undefined' ? window : {};
 const CSS =  win.CSS ;
 const doc = win.document || { head: {} };
@@ -1007,9 +1028,6 @@ const attachToAncestor = (hostRef, ancestorComponent) => {
     }
 };
 const scheduleUpdate = (hostRef, isInitialLoad) => {
-    {
-        hostRef.$flags$ |= 16 /* isQueuedForUpdate */;
-    }
     if ( hostRef.$flags$ & 4 /* isWaitingForChildren */) {
         hostRef.$flags$ |= 512 /* needsRerender */;
         return;
@@ -1019,7 +1037,7 @@ const scheduleUpdate = (hostRef, isInitialLoad) => {
     // has already fired off its lifecycle update then
     // fire off the initial update
     const dispatch = () => dispatchHooks(hostRef, isInitialLoad);
-    return  writeTask(dispatch) ;
+    return  dispatch();
 };
 const dispatchHooks = (hostRef, isInitialLoad) => {
     const endSchedule = createTime('scheduleUpdate', hostRef.$cmpMeta$.$tagName$);
@@ -1097,9 +1115,6 @@ const callRender = (hostRef, instance) => {
     try {
         renderingRef = instance;
         instance =  instance.render() ;
-        {
-            hostRef.$flags$ &= ~16 /* isQueuedForUpdate */;
-        }
         {
             hostRef.$flags$ |= 2 /* hasRendered */;
         }
@@ -1647,11 +1662,11 @@ const loadModule = (cmpMeta, hostRef, hmrVersionId) => {
     if (module) {
         return module[exportName];
     }
-    return import(
+    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
     /* webpackInclude: /\.entry\.js$/ */
     /* webpackExclude: /\.system\.entry\.js$/ */
     /* webpackMode: "lazy" */
-    `./${bundleId}.entry.js${ ''}`).then(importedModule => {
+    `./${bundleId}.entry.js${ ''}`)); }).then(importedModule => {
         {
             cmpModules.set(bundleId, importedModule);
         }
@@ -1659,47 +1674,19 @@ const loadModule = (cmpMeta, hostRef, hmrVersionId) => {
     }, consoleError);
 };
 const styles = new Map();
-const queueDomReads = [];
-const queueDomWrites = [];
-const queueTask = (queue, write) => (cb) => {
-    queue.push(cb);
-    if (!queuePending) {
-        queuePending = true;
-        if (write && plt.$flags$ & 4 /* queueSync */) {
-            nextTick(flush);
-        }
-        else {
-            plt.raf(flush);
-        }
-    }
-};
-const consume = (queue) => {
-    for (let i = 0; i < queue.length; i++) {
-        try {
-            queue[i](performance.now());
-        }
-        catch (e) {
-            consoleError(e);
-        }
-    }
-    queue.length = 0;
-};
-const flush = () => {
-    // always force a bunch of medium callbacks to run, but still have
-    // a throttle on how many can run in a certain time
-    // DOM READS!!!
-    consume(queueDomReads);
-    // DOM WRITES!!!
-    {
-        consume(queueDomWrites);
-        if ((queuePending = queueDomReads.length > 0)) {
-            // still more to do yet, but we've run out of time
-            // let's let this thing cool off and try again in the next tick
-            plt.raf(flush);
-        }
-    }
-};
 const nextTick = /*@__PURE__*/ (cb) => promiseResolve().then(cb);
-const writeTask = /*@__PURE__*/ queueTask(queueDomWrites, true);
 
-export { CSS as C, Host as H, NAMESPACE as N, promiseResolve as a, bootstrapLazy as b, createEvent as c, doc as d, getRenderingRef as e, forceUpdate as f, getElement as g, h, plt as p, registerInstance as r, win as w };
+exports.CSS = CSS;
+exports.Host = Host;
+exports.NAMESPACE = NAMESPACE;
+exports.bootstrapLazy = bootstrapLazy;
+exports.createEvent = createEvent;
+exports.doc = doc;
+exports.forceUpdate = forceUpdate;
+exports.getElement = getElement;
+exports.getRenderingRef = getRenderingRef;
+exports.h = h;
+exports.plt = plt;
+exports.promiseResolve = promiseResolve;
+exports.registerInstance = registerInstance;
+exports.win = win;

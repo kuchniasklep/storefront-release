@@ -1,4 +1,4 @@
-import { C as CSS, p as plt, w as win, a as promiseResolve, b as bootstrapLazy } from './index-74ff0cef.js';
+import { C as CSS, p as plt, w as win, a as promiseResolve, b as bootstrapLazy } from './index-46fe532f.js';
 
 /*
  Stencil Client Patch Esm v2.3.0 | MIT Licensed | https://stenciljs.com

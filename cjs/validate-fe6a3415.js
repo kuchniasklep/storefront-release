@@ -1,6 +1,6 @@
 'use strict';
 
-const index = require('./index-3f13923b.js');
+const index = require('./index-c2b39b63.js');
 
 const appendToMap = (map, propName, value) => {
     const items = map.get(propName);

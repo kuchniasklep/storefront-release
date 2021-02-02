@@ -1,4 +1,4 @@
-import { r as registerInstance, h, g as getElement } from './index-74ff0cef.js';
+import { r as registerInstance, h, g as getElement } from './index-46fe532f.js';
 
 const ProductWide = class {
   constructor(hostRef) {

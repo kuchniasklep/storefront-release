@@ -2,9 +2,9 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-3f13923b.js');
+const index = require('./index-c2b39b63.js');
 const _commonjsHelpers = require('./_commonjsHelpers-bcc1208a.js');
-const validate = require('./validate-78d99cf9.js');
+const validate = require('./validate-fe6a3415.js');
 
 const buttonCss = "ks-button{display:block}ks-button>*{display:block;text-align:center;-webkit-box-sizing:border-box;box-sizing:border-box;font-size:var(--product-button-size);width:100%;padding:12px 20px;outline-style:none;border-style:none;text-decoration:none !important;cursor:pointer;border-radius:0px;font-family:var(--font-regular);font-size:15px;background-color:var(--color-dark);color:var(--text-color-dark) !important;-webkit-transition:var(--transition-background-color);transition:var(--transition-background-color)}ks-button>*:hover{background-color:var(--color-dark-hover)}ks-button>*:active{background-color:var(--color-dark-active)}ks-button[round]>*{border-radius:100px}ks-button[tall]>*{padding:18px 20px}ks-button[primary]>*{color:var(--text-color-primary) !important;background-color:var(--color-primary) !important}ks-button[primary]>*:hover{background-color:var(--color-primary-hover)}ks-button[primary]>*:active{background-color:var(--color-primary-active)}ks-button[secondary]>*{color:var(--text-color-secondary) !important;background-color:var(--color-secondary) !important}ks-button[secondary]>*:hover{background-color:var(--color-secondary-hover)}ks-button[secondary]>*:active{background-color:var(--color-secondary-active)}ks-button[border]>*{border:1px solid #ffffff;background-color:rgba(255, 255, 255, 0)}ks-button[border]>*:hover{background-color:rgba(255, 255, 255, 0.096)}ks-button[border]>*:active{background-color:rgba(255, 255, 255, 0.336)}";
 

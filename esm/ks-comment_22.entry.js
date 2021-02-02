@@ -1,6 +1,6 @@
-import { r as registerInstance, h, g as getElement, c as createEvent, H as Host } from './index-74ff0cef.js';
+import { r as registerInstance, h, g as getElement, c as createEvent, H as Host } from './index-46fe532f.js';
 import { O as OpenSuggestions } from './functions-33a63d52.js';
-import { c as createStore, V as ValidateInput } from './validate-730ecb71.js';
+import { c as createStore, V as ValidateInput } from './validate-46a616dd.js';
 import { S as Swiper, T as Thumbs } from './thumbs-00422a82.js';
 
 const commentCss = "ks-comment{display:block}ks-comment article{padding:30px}@media (min-width: 1200px){ks-comment article{padding:30px 40px}}ks-comment header{display:-webkit-box;display:-ms-flexbox;display:flex}ks-comment header>div{width:100%}ks-comment header .title{margin:0}ks-comment header .info{font-size:.875rem;line-height:1.4;color:#707070}ks-comment ks-icon{margin-right:20px}ks-comment p{margin-bottom:0px}";
