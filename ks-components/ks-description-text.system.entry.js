@@ -1,0 +1,1 @@
+System.register(["./index-e940a1f6.system.js"],(function(t){"use strict";var e,n;return{setters:[function(t){e=t.r;n=t.h}],execute:function(){var r="ks-description-text{display:block;margin-bottom:40px}";var s=t("ks_description_text",function(){function t(t){e(this,t)}t.prototype.render=function(){return n("slot",null)};return t}());s.style=r}}}));

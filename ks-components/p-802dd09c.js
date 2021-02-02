@@ -1,1 +1,0 @@
-async function t(t){const n=t.querySelectorAll("ks-input-text, ks-input-textarea, ks-input-check, ks-input-number, ks-input-date, ks-input-select");let e=!0;for(let s=0;s<n.length;s++){const t=n[s];await t.Validate(),0==await t.IsValid()&&(e=!1)}return e}export{t as V}

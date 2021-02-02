@@ -1,1 +1,0 @@
-import{r as s,h as r}from"./p-f748ea6f.js";import{T as e}from"./p-dbb486d9.js";const t=class{constructor(r){s(this,r),this.shippingMessage=""}render(){return r("ks-cart-message",{message:this.shippingMessage})}};e.injectProps(t,["shippingMessage"]);export{t as ks_cart_shipping_message}

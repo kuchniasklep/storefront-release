@@ -1,1 +1,0 @@
-import{r as s,h as t}from"./p-f748ea6f.js";const o=class{constructor(t){s(this,t),this.active=!1}render(){return t("ul",{"uk-accordion":"animation: false;"},t("li",{class:this.active?"uk-open":null},t("a",{class:"uk-accordion-title",href:"#"},this.name),t("div",{class:"uk-accordion-content"},t("slot",null))))}};export{o as ks_filter}
