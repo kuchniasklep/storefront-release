@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-cc43f019.js';
+import { r as registerInstance, h } from './index-44e0e252.js';
 
 const productAdminDistributorCss = "ks-product-admin-distributor{color:#ffffff;display:table-row}ks-product-admin-distributor[overwrite]{color:var(--color-secondary)}";
 

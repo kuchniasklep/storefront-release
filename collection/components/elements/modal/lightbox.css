@@ -16,7 +16,6 @@ ks-lightbox .content  {
     height: 100%;
     box-sizing: border-box;
     -webkit-user-select: none;
-       -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
 }
@@ -35,7 +34,6 @@ ks-lightbox .close {
 
     cursor: pointer;
     -webkit-user-select: none;
-       -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
 

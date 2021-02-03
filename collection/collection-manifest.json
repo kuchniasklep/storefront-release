@@ -233,7 +233,6 @@
         "ks-product-comments",
         "ks-product-count",
         "ks-product-images",
-        "ks-product-info",
         "ks-product-info-points",
         "ks-product-negotiate",
         "ks-product-points",
@@ -247,6 +246,36 @@
         "ks-product-variant",
         "ks-product-variants",
         "ks-product-youtube"
+      ]
+    },
+    {
+      "components": [
+        "ks-button",
+        "ks-card",
+        "ks-category-simple",
+        "ks-category-view",
+        "ks-container",
+        "ks-cookie-popup",
+        "ks-flex",
+        "ks-footer",
+        "ks-footer-button",
+        "ks-footer-links",
+        "ks-grid",
+        "ks-icon",
+        "ks-image",
+        "ks-img",
+        "ks-info-banner",
+        "ks-info-message",
+        "ks-loader",
+        "ks-navbar",
+        "ks-navbar-button",
+        "ks-navbar-categories",
+        "ks-navbar-contact-panel",
+        "ks-navbar-search",
+        "ks-navbar-search-mobile",
+        "ks-navbar-sidebar",
+        "ks-newsletter-popup",
+        "ks-section"
       ]
     },
     {
@@ -308,41 +337,6 @@
         "ks-cart-spinner",
         "ks-cart-summary",
         "ks-cart-summary-container"
-      ]
-    },
-    {
-      "components": [
-        "ks-button",
-        "ks-card",
-        "ks-category-simple",
-        "ks-category-view",
-        "ks-container",
-        "ks-cookie-popup",
-        "ks-dialog",
-        "ks-error-popup",
-        "ks-flex",
-        "ks-footer",
-        "ks-footer-button",
-        "ks-footer-links",
-        "ks-grid",
-        "ks-icon",
-        "ks-image",
-        "ks-img",
-        "ks-info-banner",
-        "ks-info-message",
-        "ks-loader",
-        "ks-navbar",
-        "ks-navbar-button",
-        "ks-navbar-categories",
-        "ks-navbar-contact-panel",
-        "ks-navbar-search",
-        "ks-navbar-search-mobile",
-        "ks-navbar-sidebar",
-        "ks-newsletter-popup",
-        "ks-overlay",
-        "ks-section",
-        "ks-sidepanel",
-        "ks-top-banner"
       ]
     }
   ]

@@ -1,4 +1,4 @@
-import { r as registerInstance, h, g as getElement } from './index-cc43f019.js';
+import { r as registerInstance, h, g as getElement } from './index-44e0e252.js';
 
 const Banner = class {
   constructor(hostRef) {

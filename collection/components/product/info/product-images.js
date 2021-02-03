@@ -16,16 +16,18 @@ export class ProductImages {
       watchSlidesProgress: true,
       spaceBetween: 3,
     });
-    this.carousel = new Swiper('.preview', {
-      observer: true,
-      observeParents: true,
-      spaceBetween: 30,
-      grabCursor: true,
-      autoHeight: true,
-      thumbs: {
-        swiper: this.thumbs
-      }
-    });
+    if (store.get("images").length > 1) {
+      this.carousel = new Swiper('.preview', {
+        observer: true,
+        observeParents: true,
+        spaceBetween: 30,
+        grabCursor: true,
+        autoHeight: true,
+        thumbs: {
+          swiper: this.thumbs
+        }
+      });
+    }
   }
   render() {
     return [

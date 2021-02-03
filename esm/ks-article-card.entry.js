@@ -1,4 +1,4 @@
-import { r as registerInstance, h, g as getElement } from './index-cc43f019.js';
+import { r as registerInstance, h, g as getElement } from './index-44e0e252.js';
 
 const articleCardCss = "ks-article-card{display:block}@media screen and (min-width: 960px) and (max-width: 1200px){ks-article-card[hide-on-odd]{display:none !important}}";
 

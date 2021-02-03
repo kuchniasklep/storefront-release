@@ -51,7 +51,6 @@ ks-product-admin .bar > .links .button {
     border-style: none;
     outline-style: none;
     -webkit-user-select: none;
-       -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
 }
