@@ -1,6 +1,7 @@
 import { Component, h, Prop, Element, Listen, Event } from '@stencil/core';
 import { OpenSuggestions } from "../../functions";
 import { store } from "../product-store";
+import { jsonParse } from "./product-info.worker";
 export class ProductInfo {
   constructor() {
     this.dataId = "";
@@ -11,9 +12,9 @@ export class ProductInfo {
     this.favouritesApi = "";
     this.suggestionApi = "";
   }
-  connectedCallback() {
+  async connectedCallback() {
     const dataElement = document.getElementById(this.dataId);
-    const data = JSON.parse(dataElement.innerHTML);
+    const data = await jsonParse(dataElement.innerHTML);
     Object.keys(data).map(key => {
       store.set(key, data[key]);
     });
