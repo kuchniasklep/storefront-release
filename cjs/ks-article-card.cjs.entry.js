@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-7c91bddc.js');
+const index = require('./index-c2b39b63.js');
 
 const articleCardCss = "ks-article-card{display:block}@media screen and (min-width: 960px) and (max-width: 1200px){ks-article-card[hide-on-odd]{display:none !important}}";
 

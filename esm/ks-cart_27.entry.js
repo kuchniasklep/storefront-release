@@ -1,4 +1,4 @@
-import { h, r as registerInstance, g as getElement, c as createEvent, H as Host } from './index-44e0e252.js';
+import { h, r as registerInstance, g as getElement, c as createEvent, H as Host } from './index-46fe532f.js';
 
 const createProviderConsumer = (defaultState, consumerRender) => {
     let listeners = new Map();

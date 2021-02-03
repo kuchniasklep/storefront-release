@@ -5,29 +5,31 @@ Swiper.use([Thumbs]);
 export class ProductImages {
   componentDidRender() {
     this.lightbox = this.root.querySelector("ks-lightbox");
-    this.thumbs = new Swiper('.thumb', {
-      observer: true,
-      observeParents: true,
-      grabCursor: true,
-      slidesPerView: "auto",
-      preventInteractionOnTransition: true,
-      centerInsufficientSlides: true,
-      watchSlidesVisibility: true,
-      watchSlidesProgress: true,
-      spaceBetween: 3,
-    });
-    if (store.get("images").length > 1) {
-      this.carousel = new Swiper('.preview', {
+    const thumbs_enabled = store.get("images").length > 1;
+    console.log(thumbs_enabled);
+    if (thumbs_enabled) {
+      this.thumbs = new Swiper('.thumb', {
         observer: true,
         observeParents: true,
-        spaceBetween: 30,
         grabCursor: true,
-        autoHeight: true,
-        thumbs: {
-          swiper: this.thumbs
-        }
+        slidesPerView: "auto",
+        preventInteractionOnTransition: true,
+        centerInsufficientSlides: true,
+        watchSlidesVisibility: true,
+        watchSlidesProgress: true,
+        spaceBetween: 3,
       });
     }
+    this.carousel = new Swiper('.preview', {
+      observer: true,
+      observeParents: true,
+      spaceBetween: 30,
+      grabCursor: true,
+      autoHeight: true,
+      thumbs: thumbs_enabled ? {
+        swiper: this.thumbs
+      } : undefined
+    });
   }
   render() {
     return [

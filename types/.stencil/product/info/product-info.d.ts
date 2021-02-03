@@ -9,7 +9,7 @@ export declare class ProductInfo {
   cartCountApi: string;
   favouritesApi: string;
   suggestionApi: string;
-  connectedCallback(): Promise<void>;
+  connectedCallback(): void;
   navbar: HTMLKsNavbarElement;
   errorPopup: HTMLKsErrorPopupElement;
   componentDidLoad(): void;

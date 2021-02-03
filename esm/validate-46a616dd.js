@@ -1,6 +1,4 @@
-'use strict';
-
-const index = require('./index-7c91bddc.js');
+import { e as getRenderingRef, f as forceUpdate } from './index-46fe532f.js';
 
 const appendToMap = (map, propName, value) => {
     const items = map.get(propName);
@@ -41,14 +39,14 @@ const cleanupElements = debounce((map) => {
 }, 2000);
 const stencilSubscription = ({ on }) => {
     const elmsToUpdate = new Map();
-    if (typeof index.getRenderingRef === 'function') {
+    if (typeof getRenderingRef === 'function') {
         // If we are not in a stencil project, we do nothing.
         // This function is not really exported by @stencil/core.
         on('dispose', () => {
             elmsToUpdate.clear();
         });
         on('get', (propName) => {
-            const elm = index.getRenderingRef();
+            const elm = getRenderingRef();
             if (elm) {
                 appendToMap(elmsToUpdate, propName, elm);
             }
@@ -56,12 +54,12 @@ const stencilSubscription = ({ on }) => {
         on('set', (propName) => {
             const elements = elmsToUpdate.get(propName);
             if (elements) {
-                elmsToUpdate.set(propName, elements.filter(index.forceUpdate));
+                elmsToUpdate.set(propName, elements.filter(forceUpdate));
             }
             cleanupElements(elmsToUpdate);
         });
         on('reset', () => {
-            elmsToUpdate.forEach((elms) => elms.forEach(index.forceUpdate));
+            elmsToUpdate.forEach((elms) => elms.forEach(forceUpdate));
             cleanupElements(elmsToUpdate);
         });
     }
@@ -173,4 +171,17 @@ const createStore = (defaultState, shouldUpdate) => {
     return map;
 };
 
-exports.createStore = createStore;
+async function ValidateInput(root) {
+  const inputs = root.querySelectorAll("ks-input-text, ks-input-textarea, ks-input-check, ks-input-number, ks-input-date, ks-input-select");
+  let valid = true;
+  for (let i = 0; i < inputs.length; i++) {
+    const input = inputs[i];
+    await input.Validate();
+    if (await input.IsValid() == false) {
+      valid = false;
+    }
+  }
+  return valid;
+}
+
+export { ValidateInput as V, createStore as c };

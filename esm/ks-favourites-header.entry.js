@@ -1,4 +1,4 @@
-import { r as registerInstance, h, g as getElement } from './index-44e0e252.js';
+import { r as registerInstance, h, g as getElement } from './index-46fe532f.js';
 import { b as RemoveAllFavourites } from './functions-33a63d52.js';
 
 const FavouritesHeader = class {

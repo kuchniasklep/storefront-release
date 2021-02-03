@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-7c91bddc.js');
+const index = require('./index-c2b39b63.js');
 const thumbs = require('./thumbs-f1578b12.js');
 const pagination = require('./pagination-8cb7a551.js');
 

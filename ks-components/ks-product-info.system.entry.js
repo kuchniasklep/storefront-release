@@ -1,1 +1,0 @@
-System.register(["./index-23f28cac.system.js","./functions-de0b3324.system.js","./index-d94de3f8.system.js","./product-store-8da634ed.system.js","./ks-product-info-6c4b901c.system.js"],(function(s){"use strict";return{setters:[function(){},function(){},function(){},function(){},function(t){s("ks_product_info",t.P)}],execute:function(){}}}));

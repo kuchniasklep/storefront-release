@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-44e0e252.js';
+import { r as registerInstance, h } from './index-46fe532f.js';
 
 const descriptionImageCss = "ks-description-image{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;margin-bottom:40px}";
 

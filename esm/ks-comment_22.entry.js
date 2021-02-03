@@ -1,21 +1,16 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-const index = require('./index-7c91bddc.js');
-require('./index-f00963f7.js');
-const productStore = require('./product-store-ab3df40f.js');
-const thumbs = require('./thumbs-f1578b12.js');
-const validate = require('./validate-6c61d7c0.js');
+import { r as registerInstance, h, g as getElement, c as createEvent, H as Host } from './index-46fe532f.js';
+import { O as OpenSuggestions } from './functions-33a63d52.js';
+import { c as createStore, V as ValidateInput } from './validate-46a616dd.js';
+import { S as Swiper, T as Thumbs } from './thumbs-00422a82.js';
 
 const commentCss = "ks-comment{display:block}ks-comment article{padding:30px}@media (min-width: 1200px){ks-comment article{padding:30px 40px}}ks-comment header{display:-webkit-box;display:-ms-flexbox;display:flex}ks-comment header>div{width:100%}ks-comment header .title{margin:0}ks-comment header .info{font-size:.875rem;line-height:1.4;color:#707070}ks-comment ks-icon{margin-right:20px}ks-comment p{margin-bottom:0px}";
 
 const Comment = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
   }
   render() {
-    return index.h("article", null, index.h("header", null, index.h("ks-icon", { name: "user", size: 2 }), index.h("div", null, index.h("h3", { class: "title" }, this.author), index.h("div", { class: "info" }, this.when))), index.h("slot", null));
+    return h("article", null, h("header", null, h("ks-icon", { name: "user", size: 2 }), h("div", null, h("h3", { class: "title" }, this.author), h("div", { class: "info" }, this.when))), h("slot", null));
   }
 };
 Comment.style = commentCss;
@@ -24,18 +19,18 @@ const productAttributeCss = "ks-product-attribute{display:-webkit-inline-box;dis
 
 const ProductAttribute = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.href = "";
     this.name = "";
     this.image = "";
     this.emphasis = false;
   }
   render() {
-    const name = this.name != "" ? index.h("span", { class: "name" }, this.name, ":") : null;
-    const image = this.image != "" ? index.h("div", { class: "image" }, index.h("ks-img", { vertical: true, sync: true, src: this.image })) : null;
-    const content = [name, index.h("slot", null), image];
+    const name = this.name != "" ? h("span", { class: "name" }, this.name, ":") : null;
+    const image = this.image != "" ? h("div", { class: "image" }, h("ks-img", { vertical: true, sync: true, src: this.image })) : null;
+    const content = [name, h("slot", null), image];
     if (this.href != "")
-      return index.h("a", { href: this.href }, content);
+      return h("a", { href: this.href }, content);
     return content;
   }
 };
@@ -45,19 +40,19 @@ const productButtonCss = "ks-product-button{display:block;width:100%;margin:5px 
 
 const ProductButton = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.large = false;
     this.medium = false;
   }
   render() {
-    return index.h("button", null, index.h("slot", null));
+    return h("button", null, h("slot", null));
   }
 };
 ProductButton.style = productButtonCss;
 
 const ProductCalculatorCA = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.price = "";
     this.parameters = "";
     this.width = 820;
@@ -65,34 +60,34 @@ const ProductCalculatorCA = class {
   }
   render() {
     return [
-      index.h("slot", null),
-      index.h("script", null, "let CreditAgricoleButton = document.querySelector(\"ks-product-calculator-ca ", '>', " *:first-child\"); CreditAgricoleButton.addEventListener(\"click\", function(event)", "{", "var iWidth = ", this.width, "; var iHeight = ", this.height, "; var iX = (screen.availWidth - iWidth) / 2; var iY = (screen.availHeight - iHeight) / 2; var wartosc = ", this.price, "; var parametryLukas = \"", this.parameters, "\"; var lukas = parametryLukas.split(';'); var adres = 'https://ewniosek.credit-agricole.pl/eWniosek/simulator.jsp?PARAM_TYPE=RAT&PARAM_PROFILE=' + lukas[0] + '&PARAM_CREDIT_AMOUNT=' + wartosc; window.open(adres, 'Policz_rate_LUKAS', 'height=' + iHeight + ', width=' + iWidth + ',top=' + iY + ',left=' + iX + ',directories=no,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no');", '}', ");")
+      h("slot", null),
+      h("script", null, "let CreditAgricoleButton = document.querySelector(\"ks-product-calculator-ca ", '>', " *:first-child\"); CreditAgricoleButton.addEventListener(\"click\", function(event)", "{", "var iWidth = ", this.width, "; var iHeight = ", this.height, "; var iX = (screen.availWidth - iWidth) / 2; var iY = (screen.availHeight - iHeight) / 2; var wartosc = ", this.price, "; var parametryLukas = \"", this.parameters, "\"; var lukas = parametryLukas.split(';'); var adres = 'https://ewniosek.credit-agricole.pl/eWniosek/simulator.jsp?PARAM_TYPE=RAT&PARAM_PROFILE=' + lukas[0] + '&PARAM_CREDIT_AMOUNT=' + wartosc; window.open(adres, 'Policz_rate_LUKAS', 'height=' + iHeight + ', width=' + iWidth + ',top=' + iY + ',left=' + iX + ',directories=no,location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no');", '}', ");")
     ];
   }
 };
 
 const ProductCalculatorPayU = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.price = "";
     this.posId = "";
     this.apiKey = "";
   }
   render() {
     return [
-      index.h("slot", null),
-      index.h("span", { id: "calculator-payu", style: { display: "none" } }),
-      index.h("script", null, "var openpayu = openpayu || ", "{}", "; openpayu.options = ", '{', "creditAmount: ", this.price, ", posId: '", this.posId, "', key: '", this.apiKey, "', showLongDescription: true", '}', "; document.addEventListener(\"payu-widget-loaded\", function()", '{', "OpenPayU.Installments.miniInstallment(\"#calculator-payu\"); let payuButton = document.querySelector(\"ks-product-calculator-payu ", '>', " *:first-child\"); let payuLink = document.querySelector(\"#calculator-payu a\"); payuButton.addEventListener(\"click\", function(event)", "{", "event.stopPropagation(); payuLink.click();", '}', ");", '}', ");")
+      h("slot", null),
+      h("span", { id: "calculator-payu", style: { display: "none" } }),
+      h("script", null, "var openpayu = openpayu || ", "{}", "; openpayu.options = ", '{', "creditAmount: ", this.price, ", posId: '", this.posId, "', key: '", this.apiKey, "', showLongDescription: true", '}', "; document.addEventListener(\"payu-widget-loaded\", function()", '{', "OpenPayU.Installments.miniInstallment(\"#calculator-payu\"); let payuButton = document.querySelector(\"ks-product-calculator-payu ", '>', " *:first-child\"); let payuLink = document.querySelector(\"#calculator-payu a\"); payuButton.addEventListener(\"click\", function(event)", "{", "event.stopPropagation(); payuLink.click();", '}', ");", '}', ");")
     ];
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 
 const productCommentsCss = "ks-product-comments{display:block;-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow);background-color:var(--card-background);color:var(--card-text-color)}ks-product-comments .message{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin:0;padding:30px}ks-product-comments .message ks-icon{display:-webkit-box;display:-ms-flexbox;display:flex;margin-right:15px;max-width:50px;width:100%}ks-product-comments .message p{width:100%;text-align:center}@media (min-width: 1200px){ks-product-comments .message{padding:30px 40px}}ks-product-comments hr,ks-product-comments .more{margin:0}ks-product-comments .expand,ks-product-comments .add{width:100%;line-height:40px;padding:0 10px;outline:none;border:none;text-align:center;text-decoration:none;text-transform:none;color:white !important;-webkit-transition:var(--transition-background-color);transition:var(--transition-background-color)}ks-product-comments .expand{width:100%;line-height:40px;padding:0 10px;vertical-align:middle;background-color:var(--color-dark)}ks-product-comments .expand:hover{background-color:var(--color-dark-hover)}ks-product-comments .expand:active{background-color:var(--color-dark-active)}ks-product-comments .add{display:block;-webkit-box-sizing:border-box;box-sizing:border-box;width:100%;padding:8px;background-color:var(--color-secondary)}ks-product-comments .add:hover{background-color:var(--color-secondary-hover)}ks-product-comments .add:active{background-color:var(--color-secondary-active)}ks-product-comments ks-comment{border-top:solid 1px #dddddd}";
 
 const ProductTab = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.link = "";
     this.message = "";
     this.hasMore = false;
@@ -100,27 +95,56 @@ const ProductTab = class {
   }
   render() {
     return [
-      index.h("div", { class: "message" }, index.h("ks-icon", { name: "mail", size: 2.5 }), index.h("p", null, this.message)),
-      index.h("slot", null),
-      index.h("div", { class: "more", hidden: !this.expand }, index.h("slot", { name: "hidden" })),
+      h("div", { class: "message" }, h("ks-icon", { name: "mail", size: 2.5 }), h("p", null, this.message)),
+      h("slot", null),
+      h("div", { class: "more", hidden: !this.expand }, h("slot", { name: "hidden" })),
       this.hasMore ?
-        index.h("button", { onClick: () => this.expand = !this.expand, class: "expand" }, index.h("ks-icon", { name: this.expand ? "chevron-up" : "chevron-down", size: 1.5 }))
+        h("button", { onClick: () => this.expand = !this.expand, class: "expand" }, h("ks-icon", { name: this.expand ? "chevron-up" : "chevron-down", size: 1.5 }))
         : null,
       this.link ?
-        index.h("a", { href: this.link, rel: "nofollow", class: "add", "aria-label": "Napisz recenzj\u0119" }, index.h("ks-icon", { name: "plus-circle", size: 1.5 }))
+        h("a", { href: this.link, rel: "nofollow", class: "add", "aria-label": "Napisz recenzj\u0119" }, h("ks-icon", { name: "plus-circle", size: 1.5 }))
         : null
     ];
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 ProductTab.style = productCommentsCss;
+
+const store = createStore({
+  id: "",
+  name: "",
+  breadcrumbs: [],
+  brand: "",
+  brandLink: "",
+  description: "",
+  attributes: [],
+  previousPrice: "",
+  currentPrice: "",
+  shippingPrice: "",
+  shippingTime: "",
+  shippingMessage: "",
+  availability: 0,
+  count: 1,
+  cartLoading: false,
+  favouritesLoading: false,
+  favouritesCompleted: false,
+  images: [],
+  traitIDs: "",
+  traits: [],
+  catalog: "",
+  model: "",
+  ean: "",
+  negotiate: false,
+  externalPoints: false,
+  reviews: {}
+});
 
 const productCountCss = "ks-product-count{display:-webkit-box;display:-ms-flexbox;display:flex;max-width:80px;margin-right:8px;overflow:hidden;border-style:solid;border-radius:50px;border-width:1px;border-color:#cacaca;background-color:var(--product-price-count-color)}ks-product-count input{outline-style:none;border-style:none;background-color:transparent;width:52px;height:100%;-webkit-box-sizing:border-box;box-sizing:border-box;padding:10px 8px 10px 13px;font-family:var(--product-price-count-font);font-size:var(--product-price-size-small);line-height:var(--product-price-size-small);text-align:center;vertical-align:middle}ks-product-count input::-webkit-inner-spin-button,ks-product-count input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}ks-product-count input[type=number]{-moz-appearance:textfield}ks-product-count .spinner{width:auto;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-flow:column nowrap;flex-flow:column nowrap}ks-product-count .spinner button{outline-style:none;border-style:none;line-height:0;height:100%;margin:0;width:28px;-webkit-box-sizing:border-box;box-sizing:border-box;background-color:#e4e4e4;-webkit-transition:var(--transition-background-color);transition:var(--transition-background-color);border-left:solid 1px #cacaca}ks-product-count .spinner button:first-child{padding:8px 8px 3px 3px;border-bottom:solid 1px #cacaca}ks-product-count .spinner button:last-child{padding:3px 8px 8px 3px}ks-product-count .spinner button:hover{background-color:#cecece}ks-product-count .spinner button:active{background-color:#a7a7a7}@media (hover: none){ks-product-count{max-width:70px}ks-product-count input{padding:10px}ks-product-count .spinner{display:none}}";
 
 const ProductCount = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
-    this.countChange = index.createEvent(this, "countChange", 7);
+    registerInstance(this, hostRef);
+    this.countChange = createEvent(this, "countChange", 7);
   }
   componentDidLoad() {
     this.input = this.root.querySelector("input");
@@ -133,8 +157,8 @@ const ProductCount = class {
       this.input.value = this.input.value.substr(0, 3);
   }
   ClampValue() {
-    if (parseInt(this.input.value) > productStore.store.get("availability")) {
-      this.input.value = productStore.store.get("availability").toString();
+    if (parseInt(this.input.value) > store.get("availability")) {
+      this.input.value = store.get("availability").toString();
     }
     if (parseInt(this.input.value) < 1) {
       this.input.value = "1";
@@ -142,7 +166,7 @@ const ProductCount = class {
   }
   Increment() {
     const value = parseInt(this.input.value) + 1;
-    if (value <= productStore.store.get("availability")) {
+    if (value <= store.get("availability")) {
       this.input.value = value.toString();
       this.CountChangeHandler();
     }
@@ -159,65 +183,215 @@ const ProductCount = class {
   }
   render() {
     return [
-      index.h("input", { type: "number", min: 1, max: productStore.store.get("availability"), value: 1, "aria-label": "Ilo\u015B\u0107", onInput: () => this.ClampLength(), onChange: () => { this.ClampValue(); this.CountChangeHandler(); } }),
-      index.h("div", { class: "spinner" }, index.h("button", { onClick: () => this.Increment() }, "+"), index.h("button", { onClick: () => this.Decrement() }, "-"))
+      h("input", { type: "number", min: 1, max: store.get("availability"), value: 1, "aria-label": "Ilo\u015B\u0107", onInput: () => this.ClampLength(), onChange: () => { this.ClampValue(); this.CountChangeHandler(); } }),
+      h("div", { class: "spinner" }, h("button", { onClick: () => this.Increment() }, "+"), h("button", { onClick: () => this.Decrement() }, "-"))
     ];
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 ProductCount.style = productCountCss;
 
 const productImagesCss = "ks-product-images{display:block;margin-right:30px}ks-product-images .swiper-slide{position:relative}ks-product-images .swiper-slide canvas{max-width:100%;max-height:500px}ks-product-images .preview ks-img{position:absolute;top:0;width:100%;max-height:500px;margin:auto}ks-product-images .thumb{margin-top:20px;position:relative}ks-product-images .thumb::after{content:\"\";position:absolute;top:0;bottom:0;right:0;left:-30px;background:-webkit-gradient(linear, left top, right top, from(rgba(255,255,255,0)), color-stop(85%, rgba(255,255,255,0)), to(rgba(255,255,255,1)));background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 85%, rgba(255,255,255,1) 100%);z-index:2;pointer-events:none}ks-product-images .thumb .swiper-slide{width:70px;height:70px;opacity:0.4;-webkit-transition:var(--transition-opacity);transition:var(--transition-opacity)}ks-product-images .thumb .swiper-slide-thumb-active{opacity:1}@media only screen and (max-width: 959px){ks-product-images{margin-right:0px;margin-top:30px}ks-product-images .thumb{margin-bottom:0px}}@media only screen and (max-width: 460px){ks-product-images .swiper-slide canvas{max-height:300px}ks-product-images .preview ks-img{max-height:300px}}";
 
-thumbs.Swiper.use([thumbs.Thumbs]);
+Swiper.use([Thumbs]);
 const ProductImages = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
   }
   componentDidRender() {
     this.lightbox = this.root.querySelector("ks-lightbox");
-    this.thumbs = new thumbs.Swiper('.thumb', {
-      observer: true,
-      observeParents: true,
-      grabCursor: true,
-      slidesPerView: "auto",
-      preventInteractionOnTransition: true,
-      centerInsufficientSlides: true,
-      watchSlidesVisibility: true,
-      watchSlidesProgress: true,
-      spaceBetween: 3,
-    });
-    if (productStore.store.get("images").length > 1) {
-      this.carousel = new thumbs.Swiper('.preview', {
+    const thumbs_enabled = store.get("images").length > 1;
+    console.log(thumbs_enabled);
+    if (thumbs_enabled) {
+      this.thumbs = new Swiper('.thumb', {
         observer: true,
         observeParents: true,
-        spaceBetween: 30,
         grabCursor: true,
-        autoHeight: true,
-        thumbs: {
-          swiper: this.thumbs
-        }
+        slidesPerView: "auto",
+        preventInteractionOnTransition: true,
+        centerInsufficientSlides: true,
+        watchSlidesVisibility: true,
+        watchSlidesProgress: true,
+        spaceBetween: 3,
       });
     }
+    this.carousel = new Swiper('.preview', {
+      observer: true,
+      observeParents: true,
+      spaceBetween: 30,
+      grabCursor: true,
+      autoHeight: true,
+      thumbs: thumbs_enabled ? {
+        swiper: this.thumbs
+      } : undefined
+    });
   }
   render() {
     return [
-      index.h("div", { class: "swiper-container preview" }, index.h("div", { class: "swiper-wrapper" }, productStore.store.get("images").map((image, index$1) => index.h("div", { class: "swiper-slide" }, index.h("canvas", { width: image.preview.width, height: image.preview.height }), index.h("ks-img", { contained: true, center: true, sync: index$1 == 0, src: image.preview.url, width: image.preview.width, height: image.preview.height, onClick: () => this.lightbox.show(index$1) }))))),
-      productStore.store.get("images").length > 1 ?
-        index.h("div", { class: "swiper-container thumb" }, index.h("div", { class: "swiper-wrapper" }, productStore.store.get("images").map((image, index$1) => index.h("div", { class: "swiper-slide" }, index.h("ks-img", { sync: index$1 < 6, contained: true, center: true, src: image.thumb.url, width: image.thumb.width, height: image.thumb.height })))))
+      h("div", { class: "swiper-container preview" }, h("div", { class: "swiper-wrapper" }, store.get("images").map((image, index) => h("div", { class: "swiper-slide" }, h("canvas", { width: image.preview.width, height: image.preview.height }), h("ks-img", { contained: true, center: true, sync: index == 0, src: image.preview.url, width: image.preview.width, height: image.preview.height, onClick: () => this.lightbox.show(index) }))))),
+      store.get("images").length > 1 ?
+        h("div", { class: "swiper-container thumb" }, h("div", { class: "swiper-wrapper" }, store.get("images").map((image, index) => h("div", { class: "swiper-slide" }, h("ks-img", { sync: index < 6, contained: true, center: true, src: image.thumb.url, width: image.thumb.width, height: image.thumb.height })))))
         : null,
-      index.h("ks-lightbox", { data: productStore.store.get("images") })
+      h("ks-lightbox", { data: store.get("images") })
     ];
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 ProductImages.style = productImagesCss;
 
-const productInfoPointsCss = "ks-product-info-points{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse;border-radius:15px;background-color:#f2f2f2;margin:10px 0px}ks-product-info-points .count{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;border-radius:15px;padding:15px 20px;font-size:26px;min-width:50px;background-color:var(--color-dark);color:var(--text-color-dark);font-family:var(--font-emphasis);font-weight:700}ks-product-info-points .message{padding:10px 15px;font-size:14px;-webkit-box-align:center;-ms-flex-align:center;align-items:center}ks-product-info-points[external]{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;background-color:#ffffff;-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow);margin:20px 0px}ks-product-info-points[external] .count{padding:20px 60px;font-size:32px}ks-product-info-points[external] .message{display:-webkit-box;display:-ms-flexbox;display:flex;padding:5px 20px}ks-product-info-points.hide{display:none}@media only screen and (max-width: 960px){ks-product-info-points{display:-webkit-box !important;display:-ms-flexbox !important;display:flex !important}ks-product-info-points[external]{display:none !important}}@media only screen and (max-width: 1220px){ks-product-info-points[external]{border-radius:0px}ks-product-info-points[external] .count{border-radius:0px}}@media only screen and (max-width: 460px){ks-product-info-points .message{font-size:12px}}";
+const productInfoCss = "ks-product-info{display:block;-webkit-box-sizing:border-box;box-sizing:border-box;overflow:hidden;width:100%;background:var(--card-background);color:var(--card-text-color);-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow);padding:40px 30px;min-height:420px}ks-product-info>*{margin:0px auto;width:100%;max-width:700px}ks-product-info .left{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}@media only screen and (min-width: 960px){ks-product-info{display:-ms-grid;display:grid;-ms-grid-columns:48% 52%;grid-template-columns:48% 52%;-ms-grid-rows:auto 1fr;grid-template-rows:auto 1fr}ks-product-info>*:nth-child(1){-ms-grid-row:1;-ms-grid-column:1}ks-product-info>*:nth-child(2){-ms-grid-row:1;-ms-grid-column:2}ks-product-info>*:nth-child(3){-ms-grid-row:2;-ms-grid-column:1}ks-product-info>*:nth-child(4){-ms-grid-row:2;-ms-grid-column:2}ks-product-info>.top{-ms-grid-column:2;grid-column:2;-ms-grid-row:1;grid-row:1}ks-product-info>.left{-ms-grid-column:1;grid-column:1;-ms-grid-row:1;-ms-grid-row-span:2;grid-row:1 / 3}ks-product-info>.bottom{-ms-grid-column:2;grid-column:2;-ms-grid-row:2;grid-row:2}}@media only screen and (min-width: 1200px){ks-product-info{padding:40px 30px}}@media only screen and (max-width: 460px){ks-product-info{padding:20px 10px}}ks-product-info ks-product-button[large]{max-width:700px;margin:auto}ks-product-info .installments{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-flow:row nowrap;flex-flow:row nowrap;margin-bottom:10px;margin-left:auto;margin-right:auto;max-width:700px}ks-product-info .installments>*:not(:last-child){margin-right:5px}ks-product-info .installments>*:first-child{width:45%}ks-product-info .installments>*:last-child{width:55%}@media only screen and (max-width: 640px){ks-product-info .installments{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-flow:column nowrap;flex-flow:column nowrap}ks-product-info .installments>*{width:100% !important;margin-right:0}}ks-product-info .attributes{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-flow:row wrap;flex-flow:row wrap;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}@media only screen and (max-width: 640px){ks-product-info .attributes{margin-top:20px}}";
 
 const ProductInfo = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
+    this.productRendered = createEvent(this, "productRendered", 7);
+    this.dataId = "";
+    this.shippingApi = "";
+    this.traitApi = "";
+    this.cartApi = "";
+    this.cartCountApi = "";
+    this.favouritesApi = "";
+    this.suggestionApi = "";
+  }
+  connectedCallback() {
+    const dataElement = document.getElementById(this.dataId);
+    const data = JSON.parse(dataElement.innerHTML);
+    Object.keys(data).map(key => {
+      store.set(key, data[key]);
+    });
+    if (store.get("negotiate") && store.get("shippingMessage")) {
+      store.set("externalPoints", true);
+    }
+  }
+  componentDidLoad() {
+    this.navbar = document.querySelector("ks-navbar");
+    this.errorPopup = document.querySelector("ks-error-popup");
+  }
+  async CountChange(event) {
+    store.set("count", event.detail);
+    let body = new FormData();
+    body.append("id", store.get("id"));
+    body.append("count", event.detail.toString());
+    store.set("cartLoading", true);
+    await this.fetch(this.shippingApi, body)
+      .then(response => response.json())
+      .then(json => {
+      store.set("shippingTime", json.shippingTime);
+      store.set("shippingMessage", json.shippingMessage);
+      if (store.get("negotiate") && store.get("shippingMessage"))
+        store.set("externalPoints", true);
+    })
+      .catch(error => this.errorPopup.show(error));
+    store.set("cartLoading", false);
+  }
+  async TraitChange(event) {
+    store.set("cartLoading", true);
+    const traits = event.detail.reduce((accumulator, trait) => {
+      return accumulator + "x" + trait[0].id + "-" + trait[1].id;
+    }, "");
+    let body = new FormData();
+    body.append("id", store.get("id"));
+    body.append("traits", traits);
+    await this.fetch(this.traitApi, body)
+      .then(response => response.json())
+      .then(json => {
+      if (json.currentPrice != undefined)
+        store.set("currentPrice", json.currentPrice);
+      if (json.previousPrice != undefined)
+        store.set("previousPrice", json.previousPrice);
+      if (json.ean != undefined)
+        store.set("ean", json.ean);
+      if (json.catalog != undefined)
+        store.set("catalog", json.catalog);
+      store.set("traitIDs", traits);
+      if (json.image != undefined) {
+        const images = store.get("images");
+        images[0].full = json.image.full;
+        images[0].preview = json.image.preview;
+        images[0].thumb = json.image.thumb;
+        store.set("images", images);
+      }
+    })
+      .catch(error => this.errorPopup.show(error));
+    store.set("cartLoading", false);
+  }
+  async AddToCart() {
+    store.set("cartLoading", true);
+    const id = store.get("id");
+    const count = store.get("count").toString();
+    const traitIDs = store.get("traitIDs");
+    const name = store.get("name");
+    let countBody = new FormData();
+    countBody.append("id", id);
+    countBody.append("ilosc", count);
+    countBody.append("cechy", traitIDs);
+    countBody.append("akcja", 'dodaj');
+    await this.fetch(this.cartCountApi, countBody)
+      .then(async () => {
+      let cartBody = new FormData();
+      cartBody.append("id", id);
+      cartBody.append("ilosc", count);
+      cartBody.append("cechy", traitIDs);
+      cartBody.append("komentarz", "");
+      cartBody.append("komentarz", "");
+      cartBody.append("txt", "");
+      cartBody.append("wroc", "");
+      cartBody.append("miejsce", "0");
+      await this.fetch(this.cartApi, cartBody)
+        .then(() => {
+        this.navbar.IncrementCart(count);
+        OpenSuggestions(id, name);
+      })
+        .catch(error => this.errorPopup.show(error));
+    })
+      .catch(error => this.errorPopup.show(error));
+    store.set("cartLoading", false);
+  }
+  async AddToFavourites() {
+    store.set("favouritesLoading", true);
+    let body = new FormData();
+    body.append("id", store.get("id"));
+    await this.fetch(this.favouritesApi, body)
+      .then(() => this.navbar.IncrementHeart())
+      .catch(error => this.errorPopup.show(error));
+    store.set("favouritesCompleted", true);
+    store.set("favouritesLoading", false);
+  }
+  async fetch(url, body) {
+    const headers = new Headers();
+    headers.append('pragma', 'no-cache');
+    headers.append('cache-control', 'no-cache');
+    return fetch(url, {
+      method: 'POST',
+      body: body,
+      headers: headers,
+      credentials: "same-origin"
+    })
+      .then(response => {
+      if (!response.ok)
+        throw { name: response.status, message: response.statusText };
+      return response;
+    });
+  }
+  componentDidRender() {
+    this.productRendered.emit();
+  }
+  render() {
+    return [
+      h("div", { class: "top" }, h("slot", { name: "top" })),
+      h("div", { class: "left" }, h("slot", { name: "left" })),
+      h("div", { class: "bottom" }, h("slot", null), h("div", { class: "installments" }, h("slot", { name: "inst" })), h("div", { class: "attributes" }, h("slot", { name: "attr" })))
+    ];
+  }
+  get root() { return getElement(this); }
+};
+ProductInfo.style = productInfoCss;
+
+const productInfoPointsCss = "ks-product-info-points{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse;border-radius:15px;background-color:#f2f2f2;margin:10px 0px}ks-product-info-points .count{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;border-radius:15px;padding:15px 20px;font-size:26px;min-width:50px;background-color:var(--color-dark);color:var(--text-color-dark);font-family:var(--font-emphasis);font-weight:700}ks-product-info-points .message{padding:10px 15px;font-size:14px;-webkit-box-align:center;-ms-flex-align:center;align-items:center}ks-product-info-points[external]{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;background-color:#ffffff;-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow);margin:20px 0px}ks-product-info-points[external] .count{padding:20px 60px;font-size:32px}ks-product-info-points[external] .message{display:-webkit-box;display:-ms-flexbox;display:flex;padding:5px 20px}ks-product-info-points.hide{display:none}@media only screen and (max-width: 960px){ks-product-info-points{display:-webkit-box !important;display:-ms-flexbox !important;display:flex !important}ks-product-info-points[external]{display:none !important}}@media only screen and (max-width: 1220px){ks-product-info-points[external]{border-radius:0px}ks-product-info-points[external] .count{border-radius:0px}}@media only screen and (max-width: 460px){ks-product-info-points .message{font-size:12px}}";
+
+const ProductInfo$1 = class {
+  constructor(hostRef) {
+    registerInstance(this, hostRef);
     this.count = "";
     this.value = "";
     this.message = "";
@@ -225,22 +399,22 @@ const ProductInfo = class {
     this.external = false;
   }
   render() {
-    const hide = productStore.store.get("externalPoints") && this.internal ||
-      !productStore.store.get("externalPoints") && this.external ?
+    const hide = store.get("externalPoints") && this.internal ||
+      !store.get("externalPoints") && this.external ?
       "hide" : "";
     const message = this.message
       .replace("{count}", this.count)
       .replace("{value}", this.value);
-    return index.h(index.Host, { class: hide }, index.h("div", { class: "count" }, this.count), index.h("div", { class: "message" }, message));
+    return h(Host, { class: hide }, h("div", { class: "count" }, this.count), h("div", { class: "message" }, message));
   }
 };
-ProductInfo.style = productInfoPointsCss;
+ProductInfo$1.style = productInfoPointsCss;
 
 const productNegotiateCss = "ks-product-negotiate{display:block}ks-product-negotiate fieldset{border:none;margin:0;padding:0}ks-product-negotiate .info{text-align:center}ks-product-negotiate h3{font-family:var(--font-emphasis);font-size:20px;font-weight:700}";
 
 const ProductNegotiate = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.agreement = "Wyrażam zgodę na przetwarzanie przez Sprzedawcę moich danych osobowych zawartych w formularzu w celu udzielenia odpowiedzi na zadane poprzez formularz pytania.";
     this.successHeading = "PROPOZYCJA WYSŁANA";
     this.successMessage = "Postaramy się odpowiedzieć jak najszybciej. Jeżeli nie odpowiemy w ciągu 2 dni roboczych prosimy o kontakt telefoniczny.";
@@ -249,7 +423,7 @@ const ProductNegotiate = class {
   }
   async requestHandler(event) {
     event.preventDefault();
-    if (!await validate.ValidateInput(this.root.querySelector('form')))
+    if (!await ValidateInput(this.root.querySelector('form')))
       return;
     this.dialog.showLoading();
     const target = event.target;
@@ -284,11 +458,11 @@ const ProductNegotiate = class {
   }
   render() {
     return [
-      index.h("slot", null),
-      index.h("ks-dialog", null, index.h("form", { onSubmit: e => this.requestHandler(e) }, index.h("fieldset", null, index.h("div", { class: "info" }, index.h("h3", null, this.heading), index.h("p", null, this.paragraph)), index.h("ks-input-text", { name: "name", required: true, nomessage: true, placeholder: "Imi\u0119 i nazwisko", icon: "user" }), index.h("ks-input-text", { email: true, name: "email", required: true, nomessage: true, placeholder: "E-mail", icon: "mail" }), index.h("ks-input-text", { url: true, name: "url", required: true, nomessage: true, placeholder: "Link do konkurencyjnej oferty", icon: "link" }), index.h("ks-input-textarea", { rows: 4, name: "comment", placeholder: "Komentarz", noresize: true }), index.h("ks-input-check", { name: "zgoda", required: true, nomessage: true, label: this.agreement }), index.h("ks-button", { submit: true, name: "WY\u015ALIJ ZAPYTANIE" }))))
+      h("slot", null),
+      h("ks-dialog", null, h("form", { onSubmit: e => this.requestHandler(e) }, h("fieldset", null, h("div", { class: "info" }, h("h3", null, this.heading), h("p", null, this.paragraph)), h("ks-input-text", { name: "name", required: true, nomessage: true, placeholder: "Imi\u0119 i nazwisko", icon: "user" }), h("ks-input-text", { email: true, name: "email", required: true, nomessage: true, placeholder: "E-mail", icon: "mail" }), h("ks-input-text", { url: true, name: "url", required: true, nomessage: true, placeholder: "Link do konkurencyjnej oferty", icon: "link" }), h("ks-input-textarea", { rows: 4, name: "comment", placeholder: "Komentarz", noresize: true }), h("ks-input-check", { name: "zgoda", required: true, nomessage: true, label: this.agreement }), h("ks-button", { submit: true, name: "WY\u015ALIJ ZAPYTANIE" }))))
     ];
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 ProductNegotiate.style = productNegotiateCss;
 
@@ -296,14 +470,14 @@ const productPointsCss = "ks-product-points{display:-webkit-box;display:-ms-flex
 
 const ProductPoints = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.count = 0;
     this.value = 0;
   }
   render() {
     return [
-      index.h("div", null, this.count),
-      index.h("div", null, "Kupuj\u0105c ten produkt otrzymasz od nas ", this.count, " punkt\u00F3w do wykorzystania na zakupy w naszym sklepie. Dotyczy tylko zarejestrowanych Klient\u00F3w. Warto\u015B\u0107 ", this.value, " punkt\u00F3w wynosi 1 z\u0142.")
+      h("div", null, this.count),
+      h("div", null, "Kupuj\u0105c ten produkt otrzymasz od nas ", this.count, " punkt\u00F3w do wykorzystania na zakupy w naszym sklepie. Dotyczy tylko zarejestrowanych Klient\u00F3w. Warto\u015B\u0107 ", this.value, " punkt\u00F3w wynosi 1 z\u0142.")
     ];
   }
 };
@@ -313,32 +487,32 @@ const productPriceCss = "ks-product-price{display:-webkit-box;display:-ms-flexbo
 
 const ProductPrice = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
-    this.addToCart = index.createEvent(this, "addToCart", 7);
-    this.addToFavourites = index.createEvent(this, "addToFavourites", 7);
+    registerInstance(this, hostRef);
+    this.addToCart = createEvent(this, "addToCart", 7);
+    this.addToFavourites = createEvent(this, "addToFavourites", 7);
     this.cartAnimation = false;
     this.favouritesAnimation = false;
   }
   addToCartHandler() {
-    if (productStore.store.get("availability") > 0 && !productStore.store.get("cartLoading"))
+    if (store.get("availability") > 0 && !store.get("cartLoading"))
       this.addToCart.emit();
   }
   addToFavouritesHandler() {
-    if (!productStore.store.get("favouritesLoading") && !productStore.store.get("favouritesCompleted")) {
+    if (!store.get("favouritesLoading") && !store.get("favouritesCompleted")) {
       this.addToFavourites.emit();
     }
   }
   render() {
-    const previousPrice = productStore.store.get("previousPrice").replace('.', ',');
-    const currentPrice = productStore.store.get("currentPrice").replace('.', ',') + " zł";
-    const available = productStore.store.get("availability") > 0;
-    if (productStore.store.get("cartLoading"))
+    const previousPrice = store.get("previousPrice").replace('.', ',');
+    const currentPrice = store.get("currentPrice").replace('.', ',') + " zł";
+    const available = store.get("availability") > 0;
+    if (store.get("cartLoading"))
       this.cartAnimation = true;
     else
       setTimeout(() => {
         this.cartAnimation = false;
       }, 300);
-    if (productStore.store.get("favouritesLoading"))
+    if (store.get("favouritesLoading"))
       this.favouritesAnimation = true;
     else
       setTimeout(() => {
@@ -346,17 +520,17 @@ const ProductPrice = class {
       }, 300);
     const favClass = [
       "fav",
-      productStore.store.get("favouritesCompleted") ? "completed" : null,
-      productStore.store.get("favouritesLoading") ? "loading" : null
+      store.get("favouritesCompleted") ? "completed" : null,
+      store.get("favouritesLoading") ? "loading" : null
     ];
     return [
-      index.h("div", { class: "price" }, previousPrice ? index.h("div", { class: "previous" }, previousPrice) : null, index.h("div", { class: "current" }, currentPrice)),
-      available ? index.h("ks-product-count", null) : null,
-      index.h("button", { disabled: !available, onClick: () => this.addToCartHandler(), class: productStore.store.get("cartLoading") ? "loading" : "" }, available ? "DO KOSZYKA" : "NIEDOSTĘPNY", index.h("ks-loader", { oversized: true, running: this.cartAnimation })),
-      index.h("button", { onClick: () => this.addToFavouritesHandler(), class: favClass.join(" ") }, index.h("ks-icon", { name: "star" }), index.h("ks-loader", { running: this.favouritesAnimation }), index.h("ks-icon", { class: "completed", name: "check" }))
+      h("div", { class: "price" }, previousPrice ? h("div", { class: "previous" }, previousPrice) : null, h("div", { class: "current" }, currentPrice)),
+      available ? h("ks-product-count", null) : null,
+      h("button", { disabled: !available, onClick: () => this.addToCartHandler(), class: store.get("cartLoading") ? "loading" : "" }, available ? "DO KOSZYKA" : "NIEDOSTĘPNY", h("ks-loader", { oversized: true, running: this.cartAnimation })),
+      h("button", { onClick: () => this.addToFavouritesHandler(), class: favClass.join(" ") }, h("ks-icon", { name: "star" }), h("ks-loader", { running: this.favouritesAnimation }), h("ks-icon", { class: "completed", name: "check" }))
     ];
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 ProductPrice.style = productPriceCss;
 
@@ -364,21 +538,21 @@ const productShippingCss = "ks-product-shipping{display:block;margin-bottom:20px
 
 const ProductShipping = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
   }
   render() {
-    const time = productStore.store.get("shippingTime");
-    const freeShipping = parseFloat(productStore.store.get("shippingPrice")) == 0;
+    const time = store.get("shippingTime");
+    const freeShipping = parseFloat(store.get("shippingPrice")) == 0;
     const knownShipping = time.search("godzin") != -1 || time.search("dni") != -1;
     const instantShipping = time.search("24 godziny") != -1;
     let timeprefix = knownShipping ? "Wysyłka w" : "";
     const timeAnimation = instantShipping ? "" : " time-animation";
-    let price = freeShipping ? "Darmowa dostawa" : productStore.store.get("shippingPrice").replace(".", ",") + " zł";
+    let price = freeShipping ? "Darmowa dostawa" : store.get("shippingPrice").replace(".", ",") + " zł";
     const priceprefix = freeShipping ? "" : "Dostawa od";
     return [
-      index.h("div", { class: "shipping" }, index.h("span", { class: "time" + timeAnimation }, " ", timeprefix, " ", time, " "), index.h("span", { class: "separator" }, " \u2022 "), index.h("span", { class: "price" }, priceprefix, " ", price)),
-      productStore.store.get("shippingMessage") ?
-        index.h("div", { class: "message" }, productStore.store.get("shippingMessage"))
+      h("div", { class: "shipping" }, h("span", { class: "time" + timeAnimation }, " ", timeprefix, " ", time, " "), h("span", { class: "separator" }, " \u2022 "), h("span", { class: "price" }, priceprefix, " ", price)),
+      store.get("shippingMessage") ?
+        h("div", { class: "message" }, store.get("shippingMessage"))
         : null
     ];
   }
@@ -389,7 +563,7 @@ const productSuggestionsCss = "ks-product-suggestions{display:block}ks-product-s
 
 const ProductSuggestions = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.loading = true;
     this.products = new Array();
   }
@@ -429,7 +603,7 @@ const ProductSuggestions = class {
   }
   showCarousel() {
     if (this.carousel == undefined) {
-      this.carousel = new thumbs.Swiper('.product-suggestions', {
+      this.carousel = new Swiper('.product-suggestions', {
         observer: true,
         observeParents: true,
         slidesPerView: "auto",
@@ -442,9 +616,9 @@ const ProductSuggestions = class {
     }
   }
   render() {
-    return index.h("ks-overlay", null, index.h("div", { class: "content" }, index.h("div", { class: "top" }, index.h("div", { class: "heading" }, "Dodano do koszyka"), index.h("div", { class: "name" }, this.name), index.h("div", { class: "buttons" }, index.h("ks-button", { tall: true, secondary: true, name: "Przejd\u017A do koszyka", onClick: () => this.toCart() }), index.h("ks-button", { tall: true, name: "Przegl\u0105daj dalej", onClick: () => this.hide() }))), index.h("div", { class: "bottom" }, this.loading ? index.h("ks-loader", { dark: true, large: true }) : null, index.h("div", { class: "swiper-container product-suggestions", style: { display: this.loading ? "none" : "block" } }, index.h("div", { class: "swiper-wrapper" }, this.products.map((product) => index.h("div", { class: "swiper-slide" }, index.h("ks-product-card", { "link-only": true, name: product.name, img: product.image, link: product.link, currentPrice: product.currentPrice, previousPrice: product.previousPrice != "0.00" ? product.previousPrice : null }))))), index.h("div", { class: "fade-left" }), index.h("div", { class: "fade-right" }))));
+    return h("ks-overlay", null, h("div", { class: "content" }, h("div", { class: "top" }, h("div", { class: "heading" }, "Dodano do koszyka"), h("div", { class: "name" }, this.name), h("div", { class: "buttons" }, h("ks-button", { tall: true, secondary: true, name: "Przejd\u017A do koszyka", onClick: () => this.toCart() }), h("ks-button", { tall: true, name: "Przegl\u0105daj dalej", onClick: () => this.hide() }))), h("div", { class: "bottom" }, this.loading ? h("ks-loader", { dark: true, large: true }) : null, h("div", { class: "swiper-container product-suggestions", style: { display: this.loading ? "none" : "block" } }, h("div", { class: "swiper-wrapper" }, this.products.map((product) => h("div", { class: "swiper-slide" }, h("ks-product-card", { "link-only": true, name: product.name, img: product.image, link: product.link, currentPrice: product.currentPrice, previousPrice: product.previousPrice != "0.00" ? product.previousPrice : null }))))), h("div", { class: "fade-left" }), h("div", { class: "fade-right" }))));
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 ProductSuggestions.style = productSuggestionsCss;
 
@@ -452,15 +626,15 @@ const productTabCss = "ks-product-tab{display:block}@media only screen and (min-
 
 const ProductTab$1 = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
   }
   componentWillLoad() {
     this.ImageReplacer();
   }
   render() {
     return [
-      index.h("button", { class: "accordion", onClick: () => this.onOpen() }, this.name, index.h("ks-icon", { name: this.open ? "minus" : "plus" })),
-      index.h("div", { class: "tab-content" }, index.h("slot", null))
+      h("button", { class: "accordion", onClick: () => this.onOpen() }, this.name, h("ks-icon", { name: this.open ? "minus" : "plus" })),
+      h("div", { class: "tab-content" }, h("slot", null))
     ];
   }
   onOpen() {
@@ -504,7 +678,7 @@ const ProductTab$1 = class {
       image.parentNode.replaceChild(ksImage, image);
     }
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 ProductTab$1.style = productTabCss;
 
@@ -512,14 +686,14 @@ const productTabsCss = "ks-product-tabs{display:block;position:relative;-webkit-
 
 const ProductTabs = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.names = "";
     this.active = 0;
   }
   render() {
     return [
-      index.h("nav", null, " ", this.names.split(", ").map((value, index$1) => index.h("button", { class: index$1 == this.active ? "active" : "", onClick: () => this.click(index$1) }, value)), " "),
-      index.h("div", { class: "content" }, index.h("slot", null))
+      h("nav", null, " ", this.names.split(", ").map((value, index) => h("button", { class: index == this.active ? "active" : "", onClick: () => this.click(index) }, value)), " "),
+      h("div", { class: "content" }, h("slot", null))
     ];
   }
   click(index) {
@@ -530,7 +704,7 @@ const ProductTabs = class {
       target.open = i == index;
     });
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 ProductTabs.style = productTabsCss;
 
@@ -538,29 +712,29 @@ const productTitleCss = "ks-product-title{display:block}ks-product-title h1{font
 
 const ProductTitle = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
   }
   render() {
     const title = () => {
-      const name = productStore.store.get("name");
-      const brandLength = productStore.store.get("brand").length;
-      const brandLink = productStore.store.get("brandLink");
-      const index$1 = this.brandIndex();
-      if (index$1 !== -1) {
-        const prefix = name.substr(0, index$1);
-        const brand = name.substr(index$1, brandLength);
-        const suffix = name.substr(index$1 + brandLength);
-        return index.h("h1", null, prefix, index.h("a", { href: brandLink }, brand), suffix);
+      const name = store.get("name");
+      const brandLength = store.get("brand").length;
+      const brandLink = store.get("brandLink");
+      const index = this.brandIndex();
+      if (index !== -1) {
+        const prefix = name.substr(0, index);
+        const brand = name.substr(index, brandLength);
+        const suffix = name.substr(index + brandLength);
+        return h("h1", null, prefix, h("a", { href: brandLink }, brand), suffix);
       }
-      return index.h("h1", null, name);
+      return h("h1", null, name);
     };
     return [
-      index.h("div", { class: "breadcrumbs" }, productStore.store.get("breadcrumbs").map(item => index.h("a", { href: item.link }, item.name))),
+      h("div", { class: "breadcrumbs" }, store.get("breadcrumbs").map(item => h("a", { href: item.link }, item.name))),
       title()
     ];
   }
   brandIndex() {
-    return productStore.store.get("name").toLowerCase().indexOf(productStore.store.get("brand").toLowerCase());
+    return store.get("name").toLowerCase().indexOf(store.get("brand").toLowerCase());
   }
 };
 ProductTitle.style = productTitleCss;
@@ -569,25 +743,25 @@ const productTraitsCss = "ks-product-traits{display:block;font-family:var(--font
 
 const ProductCount$1 = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
-    this.traitChange = index.createEvent(this, "traitChange", 7);
+    registerInstance(this, hostRef);
+    this.traitChange = createEvent(this, "traitChange", 7);
   }
   traitChangeHandler() {
     const selects = this.root.querySelectorAll(".trait select");
-    const data = productStore.store.get("traits").map((trait, index) => {
+    const data = store.get("traits").map((trait, index) => {
       const select = selects[index];
       return [trait, trait.items[select.selectedIndex]];
     });
     this.traitChange.emit(data);
   }
   componentDidRender() {
-    if (productStore.store.get("traits").length > 0)
+    if (store.get("traits").length > 0)
       this.traitChangeHandler();
   }
   render() {
-    return productStore.store.get("traits").map((trait) => index.h("div", { class: "trait" }, index.h("div", { class: "select" }, index.h("select", { onChange: () => this.traitChangeHandler() }, trait.items.map(item => index.h("option", { value: item.id }, item.name))), index.h("ks-icon", { name: "chevron-down" })), index.h("label", null, trait.name)));
+    return store.get("traits").map((trait) => h("div", { class: "trait" }, h("div", { class: "select" }, h("select", { onChange: () => this.traitChangeHandler() }, trait.items.map(item => h("option", { value: item.id }, item.name))), h("ks-icon", { name: "chevron-down" })), h("label", null, trait.name)));
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 ProductCount$1.style = productTraitsCss;
 
@@ -595,10 +769,10 @@ const productVariantCss = "ks-product-variant{display:block;height:100%}ks-produ
 
 const ProductVariant = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
   }
   render() {
-    return (index.h("a", { href: this.link, "aria-label": this.name }, index.h("ks-img", { center: true, contained: true, src: this.image, width: 90, height: 90, alt: this.name })));
+    return (h("a", { href: this.link, "aria-label": this.name }, h("ks-img", { center: true, contained: true, src: this.image, width: 90, height: 90, alt: this.name })));
   }
 };
 ProductVariant.style = productVariantCss;
@@ -607,7 +781,7 @@ const productVariantsCss = "ks-product-variants{display:block}ks-product-variant
 
 const ProductVariants = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.more = false;
     this.toggle = true;
     this.variantCount = 0;
@@ -638,7 +812,7 @@ const ProductVariants = class {
   }
   render() {
     return [
-      index.h("style", { innerHTML: `
+      h("style", { innerHTML: `
 				ks-product-variants ks-product-variant {
 					width: ${this.width}%;
 				}
@@ -647,15 +821,15 @@ const ProductVariants = class {
 					max-height: ${this.maxHeight}px;
 				}
 			` }),
-      index.h("div", { class: "content" }, index.h("slot", null)),
+      h("div", { class: "content" }, h("slot", null)),
       this.more ?
-        index.h("div", { class: "more" }, index.h("button", { onClick: () => this.toggle = !this.toggle }, this.toggle ?
-          index.h("ks-icon", { name: "chevron-down" }) :
-          index.h("ks-icon", { name: "chevron-up" })))
+        h("div", { class: "more" }, h("button", { onClick: () => this.toggle = !this.toggle }, this.toggle ?
+          h("ks-icon", { name: "chevron-down" }) :
+          h("ks-icon", { name: "chevron-up" })))
         : null
     ];
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
   static get watchers() { return {
     "toggle": ["ToggleWatcher"]
   }; }
@@ -666,7 +840,7 @@ const productYoutubeCss = "ks-product-youtube{display:block;position:relative;ov
 
 const ProductYoutube = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.videoId = "";
     this.active = false;
   }
@@ -686,31 +860,11 @@ const ProductYoutube = class {
   }
   render() {
     return (this.active ?
-      index.h("iframe", { width: "1280", height: "720", src: "https://www.youtube.com/embed/" + this.videoId, frameborder: "0", allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture", allowFullScreen: true })
+      h("iframe", { width: "1280", height: "720", src: "https://www.youtube.com/embed/" + this.videoId, frameborder: "0", allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture", allowFullScreen: true })
       : null);
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 ProductYoutube.style = productYoutubeCss;
 
-exports.ks_comment = Comment;
-exports.ks_product_attribute = ProductAttribute;
-exports.ks_product_button = ProductButton;
-exports.ks_product_calculator_ca = ProductCalculatorCA;
-exports.ks_product_calculator_payu = ProductCalculatorPayU;
-exports.ks_product_comments = ProductTab;
-exports.ks_product_count = ProductCount;
-exports.ks_product_images = ProductImages;
-exports.ks_product_info_points = ProductInfo;
-exports.ks_product_negotiate = ProductNegotiate;
-exports.ks_product_points = ProductPoints;
-exports.ks_product_price = ProductPrice;
-exports.ks_product_shipping = ProductShipping;
-exports.ks_product_suggestions = ProductSuggestions;
-exports.ks_product_tab = ProductTab$1;
-exports.ks_product_tabs = ProductTabs;
-exports.ks_product_title = ProductTitle;
-exports.ks_product_traits = ProductCount$1;
-exports.ks_product_variant = ProductVariant;
-exports.ks_product_variants = ProductVariants;
-exports.ks_product_youtube = ProductYoutube;
+export { Comment as ks_comment, ProductAttribute as ks_product_attribute, ProductButton as ks_product_button, ProductCalculatorCA as ks_product_calculator_ca, ProductCalculatorPayU as ks_product_calculator_payu, ProductTab as ks_product_comments, ProductCount as ks_product_count, ProductImages as ks_product_images, ProductInfo as ks_product_info, ProductInfo$1 as ks_product_info_points, ProductNegotiate as ks_product_negotiate, ProductPoints as ks_product_points, ProductPrice as ks_product_price, ProductShipping as ks_product_shipping, ProductSuggestions as ks_product_suggestions, ProductTab$1 as ks_product_tab, ProductTabs as ks_product_tabs, ProductTitle as ks_product_title, ProductCount$1 as ks_product_traits, ProductVariant as ks_product_variant, ProductVariants as ks_product_variants, ProductYoutube as ks_product_youtube };

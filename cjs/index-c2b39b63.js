@@ -1,3 +1,25 @@
+'use strict';
+
+function _interopNamespace(e) {
+  if (e && e.__esModule) return e;
+  var n = Object.create(null);
+  if (e) {
+    Object.keys(e).forEach(function (k) {
+      if (k !== 'default') {
+        var d = Object.getOwnPropertyDescriptor(e, k);
+        Object.defineProperty(n, k, d.get ? d : {
+          enumerable: true,
+          get: function () {
+            return e[k];
+          }
+        });
+      }
+    });
+  }
+  n['default'] = e;
+  return Object.freeze(n);
+}
+
 const NAMESPACE = 'ks-components';
 
 let contentRef;
@@ -1640,11 +1662,11 @@ const loadModule = (cmpMeta, hostRef, hmrVersionId) => {
     if (module) {
         return module[exportName];
     }
-    return import(
+    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
     /* webpackInclude: /\.entry\.js$/ */
     /* webpackExclude: /\.system\.entry\.js$/ */
     /* webpackMode: "lazy" */
-    `./${bundleId}.entry.js${ ''}`).then(importedModule => {
+    `./${bundleId}.entry.js${ ''}`)); }).then(importedModule => {
         {
             cmpModules.set(bundleId, importedModule);
         }
@@ -1654,4 +1676,17 @@ const loadModule = (cmpMeta, hostRef, hmrVersionId) => {
 const styles = new Map();
 const nextTick = /*@__PURE__*/ (cb) => promiseResolve().then(cb);
 
-export { CSS as C, Host as H, NAMESPACE as N, promiseResolve as a, bootstrapLazy as b, createEvent as c, doc as d, getRenderingRef as e, forceUpdate as f, getElement as g, h, consoleError as i, plt as p, registerInstance as r, win as w };
+exports.CSS = CSS;
+exports.Host = Host;
+exports.NAMESPACE = NAMESPACE;
+exports.bootstrapLazy = bootstrapLazy;
+exports.createEvent = createEvent;
+exports.doc = doc;
+exports.forceUpdate = forceUpdate;
+exports.getElement = getElement;
+exports.getRenderingRef = getRenderingRef;
+exports.h = h;
+exports.plt = plt;
+exports.promiseResolve = promiseResolve;
+exports.registerInstance = registerInstance;
+exports.win = win;
