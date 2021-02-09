@@ -43,12 +43,14 @@ function AddToCart(id, count, traits, place, name, finished) {
     await cartfetch("inne/do_koszyka.php?tok=" + ksCartToken, cartBody)
       .then(data => data.text())
       .then(data => {
+      var _a;
       let saCechy = data.indexOf('KonieczneCechy');
       let jestGratis = data.indexOf('TylkoGratis');
       if (saCechy > 0 || jestGratis > 0) {
         let dom = document.createElement('div');
         dom.innerHTML = data;
         dom.querySelector('h3').remove();
+        (_a = dom.querySelector('.PopUpDodaj')) === null || _a === void 0 ? void 0 : _a.removeAttribute('id');
         let przyciski = dom.querySelector('#PopUpPrzyciski');
         const linktag = przyciski.querySelector('a');
         const link = linktag ? linktag.href : "";
