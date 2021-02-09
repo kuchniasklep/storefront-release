@@ -50,7 +50,7 @@ function AddToCart(id, count, traits, place, name, finished) {
         let dom = document.createElement('div');
         dom.innerHTML = data;
         dom.querySelector('h3').remove();
-        (_a = dom.querySelector('.PopUpDodaj')) === null || _a === void 0 ? void 0 : _a.removeAttribute('id');
+        (_a = dom.querySelector('#PopUpDodaj')) === null || _a === void 0 ? void 0 : _a.removeAttribute('id');
         let przyciski = dom.querySelector('#PopUpPrzyciski');
         const linktag = przyciski.querySelector('a');
         const link = linktag ? linktag.href : "";
