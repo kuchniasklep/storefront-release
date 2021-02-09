@@ -1,5 +1,3 @@
-'use strict';
-
 async function cartfetch(url, body) {
   const headers = new Headers();
   headers.append('pragma', 'no-cache');
@@ -19,6 +17,7 @@ async function cartfetch(url, body) {
 function AddToCart(id, count, traits, place, name, finished) {
   const errorpopup = document.querySelector('ks-error-popup');
   const messagepopup = document.querySelector('ks-message-popup');
+  const navbar = document.querySelector('ks-navbar');
   let countBody = new FormData();
   countBody.append("id", id);
   countBody.append("ilosc", count);
@@ -62,7 +61,7 @@ function AddToCart(id, count, traits, place, name, finished) {
           finished(false);
         return;
       }
-      this.navbar.IncrementCart(count);
+      navbar.IncrementCart(count);
       OpenSuggestions(id, name);
     })
       .catch(error => {
@@ -78,6 +77,7 @@ function AddToCart(id, count, traits, place, name, finished) {
   });
 }
 function AddToFavourites(id, finished) {
+  const navbar = document.querySelector('ks-navbar');
   const errorpopup = document.querySelector('ks-error-popup');
   let cartBody = new FormData();
   cartBody.append("id", id);
@@ -85,6 +85,7 @@ function AddToFavourites(id, finished) {
     .then(() => {
     if (finished)
       finished();
+    navbar.IncrementHeart();
   })
     .catch(error => {
     errorpopup.show(error);
@@ -114,8 +115,4 @@ function OpenSuggestions(id, name) {
   suggestions.show(id, name);
 }
 
-exports.AddToCart = AddToCart;
-exports.AddToFavourites = AddToFavourites;
-exports.OpenSuggestions = OpenSuggestions;
-exports.RemoveAllFavourites = RemoveAllFavourites;
-exports.RemoveFromFavourites = RemoveFromFavourites;
+export { AddToCart as A, OpenSuggestions as O, RemoveFromFavourites as R, AddToFavourites as a, RemoveAllFavourites as b };
