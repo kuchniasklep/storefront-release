@@ -1,17 +1,44 @@
-import { Component, h } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 export class ProductContainer {
+  constructor() {
+    this.active = 0;
+    this.Button = ({ index, name }) => h("ks-button", { round: true, name: name, border: this.active != index, transitionless: this.active == index, onClick: () => this.active = index });
+  }
   render() {
-    return (h("div", { class: "uk-margin-medium-bottom" },
-      h("div", { class: "uk-flex uk-flex-center" },
-        h("ul", { class: "uk-subnav uk-subnav-pill uk-padding-small uk-padding-remove-horizontal uk-text-small uk-text-normal@s", "uk-switcher": "connect: #ks-homepage-products; toggle: > *; animation: uk-animation-slide-top-small, uk-animation-slide-bottom-small" },
-          h("li", { class: "uk-active" },
-            h("a", { href: "#" }, "Promocje")),
-          h("li", { class: "uk-padding-remove" },
-            h("a", { href: "#" }, "Popularne")),
-          h("li", { class: "uk-padding-remove" },
-            h("a", { href: "#" }, "Nowo\u015Bci")))),
-      h("ul", { class: "uk-switcher uk-margin-top@l", id: "ks-homepage-products" },
-        h("slot", null))));
+    return [
+      h("div", { class: "buttons" },
+        h(this.Button, { index: 0, name: "Promocje" }),
+        h(this.Button, { index: 1, name: "Popularne" }),
+        h(this.Button, { index: 2, name: "Nowo\u015Bci" })),
+      h("div", { class: "content" },
+        h("slot", null))
+    ];
   }
   static get is() { return "ks-homepage-products"; }
+  static get originalStyleUrls() { return {
+    "$": ["homepage-products.css"]
+  }; }
+  static get styleUrls() { return {
+    "$": ["homepage-products.css"]
+  }; }
+  static get properties() { return {
+    "active": {
+      "type": "number",
+      "mutable": true,
+      "complexType": {
+        "original": "number",
+        "resolved": "number",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "active",
+      "reflect": true,
+      "defaultValue": "0"
+    }
+  }; }
 }

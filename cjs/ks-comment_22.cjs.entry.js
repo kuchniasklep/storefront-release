@@ -3,9 +3,11 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-c2b39b63.js');
-const functions = require('./functions-80797821.js');
+const functions = require('./functions-c0459583.js');
+const deferredpromise = require('./deferredpromise-4a0fd44b.js');
+const coreClass = require('./core-class-05f4a49b.js');
+const thumbs = require('./thumbs-005bf787.js');
 const validate = require('./validate-fe6a3415.js');
-const thumbs = require('./thumbs-f1578b12.js');
 
 const commentCss = "ks-comment{display:block}ks-comment article{padding:30px}@media (min-width: 1200px){ks-comment article{padding:30px 40px}}ks-comment header{display:-webkit-box;display:-ms-flexbox;display:flex}ks-comment header>div{width:100%}ks-comment header .title{margin:0}ks-comment header .info{font-size:.875rem;line-height:1.4;color:#707070}ks-comment ks-icon{margin-right:20px}ks-comment p{margin-bottom:0px}";
 
@@ -76,12 +78,36 @@ const ProductCalculatorPayU = class {
     this.price = "";
     this.posId = "";
     this.apiKey = "";
+    this.enabled = false;
+  }
+  clickHandler() {
+    if (this.enabled)
+      this.buttonHandler();
+    else
+      this.enabled = true;
+  }
+  loadHandler() {
+    window.openpayu = window.openpayu || {};
+    window.openpayu.options = {
+      creditAmount: this.price,
+      posId: this.posId,
+      key: this.apiKey,
+      showLongDescription: true
+    };
+    OpenPayU.Installments.miniInstallment("#calculator-payu");
+    this.buttonHandler();
+  }
+  buttonHandler() {
+    let payuLink = document.querySelector("#calculator-payu a");
+    payuLink.click();
   }
   render() {
     return [
       index.h("slot", null),
-      index.h("span", { id: "calculator-payu", style: { display: "none" } }),
-      index.h("script", null, "var openpayu = openpayu || ", "{}", "; openpayu.options = ", '{', "creditAmount: ", this.price, ", posId: '", this.posId, "', key: '", this.apiKey, "', showLongDescription: true", '}', "; document.addEventListener(\"payu-widget-loaded\", function()", '{', "OpenPayU.Installments.miniInstallment(\"#calculator-payu\"); let payuButton = document.querySelector(\"ks-product-calculator-payu ", '>', " *:first-child\"); let payuLink = document.querySelector(\"#calculator-payu a\"); payuButton.addEventListener(\"click\", function(event)", "{", "event.stopPropagation(); payuLink.click();", '}', ");", '}', ");")
+      this.enabled ? [
+        index.h("span", { id: "calculator-payu", style: { display: "none" } }),
+        index.h("script", { onLoad: () => this.loadHandler(), src: "https://static.payu.com/res/v2/widget-products-installments.min.js" }),
+      ] : null
     ];
   }
   get root() { return index.getElement(this); }
@@ -195,46 +221,57 @@ const ProductCount = class {
 };
 ProductCount.style = productCountCss;
 
-const productImagesCss = "ks-product-images{display:block;margin-right:30px}ks-product-images .swiper-slide{position:relative}ks-product-images .swiper-slide canvas{max-width:100%;max-height:500px}ks-product-images .preview ks-img{position:absolute;top:0;width:100%;max-height:500px;margin:auto}ks-product-images .thumb{margin-top:20px;position:relative}ks-product-images .thumb::after{content:\"\";position:absolute;top:0;bottom:0;right:0;left:-30px;background:-webkit-gradient(linear, left top, right top, from(rgba(255,255,255,0)), color-stop(85%, rgba(255,255,255,0)), to(rgba(255,255,255,1)));background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 85%, rgba(255,255,255,1) 100%);z-index:2;pointer-events:none}ks-product-images .thumb .swiper-slide{width:70px;height:70px;opacity:0.4;-webkit-transition:var(--transition-opacity);transition:var(--transition-opacity)}ks-product-images .thumb .swiper-slide-thumb-active{opacity:1}@media only screen and (max-width: 959px){ks-product-images{margin-right:0px;margin-top:30px}ks-product-images .thumb{margin-bottom:0px}}@media only screen and (max-width: 460px){ks-product-images .swiper-slide canvas{max-height:300px}ks-product-images .preview ks-img{max-height:300px}}";
+const productImagesCss = "ks-product-images{display:block;margin-right:30px}ks-product-images .swiper-slide{position:relative}ks-product-images .swiper-slide canvas{max-width:100%;max-height:500px}ks-product-images .preview ks-img{position:absolute;top:0;width:100%;max-height:500px;margin:auto}ks-product-images .thumb{margin-top:20px;position:relative}ks-product-images .thumb::after{content:\"\";position:absolute;top:0;bottom:0;right:0;left:-30px;background:-webkit-gradient(linear, left top, right top, from(rgba(255,255,255,0)), color-stop(85%, rgba(255,255,255,0)), to(rgba(255,255,255,1)));background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 85%, rgba(255,255,255,1) 100%);z-index:2;pointer-events:none}ks-product-images .thumb .swiper-slide{width:70px;height:70px;opacity:0.4;-webkit-transition:var(--transition-opacity);transition:var(--transition-opacity)}ks-product-images .thumb .swiper-slide-thumb-active{opacity:1}@media only screen and (max-width: 959px){ks-product-images{margin-right:0px;margin-top:30px}ks-product-images .thumb{margin-bottom:0px}}@media only screen and (max-width: 460px){ks-product-images .swiper-slide canvas{max-height:300px}ks-product-images .preview ks-img{max-height:300px}}ks-product-images .preview:not(.swiper-container-initialized) .swiper-slide:nth-child(n+2){display:none}ks-product-images .thumb .swiper-wrapper{opacity:1;-webkit-animation:fade-in 0.3s ease;animation:fade-in 0.3s ease}ks-product-images .thumb:not(.swiper-container-initialized) .swiper-wrapper{opacity:0;-webkit-animation:none;animation:none}";
 
-thumbs.Swiper.use([thumbs.Thumbs]);
+coreClass.Swiper.use([thumbs.Thumbs]);
 const ProductImages = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
+    this.delay = 0;
+    this.loaded = false;
+    this.rendered = false;
   }
   componentDidRender() {
-    this.lightbox = this.root.querySelector("ks-lightbox");
-    const thumbs_enabled = store.get("images").length > 1;
-    console.log(thumbs_enabled);
-    if (thumbs_enabled) {
-      this.thumbs = new thumbs.Swiper('.thumb', {
+    if (this.rendered)
+      return;
+    deferredpromise.window_load.promise.then(() => this.initialize());
+    this.rendered = true;
+  }
+  initialize() {
+    setTimeout(() => {
+      this.lightbox = this.root.querySelector("ks-lightbox");
+      const thumbs_enabled = store.get("images").length > 1;
+      if (thumbs_enabled) {
+        this.thumbs = new coreClass.Swiper('.thumb', {
+          observer: true,
+          observeParents: true,
+          grabCursor: true,
+          slidesPerView: "auto",
+          preventInteractionOnTransition: true,
+          centerInsufficientSlides: true,
+          watchSlidesVisibility: true,
+          watchSlidesProgress: true,
+          spaceBetween: 3,
+        });
+      }
+      this.carousel = new coreClass.Swiper('.preview', {
         observer: true,
         observeParents: true,
+        spaceBetween: 30,
         grabCursor: true,
-        slidesPerView: "auto",
-        preventInteractionOnTransition: true,
-        centerInsufficientSlides: true,
-        watchSlidesVisibility: true,
-        watchSlidesProgress: true,
-        spaceBetween: 3,
+        autoHeight: true,
+        thumbs: thumbs_enabled ? {
+          swiper: this.thumbs
+        } : undefined
       });
-    }
-    this.carousel = new thumbs.Swiper('.preview', {
-      observer: true,
-      observeParents: true,
-      spaceBetween: 30,
-      grabCursor: true,
-      autoHeight: true,
-      thumbs: thumbs_enabled ? {
-        swiper: this.thumbs
-      } : undefined
-    });
+      this.loaded = true;
+    }, this.delay);
   }
   render() {
     return [
       index.h("div", { class: "swiper-container preview" }, index.h("div", { class: "swiper-wrapper" }, store.get("images").map((image, index$1) => index.h("div", { class: "swiper-slide" }, index.h("canvas", { width: image.preview.width, height: image.preview.height }), index.h("ks-img", { contained: true, center: true, sync: index$1 == 0, src: image.preview.url, width: image.preview.width, height: image.preview.height, onClick: () => this.lightbox.show(index$1) }))))),
       store.get("images").length > 1 ?
-        index.h("div", { class: "swiper-container thumb" }, index.h("div", { class: "swiper-wrapper" }, store.get("images").map((image, index$1) => index.h("div", { class: "swiper-slide" }, index.h("ks-img", { sync: index$1 < 6, contained: true, center: true, src: image.thumb.url, width: image.thumb.width, height: image.thumb.height })))))
+        index.h("div", { class: "swiper-container thumb" }, this.loaded ? null : index.h("ks-loader", { dark: true }), index.h("div", { class: "swiper-wrapper" }, store.get("images").map((image, index$1) => index.h("div", { class: "swiper-slide" }, index.h("ks-img", { sync: index$1 < 6, contained: true, center: true, src: image.thumb.url, width: image.thumb.width, height: image.thumb.height })))))
         : null,
       index.h("ks-lightbox", { data: store.get("images") })
     ];
@@ -257,7 +294,9 @@ const ProductInfo = class {
     this.favouritesApi = "";
     this.suggestionApi = "";
   }
-  connectedCallback() {
+  componentDidLoad() {
+    this.navbar = document.querySelector("ks-navbar");
+    this.errorPopup = document.querySelector("ks-error-popup");
     const dataElement = document.getElementById(this.dataId);
     const data = JSON.parse(dataElement.innerHTML);
     Object.keys(data).map(key => {
@@ -266,10 +305,6 @@ const ProductInfo = class {
     if (store.get("negotiate") && store.get("shippingMessage")) {
       store.set("externalPoints", true);
     }
-  }
-  componentDidLoad() {
-    this.navbar = document.querySelector("ks-navbar");
-    this.errorPopup = document.querySelector("ks-error-popup");
   }
   async CountChange(event) {
     store.set("count", event.detail);
@@ -607,7 +642,7 @@ const ProductSuggestions = class {
   }
   showCarousel() {
     if (this.carousel == undefined) {
-      this.carousel = new thumbs.Swiper('.product-suggestions', {
+      this.carousel = new coreClass.Swiper('.product-suggestions', {
         observer: true,
         observeParents: true,
         slidesPerView: "auto",

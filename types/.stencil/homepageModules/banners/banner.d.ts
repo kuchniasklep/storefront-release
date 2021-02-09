@@ -4,5 +4,7 @@ export declare class Banner {
   image: string;
   link: string;
   sync: boolean;
+  width: number;
+  height: number;
   render(): any;
 }

@@ -20,6 +20,8 @@ ks-button > * {
 
     font-family: var(--font-regular);
     font-size: 15px;
+
+    border: 1px solid var(--color-dark);
     background-color: var(--color-dark);
     color: var(--text-color-dark) !important;
 
@@ -30,8 +32,8 @@ ks-button > * {
     transition: var(--transition-background-color);
 }
 
-ks-button > *:hover { background-color: var(--color-dark-hover); }
-ks-button > *:active { background-color: var(--color-dark-active); }
+ks-button:not([transitionless]) > *:hover { background-color: var(--color-dark-hover); }
+ks-button:not([transitionless]) > *:active { background-color: var(--color-dark-active); }
 
 
 ks-button[round] > * {
@@ -45,22 +47,35 @@ ks-button[tall] > * {
 ks-button[primary] > * {
     color: var(--text-color-primary) !important;
     background-color: var(--color-primary) !important;
+    border: 1px solid var(--color-primary) !important;
 }
-ks-button[primary] > *:hover { background-color: var(--color-primary-hover); }
-ks-button[primary] > *:active { background-color: var(--color-primary-active); }
+ks-button[primary]:not([transitionless]) > *:hover { background-color: var(--color-primary-hover); }
+ks-button[primary]:not([transitionless]) > *:active { background-color: var(--color-primary-active); }
 
 
 ks-button[secondary] > * {
     color: var(--text-color-secondary) !important;
     background-color: var(--color-secondary) !important;
+    border: 1px solid var(--color-secondary) !important;
 }
-ks-button[secondary] > *:hover { background-color: var(--color-secondary-hover); }
-ks-button[secondary] > *:active { background-color: var(--color-secondary-active); }
+ks-button[secondary]:not([transitionless]) > *:hover { background-color: var(--color-secondary-hover); }
+ks-button[secondary]:not([transitionless]) > *:active { background-color: var(--color-secondary-active); }
 
 
-ks-button[border] > * {
+ks-button[border] > * { 
+    border: 1px solid var(--color-dark);
+    color: var(--color-dark) !important;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+ks-button[border]:not([transitionless]) > *:hover { background-color: rgba(0, 0, 0, 0.096); }
+ks-button[border]:not([transitionless]) > *:active { background-color: rgba(0, 0, 0, 0.336); }
+
+
+ks-button[border][light] > * {
     border: 1px solid #ffffff;
+    color: var(--text-color-dark) !important;
     background-color: rgba(255, 255, 255, 0);
 }
-ks-button[border] > *:hover { background-color: rgba(255, 255, 255, 0.096); }
-ks-button[border] > *:active { background-color: rgba(255, 255, 255, 0.336); }
+ks-button[border][light]:not([transitionless]) > *:hover { background-color: rgba(255, 255, 255, 0.096); }
+ks-button[border][light]:not([transitionless]) > *:active { background-color: rgba(255, 255, 255, 0.336); }

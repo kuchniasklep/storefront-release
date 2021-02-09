@@ -21,14 +21,21 @@ export namespace Components {
         "link": string;
         "views": string;
     }
+    interface KsArticleContainer {
+    }
     interface KsBanner {
         "color": string;
+        "height": number;
         "image": string;
         "link": string;
         "name": string;
         "sync": boolean;
+        "width": number;
     }
     interface KsBannerContainer {
+        "autoplay": number;
+        "delay": number;
+        "loaded": boolean;
     }
     interface KsBreadcrumbs {
         "center": boolean;
@@ -36,6 +43,7 @@ export namespace Components {
     }
     interface KsButton {
         "border": boolean;
+        "light": boolean;
         "link": string;
         "name": string;
         "primary": boolean;
@@ -43,6 +51,7 @@ export namespace Components {
         "secondary": boolean;
         "submit": boolean;
         "tall": boolean;
+        "transitionless": boolean;
     }
     interface KsButtonCart {
         "AddToCart": (count?: string) => Promise<void>;
@@ -308,8 +317,11 @@ export namespace Components {
     }
     interface KsFeatured {
         "alt": string;
+        "color": string;
+        "height": number;
         "image": string;
         "link": string;
+        "width": number;
     }
     interface KsFeaturedContainer {
     }
@@ -373,10 +385,13 @@ export namespace Components {
         "name": string;
     }
     interface KsGrid {
+        "section": boolean;
     }
     interface KsHomepageInfo {
+        "expanded": boolean;
     }
     interface KsHomepageProducts {
+        "active": number;
     }
     interface KsIcon {
         "name": string;
@@ -533,6 +548,10 @@ export namespace Components {
         "large": boolean;
         "oversized": boolean;
         "running": boolean;
+    }
+    interface KsMessagePopup {
+        "hide": () => Promise<void>;
+        "show": (name: string, message: string, linkname?: string, link?: string) => Promise<void>;
     }
     interface KsMiniCart {
     }
@@ -778,6 +797,7 @@ export namespace Components {
     interface KsProductCount {
     }
     interface KsProductImages {
+        "delay": number;
     }
     interface KsProductInfo {
         "cartApi": string;
@@ -947,6 +967,12 @@ declare global {
     var HTMLKsArticleCardElement: {
         prototype: HTMLKsArticleCardElement;
         new (): HTMLKsArticleCardElement;
+    };
+    interface HTMLKsArticleContainerElement extends Components.KsArticleContainer, HTMLStencilElement {
+    }
+    var HTMLKsArticleContainerElement: {
+        prototype: HTMLKsArticleContainerElement;
+        new (): HTMLKsArticleContainerElement;
     };
     interface HTMLKsBannerElement extends Components.KsBanner, HTMLStencilElement {
     }
@@ -1422,6 +1448,12 @@ declare global {
         prototype: HTMLKsLoaderElement;
         new (): HTMLKsLoaderElement;
     };
+    interface HTMLKsMessagePopupElement extends Components.KsMessagePopup, HTMLStencilElement {
+    }
+    var HTMLKsMessagePopupElement: {
+        prototype: HTMLKsMessagePopupElement;
+        new (): HTMLKsMessagePopupElement;
+    };
     interface HTMLKsMiniCartElement extends Components.KsMiniCart, HTMLStencilElement {
     }
     var HTMLKsMiniCartElement: {
@@ -1881,6 +1913,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "ks-alert": HTMLKsAlertElement;
         "ks-article-card": HTMLKsArticleCardElement;
+        "ks-article-container": HTMLKsArticleContainerElement;
         "ks-banner": HTMLKsBannerElement;
         "ks-banner-container": HTMLKsBannerContainerElement;
         "ks-breadcrumbs": HTMLKsBreadcrumbsElement;
@@ -1960,6 +1993,7 @@ declare global {
         "ks-lightbox": HTMLKsLightboxElement;
         "ks-listing-header": HTMLKsListingHeaderElement;
         "ks-loader": HTMLKsLoaderElement;
+        "ks-message-popup": HTMLKsMessagePopupElement;
         "ks-mini-cart": HTMLKsMiniCartElement;
         "ks-navbar": HTMLKsNavbarElement;
         "ks-navbar-button": HTMLKsNavbarButtonElement;
@@ -2050,14 +2084,21 @@ declare namespace LocalJSX {
         "link"?: string;
         "views"?: string;
     }
+    interface KsArticleContainer {
+    }
     interface KsBanner {
         "color"?: string;
+        "height"?: number;
         "image"?: string;
         "link"?: string;
         "name"?: string;
         "sync"?: boolean;
+        "width"?: number;
     }
     interface KsBannerContainer {
+        "autoplay"?: number;
+        "delay"?: number;
+        "loaded"?: boolean;
     }
     interface KsBreadcrumbs {
         "center"?: boolean;
@@ -2065,6 +2106,7 @@ declare namespace LocalJSX {
     }
     interface KsButton {
         "border"?: boolean;
+        "light"?: boolean;
         "link"?: string;
         "name"?: string;
         "primary"?: boolean;
@@ -2072,6 +2114,7 @@ declare namespace LocalJSX {
         "secondary"?: boolean;
         "submit"?: boolean;
         "tall"?: boolean;
+        "transitionless"?: boolean;
     }
     interface KsButtonCart {
         "count"?: string;
@@ -2326,8 +2369,11 @@ declare namespace LocalJSX {
     }
     interface KsFeatured {
         "alt"?: string;
+        "color"?: string;
+        "height"?: number;
         "image"?: string;
         "link"?: string;
+        "width"?: number;
     }
     interface KsFeaturedContainer {
     }
@@ -2391,10 +2437,13 @@ declare namespace LocalJSX {
         "name"?: string;
     }
     interface KsGrid {
+        "section"?: boolean;
     }
     interface KsHomepageInfo {
+        "expanded"?: boolean;
     }
     interface KsHomepageProducts {
+        "active"?: number;
     }
     interface KsIcon {
         "name"?: string;
@@ -2533,6 +2582,8 @@ declare namespace LocalJSX {
         "large"?: boolean;
         "oversized"?: boolean;
         "running"?: boolean;
+    }
+    interface KsMessagePopup {
     }
     interface KsMiniCart {
     }
@@ -2764,6 +2815,7 @@ declare namespace LocalJSX {
         "onCountChange"?: (event: CustomEvent<number>) => void;
     }
     interface KsProductImages {
+        "delay"?: number;
     }
     interface KsProductInfo {
         "cartApi"?: string;
@@ -2924,6 +2976,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "ks-alert": KsAlert;
         "ks-article-card": KsArticleCard;
+        "ks-article-container": KsArticleContainer;
         "ks-banner": KsBanner;
         "ks-banner-container": KsBannerContainer;
         "ks-breadcrumbs": KsBreadcrumbs;
@@ -3003,6 +3056,7 @@ declare namespace LocalJSX {
         "ks-lightbox": KsLightbox;
         "ks-listing-header": KsListingHeader;
         "ks-loader": KsLoader;
+        "ks-message-popup": KsMessagePopup;
         "ks-mini-cart": KsMiniCart;
         "ks-navbar": KsNavbar;
         "ks-navbar-button": KsNavbarButton;
@@ -3087,6 +3141,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "ks-alert": LocalJSX.KsAlert & JSXBase.HTMLAttributes<HTMLKsAlertElement>;
             "ks-article-card": LocalJSX.KsArticleCard & JSXBase.HTMLAttributes<HTMLKsArticleCardElement>;
+            "ks-article-container": LocalJSX.KsArticleContainer & JSXBase.HTMLAttributes<HTMLKsArticleContainerElement>;
             "ks-banner": LocalJSX.KsBanner & JSXBase.HTMLAttributes<HTMLKsBannerElement>;
             "ks-banner-container": LocalJSX.KsBannerContainer & JSXBase.HTMLAttributes<HTMLKsBannerContainerElement>;
             "ks-breadcrumbs": LocalJSX.KsBreadcrumbs & JSXBase.HTMLAttributes<HTMLKsBreadcrumbsElement>;
@@ -3166,6 +3221,7 @@ declare module "@stencil/core" {
             "ks-lightbox": LocalJSX.KsLightbox & JSXBase.HTMLAttributes<HTMLKsLightboxElement>;
             "ks-listing-header": LocalJSX.KsListingHeader & JSXBase.HTMLAttributes<HTMLKsListingHeaderElement>;
             "ks-loader": LocalJSX.KsLoader & JSXBase.HTMLAttributes<HTMLKsLoaderElement>;
+            "ks-message-popup": LocalJSX.KsMessagePopup & JSXBase.HTMLAttributes<HTMLKsMessagePopupElement>;
             "ks-mini-cart": LocalJSX.KsMiniCart & JSXBase.HTMLAttributes<HTMLKsMiniCartElement>;
             "ks-navbar": LocalJSX.KsNavbar & JSXBase.HTMLAttributes<HTMLKsNavbarElement>;
             "ks-navbar-button": LocalJSX.KsNavbarButton & JSXBase.HTMLAttributes<HTMLKsNavbarButtonElement>;

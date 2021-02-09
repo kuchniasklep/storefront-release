@@ -1,6 +1,7 @@
 import { r as registerInstance, h, g as getElement } from './index-46fe532f.js';
-import { S as Swiper, T as Thumbs } from './thumbs-00422a82.js';
-import { P as Pagination } from './pagination-759b5673.js';
+import { S as Swiper } from './core-class-f05bf7c2.js';
+import { P as Pagination } from './pagination-ca8adc5c.js';
+import { T as Thumbs } from './thumbs-06204fe0.js';
 
 const sidepanelCss = "ks-sidepanel{display:block}ks-sidepanel .content{position:absolute;z-index:100000;width:100%;height:100%;top:0px;left:0px;-webkit-transform:translateX(100%);-ms-transform:translateX(100%);transform:translateX(100%);transition:transform 0.2s ease, -ms-transform 0.2 ease}ks-sidepanel .content.visible{-webkit-transform:translateX(0%);-ms-transform:translateX(0%);transform:translateX(0%)}ks-sidepanel .content.hidden{-webkit-transform:translateX(100%);-ms-transform:translateX(100%);transform:translateX(100%)}";
 

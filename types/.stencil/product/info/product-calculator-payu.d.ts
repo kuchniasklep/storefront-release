@@ -3,5 +3,9 @@ export declare class ProductCalculatorPayU {
   price: string;
   posId: string;
   apiKey: string;
+  enabled: boolean;
+  clickHandler(): void;
+  loadHandler(): void;
+  buttonHandler(): void;
   render(): any[];
 }

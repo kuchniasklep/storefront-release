@@ -1,7 +1,9 @@
 import { r as registerInstance, h, g as getElement, c as createEvent, H as Host } from './index-46fe532f.js';
-import { O as OpenSuggestions } from './functions-33a63d52.js';
+import { O as OpenSuggestions } from './functions-86f2243b.js';
+import { w as window_load } from './deferredpromise-0f64146f.js';
+import { S as Swiper } from './core-class-f05bf7c2.js';
+import { T as Thumbs } from './thumbs-06204fe0.js';
 import { c as createStore, V as ValidateInput } from './validate-46a616dd.js';
-import { S as Swiper, T as Thumbs } from './thumbs-00422a82.js';
 
 const commentCss = "ks-comment{display:block}ks-comment article{padding:30px}@media (min-width: 1200px){ks-comment article{padding:30px 40px}}ks-comment header{display:-webkit-box;display:-ms-flexbox;display:flex}ks-comment header>div{width:100%}ks-comment header .title{margin:0}ks-comment header .info{font-size:.875rem;line-height:1.4;color:#707070}ks-comment ks-icon{margin-right:20px}ks-comment p{margin-bottom:0px}";
 
@@ -72,12 +74,36 @@ const ProductCalculatorPayU = class {
     this.price = "";
     this.posId = "";
     this.apiKey = "";
+    this.enabled = false;
+  }
+  clickHandler() {
+    if (this.enabled)
+      this.buttonHandler();
+    else
+      this.enabled = true;
+  }
+  loadHandler() {
+    window.openpayu = window.openpayu || {};
+    window.openpayu.options = {
+      creditAmount: this.price,
+      posId: this.posId,
+      key: this.apiKey,
+      showLongDescription: true
+    };
+    OpenPayU.Installments.miniInstallment("#calculator-payu");
+    this.buttonHandler();
+  }
+  buttonHandler() {
+    let payuLink = document.querySelector("#calculator-payu a");
+    payuLink.click();
   }
   render() {
     return [
       h("slot", null),
-      h("span", { id: "calculator-payu", style: { display: "none" } }),
-      h("script", null, "var openpayu = openpayu || ", "{}", "; openpayu.options = ", '{', "creditAmount: ", this.price, ", posId: '", this.posId, "', key: '", this.apiKey, "', showLongDescription: true", '}', "; document.addEventListener(\"payu-widget-loaded\", function()", '{', "OpenPayU.Installments.miniInstallment(\"#calculator-payu\"); let payuButton = document.querySelector(\"ks-product-calculator-payu ", '>', " *:first-child\"); let payuLink = document.querySelector(\"#calculator-payu a\"); payuButton.addEventListener(\"click\", function(event)", "{", "event.stopPropagation(); payuLink.click();", '}', ");", '}', ");")
+      this.enabled ? [
+        h("span", { id: "calculator-payu", style: { display: "none" } }),
+        h("script", { onLoad: () => this.loadHandler(), src: "https://static.payu.com/res/v2/widget-products-installments.min.js" }),
+      ] : null
     ];
   }
   get root() { return getElement(this); }
@@ -191,46 +217,57 @@ const ProductCount = class {
 };
 ProductCount.style = productCountCss;
 
-const productImagesCss = "ks-product-images{display:block;margin-right:30px}ks-product-images .swiper-slide{position:relative}ks-product-images .swiper-slide canvas{max-width:100%;max-height:500px}ks-product-images .preview ks-img{position:absolute;top:0;width:100%;max-height:500px;margin:auto}ks-product-images .thumb{margin-top:20px;position:relative}ks-product-images .thumb::after{content:\"\";position:absolute;top:0;bottom:0;right:0;left:-30px;background:-webkit-gradient(linear, left top, right top, from(rgba(255,255,255,0)), color-stop(85%, rgba(255,255,255,0)), to(rgba(255,255,255,1)));background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 85%, rgba(255,255,255,1) 100%);z-index:2;pointer-events:none}ks-product-images .thumb .swiper-slide{width:70px;height:70px;opacity:0.4;-webkit-transition:var(--transition-opacity);transition:var(--transition-opacity)}ks-product-images .thumb .swiper-slide-thumb-active{opacity:1}@media only screen and (max-width: 959px){ks-product-images{margin-right:0px;margin-top:30px}ks-product-images .thumb{margin-bottom:0px}}@media only screen and (max-width: 460px){ks-product-images .swiper-slide canvas{max-height:300px}ks-product-images .preview ks-img{max-height:300px}}";
+const productImagesCss = "ks-product-images{display:block;margin-right:30px}ks-product-images .swiper-slide{position:relative}ks-product-images .swiper-slide canvas{max-width:100%;max-height:500px}ks-product-images .preview ks-img{position:absolute;top:0;width:100%;max-height:500px;margin:auto}ks-product-images .thumb{margin-top:20px;position:relative}ks-product-images .thumb::after{content:\"\";position:absolute;top:0;bottom:0;right:0;left:-30px;background:-webkit-gradient(linear, left top, right top, from(rgba(255,255,255,0)), color-stop(85%, rgba(255,255,255,0)), to(rgba(255,255,255,1)));background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 85%, rgba(255,255,255,1) 100%);z-index:2;pointer-events:none}ks-product-images .thumb .swiper-slide{width:70px;height:70px;opacity:0.4;-webkit-transition:var(--transition-opacity);transition:var(--transition-opacity)}ks-product-images .thumb .swiper-slide-thumb-active{opacity:1}@media only screen and (max-width: 959px){ks-product-images{margin-right:0px;margin-top:30px}ks-product-images .thumb{margin-bottom:0px}}@media only screen and (max-width: 460px){ks-product-images .swiper-slide canvas{max-height:300px}ks-product-images .preview ks-img{max-height:300px}}ks-product-images .preview:not(.swiper-container-initialized) .swiper-slide:nth-child(n+2){display:none}ks-product-images .thumb .swiper-wrapper{opacity:1;-webkit-animation:fade-in 0.3s ease;animation:fade-in 0.3s ease}ks-product-images .thumb:not(.swiper-container-initialized) .swiper-wrapper{opacity:0;-webkit-animation:none;animation:none}";
 
 Swiper.use([Thumbs]);
 const ProductImages = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
+    this.delay = 0;
+    this.loaded = false;
+    this.rendered = false;
   }
   componentDidRender() {
-    this.lightbox = this.root.querySelector("ks-lightbox");
-    const thumbs_enabled = store.get("images").length > 1;
-    console.log(thumbs_enabled);
-    if (thumbs_enabled) {
-      this.thumbs = new Swiper('.thumb', {
+    if (this.rendered)
+      return;
+    window_load.promise.then(() => this.initialize());
+    this.rendered = true;
+  }
+  initialize() {
+    setTimeout(() => {
+      this.lightbox = this.root.querySelector("ks-lightbox");
+      const thumbs_enabled = store.get("images").length > 1;
+      if (thumbs_enabled) {
+        this.thumbs = new Swiper('.thumb', {
+          observer: true,
+          observeParents: true,
+          grabCursor: true,
+          slidesPerView: "auto",
+          preventInteractionOnTransition: true,
+          centerInsufficientSlides: true,
+          watchSlidesVisibility: true,
+          watchSlidesProgress: true,
+          spaceBetween: 3,
+        });
+      }
+      this.carousel = new Swiper('.preview', {
         observer: true,
         observeParents: true,
+        spaceBetween: 30,
         grabCursor: true,
-        slidesPerView: "auto",
-        preventInteractionOnTransition: true,
-        centerInsufficientSlides: true,
-        watchSlidesVisibility: true,
-        watchSlidesProgress: true,
-        spaceBetween: 3,
+        autoHeight: true,
+        thumbs: thumbs_enabled ? {
+          swiper: this.thumbs
+        } : undefined
       });
-    }
-    this.carousel = new Swiper('.preview', {
-      observer: true,
-      observeParents: true,
-      spaceBetween: 30,
-      grabCursor: true,
-      autoHeight: true,
-      thumbs: thumbs_enabled ? {
-        swiper: this.thumbs
-      } : undefined
-    });
+      this.loaded = true;
+    }, this.delay);
   }
   render() {
     return [
       h("div", { class: "swiper-container preview" }, h("div", { class: "swiper-wrapper" }, store.get("images").map((image, index) => h("div", { class: "swiper-slide" }, h("canvas", { width: image.preview.width, height: image.preview.height }), h("ks-img", { contained: true, center: true, sync: index == 0, src: image.preview.url, width: image.preview.width, height: image.preview.height, onClick: () => this.lightbox.show(index) }))))),
       store.get("images").length > 1 ?
-        h("div", { class: "swiper-container thumb" }, h("div", { class: "swiper-wrapper" }, store.get("images").map((image, index) => h("div", { class: "swiper-slide" }, h("ks-img", { sync: index < 6, contained: true, center: true, src: image.thumb.url, width: image.thumb.width, height: image.thumb.height })))))
+        h("div", { class: "swiper-container thumb" }, this.loaded ? null : h("ks-loader", { dark: true }), h("div", { class: "swiper-wrapper" }, store.get("images").map((image, index) => h("div", { class: "swiper-slide" }, h("ks-img", { sync: index < 6, contained: true, center: true, src: image.thumb.url, width: image.thumb.width, height: image.thumb.height })))))
         : null,
       h("ks-lightbox", { data: store.get("images") })
     ];
@@ -253,7 +290,9 @@ const ProductInfo = class {
     this.favouritesApi = "";
     this.suggestionApi = "";
   }
-  connectedCallback() {
+  componentDidLoad() {
+    this.navbar = document.querySelector("ks-navbar");
+    this.errorPopup = document.querySelector("ks-error-popup");
     const dataElement = document.getElementById(this.dataId);
     const data = JSON.parse(dataElement.innerHTML);
     Object.keys(data).map(key => {
@@ -262,10 +301,6 @@ const ProductInfo = class {
     if (store.get("negotiate") && store.get("shippingMessage")) {
       store.set("externalPoints", true);
     }
-  }
-  componentDidLoad() {
-    this.navbar = document.querySelector("ks-navbar");
-    this.errorPopup = document.querySelector("ks-error-popup");
   }
   async CountChange(event) {
     store.set("count", event.detail);

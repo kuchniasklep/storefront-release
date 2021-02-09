@@ -1,4 +1,5 @@
 import { Component, h, Prop, State, Watch, Element, Event } from '@stencil/core';
+import { window_load } from '../deferredpromise';
 export class Img {
   constructor() {
     this.sync = false;
@@ -10,19 +11,11 @@ export class Img {
     this.center = false;
     this.limit = false;
     this.loaded = false;
-    this.loadAnimated = false;
   }
   loadHandler(e) {
     if (e.target instanceof HTMLElement && !e.target.getAttribute("src").includes('data:image')) {
       this.loaded = true;
       this.lazyLoaded.emit();
-    }
-  }
-  componentDidUpdate() {
-    if (this.loaded && !this.loadAnimated) {
-      setTimeout(() => {
-        this.loadAnimated = true;
-      }, 1000);
     }
   }
   srcListener() {
@@ -32,11 +25,14 @@ export class Img {
     setTimeout(() => {
       if (!image.complete) {
         this.loaded = false;
-        this.loadAnimated = false;
       }
     }, 200);
   }
   componentDidLoad() {
+    if (!this.sync)
+      window_load.promise.then(() => this.initializeObserver());
+  }
+  initializeObserver() {
     this.image = this.root.querySelector('img');
     const target = this.target ? this.root.closest(this.target) : this.root;
     const onIntersection = (entries) => {
@@ -70,7 +66,7 @@ export class Img {
   render() {
     const responsive = this.contained ? "contained" :
       this.vertical ? "vertical" : "horizontal";
-    const loading = this.loadAnimated ? "" : "loading";
+    const loading = this.loaded ? "" : "loading";
     const classes = [responsive].join(" ");
     const max = this.limit ? { maxWidth: `${this.width}px` } : null;
     if (this.sync)
@@ -78,11 +74,11 @@ export class Img {
     if (this.fill)
       return [
         h("canvas", { width: this.width, height: this.height }),
-        (!this.loadAnimated ? h("ks-loader", { dark: true }) : null),
+        (!this.loaded ? h("ks-loader", { dark: true }) : null),
         h("img", { class: classes + " " + loading, alt: this.alt, onLoad: (e) => this.loadHandler(e), "data-src": this.src, width: this.width, height: this.height })
       ];
     return [
-      (!this.loadAnimated ? h("ks-loader", { dark: true }) : null),
+      (!this.loaded ? h("ks-loader", { dark: true }) : null),
       !this.loaded ? h("canvas", { width: this.width, height: this.height, style: max }) : null,
       h("img", { class: classes + " " + loading, alt: this.alt, onLoad: (e) => this.loadHandler(e), "data-src": this.src, width: this.width, height: this.height, style: max })
     ];
@@ -343,8 +339,7 @@ export class Img {
     }
   }; }
   static get states() { return {
-    "loaded": {},
-    "loadAnimated": {}
+    "loaded": {}
   }; }
   static get events() { return [{
       "method": "lazyLoaded",

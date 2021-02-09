@@ -1,6 +1,7 @@
 ks-navbar {
     display: block;
     min-height: 104px;
+    background-color: var(--navbar-color);
 }
 
 ks-navbar > nav {

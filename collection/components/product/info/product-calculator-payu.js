@@ -1,38 +1,39 @@
-import { Component, h, Element, Prop } from '@stencil/core';
+import { Component, h, Element, Prop, Listen, State } from '@stencil/core';
 export class ProductCalculatorPayU {
   constructor() {
     this.price = "";
     this.posId = "";
     this.apiKey = "";
+    this.enabled = false;
+  }
+  clickHandler() {
+    if (this.enabled)
+      this.buttonHandler();
+    else
+      this.enabled = true;
+  }
+  loadHandler() {
+    window.openpayu = window.openpayu || {};
+    window.openpayu.options = {
+      creditAmount: this.price,
+      posId: this.posId,
+      key: this.apiKey,
+      showLongDescription: true
+    };
+    OpenPayU.Installments.miniInstallment("#calculator-payu");
+    this.buttonHandler();
+  }
+  buttonHandler() {
+    let payuLink = document.querySelector("#calculator-payu a");
+    payuLink.click();
   }
   render() {
     return [
       h("slot", null),
-      h("span", { id: "calculator-payu", style: { display: "none" } }),
-      h("script", null,
-        "var openpayu = openpayu || ",
-        "{}",
-        "; openpayu.options = ",
-        '{',
-        "creditAmount: ",
-        this.price,
-        ", posId: '",
-        this.posId,
-        "', key: '",
-        this.apiKey,
-        "', showLongDescription: true",
-        '}',
-        "; document.addEventListener(\"payu-widget-loaded\", function()",
-        '{',
-        "OpenPayU.Installments.miniInstallment(\"#calculator-payu\"); let payuButton = document.querySelector(\"ks-product-calculator-payu ",
-        '>',
-        " *:first-child\"); let payuLink = document.querySelector(\"#calculator-payu a\"); payuButton.addEventListener(\"click\", function(event)",
-        "{",
-        "event.stopPropagation(); payuLink.click();",
-        '}',
-        ");",
-        '}',
-        ");")
+      this.enabled ? [
+        h("span", { id: "calculator-payu", style: { display: "none" } }),
+        h("script", { onLoad: () => this.loadHandler(), src: "https://static.payu.com/res/v2/widget-products-installments.min.js" }),
+      ] : null
     ];
   }
   static get is() { return "ks-product-calculator-payu"; }
@@ -92,5 +93,15 @@ export class ProductCalculatorPayU {
       "defaultValue": "\"\""
     }
   }; }
+  static get states() { return {
+    "enabled": {}
+  }; }
   static get elementRef() { return "root"; }
+  static get listeners() { return [{
+      "name": "click",
+      "method": "clickHandler",
+      "target": undefined,
+      "capture": false,
+      "passive": false
+    }]; }
 }

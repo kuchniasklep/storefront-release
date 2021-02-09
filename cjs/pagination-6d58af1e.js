@@ -1,6 +1,6 @@
 'use strict';
 
-const thumbs = require('./thumbs-f1578b12.js');
+const coreClass = require('./core-class-05f4a49b.js');
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 var Pagination = {
@@ -61,7 +61,7 @@ var Pagination = {
 
       if ($el.length > 1) {
         bullets.each(function (bullet) {
-          var $bullet = thumbs.$(bullet);
+          var $bullet = coreClass.$(bullet);
           var bulletIndex = $bullet.index();
 
           if (bulletIndex === current) {
@@ -209,7 +209,7 @@ var Pagination = {
     var swiper = this;
     var params = swiper.params.pagination;
     if (!params.el) return;
-    var $el = thumbs.$(params.el);
+    var $el = coreClass.$(params.el);
     if ($el.length === 0) return;
 
     if (swiper.params.uniqueNavElements && typeof params.el === 'string' && $el.length > 1) {
@@ -238,13 +238,13 @@ var Pagination = {
     if (params.clickable) {
       $el.on('click', "." + params.bulletClass.replace(/ /g, '.'), function onClick(e) {
         e.preventDefault();
-        var index = thumbs.$(this).index() * swiper.params.slidesPerGroup;
+        var index = coreClass.$(this).index() * swiper.params.slidesPerGroup;
         if (swiper.params.loop) index += swiper.loopedSlides;
         swiper.slideTo(index);
       });
     }
 
-    thumbs.extend(swiper.pagination, {
+    coreClass.extend(swiper.pagination, {
       $el: $el,
       el: $el[0]
     });
@@ -302,7 +302,7 @@ const Pagination$1 = {
   },
   create: function create() {
     var swiper = this;
-    thumbs.bindModuleMethods(swiper, {
+    coreClass.bindModuleMethods(swiper, {
       pagination: _extends({
         dynamicBulletIndex: 0
       }, Pagination)
@@ -342,7 +342,7 @@ const Pagination$1 = {
       swiper.pagination.destroy();
     },
     click: function click(swiper, e) {
-      if (swiper.params.pagination.el && swiper.params.pagination.hideOnClick && swiper.pagination.$el.length > 0 && !thumbs.$(e.target).hasClass(swiper.params.pagination.bulletClass)) {
+      if (swiper.params.pagination.el && swiper.params.pagination.hideOnClick && swiper.pagination.$el.length > 0 && !coreClass.$(e.target).hasClass(swiper.params.pagination.bulletClass)) {
         var isHidden = swiper.pagination.$el.hasClass(swiper.params.pagination.hiddenClass);
 
         if (isHidden === true) {

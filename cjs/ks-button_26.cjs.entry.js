@@ -3,10 +3,11 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-c2b39b63.js');
+const deferredpromise = require('./deferredpromise-4a0fd44b.js');
 const _commonjsHelpers = require('./_commonjsHelpers-bcc1208a.js');
 const validate = require('./validate-fe6a3415.js');
 
-const buttonCss = "ks-button{display:block}ks-button>*{display:block;text-align:center;-webkit-box-sizing:border-box;box-sizing:border-box;font-size:var(--product-button-size);width:100%;padding:12px 20px;outline-style:none;border-style:none;text-decoration:none !important;cursor:pointer;border-radius:0px;font-family:var(--font-regular);font-size:15px;background-color:var(--color-dark);color:var(--text-color-dark) !important;-webkit-transition:var(--transition-background-color);transition:var(--transition-background-color)}ks-button>*:hover{background-color:var(--color-dark-hover)}ks-button>*:active{background-color:var(--color-dark-active)}ks-button[round]>*{border-radius:100px}ks-button[tall]>*{padding:18px 20px}ks-button[primary]>*{color:var(--text-color-primary) !important;background-color:var(--color-primary) !important}ks-button[primary]>*:hover{background-color:var(--color-primary-hover)}ks-button[primary]>*:active{background-color:var(--color-primary-active)}ks-button[secondary]>*{color:var(--text-color-secondary) !important;background-color:var(--color-secondary) !important}ks-button[secondary]>*:hover{background-color:var(--color-secondary-hover)}ks-button[secondary]>*:active{background-color:var(--color-secondary-active)}ks-button[border]>*{border:1px solid #ffffff;background-color:rgba(255, 255, 255, 0)}ks-button[border]>*:hover{background-color:rgba(255, 255, 255, 0.096)}ks-button[border]>*:active{background-color:rgba(255, 255, 255, 0.336)}";
+const buttonCss = "ks-button{display:block}ks-button>*{display:block;text-align:center;-webkit-box-sizing:border-box;box-sizing:border-box;font-size:var(--product-button-size);width:100%;padding:12px 20px;outline-style:none;border-style:none;text-decoration:none !important;cursor:pointer;border-radius:0px;font-family:var(--font-regular);font-size:15px;border:1px solid var(--color-dark);background-color:var(--color-dark);color:var(--text-color-dark) !important;-webkit-transition:var(--transition-background-color);transition:var(--transition-background-color)}ks-button:not([transitionless])>*:hover{background-color:var(--color-dark-hover)}ks-button:not([transitionless])>*:active{background-color:var(--color-dark-active)}ks-button[round]>*{border-radius:100px}ks-button[tall]>*{padding:18px 20px}ks-button[primary]>*{color:var(--text-color-primary) !important;background-color:var(--color-primary) !important;border:1px solid var(--color-primary) !important}ks-button[primary]:not([transitionless])>*:hover{background-color:var(--color-primary-hover)}ks-button[primary]:not([transitionless])>*:active{background-color:var(--color-primary-active)}ks-button[secondary]>*{color:var(--text-color-secondary) !important;background-color:var(--color-secondary) !important;border:1px solid var(--color-secondary) !important}ks-button[secondary]:not([transitionless])>*:hover{background-color:var(--color-secondary-hover)}ks-button[secondary]:not([transitionless])>*:active{background-color:var(--color-secondary-active)}ks-button[border]>*{border:1px solid var(--color-dark);color:var(--color-dark) !important;background-color:rgba(0, 0, 0, 0)}ks-button[border]:not([transitionless])>*:hover{background-color:rgba(0, 0, 0, 0.096)}ks-button[border]:not([transitionless])>*:active{background-color:rgba(0, 0, 0, 0.336)}ks-button[border][light]>*{border:1px solid #ffffff;color:var(--text-color-dark) !important;background-color:rgba(255, 255, 255, 0)}ks-button[border][light]:not([transitionless])>*:hover{background-color:rgba(255, 255, 255, 0.096)}ks-button[border][light]:not([transitionless])>*:active{background-color:rgba(255, 255, 255, 0.336)}";
 
 const Button = class {
   constructor(hostRef) {
@@ -194,7 +195,7 @@ const CookiePopup = class {
     }, this.delay);
   }
   render() {
-    return index.h(index.Host, { hidden: this.hidden, hide: this.hide }, index.h("p", null, this.message), index.h("ks-button", { round: true, border: true, name: this.button, onClick: () => this.hidepanel() }));
+    return index.h(index.Host, { hidden: this.hidden, hide: this.hide }, index.h("p", null, this.message), index.h("ks-button", { round: true, border: true, light: true, name: this.button, onClick: () => this.hidepanel() }));
   }
   get root() { return index.getElement(this); }
 };
@@ -279,6 +280,7 @@ const gridCss = "ks-grid{display:-webkit-box;display:-ms-flexbox;display:flex;-m
 const Grid = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
+    this.section = false;
   }
   render() {
     return index.h("slot", null);
@@ -2757,7 +2759,7 @@ const Image = class {
   }; }
 };
 
-const imgCss = "ks-img{display:-webkit-box;display:-ms-flexbox;display:flex;position:relative;height:100%;width:100%;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}ks-img[limit]{height:unset;width:unset}ks-img img{max-width:initial;height:initial;-webkit-box-sizing:border-box;box-sizing:border-box;opacity:1;-webkit-transition:opacity 0.3s ease;transition:opacity 0.3s ease}ks-img canvas{max-width:100%;max-height:100%;-webkit-box-sizing:border-box;box-sizing:border-box}ks-img .horizontal{width:100%;height:auto}ks-img .vertical{width:auto;height:100%}ks-img .contained{max-width:100%;max-height:100%;width:auto;height:auto}ks-img[src*=\".svg\"] .contained{width:100%;height:100%}ks-img.left{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start}ks-img.right{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end}ks-img.center{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}ks-img img.loading{opacity:0}ks-img[fill] img{position:absolute;max-width:100%;max-height:100%;width:auto;height:auto;top:0px;bottom:0px;left:0px;right:0px;margin:auto}";
+const imgCss = "ks-img{display:-webkit-box;display:-ms-flexbox;display:flex;position:relative;height:100%;width:100%;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;overflow:hidden}ks-img[limit]{height:unset;width:unset}ks-img img{max-width:initial;height:initial;-webkit-box-sizing:border-box;box-sizing:border-box;opacity:1;-webkit-transition:opacity 0.3s ease;transition:opacity 0.3s ease}ks-img canvas{max-width:100%;max-height:100%;-webkit-box-sizing:border-box;box-sizing:border-box}ks-img .horizontal{width:100%;height:auto}ks-img .vertical{width:auto;height:100%}ks-img .contained{max-width:100%;max-height:100%;width:auto;height:auto}ks-img[src*=\".svg\"] .contained{width:100%;height:100%}ks-img.left{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start}ks-img.right{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end}ks-img.center{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}ks-img img.loading{opacity:0}ks-img[fill] img{position:absolute;max-width:100%;max-height:100%;width:auto;height:auto;top:0px;bottom:0px;left:0px;right:0px;margin:auto}";
 
 const Img = class {
   constructor(hostRef) {
@@ -2772,19 +2774,11 @@ const Img = class {
     this.center = false;
     this.limit = false;
     this.loaded = false;
-    this.loadAnimated = false;
   }
   loadHandler(e) {
     if (e.target instanceof HTMLElement && !e.target.getAttribute("src").includes('data:image')) {
       this.loaded = true;
       this.lazyLoaded.emit();
-    }
-  }
-  componentDidUpdate() {
-    if (this.loaded && !this.loadAnimated) {
-      setTimeout(() => {
-        this.loadAnimated = true;
-      }, 1000);
     }
   }
   srcListener() {
@@ -2794,11 +2788,14 @@ const Img = class {
     setTimeout(() => {
       if (!image.complete) {
         this.loaded = false;
-        this.loadAnimated = false;
       }
     }, 200);
   }
   componentDidLoad() {
+    if (!this.sync)
+      deferredpromise.window_load.promise.then(() => this.initializeObserver());
+  }
+  initializeObserver() {
     this.image = this.root.querySelector('img');
     const target = this.target ? this.root.closest(this.target) : this.root;
     const onIntersection = (entries) => {
@@ -2832,7 +2829,7 @@ const Img = class {
   render() {
     const responsive = this.contained ? "contained" :
       this.vertical ? "vertical" : "horizontal";
-    const loading = this.loadAnimated ? "" : "loading";
+    const loading = this.loaded ? "" : "loading";
     const classes = [responsive].join(" ");
     const max = this.limit ? { maxWidth: `${this.width}px` } : null;
     if (this.sync)
@@ -2840,11 +2837,11 @@ const Img = class {
     if (this.fill)
       return [
         index.h("canvas", { width: this.width, height: this.height }),
-        (!this.loadAnimated ? index.h("ks-loader", { dark: true }) : null),
+        (!this.loaded ? index.h("ks-loader", { dark: true }) : null),
         index.h("img", { class: classes + " " + loading, alt: this.alt, onLoad: (e) => this.loadHandler(e), "data-src": this.src, width: this.width, height: this.height })
       ];
     return [
-      (!this.loadAnimated ? index.h("ks-loader", { dark: true }) : null),
+      (!this.loaded ? index.h("ks-loader", { dark: true }) : null),
       !this.loaded ? index.h("canvas", { width: this.width, height: this.height, style: max }) : null,
       index.h("img", { class: classes + " " + loading, alt: this.alt, onLoad: (e) => this.loadHandler(e), "data-src": this.src, width: this.width, height: this.height, style: max })
     ];
@@ -2937,7 +2934,7 @@ const store = validate.createStore({
   categories: []
 });
 
-const navbarCss = "ks-navbar{display:block;min-height:104px}ks-navbar>nav{display:-webkit-box;display:-ms-flexbox;display:flex;position:relative;color:var(--navbar-text-color);background-color:var(--navbar-color)}ks-navbar>nav>.logo{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:1;-ms-flex:1;flex:1;-webkit-box-align:center;-ms-flex-align:center;align-items:center}ks-navbar>nav>.search{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:unset;-ms-flex:unset;flex:unset;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}ks-navbar>nav>.buttons{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:unset;-ms-flex:unset;flex:unset;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;-webkit-box-align:center;-ms-flex-align:center;align-items:center}ks-navbar>nav>.logo>div{margin-right:auto;margin-left:15px;max-width:217px;width:100%;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start}ks-navbar>nav>.logo>div ks-img{max-width:217px;margin-right:15px}ks-navbar>nav>.logo>div .promo{display:block;font-size:11px;font-weight:700;text-decoration:none;color:var(--navbar-text-color);white-space:nowrap}@media only screen and (min-width: 640px){ks-navbar>nav>.logo{-webkit-box-flex:1;-ms-flex:1;flex:1}ks-navbar>nav>.buttons{-webkit-box-flex:1;-ms-flex:1;flex:1}}@media only screen and (min-width: 1400px){ks-navbar>nav>.search{-webkit-box-flex:1;-ms-flex:1;flex:1}ks-navbar>nav>.logo>div ks-img{width:217px}ks-navbar>nav>.logo>div{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;max-width:unset;width:unset}ks-navbar>nav>.logo>div .promo{margin-left:15px;display:block;padding:8px 20px 5px 20px;border-radius:50px;background-color:var(--navbar-text-color);color:var(--navbar-color);font-size:13px;font-weight:700}ks-navbar>nav>.logo>div a.promo{-webkit-box-shadow:0 0 0px rgba(255, 255, 255, 0.529);box-shadow:0 0 0px rgba(255, 255, 255, 0.529);-webkit-transition:box-shadow 0.2s ease;-webkit-transition:-webkit-box-shadow 0.2s ease;transition:-webkit-box-shadow 0.2s ease;transition:box-shadow 0.2s ease;transition:box-shadow 0.2s ease, -webkit-box-shadow 0.2s ease}ks-navbar>nav>.logo>div a.promo:hover{-webkit-box-shadow:0 0 15px rgba(255, 255, 255, 0.529);box-shadow:0 0 15px rgba(255, 255, 255, 0.529)}ks-navbar>nav>.logo>div a.promo:active{-webkit-box-shadow:0 0 8px rgba(255, 255, 255, 0.529);box-shadow:0 0 8px rgba(255, 255, 255, 0.529)}}#ks-navbar-menu-buttons{-webkit-box-sizing:border-box;box-sizing:border-box;min-height:70px;padding:0 15px;text-decoration:none}@media only screen and (max-width: 639px){ks-navbar .tablet-desktop{display:none}}@media only screen and (max-width: 959px){ks-navbar .desktop{display:none}}@media only screen and (min-width: 960px){ks-navbar .mobile-tablet{display:none}}";
+const navbarCss = "ks-navbar{display:block;min-height:104px;background-color:var(--navbar-color)}ks-navbar>nav{display:-webkit-box;display:-ms-flexbox;display:flex;position:relative;color:var(--navbar-text-color);background-color:var(--navbar-color)}ks-navbar>nav>.logo{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:1;-ms-flex:1;flex:1;-webkit-box-align:center;-ms-flex-align:center;align-items:center}ks-navbar>nav>.search{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:unset;-ms-flex:unset;flex:unset;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}ks-navbar>nav>.buttons{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:unset;-ms-flex:unset;flex:unset;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;-webkit-box-align:center;-ms-flex-align:center;align-items:center}ks-navbar>nav>.logo>div{margin-right:auto;margin-left:15px;max-width:217px;width:100%;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start}ks-navbar>nav>.logo>div ks-img{max-width:217px;margin-right:15px}ks-navbar>nav>.logo>div .promo{display:block;font-size:11px;font-weight:700;text-decoration:none;color:var(--navbar-text-color);white-space:nowrap}@media only screen and (min-width: 640px){ks-navbar>nav>.logo{-webkit-box-flex:1;-ms-flex:1;flex:1}ks-navbar>nav>.buttons{-webkit-box-flex:1;-ms-flex:1;flex:1}}@media only screen and (min-width: 1400px){ks-navbar>nav>.search{-webkit-box-flex:1;-ms-flex:1;flex:1}ks-navbar>nav>.logo>div ks-img{width:217px}ks-navbar>nav>.logo>div{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;max-width:unset;width:unset}ks-navbar>nav>.logo>div .promo{margin-left:15px;display:block;padding:8px 20px 5px 20px;border-radius:50px;background-color:var(--navbar-text-color);color:var(--navbar-color);font-size:13px;font-weight:700}ks-navbar>nav>.logo>div a.promo{-webkit-box-shadow:0 0 0px rgba(255, 255, 255, 0.529);box-shadow:0 0 0px rgba(255, 255, 255, 0.529);-webkit-transition:box-shadow 0.2s ease;-webkit-transition:-webkit-box-shadow 0.2s ease;transition:-webkit-box-shadow 0.2s ease;transition:box-shadow 0.2s ease;transition:box-shadow 0.2s ease, -webkit-box-shadow 0.2s ease}ks-navbar>nav>.logo>div a.promo:hover{-webkit-box-shadow:0 0 15px rgba(255, 255, 255, 0.529);box-shadow:0 0 15px rgba(255, 255, 255, 0.529)}ks-navbar>nav>.logo>div a.promo:active{-webkit-box-shadow:0 0 8px rgba(255, 255, 255, 0.529);box-shadow:0 0 8px rgba(255, 255, 255, 0.529)}}#ks-navbar-menu-buttons{-webkit-box-sizing:border-box;box-sizing:border-box;min-height:70px;padding:0 15px;text-decoration:none}@media only screen and (max-width: 639px){ks-navbar .tablet-desktop{display:none}}@media only screen and (max-width: 959px){ks-navbar .desktop{display:none}}@media only screen and (min-width: 960px){ks-navbar .mobile-tablet{display:none}}";
 
 const Navbar = class {
   constructor(hostRef) {

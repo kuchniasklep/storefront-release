@@ -28,7 +28,7 @@ export class CookiePopup {
   render() {
     return h(Host, { hidden: this.hidden, hide: this.hide },
       h("p", null, this.message),
-      h("ks-button", { round: true, border: true, name: this.button, onClick: () => this.hidepanel() }));
+      h("ks-button", { round: true, border: true, light: true, name: this.button, onClick: () => this.hidepanel() }));
   }
   static get is() { return "ks-cookie-popup"; }
   static get originalStyleUrls() { return {

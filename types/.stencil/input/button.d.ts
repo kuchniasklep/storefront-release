@@ -8,5 +8,7 @@ export declare class Button {
   primary: boolean;
   secondary: boolean;
   border: boolean;
+  light: boolean;
+  transitionless: boolean;
   render(): any;
 }

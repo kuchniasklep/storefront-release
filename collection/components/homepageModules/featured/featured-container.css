@@ -1,0 +1,37 @@
+ks-featured-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+    min-height: 10px;
+}
+
+ks-featured-container > .left {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    margin-right: 5px;
+}
+
+ks-featured-container > .right {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    margin-left: 5px;
+}
+
+ks-featured-container > div > *:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+@media (max-width: 840px) {
+    ks-featured-container {
+        display: block;
+    }
+
+    ks-featured-container > div:first-child > * {
+        margin-bottom: 10px;
+    }
+}

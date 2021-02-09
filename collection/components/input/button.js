@@ -154,6 +154,40 @@ export class Button {
       },
       "attribute": "border",
       "reflect": true
+    },
+    "light": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "light",
+      "reflect": true
+    },
+    "transitionless": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "transitionless",
+      "reflect": true
     }
   }; }
   static get elementRef() { return "root"; }

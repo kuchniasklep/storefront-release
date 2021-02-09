@@ -3,12 +3,13 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-c2b39b63.js');
-const thumbs = require('./thumbs-f1578b12.js');
-const pagination = require('./pagination-8cb7a551.js');
+const coreClass = require('./core-class-05f4a49b.js');
+const pagination = require('./pagination-6d58af1e.js');
+const thumbs = require('./thumbs-005bf787.js');
 
 const sidepanelCss = "ks-sidepanel{display:block}ks-sidepanel .content{position:absolute;z-index:100000;width:100%;height:100%;top:0px;left:0px;-webkit-transform:translateX(100%);-ms-transform:translateX(100%);transform:translateX(100%);transition:transform 0.2s ease, -ms-transform 0.2 ease}ks-sidepanel .content.visible{-webkit-transform:translateX(0%);-ms-transform:translateX(0%);transform:translateX(0%)}ks-sidepanel .content.hidden{-webkit-transform:translateX(100%);-ms-transform:translateX(100%);transform:translateX(100%)}";
 
-thumbs.Swiper.use([pagination.Pagination, thumbs.Thumbs]);
+coreClass.Swiper.use([pagination.Pagination, thumbs.Thumbs]);
 const SidePanel = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);

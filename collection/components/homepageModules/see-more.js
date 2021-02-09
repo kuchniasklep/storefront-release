@@ -5,16 +5,15 @@ export class SeeMore {
     this.text = "";
   }
   render() {
-    return (h("div", { class: "uk-flex uk-flex-center uk-margin-top" },
-      h("a", { href: this.href, class: "uk-button uk-button-default uk-margin-auto", style: {
-          backgroundColor: "white",
-          padding: "3px 30px",
-          border: "none",
-          borderRadius: "50px",
-          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.18)"
-        } }, this.text)));
+    return h("a", { href: this.href }, this.text);
   }
   static get is() { return "ks-see-more"; }
+  static get originalStyleUrls() { return {
+    "$": ["see-more.css"]
+  }; }
+  static get styleUrls() { return {
+    "$": ["see-more.css"]
+  }; }
   static get properties() { return {
     "href": {
       "type": "string",

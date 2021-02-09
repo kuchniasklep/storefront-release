@@ -2,7 +2,8 @@ export declare class Featured {
   image: string;
   alt: string;
   link: string;
-  root: HTMLElement;
-  componentWillLoad(): void;
+  width: number;
+  height: number;
+  color: string;
   render(): any;
 }

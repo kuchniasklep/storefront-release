@@ -1,0 +1,1 @@
+var e=function(){let e={promise:null,resolve:null,reject:null};return e.promise=new Promise(((l,n)=>{e.resolve=l,e.reject=n})),e}();"complete"===document.readyState?e.resolve():addEventListener("load",(()=>{e.resolve()}));export{e as w}

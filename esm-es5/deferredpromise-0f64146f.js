@@ -1,0 +1,1 @@
+function deferredpromise(){var e={promise:null,resolve:null,reject:null};e.promise=new Promise((function(o,r){e.resolve=o;e.reject=r}));return e}var window_load=deferredpromise();if(document.readyState==="complete"){window_load.resolve()}else addEventListener("load",(function(){window_load.resolve()}));export{window_load as w};

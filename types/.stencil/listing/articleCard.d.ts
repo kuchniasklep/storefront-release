@@ -5,6 +5,5 @@ export declare class ArticleCard {
   views: string;
   link: string;
   hideOnOdd: boolean;
-  root: HTMLElement;
-  render(): any;
+  render(): any[];
 }

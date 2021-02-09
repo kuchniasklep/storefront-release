@@ -15,15 +15,14 @@ export declare class Img {
   height: number;
   limit: boolean;
   loaded: boolean;
-  loadAnimated: boolean;
   root: HTMLElement;
   lazyLoaded: EventEmitter;
   loadHandler(e: Event): void;
-  componentDidUpdate(): void;
   srcListener(): void;
   private observer;
   private image;
   componentDidLoad(): void;
+  initializeObserver(): void;
   SetAlignment(): void;
   render(): any;
 }

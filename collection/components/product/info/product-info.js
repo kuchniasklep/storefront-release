@@ -11,7 +11,9 @@ export class ProductInfo {
     this.favouritesApi = "";
     this.suggestionApi = "";
   }
-  connectedCallback() {
+  componentDidLoad() {
+    this.navbar = document.querySelector("ks-navbar");
+    this.errorPopup = document.querySelector("ks-error-popup");
     const dataElement = document.getElementById(this.dataId);
     const data = JSON.parse(dataElement.innerHTML);
     Object.keys(data).map(key => {
@@ -20,10 +22,6 @@ export class ProductInfo {
     if (store.get("negotiate") && store.get("shippingMessage")) {
       store.set("externalPoints", true);
     }
-  }
-  componentDidLoad() {
-    this.navbar = document.querySelector("ks-navbar");
-    this.errorPopup = document.querySelector("ks-error-popup");
   }
   async CountChange(event) {
     store.set("count", event.detail);

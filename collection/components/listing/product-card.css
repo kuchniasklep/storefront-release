@@ -23,7 +23,7 @@ ks-product-card {
 }
 
 @media (min-width: 640px) {
-    ks-product-card { width: 230px; }
+    ks-product-card { width: 228px; }
 }
 
 ks-product-card .top {

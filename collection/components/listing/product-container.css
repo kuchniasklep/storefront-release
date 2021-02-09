@@ -31,6 +31,6 @@ ks-product-container > * {
 
 @media (min-width: 640px) {
     ks-product-container > * {
-        width: 230px;
+        width: 228px;
     }
 }

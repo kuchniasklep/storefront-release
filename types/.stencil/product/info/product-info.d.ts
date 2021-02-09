@@ -9,7 +9,6 @@ export declare class ProductInfo {
   cartCountApi: string;
   favouritesApi: string;
   suggestionApi: string;
-  connectedCallback(): void;
   navbar: HTMLKsNavbarElement;
   errorPopup: HTMLKsErrorPopupElement;
   componentDidLoad(): void;

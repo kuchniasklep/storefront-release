@@ -1,3 +1,8 @@
 export declare class ProductContainer {
-  render(): any;
+  active: number;
+  render(): any[];
+  Button: ({ index, name }: {
+    index: any;
+    name: any;
+  }) => any;
 }

@@ -73,3 +73,20 @@ ks-product-images .thumb .swiper-slide-thumb-active {
         max-height: 300px;
     }
 }
+
+
+ks-product-images .preview:not(.swiper-container-initialized) .swiper-slide:nth-child(n+2) {
+    display: none;
+}
+
+ks-product-images .thumb .swiper-wrapper {
+    opacity: 1;
+    -webkit-animation: fade-in 0.3s ease;
+            animation: fade-in 0.3s ease;
+}
+
+ks-product-images .thumb:not(.swiper-container-initialized) .swiper-wrapper {
+    opacity: 0;
+    -webkit-animation: none;
+            animation: none;
+}
