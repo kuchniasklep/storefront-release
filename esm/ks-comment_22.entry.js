@@ -1,5 +1,5 @@
 import { r as registerInstance, h, g as getElement, c as createEvent, H as Host } from './index-46fe532f.js';
-import { O as OpenSuggestions } from './functions-c078c5d8.js';
+import { O as OpenSuggestions } from './functions-7b802b6f.js';
 import { w as window_load } from './deferredpromise-0f64146f.js';
 import { S as Swiper } from './core-class-f05bf7c2.js';
 import { T as Thumbs } from './thumbs-06204fe0.js';

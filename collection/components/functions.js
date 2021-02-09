@@ -37,11 +37,10 @@ export function AddToCart(id, count, traits, place, name, finished) {
     cartBody.append("ilosc", count);
     cartBody.append("cechy", traits);
     cartBody.append("komentarz", "");
-    cartBody.append("komentarz", "");
     cartBody.append("txt", "");
     cartBody.append("wroc", "");
     cartBody.append("miejsce", place);
-    await cartfetch("inne/do_koszyka.php?tok=", cartBody)
+    await cartfetch("inne/do_koszyka.php?tok=" + ksCartToken, cartBody)
       .then(data => data.text())
       .then(data => {
       let saCechy = data.indexOf('KonieczneCechy');
