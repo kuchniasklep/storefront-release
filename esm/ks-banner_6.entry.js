@@ -242,7 +242,7 @@ const Featured = class {
     this.color = "#0f0f0f";
   }
   render() {
-    return (h("a", { href: this.link, style: { backgroundColor: this.color } }, h("ks-img", { sync: true, src: this.image, alt: this.alt, width: this.width, height: this.height, target: "ks-featured" }), h("div", { class: "icon" }, h("ks-icon", { name: "link", size: 1.1 }))));
+    return (h("a", { href: this.link, style: { backgroundColor: this.color } }, h("ks-img", { src: this.image, alt: this.alt, width: this.width, height: this.height, target: "ks-featured" }), h("div", { class: "icon" }, h("ks-icon", { name: "link", size: 1.1 }))));
   }
 };
 Featured.style = featuredCss;

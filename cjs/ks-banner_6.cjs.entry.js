@@ -246,7 +246,7 @@ const Featured = class {
     this.color = "#0f0f0f";
   }
   render() {
-    return (index.h("a", { href: this.link, style: { backgroundColor: this.color } }, index.h("ks-img", { sync: true, src: this.image, alt: this.alt, width: this.width, height: this.height, target: "ks-featured" }), index.h("div", { class: "icon" }, index.h("ks-icon", { name: "link", size: 1.1 }))));
+    return (index.h("a", { href: this.link, style: { backgroundColor: this.color } }, index.h("ks-img", { src: this.image, alt: this.alt, width: this.width, height: this.height, target: "ks-featured" }), index.h("div", { class: "icon" }, index.h("ks-icon", { name: "link", size: 1.1 }))));
   }
 };
 Featured.style = featuredCss;
