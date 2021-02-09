@@ -63,9 +63,6 @@ const ButtonFav = class {
   ClickHandler() {
     if (!this.loading && !this.success) {
       this.loading = true;
-      setTimeout(() => {
-        this.ResultHandler();
-      }, 1000);
       if (this.subtract)
         RemoveFromFavourites(this.productId, () => this.ResultHandler());
       else
@@ -78,8 +75,6 @@ const ButtonFav = class {
     const navbar = document.querySelector("ks-navbar");
     if (this.subtract)
       navbar.DecrementHeart();
-    else
-      navbar.IncrementHeart();
   }
   render() {
     return (h("button", { "aria-label": "Do koszyka", onClick: () => this.ClickHandler() }, this.loading ?

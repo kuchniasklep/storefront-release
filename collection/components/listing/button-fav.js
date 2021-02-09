@@ -11,9 +11,6 @@ export class ButtonFav {
   ClickHandler() {
     if (!this.loading && !this.success) {
       this.loading = true;
-      setTimeout(() => {
-        this.ResultHandler();
-      }, 1000);
       if (this.subtract)
         RemoveFromFavourites(this.productId, () => this.ResultHandler());
       else
@@ -26,8 +23,6 @@ export class ButtonFav {
     const navbar = document.querySelector("ks-navbar");
     if (this.subtract)
       navbar.DecrementHeart();
-    else
-      navbar.IncrementHeart();
   }
   render() {
     return (h("button", { "aria-label": "Do koszyka", onClick: () => this.ClickHandler() },
