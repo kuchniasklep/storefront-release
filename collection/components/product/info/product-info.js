@@ -143,7 +143,8 @@ export class ProductInfo {
         h("div", { class: "installments" },
           h("slot", { name: "inst" })),
         h("div", { class: "attributes" },
-          h("slot", { name: "attr" })))
+          h("slot", { name: "attr" })),
+        h("slot", { name: "brand" }))
     ];
   }
   static get is() { return "ks-product-info"; }

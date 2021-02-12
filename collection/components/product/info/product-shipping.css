@@ -1,6 +1,6 @@
 ks-product-shipping {
     display: block;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 
     font-family: var(--product-shipping-font);
     font-size: var(--product-shipping-size);
@@ -33,7 +33,7 @@ ks-product-shipping .message {
     color: var(--text-color-secondary);
     text-align: center;
 
-    margin: 20px 0px 5px -2px;
+    margin: 15px 0px 5px -2px;
     padding: 10px 20px;
     border-radius: 15px;
 }

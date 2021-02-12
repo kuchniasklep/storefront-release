@@ -423,6 +423,15 @@ export namespace Components {
         "vertical": boolean;
         "width": number;
     }
+    interface KsImg2 {
+        "alt": string;
+        "height": number;
+        "observerMargin": string;
+        "src": string;
+        "sync": boolean;
+        "target": string;
+        "width": number;
+    }
     interface KsInfoBanner {
         "color": string;
         "height": number;
@@ -761,6 +770,13 @@ export namespace Components {
         "href": string;
         "image": string;
         "name": string;
+    }
+    interface KsProductBrand {
+        "height": number;
+        "href": string;
+        "logo": string;
+        "name": string;
+        "width": number;
     }
     interface KsProductButton {
         "large": boolean;
@@ -1370,6 +1386,12 @@ declare global {
         prototype: HTMLKsImgElement;
         new (): HTMLKsImgElement;
     };
+    interface HTMLKsImg2Element extends Components.KsImg2, HTMLStencilElement {
+    }
+    var HTMLKsImg2Element: {
+        prototype: HTMLKsImg2Element;
+        new (): HTMLKsImg2Element;
+    };
     interface HTMLKsInfoBannerElement extends Components.KsInfoBanner, HTMLStencilElement {
     }
     var HTMLKsInfoBannerElement: {
@@ -1682,6 +1704,12 @@ declare global {
         prototype: HTMLKsProductAttributeElement;
         new (): HTMLKsProductAttributeElement;
     };
+    interface HTMLKsProductBrandElement extends Components.KsProductBrand, HTMLStencilElement {
+    }
+    var HTMLKsProductBrandElement: {
+        prototype: HTMLKsProductBrandElement;
+        new (): HTMLKsProductBrandElement;
+    };
     interface HTMLKsProductButtonElement extends Components.KsProductButton, HTMLStencilElement {
     }
     var HTMLKsProductButtonElement: {
@@ -1980,6 +2008,7 @@ declare global {
         "ks-icon": HTMLKsIconElement;
         "ks-image": HTMLKsImageElement;
         "ks-img": HTMLKsImgElement;
+        "ks-img2": HTMLKsImg2Element;
         "ks-info-banner": HTMLKsInfoBannerElement;
         "ks-info-message": HTMLKsInfoMessageElement;
         "ks-input-check": HTMLKsInputCheckElement;
@@ -2032,6 +2061,7 @@ declare global {
         "ks-product-admin": HTMLKsProductAdminElement;
         "ks-product-admin-distributor": HTMLKsProductAdminDistributorElement;
         "ks-product-attribute": HTMLKsProductAttributeElement;
+        "ks-product-brand": HTMLKsProductBrandElement;
         "ks-product-button": HTMLKsProductButtonElement;
         "ks-product-calculator-ca": HTMLKsProductCalculatorCaElement;
         "ks-product-calculator-payu": HTMLKsProductCalculatorPayuElement;
@@ -2475,6 +2505,16 @@ declare namespace LocalJSX {
         "vertical"?: boolean;
         "width"?: number;
     }
+    interface KsImg2 {
+        "alt"?: string;
+        "height"?: number;
+        "observerMargin"?: string;
+        "onLazyLoaded"?: (event: CustomEvent<any>) => void;
+        "src"?: string;
+        "sync"?: boolean;
+        "target"?: string;
+        "width"?: number;
+    }
     interface KsInfoBanner {
         "color"?: string;
         "height"?: number;
@@ -2779,6 +2819,13 @@ declare namespace LocalJSX {
         "image"?: string;
         "name"?: string;
     }
+    interface KsProductBrand {
+        "height"?: number;
+        "href"?: string;
+        "logo"?: string;
+        "name"?: string;
+        "width"?: number;
+    }
     interface KsProductButton {
         "large"?: boolean;
         "medium"?: boolean;
@@ -3043,6 +3090,7 @@ declare namespace LocalJSX {
         "ks-icon": KsIcon;
         "ks-image": KsImage;
         "ks-img": KsImg;
+        "ks-img2": KsImg2;
         "ks-info-banner": KsInfoBanner;
         "ks-info-message": KsInfoMessage;
         "ks-input-check": KsInputCheck;
@@ -3095,6 +3143,7 @@ declare namespace LocalJSX {
         "ks-product-admin": KsProductAdmin;
         "ks-product-admin-distributor": KsProductAdminDistributor;
         "ks-product-attribute": KsProductAttribute;
+        "ks-product-brand": KsProductBrand;
         "ks-product-button": KsProductButton;
         "ks-product-calculator-ca": KsProductCalculatorCa;
         "ks-product-calculator-payu": KsProductCalculatorPayu;
@@ -3208,6 +3257,7 @@ declare module "@stencil/core" {
             "ks-icon": LocalJSX.KsIcon & JSXBase.HTMLAttributes<HTMLKsIconElement>;
             "ks-image": LocalJSX.KsImage & JSXBase.HTMLAttributes<HTMLKsImageElement>;
             "ks-img": LocalJSX.KsImg & JSXBase.HTMLAttributes<HTMLKsImgElement>;
+            "ks-img2": LocalJSX.KsImg2 & JSXBase.HTMLAttributes<HTMLKsImg2Element>;
             "ks-info-banner": LocalJSX.KsInfoBanner & JSXBase.HTMLAttributes<HTMLKsInfoBannerElement>;
             "ks-info-message": LocalJSX.KsInfoMessage & JSXBase.HTMLAttributes<HTMLKsInfoMessageElement>;
             "ks-input-check": LocalJSX.KsInputCheck & JSXBase.HTMLAttributes<HTMLKsInputCheckElement>;
@@ -3260,6 +3310,7 @@ declare module "@stencil/core" {
             "ks-product-admin": LocalJSX.KsProductAdmin & JSXBase.HTMLAttributes<HTMLKsProductAdminElement>;
             "ks-product-admin-distributor": LocalJSX.KsProductAdminDistributor & JSXBase.HTMLAttributes<HTMLKsProductAdminDistributorElement>;
             "ks-product-attribute": LocalJSX.KsProductAttribute & JSXBase.HTMLAttributes<HTMLKsProductAttributeElement>;
+            "ks-product-brand": LocalJSX.KsProductBrand & JSXBase.HTMLAttributes<HTMLKsProductBrandElement>;
             "ks-product-button": LocalJSX.KsProductButton & JSXBase.HTMLAttributes<HTMLKsProductButtonElement>;
             "ks-product-calculator-ca": LocalJSX.KsProductCalculatorCa & JSXBase.HTMLAttributes<HTMLKsProductCalculatorCaElement>;
             "ks-product-calculator-payu": LocalJSX.KsProductCalculatorPayu & JSXBase.HTMLAttributes<HTMLKsProductCalculatorPayuElement>;
