@@ -703,9 +703,9 @@ const ProductTab$1 = class {
         width = image.style.maxWidth;
       }
       ksImage.style.display = "inline-block";
-      if (height)
+      if (height && !height.includes("%"))
         ksImage.setAttribute("height", height);
-      if (width)
+      if (width && !width.includes("%"))
         ksImage.setAttribute("width", width);
       const margin = image.style.margin;
       if (margin.includes("auto"))
