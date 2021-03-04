@@ -522,7 +522,7 @@ const OrderLogin = class {
   async Submit(event) {
     event.preventDefault();
     const form = this.root.querySelector("form");
-    const email = form.querySelector("ks-input-dynamic");
+    const email = form.querySelector("ks-input-dynamic, ks-input-text[email]");
     const pass = form.querySelector("ks-input-text[password]");
     await email.Validate();
     await pass.Validate();
