@@ -17,7 +17,7 @@ const NotFound = class {
     return [
       index.h("div", { class: "status" }, this.status),
       index.h("div", { class: "content" }, index.h("slot", null)),
-      index.h("ks-button", { round: true, link: this.link, name: this.linkName })
+      index.h("ks-button", { round: true, nofollow: true, link: this.link, name: this.linkName })
     ];
   }
 };

@@ -10,7 +10,7 @@ export class NotFound {
       h("div", { class: "status" }, this.status),
       h("div", { class: "content" },
         h("slot", null)),
-      h("ks-button", { round: true, link: this.link, name: this.linkName })
+      h("ks-button", { round: true, nofollow: true, link: this.link, name: this.linkName })
     ];
   }
   static get is() { return "ks-notfound"; }
