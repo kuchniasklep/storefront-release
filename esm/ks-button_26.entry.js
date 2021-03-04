@@ -14,7 +14,7 @@ const Button = class {
     if (this.submit)
       return h("input", { type: "submit", value: this.name });
     if (this.link)
-      return h("a", { href: this.link }, this.name);
+      return h("a", { href: this.link, rel: this.nofollow ? "nofollow" : null }, this.name);
     return h("button", null, this.name);
   }
   get root() { return getElement(this); }

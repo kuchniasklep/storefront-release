@@ -46,6 +46,7 @@ export namespace Components {
         "light": boolean;
         "link": string;
         "name": string;
+        "nofollow": boolean;
         "primary": boolean;
         "round": boolean;
         "secondary": boolean;
@@ -617,6 +618,11 @@ export namespace Components {
         "loginLink": string;
         "registerLink": string;
         "successHeading": string;
+    }
+    interface KsNotfound {
+        "link": string;
+        "linkName": string;
+        "status": string;
     }
     interface KsOrderAddressField {
         "name": string;
@@ -1530,6 +1536,12 @@ declare global {
         prototype: HTMLKsNewsletterPopupElement;
         new (): HTMLKsNewsletterPopupElement;
     };
+    interface HTMLKsNotfoundElement extends Components.KsNotfound, HTMLStencilElement {
+    }
+    var HTMLKsNotfoundElement: {
+        prototype: HTMLKsNotfoundElement;
+        new (): HTMLKsNotfoundElement;
+    };
     interface HTMLKsOrderAddressFieldElement extends Components.KsOrderAddressField, HTMLStencilElement {
     }
     var HTMLKsOrderAddressFieldElement: {
@@ -2032,6 +2044,7 @@ declare global {
         "ks-navbar-search-mobile": HTMLKsNavbarSearchMobileElement;
         "ks-navbar-sidebar": HTMLKsNavbarSidebarElement;
         "ks-newsletter-popup": HTMLKsNewsletterPopupElement;
+        "ks-notfound": HTMLKsNotfoundElement;
         "ks-order-address-field": HTMLKsOrderAddressFieldElement;
         "ks-order-address-section": HTMLKsOrderAddressSectionElement;
         "ks-order-button": HTMLKsOrderButtonElement;
@@ -2139,6 +2152,7 @@ declare namespace LocalJSX {
         "light"?: boolean;
         "link"?: string;
         "name"?: string;
+        "nofollow"?: boolean;
         "primary"?: boolean;
         "round"?: boolean;
         "secondary"?: boolean;
@@ -2675,6 +2689,11 @@ declare namespace LocalJSX {
         "registerLink"?: string;
         "successHeading"?: string;
     }
+    interface KsNotfound {
+        "link"?: string;
+        "linkName"?: string;
+        "status"?: string;
+    }
     interface KsOrderAddressField {
         "name"?: string;
     }
@@ -3114,6 +3133,7 @@ declare namespace LocalJSX {
         "ks-navbar-search-mobile": KsNavbarSearchMobile;
         "ks-navbar-sidebar": KsNavbarSidebar;
         "ks-newsletter-popup": KsNewsletterPopup;
+        "ks-notfound": KsNotfound;
         "ks-order-address-field": KsOrderAddressField;
         "ks-order-address-section": KsOrderAddressSection;
         "ks-order-button": KsOrderButton;
@@ -3281,6 +3301,7 @@ declare module "@stencil/core" {
             "ks-navbar-search-mobile": LocalJSX.KsNavbarSearchMobile & JSXBase.HTMLAttributes<HTMLKsNavbarSearchMobileElement>;
             "ks-navbar-sidebar": LocalJSX.KsNavbarSidebar & JSXBase.HTMLAttributes<HTMLKsNavbarSidebarElement>;
             "ks-newsletter-popup": LocalJSX.KsNewsletterPopup & JSXBase.HTMLAttributes<HTMLKsNewsletterPopupElement>;
+            "ks-notfound": LocalJSX.KsNotfound & JSXBase.HTMLAttributes<HTMLKsNotfoundElement>;
             "ks-order-address-field": LocalJSX.KsOrderAddressField & JSXBase.HTMLAttributes<HTMLKsOrderAddressFieldElement>;
             "ks-order-address-section": LocalJSX.KsOrderAddressSection & JSXBase.HTMLAttributes<HTMLKsOrderAddressSectionElement>;
             "ks-order-button": LocalJSX.KsOrderButton & JSXBase.HTMLAttributes<HTMLKsOrderButtonElement>;

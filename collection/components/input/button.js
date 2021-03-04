@@ -7,7 +7,7 @@ export class Button {
     if (this.submit)
       return h("input", { type: "submit", value: this.name });
     if (this.link)
-      return h("a", { href: this.link }, this.name);
+      return h("a", { href: this.link, rel: this.nofollow ? "nofollow" : null }, this.name);
     return h("button", null, this.name);
   }
   static get is() { return "ks-button"; }
@@ -68,6 +68,23 @@ export class Button {
         "text": ""
       },
       "attribute": "link",
+      "reflect": false
+    },
+    "nofollow": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "nofollow",
       "reflect": false
     },
     "round": {

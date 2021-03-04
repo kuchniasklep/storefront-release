@@ -3,6 +3,7 @@ export declare class Button {
   name: string;
   submit: boolean;
   link: string;
+  nofollow: boolean;
   round: boolean;
   tall: boolean;
   primary: boolean;

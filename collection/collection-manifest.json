@@ -103,6 +103,7 @@
     "./components/navbar/categories/category-simple.js",
     "./components/navbar/categories/category-view.js",
     "./components/navbar/panels/navbar-contact-panel.js",
+    "./components/notfound/notfound.js",
     "./components/order/orderProgress.js",
     "./components/order/radioTile.js",
     "./components/order/confirmation/OrderAddressSection.js",
