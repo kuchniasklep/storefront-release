@@ -235,7 +235,7 @@ const Cart = class {
   RemoveDiscount() {
     const data = this.data;
     delete data.discount;
-    this.data = data;
+    this.Update(data);
   }
   ShowMessageFromData(data, callback) {
     if ('message' in data) {
