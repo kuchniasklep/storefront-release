@@ -1,9 +1,10 @@
-import { r as registerInstance, h, g as getElement, c as createEvent, H as Host } from './index-46fe532f.js';
+import { r as registerInstance, h, g as getElement, c as createEvent, H as Host } from './index-2d9093e5.js';
 import { O as OpenSuggestions } from './functions-802032ba.js';
 import { w as window_load } from './deferredpromise-0f64146f.js';
 import { S as Swiper } from './core-class-f05bf7c2.js';
 import { T as Thumbs } from './thumbs-06204fe0.js';
-import { c as createStore, V as ValidateInput } from './validate-46a616dd.js';
+import { c as createStore } from './index-324bcb5b.js';
+import { V as ValidateInput } from './validate-cd7ce36d.js';
 
 const commentCss = "ks-comment{display:block}ks-comment article{padding:30px}@media (min-width: 1200px){ks-comment article{padding:30px 40px}}ks-comment header{display:-webkit-box;display:-ms-flexbox;display:flex}ks-comment header>div{width:100%}ks-comment header .title{margin:0}ks-comment header .info{font-size:.875rem;line-height:1.4;color:#707070}ks-comment ks-icon{margin-right:20px}ks-comment p{margin-bottom:0px}";
 

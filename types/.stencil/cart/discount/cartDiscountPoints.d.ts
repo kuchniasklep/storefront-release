@@ -4,8 +4,8 @@ export declare class CartDiscountPoints {
   message: string;
   points: number;
   orderPoints: number;
-  discountSubmit: EventEmitter;
-  onDiscountSubmitHandler(event: Event): void;
+  discountPointsAdd: EventEmitter<number>;
+  discountPointsAddHandler(event: Event): void;
   loading: boolean;
   ResetLoading(): Promise<void>;
   render(): any[];

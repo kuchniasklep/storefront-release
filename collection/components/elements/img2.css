@@ -11,8 +11,8 @@ ks-img2 img {
     display: inline-block;
     width: auto;
     height : auto;
-    max-width: 100%;
-    max-height: 100%;
+    max-width: inherit;
+    max-height: inherit;
 
     opacity: 1;
     -webkit-transition: opacity 0.3s ease;

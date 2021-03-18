@@ -8,11 +8,11 @@ export class CartProduct {
     this.mobile = 0;
   }
   onRemoveHandler() {
-    this.remove.emit();
     this.loading = true;
+    this.removeProduct.emit(this.index);
   }
   onCountHandler(detail) {
-    this.count.emit(detail);
+    this.productCount.emit([this.index, detail.current, detail.last]);
   }
   async ResetLoading() {
     this.loading = false;
@@ -94,6 +94,23 @@ export class CartProduct {
       },
       "attribute": "ikey",
       "reflect": true
+    },
+    "index": {
+      "type": "number",
+      "mutable": false,
+      "complexType": {
+        "original": "number",
+        "resolved": "number",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "index",
+      "reflect": false
     },
     "name": {
       "type": "string",
@@ -240,8 +257,8 @@ export class CartProduct {
     "mobile": {}
   }; }
   static get events() { return [{
-      "method": "remove",
-      "name": "remove",
+      "method": "removeProduct",
+      "name": "removeProduct",
       "bubbles": true,
       "cancelable": true,
       "composed": true,
@@ -250,13 +267,13 @@ export class CartProduct {
         "text": ""
       },
       "complexType": {
-        "original": "any",
-        "resolved": "any",
+        "original": "number",
+        "resolved": "number",
         "references": {}
       }
     }, {
-      "method": "count",
-      "name": "count",
+      "method": "productCount",
+      "name": "productCount",
       "bubbles": true,
       "cancelable": true,
       "composed": true,
@@ -265,8 +282,8 @@ export class CartProduct {
         "text": ""
       },
       "complexType": {
-        "original": "any",
-        "resolved": "any",
+        "original": "[index: number, count: number, last: number]",
+        "resolved": "[index: number, count: number, last: number]",
         "references": {}
       }
     }]; }

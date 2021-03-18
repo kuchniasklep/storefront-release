@@ -1,14 +1,7 @@
 import { Component, h, Prop, Event, State } from '@stencil/core';
-import Tunnel from '../cartData';
 export class CartDealGroup {
   constructor() {
     this.loading = false;
-  }
-  onAdd() {
-    if (!this.loading) {
-      this.add.emit();
-      this.loading = true;
-    }
   }
   componentWillLoad() {
     this.currentDeal = this.deals[0];
@@ -19,9 +12,7 @@ export class CartDealGroup {
   }
   Add() {
     this.loading = true;
-    this.AddDeal(this.currentDeal.id).then(() => {
-      this.loading = false;
-    });
+    this.addDeal.emit(this.currentDeal.id);
   }
   render() {
     return [
@@ -95,31 +86,12 @@ export class CartDealGroup {
       "type": "unknown",
       "mutable": false,
       "complexType": {
-        "original": "CartDataDeal[]",
-        "resolved": "CartDataDeal[]",
+        "original": "deal[]",
+        "resolved": "deal[]",
         "references": {
-          "CartDataDeal": {
+          "deal": {
             "location": "import",
-            "path": "../cartData"
-          }
-        }
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      }
-    },
-    "AddDeal": {
-      "type": "unknown",
-      "mutable": false,
-      "complexType": {
-        "original": "(id: string) => Promise<void>",
-        "resolved": "(id: string) => Promise<void>",
-        "references": {
-          "Promise": {
-            "location": "global"
+            "path": "../cart-data"
           }
         }
       },
@@ -136,8 +108,8 @@ export class CartDealGroup {
     "loading": {}
   }; }
   static get events() { return [{
-      "method": "add",
-      "name": "add",
+      "method": "addDeal",
+      "name": "addDeal",
       "bubbles": true,
       "cancelable": true,
       "composed": true,
@@ -146,10 +118,9 @@ export class CartDealGroup {
         "text": ""
       },
       "complexType": {
-        "original": "any",
-        "resolved": "any",
+        "original": "string",
+        "resolved": "string",
         "references": {}
       }
     }]; }
 }
-Tunnel.injectProps(CartDealGroup, ['AddDeal']);

@@ -2,8 +2,8 @@ import { EventEmitter } from '../../../stencil-public-runtime';
 export declare class CartDiscountTicket {
   name: string;
   value: string;
-  remove: EventEmitter;
-  onRemoveHandler(): void;
+  discountRemove: EventEmitter;
+  discountRemoveHandler(): void;
   loading: boolean;
   render(): any[];
 }

@@ -1,6 +1,7 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
 export declare class CartProduct {
   ikey: string;
+  index: number;
   name: string;
   img: string;
   link: string;
@@ -10,9 +11,9 @@ export declare class CartProduct {
   maxAmount: number;
   removable: boolean;
   loading: boolean;
-  remove: EventEmitter;
+  removeProduct: EventEmitter<number>;
   onRemoveHandler(): void;
-  count: EventEmitter;
+  productCount: EventEmitter<[index: number, count: number, last: number]>;
   onCountHandler(detail: any): void;
   ResetLoading(): Promise<void>;
   mobile: number;

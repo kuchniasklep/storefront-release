@@ -7,7 +7,7 @@ export class CartDiscountPoints {
     this.orderPoints = 1;
     this.loading = false;
   }
-  onDiscountSubmitHandler(event) {
+  discountPointsAddHandler(event) {
     event.preventDefault();
     if (!this.loading) {
       const form = event.target;
@@ -17,7 +17,7 @@ export class CartDiscountPoints {
         const valueNumber = parseInt(value.toString());
         if (valueNumber != NaN) {
           this.loading = true;
-          this.discountSubmit.emit(valueNumber);
+          this.discountPointsAdd.emit(valueNumber);
         }
       }
     }
@@ -27,7 +27,7 @@ export class CartDiscountPoints {
   }
   render() {
     return [
-      h("form", { onSubmit: (e) => this.onDiscountSubmitHandler(e), novalidate: true },
+      h("form", { onSubmit: (e) => this.discountPointsAddHandler(e), novalidate: true },
         h("ks-input-number", { emphasis: true, center: true, placeholder: this.placeholder, min: 1, max: this.points, step: 10, name: "pointCount" }),
         h("button", { type: "submit", class: "uk-button uk-button-secondary" }, this.loading ? h("div", { "uk-spinner": true }) : h("span", null, "Aktywuj"))),
       h("div", { class: "messsage" },
@@ -125,8 +125,8 @@ export class CartDiscountPoints {
     "loading": {}
   }; }
   static get events() { return [{
-      "method": "discountSubmit",
-      "name": "discountSubmit",
+      "method": "discountPointsAdd",
+      "name": "discountPointsAdd",
       "bubbles": true,
       "cancelable": true,
       "composed": true,
@@ -135,8 +135,8 @@ export class CartDiscountPoints {
         "text": ""
       },
       "complexType": {
-        "original": "any",
-        "resolved": "any",
+        "original": "number",
+        "resolved": "number",
         "references": {}
       }
     }]; }

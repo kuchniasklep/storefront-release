@@ -1,5 +1,5 @@
-import { Component, h, Listen, Element, Prop, State, Method, Watch } from '@stencil/core';
-import Tunnel from '../cartData';
+import { Component, h, Listen, Element, Prop, State, Method, Event } from '@stencil/core';
+import { store } from '../cart-store';
 export class CartSelectShipping {
   constructor() {
     this.name = "";
@@ -31,23 +31,21 @@ export class CartSelectShipping {
   componentDidLoad() {
     this.root.classList.add("ks-cart-select");
   }
-  ActiveItemWatcher() {
-    if (this.valid)
-      this.active = this.activeShipping;
-  }
   ActivateItem(id) {
-    if (id != this.activeShipping)
-      this.ShippingChange(id);
+    if (id != store.get("activeShipping"))
+      this.shippingChange.emit(id);
     this.toggled = false;
     this.active = id;
     this.valid = true;
     this.error = false;
   }
   render() {
+    if (this.valid)
+      this.active = store.get("activeShipping");
     if (this.loading)
       return (h("div", { class: "center" },
         h("nav", { "uk-spinner": true })));
-    const activeItem = this.shipping.find((value) => {
+    const activeItem = store.get("shipping").find((value) => {
       return value.id == this.active;
     });
     return [
@@ -58,7 +56,7 @@ export class CartSelectShipping {
           h("ks-cart-select-item", { logo: activeItem.logo, name: activeItem.name, price: activeItem.price })),
         h("div", { class: "selectIcon" },
           h("span", { "uk-icon": "icon: triangle-down; ratio: 1.3" }))),
-      h("div", { class: "items", hidden: !this.toggled }, this.shipping.map((item) => h("ks-cart-select-item", { key: item.id, logo: item.logo, name: item.name, price: item.price, color: item.color, onClick: () => this.ActivateItem(item.id) })))
+      h("div", { class: "items", hidden: !this.toggled }, store.get("shipping").map((item) => h("ks-cart-select-item", { key: item.id, logo: item.logo, name: item.name, price: item.price, color: item.color, onClick: () => this.ActivateItem(item.id) })))
     ];
   }
   static get is() { return "ks-cart-select-shipping"; }
@@ -122,58 +120,6 @@ export class CartSelectShipping {
       "attribute": "error",
       "reflect": true,
       "defaultValue": "false"
-    },
-    "shipping": {
-      "type": "unknown",
-      "mutable": false,
-      "complexType": {
-        "original": "CartDataSelectItem[]",
-        "resolved": "CartDataSelectItem[]",
-        "references": {
-          "CartDataSelectItem": {
-            "location": "import",
-            "path": "../cartData"
-          }
-        }
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      }
-    },
-    "activeShipping": {
-      "type": "number",
-      "mutable": false,
-      "complexType": {
-        "original": "number",
-        "resolved": "number",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "active-shipping",
-      "reflect": false
-    },
-    "ShippingChange": {
-      "type": "unknown",
-      "mutable": false,
-      "complexType": {
-        "original": "(id: number) => void",
-        "resolved": "(id: number) => void",
-        "references": {}
-      },
-      "required": false,
-      "optional": true,
-      "docs": {
-        "tags": [],
-        "text": ""
-      }
     }
   }; }
   static get states() { return {
@@ -181,6 +127,22 @@ export class CartSelectShipping {
     "toggled": {},
     "loading": {}
   }; }
+  static get events() { return [{
+      "method": "shippingChange",
+      "name": "shippingChange",
+      "bubbles": true,
+      "cancelable": true,
+      "composed": true,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "complexType": {
+        "original": "number",
+        "resolved": "number",
+        "references": {}
+      }
+    }]; }
   static get methods() { return {
     "StartLoading": {
       "complexType": {
@@ -232,10 +194,6 @@ export class CartSelectShipping {
     }
   }; }
   static get elementRef() { return "root"; }
-  static get watchers() { return [{
-      "propName": "activeShipping",
-      "methodName": "ActiveItemWatcher"
-    }]; }
   static get listeners() { return [{
       "name": "click",
       "method": "OutsideClickHandler",
@@ -244,4 +202,3 @@ export class CartSelectShipping {
       "passive": false
     }]; }
 }
-Tunnel.injectProps(CartSelectShipping, ['shipping', 'ShippingChange', 'activeShipping']);

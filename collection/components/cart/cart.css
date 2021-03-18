@@ -1,0 +1,11 @@
+ks-cart {
+    display: block;
+
+    box-sizing: border-box;
+    overflow: hidden;
+    width: 100%;
+
+    background: var(--card-background);
+    color: var(--card-text-color);
+    box-shadow: var(--card-shadow);
+}

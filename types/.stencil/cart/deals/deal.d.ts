@@ -1,3 +1,4 @@
+import { EventEmitter } from '../../../stencil-public-runtime';
 export declare class CartDeal {
   ikey: string;
   name: string;
@@ -5,7 +6,7 @@ export declare class CartDeal {
   link: string;
   price: string;
   loading: boolean;
-  AddDeal: (id: string) => Promise<void>;
+  addDeal: EventEmitter<string>;
   Add(): void;
   render(): any[];
 }

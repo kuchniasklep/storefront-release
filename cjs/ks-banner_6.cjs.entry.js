@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-c2b39b63.js');
+const index = require('./index-1e55d229.js');
 const deferredpromise = require('./deferredpromise-4a0fd44b.js');
 const coreClass = require('./core-class-05f4a49b.js');
 const pagination = require('./pagination-6d58af1e.js');

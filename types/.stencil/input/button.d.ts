@@ -4,6 +4,7 @@ export declare class Button {
   submit: boolean;
   link: string;
   nofollow: boolean;
+  disabled: boolean;
   round: boolean;
   tall: boolean;
   primary: boolean;

@@ -1,4 +1,3 @@
-import { CartDataPoints, CartDataDiscount } from '../cartData';
 export declare class CartDiscountContainer {
   root: HTMLElement;
   codeBanner: string;
@@ -14,13 +13,5 @@ export declare class CartDiscountContainer {
   loginUrl: string;
   loggedIn: boolean;
   disablePoints: boolean;
-  pointsForOrder: number;
-  productValue: number;
-  points: CartDataPoints;
-  discount: CartDataDiscount;
-  RemoveDiscount: () => void;
-  DiscountCodeAdd: (string: any) => void;
-  DiscountPointsAdd: (number: any) => void;
-  DiscountRemove: () => void;
   render(): any;
 }

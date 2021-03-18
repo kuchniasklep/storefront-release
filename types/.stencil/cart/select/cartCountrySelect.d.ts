@@ -1,6 +1,7 @@
+import { EventEmitter } from '../../../stencil-public-runtime';
 export declare class CartCountrySelect {
   root: HTMLElement;
-  CountryChange?: (code: string) => void;
-  onChangeHandler(event: Event): void;
+  countryChange: EventEmitter<string>;
+  ChangeHandler(event: Event): void;
   render(): any[];
 }

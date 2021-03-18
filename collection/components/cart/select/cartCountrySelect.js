@@ -1,9 +1,8 @@
-import { Component, h, Element, Prop } from '@stencil/core';
-import Tunnel from '../cartData';
+import { Component, h, Element, Event } from '@stencil/core';
 export class CartCountrySelect {
-  onChangeHandler(event) {
+  ChangeHandler(event) {
     const target = event.target;
-    this.CountryChange(target.value);
+    this.countryChange.emit(target.value);
   }
   render() {
     return [
@@ -12,7 +11,7 @@ export class CartCountrySelect {
         h("div", { class: "icons" },
           h("span", { "uk-icon": "icon: world; ratio: 1.2;" }),
           h("span", { "uk-icon": "icon: triangle-down; ratio: 1.2;" })),
-        h("select", { onChange: (ev) => this.onChangeHandler(ev) },
+        h("select", { onChange: (ev) => this.ChangeHandler(ev) },
           h("slot", null)))
     ];
   }
@@ -23,23 +22,21 @@ export class CartCountrySelect {
   static get styleUrls() { return {
     "$": ["cartCountrySelect.css"]
   }; }
-  static get properties() { return {
-    "CountryChange": {
-      "type": "unknown",
-      "mutable": false,
-      "complexType": {
-        "original": "(code: string) => void",
-        "resolved": "(code: string) => void",
-        "references": {}
-      },
-      "required": false,
-      "optional": true,
+  static get events() { return [{
+      "method": "countryChange",
+      "name": "countryChange",
+      "bubbles": true,
+      "cancelable": true,
+      "composed": true,
       "docs": {
         "tags": [],
         "text": ""
+      },
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
       }
-    }
-  }; }
+    }]; }
   static get elementRef() { return "root"; }
 }
-Tunnel.injectProps(CartCountrySelect, ['CountryChange']);

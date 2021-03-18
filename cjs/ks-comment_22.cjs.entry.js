@@ -2,12 +2,13 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-c2b39b63.js');
+const index = require('./index-1e55d229.js');
 const functions = require('./functions-37701883.js');
 const deferredpromise = require('./deferredpromise-4a0fd44b.js');
 const coreClass = require('./core-class-05f4a49b.js');
 const thumbs = require('./thumbs-005bf787.js');
-const validate = require('./validate-fe6a3415.js');
+const index$1 = require('./index-79353176.js');
+const validate = require('./validate-6c61d7c0.js');
 
 const commentCss = "ks-comment{display:block}ks-comment article{padding:30px}@media (min-width: 1200px){ks-comment article{padding:30px 40px}}ks-comment header{display:-webkit-box;display:-ms-flexbox;display:flex}ks-comment header>div{width:100%}ks-comment header .title{margin:0}ks-comment header .info{font-size:.875rem;line-height:1.4;color:#707070}ks-comment ks-icon{margin-right:20px}ks-comment p{margin-bottom:0px}";
 
@@ -140,7 +141,7 @@ const ProductTab = class {
 };
 ProductTab.style = productCommentsCss;
 
-const store = validate.createStore({
+const store = index$1.createStore({
   id: "",
   name: "",
   breadcrumbs: [],

@@ -1,0 +1,25 @@
+import * as cart from "./cart-data";
+export declare const store: import("@stencil/store").ObservableMap<{
+  totalValue: number;
+  productValue: number;
+  productAmount: number;
+  pointsForOrder: number;
+  totalShippingTime: string;
+  otherValues: cart.summaryItem[];
+  shippingProgress: cart.shippingProgress;
+  products: cart.product[];
+  deals: cart.deal[];
+  dealGroups: cart.dealGroup[];
+  shipping: cart.selectItem[];
+  payment: cart.selectItem[];
+  shippingMessage: string;
+  paymentMessage: string;
+  activeShipping: number;
+  activePayment: number;
+  points: cart.points;
+  discount: cart.discount;
+  loading: number;
+  loadingProducts: number;
+  easyprotect: cart.easyprotect;
+  insured: cart.easyprotectInsured;
+}>;

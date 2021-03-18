@@ -1,4 +1,4 @@
-import { r as registerInstance, h, g as getElement } from './index-46fe532f.js';
+import { r as registerInstance, h, g as getElement } from './index-2d9093e5.js';
 import { S as Swiper } from './core-class-f05bf7c2.js';
 import { P as Pagination } from './pagination-ca8adc5c.js';
 import { T as Thumbs } from './thumbs-06204fe0.js';

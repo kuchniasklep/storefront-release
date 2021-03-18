@@ -1,14 +1,11 @@
-import { Component, h, Prop, State } from '@stencil/core';
-import Tunnel from '../cartData';
+import { Component, h, Prop, State, Event } from '@stencil/core';
 export class CartDeal {
   constructor() {
     this.loading = false;
   }
   Add() {
     this.loading = true;
-    this.AddDeal(this.ikey).then(() => {
-      this.loading = false;
-    });
+    this.addDeal.emit(this.ikey);
   }
   render() {
     return [
@@ -125,29 +122,25 @@ export class CartDeal {
       },
       "attribute": "price",
       "reflect": false
-    },
-    "AddDeal": {
-      "type": "unknown",
-      "mutable": false,
-      "complexType": {
-        "original": "(id: string) => Promise<void>",
-        "resolved": "(id: string) => Promise<void>",
-        "references": {
-          "Promise": {
-            "location": "global"
-          }
-        }
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      }
     }
   }; }
   static get states() { return {
     "loading": {}
   }; }
+  static get events() { return [{
+      "method": "addDeal",
+      "name": "addDeal",
+      "bubbles": true,
+      "cancelable": true,
+      "composed": true,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      }
+    }]; }
 }
-Tunnel.injectProps(CartDeal, ['AddDeal']);

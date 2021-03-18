@@ -5,7 +5,7 @@ export class CartDiscountCode {
     this.image = "";
     this.loading = false;
   }
-  onDiscountSubmitHandler(event) {
+  discountCodeAddHandler(event) {
     event.preventDefault();
     if (!this.loading) {
       const form = event.target;
@@ -15,7 +15,7 @@ export class CartDiscountCode {
         const valueString = value.toString();
         if (valueString != "") {
           this.loading = true;
-          this.discountSubmit.emit(valueString);
+          this.discountCodeAdd.emit(valueString);
         }
       }
     }
@@ -25,7 +25,7 @@ export class CartDiscountCode {
   }
   render() {
     return [
-      h("form", { onSubmit: (e) => this.onDiscountSubmitHandler(e) },
+      h("form", { onSubmit: (e) => this.discountCodeAddHandler(e) },
         h("ks-input-text", { emphasis: true, center: true, placeholder: this.placeholder, name: "discountCode" }),
         h("button", { type: "submit", class: "uk-button uk-button-secondary" }, this.loading ? h("div", { "uk-spinner": true }) : h("span", null, "Aktywuj"))),
       h("a", { class: "messsage", onClick: () => {
@@ -85,8 +85,8 @@ export class CartDiscountCode {
     "loading": {}
   }; }
   static get events() { return [{
-      "method": "discountSubmit",
-      "name": "discountSubmit",
+      "method": "discountCodeAdd",
+      "name": "discountCodeAdd",
       "bubbles": true,
       "cancelable": true,
       "composed": true,
@@ -95,8 +95,8 @@ export class CartDiscountCode {
         "text": ""
       },
       "complexType": {
-        "original": "any",
-        "resolved": "any",
+        "original": "string",
+        "resolved": "string",
         "references": {}
       }
     }]; }
