@@ -30,9 +30,10 @@ const CartEasyprotectWarranty = class {
   }
   change() {
     this.active = this.root.querySelector("select").value;
-    store.set("insured", Object.assign(Object.assign({}, store.get("insured")), { [this.productId]: this.active }));
-    if (this.insured)
+    if (this.insured) {
+      store.set("insured", Object.assign(Object.assign({}, store.get("insured")), { [this.productId]: this.active }));
       this.easyprotectWarrantyChanged.emit({ [this.productId]: this.active });
+    }
   }
   remove() {
     this.easyprotectWarrantyRemoved.emit(this.productId);
