@@ -75,7 +75,7 @@ export class CartEasyprotectDialog {
     items.forEach(item => {
       warranties[item.getAttribute("product-id")] = item.getAttribute("active");
     });
-    this.easyprotectWarrantyAdded.emit(warranties);
+    this.easyprotectWarrantyChanged.emit(warranties);
     setTimeout(() => {
       this.step = 0;
       this.active = [];
@@ -94,8 +94,8 @@ export class CartEasyprotectDialog {
     "step": {}
   }; }
   static get events() { return [{
-      "method": "easyprotectWarrantyAdded",
-      "name": "easyprotectWarrantyAdded",
+      "method": "easyprotectWarrantyChanged",
+      "name": "easyprotectWarrantyChanged",
       "bubbles": true,
       "cancelable": true,
       "composed": true,

@@ -5,13 +5,15 @@ const cartEasyprotectProductCss = "ks-cart-easyprotect-product{display:-webkit-b
 const CartEasyprotectProduct = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
-    this.warrranty = "1 rok gwarancji producenta";
+    this.warrranty = "";
     this.active = false;
   }
   render() {
     return [
       h("div", { class: "image" }, h("ks-img2", { src: this.image, width: 200, height: 200 })),
-      h("div", { class: "info" }, h("div", { class: "name" }, this.name), h("div", { class: "warranty" }, this.warrranty))
+      h("div", { class: "info" }, h("div", { class: "name" }, this.name), this.warrranty ?
+        h("div", { class: "warranty" }, this.warrranty)
+        : null)
     ];
   }
 };

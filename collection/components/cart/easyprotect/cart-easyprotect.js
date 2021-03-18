@@ -1,14 +1,30 @@
 import { Component, h, Prop, Element, Listen } from '@stencil/core';
 import { store } from '../cart-store';
+import { jsonfetch, formfetch } from '../../fetch';
 export class CartEasyprotect {
   warrantyAdded(event) {
-    console.log(event.detail);
-  }
-  warrantyChanged(event) {
-    console.log(event.detail);
+    store.set("loading", store.get("loading") + 1);
+    jsonfetch(this.changeApi, event.detail)
+      .then(response => response.json())
+      .then(json => {
+      store.set("loading", store.get("loading") - 1);
+      store.set("insured", json.insured);
+      console.log(store.get("insured"));
+    })
+      .catch(_ => store.set("loading", store.get("loading") - 1));
   }
   warrantyRemoved(event) {
-    console.log(event.detail);
+    store.set("loading", store.get("loading") + 1);
+    formfetch(this.removeApi, {
+      "id": event.detail
+    })
+      .then(response => response.json())
+      .then(json => {
+      store.set("loading", store.get("loading") - 1);
+      store.set("insured", json.insured);
+      console.log(store.get("insured"));
+    })
+      .catch(_ => store.set("loading", store.get("loading") - 1));
   }
   render() {
     const insured = Object.entries(store.get("insured"));
@@ -20,22 +36,6 @@ export class CartEasyprotect {
       h("div", { class: "insured" }, insured.map(([id, months]) => h("ks-cart-easyprotect-warranty", { insured: true, "product-id": id, active: months }))),
       h("slot", { name: "bottom" })
     ];
-  }
-  insuredItem(id, [months, price]) {
-    const name = store.get("products")[id].name;
-    //const options = store.get("easyprotect")[id];
-    return h("div", { class: "item" },
-      h("div", { class: "name" },
-        " ",
-        name,
-        " "),
-      h("div", { class: "option" },
-        " ",
-        months,
-        " miesi\u0119cy ",
-        price,
-        " z\u0142"),
-      h("ks-icon", { name: "x" }));
   }
   static get is() { return "ks-cart-easyprotect"; }
   static get originalStyleUrls() { return {
@@ -95,18 +95,46 @@ export class CartEasyprotect {
       },
       "attribute": "height",
       "reflect": false
+    },
+    "changeApi": {
+      "type": "string",
+      "mutable": false,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "change-api",
+      "reflect": false
+    },
+    "removeApi": {
+      "type": "string",
+      "mutable": false,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "remove-api",
+      "reflect": false
     }
   }; }
   static get elementRef() { return "root"; }
   static get listeners() { return [{
-      "name": "easyprotectWarrantyAdded",
-      "method": "warrantyAdded",
-      "target": undefined,
-      "capture": false,
-      "passive": false
-    }, {
       "name": "easyprotectWarrantyChanged",
-      "method": "warrantyChanged",
+      "method": "warrantyAdded",
       "target": undefined,
       "capture": false,
       "passive": false

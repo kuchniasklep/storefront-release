@@ -157,8 +157,10 @@ export namespace Components {
         "value": string;
     }
     interface KsCartEasyprotect {
+        "changeApi": string;
         "height": number;
         "image": string;
+        "removeApi": string;
         "width": number;
     }
     interface KsCartEasyprotectDialog {
@@ -2280,12 +2282,14 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface KsCartEasyprotect {
+        "changeApi"?: string;
         "height"?: number;
         "image"?: string;
+        "removeApi"?: string;
         "width"?: number;
     }
     interface KsCartEasyprotectDialog {
-        "onEasyprotectWarrantyAdded"?: (event: CustomEvent<easyprotectInsured>) => void;
+        "onEasyprotectWarrantyChanged"?: (event: CustomEvent<easyprotectInsured>) => void;
     }
     interface KsCartEasyprotectProduct {
         "active"?: boolean;
@@ -2296,7 +2300,7 @@ declare namespace LocalJSX {
     interface KsCartEasyprotectWarranty {
         "active"?: string;
         "insured"?: boolean;
-        "onEasyprotectWarrantyChanged"?: (event: CustomEvent<[id: string, months: string]>) => void;
+        "onEasyprotectWarrantyChanged"?: (event: CustomEvent<easyprotectInsured>) => void;
         "onEasyprotectWarrantyRemoved"?: (event: CustomEvent<string>) => void;
         "productId"?: string;
     }

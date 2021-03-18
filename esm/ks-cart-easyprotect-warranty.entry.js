@@ -11,7 +11,11 @@ const CartEasyprotectWarranty = class {
     this.easyprotectWarrantyRemoved = createEvent(this, "easyprotectWarrantyRemoved", 7);
   }
   componentWillLoad() {
-    this.active = Object.keys(store.get("easyprotect")[this.productId])[0];
+    if (!this.active)
+      this.active = Object.keys(store.get("easyprotect")[this.productId])[0];
+  }
+  componentWillUpdate() {
+    this.root.querySelector("select").value = this.active;
   }
   render() {
     const name = store.get("products")[this.productId].name;
@@ -25,10 +29,10 @@ const CartEasyprotectWarranty = class {
     ];
   }
   change() {
-    const previous = this.active;
     this.active = this.root.querySelector("select").value;
-    if (this.insured && previous != this.active)
-      this.easyprotectWarrantyChanged.emit([this.productId, this.active]);
+    store.set("insured", Object.assign(Object.assign({}, store.get("insured")), { [this.productId]: this.active }));
+    if (this.insured)
+      this.easyprotectWarrantyChanged.emit({ [this.productId]: this.active });
   }
   remove() {
     this.easyprotectWarrantyRemoved.emit(this.productId);

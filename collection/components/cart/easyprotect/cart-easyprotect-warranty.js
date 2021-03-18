@@ -2,7 +2,11 @@ import { Component, h, Prop, Element, Event } from '@stencil/core';
 import { store } from '../cart-store';
 export class CartEasyprotectWarranty {
   componentWillLoad() {
-    this.active = Object.keys(store.get("easyprotect")[this.productId])[0];
+    if (!this.active)
+      this.active = Object.keys(store.get("easyprotect")[this.productId])[0];
+  }
+  componentWillUpdate() {
+    this.root.querySelector("select").value = this.active;
   }
   render() {
     const name = store.get("products")[this.productId].name;
@@ -25,10 +29,10 @@ export class CartEasyprotectWarranty {
     ];
   }
   change() {
-    const previous = this.active;
     this.active = this.root.querySelector("select").value;
-    if (this.insured && previous != this.active)
-      this.easyprotectWarrantyChanged.emit([this.productId, this.active]);
+    store.set("insured", Object.assign(Object.assign({}, store.get("insured")), { [this.productId]: this.active }));
+    if (this.insured)
+      this.easyprotectWarrantyChanged.emit({ [this.productId]: this.active });
   }
   remove() {
     this.easyprotectWarrantyRemoved.emit(this.productId);
@@ -115,9 +119,14 @@ export class CartEasyprotectWarranty {
         "text": ""
       },
       "complexType": {
-        "original": "[id: string, months: string]",
-        "resolved": "[id: string, months: string]",
-        "references": {}
+        "original": "easyprotectInsured",
+        "resolved": "{ [index: string]: string; }",
+        "references": {
+          "easyprotectInsured": {
+            "location": "import",
+            "path": "../cart-data"
+          }
+        }
       }
     }, {
       "method": "easyprotectWarrantyRemoved",

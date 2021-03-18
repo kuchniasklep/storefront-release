@@ -5,7 +5,7 @@ export declare class CartEasyprotectDialog {
   eligible: easyprotectProduct[];
   active: string[];
   step: number;
-  easyprotectWarrantyAdded: EventEmitter<easyprotectInsured>;
+  easyprotectWarrantyChanged: EventEmitter<easyprotectInsured>;
   componentWillLoad(): void;
   updateEligible(): void;
   render(): any[];

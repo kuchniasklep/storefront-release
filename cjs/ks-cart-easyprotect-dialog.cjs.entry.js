@@ -11,7 +11,7 @@ const cartEasyprotectDialogCss = "ks-cart-easyprotect-dialog{display:block}ks-ca
 const CartEasyprotectDialog = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
-    this.easyprotectWarrantyAdded = index.createEvent(this, "easyprotectWarrantyAdded", 7);
+    this.easyprotectWarrantyChanged = index.createEvent(this, "easyprotectWarrantyChanged", 7);
     this.active = [];
     this.step = 0;
   }
@@ -77,7 +77,7 @@ const CartEasyprotectDialog = class {
     items.forEach(item => {
       warranties[item.getAttribute("product-id")] = item.getAttribute("active");
     });
-    this.easyprotectWarrantyAdded.emit(warranties);
+    this.easyprotectWarrantyChanged.emit(warranties);
     setTimeout(() => {
       this.step = 0;
       this.active = [];

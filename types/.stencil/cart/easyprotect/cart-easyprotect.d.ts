@@ -4,9 +4,9 @@ export declare class CartEasyprotect {
   image: string;
   width: number;
   height: number;
+  changeApi: string;
+  removeApi: string;
   warrantyAdded(event: CustomEvent<cart.easyprotectInsured>): void;
-  warrantyChanged(event: CustomEvent<[id: string, months: string]>): void;
   warrantyRemoved(event: CustomEvent<string>): void;
   render(): any[];
-  insuredItem(id: string, [months, price]: [number, number]): any;
 }
