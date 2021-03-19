@@ -1,5 +1,6 @@
 import { Component, h, Prop, Listen } from '@stencil/core';
 import { store } from './cart-store';
+import { formfetch } from '../fetch';
 export class Cart {
   constructor() {
     this.dataId = "";
@@ -13,19 +14,21 @@ export class Cart {
     this.discountCode = "";
     this.discountPoints = "";
     this.discountRemove = "";
+    this.easyprotectChange = "";
+    this.easyprotectRemove = "";
     this.lastProductCountCall = new Array();
     this.ProductCountCall = async (index, current, last) => {
       const id = store.get("products")[index].id;
       const data = await this.ProductLoadingWrapper(async () => {
-        return this.fetch(this.productCount, [
-          { key: "id", value: id },
-          { key: "ilosc", value: current.toString() }
-        ]);
+        return this.fetch(this.productCount, {
+          "id": id,
+          "ilosc": current.toString()
+        });
       });
       if (data) {
-        this.ShowMessageFromData(data, async (cleanedData) => {
+        this.ShowMessageFromData("Błąd ilości produktu", data, async (cleanedData) => {
           if ('error' in cleanedData) {
-            this.message(cleanedData.error.message);
+            this.messagePopup.show("Błąd ilości produktu", cleanedData.error.message);
             store.set("products", this.GetCorrectedProductAmounts(index, cleanedData.error.amount, cleanedData.error.maxAmount));
           }
           else
@@ -40,6 +43,10 @@ export class Cart {
       }
     };
   }
+  componentDidLoad() {
+    this.errorPopup = document.querySelector("ks-error-popup");
+    this.messagePopup = document.querySelector('ks-message-popup');
+  }
   async componentWillLoad() {
     let data;
     if (this.dataId) {
@@ -49,18 +56,31 @@ export class Cart {
     else
       data = await this.fetch(this.api);
     this.update(data);
+    store.set("api", {
+      productRemove: this.productRemove,
+      productCount: this.productCount,
+      addDeal: this.addDeal,
+      countryChange: this.countryChange,
+      shippingChange: this.shippingChange,
+      paymentChange: this.paymentChange,
+      discountCode: this.discountCode,
+      discountPoints: this.discountPoints,
+      discountRemove: this.discountRemove,
+      easyprotectChange: this.easyprotectChange,
+      easyprotectRemove: this.easyprotectRemove,
+    });
   }
   async RemoveProduct(event) {
     const index = event.detail;
     const id = store.get("products")[index].id;
     const data = await this.ProductLoadingWrapper(async () => {
-      return this.fetch(this.productRemove, [{ key: "id", value: id }]);
+      return this.fetch(this.productRemove, { "id": id });
     });
     if (data) {
       if (data.products.length == 0)
         document.location.reload();
       else
-        this.ShowMessageFromData(data, async (cleanedData) => {
+        this.ShowMessageFromData("Błąd usuwania produktu", data, async (cleanedData) => {
           this.update(cleanedData);
           if ('discount' in cleanedData == false)
             this.RemoveDiscount();
@@ -107,11 +127,11 @@ export class Cart {
   async AddDeal(event) {
     const id = event.detail;
     const data = await this.ProductLoadingWrapper(async () => {
-      return this.fetch(this.addDeal, [{ key: "id", value: id }]);
+      return this.fetch(this.addDeal, { "id": id });
     });
     if (data) {
       if ('error' in data)
-        this.message(data.error.message);
+        this.messagePopup.show("Błąd dodawania gratisu", data.error.message);
       else
         this.update(data);
     }
@@ -120,19 +140,19 @@ export class Cart {
     const code = event.detail;
     this.StartLoading(`ks-cart-select-shipping`);
     this.StartLoading(`ks-cart-select-payment`);
-    this.update(await this.fetch(this.countryChange, [{ key: "data", value: code }]));
+    this.update(await this.fetch(this.countryChange, { "data": code }));
     this.ResetLoading(`ks-cart-select-shipping`);
     this.ResetLoading(`ks-cart-select-payment`);
   }
   async ShippingChange(event) {
     const id = event.detail;
     this.StartLoading(`ks-cart-select-payment`);
-    this.update(await this.fetch(this.shippingChange, [{ key: "data", value: id.toString() }]));
+    this.update(await this.fetch(this.shippingChange, { "data": id.toString() }));
     this.ResetLoading(`ks-cart-select-payment`);
   }
   async PaymentChange(event) {
     const id = event.detail;
-    this.update(await this.fetch(this.paymentChange, [{ key: "data", value: id.toString() }]));
+    this.update(await this.fetch(this.paymentChange, { "data": id.toString() }));
   }
   async DiscountRemove() {
     await this.update(await this.fetch(this.discountRemove));
@@ -140,15 +160,15 @@ export class Cart {
   }
   async DiscountCodeAdd(event) {
     const code = event.detail;
-    const data = await this.fetch(this.discountCode, [{ key: "data", value: code }]);
-    this.ShowMessageFromData(data, (pData) => {
+    const data = await this.fetch(this.discountCode, { "data": code });
+    this.ShowMessageFromData("Błąd dodawania kodu", data, (pData) => {
       this.update(pData);
     });
     this.ResetLoading(`ks-cart-discount-code`);
   }
   async DiscountPointsAdd(event) {
     const points = event.detail;
-    const data = await this.fetch(this.discountPoints, [{ key: "data", value: points.toString() }]);
+    const data = await this.fetch(this.discountPoints, { "data": points.toString() });
     this.ScrollToElement('ks-cart-discount-container ks-cart-heading');
     this.update(data);
     this.ResetLoading(`ks-cart-discount-points`);
@@ -175,9 +195,9 @@ export class Cart {
   RemoveDiscount() {
     store.set("discount", {});
   }
-  ShowMessageFromData(data, callback) {
+  ShowMessageFromData(name, data, callback) {
     if ('message' in data) {
-      this.message(data.message);
+      this.messagePopup.show(name, data.message);
       delete data.message;
       // Update state after modal animation finishes.
       setTimeout(() => {
@@ -194,47 +214,23 @@ export class Cart {
     return output;
   }
   async fetch(url, formProperties) {
-    const headers = new Headers();
-    headers.append('pragma', 'no-cache');
-    headers.append('cache-control', 'no-cache');
-    let body = null;
-    if (formProperties && formProperties.length > 0) {
-      body = new FormData();
-      formProperties.forEach((item) => {
-        body.append(item.key, item.value);
-      });
-    }
     store.set("loading", store.get("loading") + 1);
-    return fetch(url, {
-      method: 'POST',
-      body: body,
-      headers: headers,
-      credentials: "same-origin"
+    return formfetch(url, formProperties)
+      .then(response => response.json())
+      .then(json => {
+      store.set("loading", store.get("loading") - 1);
+      return json;
     })
-      .then(response => {
-      if (response.ok) {
-        store.set("loading", store.get("loading") - 1);
-        return response.json();
-      }
-    })
-      .catch((error) => {
-      if (error) {
-        store.set("loading", store.get("loading") - 1);
-        this.message("Błąd sieciowy. Sprawdź połączenie z internetem.");
-      }
+      .catch(error => {
+      store.set("loading", store.get("loading") - 1);
+      this.errorPopup.show(error);
+      return {};
     });
   }
   async update(data) {
     Object.keys(data).map(key => {
       store.set(key, data[key]);
     });
-  }
-  async message(text) {
-    if (!document.querySelector(`ks-alert[message="${text}"]`)) {
-      const element = document.createElement("ks-alert");
-      element.setAttribute("message", text);
-      document.body.appendChild(element);
-    }
   }
   render() {
     return h("slot", null);
@@ -442,6 +438,42 @@ export class Cart {
         "text": ""
       },
       "attribute": "discount-remove",
+      "reflect": false,
+      "defaultValue": "\"\""
+    },
+    "easyprotectChange": {
+      "type": "string",
+      "mutable": false,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "easyprotect-change",
+      "reflect": false,
+      "defaultValue": "\"\""
+    },
+    "easyprotectRemove": {
+      "type": "string",
+      "mutable": false,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "easyprotect-remove",
       "reflect": false,
       "defaultValue": "\"\""
     }

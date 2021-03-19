@@ -1,5 +1,5 @@
-import { Component, h, Prop, Element, Event } from '@stencil/core';
-import { store } from '../cart-store';
+import { Component, h, Prop, Element } from '@stencil/core';
+import { store, easyprotectChange, easyprotectRemove } from '../cart-store';
 export class CartEasyprotectWarranty {
   componentWillLoad() {
     if (!this.active)
@@ -30,13 +30,11 @@ export class CartEasyprotectWarranty {
   }
   change() {
     this.active = this.root.querySelector("select").value;
-    if (this.insured) {
-      store.set("insured", Object.assign(Object.assign({}, store.get("insured")), { [this.productId]: this.active }));
-      this.easyprotectWarrantyChanged.emit({ [this.productId]: this.active });
-    }
+    if (this.insured)
+      easyprotectChange({ [this.productId]: this.active });
   }
   remove() {
-    this.easyprotectWarrantyRemoved.emit(this.productId);
+    easyprotectRemove(this.productId);
   }
   months(x) {
     const digit = parseInt(`${x}`[`${x}`.length - 1]);
@@ -109,41 +107,5 @@ export class CartEasyprotectWarranty {
       "reflect": true
     }
   }; }
-  static get events() { return [{
-      "method": "easyprotectWarrantyChanged",
-      "name": "easyprotectWarrantyChanged",
-      "bubbles": true,
-      "cancelable": true,
-      "composed": true,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "complexType": {
-        "original": "easyprotectInsured",
-        "resolved": "{ [index: string]: string; }",
-        "references": {
-          "easyprotectInsured": {
-            "location": "import",
-            "path": "../cart-data"
-          }
-        }
-      }
-    }, {
-      "method": "easyprotectWarrantyRemoved",
-      "name": "easyprotectWarrantyRemoved",
-      "bubbles": true,
-      "cancelable": true,
-      "composed": true,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "complexType": {
-        "original": "string",
-        "resolved": "string",
-        "references": {}
-      }
-    }]; }
   static get elementRef() { return "root"; }
 }

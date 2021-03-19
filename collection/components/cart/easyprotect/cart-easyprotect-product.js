@@ -1,7 +1,7 @@
 import { Component, h, Prop } from '@stencil/core';
 export class CartEasyprotectProduct {
   constructor() {
-    this.warrranty = "";
+    this.warranty = "";
     this.active = false;
   }
   render() {
@@ -10,8 +10,8 @@ export class CartEasyprotectProduct {
         h("ks-img2", { src: this.image, width: 200, height: 200 })),
       h("div", { class: "info" },
         h("div", { class: "name" }, this.name),
-        this.warrranty ?
-          h("div", { class: "warranty" }, this.warrranty)
+        this.warranty ?
+          h("div", { class: "warranty" }, this.warranty)
           : null)
     ];
   }
@@ -57,7 +57,7 @@ export class CartEasyprotectProduct {
       "attribute": "name",
       "reflect": false
     },
-    "warrranty": {
+    "warranty": {
       "type": "string",
       "mutable": false,
       "complexType": {
@@ -71,7 +71,7 @@ export class CartEasyprotectProduct {
         "tags": [],
         "text": ""
       },
-      "attribute": "warrranty",
+      "attribute": "warranty",
       "reflect": false,
       "defaultValue": "\"\""
     },

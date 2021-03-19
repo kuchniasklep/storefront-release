@@ -27,11 +27,23 @@ ks-cart-easyprotect-product .image {
 }
 
 ks-cart-easyprotect-product .info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+
     width: 100%;
     border-radius: 10px;
     padding: 10px 20px;
     box-sizing: border-box;
     margin: 5px 0;
+    min-height: 68px;
 
     font-family: var(--font-emphasis);
 

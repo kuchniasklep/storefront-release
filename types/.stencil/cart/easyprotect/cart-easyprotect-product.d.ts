@@ -1,7 +1,7 @@
 export declare class CartEasyprotectProduct {
   image: string;
   name: string;
-  warrranty: string;
+  warranty: string;
   active: boolean;
   render(): any[];
 }

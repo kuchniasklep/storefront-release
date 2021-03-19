@@ -1,18 +1,20 @@
-import { EventEmitter } from '../../../stencil-public-runtime';
-import { easyprotectInsured, product as easyprotectProduct } from '../cart-data';
+import { product as easyprotectProduct } from '../cart-data';
 export declare class CartEasyprotectDialog {
   root: HTMLElement;
   eligible: easyprotectProduct[];
   active: string[];
   step: number;
-  easyprotectWarrantyChanged: EventEmitter<easyprotectInsured>;
   componentWillLoad(): void;
+  overlay: HTMLKsOverlayElement;
+  componentDidLoad(): void;
   updateEligible(): void;
   render(): any[];
   products(): any;
-  warranty(): any;
+  warranty(): any[];
   toggle(id: string): void;
   show(): void;
+  hide(): void;
   addProducts(): void;
-  addWarranty(): void;
+  back(): void;
+  addWarranty(): Promise<void>;
 }

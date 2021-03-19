@@ -2,6 +2,10 @@ ks-cart-easyprotect-dialog {
     display: block;
 }
 
+ks-cart-easyprotect-dialog .hidden {
+    display: none;
+}
+
 ks-cart-easyprotect-dialog .content {
     background-color: var(--card-background);
     box-shadow: var(--big-shadow);
@@ -131,7 +135,7 @@ ks-cart-easyprotect-dialog ks-overlay.active .content {
 
 @media (max-width: 420px) {
     ks-cart-easyprotect-dialog .content h2 {
-        font-size: 22px;
+        font-size: 20px;
         margin: 20px 10px 10px 10px;
     }
 
@@ -139,3 +143,67 @@ ks-cart-easyprotect-dialog ks-overlay.active .content {
         font-size: 15px;
     }
 }
+
+
+ks-cart-easyprotect-dialog .content .close,
+ks-cart-easyprotect-dialog .content .back {
+    position: absolute;
+    top: 20px;
+    z-index: 20;
+    border-radius: 50px;
+    padding: 10px;
+
+    -webkit-transition: var(--transition-background-color);
+
+    transition: var(--transition-background-color);
+}
+
+
+ks-cart-easyprotect-dialog .content .close:hover,
+ks-cart-easyprotect-dialog .content .back:hover {
+    background-color: #f2f2f2;
+}
+
+ks-cart-easyprotect-dialog .content .close:active,
+ks-cart-easyprotect-dialog .content .back:active {
+    background-color: #dbdbdb;
+}
+
+ks-cart-easyprotect-dialog .content .close {
+    right: 20px;
+}
+
+ks-cart-easyprotect-dialog .content .back {
+    left: 20px;
+}
+
+@media (max-width: 420px) {
+    ks-cart-easyprotect-dialog .content .close,
+    ks-cart-easyprotect-dialog .content .back {
+        padding: 3px;
+        top: 17px;
+    }
+
+    ks-cart-easyprotect-dialog .content .close {
+        right: 8px;
+    }
+    
+    ks-cart-easyprotect-dialog .content .back {
+        left: 8px;
+    }
+}
+
+
+ks-cart-easyprotect-dialog .content .loading {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+
+    background-color: white;
+    -webkit-animation: fade-in 0.3s ease;
+            animation: fade-in 0.3s ease;
+}
+

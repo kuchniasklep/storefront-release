@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
-import { deal, easyprotectInsured } from "./components/cart/cart-data";
+import { deal } from "./components/cart/cart-data";
 import { CategoryData } from "./components/navbar/navbar-data";
 import { LightboxImageData } from "./components/elements/modal/lightbox-data";
 import { TraitData, TraitDataItem } from "./components/product/product-data";
@@ -88,6 +88,8 @@ export namespace Components {
         "discountCode": string;
         "discountPoints": string;
         "discountRemove": string;
+        "easyprotectChange": string;
+        "easyprotectRemove": string;
         "paymentChange": string;
         "productCount": string;
         "productRemove": string;
@@ -157,10 +159,8 @@ export namespace Components {
         "value": string;
     }
     interface KsCartEasyprotect {
-        "changeApi": string;
         "height": number;
         "image": string;
-        "removeApi": string;
         "width": number;
     }
     interface KsCartEasyprotectDialog {
@@ -169,7 +169,7 @@ export namespace Components {
         "active": boolean;
         "image": string;
         "name": string;
-        "warrranty": string;
+        "warranty": string;
     }
     interface KsCartEasyprotectWarranty {
         "active": string;
@@ -2209,6 +2209,8 @@ declare namespace LocalJSX {
         "discountCode"?: string;
         "discountPoints"?: string;
         "discountRemove"?: string;
+        "easyprotectChange"?: string;
+        "easyprotectRemove"?: string;
         "paymentChange"?: string;
         "productCount"?: string;
         "productRemove"?: string;
@@ -2282,26 +2284,21 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface KsCartEasyprotect {
-        "changeApi"?: string;
         "height"?: number;
         "image"?: string;
-        "removeApi"?: string;
         "width"?: number;
     }
     interface KsCartEasyprotectDialog {
-        "onEasyprotectWarrantyChanged"?: (event: CustomEvent<easyprotectInsured>) => void;
     }
     interface KsCartEasyprotectProduct {
         "active"?: boolean;
         "image"?: string;
         "name"?: string;
-        "warrranty"?: string;
+        "warranty"?: string;
     }
     interface KsCartEasyprotectWarranty {
         "active"?: string;
         "insured"?: boolean;
-        "onEasyprotectWarrantyChanged"?: (event: CustomEvent<easyprotectInsured>) => void;
-        "onEasyprotectWarrantyRemoved"?: (event: CustomEvent<string>) => void;
         "productId"?: string;
     }
     interface KsCartHeading {

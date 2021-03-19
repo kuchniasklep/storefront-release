@@ -1,8 +1,4 @@
 import * as cart from './cart-data';
-interface FormProperty {
-  key: string;
-  value: string;
-}
 export declare class Cart {
   dataId: string;
   api: string;
@@ -15,6 +11,11 @@ export declare class Cart {
   discountCode: string;
   discountPoints: string;
   discountRemove: string;
+  easyprotectChange: string;
+  easyprotectRemove: string;
+  errorPopup: HTMLKsErrorPopupElement;
+  messagePopup: HTMLKsMessagePopupElement;
+  componentDidLoad(): void;
   componentWillLoad(): Promise<void>;
   RemoveProduct(event: CustomEvent<number>): Promise<void>;
   lastProductCountCall: (() => void)[];
@@ -34,11 +35,11 @@ export declare class Cart {
   ResetLoading(querySelector: string): void;
   ScrollToElement(querySelector: string): void;
   RemoveDiscount(): void;
-  ShowMessageFromData(data: any, callback: (d: any) => void): void;
+  ShowMessageFromData(name: string, data: any, callback: (d: any) => void): void;
   ProductLoadingWrapper(func: () => Promise<any>): Promise<any>;
-  fetch(url: string, formProperties?: Array<FormProperty>): Promise<any>;
+  fetch(url: string, formProperties?: {
+    [index: string]: string;
+  }): Promise<any>;
   update(data: any): Promise<void>;
-  message(text: string): Promise<void>;
   render(): any;
 }
-export {};
