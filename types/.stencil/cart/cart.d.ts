@@ -15,7 +15,6 @@ export declare class Cart {
   easyprotectRemove: string;
   errorPopup: HTMLKsErrorPopupElement;
   messagePopup: HTMLKsMessagePopupElement;
-  componentDidLoad(): void;
   componentWillLoad(): Promise<void>;
   RemoveProduct(event: CustomEvent<number>): Promise<void>;
   lastProductCountCall: (() => void)[];

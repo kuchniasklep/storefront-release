@@ -43,11 +43,9 @@ export class Cart {
       }
     };
   }
-  componentDidLoad() {
+  async componentWillLoad() {
     this.errorPopup = document.querySelector("ks-error-popup");
     this.messagePopup = document.querySelector('ks-message-popup');
-  }
-  async componentWillLoad() {
     let data;
     if (this.dataId) {
       const dataElement = document.getElementById(this.dataId);
