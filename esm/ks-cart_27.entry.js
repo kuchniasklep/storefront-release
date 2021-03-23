@@ -20,9 +20,8 @@ const Cart = class {
     this.discountRemove = "";
     this.easyprotectChange = "";
     this.easyprotectRemove = "";
-    this.lastProductCountCall = new Array();
-    this.ProductCountCall = async (index, current, last) => {
-      const id = store.get("products")[index].id;
+    this.lastProductCountCall = {};
+    this.ProductCountCall = async (id, current, last) => {
       const data = await this.ProductLoadingWrapper(async () => {
         return this.fetch(this.productCount, {
           "id": id,
@@ -33,7 +32,7 @@ const Cart = class {
         this.ShowMessageFromData("Błąd ilości produktu", data, async (cleanedData) => {
           if ('error' in cleanedData) {
             this.messagePopup.show("Błąd ilości produktu", cleanedData.error.message);
-            store.set("products", this.GetCorrectedProductAmounts(index, cleanedData.error.amount, cleanedData.error.maxAmount));
+            store.set("products", this.GetCorrectedProductAmounts(id, cleanedData.error.amount, cleanedData.error.maxAmount));
           }
           else
             await this.update(cleanedData);
@@ -42,7 +41,7 @@ const Cart = class {
         });
       }
       else {
-        store.set("products", this.GetCorrectedProductAmounts(index, last));
+        store.set("products", this.GetCorrectedProductAmounts(id, last));
         this.SetAmount(last, `ks-cart-product[ikey="${id}"] ks-cart-spinner`);
       }
     };
@@ -73,8 +72,7 @@ const Cart = class {
     });
   }
   async RemoveProduct(event) {
-    const index = event.detail;
-    const id = store.get("products")[index].id;
+    const id = event.detail;
     const data = await this.ProductLoadingWrapper(async () => {
       return this.fetch(this.productRemove, { "id": id });
     });
@@ -93,27 +91,27 @@ const Cart = class {
       product.ResetLoading();
   }
   async ProductCount(event) {
-    const index = event.detail[0];
+    const id = event.detail[0];
     const count = event.detail[1];
     const last = event.detail[2];
-    if (this.lastProductCountCall[index]) {
-      this.lastProductCountCall[index] = () => this.ProductCountCall(index, count, last);
+    if (this.lastProductCountCall[id]) {
+      this.lastProductCountCall[id] = () => this.ProductCountCall(id, count, last);
     }
     else {
-      this.lastProductCountCall[index] = () => { };
-      this.ProductCountCall(index, count, last).then(() => {
-        if (this.lastProductCountCall[index]) {
-          this.lastProductCountCall[index]();
-          this.lastProductCountCall[index] = undefined;
+      this.lastProductCountCall[id] = () => { };
+      this.ProductCountCall(id, count, last).then(() => {
+        if (this.lastProductCountCall[id]) {
+          this.lastProductCountCall[id]();
+          this.lastProductCountCall[id] = undefined;
         }
       });
     }
   }
-  GetCorrectedProductAmounts(index, amount, maxAmount) {
+  GetCorrectedProductAmounts(id, amount, maxAmount) {
     const products = store.get("products");
-    products[index].amount = amount;
+    products[id].amount = amount;
     if (maxAmount)
-      products[index].maxAmount = maxAmount;
+      products[id].maxAmount = maxAmount;
     return products;
   }
   GetDataWithoutProducts(data) {
@@ -656,10 +654,10 @@ const CartProduct = class {
   }
   onRemoveHandler() {
     this.loading = true;
-    this.removeProduct.emit(this.index);
+    this.removeProduct.emit(this.productId);
   }
   onCountHandler(detail) {
-    this.productCount.emit([this.index, detail.current, detail.last]);
+    this.productCount.emit([this.productId, detail.current, detail.last]);
   }
   async ResetLoading() {
     this.loading = false;
@@ -713,7 +711,7 @@ const CartProductContainer = class {
     const products = Object.entries(store.get("products"));
     return [
       h("ks-cart-product-heading", { removable: true }),
-      products.map(([id, product], index) => h("ks-cart-product", { removable: true, key: id, ikey: id, index: index, name: product.name, link: product.link, img: product.img, price: product.price, amount: product.amount, "max-amount": product.maxAmount, "shipping-time": product.shippingTime })),
+      products.map(([id, product]) => h("ks-cart-product", { removable: true, key: id, "product-id": id, name: product.name, link: product.link, img: product.img, price: product.price, amount: product.amount, "max-amount": product.maxAmount, "shipping-time": product.shippingTime })),
       h("ks-cart-product-price", { amount: store.get("productAmount"), price: store.get("productValue"), loading: store.get("loadingProducts"), "shipping-time": store.get("totalShippingTime") })
     ];
   }

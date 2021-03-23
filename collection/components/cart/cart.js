@@ -16,9 +16,8 @@ export class Cart {
     this.discountRemove = "";
     this.easyprotectChange = "";
     this.easyprotectRemove = "";
-    this.lastProductCountCall = new Array();
-    this.ProductCountCall = async (index, current, last) => {
-      const id = store.get("products")[index].id;
+    this.lastProductCountCall = {};
+    this.ProductCountCall = async (id, current, last) => {
       const data = await this.ProductLoadingWrapper(async () => {
         return this.fetch(this.productCount, {
           "id": id,
@@ -29,7 +28,7 @@ export class Cart {
         this.ShowMessageFromData("Błąd ilości produktu", data, async (cleanedData) => {
           if ('error' in cleanedData) {
             this.messagePopup.show("Błąd ilości produktu", cleanedData.error.message);
-            store.set("products", this.GetCorrectedProductAmounts(index, cleanedData.error.amount, cleanedData.error.maxAmount));
+            store.set("products", this.GetCorrectedProductAmounts(id, cleanedData.error.amount, cleanedData.error.maxAmount));
           }
           else
             await this.update(cleanedData);
@@ -38,7 +37,7 @@ export class Cart {
         });
       }
       else {
-        store.set("products", this.GetCorrectedProductAmounts(index, last));
+        store.set("products", this.GetCorrectedProductAmounts(id, last));
         this.SetAmount(last, `ks-cart-product[ikey="${id}"] ks-cart-spinner`);
       }
     };
@@ -69,8 +68,7 @@ export class Cart {
     });
   }
   async RemoveProduct(event) {
-    const index = event.detail;
-    const id = store.get("products")[index].id;
+    const id = event.detail;
     const data = await this.ProductLoadingWrapper(async () => {
       return this.fetch(this.productRemove, { "id": id });
     });
@@ -89,27 +87,27 @@ export class Cart {
       product.ResetLoading();
   }
   async ProductCount(event) {
-    const index = event.detail[0];
+    const id = event.detail[0];
     const count = event.detail[1];
     const last = event.detail[2];
-    if (this.lastProductCountCall[index]) {
-      this.lastProductCountCall[index] = () => this.ProductCountCall(index, count, last);
+    if (this.lastProductCountCall[id]) {
+      this.lastProductCountCall[id] = () => this.ProductCountCall(id, count, last);
     }
     else {
-      this.lastProductCountCall[index] = () => { };
-      this.ProductCountCall(index, count, last).then(() => {
-        if (this.lastProductCountCall[index]) {
-          this.lastProductCountCall[index]();
-          this.lastProductCountCall[index] = undefined;
+      this.lastProductCountCall[id] = () => { };
+      this.ProductCountCall(id, count, last).then(() => {
+        if (this.lastProductCountCall[id]) {
+          this.lastProductCountCall[id]();
+          this.lastProductCountCall[id] = undefined;
         }
       });
     }
   }
-  GetCorrectedProductAmounts(index, amount, maxAmount) {
+  GetCorrectedProductAmounts(id, amount, maxAmount) {
     const products = store.get("products");
-    products[index].amount = amount;
+    products[id].amount = amount;
     if (maxAmount)
-      products[index].maxAmount = maxAmount;
+      products[id].maxAmount = maxAmount;
     return products;
   }
   GetDataWithoutProducts(data) {

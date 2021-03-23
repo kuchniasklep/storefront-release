@@ -185,13 +185,12 @@ export namespace Components {
     interface KsCartProduct {
         "ResetLoading": () => Promise<void>;
         "amount": number;
-        "ikey": string;
         "img": string;
-        "index": number;
         "link": string;
         "maxAmount": number;
         "name": string;
         "price": number;
+        "productId": string;
         "removable": boolean;
         "shippingTime": string;
     }
@@ -2309,15 +2308,14 @@ declare namespace LocalJSX {
     }
     interface KsCartProduct {
         "amount"?: number;
-        "ikey"?: string;
         "img"?: string;
-        "index"?: number;
         "link"?: string;
         "maxAmount"?: number;
         "name"?: string;
-        "onProductCount"?: (event: CustomEvent<[index: number, count: number, last: number]>) => void;
-        "onRemoveProduct"?: (event: CustomEvent<number>) => void;
+        "onProductCount"?: (event: CustomEvent<[id: string, count: number, last: number]>) => void;
+        "onRemoveProduct"?: (event: CustomEvent<string>) => void;
         "price"?: number;
+        "productId"?: string;
         "removable"?: boolean;
         "shippingTime"?: string;
     }

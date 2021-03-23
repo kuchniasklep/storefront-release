@@ -16,11 +16,11 @@ export declare class Cart {
   errorPopup: HTMLKsErrorPopupElement;
   messagePopup: HTMLKsMessagePopupElement;
   componentWillLoad(): Promise<void>;
-  RemoveProduct(event: CustomEvent<number>): Promise<void>;
-  lastProductCountCall: (() => void)[];
-  ProductCount(event: CustomEvent<[index: number, count: number, last: number]>): Promise<void>;
-  ProductCountCall: (index: number, current: number, last: number) => Promise<void>;
-  GetCorrectedProductAmounts(index: number, amount: number, maxAmount?: number): cart.product[];
+  RemoveProduct(event: CustomEvent<string>): Promise<void>;
+  lastProductCountCall: {};
+  ProductCount(event: CustomEvent<[id: string, count: number, last: number]>): Promise<void>;
+  ProductCountCall: (id: string, current: number, last: number) => Promise<void>;
+  GetCorrectedProductAmounts(id: string, amount: number, maxAmount?: number): cart.product[];
   GetDataWithoutProducts(data: any): any;
   SetAmount(amount: number, querySelector: string): void;
   AddDeal(event: CustomEvent<string>): Promise<void>;

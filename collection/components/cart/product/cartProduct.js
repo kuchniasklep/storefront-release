@@ -9,10 +9,10 @@ export class CartProduct {
   }
   onRemoveHandler() {
     this.loading = true;
-    this.removeProduct.emit(this.index);
+    this.removeProduct.emit(this.productId);
   }
   onCountHandler(detail) {
-    this.productCount.emit([this.index, detail.current, detail.last]);
+    this.productCount.emit([this.productId, detail.current, detail.last]);
   }
   async ResetLoading() {
     this.loading = false;
@@ -78,7 +78,7 @@ export class CartProduct {
     "$": ["cartProduct.css"]
   }; }
   static get properties() { return {
-    "ikey": {
+    "productId": {
       "type": "string",
       "mutable": false,
       "complexType": {
@@ -92,25 +92,8 @@ export class CartProduct {
         "tags": [],
         "text": ""
       },
-      "attribute": "ikey",
+      "attribute": "product-id",
       "reflect": true
-    },
-    "index": {
-      "type": "number",
-      "mutable": false,
-      "complexType": {
-        "original": "number",
-        "resolved": "number",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "index",
-      "reflect": false
     },
     "name": {
       "type": "string",
@@ -267,8 +250,8 @@ export class CartProduct {
         "text": ""
       },
       "complexType": {
-        "original": "number",
-        "resolved": "number",
+        "original": "string",
+        "resolved": "string",
         "references": {}
       }
     }, {
@@ -282,8 +265,8 @@ export class CartProduct {
         "text": ""
       },
       "complexType": {
-        "original": "[index: number, count: number, last: number]",
-        "resolved": "[index: number, count: number, last: number]",
+        "original": "[id: string, count: number, last: number]",
+        "resolved": "[id: string, count: number, last: number]",
         "references": {}
       }
     }]; }
