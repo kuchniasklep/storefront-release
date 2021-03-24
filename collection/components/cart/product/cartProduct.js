@@ -29,7 +29,7 @@ export class CartProduct {
   }
   render() {
     const price = this.price.toFixed(2).replace(".", ",") + " zł";
-    const inlineBlockOnMobile = { display: this.removable ? "block" : "inline-block" };
+    const inlineBlockOnMobile = { display: this.removable || this.shippingTime ? "block" : "inline-block" };
     return [
       h("div", { class: "ks-text-decorated", "uk-grid": true },
         h("a", { href: this.link },
@@ -43,7 +43,7 @@ export class CartProduct {
                 h("span", { class: "shipping" }, this.shippingTime)),
               h("div", { style: inlineBlockOnMobile }, this.removable ?
                 h("ks-cart-spinner", { onChanged: (e) => this.onCountHandler(e.detail), "initial-value": this.amount, max: this.maxAmount }) :
-                h("span", { class: "amount" },
+                h("div", { class: "amount" },
                   this.amount,
                   " szt.")))
             : this.shippingTime != "" ?

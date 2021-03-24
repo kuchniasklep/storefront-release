@@ -17,4 +17,5 @@ export declare class CartEasyprotectDialog {
   addProducts(): void;
   back(): void;
   addWarranty(): Promise<void>;
+  end(): void;
 }

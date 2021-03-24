@@ -639,7 +639,7 @@ const CartMessage = class {
 };
 CartMessage.style = cartMessageCss;
 
-const cartProductCss = "ks-cart-product{display:block}ks-cart-product>div{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;font-size:18px}ks-cart-product .description{-webkit-box-flex:1;-ms-flex:1;flex:1}ks-cart-product .description a{color:inherit !important;text-decoration:none !important}ks-cart-product .numbers{font-weight:700}ks-cart-product .price{text-align:center;width:100px}ks-cart-product .amount{text-align:center;width:120px}@media only screen and (max-width: 959px){ks-cart-product .price{text-align:initial;width:initial;color:#e21334}ks-cart-product .shipping{margin-left:10px}ks-cart-product .amount{text-align:initial;width:initial;margin-left:15px}ks-cart-product ks-cart-spinner{margin-top:10px}}@media only screen and (max-width: 640px){ks-cart-product>div{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;position:relative}ks-cart-product .description{text-align:center}ks-cart-product .shipping{display:block;font-size:16px;margin-bottom:5px}ks-cart-product .numbers{margin-top:7px}}";
+const cartProductCss = "ks-cart-product{display:block}ks-cart-product>div{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;font-size:18px}ks-cart-product .description{-webkit-box-flex:1;-ms-flex:1;flex:1}ks-cart-product .description a{color:inherit !important;text-decoration:none !important}ks-cart-product .numbers{font-weight:700}ks-cart-product .price{text-align:center;width:100px}ks-cart-product .amount{text-align:center;width:120px;margin-left:15px}@media only screen and (max-width: 959px){ks-cart-product .price{text-align:initial;width:initial;color:#e21334}ks-cart-product .shipping{margin-left:10px}ks-cart-product .amount{text-align:initial;width:initial;margin-left:0px}ks-cart-product ks-cart-spinner{margin-top:10px}}@media only screen and (max-width: 640px){ks-cart-product>div{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;position:relative}ks-cart-product .description{text-align:center}ks-cart-product .shipping{display:block;font-size:16px;margin-bottom:5px;margin-left:0px;margin-top:-3px}ks-cart-product .numbers{margin-top:7px}ks-cart-product .amount{text-align:center}}";
 
 const CartProduct = class {
   constructor(hostRef) {
@@ -674,12 +674,12 @@ const CartProduct = class {
   }
   render() {
     const price = this.price.toFixed(2).replace(".", ",") + " zł";
-    const inlineBlockOnMobile = { display: this.removable ? "block" : "inline-block" };
+    const inlineBlockOnMobile = { display: this.removable || this.shippingTime ? "block" : "inline-block" };
     return [
       h("div", { class: "ks-text-decorated", "uk-grid": true }, h("a", { href: this.link }, h("ks-image", { src: this.img, width: "150", height: "150", contain: true, alt: "zdj\u0119cie produktu" })), h("div", { class: "description" }, h("a", { href: this.link, innerHTML: this.name }), this.mobile >= 1 ?
         h("div", { class: "numbers" }, h("div", { style: inlineBlockOnMobile }, h("span", { class: "price" }, price), h("span", { class: "shipping" }, this.shippingTime)), h("div", { style: inlineBlockOnMobile }, this.removable ?
           h("ks-cart-spinner", { onChanged: (e) => this.onCountHandler(e.detail), "initial-value": this.amount, max: this.maxAmount }) :
-          h("span", { class: "amount" }, this.amount, " szt.")))
+          h("div", { class: "amount" }, this.amount, " szt.")))
         : this.shippingTime != "" ?
           h("div", { class: "numbers" }, this.shippingTime)
           : null), this.mobile == 0 ? [

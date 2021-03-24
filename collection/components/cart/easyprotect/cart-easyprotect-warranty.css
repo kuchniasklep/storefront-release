@@ -69,6 +69,7 @@ ks-cart-easyprotect-warranty .select ks-icon {
     top: 8px;
     right: 5px;
     color: white;
+    pointer-events: none;
 }
 
 ks-cart-easyprotect-warranty ks-input-select div {
@@ -86,7 +87,10 @@ ks-cart-easyprotect-warranty ks-input-select select {
     color: white !important;
 }
 
-
+ks-cart-easyprotect-warranty:not([product-id]) .select {
+    color: white !important;
+    padding: 7px 20px;
+}
 
 ks-cart-easyprotect-warranty .close {
     -ms-flex-item-align: stretch;
@@ -119,7 +123,8 @@ ks-cart-easyprotect-warranty .close:active {
 
 
 @media (min-width: 860px) {
-    ks-cart-easyprotect-warranty[insured] .info {
+    ks-cart-easyprotect-warranty[insured] .info,
+    ks-cart-easyprotect-warranty:not([product-id]) .info {
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;

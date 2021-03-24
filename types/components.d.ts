@@ -174,7 +174,10 @@ export namespace Components {
     interface KsCartEasyprotectWarranty {
         "active": string;
         "insured": boolean;
+        "name": string;
+        "price": number;
         "productId": string;
+        "time": number;
     }
     interface KsCartHeading {
         "center": boolean;
@@ -2298,7 +2301,10 @@ declare namespace LocalJSX {
     interface KsCartEasyprotectWarranty {
         "active"?: string;
         "insured"?: boolean;
+        "name"?: string;
+        "price"?: number;
         "productId"?: string;
+        "time"?: number;
     }
     interface KsCartHeading {
         "center"?: boolean;

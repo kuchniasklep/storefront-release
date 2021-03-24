@@ -2,27 +2,38 @@ import { Component, h, Prop, Element } from '@stencil/core';
 import { store, easyprotectChange, easyprotectRemove } from '../cart-store';
 export class CartEasyprotectWarranty {
   componentWillLoad() {
-    if (!this.active)
-      this.active = Object.keys(store.get("easyprotect")[this.productId])[0];
+    if (this.productId) {
+      if (!this.active)
+        this.active = Object.keys(store.get("easyprotect")[this.productId])[0];
+      this.update();
+    }
   }
   componentWillUpdate() {
-    this.root.querySelector("select").value = this.active;
+    if (this.productId) {
+      this.root.querySelector("select").value = this.active;
+      this.update();
+    }
+  }
+  update() {
+    this.name = store.get("products")[this.productId].name;
+    this.options = store.get("easyprotect")[this.productId];
+    this.entries = Object.entries(this.options);
+    this.price = this.options[this.active];
   }
   render() {
-    const name = store.get("products")[this.productId].name;
-    const options = store.get("easyprotect")[this.productId];
-    const entries = Object.entries(options);
     return [
-      h("div", { class: "name" }, name),
+      h("div", { class: "name" }, this.name),
       h("div", { class: "control" },
         h("div", { class: "info" },
-          h("div", { class: "select" },
-            h("ks-input-select", { onChange: () => this.change() }, entries.map(([months, _]) => h("option", { value: months, selected: this.active == months }, this.months(parseInt(months))))),
-            h("ks-icon", { name: "chevron-down" })),
+          h("div", { class: "select" }, this.productId ? [
+            h("ks-input-select", { onChange: () => this.change() }, this.entries.map(([months, _]) => h("option", { value: months, selected: this.active == months }, this.months(parseInt(months))))),
+            h("ks-icon", { name: "chevron-down" })
+          ] :
+            this.months(this.time)),
           h("div", { class: "price" },
-            options[this.active],
+            this.price,
             " z\u0142")),
-        this.insured ?
+        this.productId && this.insured ?
           h("button", { class: "close", onClick: () => this.remove() },
             h("ks-icon", { name: "x" }))
           : null),
@@ -105,6 +116,57 @@ export class CartEasyprotectWarranty {
       },
       "attribute": "active",
       "reflect": true
+    },
+    "name": {
+      "type": "string",
+      "mutable": true,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "name",
+      "reflect": false
+    },
+    "time": {
+      "type": "number",
+      "mutable": true,
+      "complexType": {
+        "original": "number",
+        "resolved": "number",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "time",
+      "reflect": false
+    },
+    "price": {
+      "type": "number",
+      "mutable": true,
+      "complexType": {
+        "original": "number",
+        "resolved": "number",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "price",
+      "reflect": false
     }
   }; }
   static get elementRef() { return "root"; }

@@ -100,7 +100,20 @@ export class CartEasyprotectDialog {
     items.forEach(item => {
       warranties[item.getAttribute("product-id")] = item.getAttribute("active");
     });
-    await easyprotectChange(warranties);
+    let fetchcomplete = false;
+    let timeoutcomplete = false;
+    setTimeout(() => {
+      timeoutcomplete = true;
+      if (fetchcomplete)
+        this.end();
+    }, 500);
+    easyprotectChange(warranties).then(() => {
+      fetchcomplete = true;
+      if (timeoutcomplete)
+        this.end();
+    });
+  }
+  end() {
     this.overlay.hide();
     setTimeout(() => {
       this.overlay.close = true;
