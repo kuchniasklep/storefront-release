@@ -6,6 +6,7 @@ export class CartEasyprotectWarranty {
       if (!this.active)
         this.active = Object.keys(store.get("easyprotect")[this.productId])[0];
       this.update();
+      store.onChange("easyprotect", () => this.update());
     }
   }
   componentWillUpdate() {

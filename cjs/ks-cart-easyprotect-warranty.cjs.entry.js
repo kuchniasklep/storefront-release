@@ -17,6 +17,7 @@ const CartEasyprotectWarranty = class {
       if (!this.active)
         this.active = Object.keys(cartStore.store.get("easyprotect")[this.productId])[0];
       this.update();
+      cartStore.store.onChange("easyprotect", () => this.update());
     }
   }
   componentWillUpdate() {
