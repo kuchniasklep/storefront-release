@@ -26,7 +26,7 @@ const CartEasyprotectDialog = class {
     const insured = Object.keys(cartStore.store.get("insured"));
     const available = Object.keys(cartStore.store.get("easyprotect"));
     this.eligible = available
-      .filter(x => !insured.includes(x))
+      .filter(id => !insured.includes(id) && cartStore.store.get('products')[id] !== undefined)
       .map(id => cartStore.store.get('products')[id]);
     if (this.eligible.length == 1) {
       this.active = [this.eligible[0].id];
