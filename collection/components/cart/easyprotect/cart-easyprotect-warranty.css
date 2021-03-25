@@ -130,6 +130,18 @@ ks-cart-easyprotect-warranty .close:active {
         display: flex;
         min-width: 200px;
     }
+
+    ks-cart-easyprotect-warranty .name {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 100%;
+    }
+
+    ks-cart-easyprotect-warranty .control {
+        -webkit-box-flex: 1;
+            -ms-flex: 1 0 auto;
+                flex: 1 0 auto;
+    }
 }
 
 @media (max-width: 420px) {

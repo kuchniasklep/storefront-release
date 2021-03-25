@@ -25,7 +25,7 @@ export class CartEasyprotectWarranty {
   }
   render() {
     return [
-      h("div", { class: "name" }, this.name),
+      h("div", { class: "name", innerHTML: this.name.replace("<br>", " "), title: this.name.replace("<br>", " ").replace(/(<([^>]+)>)/gi, "") }),
       h("div", { class: "control" },
         h("div", { class: "info" },
           h("div", { class: "select" }, this.productId ? [

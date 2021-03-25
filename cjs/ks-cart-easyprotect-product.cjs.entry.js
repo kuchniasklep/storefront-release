@@ -15,7 +15,7 @@ const CartEasyprotectProduct = class {
   render() {
     return [
       index.h("div", { class: "image" }, index.h("ks-img2", { src: this.image, width: 200, height: 200 })),
-      index.h("div", { class: "info" }, index.h("div", { class: "name" }, this.name), this.warranty ?
+      index.h("div", { class: "info" }, index.h("div", { class: "name", innerHTML: this.name }), this.warranty ?
         index.h("div", { class: "warranty" }, this.warranty)
         : null)
     ];
