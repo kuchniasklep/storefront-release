@@ -8,6 +8,7 @@ export declare class CartEasyprotectDialog {
   overlay: HTMLKsOverlayElement;
   componentDidLoad(): void;
   updateEligible(): void;
+  updateStep(): void;
   render(): any[];
   products(): any;
   warranty(): any[];

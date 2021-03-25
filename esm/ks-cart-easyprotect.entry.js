@@ -14,6 +14,7 @@ const CartEasyprotect = class {
       this.enabled = Object.keys(store.get("easyprotect")).length > 0;
     };
     store.onChange("insured", update);
+    store.onChange("easyprotect", update);
     update();
   }
   render() {

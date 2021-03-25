@@ -15,9 +15,12 @@ const CartEasyprotectDialog = class {
     this.step = 0;
   }
   componentWillLoad() {
-    this.updateEligible();
-    cartStore.store.onChange("easyprotect", () => this.updateEligible());
-    cartStore.store.onChange("insured", () => this.updateEligible());
+    const update = () => {
+      this.updateEligible();
+    };
+    update();
+    cartStore.store.onChange("easyprotect", update);
+    cartStore.store.onChange("insured", update);
   }
   componentDidLoad() {
     this.overlay = this.root.querySelector("ks-overlay");
@@ -28,6 +31,8 @@ const CartEasyprotectDialog = class {
     this.eligible = available
       .filter(id => !insured.includes(id) && cartStore.store.get('products')[id] !== undefined)
       .map(id => cartStore.store.get('products')[id]);
+  }
+  updateStep() {
     if (this.eligible.length == 1) {
       this.active = [this.eligible[0].id];
       this.step = 2;
@@ -69,10 +74,14 @@ const CartEasyprotectDialog = class {
   }
   show() {
     this.updateEligible();
+    this.updateStep();
     this.overlay.show();
   }
   hide() {
     this.overlay.hide();
+    setTimeout(() => {
+      this.step = 0;
+    }, 300);
   }
   addProducts() {
     this.step = 1;
