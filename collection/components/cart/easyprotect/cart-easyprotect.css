@@ -3,6 +3,10 @@ ks-cart-easyprotect {
     padding: 30px;
 }
 
+ks-cart-easyprotect.hidden {
+    display: none;
+}
+
 ks-cart-easyprotect .top {
     display: -webkit-box;
     display: -ms-flexbox;

@@ -3,5 +3,8 @@ export declare class CartEasyprotect {
   image: string;
   width: number;
   height: number;
-  render(): any[];
+  insured: [string, string][];
+  enabled: boolean;
+  componentWillLoad(): void;
+  render(): any;
 }

@@ -23,6 +23,8 @@ const CartEasyprotectWarranty = class {
     }
   }
   update() {
+    if (store.get("easyprotect")[this.productId] === undefined)
+      return;
     this.name = store.get("products")[this.productId].name;
     this.options = store.get("easyprotect")[this.productId];
     this.entries = Object.entries(this.options);

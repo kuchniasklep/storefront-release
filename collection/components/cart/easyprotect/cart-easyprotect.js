@@ -1,16 +1,22 @@
-import { Component, h, Prop, Element } from '@stencil/core';
+import { Component, h, Prop, Element, Host, State } from '@stencil/core';
 import { store } from '../cart-store';
 export class CartEasyprotect {
+  componentWillLoad() {
+    const update = () => {
+      this.insured = Object.entries(store.get("insured"));
+      this.enabled = Object.keys(store.get("easyprotect")).length > 0;
+    };
+    store.onChange("insured", update);
+    update();
+  }
   render() {
-    const insured = Object.entries(store.get("insured"));
-    return [
+    return h(Host, { class: !this.enabled ? "hidden" : "" },
       h("div", { class: "top" },
         h("div", { class: "content" },
           h("slot", null)),
         h("ks-img2", { src: this.image, width: this.width, height: this.height })),
-      h("div", { class: "insured" }, insured.map(([id, months]) => h("ks-cart-easyprotect-warranty", { insured: true, "product-id": id, active: months }))),
-      h("slot", { name: "bottom" })
-    ];
+      h("div", { class: "insured" }, this.insured.map(([id, months]) => h("ks-cart-easyprotect-warranty", { insured: true, "product-id": id, active: months }))),
+      h("slot", { name: "bottom" }));
   }
   static get is() { return "ks-cart-easyprotect"; }
   static get originalStyleUrls() { return {
@@ -71,6 +77,10 @@ export class CartEasyprotect {
       "attribute": "height",
       "reflect": false
     }
+  }; }
+  static get states() { return {
+    "insured": {},
+    "enabled": {}
   }; }
   static get elementRef() { return "root"; }
 }
