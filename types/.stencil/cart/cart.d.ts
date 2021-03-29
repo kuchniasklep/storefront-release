@@ -1,11 +1,7 @@
-import { CartData } from './cartData';
-interface FormProperty {
-  key: string;
-  value: string;
-}
+import * as cart from './cart-data';
 export declare class Cart {
+  dataId: string;
   api: string;
-  data: CartData;
   productRemove: string;
   productCount: string;
   addDeal: string;
@@ -15,30 +11,34 @@ export declare class Cart {
   discountCode: string;
   discountPoints: string;
   discountRemove: string;
+  easyprotectChange: string;
+  easyprotectRemove: string;
+  errorPopup: HTMLKsErrorPopupElement;
+  messagePopup: HTMLKsMessagePopupElement;
   componentWillLoad(): Promise<void>;
-  RemoveProduct: (index: number) => Promise<void>;
-  lastProductCountCall: (() => void)[];
-  ProductCount: (index: number, count: number, last: number) => Promise<void>;
-  ProductCountCall: (index: number, current: number, last: number) => Promise<void>;
-  GetDataWithCorrectedProductAmounts(productIndex: number, amount: number, maxAmount?: number): CartData;
+  RemoveProduct(event: CustomEvent<string>): Promise<void>;
+  lastProductCountCall: {};
+  ProductCount(event: CustomEvent<[id: string, count: number, last: number]>): Promise<void>;
+  ProductCountCall: (id: string, current: number, last: number) => Promise<void>;
+  GetCorrectedProductAmounts(id: string, amount: number, maxAmount?: number): cart.product[];
   GetDataWithoutProducts(data: any): any;
   SetAmount(amount: number, querySelector: string): void;
-  AddDeal: (id: string) => Promise<void>;
-  CountryChange: (code: string) => Promise<void>;
-  ShippingChange: (id: number) => Promise<void>;
-  PaymentChange: (id: number) => Promise<void>;
-  DiscountRemove: () => Promise<void>;
-  DiscountCodeAdd: (code: string) => Promise<void>;
-  DiscountPointsAdd: (points: number) => Promise<void>;
+  AddDeal(event: CustomEvent<string>): Promise<void>;
+  CountryChange(event: CustomEvent<string>): Promise<void>;
+  ShippingChange(event: CustomEvent<number>): Promise<void>;
+  PaymentChange(event: CustomEvent<number>): Promise<void>;
+  DiscountRemove(): Promise<void>;
+  DiscountCodeAdd(event: CustomEvent<string>): Promise<void>;
+  DiscountPointsAdd(event: CustomEvent<number>): Promise<void>;
   StartLoading(querySelector: string): void;
   ResetLoading(querySelector: string): void;
   ScrollToElement(querySelector: string): void;
   RemoveDiscount(): void;
-  ShowMessageFromData(data: any, callback: (d: any) => void): void;
+  ShowMessageFromData(name: string, data: any, callback: (d: any) => void): void;
   ProductLoadingWrapper(func: () => Promise<any>): Promise<any>;
-  FetchData(url: string, formProperties?: Array<FormProperty>): Promise<any>;
-  Update(data: any): Promise<void>;
-  Message(text: string): Promise<void>;
+  fetch(url: string, formProperties?: {
+    [index: string]: string;
+  }): Promise<any>;
+  update(data: any): Promise<void>;
   render(): any;
 }
-export {};

@@ -1,12 +1,9 @@
-import { CartDataSelectItem } from '../cartData';
+import { EventEmitter } from '../../../stencil-public-runtime';
 export declare class CartSelectShipping {
   root: HTMLElement;
   name: string;
   valid: boolean;
   error: boolean;
-  shipping: CartDataSelectItem[];
-  activeShipping: number;
-  ShippingChange?: (id: number) => void;
   active: number;
   toggled: boolean;
   loading: boolean;
@@ -15,7 +12,7 @@ export declare class CartSelectShipping {
   Validate(): Promise<boolean>;
   OutsideClickHandler(event: any): void;
   componentDidLoad(): void;
-  ActiveItemWatcher(): void;
+  shippingChange: EventEmitter<number>;
   ActivateItem(id: number): void;
   render(): any;
 }

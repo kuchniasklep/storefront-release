@@ -1,5 +1,5 @@
-import { Component, h, Listen, Element, Prop, State, Method, Watch } from '@stencil/core';
-import Tunnel from '../cartData';
+import { Component, h, Listen, Element, Prop, State, Method, Event } from '@stencil/core';
+import { store } from '../cart-store';
 export class CartSelectPayment {
   constructor() {
     this.name = "";
@@ -32,21 +32,19 @@ export class CartSelectPayment {
     this.root.classList.add("ks-cart-select");
   }
   ActivateItem(id) {
-    this.PaymentChange(id);
+    this.paymentChange.emit(id);
     this.toggled = false;
     this.active = id;
     this.valid = true;
     this.error = false;
   }
-  ActiveItemWatcher() {
-    if (this.valid)
-      this.active = this.activePayment;
-  }
   render() {
+    if (this.valid)
+      this.active = store.get("activePayment");
     if (this.loading)
       return (h("div", { class: "center" },
         h("nav", { "uk-spinner": true })));
-    const activeItem = this.payment.find((value) => {
+    const activeItem = store.get("payment").find((value) => {
       return value.id == this.active;
     });
     return [
@@ -57,7 +55,7 @@ export class CartSelectPayment {
           h("ks-cart-select-item", { logo: activeItem.logo, name: activeItem.name, price: activeItem.price })),
         h("div", { class: "selectIcon" },
           h("span", { "uk-icon": "icon: triangle-down; ratio: 1.3" }))),
-      h("div", { class: "items", hidden: !this.toggled }, this.payment.map((item) => h("ks-cart-select-item", { key: item.id, logo: item.logo, name: item.name, price: item.price, color: item.color, onClick: () => this.ActivateItem(item.id) })))
+      h("div", { class: "items", hidden: !this.toggled }, store.get("payment").map((item) => h("ks-cart-select-item", { key: item.id, logo: item.logo, name: item.name, price: item.price, color: item.color, onClick: () => this.ActivateItem(item.id) })))
     ];
   }
   static get is() { return "ks-cart-select-payment"; }
@@ -122,43 +120,6 @@ export class CartSelectPayment {
       "reflect": true,
       "defaultValue": "false"
     },
-    "payment": {
-      "type": "unknown",
-      "mutable": false,
-      "complexType": {
-        "original": "CartDataSelectItem[]",
-        "resolved": "CartDataSelectItem[]",
-        "references": {
-          "CartDataSelectItem": {
-            "location": "import",
-            "path": "../cartData"
-          }
-        }
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      }
-    },
-    "activePayment": {
-      "type": "number",
-      "mutable": false,
-      "complexType": {
-        "original": "number",
-        "resolved": "number",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "active-payment",
-      "reflect": false
-    },
     "PaymentChange": {
       "type": "unknown",
       "mutable": false,
@@ -180,6 +141,22 @@ export class CartSelectPayment {
     "toggled": {},
     "loading": {}
   }; }
+  static get events() { return [{
+      "method": "paymentChange",
+      "name": "paymentChange",
+      "bubbles": true,
+      "cancelable": true,
+      "composed": true,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "complexType": {
+        "original": "number",
+        "resolved": "number",
+        "references": {}
+      }
+    }]; }
   static get methods() { return {
     "StartLoading": {
       "complexType": {
@@ -231,10 +208,6 @@ export class CartSelectPayment {
     }
   }; }
   static get elementRef() { return "root"; }
-  static get watchers() { return [{
-      "propName": "activePayment",
-      "methodName": "ActiveItemWatcher"
-    }]; }
   static get listeners() { return [{
       "name": "click",
       "method": "OutsideClickHandler",
@@ -243,4 +216,3 @@ export class CartSelectPayment {
       "passive": false
     }]; }
 }
-Tunnel.injectProps(CartSelectPayment, ['payment', 'PaymentChange', 'activePayment']);

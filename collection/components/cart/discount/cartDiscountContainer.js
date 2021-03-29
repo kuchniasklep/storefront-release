@@ -1,5 +1,5 @@
 import { Component, h, Prop, Element } from '@stencil/core';
-import Tunnel from '../cartData';
+import { store } from "../cart-store";
 export class CartDiscountContainer {
   constructor() {
     this.codeBanner = "";
@@ -15,43 +15,44 @@ export class CartDiscountContainer {
     this.loginUrl = "";
     this.loggedIn = false;
     this.disablePoints = false;
-    this.pointsForOrder = 0;
-    this.productValue = 0;
-    this.points = { threshold: 0, available: 0, value: 0 };
   }
   render() {
-    if (this.discount) {
+    const discount = store.get("discount");
+    const points = store.get("points");
+    const pointsForOrder = store.get("pointsForOrder");
+    const productValue = store.get("productValue");
+    if (Object.keys(discount).length !== 0) {
       return (h("nav", { class: "uk-animation-fade" },
-        h("ks-cart-heading", null, this.discount.heading),
-        h("ks-cart-discount-ticket", { name: this.discount.name, value: this.discount.value, onRemove: () => this.DiscountRemove() })));
+        h("ks-cart-heading", null, discount.heading),
+        h("ks-cart-discount-ticket", { name: discount.name, value: discount.value })));
     }
     const pointsMessage = this.pointsMessage
-      .replace("{available}", this.points.available.toString())
-      .replace("{value}", this.points.value.toFixed(2))
-      .replace("{points}", this.pointsForOrder.toFixed(0));
+      .replace("{available}", points.available.toString())
+      .replace("{value}", points.value.toFixed(2))
+      .replace("{points}", pointsForOrder.toFixed(0));
     const loginMessage = this.loginMessage
-      .replace("{points}", this.pointsForOrder.toFixed(0));
+      .replace("{points}", pointsForOrder.toFixed(0));
     const noPointsMessage = this.noPointsMessage
-      .replace("{points}", this.pointsForOrder.toFixed(0));
+      .replace("{points}", pointsForOrder.toFixed(0));
     const thresholdMessage = this.thresholdMessage
-      .replace("{threshold}", this.points.threshold.toFixed(2))
-      .replace("{points}", this.pointsForOrder.toFixed(0));
+      .replace("{threshold}", points.threshold.toFixed(2))
+      .replace("{points}", pointsForOrder.toFixed(0));
     return [
       h("div", { class: `uk-animation-fade ${!this.disablePoints ? "flex" : ""}` },
         h("div", null,
           h("ks-cart-heading", null, "KOD RABATOWY"),
-          h("ks-cart-discount-code", { placeholder: this.codePlaceholder, image: this.codeBanner, onDiscountSubmit: (e) => this.DiscountCodeAdd(e.detail) })),
+          h("ks-cart-discount-code", { placeholder: this.codePlaceholder, image: this.codeBanner })),
         !this.disablePoints ?
           h("div", null,
             h("ks-cart-heading", null, "PUNKTY"),
-            this.loggedIn ? (this.points.available > 0 ?
-              this.productValue >= this.points.threshold || this.points.threshold == 0 ?
-                h("ks-cart-discount-points", { placeholder: this.pointsPlaceholder, message: pointsMessage, points: this.points.available, orderPoints: this.pointsForOrder, onDiscountSubmit: (e) => this.DiscountPointsAdd(e.detail) })
+            this.loggedIn ? (points.available > 0 ?
+              productValue >= points.threshold || points.threshold == 0 ?
+                h("ks-cart-discount-points", { placeholder: this.pointsPlaceholder, message: pointsMessage, points: points.available, orderPoints: pointsForOrder })
                 :
-                  h("ks-cart-discount-points-message", { heading: this.thresholdHeading, message: thresholdMessage, points: this.pointsForOrder })
+                  h("ks-cart-discount-points-message", { heading: this.thresholdHeading, message: thresholdMessage, points: pointsForOrder })
               :
-                h("ks-cart-discount-points-message", { heading: this.noPointsHeading, message: noPointsMessage, points: this.pointsForOrder })) :
-              h("ks-cart-discount-points-login", { message: loginMessage, points: this.pointsForOrder, "login-url": this.loginUrl }))
+                h("ks-cart-discount-points-message", { heading: this.noPointsHeading, message: noPointsMessage, points: pointsForOrder })) :
+              h("ks-cart-discount-points-login", { message: loginMessage, points: pointsForOrder, "login-url": this.loginUrl }))
           : null),
       this.infoMessage != "" ?
         h("ks-cart-discount-message", null,
@@ -300,145 +301,7 @@ export class CartDiscountContainer {
       "attribute": "disable-points",
       "reflect": false,
       "defaultValue": "false"
-    },
-    "pointsForOrder": {
-      "type": "number",
-      "mutable": false,
-      "complexType": {
-        "original": "number",
-        "resolved": "number",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "points-for-order",
-      "reflect": false,
-      "defaultValue": "0"
-    },
-    "productValue": {
-      "type": "number",
-      "mutable": false,
-      "complexType": {
-        "original": "number",
-        "resolved": "number",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "product-value",
-      "reflect": false,
-      "defaultValue": "0"
-    },
-    "points": {
-      "type": "unknown",
-      "mutable": false,
-      "complexType": {
-        "original": "CartDataPoints",
-        "resolved": "CartDataPoints",
-        "references": {
-          "CartDataPoints": {
-            "location": "import",
-            "path": "../cartData"
-          }
-        }
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "defaultValue": "{threshold: 0, available: 0, value: 0}"
-    },
-    "discount": {
-      "type": "unknown",
-      "mutable": false,
-      "complexType": {
-        "original": "CartDataDiscount",
-        "resolved": "CartDataDiscount",
-        "references": {
-          "CartDataDiscount": {
-            "location": "import",
-            "path": "../cartData"
-          }
-        }
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      }
-    },
-    "RemoveDiscount": {
-      "type": "unknown",
-      "mutable": false,
-      "complexType": {
-        "original": "()=>void",
-        "resolved": "() => void",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      }
-    },
-    "DiscountCodeAdd": {
-      "type": "unknown",
-      "mutable": false,
-      "complexType": {
-        "original": "(string)=>void",
-        "resolved": "(string: any) => void",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      }
-    },
-    "DiscountPointsAdd": {
-      "type": "unknown",
-      "mutable": false,
-      "complexType": {
-        "original": "(number)=>void",
-        "resolved": "(number: any) => void",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      }
-    },
-    "DiscountRemove": {
-      "type": "unknown",
-      "mutable": false,
-      "complexType": {
-        "original": "()=>void",
-        "resolved": "() => void",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      }
     }
   }; }
   static get elementRef() { return "root"; }
 }
-Tunnel.injectProps(CartDiscountContainer, ['productValue', 'points', 'pointsForOrder', 'discount', 'DiscountRemove', 'DiscountCodeAdd', 'DiscountPointsAdd']);

@@ -1,8 +1,7 @@
-import { CartDataShippingProgress } from '../cartData';
+import * as cart from '../cart-data';
 export declare class CartProgressBar {
   root: HTMLElement;
-  productValue: number;
-  shippingProgress: CartDataShippingProgress;
+  shippingProgress: cart.shippingProgress;
   componentWillLoad(): void;
   numberPlacement: boolean;
   resizeHandler(): void;

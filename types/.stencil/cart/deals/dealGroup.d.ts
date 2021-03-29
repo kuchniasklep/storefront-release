@@ -1,16 +1,14 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
-import { CartDataDeal } from '../cartData';
+import { deal } from '../cart-data';
 export declare class CartDealGroup {
   ikey: string;
   name: string;
-  deals: CartDataDeal[];
-  currentDeal: CartDataDeal;
+  deals: deal[];
+  currentDeal: deal;
   loading: boolean;
-  add: EventEmitter;
-  onAdd(): void;
   componentWillLoad(): void;
   change(target: EventTarget): void;
-  AddDeal: (id: string) => Promise<void>;
+  addDeal: EventEmitter<string>;
   Add(): void;
   render(): any[];
 }

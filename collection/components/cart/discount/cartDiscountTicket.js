@@ -5,16 +5,16 @@ export class CartDiscountTicket {
     this.value = "";
     this.loading = false;
   }
-  onRemoveHandler() {
+  discountRemoveHandler() {
     this.loading = true;
-    this.remove.emit();
+    this.discountRemove.emit();
   }
   render() {
     return [
       h("div", { class: "content ks-text-decorated" },
         h("div", { class: "name" }, this.name),
         h("div", { class: "value" }, this.value)),
-      h("div", { class: "remove", onClick: () => this.onRemoveHandler() }, this.loading ?
+      h("div", { class: "remove", onClick: () => this.discountRemoveHandler() }, this.loading ?
         h("div", { "uk-spinner": true })
         :
           h("span", { "uk-icon": "icon: close; ratio: 1.3;" }))
@@ -69,8 +69,8 @@ export class CartDiscountTicket {
     "loading": {}
   }; }
   static get events() { return [{
-      "method": "remove",
-      "name": "remove",
+      "method": "discountRemove",
+      "name": "discountRemove",
       "bubbles": true,
       "cancelable": true,
       "composed": true,

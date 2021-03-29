@@ -1,10 +1,11 @@
-import { Component, h, Prop, Element, Listen, State } from '@stencil/core';
-import Tunnel from '../cartData';
+import { Component, h, Element, Listen, State } from '@stencil/core';
+import { store } from '../cart-store';
 export class CartProgressBar {
   constructor() {
     this.numberPlacement = false;
   }
   componentWillLoad() {
+    this.shippingProgress = store.get("shippingProgress");
     this.resizeHandler();
     if (!this.shippingProgress) {
       this.root.hidden = true;
@@ -16,7 +17,7 @@ export class CartProgressBar {
   }
   resizeHandler() {
     if (this.shippingProgress) {
-      const barWidth = Math.min(this.productValue / this.shippingProgress.threshold * 100, 100);
+      const barWidth = Math.min(store.get("productValue") / this.shippingProgress.threshold * 100, 100);
       this.numberPlacement = (barWidth / 100 * window.innerWidth) > 200;
     }
   }
@@ -24,15 +25,16 @@ export class CartProgressBar {
     this.componentWillLoad();
   }
   render() {
+    const productValue = store.get("productValue");
     const data = this.shippingProgress;
     if (!data)
       return null;
     const threshold = (Number.isInteger(data.threshold) ?
       data.threshold.toString() :
       data.threshold.toFixed(2)).replace(".", ",");
-    const current = this.productValue.toFixed(2).replace(".", ",");
-    const barWidth = Math.min(this.productValue / data.threshold * 100, 100);
-    const thresholdAchieved = this.productValue >= data.threshold;
+    const current = productValue.toFixed(2).replace(".", ",");
+    const barWidth = Math.min(productValue / data.threshold * 100, 100);
+    const thresholdAchieved = productValue >= data.threshold;
     return [
       h("div", { class: "heading ks-text-decorated" },
         h("div", null, data.heading),
@@ -56,45 +58,6 @@ export class CartProgressBar {
   static get styleUrls() { return {
     "$": ["cartProgressBar.css"]
   }; }
-  static get properties() { return {
-    "productValue": {
-      "type": "number",
-      "mutable": false,
-      "complexType": {
-        "original": "number",
-        "resolved": "number",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "product-value",
-      "reflect": false
-    },
-    "shippingProgress": {
-      "type": "unknown",
-      "mutable": false,
-      "complexType": {
-        "original": "CartDataShippingProgress",
-        "resolved": "CartDataShippingProgress",
-        "references": {
-          "CartDataShippingProgress": {
-            "location": "import",
-            "path": "../cartData"
-          }
-        }
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      }
-    }
-  }; }
   static get states() { return {
     "numberPlacement": {}
   }; }
@@ -107,4 +70,3 @@ export class CartProgressBar {
       "passive": true
     }]; }
 }
-Tunnel.injectProps(CartProgressBar, ['productValue', 'shippingProgress']);

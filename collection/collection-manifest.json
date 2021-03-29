@@ -17,6 +17,10 @@
     "./components/cart/discount/cartDiscountPointsLogin.js",
     "./components/cart/discount/cartDiscountPointsMessage.js",
     "./components/cart/discount/cartDiscountTicket.js",
+    "./components/cart/easyprotect/cart-easyprotect-dialog.js",
+    "./components/cart/easyprotect/cart-easyprotect-product.js",
+    "./components/cart/easyprotect/cart-easyprotect-warranty.js",
+    "./components/cart/easyprotect/cart-easyprotect.js",
     "./components/cart/message/cartMessage.js",
     "./components/cart/message/cartShippingMessage.js",
     "./components/cart/product/cartProduct.js",
@@ -168,14 +172,7 @@
     "version": "2.3.0",
     "typescriptVersion": "4.0.5"
   },
-  "collections": [
-    {
-      "name": "@stencil/state-tunnel",
-      "tags": [
-        "context-consumer"
-      ]
-    }
-  ],
+  "collections": [],
   "bundles": [
     {
       "components": [

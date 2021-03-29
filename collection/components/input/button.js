@@ -8,7 +8,7 @@ export class Button {
       return h("input", { type: "submit", value: this.name });
     if (this.link)
       return h("a", { href: this.link, rel: this.nofollow ? "nofollow" : null }, this.name);
-    return h("button", null, this.name);
+    return h("button", { disabled: this.disabled }, this.name);
   }
   static get is() { return "ks-button"; }
   static get originalStyleUrls() { return {
@@ -86,6 +86,23 @@ export class Button {
       },
       "attribute": "nofollow",
       "reflect": false
+    },
+    "disabled": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "disabled",
+      "reflect": true
     },
     "round": {
       "type": "boolean",

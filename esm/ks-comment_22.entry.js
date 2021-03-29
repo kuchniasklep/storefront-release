@@ -1,9 +1,10 @@
-import { r as registerInstance, h, g as getElement, c as createEvent, H as Host } from './index-46fe532f.js';
+import { r as registerInstance, h, g as getElement, c as createEvent, H as Host } from './index-2d9093e5.js';
 import { O as OpenSuggestions } from './functions-802032ba.js';
 import { w as window_load } from './deferredpromise-0f64146f.js';
 import { S as Swiper } from './core-class-f05bf7c2.js';
 import { T as Thumbs } from './thumbs-06204fe0.js';
-import { c as createStore, V as ValidateInput } from './validate-46a616dd.js';
+import { c as createStore } from './index-324bcb5b.js';
+import { V as ValidateInput } from './validate-cd7ce36d.js';
 
 const commentCss = "ks-comment{display:block}ks-comment article{padding:30px}@media (min-width: 1200px){ks-comment article{padding:30px 40px}}ks-comment header{display:-webkit-box;display:-ms-flexbox;display:flex}ks-comment header>div{width:100%}ks-comment header .title{margin:0}ks-comment header .info{font-size:.875rem;line-height:1.4;color:#707070}ks-comment ks-icon{margin-right:20px}ks-comment p{margin-bottom:0px}";
 
@@ -743,17 +744,34 @@ const ProductTabs = class {
 };
 ProductTabs.style = productTabsCss;
 
-const productTitleCss = "ks-product-title{display:block}ks-product-title h1{font-family:var(--product-title-font);font-size:var(--product-title-size);color:var(--product-title-color);font-weight:700;margin-bottom:2px}ks-product-title h1>a:active{opacity:0.5}ks-product-title>.breadcrumbs>a{font-family:var(--product-breadcrumb-font);font-size:var(--product-breadcrumb-size);color:var(--product-breadcrumb-color);text-decoration:none}ks-product-title>.breadcrumbs>a:not(:last-child):after{content:\"/\";color:var(--product-breadcrumb-color);margin:0 15px}ks-product-title>.breadcrumbs>a:focus{color:var(--product-breadcrumb-color)}ks-product-title>.breadcrumbs>a:hover{color:var(--product-breadcrumb-color-hover)}ks-product-title>.breadcrumbs>a:active{color:var(--product-breadcrumb-color-active)}@media only screen and (max-width: 960px){ks-product-title{text-align:center}}@media only screen and (max-width: 1100px){ks-product-title>.breadcrumbs+*{font-size:var(--product-title-size-small)}}@media only screen and (max-width: 460px){ks-product-title>.breadcrumbs{margin-bottom:10px}ks-product-title>.breadcrumbs>a{font-size:14px}ks-product-title>.breadcrumbs>a:not(:last-child):after{margin:0 10px}}";
+const productTitleCss = "ks-product-title{display:block}ks-product-title h1{font-family:var(--product-title-font);font-size:var(--product-title-size);color:var(--product-title-color);font-weight:700;margin-bottom:2px}ks-product-title h1>a{text-decoration:none !important;color:var(--product-title-brand-color) !important;opacity:1;-webkit-transition:var(--transition-opacity);transition:var(--transition-opacity)}ks-product-title h1>a:hover{opacity:0.7}ks-product-title h1>a:active{opacity:0.5}ks-product-title>.breadcrumbs>a{font-family:var(--product-breadcrumb-font);font-size:var(--product-breadcrumb-size);color:var(--product-breadcrumb-color);text-decoration:none}ks-product-title>.breadcrumbs>a:not(:last-child):after{content:\"/\";color:var(--product-breadcrumb-color);margin:0 15px}ks-product-title>.breadcrumbs>a:focus{color:var(--product-breadcrumb-color)}ks-product-title>.breadcrumbs>a:hover{color:var(--product-breadcrumb-color-hover)}ks-product-title>.breadcrumbs>a:active{color:var(--product-breadcrumb-color-active)}@media only screen and (max-width: 960px){ks-product-title{text-align:center}}@media only screen and (max-width: 1100px){ks-product-title>.breadcrumbs+*{font-size:var(--product-title-size-small)}}@media only screen and (max-width: 460px){ks-product-title>.breadcrumbs{margin-bottom:10px}ks-product-title>.breadcrumbs>a{font-size:14px}ks-product-title>.breadcrumbs>a:not(:last-child):after{margin:0 10px}}";
 
 const ProductTitle = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
+    this.brandLink = false;
   }
   render() {
+    const name = store.get("name");
+    let title = h("h1", null, name);
+    if (this.brandLink) {
+      const brandLength = store.get("brand").length;
+      const brandLink = store.get("brandLink");
+      const index = this.brandIndex();
+      if (index !== -1) {
+        const prefix = name.substr(0, index);
+        const brand = name.substr(index, brandLength);
+        const suffix = name.substr(index + brandLength);
+        title = h("h1", null, prefix, h("a", { href: brandLink }, brand), suffix);
+      }
+    }
     return [
       h("div", { class: "breadcrumbs" }, store.get("breadcrumbs").map(item => h("a", { href: item.link }, item.name))),
-      h("h1", null, store.get("name"))
+      title
     ];
+  }
+  brandIndex() {
+    return store.get("name").toLowerCase().indexOf(store.get("brand").toLowerCase());
   }
 };
 ProductTitle.style = productTitleCss;

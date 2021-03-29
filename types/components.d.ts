@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
-import { CartDataDeal, CartDataDealGroup, CartDataDiscount, CartDataPoints, CartDataProduct, CartDataSelectItem, CartDataShippingProgress, CartDataSummaryItem } from "./components/cart/cartData";
+import { deal } from "./components/cart/cart-data";
 import { CategoryData } from "./components/navbar/navbar-data";
 import { LightboxImageData } from "./components/elements/modal/lightbox-data";
 import { TraitData, TraitDataItem } from "./components/product/product-data";
@@ -43,6 +43,7 @@ export namespace Components {
     }
     interface KsButton {
         "border": boolean;
+        "disabled": boolean;
         "light": boolean;
         "link": string;
         "name": string;
@@ -83,9 +84,12 @@ export namespace Components {
         "addDeal": string;
         "api": string;
         "countryChange": string;
+        "dataId": string;
         "discountCode": string;
         "discountPoints": string;
         "discountRemove": string;
+        "easyprotectChange": string;
+        "easyprotectRemove": string;
         "paymentChange": string;
         "productCount": string;
         "productRemove": string;
@@ -93,13 +97,10 @@ export namespace Components {
     }
     interface KsCartButtons {
         "href": string;
-        "loading": number;
     }
     interface KsCartCountrySelect {
-        "CountryChange"?: (code: string) => void;
     }
     interface KsCartDeal {
-        "AddDeal": (id: string) => Promise<void>;
         "ikey": string;
         "img": string;
         "link": string;
@@ -107,14 +108,9 @@ export namespace Components {
         "price": string;
     }
     interface KsCartDealContainer {
-        "dealGroups": CartDataDealGroup[];
-        "deals": CartDataDeal[];
-        "productAmount": number;
-        "productValue": number;
     }
     interface KsCartDealGroup {
-        "AddDeal": (id: string) => Promise<void>;
-        "deals": CartDataDeal[];
+        "deals": deal[];
         "ikey": string;
         "name": string;
     }
@@ -124,25 +120,17 @@ export namespace Components {
         "placeholder": string;
     }
     interface KsCartDiscountContainer {
-        "DiscountCodeAdd": (string)=>void;
-        "DiscountPointsAdd": (number)=>void;
-        "DiscountRemove": ()=>void;
-        "RemoveDiscount": ()=>void;
         "codeBanner": string;
         "codePlaceholder": string;
         "disablePoints": boolean;
-        "discount": CartDataDiscount;
         "infoMessage": string;
         "loggedIn": boolean;
         "loginMessage": string;
         "loginUrl": string;
         "noPointsHeading": string;
         "noPointsMessage": string;
-        "points": CartDataPoints;
-        "pointsForOrder": number;
         "pointsMessage": string;
         "pointsPlaceholder": string;
-        "productValue": number;
         "thresholdHeading": string;
         "thresholdMessage": string;
     }
@@ -170,6 +158,27 @@ export namespace Components {
         "name": string;
         "value": string;
     }
+    interface KsCartEasyprotect {
+        "height": number;
+        "image": string;
+        "width": number;
+    }
+    interface KsCartEasyprotectDialog {
+    }
+    interface KsCartEasyprotectProduct {
+        "active": boolean;
+        "image": string;
+        "name": string;
+        "warranty": string;
+    }
+    interface KsCartEasyprotectWarranty {
+        "active": string;
+        "insured": boolean;
+        "name": string;
+        "price": number;
+        "productId": string;
+        "time": number;
+    }
     interface KsCartHeading {
         "center": boolean;
     }
@@ -179,23 +188,16 @@ export namespace Components {
     interface KsCartProduct {
         "ResetLoading": () => Promise<void>;
         "amount": number;
-        "ikey": string;
         "img": string;
         "link": string;
         "maxAmount": number;
         "name": string;
         "price": number;
+        "productId": string;
         "removable": boolean;
         "shippingTime": string;
     }
     interface KsCartProductContainer {
-        "ProductCount"?: (index: number, current: number, last: number) => void;
-        "RemoveProduct": (index: number) => void;
-        "loadingProducts": number;
-        "productAmount": number;
-        "productValue": number;
-        "products": CartDataProduct[];
-        "totalShippingTime": string;
     }
     interface KsCartProductHeading {
         "removable": boolean;
@@ -208,8 +210,6 @@ export namespace Components {
         "shippingTime": string;
     }
     interface KsCartProgressBar {
-        "productValue": number;
-        "shippingProgress": CartDataShippingProgress;
     }
     interface KsCartSelectItem {
         "color": string;
@@ -222,25 +222,19 @@ export namespace Components {
         "ResetLoading": () => Promise<void>;
         "StartLoading": () => Promise<void>;
         "Validate": () => Promise<boolean>;
-        "activePayment": number;
         "error": boolean;
         "name": string;
-        "payment": CartDataSelectItem[];
         "valid": boolean;
     }
     interface KsCartSelectShipping {
         "ResetLoading": () => Promise<void>;
-        "ShippingChange"?: (id: number) => void;
         "StartLoading": () => Promise<void>;
         "Validate": () => Promise<boolean>;
-        "activeShipping": number;
         "error": boolean;
         "name": string;
-        "shipping": CartDataSelectItem[];
         "valid": boolean;
     }
     interface KsCartShippingMessage {
-        "shippingMessage": string;
     }
     interface KsCartSpinner {
         "SetAmount": (amount: number) => Promise<void>;
@@ -255,9 +249,6 @@ export namespace Components {
         "text": string;
     }
     interface KsCartSummaryContainer {
-        "otherValues": CartDataSummaryItem[];
-        "productValue": number;
-        "totalValue": number;
     }
     interface KsCartTile {
         "color": string;
@@ -879,6 +870,7 @@ export namespace Components {
         "names": string;
     }
     interface KsProductTitle {
+        "brandLink": boolean;
     }
     interface KsProductTraits {
     }
@@ -1115,6 +1107,30 @@ declare global {
     var HTMLKsCartDiscountTicketElement: {
         prototype: HTMLKsCartDiscountTicketElement;
         new (): HTMLKsCartDiscountTicketElement;
+    };
+    interface HTMLKsCartEasyprotectElement extends Components.KsCartEasyprotect, HTMLStencilElement {
+    }
+    var HTMLKsCartEasyprotectElement: {
+        prototype: HTMLKsCartEasyprotectElement;
+        new (): HTMLKsCartEasyprotectElement;
+    };
+    interface HTMLKsCartEasyprotectDialogElement extends Components.KsCartEasyprotectDialog, HTMLStencilElement {
+    }
+    var HTMLKsCartEasyprotectDialogElement: {
+        prototype: HTMLKsCartEasyprotectDialogElement;
+        new (): HTMLKsCartEasyprotectDialogElement;
+    };
+    interface HTMLKsCartEasyprotectProductElement extends Components.KsCartEasyprotectProduct, HTMLStencilElement {
+    }
+    var HTMLKsCartEasyprotectProductElement: {
+        prototype: HTMLKsCartEasyprotectProductElement;
+        new (): HTMLKsCartEasyprotectProductElement;
+    };
+    interface HTMLKsCartEasyprotectWarrantyElement extends Components.KsCartEasyprotectWarranty, HTMLStencilElement {
+    }
+    var HTMLKsCartEasyprotectWarrantyElement: {
+        prototype: HTMLKsCartEasyprotectWarrantyElement;
+        new (): HTMLKsCartEasyprotectWarrantyElement;
     };
     interface HTMLKsCartHeadingElement extends Components.KsCartHeading, HTMLStencilElement {
     }
@@ -1974,6 +1990,10 @@ declare global {
         "ks-cart-discount-points-login": HTMLKsCartDiscountPointsLoginElement;
         "ks-cart-discount-points-message": HTMLKsCartDiscountPointsMessageElement;
         "ks-cart-discount-ticket": HTMLKsCartDiscountTicketElement;
+        "ks-cart-easyprotect": HTMLKsCartEasyprotectElement;
+        "ks-cart-easyprotect-dialog": HTMLKsCartEasyprotectDialogElement;
+        "ks-cart-easyprotect-product": HTMLKsCartEasyprotectProductElement;
+        "ks-cart-easyprotect-warranty": HTMLKsCartEasyprotectWarrantyElement;
         "ks-cart-heading": HTMLKsCartHeadingElement;
         "ks-cart-message": HTMLKsCartMessageElement;
         "ks-cart-product": HTMLKsCartProductElement;
@@ -2149,6 +2169,7 @@ declare namespace LocalJSX {
     }
     interface KsButton {
         "border"?: boolean;
+        "disabled"?: boolean;
         "light"?: boolean;
         "link"?: string;
         "name"?: string;
@@ -2187,9 +2208,12 @@ declare namespace LocalJSX {
         "addDeal"?: string;
         "api"?: string;
         "countryChange"?: string;
+        "dataId"?: string;
         "discountCode"?: string;
         "discountPoints"?: string;
         "discountRemove"?: string;
+        "easyprotectChange"?: string;
+        "easyprotectRemove"?: string;
         "paymentChange"?: string;
         "productCount"?: string;
         "productRemove"?: string;
@@ -2197,57 +2221,43 @@ declare namespace LocalJSX {
     }
     interface KsCartButtons {
         "href"?: string;
-        "loading"?: number;
     }
     interface KsCartCountrySelect {
-        "CountryChange"?: (code: string) => void;
+        "onCountryChange"?: (event: CustomEvent<string>) => void;
     }
     interface KsCartDeal {
-        "AddDeal"?: (id: string) => Promise<void>;
         "ikey"?: string;
         "img"?: string;
         "link"?: string;
         "name"?: string;
+        "onAddDeal"?: (event: CustomEvent<string>) => void;
         "price"?: string;
     }
     interface KsCartDealContainer {
-        "dealGroups"?: CartDataDealGroup[];
-        "deals"?: CartDataDeal[];
-        "productAmount"?: number;
-        "productValue"?: number;
     }
     interface KsCartDealGroup {
-        "AddDeal"?: (id: string) => Promise<void>;
-        "deals"?: CartDataDeal[];
+        "deals"?: deal[];
         "ikey"?: string;
         "name"?: string;
-        "onAdd"?: (event: CustomEvent<any>) => void;
+        "onAddDeal"?: (event: CustomEvent<string>) => void;
     }
     interface KsCartDiscountCode {
         "image"?: string;
-        "onDiscountSubmit"?: (event: CustomEvent<any>) => void;
+        "onDiscountCodeAdd"?: (event: CustomEvent<string>) => void;
         "placeholder"?: string;
     }
     interface KsCartDiscountContainer {
-        "DiscountCodeAdd"?: (string)=>void;
-        "DiscountPointsAdd"?: (number)=>void;
-        "DiscountRemove"?: ()=>void;
-        "RemoveDiscount"?: ()=>void;
         "codeBanner"?: string;
         "codePlaceholder"?: string;
         "disablePoints"?: boolean;
-        "discount"?: CartDataDiscount;
         "infoMessage"?: string;
         "loggedIn"?: boolean;
         "loginMessage"?: string;
         "loginUrl"?: string;
         "noPointsHeading"?: string;
         "noPointsMessage"?: string;
-        "points"?: CartDataPoints;
-        "pointsForOrder"?: number;
         "pointsMessage"?: string;
         "pointsPlaceholder"?: string;
-        "productValue"?: number;
         "thresholdHeading"?: string;
         "thresholdMessage"?: string;
     }
@@ -2256,7 +2266,7 @@ declare namespace LocalJSX {
     }
     interface KsCartDiscountPoints {
         "message"?: string;
-        "onDiscountSubmit"?: (event: CustomEvent<any>) => void;
+        "onDiscountPointsAdd"?: (event: CustomEvent<number>) => void;
         "orderPoints"?: number;
         "placeholder"?: string;
         "points"?: number;
@@ -2273,8 +2283,29 @@ declare namespace LocalJSX {
     }
     interface KsCartDiscountTicket {
         "name"?: string;
-        "onRemove"?: (event: CustomEvent<any>) => void;
+        "onDiscountRemove"?: (event: CustomEvent<any>) => void;
         "value"?: string;
+    }
+    interface KsCartEasyprotect {
+        "height"?: number;
+        "image"?: string;
+        "width"?: number;
+    }
+    interface KsCartEasyprotectDialog {
+    }
+    interface KsCartEasyprotectProduct {
+        "active"?: boolean;
+        "image"?: string;
+        "name"?: string;
+        "warranty"?: string;
+    }
+    interface KsCartEasyprotectWarranty {
+        "active"?: string;
+        "insured"?: boolean;
+        "name"?: string;
+        "price"?: number;
+        "productId"?: string;
+        "time"?: number;
     }
     interface KsCartHeading {
         "center"?: boolean;
@@ -2284,25 +2315,18 @@ declare namespace LocalJSX {
     }
     interface KsCartProduct {
         "amount"?: number;
-        "ikey"?: string;
         "img"?: string;
         "link"?: string;
         "maxAmount"?: number;
         "name"?: string;
-        "onCount"?: (event: CustomEvent<any>) => void;
-        "onRemove"?: (event: CustomEvent<any>) => void;
+        "onProductCount"?: (event: CustomEvent<[id: string, count: number, last: number]>) => void;
+        "onRemoveProduct"?: (event: CustomEvent<string>) => void;
         "price"?: number;
+        "productId"?: string;
         "removable"?: boolean;
         "shippingTime"?: string;
     }
     interface KsCartProductContainer {
-        "ProductCount"?: (index: number, current: number, last: number) => void;
-        "RemoveProduct"?: (index: number) => void;
-        "loadingProducts"?: number;
-        "productAmount"?: number;
-        "productValue"?: number;
-        "products"?: CartDataProduct[];
-        "totalShippingTime"?: string;
     }
     interface KsCartProductHeading {
         "removable"?: boolean;
@@ -2315,8 +2339,6 @@ declare namespace LocalJSX {
         "shippingTime"?: string;
     }
     interface KsCartProgressBar {
-        "productValue"?: number;
-        "shippingProgress"?: CartDataShippingProgress;
     }
     interface KsCartSelectItem {
         "color"?: string;
@@ -2326,22 +2348,18 @@ declare namespace LocalJSX {
     }
     interface KsCartSelectPayment {
         "PaymentChange"?: (id: number) => void;
-        "activePayment"?: number;
         "error"?: boolean;
         "name"?: string;
-        "payment"?: CartDataSelectItem[];
+        "onPaymentChange"?: (event: CustomEvent<number>) => void;
         "valid"?: boolean;
     }
     interface KsCartSelectShipping {
-        "ShippingChange"?: (id: number) => void;
-        "activeShipping"?: number;
         "error"?: boolean;
         "name"?: string;
-        "shipping"?: CartDataSelectItem[];
+        "onShippingChange"?: (event: CustomEvent<number>) => void;
         "valid"?: boolean;
     }
     interface KsCartShippingMessage {
-        "shippingMessage"?: string;
     }
     interface KsCartSpinner {
         "initialValue"?: number;
@@ -2356,9 +2374,6 @@ declare namespace LocalJSX {
         "text"?: string;
     }
     interface KsCartSummaryContainer {
-        "otherValues"?: CartDataSummaryItem[];
-        "productValue"?: number;
-        "totalValue"?: number;
     }
     interface KsCartTile {
         "color"?: string;
@@ -2943,6 +2958,7 @@ declare namespace LocalJSX {
         "names"?: string;
     }
     interface KsProductTitle {
+        "brandLink"?: boolean;
     }
     interface KsProductTraits {
         "onTraitChange"?: (event: CustomEvent<[TraitData, TraitDataItem][]>) => void;
@@ -3063,6 +3079,10 @@ declare namespace LocalJSX {
         "ks-cart-discount-points-login": KsCartDiscountPointsLogin;
         "ks-cart-discount-points-message": KsCartDiscountPointsMessage;
         "ks-cart-discount-ticket": KsCartDiscountTicket;
+        "ks-cart-easyprotect": KsCartEasyprotect;
+        "ks-cart-easyprotect-dialog": KsCartEasyprotectDialog;
+        "ks-cart-easyprotect-product": KsCartEasyprotectProduct;
+        "ks-cart-easyprotect-warranty": KsCartEasyprotectWarranty;
         "ks-cart-heading": KsCartHeading;
         "ks-cart-message": KsCartMessage;
         "ks-cart-product": KsCartProduct;
@@ -3231,6 +3251,10 @@ declare module "@stencil/core" {
             "ks-cart-discount-points-login": LocalJSX.KsCartDiscountPointsLogin & JSXBase.HTMLAttributes<HTMLKsCartDiscountPointsLoginElement>;
             "ks-cart-discount-points-message": LocalJSX.KsCartDiscountPointsMessage & JSXBase.HTMLAttributes<HTMLKsCartDiscountPointsMessageElement>;
             "ks-cart-discount-ticket": LocalJSX.KsCartDiscountTicket & JSXBase.HTMLAttributes<HTMLKsCartDiscountTicketElement>;
+            "ks-cart-easyprotect": LocalJSX.KsCartEasyprotect & JSXBase.HTMLAttributes<HTMLKsCartEasyprotectElement>;
+            "ks-cart-easyprotect-dialog": LocalJSX.KsCartEasyprotectDialog & JSXBase.HTMLAttributes<HTMLKsCartEasyprotectDialogElement>;
+            "ks-cart-easyprotect-product": LocalJSX.KsCartEasyprotectProduct & JSXBase.HTMLAttributes<HTMLKsCartEasyprotectProductElement>;
+            "ks-cart-easyprotect-warranty": LocalJSX.KsCartEasyprotectWarranty & JSXBase.HTMLAttributes<HTMLKsCartEasyprotectWarrantyElement>;
             "ks-cart-heading": LocalJSX.KsCartHeading & JSXBase.HTMLAttributes<HTMLKsCartHeadingElement>;
             "ks-cart-message": LocalJSX.KsCartMessage & JSXBase.HTMLAttributes<HTMLKsCartMessageElement>;
             "ks-cart-product": LocalJSX.KsCartProduct & JSXBase.HTMLAttributes<HTMLKsCartProductElement>;
