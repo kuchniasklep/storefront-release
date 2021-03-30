@@ -4,6 +4,7 @@ export declare class NewsletterPopup {
   api: string;
   loginLink: string;
   registerLink: string;
+  displayOnLoad: boolean;
   loggedIn: boolean;
   email: string;
   agreement: string;

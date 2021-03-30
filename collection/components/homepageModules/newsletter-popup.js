@@ -2,6 +2,7 @@ import { Component, h, Prop, Element, Method } from '@stencil/core';
 import ValidateInput from '../input/validate';
 export class NewsletterPopup {
   constructor() {
+    this.displayOnLoad = false;
     this.loggedIn = false;
     this.agreement = "Wyrażam zgodę na przetwarzanie danych osobowych do celów marketingowych, w celu zbadania opinii o sklepie oraz na otrzymywanie informacji handlowych na wskazany przeze mnie adres e-mail.";
     this.infoMessage = "Aby otrzymać kupon rabatowy musisz posiadać konto w naszym sklepie. Minimalna wartość zamówienia wynosi: 100,00 zł";
@@ -10,7 +11,7 @@ export class NewsletterPopup {
   }
   componentDidLoad() {
     this.dialog = this.root.querySelector("ks-dialog");
-    if (document.cookie.search("newsletterPopup=tak") == -1) {
+    if (this.displayOnLoad && document.cookie.search("newsletterPopup=tak") == -1) {
       setTimeout(() => {
         this.Show();
       }, 4000);
@@ -133,6 +134,24 @@ export class NewsletterPopup {
       },
       "attribute": "register-link",
       "reflect": false
+    },
+    "displayOnLoad": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "display-on-load",
+      "reflect": false,
+      "defaultValue": "false"
     },
     "loggedIn": {
       "type": "boolean",

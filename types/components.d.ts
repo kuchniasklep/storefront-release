@@ -602,6 +602,7 @@ export namespace Components {
         "Show": () => Promise<void>;
         "agreement": string;
         "api": string;
+        "displayOnLoad": boolean;
         "email": string;
         "faliureHeading": string;
         "infoMessage": string;
@@ -2696,6 +2697,7 @@ declare namespace LocalJSX {
     interface KsNewsletterPopup {
         "agreement"?: string;
         "api"?: string;
+        "displayOnLoad"?: boolean;
         "email"?: string;
         "faliureHeading"?: string;
         "infoMessage"?: string;
