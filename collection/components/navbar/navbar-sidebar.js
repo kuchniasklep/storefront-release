@@ -61,8 +61,8 @@ export class NavbarSidebar {
                 h("ks-icon", { name: "log-out" })))
             : null,
           h("li", { class: "header" }, "KATEGORIE"),
-          h("li", { class: "divider" }),
-          h("slot", null))));
+          h("li", { class: "divider" })),
+        h("slot", null)));
   }
   static get is() { return "ks-navbar-sidebar"; }
   static get originalStyleUrls() { return {
