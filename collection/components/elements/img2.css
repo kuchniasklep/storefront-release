@@ -32,6 +32,14 @@ ks-img2[src*=".svg"] img {
     transition: opacity 0.3s ease;
 }
 
+ks-img2[vertical] img {
+    width: auto;
+}
+
+ks-img2[horizontal] img {
+    height: auto;
+}
+
 ks-img2 img.loading {
     opacity: 0;
 }

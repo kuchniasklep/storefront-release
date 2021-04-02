@@ -3,6 +3,7 @@ export class NavbarCategorySimple {
   constructor() {
     this.hidden = true;
     this.hiddenO = true;
+    this.haschildren = false;
   }
   MouseOverHandler() {
     clearTimeout(this.timeout);
@@ -15,28 +16,20 @@ export class NavbarCategorySimple {
       this.hidden = true;
     }, 200);
   }
+  componentWillLoad() {
+    this.haschildren = !!this.root.querySelector('a[slot=child]');
+  }
   render() {
-    const haschildren = this.category.children && this.category.children.length;
-    const divstyle = {
-      backgroundColor: this.category.backgroundColor || "",
-      outlineColor: this.category.backgroundColor || ""
-    };
-    const linkstyle = {
-      color: this.category.color || "",
-      marginLeft: this.category == 0 ? "0" :
-        haschildren ? "15px" : ""
-    };
     const childrenstyle = {
       visibility: this.hidden ? "hidden" : "visible",
       opacity: this.hiddenO ? "0.0" : "1.0"
     };
-    return h(Host, { style: divstyle },
-      h("a", { href: this.category.url, style: linkstyle },
-        this.category.name,
-        " ",
-        haschildren ? h("ks-icon", { name: "chevron-down", size: 0.8 }) : null),
-      haschildren ?
-        h("div", { style: childrenstyle }, this.category.children.map((child) => h("a", { href: child.url }, child.name)))
+    return h(Host, null,
+      h("slot", null),
+      this.haschildren ? h("ks-icon", { name: "chevron-down", size: 0.8 }) : null,
+      this.haschildren ?
+        h("div", { style: childrenstyle },
+          h("slot", { name: "child" }))
         : null);
   }
   static get is() { return "ks-category-simple"; }

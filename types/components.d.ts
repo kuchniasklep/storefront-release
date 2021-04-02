@@ -256,11 +256,18 @@ export namespace Components {
         "name": string;
         "price": string;
     }
+    interface KsCategorySidebar {
+        "hide": () => Promise<void>;
+        "hideWithChildren": boolean;
+        "keepSiblingsOpen": boolean;
+        "name": string;
+        "open": boolean;
+    }
     interface KsCategorySimple {
         "category": CategoryData;
     }
     interface KsCategoryView {
-        "category": CategoryData;
+        "images": string;
     }
     interface KsComment {
         "author": string;
@@ -418,10 +425,12 @@ export namespace Components {
     interface KsImg2 {
         "alt": string;
         "height": number;
+        "horizontal": boolean;
         "observerMargin": string;
         "src": string;
         "sync": boolean;
         "target": string;
+        "vertical": boolean;
         "width": number;
     }
     interface KsInfoBanner {
@@ -1223,6 +1232,12 @@ declare global {
         prototype: HTMLKsCartTileElement;
         new (): HTMLKsCartTileElement;
     };
+    interface HTMLKsCategorySidebarElement extends Components.KsCategorySidebar, HTMLStencilElement {
+    }
+    var HTMLKsCategorySidebarElement: {
+        prototype: HTMLKsCategorySidebarElement;
+        new (): HTMLKsCategorySidebarElement;
+    };
     interface HTMLKsCategorySimpleElement extends Components.KsCategorySimple, HTMLStencilElement {
     }
     var HTMLKsCategorySimpleElement: {
@@ -2010,6 +2025,7 @@ declare global {
         "ks-cart-summary": HTMLKsCartSummaryElement;
         "ks-cart-summary-container": HTMLKsCartSummaryContainerElement;
         "ks-cart-tile": HTMLKsCartTileElement;
+        "ks-category-sidebar": HTMLKsCategorySidebarElement;
         "ks-category-simple": HTMLKsCategorySimpleElement;
         "ks-category-view": HTMLKsCategoryViewElement;
         "ks-comment": HTMLKsCommentElement;
@@ -2382,11 +2398,17 @@ declare namespace LocalJSX {
         "name"?: string;
         "price"?: string;
     }
+    interface KsCategorySidebar {
+        "hideWithChildren"?: boolean;
+        "keepSiblingsOpen"?: boolean;
+        "name"?: string;
+        "open"?: boolean;
+    }
     interface KsCategorySimple {
         "category"?: CategoryData;
     }
     interface KsCategoryView {
-        "category"?: CategoryData;
+        "images"?: string;
     }
     interface KsComment {
         "author"?: string;
@@ -2538,11 +2560,13 @@ declare namespace LocalJSX {
     interface KsImg2 {
         "alt"?: string;
         "height"?: number;
+        "horizontal"?: boolean;
         "observerMargin"?: string;
         "onLazyLoaded"?: (event: CustomEvent<any>) => void;
         "src"?: string;
         "sync"?: boolean;
         "target"?: string;
+        "vertical"?: boolean;
         "width"?: number;
     }
     interface KsInfoBanner {
@@ -3100,6 +3124,7 @@ declare namespace LocalJSX {
         "ks-cart-summary": KsCartSummary;
         "ks-cart-summary-container": KsCartSummaryContainer;
         "ks-cart-tile": KsCartTile;
+        "ks-category-sidebar": KsCategorySidebar;
         "ks-category-simple": KsCategorySimple;
         "ks-category-view": KsCategoryView;
         "ks-comment": KsComment;
@@ -3272,6 +3297,7 @@ declare module "@stencil/core" {
             "ks-cart-summary": LocalJSX.KsCartSummary & JSXBase.HTMLAttributes<HTMLKsCartSummaryElement>;
             "ks-cart-summary-container": LocalJSX.KsCartSummaryContainer & JSXBase.HTMLAttributes<HTMLKsCartSummaryContainerElement>;
             "ks-cart-tile": LocalJSX.KsCartTile & JSXBase.HTMLAttributes<HTMLKsCartTileElement>;
+            "ks-category-sidebar": LocalJSX.KsCategorySidebar & JSXBase.HTMLAttributes<HTMLKsCategorySidebarElement>;
             "ks-category-simple": LocalJSX.KsCategorySimple & JSXBase.HTMLAttributes<HTMLKsCategorySimpleElement>;
             "ks-category-view": LocalJSX.KsCategoryView & JSXBase.HTMLAttributes<HTMLKsCategoryViewElement>;
             "ks-comment": LocalJSX.KsComment & JSXBase.HTMLAttributes<HTMLKsCommentElement>;

@@ -7,5 +7,7 @@ export declare class NavbarCategorySimple {
   timeout: number;
   MouseOverHandler(): void;
   MouseOutHandler(): void;
+  haschildren: boolean;
+  componentWillLoad(): void;
   render(): any;
 }

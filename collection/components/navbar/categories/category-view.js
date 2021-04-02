@@ -1,12 +1,10 @@
-import { Component, h, Prop, State, Element, Listen, Host } from '@stencil/core';
+import { Component, h, Prop, State, Element, Listen, Host, Watch } from '@stencil/core';
 export class NavbarCategoryView {
   constructor() {
     this.hidden = true;
     this.hiddenO = true;
     this.active = 0;
-  }
-  componentWillLoad() {
-    this.count = this.category.children ? this.category.children.length : 0;
+    this.count = 0;
   }
   MouseOverHandler() {
     clearTimeout(this.timeout);
@@ -23,47 +21,59 @@ export class NavbarCategoryView {
   }
   NavbarColor(state) {
     const bar = document.querySelector("ks-navbar-categories > nav");
-    if (!bar || this.count == 0)
+    if (!bar)
       return;
     bar.style.backgroundColor = state ? "var(--navbar-category-color)" : "var(--navbar-color)";
     bar.style.borderTop = state ? "1px solid transparent" : "1px solid var(--navbar-category-color)";
     bar.style.borderBottom = bar.style.borderTop;
   }
-  CalculateHeight() {
-    return Math.max(40 * 6, (this.count * 40));
+  componentWillLoad() {
+    const sub = this.root.querySelectorAll('a[slot=sub]');
+    const singlesub = this.root.querySelectorAll('a[slot=single-sub]');
+    this.children = this.root.querySelectorAll('div[slot=children]');
+    this.count = sub.length + singlesub.length;
+    sub.forEach((element, index) => {
+      element.addEventListener("mouseover", () => {
+        this.active = index;
+      });
+    });
+    singlesub.forEach(element => {
+      if (element.children.length > 0)
+        return;
+      let icon = document.createElement("ks-icon");
+      icon.setAttribute("name", "link");
+      icon.setAttribute("size", "0.65");
+      element.appendChild(icon);
+    });
+    this.children.forEach((element, index) => {
+      if (index == 0)
+        return;
+      element.setAttribute("hidden", "hidden");
+    });
+    this.imageData = JSON.parse(this.images);
   }
-  SetActive(index, children) {
-    if (children)
-      this.active = index;
+  activeChange(current, old) {
+    this.children[current].removeAttribute("hidden");
+    this.children[old].setAttribute("hidden", "hidden");
   }
   render() {
-    const haschildren = this.category.children && this.category.children.length;
-    const divstyle = {
-      backgroundColor: this.category.backgroundColor || "",
-      outlineColor: this.category.backgroundColor || ""
-    };
-    const linkstyle = {
-      color: this.category.color || "",
-      marginLeft: this.category == 0 ? "0" : ""
-    };
     const childrenstyle = {
-      opacity: this.hiddenO ? "0.0" : "1.0"
+      opacity: this.hiddenO ? "0.0" : "1.0",
+      height: (this.count * 40) + "px"
     };
-    return h(Host, { style: divstyle },
-      h("a", { href: this.category.url, style: linkstyle },
-        this.category.name,
-        haschildren ? h("ks-icon", { name: "chevron-down", size: 0.8 }) : null),
-      haschildren ?
-        h("div", { class: "children", style: childrenstyle, hidden: this.hidden },
-          h("div", { class: "buttons" }, this.category.children.map((child, index) => h("a", { href: child.url, class: this.active == index && child.children ? "active" : "", onMouseOver: () => this.SetActive(index, !!child.children) },
-            child.name,
-            " ",
-            !child.children ? h("ks-icon", { name: "link", size: 0.65 }) : null))),
-          h("div", { class: "content", style: { maxHeight: this.CalculateHeight() + "px" } }, this.category.children.map((child, index) => h("div", { hidden: this.active != index || this.hidden }, child.children ? child.children.map((item) => h("a", { href: item.url }, item.name)) : null))),
-          h("div", { class: "graphic", style: { maxHeight: this.CalculateHeight() + "px" } }, this.category.children.map((child, index) => child.image ?
-            h("ks-img", { vertical: true, right: true, target: "ks-category-view > .children", src: child.image, style: { display: (this.active == index) ? "flex" : "none" } })
-            : null)))
-        : null);
+    return h(Host, null,
+      h("slot", null),
+      " ",
+      h("ks-icon", { name: "chevron-down", size: 0.8 }),
+      h("div", { class: "children", style: childrenstyle, hidden: this.hidden },
+        h("div", { class: "buttons" },
+          h("slot", { name: "sub" }),
+          h("slot", { name: "single-sub" })),
+        h("div", { class: "content" },
+          h("slot", { name: "children" })),
+        h("div", { class: "graphic" }, this.imageData.map((image, index) => "src" in image ?
+          h("ks-img2", { vertical: true, src: image.src, width: image.width, height: image.height, target: "ks-category-view > .children > .graphic", style: { display: (this.active == index) ? "block" : "none" } })
+          : null))));
   }
   static get is() { return "ks-category-view"; }
   static get originalStyleUrls() { return {
@@ -73,25 +83,22 @@ export class NavbarCategoryView {
     "$": ["category-view.css"]
   }; }
   static get properties() { return {
-    "category": {
-      "type": "unknown",
+    "images": {
+      "type": "string",
       "mutable": false,
       "complexType": {
-        "original": "CategoryData",
-        "resolved": "CategoryData",
-        "references": {
-          "CategoryData": {
-            "location": "import",
-            "path": "../navbar-data"
-          }
-        }
+        "original": "string",
+        "resolved": "string",
+        "references": {}
       },
       "required": false,
       "optional": false,
       "docs": {
         "tags": [],
         "text": ""
-      }
+      },
+      "attribute": "images",
+      "reflect": false
     }
   }; }
   static get states() { return {
@@ -100,6 +107,10 @@ export class NavbarCategoryView {
     "active": {}
   }; }
   static get elementRef() { return "root"; }
+  static get watchers() { return [{
+      "propName": "active",
+      "methodName": "activeChange"
+    }]; }
   static get listeners() { return [{
       "name": "mouseover",
       "method": "MouseOverHandler",
