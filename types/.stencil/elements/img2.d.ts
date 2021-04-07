@@ -8,6 +8,8 @@ export declare class Img2 {
   sync: boolean;
   width: number;
   height: number;
+  vertical: boolean;
+  horizontal: boolean;
   loaded: boolean;
   lazyLoaded: EventEmitter;
   loadHandler(e: Event): void;

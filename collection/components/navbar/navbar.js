@@ -4,21 +4,6 @@ export class Navbar {
   constructor() {
     this.mobile = false;
   }
-  async componentDidLoad() {
-    let cachedCategories = sessionStorage.getItem("category-data");
-    if (cachedCategories == null) {
-      var headers = new Headers();
-      headers.append('pragma', 'no-cache');
-      headers.append('cache-control', 'no-cache');
-      const json = await fetch(this.categoryUrl, { method: 'GET', headers: headers })
-        .then(response => response.json());
-      const jsonString = JSON.stringify(json);
-      sessionStorage.setItem("category-data", jsonString);
-      cachedCategories = jsonString;
-    }
-    store.set("categories", JSON.parse(cachedCategories));
-    this.render();
-  }
   componentDidRender() {
     this.navbarRendered.emit();
   }
@@ -84,12 +69,7 @@ export class Navbar {
             : null,
           h("ks-navbar-button", { name: "Menu", icon: "menu", class: "mobile-tablet", onClick: () => this.root.querySelector("ks-navbar-sidebar").toggle() })),
         h("ks-navbar-contact-panel", { phone: this.phone, email: this.email, contact: this.contact })),
-      !this.mobile ?
-        h("ks-navbar-categories", null)
-        : [
-          h("ks-navbar-search-mobile", null),
-          h("ks-navbar-sidebar", null)
-        ]
+      h("slot", null)
     ];
   }
   static get is() { return "ks-navbar"; }

@@ -1,17 +1,20 @@
-import { CategoryData } from '../navbar-data';
+import { CategoryImageData } from '../navbar-data';
 export declare class NavbarCategoryView {
   root: HTMLElement;
-  category: CategoryData;
+  imageData: CategoryImageData[];
+  images: string;
   hidden: boolean;
   hiddenO: boolean;
-  count: number;
   timeout: number;
-  componentWillLoad(): void;
+  delaytimeout: number;
   MouseOverHandler(): void;
   MouseOutHandler(): void;
   NavbarColor(state: boolean): void;
-  CalculateHeight(): number;
   active: number;
-  SetActive(index: number, children: boolean): void;
+  count: number;
+  children: NodeListOf<Element>;
+  last: HTMLElement;
+  componentWillLoad(): void;
+  activeChange(current: number, old: number): void;
   render(): any;
 }

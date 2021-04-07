@@ -15,7 +15,6 @@ export declare class Navbar {
   phone: string;
   email: string;
   contact: string;
-  componentDidLoad(): Promise<void>;
   navbarRendered: EventEmitter;
   componentDidRender(): void;
   componentWillLoad(): void;

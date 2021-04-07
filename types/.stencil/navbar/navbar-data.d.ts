@@ -17,4 +17,9 @@ export interface CategoryData {
   color?: string;
   icon?: string;
 }
+export interface CategoryImageData {
+  src?: string;
+  width?: number;
+  height?: number;
+}
 export declare function LoadCategories(): Promise<string>;

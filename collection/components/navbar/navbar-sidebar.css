@@ -9,7 +9,7 @@ ks-navbar-sidebar nav {
     bottom: 0;
     box-sizing: border-box;
 
-    width: 300px;
+    width: 320px;
     height: 100%;
     padding: 25px 30px;
 
@@ -39,7 +39,7 @@ ks-navbar-sidebar nav .close {
 
 @media only screen and (max-width: 640px) {
     ks-navbar-sidebar nav {
-        width: 270px;
+        width: 300px;
         padding: 20px;
     }
 
@@ -120,43 +120,9 @@ ks-navbar-sidebar nav ul .badge {
             transform: translateX(4px);
 }
 
-ks-navbar-sidebar nav .parent a {
-    position: relative;
+ks-navbar-sidebar nav > a {
+    padding: 4px 0px;
 }
-
-ks-navbar-sidebar nav .parent a ks-icon {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-}
-
-ks-navbar-sidebar nav .children {
-    max-height: 0px;
-    overflow: hidden;
-    padding: 0px 0px 0px 10px;
-    
-    font-size: 16px;
-
-    -webkit-transition: max-height 0.3s ease,
-                padding 0.3s ease;
-
-    transition: max-height 0.3s ease,
-                padding 0.3s ease;
-}
-
-ks-navbar-sidebar nav .children.active {
-    padding: 8px 0px 5px 10px;
-}
-
-ks-navbar-sidebar nav .children li {
-    padding: 3px 0;
-}
-
-ks-navbar-sidebar nav .children .seeall {
-    color: #bbbbbb  !important;
-}
-
-
 
 
 @media (min-width: 640px) {

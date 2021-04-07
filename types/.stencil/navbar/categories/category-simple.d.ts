@@ -5,7 +5,10 @@ export declare class NavbarCategorySimple {
   hidden: boolean;
   hiddenO: boolean;
   timeout: number;
+  delaytimeout: number;
   MouseOverHandler(): void;
   MouseOutHandler(): void;
+  haschildren: boolean;
+  componentWillLoad(): void;
   render(): any;
 }

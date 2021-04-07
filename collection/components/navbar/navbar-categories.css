@@ -11,3 +11,10 @@ ks-navbar-categories > nav {
     border-bottom: 1px solid transparent;
     position: relative;
 }
+
+
+@media only screen and (max-width: 959px) {
+    ks-navbar-categories {
+        display: none;
+    }
+}

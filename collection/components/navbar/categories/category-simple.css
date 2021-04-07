@@ -3,10 +3,11 @@ ks-category-simple {
     position: relative;
     height: 32px;
     outline: 1px solid transparent;
+    color: white;
 }
 
 ks-category-simple > a {
-    margin: 0 10px;
+    margin: 0 20px 0 10px;
     line-height: 35px;
     text-decoration: none;
 
@@ -17,6 +18,15 @@ ks-category-simple > a {
 
     font-size: .875rem;
 }
+
+ks-category-simple[haschildren] > a {
+    margin: 0 5px 0 10px;
+}
+
+ks-category-simple > ks-icon {
+    margin: 0 20px 0 -4px;
+}
+
 
 ks-category-simple > a:hover {
     text-decoration: none;

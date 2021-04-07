@@ -104,6 +104,7 @@
     "./components/navbar/navbar-search.js",
     "./components/navbar/navbar-sidebar.js",
     "./components/navbar/navbar.js",
+    "./components/navbar/categories/category-sidebar.js",
     "./components/navbar/categories/category-simple.js",
     "./components/navbar/categories/category-view.js",
     "./components/navbar/panels/navbar-contact-panel.js",

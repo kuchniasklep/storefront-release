@@ -2,10 +2,11 @@ ks-category-view {
     display: inline-block;
     height: 32px;
     outline: 1px solid transparent;
+    color: white;
 }
 
 ks-category-view > a {
-    margin: 0 10px 0 15px;
+    margin: 0 0 0 10px;
     line-height: 36px;
     text-decoration: none;
 
@@ -15,6 +16,14 @@ ks-category-view > a {
     color: var(--navbar-category-text-color);
 
     font-size: .875rem;
+}
+
+ks-category-view:first-child > a {
+    margin: 0 0 0 15px;
+}
+
+ks-category-view > ks-icon {
+    margin: 0 20px 0 -4px;
 }
 
 ks-category-view > a:hover {
@@ -94,8 +103,8 @@ ks-category-view .buttons a.active {
 
 ks-category-view .content {
     -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
     min-width: 1px;
 }
 
@@ -126,6 +135,7 @@ ks-category-view .content > div[hidden] {
 ks-category-view .content a {
     display: block;
     width: 230px;
+    height: 40px;
 
     padding: 9px 15px;
     text-decoration: none;
@@ -153,9 +163,10 @@ ks-category-view .content a:hover {
 ks-category-view .graphic {
     display: none;
     -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
     min-width: 1px;
+    height: 100%;
 }
 
 @media only screen and (min-width: 1360px) {
@@ -163,12 +174,20 @@ ks-category-view .graphic {
         display: -webkit-box !important;
         display: -ms-flexbox !important;
         display: flex !important;
+        -webkit-box-pack: end;
+            -ms-flex-pack: end;
+                justify-content: flex-end;
     }
+}
+
+ks-category-view .children[hidden] .graphic {
+    display: none !important;
 }
 
 
 ks-category-view .children {
     width: 100%;
+    min-height: 240px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -178,5 +197,4 @@ ks-category-view .children {
 
 ks-category-view .children[hidden] {
     visibility: hidden;
-    display: none;
 }

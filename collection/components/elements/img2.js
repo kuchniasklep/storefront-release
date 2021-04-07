@@ -185,6 +185,40 @@ export class Img2 {
       },
       "attribute": "height",
       "reflect": false
+    },
+    "vertical": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "vertical",
+      "reflect": true
+    },
+    "horizontal": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "horizontal",
+      "reflect": true
     }
   }; }
   static get states() { return {

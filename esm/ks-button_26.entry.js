@@ -44,49 +44,48 @@ const Card = class {
   get root() { return getElement(this); }
 };
 
-const categorySimpleCss = "ks-category-simple{display:inline-block;position:relative;height:32px;outline:1px solid transparent}ks-category-simple>a{margin:0 10px;line-height:35px;text-decoration:none;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;color:white;font-size:.875rem}ks-category-simple>a:hover{text-decoration:none;color:#ffffffbb}ks-category-simple>div{background-color:white;color:#252525;position:absolute;z-index:10000;top:33px;left:0px;min-width:200px;opacity:0.0;-webkit-transition:opacity 0.2s ease;transition:opacity 0.2s ease;-webkit-box-shadow:0 5px 15px rgba(0, 0, 0, 0.26);box-shadow:0 5px 15px rgba(0, 0, 0, 0.26)}ks-category-simple>div a{display:block;padding:9px 15px;text-decoration:none;font-size:14px;text-align:left;-webkit-box-sizing:border-box;box-sizing:border-box;border-bottom:1px solid #f2f2f2;-webkit-transition:background-color 0.3s ease;transition:background-color 0.3s ease;color:#252525}ks-category-simple>div a:hover{text-decoration:none;color:#252525;background-color:#f9f9f9}ks-category-simple>div a:active{text-decoration:none;background-color:#e6e6e6}";
+const categorySimpleCss = "ks-category-simple{display:inline-block;position:relative;height:32px;outline:1px solid transparent;color:white}ks-category-simple>a{margin:0 20px 0 10px;line-height:35px;text-decoration:none;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;color:white;font-size:.875rem}ks-category-simple[haschildren]>a{margin:0 5px 0 10px}ks-category-simple>ks-icon{margin:0 20px 0 -4px}ks-category-simple>a:hover{text-decoration:none;color:#ffffffbb}ks-category-simple>div{background-color:white;color:#252525;position:absolute;z-index:10000;top:33px;left:0px;min-width:200px;opacity:0.0;-webkit-transition:opacity 0.2s ease;transition:opacity 0.2s ease;-webkit-box-shadow:0 5px 15px rgba(0, 0, 0, 0.26);box-shadow:0 5px 15px rgba(0, 0, 0, 0.26)}ks-category-simple>div a{display:block;padding:9px 15px;text-decoration:none;font-size:14px;text-align:left;-webkit-box-sizing:border-box;box-sizing:border-box;border-bottom:1px solid #f2f2f2;-webkit-transition:background-color 0.3s ease;transition:background-color 0.3s ease;color:#252525}ks-category-simple>div a:hover{text-decoration:none;color:#252525;background-color:#f9f9f9}ks-category-simple>div a:active{text-decoration:none;background-color:#e6e6e6}";
 
 const NavbarCategorySimple = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
     this.hidden = true;
     this.hiddenO = true;
+    this.haschildren = false;
   }
   MouseOverHandler() {
     clearTimeout(this.timeout);
-    this.hidden = false;
-    this.hiddenO = false;
-  }
-  MouseOutHandler() {
-    this.hiddenO = true;
-    this.timeout = setTimeout(() => {
-      this.hidden = true;
+    this.delaytimeout = setTimeout(() => {
+      this.hidden = false;
+      this.hiddenO = false;
     }, 200);
   }
+  MouseOutHandler() {
+    clearTimeout(this.delaytimeout);
+    this.delaytimeout = setTimeout(() => {
+      this.hiddenO = true;
+      this.timeout = setTimeout(() => {
+        this.hidden = true;
+      }, 200);
+    }, 200);
+  }
+  componentWillLoad() {
+    this.haschildren = !!this.root.querySelector('a[slot=child]');
+  }
   render() {
-    const haschildren = this.category.children && this.category.children.length;
-    const divstyle = {
-      backgroundColor: this.category.backgroundColor || "",
-      outlineColor: this.category.backgroundColor || ""
-    };
-    const linkstyle = {
-      color: this.category.color || "",
-      marginLeft: this.category == 0 ? "0" :
-        haschildren ? "15px" : ""
-    };
     const childrenstyle = {
       visibility: this.hidden ? "hidden" : "visible",
       opacity: this.hiddenO ? "0.0" : "1.0"
     };
-    return h(Host, { style: divstyle }, h("a", { href: this.category.url, style: linkstyle }, this.category.name, " ", haschildren ? h("ks-icon", { name: "chevron-down", size: 0.8 }) : null), haschildren ?
-      h("div", { style: childrenstyle }, this.category.children.map((child) => h("a", { href: child.url }, child.name)))
+    return h(Host, null, h("slot", null), this.haschildren ? h("ks-icon", { name: "chevron-down", size: 0.8 }) : null, this.haschildren ?
+      h("div", { style: childrenstyle }, h("slot", { name: "child" }))
       : null);
   }
   get root() { return getElement(this); }
 };
 NavbarCategorySimple.style = categorySimpleCss;
 
-const categoryViewCss = "ks-category-view{display:inline-block;height:32px;outline:1px solid transparent}ks-category-view>a{margin:0 10px 0 15px;line-height:36px;text-decoration:none;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;color:var(--navbar-category-text-color);font-size:.875rem}ks-category-view>a:hover{text-decoration:none;color:rgba(255, 255, 255, 0.733)}ks-category-view>div{background-color:white;color:#252525;position:absolute;z-index:10000;top:33px;left:0px;opacity:0.0;-webkit-transition:opacity 0.2s ease;transition:opacity 0.2s ease;-webkit-box-shadow:0 10px 15px -10px rgba(0, 0, 0, 0.26);box-shadow:0 10px 15px -10px rgba(0, 0, 0, 0.26)}ks-category-view .buttons{background-color:var(--navbar-category-backdrop);width:230px}ks-category-view .buttons a{display:block;padding:10px 15px;width:100%;height:40px;background-color:var(--navbar-category-color);color:white;border:none;outline:none;cursor:pointer;text-decoration:none;-webkit-box-sizing:border-box;box-sizing:border-box;border-bottom:1px solid transparent;-webkit-transition:background-color 0.3s ease, border-right-color 0.3 ease;transition:background-color 0.3s ease, border-right-color 0.3 ease;border-right:1px solid transparent;font-family:inherit;font-size:14px;text-align:left}ks-category-view .buttons a ks-icon{float:right;margin-top:2px}ks-category-view .buttons a:hover{background-color:var(--navbar-category-hover);color:var(--navbar-category-text-color);text-decoration:none}ks-category-view .buttons a:active{background-color:var(--navbar-category-active);color:var(--navbar-category-text-color);text-decoration:none}ks-category-view .buttons a.active{background-color:white;color:#252525;border-right-color:#f2f2f2}ks-category-view .content{-webkit-box-flex:1;-ms-flex:1;flex:1;min-width:1px}ks-category-view .content>div{display:-webkit-box;display:-ms-flexbox;display:flex;height:100%;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-flow:wrap column;flex-flow:wrap column;-ms-flex-line-pack:start;align-content:flex-start;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}ks-category-view .content>div[hidden]{display:none}ks-category-view .content a{display:block;width:230px;padding:9px 15px;text-decoration:none;font-size:14px;text-align:left;-webkit-box-sizing:border-box;box-sizing:border-box;border-bottom:1px solid #f6f6f6;border-right:1px solid #f2f2f2;-webkit-transition:background-color 0.3s ease;transition:background-color 0.3s ease;color:#252525}ks-category-view .content a:hover{text-decoration:none;color:#252525;background-color:#f9f9f9}ks-category-view .graphic{display:none;-webkit-box-flex:1;-ms-flex:1;flex:1;min-width:1px}@media only screen and (min-width: 1360px){ks-category-view .graphic{display:-webkit-box !important;display:-ms-flexbox !important;display:flex !important}}ks-category-view .children{width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;visibility:visible}ks-category-view .children[hidden]{visibility:hidden;display:none}";
+const categoryViewCss = "ks-category-view{display:inline-block;height:32px;outline:1px solid transparent;color:white}ks-category-view>a{margin:0 0 0 10px;line-height:36px;text-decoration:none;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;color:var(--navbar-category-text-color);font-size:.875rem}ks-category-view:first-child>a{margin:0 0 0 15px}ks-category-view>ks-icon{margin:0 20px 0 -4px}ks-category-view>a:hover{text-decoration:none;color:rgba(255, 255, 255, 0.733)}ks-category-view>div{background-color:white;color:#252525;position:absolute;z-index:10000;top:33px;left:0px;opacity:0.0;-webkit-transition:opacity 0.2s ease;transition:opacity 0.2s ease;-webkit-box-shadow:0 10px 15px -10px rgba(0, 0, 0, 0.26);box-shadow:0 10px 15px -10px rgba(0, 0, 0, 0.26)}ks-category-view .buttons{background-color:var(--navbar-category-backdrop);width:230px}ks-category-view .buttons a{display:block;padding:10px 15px;width:100%;height:40px;background-color:var(--navbar-category-color);color:white;border:none;outline:none;cursor:pointer;text-decoration:none;-webkit-box-sizing:border-box;box-sizing:border-box;border-bottom:1px solid transparent;-webkit-transition:background-color 0.3s ease, border-right-color 0.3 ease;transition:background-color 0.3s ease, border-right-color 0.3 ease;border-right:1px solid transparent;font-family:inherit;font-size:14px;text-align:left}ks-category-view .buttons a ks-icon{float:right;margin-top:2px}ks-category-view .buttons a:hover{background-color:var(--navbar-category-hover);color:var(--navbar-category-text-color);text-decoration:none}ks-category-view .buttons a:active{background-color:var(--navbar-category-active);color:var(--navbar-category-text-color);text-decoration:none}ks-category-view .buttons a.active{background-color:white;color:#252525;border-right-color:#f2f2f2}ks-category-view .content{-webkit-box-flex:1;-ms-flex:1 1 auto;flex:1 1 auto;min-width:1px}ks-category-view .content>div{display:-webkit-box;display:-ms-flexbox;display:flex;height:100%;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-flow:wrap column;flex-flow:wrap column;-ms-flex-line-pack:start;align-content:flex-start;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}ks-category-view .content>div[hidden]{display:none}ks-category-view .content a{display:block;width:230px;height:40px;padding:9px 15px;text-decoration:none;font-size:14px;text-align:left;-webkit-box-sizing:border-box;box-sizing:border-box;border-bottom:1px solid #f6f6f6;border-right:1px solid #f2f2f2;-webkit-transition:background-color 0.3s ease;transition:background-color 0.3s ease;color:#252525}ks-category-view .content a:hover{text-decoration:none;color:#252525;background-color:#f9f9f9}ks-category-view .graphic{display:none;-webkit-box-flex:1;-ms-flex:1 1 auto;flex:1 1 auto;min-width:1px;height:100%}@media only screen and (min-width: 1360px){ks-category-view .graphic{display:-webkit-box !important;display:-ms-flexbox !important;display:flex !important;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end}}ks-category-view .children[hidden] .graphic{display:none !important}ks-category-view .children{width:100%;min-height:240px;display:-webkit-box;display:-ms-flexbox;display:flex;visibility:visible}ks-category-view .children[hidden]{visibility:hidden}";
 
 const NavbarCategoryView = class {
   constructor(hostRef) {
@@ -94,58 +93,83 @@ const NavbarCategoryView = class {
     this.hidden = true;
     this.hiddenO = true;
     this.active = 0;
-  }
-  componentWillLoad() {
-    this.count = this.category.children ? this.category.children.length : 0;
+    this.count = 0;
   }
   MouseOverHandler() {
     clearTimeout(this.timeout);
-    this.hidden = false;
-    this.hiddenO = false;
-    this.NavbarColor(false);
+    clearTimeout(this.delaytimeout);
+    this.delaytimeout = setTimeout(() => {
+      this.hidden = false;
+      this.hiddenO = false;
+      this.NavbarColor(false);
+    }, 200);
   }
   MouseOutHandler() {
-    this.hiddenO = true;
-    this.timeout = setTimeout(() => {
-      this.hidden = true;
+    clearTimeout(this.delaytimeout);
+    this.delaytimeout = setTimeout(() => {
+      this.hiddenO = true;
+      this.timeout = setTimeout(() => {
+        this.hidden = true;
+      }, 200);
+      this.NavbarColor(true);
     }, 200);
-    this.NavbarColor(true);
   }
   NavbarColor(state) {
     const bar = document.querySelector("ks-navbar-categories > nav");
-    if (!bar || this.count == 0)
+    if (!bar)
       return;
     bar.style.backgroundColor = state ? "var(--navbar-category-color)" : "var(--navbar-color)";
     bar.style.borderTop = state ? "1px solid transparent" : "1px solid var(--navbar-category-color)";
     bar.style.borderBottom = bar.style.borderTop;
   }
-  CalculateHeight() {
-    return Math.max(40 * 6, (this.count * 40));
+  componentWillLoad() {
+    const sub = this.root.querySelectorAll('a[slot=sub]');
+    const singlesub = this.root.querySelectorAll('a[slot=single-sub]');
+    this.children = this.root.querySelectorAll('div[slot=children]');
+    this.count = sub.length + singlesub.length;
+    sub.forEach((element, index) => {
+      if (this.active == index)
+        element.classList.add("active");
+      element.addEventListener("mouseover", () => {
+        this.active = index;
+        element.classList.add("active");
+        if (this.last && this.last !== element)
+          this.last.classList.remove("active");
+        this.last = element;
+      });
+    });
+    singlesub.forEach(element => {
+      if (element.children.length > 0)
+        return;
+      let icon = document.createElement("ks-icon");
+      icon.setAttribute("name", "link");
+      icon.setAttribute("size", "0.65");
+      element.appendChild(icon);
+    });
+    this.children.forEach((element, index) => {
+      if (index == 0)
+        return;
+      element.setAttribute("hidden", "hidden");
+    });
+    this.imageData = JSON.parse(this.images);
   }
-  SetActive(index, children) {
-    if (children)
-      this.active = index;
+  activeChange(current, old) {
+    this.children[current].removeAttribute("hidden");
+    this.children[old].setAttribute("hidden", "hidden");
   }
   render() {
-    const haschildren = this.category.children && this.category.children.length;
-    const divstyle = {
-      backgroundColor: this.category.backgroundColor || "",
-      outlineColor: this.category.backgroundColor || ""
-    };
-    const linkstyle = {
-      color: this.category.color || "",
-      marginLeft: this.category == 0 ? "0" : ""
-    };
     const childrenstyle = {
-      opacity: this.hiddenO ? "0.0" : "1.0"
+      opacity: this.hiddenO ? "0.0" : "1.0",
+      height: (this.count * 40) + "px"
     };
-    return h(Host, { style: divstyle }, h("a", { href: this.category.url, style: linkstyle }, this.category.name, haschildren ? h("ks-icon", { name: "chevron-down", size: 0.8 }) : null), haschildren ?
-      h("div", { class: "children", style: childrenstyle, hidden: this.hidden }, h("div", { class: "buttons" }, this.category.children.map((child, index) => h("a", { href: child.url, class: this.active == index && child.children ? "active" : "", onMouseOver: () => this.SetActive(index, !!child.children) }, child.name, " ", !child.children ? h("ks-icon", { name: "link", size: 0.65 }) : null))), h("div", { class: "content", style: { maxHeight: this.CalculateHeight() + "px" } }, this.category.children.map((child, index) => h("div", { hidden: this.active != index || this.hidden }, child.children ? child.children.map((item) => h("a", { href: item.url }, item.name)) : null))), h("div", { class: "graphic", style: { maxHeight: this.CalculateHeight() + "px" } }, this.category.children.map((child, index) => child.image ?
-        h("ks-img", { vertical: true, right: true, target: "ks-category-view > .children", src: child.image, style: { display: (this.active == index) ? "flex" : "none" } })
-        : null)))
-      : null);
+    return h(Host, null, h("slot", null), " ", h("ks-icon", { name: "chevron-down", size: 0.8 }), h("div", { class: "children", style: childrenstyle, hidden: this.hidden }, h("div", { class: "buttons" }, h("slot", { name: "sub" }), h("slot", { name: "single-sub" })), h("div", { class: "content" }, h("slot", { name: "children" })), h("div", { class: "graphic" }, this.imageData.map((image, index) => "src" in image ?
+      h("ks-img2", { vertical: true, src: image.src, width: image.width, height: image.height, target: "ks-category-view > .children > .graphic", style: { display: (this.active == index) ? "block" : "none" } })
+      : null))));
   }
   get root() { return getElement(this); }
+  static get watchers() { return {
+    "active": ["activeChange"]
+  }; }
 };
 NavbarCategoryView.style = categoryViewCss;
 
@@ -2939,21 +2963,6 @@ const Navbar = class {
     this.navbarRendered = createEvent(this, "navbarRendered", 7);
     this.mobile = false;
   }
-  async componentDidLoad() {
-    let cachedCategories = sessionStorage.getItem("category-data");
-    if (cachedCategories == null) {
-      var headers = new Headers();
-      headers.append('pragma', 'no-cache');
-      headers.append('cache-control', 'no-cache');
-      const json = await fetch(this.categoryUrl, { method: 'GET', headers: headers })
-        .then(response => response.json());
-      const jsonString = JSON.stringify(json);
-      sessionStorage.setItem("category-data", jsonString);
-      cachedCategories = jsonString;
-    }
-    store.set("categories", JSON.parse(cachedCategories));
-    this.render();
-  }
   componentDidRender() {
     this.navbarRendered.emit();
   }
@@ -3003,12 +3012,7 @@ const Navbar = class {
         : null, this.logoutLink ?
         h("ks-navbar-button", { name: "Wyloguj", link: this.logoutLink, icon: "log-out", class: "desktop" })
         : null, h("ks-navbar-button", { name: "Menu", icon: "menu", class: "mobile-tablet", onClick: () => this.root.querySelector("ks-navbar-sidebar").toggle() })), h("ks-navbar-contact-panel", { phone: this.phone, email: this.email, contact: this.contact })),
-      !this.mobile ?
-        h("ks-navbar-categories", null)
-        : [
-          h("ks-navbar-search-mobile", null),
-          h("ks-navbar-sidebar", null)
-        ]
+      h("slot", null)
     ];
   }
   get root() { return getElement(this); }
@@ -3032,28 +3036,14 @@ const NavbarButton = class {
 };
 NavbarButton.style = navbarButtonCss;
 
-const navbarCategoriesCss = "ks-navbar-categories{display:block}ks-navbar-categories>nav{background-color:var(--navbar-category-color);-webkit-transition:background-color 0.2s ease;transition:background-color 0.2s ease;height:32px;border-top:1px solid transparent;border-bottom:1px solid transparent;position:relative}";
+const navbarCategoriesCss = "ks-navbar-categories{display:block}ks-navbar-categories>nav{background-color:var(--navbar-category-color);-webkit-transition:background-color 0.2s ease;transition:background-color 0.2s ease;height:32px;border-top:1px solid transparent;border-bottom:1px solid transparent;position:relative}@media only screen and (max-width: 959px){ks-navbar-categories{display:none}}";
 
 const NavbarCategories = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
   }
   render() {
-    return h("nav", null, " ", store.get("categories").map(category => {
-      let expanded = false;
-      if (category.children)
-        for (let x = 0; x < category.children.length; x++) {
-          const c = category.children[x];
-          if (c.children) {
-            expanded = true;
-            break;
-          }
-        }
-      if (expanded)
-        return h("ks-category-view", { category: category });
-      else
-        return h("ks-category-simple", { category: category });
-    }), " ");
+    return h("nav", null, h("slot", null));
   }
 };
 NavbarCategories.style = navbarCategoriesCss;
@@ -3173,7 +3163,7 @@ const NavbarSearchMobile = class {
 };
 NavbarSearchMobile.style = navbarSearchMobileCss;
 
-const navbarSidebarCss = "ks-navbar-sidebar{display:block}ks-navbar-sidebar nav{position:absolute;top:0;right:0;bottom:0;-webkit-box-sizing:border-box;box-sizing:border-box;width:300px;height:100%;padding:25px 30px;overflow-y:auto;background:#ffffff;-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow)}ks-navbar-sidebar nav .close{position:absolute;top:15px;right:25px;padding:5px;color:#252525;-webkit-transition:color .1s ease-in-out;transition:color .1s ease-in-out;cursor:pointer;border:none;outline:none;background-color:transparent}@media only screen and (max-width: 640px){ks-navbar-sidebar nav{width:270px;padding:20px}ks-navbar-sidebar nav .close{right:15px}}ks-navbar-sidebar nav ul{margin:0;padding:0;list-style:none;font-size:16px}ks-navbar-sidebar nav ul .header:first-child{margin-top:0px}ks-navbar-sidebar nav ul .header{margin-top:15px}ks-navbar-sidebar nav ul .divider{padding:0px;margin:5px 0px !important;border-bottom:1px solid #e2e2e2}ks-navbar-sidebar nav ul li{padding:5px 0px}ks-navbar-sidebar nav a{display:block;color:#252525 !important;text-decoration:none !important}ks-navbar-sidebar nav ul ks-icon{float:right}ks-navbar-sidebar nav ul .badge{float:right;display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-sizing:border-box;box-sizing:border-box;min-width:30px;height:30px;padding:0px 0px;border-radius:50px;vertical-align:middle;background:#e21334;color:#ffffff;font-size:16px;-webkit-transform:translateX(4px);-ms-transform:translateX(4px);transform:translateX(4px)}ks-navbar-sidebar nav .parent a{position:relative}ks-navbar-sidebar nav .parent a ks-icon{position:absolute;top:0px;right:0px}ks-navbar-sidebar nav .children{max-height:0px;overflow:hidden;padding:0px 0px 0px 10px;font-size:16px;-webkit-transition:max-height 0.3s ease,\n                padding 0.3s ease;transition:max-height 0.3s ease,\n                padding 0.3s ease}ks-navbar-sidebar nav .children.active{padding:8px 0px 5px 10px}ks-navbar-sidebar nav .children li{padding:3px 0}ks-navbar-sidebar nav .children .seeall{color:#bbbbbb  !important}@media (min-width: 640px){ks-navbar-sidebar nav .small{display:none !important}}";
+const navbarSidebarCss = "ks-navbar-sidebar{display:block}ks-navbar-sidebar nav{position:absolute;top:0;right:0;bottom:0;-webkit-box-sizing:border-box;box-sizing:border-box;width:320px;height:100%;padding:25px 30px;overflow-y:auto;background:#ffffff;-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow)}ks-navbar-sidebar nav .close{position:absolute;top:15px;right:25px;padding:5px;color:#252525;-webkit-transition:color .1s ease-in-out;transition:color .1s ease-in-out;cursor:pointer;border:none;outline:none;background-color:transparent}@media only screen and (max-width: 640px){ks-navbar-sidebar nav{width:300px;padding:20px}ks-navbar-sidebar nav .close{right:15px}}ks-navbar-sidebar nav ul{margin:0;padding:0;list-style:none;font-size:16px}ks-navbar-sidebar nav ul .header:first-child{margin-top:0px}ks-navbar-sidebar nav ul .header{margin-top:15px}ks-navbar-sidebar nav ul .divider{padding:0px;margin:5px 0px !important;border-bottom:1px solid #e2e2e2}ks-navbar-sidebar nav ul li{padding:5px 0px}ks-navbar-sidebar nav a{display:block;color:#252525 !important;text-decoration:none !important}ks-navbar-sidebar nav ul ks-icon{float:right}ks-navbar-sidebar nav ul .badge{float:right;display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-sizing:border-box;box-sizing:border-box;min-width:30px;height:30px;padding:0px 0px;border-radius:50px;vertical-align:middle;background:#e21334;color:#ffffff;font-size:16px;-webkit-transform:translateX(4px);-ms-transform:translateX(4px);transform:translateX(4px)}ks-navbar-sidebar nav>a{padding:4px 0px}@media (min-width: 640px){ks-navbar-sidebar nav .small{display:none !important}}";
 
 const NavbarSidebar = class {
   constructor(hostRef) {
@@ -3181,22 +3171,8 @@ const NavbarSidebar = class {
     this.active = undefined;
     this.toggled = false;
   }
-  expand(e, index) {
-    if (!store.get("categories")[index].children)
-      return;
-    e.preventDefault();
-    if (this.active == index)
-      this.active = undefined;
-    else
-      this.active = index;
-  }
   componentDidRender() {
     this.sidepanel = this.root.querySelector("ks-sidepanel");
-  }
-  childrenHeight(index, category) {
-    if (this.active == index)
-      return { maxHeight: (category.children.length + 1) * 34 + "px" };
-    return { maxHeight: "0px" };
   }
   async toggle() {
     if (this.toggled)
@@ -3223,11 +3199,7 @@ const NavbarSidebar = class {
       h("li", null, h("a", { href: accountLink }, "Panel Klienta ", h("ks-icon", { name: "user" })))
       : null, logoutLink ?
       h("li", null, h("a", { href: logoutLink }, "Wyloguj si\u0119 ", h("ks-icon", { name: "log-out" })))
-      : null, h("li", { class: "header" }, "KATEGORIE"), h("li", { class: "divider" }), store.get("categories").map((category, index) => h("li", { class: category.children ? "parent" : "" }, h("a", { href: category.children ? "" : category.url, onClick: (e) => this.expand(e, index) }, category.name, category.children ?
-      h("ks-icon", { name: (this.active == index) ? "minus" : "plus" })
-      : null), category.children ?
-      h("ul", { class: "children" + (this.active == index ? " active" : ""), style: this.childrenHeight(index, category) }, category.children.map(child => h("li", null, h("a", { href: child.url }, child.name))), h("li", null, h("a", { href: category.url, class: "seeall" }, "Zobacz wszystko")))
-      : null)))));
+      : null, h("li", { class: "header" }, "KATEGORIE"), h("li", { class: "divider" })), h("slot", null)));
   }
   get root() { return getElement(this); }
 };
