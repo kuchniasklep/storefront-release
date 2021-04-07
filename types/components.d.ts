@@ -265,6 +265,7 @@ export namespace Components {
     }
     interface KsCategorySimple {
         "category": CategoryData;
+        "haschildren": boolean;
     }
     interface KsCategoryView {
         "images": string;
@@ -2406,6 +2407,7 @@ declare namespace LocalJSX {
     }
     interface KsCategorySimple {
         "category"?: CategoryData;
+        "haschildren"?: boolean;
     }
     interface KsCategoryView {
         "images"?: string;

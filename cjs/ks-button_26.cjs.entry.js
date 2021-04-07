@@ -48,7 +48,7 @@ const Card = class {
   get root() { return index.getElement(this); }
 };
 
-const categorySimpleCss = "ks-category-simple{display:inline-block;position:relative;height:32px;outline:1px solid transparent;color:white}ks-category-simple>a{margin:0 0 0 15px;line-height:35px;text-decoration:none;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;color:white;font-size:.875rem}ks-category-view>ks-icon{margin:0 10px 0 -4px}ks-category-simple>a:hover{text-decoration:none;color:#ffffffbb}ks-category-simple>div{background-color:white;color:#252525;position:absolute;z-index:10000;top:33px;left:0px;min-width:200px;opacity:0.0;-webkit-transition:opacity 0.2s ease;transition:opacity 0.2s ease;-webkit-box-shadow:0 5px 15px rgba(0, 0, 0, 0.26);box-shadow:0 5px 15px rgba(0, 0, 0, 0.26)}ks-category-simple>div a{display:block;padding:9px 15px;text-decoration:none;font-size:14px;text-align:left;-webkit-box-sizing:border-box;box-sizing:border-box;border-bottom:1px solid #f2f2f2;-webkit-transition:background-color 0.3s ease;transition:background-color 0.3s ease;color:#252525}ks-category-simple>div a:hover{text-decoration:none;color:#252525;background-color:#f9f9f9}ks-category-simple>div a:active{text-decoration:none;background-color:#e6e6e6}";
+const categorySimpleCss = "ks-category-simple{display:inline-block;position:relative;height:32px;outline:1px solid transparent;color:white}ks-category-simple>a{margin:0 20px 0 10px;line-height:35px;text-decoration:none;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;color:white;font-size:.875rem}ks-category-simple[haschildren]>a{margin:0 5px 0 10px}ks-category-simple>ks-icon{margin:0 20px 0 -4px}ks-category-simple>a:hover{text-decoration:none;color:#ffffffbb}ks-category-simple>div{background-color:white;color:#252525;position:absolute;z-index:10000;top:33px;left:0px;min-width:200px;opacity:0.0;-webkit-transition:opacity 0.2s ease;transition:opacity 0.2s ease;-webkit-box-shadow:0 5px 15px rgba(0, 0, 0, 0.26);box-shadow:0 5px 15px rgba(0, 0, 0, 0.26)}ks-category-simple>div a{display:block;padding:9px 15px;text-decoration:none;font-size:14px;text-align:left;-webkit-box-sizing:border-box;box-sizing:border-box;border-bottom:1px solid #f2f2f2;-webkit-transition:background-color 0.3s ease;transition:background-color 0.3s ease;color:#252525}ks-category-simple>div a:hover{text-decoration:none;color:#252525;background-color:#f9f9f9}ks-category-simple>div a:active{text-decoration:none;background-color:#e6e6e6}";
 
 const NavbarCategorySimple = class {
   constructor(hostRef) {
@@ -59,13 +59,18 @@ const NavbarCategorySimple = class {
   }
   MouseOverHandler() {
     clearTimeout(this.timeout);
-    this.hidden = false;
-    this.hiddenO = false;
+    this.delaytimeout = setTimeout(() => {
+      this.hidden = false;
+      this.hiddenO = false;
+    }, 200);
   }
   MouseOutHandler() {
-    this.hiddenO = true;
-    this.timeout = setTimeout(() => {
-      this.hidden = true;
+    clearTimeout(this.delaytimeout);
+    this.delaytimeout = setTimeout(() => {
+      this.hiddenO = true;
+      this.timeout = setTimeout(() => {
+        this.hidden = true;
+      }, 200);
     }, 200);
   }
   componentWillLoad() {
@@ -84,7 +89,7 @@ const NavbarCategorySimple = class {
 };
 NavbarCategorySimple.style = categorySimpleCss;
 
-const categoryViewCss = "ks-category-view{display:inline-block;height:32px;outline:1px solid transparent;color:white}ks-category-view>a{margin:0 0 0 15px;line-height:36px;text-decoration:none;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;color:var(--navbar-category-text-color);font-size:.875rem}ks-category-view>ks-icon{margin:0 10px 0 -4px}ks-category-view>a:hover{text-decoration:none;color:rgba(255, 255, 255, 0.733)}ks-category-view>div{background-color:white;color:#252525;position:absolute;z-index:10000;top:33px;left:0px;opacity:0.0;-webkit-transition:opacity 0.2s ease;transition:opacity 0.2s ease;-webkit-box-shadow:0 10px 15px -10px rgba(0, 0, 0, 0.26);box-shadow:0 10px 15px -10px rgba(0, 0, 0, 0.26)}ks-category-view .buttons{background-color:var(--navbar-category-backdrop);width:230px}ks-category-view .buttons a{display:block;padding:10px 15px;width:100%;height:40px;background-color:var(--navbar-category-color);color:white;border:none;outline:none;cursor:pointer;text-decoration:none;-webkit-box-sizing:border-box;box-sizing:border-box;border-bottom:1px solid transparent;-webkit-transition:background-color 0.3s ease, border-right-color 0.3 ease;transition:background-color 0.3s ease, border-right-color 0.3 ease;border-right:1px solid transparent;font-family:inherit;font-size:14px;text-align:left}ks-category-view .buttons a ks-icon{float:right;margin-top:2px}ks-category-view .buttons a:hover{background-color:var(--navbar-category-hover);color:var(--navbar-category-text-color);text-decoration:none}ks-category-view .buttons a:active{background-color:var(--navbar-category-active);color:var(--navbar-category-text-color);text-decoration:none}ks-category-view .buttons a.active{background-color:white;color:#252525;border-right-color:#f2f2f2}ks-category-view .content{-webkit-box-flex:1;-ms-flex:1 1 auto;flex:1 1 auto;min-width:1px}ks-category-view .content>div{display:-webkit-box;display:-ms-flexbox;display:flex;height:100%;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-flow:wrap column;flex-flow:wrap column;-ms-flex-line-pack:start;align-content:flex-start;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}ks-category-view .content>div[hidden]{display:none}ks-category-view .content a{display:block;width:230px;height:40px;padding:9px 15px;text-decoration:none;font-size:14px;text-align:left;-webkit-box-sizing:border-box;box-sizing:border-box;border-bottom:1px solid #f6f6f6;border-right:1px solid #f2f2f2;-webkit-transition:background-color 0.3s ease;transition:background-color 0.3s ease;color:#252525}ks-category-view .content a:hover{text-decoration:none;color:#252525;background-color:#f9f9f9}ks-category-view .graphic{display:none;-webkit-box-flex:1;-ms-flex:1 1 auto;flex:1 1 auto;min-width:1px;height:100%}@media only screen and (min-width: 1360px){ks-category-view .graphic{display:-webkit-box !important;display:-ms-flexbox !important;display:flex !important;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end}}ks-category-view .children[hidden] .graphic{display:none !important}ks-category-view .children{width:100%;min-height:240px;display:-webkit-box;display:-ms-flexbox;display:flex;visibility:visible}ks-category-view .children[hidden]{visibility:hidden}";
+const categoryViewCss = "ks-category-view{display:inline-block;height:32px;outline:1px solid transparent;color:white}ks-category-view>a{margin:0 0 0 10px;line-height:36px;text-decoration:none;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;color:var(--navbar-category-text-color);font-size:.875rem}ks-category-view:first-child>a{margin:0 0 0 15px}ks-category-view>ks-icon{margin:0 20px 0 -4px}ks-category-view>a:hover{text-decoration:none;color:rgba(255, 255, 255, 0.733)}ks-category-view>div{background-color:white;color:#252525;position:absolute;z-index:10000;top:33px;left:0px;opacity:0.0;-webkit-transition:opacity 0.2s ease;transition:opacity 0.2s ease;-webkit-box-shadow:0 10px 15px -10px rgba(0, 0, 0, 0.26);box-shadow:0 10px 15px -10px rgba(0, 0, 0, 0.26)}ks-category-view .buttons{background-color:var(--navbar-category-backdrop);width:230px}ks-category-view .buttons a{display:block;padding:10px 15px;width:100%;height:40px;background-color:var(--navbar-category-color);color:white;border:none;outline:none;cursor:pointer;text-decoration:none;-webkit-box-sizing:border-box;box-sizing:border-box;border-bottom:1px solid transparent;-webkit-transition:background-color 0.3s ease, border-right-color 0.3 ease;transition:background-color 0.3s ease, border-right-color 0.3 ease;border-right:1px solid transparent;font-family:inherit;font-size:14px;text-align:left}ks-category-view .buttons a ks-icon{float:right;margin-top:2px}ks-category-view .buttons a:hover{background-color:var(--navbar-category-hover);color:var(--navbar-category-text-color);text-decoration:none}ks-category-view .buttons a:active{background-color:var(--navbar-category-active);color:var(--navbar-category-text-color);text-decoration:none}ks-category-view .buttons a.active{background-color:white;color:#252525;border-right-color:#f2f2f2}ks-category-view .content{-webkit-box-flex:1;-ms-flex:1 1 auto;flex:1 1 auto;min-width:1px}ks-category-view .content>div{display:-webkit-box;display:-ms-flexbox;display:flex;height:100%;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-flow:wrap column;flex-flow:wrap column;-ms-flex-line-pack:start;align-content:flex-start;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}ks-category-view .content>div[hidden]{display:none}ks-category-view .content a{display:block;width:230px;height:40px;padding:9px 15px;text-decoration:none;font-size:14px;text-align:left;-webkit-box-sizing:border-box;box-sizing:border-box;border-bottom:1px solid #f6f6f6;border-right:1px solid #f2f2f2;-webkit-transition:background-color 0.3s ease;transition:background-color 0.3s ease;color:#252525}ks-category-view .content a:hover{text-decoration:none;color:#252525;background-color:#f9f9f9}ks-category-view .graphic{display:none;-webkit-box-flex:1;-ms-flex:1 1 auto;flex:1 1 auto;min-width:1px;height:100%}@media only screen and (min-width: 1360px){ks-category-view .graphic{display:-webkit-box !important;display:-ms-flexbox !important;display:flex !important;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end}}ks-category-view .children[hidden] .graphic{display:none !important}ks-category-view .children{width:100%;min-height:240px;display:-webkit-box;display:-ms-flexbox;display:flex;visibility:visible}ks-category-view .children[hidden]{visibility:hidden}";
 
 const NavbarCategoryView = class {
   constructor(hostRef) {
@@ -96,16 +101,22 @@ const NavbarCategoryView = class {
   }
   MouseOverHandler() {
     clearTimeout(this.timeout);
-    this.hidden = false;
-    this.hiddenO = false;
-    this.NavbarColor(false);
+    clearTimeout(this.delaytimeout);
+    this.delaytimeout = setTimeout(() => {
+      this.hidden = false;
+      this.hiddenO = false;
+      this.NavbarColor(false);
+    }, 200);
   }
   MouseOutHandler() {
-    this.hiddenO = true;
-    this.timeout = setTimeout(() => {
-      this.hidden = true;
+    clearTimeout(this.delaytimeout);
+    this.delaytimeout = setTimeout(() => {
+      this.hiddenO = true;
+      this.timeout = setTimeout(() => {
+        this.hidden = true;
+      }, 200);
+      this.NavbarColor(true);
     }, 200);
-    this.NavbarColor(true);
   }
   NavbarColor(state) {
     const bar = document.querySelector("ks-navbar-categories > nav");
@@ -121,8 +132,14 @@ const NavbarCategoryView = class {
     this.children = this.root.querySelectorAll('div[slot=children]');
     this.count = sub.length + singlesub.length;
     sub.forEach((element, index) => {
+      if (this.active == index)
+        element.classList.add("active");
       element.addEventListener("mouseover", () => {
         this.active = index;
+        element.classList.add("active");
+        if (this.last && this.last !== element)
+          this.last.classList.remove("active");
+        this.last = element;
       });
     });
     singlesub.forEach(element => {

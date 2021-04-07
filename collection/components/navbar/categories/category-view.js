@@ -8,16 +8,22 @@ export class NavbarCategoryView {
   }
   MouseOverHandler() {
     clearTimeout(this.timeout);
-    this.hidden = false;
-    this.hiddenO = false;
-    this.NavbarColor(false);
+    clearTimeout(this.delaytimeout);
+    this.delaytimeout = setTimeout(() => {
+      this.hidden = false;
+      this.hiddenO = false;
+      this.NavbarColor(false);
+    }, 200);
   }
   MouseOutHandler() {
-    this.hiddenO = true;
-    this.timeout = setTimeout(() => {
-      this.hidden = true;
+    clearTimeout(this.delaytimeout);
+    this.delaytimeout = setTimeout(() => {
+      this.hiddenO = true;
+      this.timeout = setTimeout(() => {
+        this.hidden = true;
+      }, 200);
+      this.NavbarColor(true);
     }, 200);
-    this.NavbarColor(true);
   }
   NavbarColor(state) {
     const bar = document.querySelector("ks-navbar-categories > nav");
@@ -33,8 +39,14 @@ export class NavbarCategoryView {
     this.children = this.root.querySelectorAll('div[slot=children]');
     this.count = sub.length + singlesub.length;
     sub.forEach((element, index) => {
+      if (this.active == index)
+        element.classList.add("active");
       element.addEventListener("mouseover", () => {
         this.active = index;
+        element.classList.add("active");
+        if (this.last && this.last !== element)
+          this.last.classList.remove("active");
+        this.last = element;
       });
     });
     singlesub.forEach(element => {
@@ -112,13 +124,13 @@ export class NavbarCategoryView {
       "methodName": "activeChange"
     }]; }
   static get listeners() { return [{
-      "name": "mouseover",
+      "name": "mouseenter",
       "method": "MouseOverHandler",
       "target": undefined,
       "capture": false,
       "passive": true
     }, {
-      "name": "mouseout",
+      "name": "mouseleave",
       "method": "MouseOutHandler",
       "target": undefined,
       "capture": false,

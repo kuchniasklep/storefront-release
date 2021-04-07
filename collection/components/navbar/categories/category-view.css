@@ -6,7 +6,7 @@ ks-category-view {
 }
 
 ks-category-view > a {
-    margin: 0 0 0 15px;
+    margin: 0 0 0 10px;
     line-height: 36px;
     text-decoration: none;
 
@@ -18,8 +18,12 @@ ks-category-view > a {
     font-size: .875rem;
 }
 
+ks-category-view:first-child > a {
+    margin: 0 0 0 15px;
+}
+
 ks-category-view > ks-icon {
-    margin: 0 10px 0 -4px;
+    margin: 0 20px 0 -4px;
 }
 
 ks-category-view > a:hover {

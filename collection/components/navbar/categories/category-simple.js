@@ -7,13 +7,18 @@ export class NavbarCategorySimple {
   }
   MouseOverHandler() {
     clearTimeout(this.timeout);
-    this.hidden = false;
-    this.hiddenO = false;
+    this.delaytimeout = setTimeout(() => {
+      this.hidden = false;
+      this.hiddenO = false;
+    }, 200);
   }
   MouseOutHandler() {
-    this.hiddenO = true;
-    this.timeout = setTimeout(() => {
-      this.hidden = true;
+    clearTimeout(this.delaytimeout);
+    this.delaytimeout = setTimeout(() => {
+      this.hiddenO = true;
+      this.timeout = setTimeout(() => {
+        this.hidden = true;
+      }, 200);
     }, 200);
   }
   componentWillLoad() {
@@ -59,6 +64,24 @@ export class NavbarCategorySimple {
         "tags": [],
         "text": ""
       }
+    },
+    "haschildren": {
+      "type": "boolean",
+      "mutable": true,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "haschildren",
+      "reflect": true,
+      "defaultValue": "false"
     }
   }; }
   static get states() { return {
@@ -67,13 +90,13 @@ export class NavbarCategorySimple {
   }; }
   static get elementRef() { return "root"; }
   static get listeners() { return [{
-      "name": "mouseover",
+      "name": "mouseenter",
       "method": "MouseOverHandler",
       "target": undefined,
       "capture": false,
       "passive": true
     }, {
-      "name": "mouseout",
+      "name": "mouseleave",
       "method": "MouseOutHandler",
       "target": undefined,
       "capture": false,

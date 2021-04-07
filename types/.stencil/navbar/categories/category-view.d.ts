@@ -6,12 +6,14 @@ export declare class NavbarCategoryView {
   hidden: boolean;
   hiddenO: boolean;
   timeout: number;
+  delaytimeout: number;
   MouseOverHandler(): void;
   MouseOutHandler(): void;
   NavbarColor(state: boolean): void;
   active: number;
   count: number;
   children: NodeListOf<Element>;
+  last: HTMLElement;
   componentWillLoad(): void;
   activeChange(current: number, old: number): void;
   render(): any;

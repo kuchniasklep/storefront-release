@@ -7,7 +7,7 @@ ks-category-simple {
 }
 
 ks-category-simple > a {
-    margin: 0 0 0 15px;
+    margin: 0 20px 0 10px;
     line-height: 35px;
     text-decoration: none;
 
@@ -19,8 +19,12 @@ ks-category-simple > a {
     font-size: .875rem;
 }
 
-ks-category-view > ks-icon {
-    margin: 0 10px 0 -4px;
+ks-category-simple[haschildren] > a {
+    margin: 0 5px 0 10px;
+}
+
+ks-category-simple > ks-icon {
+    margin: 0 20px 0 -4px;
 }
 
 
