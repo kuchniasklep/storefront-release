@@ -238,7 +238,7 @@ const BannerContainer = class {
 };
 BannerContainer.style = bannerContainerCss;
 
-const featuredCss = "ks-featured{display:block;position:relative}ks-featured a{display:block}ks-featured .icon{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%, -50%);-ms-transform:translate(-50%, -50%);transform:translate(-50%, -50%);display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;width:100px;height:100px;border-radius:50px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:white;background-color:rgba(0, 0, 0, 0.596);opacity:0;-webkit-transition:opacity 0.3s ease,\n                -webkit-transform 0.1s ease-out;transition:opacity 0.3s ease,\n                -webkit-transform 0.1s ease-out;transition:opacity 0.3s ease,\n                transform 0.1s ease-out;transition:opacity 0.3s ease,\n                transform 0.1s ease-out,\n                -webkit-transform 0.1s ease-out}ks-featured:hover .icon{opacity:1}ks-featured:active .icon{opacity:1;-webkit-transform:translate(-50%, -50%) scale(0.95);-ms-transform:translate(-50%, -50%) scale(0.95);transform:translate(-50%, -50%) scale(0.95)}";
+const featuredCss = "ks-featured{display:block;position:relative}ks-featured a{display:block;opacity:1;-webkit-transition:opacity 0.3s ease;transition:opacity 0.3s ease}ks-featured a:hover{display:block;opacity:0.97}ks-featured a:active{display:block;opacity:0.92}";
 
 const Featured = class {
   constructor(hostRef) {
@@ -246,7 +246,7 @@ const Featured = class {
     this.color = "#0f0f0f";
   }
   render() {
-    return (index.h("a", { href: this.link, style: { backgroundColor: this.color } }, index.h("ks-img", { src: this.image, alt: this.alt, width: this.width, height: this.height, target: "ks-featured" }), index.h("div", { class: "icon" }, index.h("ks-icon", { name: "link", size: 1.1 }))));
+    return (index.h("a", { href: this.link, style: { backgroundColor: this.color } }, index.h("ks-img", { src: this.image, alt: this.alt, width: this.width, height: this.height, target: "ks-featured" })));
   }
 };
 Featured.style = featuredCss;

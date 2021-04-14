@@ -3009,10 +3009,10 @@ const Navbar = class {
       index.h("nav", null, index.h("div", { class: "logo" }, index.h("div", null, index.h("a", { href: "/" }, index.h("ks-img", { contained: true, sync: true, src: this.logo, width: 217, height: 35, alt: "kuchniasklep.pl" })), this.promo ? this.promoLink && !this.mobile ?
         index.h("a", { class: "promo", href: this.promoLink }, this.promo) :
         index.h("span", { class: "promo" }, this.promo)
-        : null)), index.h("div", { class: "search" }, index.h("ks-navbar-search", null)), index.h("div", { class: "buttons", id: "ks-navbar-menu-buttons" }, index.h("ks-navbar-button", { name: "Kontakt", icon: "phone", onClick: () => this.root.querySelector("ks-navbar-contact-panel").Toggle() }), this.accountLink ?
+        : null)), index.h("div", { class: "search" }, index.h("ks-navbar-search", null)), index.h("div", { class: "buttons", id: "ks-navbar-menu-buttons" }, index.h("ks-navbar-button", { name: "Kontakt", icon: "phone", class: "tablet-desktop", onClick: () => this.root.querySelector("ks-navbar-contact-panel").Toggle() }), this.accountLink ?
         index.h("ks-navbar-button", { name: "Twoje konto", link: this.accountLink, icon: "user", class: "desktop" })
-        : null, index.h("ks-navbar-button", { name: "Schowek", link: this.heartLink, icon: "star", count: favouritesCount, class: "tablet-desktop" }), index.h("ks-navbar-button", { name: "Koszyk", link: this.cartLink, icon: "shopping-bag", count: cartCount, class: "tablet-desktop" }), this.loginLink ?
-        index.h("ks-navbar-button", { name: "Zaloguj", link: this.loginLink, icon: "key", class: "desktop" })
+        : null, index.h("ks-navbar-button", { name: "Schowek", link: this.heartLink, icon: "star", count: favouritesCount, class: "tablet-desktop" }), index.h("ks-navbar-button", { name: "Koszyk", link: this.cartLink, icon: "shopping-bag", count: cartCount }), this.loginLink ?
+        index.h("ks-navbar-button", { name: "Zaloguj", link: this.loginLink, icon: "user", class: "desktop" })
         : null, this.logoutLink ?
         index.h("ks-navbar-button", { name: "Wyloguj", link: this.logoutLink, icon: "log-out", class: "desktop" })
         : null, index.h("ks-navbar-button", { name: "Menu", icon: "menu", class: "mobile-tablet", onClick: () => this.root.querySelector("ks-navbar-sidebar").toggle() })), index.h("ks-navbar-contact-panel", { phone: this.phone, email: this.email, contact: this.contact })),

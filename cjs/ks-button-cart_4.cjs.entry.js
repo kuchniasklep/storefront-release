@@ -102,7 +102,7 @@ const ProductCard = class {
     const currentPrice = this.currentPrice ? this.currentPrice.replace(".", ",") + " zł" : "";
     const previousPrice = this.previousPrice ? this.previousPrice.replace(".", ",") + " zł" : "";
     return [
-      index.h("a", { href: this.link, "aria-label": this.name, class: "top" }, index.h("ks-img", { fill: true, src: this.img, width: 280, height: 280, alt: "zdj\u0119cie produktu" }), this.name),
+      index.h("a", { href: this.link, "aria-label": this.name, class: "top" }, index.h("ks-img", { fill: true, src: this.img, width: 280, height: 280, alt: "zdj\u0119cie produktu" }), index.h("span", null, this.name)),
       index.h("div", { class: "price" }, this.previousPrice ?
         index.h("s", { class: "previous" }, previousPrice)
         : null, index.h("span", { class: "current" }, currentPrice)),

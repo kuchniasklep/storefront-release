@@ -870,6 +870,7 @@ export namespace Components {
     interface KsProductSuggestions {
         "api": string;
         "show": (productId: string, name: string) => Promise<void>;
+        "suggestionHeading": string;
     }
     interface KsProductTab {
         "main": boolean;
@@ -2975,6 +2976,7 @@ declare namespace LocalJSX {
     }
     interface KsProductSuggestions {
         "api"?: string;
+        "suggestionHeading"?: string;
     }
     interface KsProductTab {
         "main"?: boolean;

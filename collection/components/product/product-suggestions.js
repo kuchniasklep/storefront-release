@@ -2,6 +2,7 @@ import { Component, h, Element, State, Prop, Method } from '@stencil/core';
 import Swiper from 'swiper';
 export class ProductSuggestions {
   constructor() {
+    this.suggestionHeading = "Produkty sugerowane";
     this.loading = true;
     this.products = new Array();
   }
@@ -60,9 +61,10 @@ export class ProductSuggestions {
           h("div", { class: "heading" }, "Dodano do koszyka"),
           h("div", { class: "name" }, this.name),
           h("div", { class: "buttons" },
-            h("ks-button", { tall: true, secondary: true, name: "Przejd\u017A do koszyka", onClick: () => this.toCart() }),
-            h("ks-button", { tall: true, name: "Przegl\u0105daj dalej", onClick: () => this.hide() }))),
+            h("ks-button", { secondary: true, name: "Przejd\u017A do koszyka", onClick: () => this.toCart() }),
+            h("ks-button", { name: "Przegl\u0105daj dalej", onClick: () => this.hide() }))),
         h("div", { class: "bottom" },
+          this.loading ? null : h("h3", { class: "suggestion-heading" }, this.suggestionHeading),
           this.loading ? h("ks-loader", { dark: true, large: true }) : null,
           h("div", { class: "swiper-container product-suggestions", style: { display: this.loading ? "none" : "block" } },
             h("div", { class: "swiper-wrapper" }, this.products.map((product) => h("div", { class: "swiper-slide" },
@@ -94,6 +96,24 @@ export class ProductSuggestions {
       },
       "attribute": "api",
       "reflect": false
+    },
+    "suggestionHeading": {
+      "type": "string",
+      "mutable": false,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "suggestion-heading",
+      "reflect": false,
+      "defaultValue": "\"Produkty sugerowane\""
     }
   }; }
   static get states() { return {

@@ -5,6 +5,7 @@ export declare class ProductSuggestions {
   overlay: HTMLKsOverlayElement;
   carousel: Swiper;
   api: string;
+  suggestionHeading: string;
   name: string;
   loading: boolean;
   products: SuggestedProductData[];

@@ -10,7 +10,7 @@ export class ProductCard {
     return [
       h("a", { href: this.link, "aria-label": this.name, class: "top" },
         h("ks-img", { fill: true, src: this.img, width: 280, height: 280, alt: "zdj\u0119cie produktu" }),
-        this.name),
+        h("span", null, this.name)),
       h("div", { class: "price" },
         this.previousPrice ?
           h("s", { class: "previous" }, previousPrice)

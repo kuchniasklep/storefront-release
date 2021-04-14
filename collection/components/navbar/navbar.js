@@ -55,14 +55,14 @@ export class Navbar {
         h("div", { class: "search" },
           h("ks-navbar-search", null)),
         h("div", { class: "buttons", id: "ks-navbar-menu-buttons" },
-          h("ks-navbar-button", { name: "Kontakt", icon: "phone", onClick: () => this.root.querySelector("ks-navbar-contact-panel").Toggle() }),
+          h("ks-navbar-button", { name: "Kontakt", icon: "phone", class: "tablet-desktop", onClick: () => this.root.querySelector("ks-navbar-contact-panel").Toggle() }),
           this.accountLink ?
             h("ks-navbar-button", { name: "Twoje konto", link: this.accountLink, icon: "user", class: "desktop" })
             : null,
           h("ks-navbar-button", { name: "Schowek", link: this.heartLink, icon: "star", count: favouritesCount, class: "tablet-desktop" }),
-          h("ks-navbar-button", { name: "Koszyk", link: this.cartLink, icon: "shopping-bag", count: cartCount, class: "tablet-desktop" }),
+          h("ks-navbar-button", { name: "Koszyk", link: this.cartLink, icon: "shopping-bag", count: cartCount }),
           this.loginLink ?
-            h("ks-navbar-button", { name: "Zaloguj", link: this.loginLink, icon: "key", class: "desktop" })
+            h("ks-navbar-button", { name: "Zaloguj", link: this.loginLink, icon: "user", class: "desktop" })
             : null,
           this.logoutLink ?
             h("ks-navbar-button", { name: "Wyloguj", link: this.logoutLink, icon: "log-out", class: "desktop" })

@@ -3005,10 +3005,10 @@ const Navbar = class {
       h("nav", null, h("div", { class: "logo" }, h("div", null, h("a", { href: "/" }, h("ks-img", { contained: true, sync: true, src: this.logo, width: 217, height: 35, alt: "kuchniasklep.pl" })), this.promo ? this.promoLink && !this.mobile ?
         h("a", { class: "promo", href: this.promoLink }, this.promo) :
         h("span", { class: "promo" }, this.promo)
-        : null)), h("div", { class: "search" }, h("ks-navbar-search", null)), h("div", { class: "buttons", id: "ks-navbar-menu-buttons" }, h("ks-navbar-button", { name: "Kontakt", icon: "phone", onClick: () => this.root.querySelector("ks-navbar-contact-panel").Toggle() }), this.accountLink ?
+        : null)), h("div", { class: "search" }, h("ks-navbar-search", null)), h("div", { class: "buttons", id: "ks-navbar-menu-buttons" }, h("ks-navbar-button", { name: "Kontakt", icon: "phone", class: "tablet-desktop", onClick: () => this.root.querySelector("ks-navbar-contact-panel").Toggle() }), this.accountLink ?
         h("ks-navbar-button", { name: "Twoje konto", link: this.accountLink, icon: "user", class: "desktop" })
-        : null, h("ks-navbar-button", { name: "Schowek", link: this.heartLink, icon: "star", count: favouritesCount, class: "tablet-desktop" }), h("ks-navbar-button", { name: "Koszyk", link: this.cartLink, icon: "shopping-bag", count: cartCount, class: "tablet-desktop" }), this.loginLink ?
-        h("ks-navbar-button", { name: "Zaloguj", link: this.loginLink, icon: "key", class: "desktop" })
+        : null, h("ks-navbar-button", { name: "Schowek", link: this.heartLink, icon: "star", count: favouritesCount, class: "tablet-desktop" }), h("ks-navbar-button", { name: "Koszyk", link: this.cartLink, icon: "shopping-bag", count: cartCount }), this.loginLink ?
+        h("ks-navbar-button", { name: "Zaloguj", link: this.loginLink, icon: "user", class: "desktop" })
         : null, this.logoutLink ?
         h("ks-navbar-button", { name: "Wyloguj", link: this.logoutLink, icon: "log-out", class: "desktop" })
         : null, h("ks-navbar-button", { name: "Menu", icon: "menu", class: "mobile-tablet", onClick: () => this.root.querySelector("ks-navbar-sidebar").toggle() })), h("ks-navbar-contact-panel", { phone: this.phone, email: this.email, contact: this.contact })),
