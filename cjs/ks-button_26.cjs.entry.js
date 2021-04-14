@@ -3187,17 +3187,13 @@ const NavbarSidebar = class {
   }
   render() {
     const loginLink = store.get("loginLink");
-    const cartLink = store.get("cartLink");
     const favouritesLink = store.get("favouritesLink");
     const accountLink = store.get("accountLink");
     const logoutLink = store.get("logoutLink");
-    const cartCount = store.get("cartCount");
     const favouritesCount = store.get("favouritesCount");
     return index.h("ks-sidepanel", null, index.h("nav", null, index.h("button", { class: "close", onClick: () => this.toggle() }, index.h("ks-icon", { name: "x" })), index.h("ul", null, index.h("li", { class: "header" }, "MENU"), index.h("li", { class: "divider" }), loginLink ?
       index.h("li", null, index.h("a", { href: loginLink }, "Zaloguj si\u0119 ", index.h("ks-icon", { name: "log-in" })))
-      : null, index.h("li", { class: "small" }, index.h("a", { href: cartLink }, "Koszyk", cartCount && cartCount != 0 ?
-      index.h("span", { class: "badge" }, cartCount) :
-      index.h("ks-icon", { name: "shopping-bag" }))), index.h("li", { class: "small" }, index.h("a", { href: favouritesLink }, "Schowek", favouritesCount && favouritesCount != 0 ?
+      : null, index.h("li", { class: "small" }, index.h("a", { href: favouritesLink }, "Schowek", favouritesCount && favouritesCount != 0 ?
       index.h("span", { class: "badge" }, favouritesCount) :
       index.h("ks-icon", { name: "star" }))), accountLink ?
       index.h("li", null, index.h("a", { href: accountLink }, "Panel Klienta ", index.h("ks-icon", { name: "user" })))

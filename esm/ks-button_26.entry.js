@@ -3183,17 +3183,13 @@ const NavbarSidebar = class {
   }
   render() {
     const loginLink = store.get("loginLink");
-    const cartLink = store.get("cartLink");
     const favouritesLink = store.get("favouritesLink");
     const accountLink = store.get("accountLink");
     const logoutLink = store.get("logoutLink");
-    const cartCount = store.get("cartCount");
     const favouritesCount = store.get("favouritesCount");
     return h("ks-sidepanel", null, h("nav", null, h("button", { class: "close", onClick: () => this.toggle() }, h("ks-icon", { name: "x" })), h("ul", null, h("li", { class: "header" }, "MENU"), h("li", { class: "divider" }), loginLink ?
       h("li", null, h("a", { href: loginLink }, "Zaloguj si\u0119 ", h("ks-icon", { name: "log-in" })))
-      : null, h("li", { class: "small" }, h("a", { href: cartLink }, "Koszyk", cartCount && cartCount != 0 ?
-      h("span", { class: "badge" }, cartCount) :
-      h("ks-icon", { name: "shopping-bag" }))), h("li", { class: "small" }, h("a", { href: favouritesLink }, "Schowek", favouritesCount && favouritesCount != 0 ?
+      : null, h("li", { class: "small" }, h("a", { href: favouritesLink }, "Schowek", favouritesCount && favouritesCount != 0 ?
       h("span", { class: "badge" }, favouritesCount) :
       h("ks-icon", { name: "star" }))), accountLink ?
       h("li", null, h("a", { href: accountLink }, "Panel Klienta ", h("ks-icon", { name: "user" })))
