@@ -1,8 +1,8 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h } from '@stencil/core';
 export class FooterLinks {
   render() {
     return [
-      h("h4", null, this.heading),
+      h("slot", { name: "heading" }),
       h("ul", null,
         h("slot", null))
     ];
@@ -13,24 +13,5 @@ export class FooterLinks {
   }; }
   static get styleUrls() { return {
     "$": ["footer-links.css"]
-  }; }
-  static get properties() { return {
-    "heading": {
-      "type": "string",
-      "mutable": false,
-      "complexType": {
-        "original": "string",
-        "resolved": "string",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "heading",
-      "reflect": false
-    }
   }; }
 }

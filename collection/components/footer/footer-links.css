@@ -4,11 +4,14 @@ ks-footer-links {
     min-width: 80px;
 }
 
-ks-footer-links h4 {
+ks-footer-links > h4,
+ks-footer-links > span {
+    display: block;
     color: var(--footer-heading-color);
     font-family: var(--font-emphasis);
     font-weight: 700;
     font-size: 18px;
+    margin: 0 0 15px 0;
 }
 
 ks-footer-links ul {
@@ -35,7 +38,8 @@ ks-footer-links ul li {
 }
 
 @media only screen and (max-width: 640px) {
-    ks-footer-links h4 {
+    ks-footer-links > h4,
+    ks-footer-links > span {
         font-size: 20px;
     }
 }

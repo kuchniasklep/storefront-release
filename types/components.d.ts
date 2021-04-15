@@ -379,7 +379,6 @@ export namespace Components {
         "width": number;
     }
     interface KsFooterLinks {
-        "heading": string;
     }
     interface KsForm {
         "action": string;
@@ -2518,7 +2517,6 @@ declare namespace LocalJSX {
         "width"?: number;
     }
     interface KsFooterLinks {
-        "heading"?: string;
     }
     interface KsForm {
         "action"?: string;

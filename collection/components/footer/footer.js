@@ -6,7 +6,7 @@ export class Footer {
         h("div", { class: "links" },
           h("slot", null),
           h("div", { class: "contact" },
-            h("h4", null, "Kontakt"),
+            h("span", null, "Kontakt"),
             h("a", { href: `mailto:${this.email}` },
               " ",
               h("ks-icon", { name: "mail" }),

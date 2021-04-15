@@ -18,6 +18,15 @@ ks-footer .about {
     margin: auto;
 }
 
+ks-footer .contact span:first-of-type {
+    display: block;
+    color: var(--footer-heading-color);
+    font-family: var(--font-emphasis);
+    font-weight: 700;
+    font-size: 18px;
+    margin: 0 0 15px 0;
+}
+
 ks-footer .contact a,
 ks-footer .contact span {
     display: block;
