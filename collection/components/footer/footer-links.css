@@ -1,8 +1,7 @@
 ks-footer-links {
     display: block;
-
-    padding: 0 20px;
-    margin: 0;
+    margin: 0 50px 0 0;
+    min-width: 80px;
 }
 
 ks-footer-links h4 {
@@ -31,12 +30,12 @@ ks-footer-links ul a {
 ks-footer-links ul a:hover  { color: var(--footer-text-color-hover); }
 ks-footer-links ul a:active { color: var(--footer-text-color-active); }
 
+ks-footer-links ul li {
+    margin-bottom: 5px;
+}
+
 @media only screen and (max-width: 640px) {
     ks-footer-links h4 {
         font-size: 20px;
-    }
-
-    ks-footer-links ul li {
-        margin-bottom: 5px;
     }
 }

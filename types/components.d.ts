@@ -365,10 +365,12 @@ export namespace Components {
         "small": boolean;
     }
     interface KsFooter {
+        "address": string;
+        "company": string;
         "email": string;
-        "logo": string;
         "phone": string;
         "softwareLink": string;
+        "time": string;
     }
     interface KsFooterButton {
         "height": number;
@@ -2502,10 +2504,12 @@ declare namespace LocalJSX {
         "small"?: boolean;
     }
     interface KsFooter {
+        "address"?: string;
+        "company"?: string;
         "email"?: string;
-        "logo"?: string;
         "phone"?: string;
         "softwareLink"?: string;
+        "time"?: string;
     }
     interface KsFooterButton {
         "height"?: number;

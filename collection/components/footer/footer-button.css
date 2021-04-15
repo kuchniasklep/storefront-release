@@ -1,12 +1,21 @@
 ks-footer-button {
-    display: inline-block;
-    max-width: 120px;
+    display: block;
 
     opacity: 1.0;
-    -webkit-transition: opacity 0.3s ease;
-    transition: opacity 0.3s ease;
+    -webkit-transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease;
+
+    margin: 0 3px;
+}
+
+ks-footer-button > a {
+    display: block;
+    max-width: 90px;
+    max-height: 40px;
+
+    height: 40px;
 }
 
 ks-footer-button:hover {
-    opacity: 0.4;
+    opacity: 0.7;
 }
