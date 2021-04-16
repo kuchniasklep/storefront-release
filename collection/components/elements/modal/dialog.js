@@ -91,6 +91,23 @@ export class dialog {
       },
       "attribute": "nopadding",
       "reflect": true
+    },
+    "dark": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "dark",
+      "reflect": true
     }
   }; }
   static get states() { return {

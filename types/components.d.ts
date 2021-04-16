@@ -301,6 +301,7 @@ export namespace Components {
         "size": string;
     }
     interface KsDialog {
+        "dark": boolean;
         "hide": () => Promise<void>;
         "nopadding": boolean;
         "show": () => Promise<void>;
@@ -908,6 +909,16 @@ export namespace Components {
     }
     interface KsProductYoutube {
         "videoId": string;
+    }
+    interface KsPromotionalPopup {
+        "Show": () => Promise<void>;
+        "color": string;
+        "displayOnLoad": boolean;
+        "image": string;
+        "name": string;
+        "texture": string;
+        "textureOpacity": string;
+        "textureSize": string;
     }
     interface KsRadioTile {
         "active": boolean;
@@ -1901,6 +1912,12 @@ declare global {
         prototype: HTMLKsProductYoutubeElement;
         new (): HTMLKsProductYoutubeElement;
     };
+    interface HTMLKsPromotionalPopupElement extends Components.KsPromotionalPopup, HTMLStencilElement {
+    }
+    var HTMLKsPromotionalPopupElement: {
+        prototype: HTMLKsPromotionalPopupElement;
+        new (): HTMLKsPromotionalPopupElement;
+    };
     interface HTMLKsRadioTileElement extends Components.KsRadioTile, HTMLStencilElement {
     }
     var HTMLKsRadioTileElement: {
@@ -2139,6 +2156,7 @@ declare global {
         "ks-product-variants": HTMLKsProductVariantsElement;
         "ks-product-wide": HTMLKsProductWideElement;
         "ks-product-youtube": HTMLKsProductYoutubeElement;
+        "ks-promotional-popup": HTMLKsPromotionalPopupElement;
         "ks-radio-tile": HTMLKsRadioTileElement;
         "ks-recent-card": HTMLKsRecentCardElement;
         "ks-recent-products": HTMLKsRecentProductsElement;
@@ -2445,6 +2463,7 @@ declare namespace LocalJSX {
         "size"?: string;
     }
     interface KsDialog {
+        "dark"?: boolean;
         "nopadding"?: boolean;
         "onClosed"?: (event: CustomEvent<any>) => void;
     }
@@ -3017,6 +3036,15 @@ declare namespace LocalJSX {
     interface KsProductYoutube {
         "videoId"?: string;
     }
+    interface KsPromotionalPopup {
+        "color"?: string;
+        "displayOnLoad"?: boolean;
+        "image"?: string;
+        "name"?: string;
+        "texture"?: string;
+        "textureOpacity"?: string;
+        "textureSize"?: string;
+    }
     interface KsRadioTile {
         "active"?: boolean;
         "color"?: string;
@@ -3241,6 +3269,7 @@ declare namespace LocalJSX {
         "ks-product-variants": KsProductVariants;
         "ks-product-wide": KsProductWide;
         "ks-product-youtube": KsProductYoutube;
+        "ks-promotional-popup": KsPromotionalPopup;
         "ks-radio-tile": KsRadioTile;
         "ks-recent-card": KsRecentCard;
         "ks-recent-products": KsRecentProducts;
@@ -3414,6 +3443,7 @@ declare module "@stencil/core" {
             "ks-product-variants": LocalJSX.KsProductVariants & JSXBase.HTMLAttributes<HTMLKsProductVariantsElement>;
             "ks-product-wide": LocalJSX.KsProductWide & JSXBase.HTMLAttributes<HTMLKsProductWideElement>;
             "ks-product-youtube": LocalJSX.KsProductYoutube & JSXBase.HTMLAttributes<HTMLKsProductYoutubeElement>;
+            "ks-promotional-popup": LocalJSX.KsPromotionalPopup & JSXBase.HTMLAttributes<HTMLKsPromotionalPopupElement>;
             "ks-radio-tile": LocalJSX.KsRadioTile & JSXBase.HTMLAttributes<HTMLKsRadioTileElement>;
             "ks-recent-card": LocalJSX.KsRecentCard & JSXBase.HTMLAttributes<HTMLKsRecentCardElement>;
             "ks-recent-products": LocalJSX.KsRecentProducts & JSXBase.HTMLAttributes<HTMLKsRecentProductsElement>;

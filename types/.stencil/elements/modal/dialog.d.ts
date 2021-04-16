@@ -3,6 +3,7 @@ export declare class dialog {
   root: HTMLElement;
   overlay: HTMLKsOverlayElement;
   nopadding: boolean;
+  dark: boolean;
   componentDidRender(): void;
   show(): Promise<void>;
   hide(): Promise<void>;

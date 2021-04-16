@@ -68,6 +68,10 @@ ks-dialog .close  {
             animation: fade-in 0.3s 1;
 }
 
+ks-dialog[dark] .close  {
+    color: white;
+}
+
 ks-dialog .overlay {
     position: absolute;
     top: 0;

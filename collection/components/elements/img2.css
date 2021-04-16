@@ -5,6 +5,8 @@ ks-img2 {
     max-height: inherit;
     max-width: inherit;
     height: 100%;
+
+    position: relative;
 }
 
 ks-img2 img {

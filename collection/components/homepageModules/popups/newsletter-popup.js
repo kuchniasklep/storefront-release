@@ -1,5 +1,5 @@
 import { Component, h, Prop, Element, Method } from '@stencil/core';
-import ValidateInput from '../input/validate';
+import ValidateInput from '../../input/validate';
 export class NewsletterPopup {
   constructor() {
     this.displayOnLoad = false;
