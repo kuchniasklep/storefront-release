@@ -7,7 +7,6 @@ export class ButtonCart {
     this.expand = false;
     this.padding = false;
     this.icon = false;
-    this.disabled = false;
     this.product = false;
     this.loading = false;
   }
@@ -188,8 +187,7 @@ export class ButtonCart {
         "text": ""
       },
       "attribute": "disabled",
-      "reflect": false,
-      "defaultValue": "false"
+      "reflect": true
     },
     "product": {
       "type": "boolean",

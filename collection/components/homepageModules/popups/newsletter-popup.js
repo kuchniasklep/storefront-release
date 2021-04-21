@@ -3,7 +3,7 @@ import ValidateInput from '../../input/validate';
 export class NewsletterPopup {
   constructor() {
     this.displayOnLoad = false;
-    this.loggedIn = false;
+    this.loggedIn = true;
     this.agreement = "Wyrażam zgodę na przetwarzanie danych osobowych do celów marketingowych, w celu zbadania opinii o sklepie oraz na otrzymywanie informacji handlowych na wskazany przeze mnie adres e-mail.";
     this.infoMessage = "Aby otrzymać kupon rabatowy musisz posiadać konto w naszym sklepie. Minimalna wartość zamówienia wynosi: 100,00 zł";
     this.successHeading = "ZAPISANO DO NEWSLETTERA";
@@ -56,7 +56,7 @@ export class NewsletterPopup {
   }
   render() {
     return [
-      h("ks-dialog", { nopadding: true, onClosed: () => this.SetCookie() },
+      h("ks-dialog", { dark: true, smallmobile: true, nopadding: true, onClosed: () => this.SetCookie() },
         h("form", { onSubmit: e => this.requestHandler(e) },
           h("div", { class: "info" },
             h("svg", { class: "top", viewBox: "0 0 303 15", width: 909, height: 45 },
@@ -169,7 +169,7 @@ export class NewsletterPopup {
       },
       "attribute": "logged-in",
       "reflect": false,
-      "defaultValue": "false"
+      "defaultValue": "true"
     },
     "email": {
       "type": "string",

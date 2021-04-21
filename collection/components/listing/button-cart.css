@@ -55,3 +55,9 @@ ks-button-cart button:hover {
 ks-button-cart button:active {
     background-color: var(--product-card-primary-active);
 }
+
+
+ks-button-cart[disabled] button {
+    background-color: var(--product-card-disabled-color) !important;
+    color: var(--product-card-disabled-text) !important;
+}

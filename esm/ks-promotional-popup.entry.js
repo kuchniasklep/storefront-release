@@ -40,7 +40,7 @@ const PromotionalPopup = class {
       opacity: this.textureOpacity
     };
     return [
-      h("ks-dialog", { dark: true, nopadding: true, onClosed: () => this.SetCookie() }, h("div", { class: "info", style: bgstyle }, h("div", { class: "texture", style: texturestyle }), h("ks-img2", { src: this.image })))
+      h("ks-dialog", { smallmobile: true, dark: true, nopadding: true, onClosed: () => this.SetCookie() }, h("div", { class: "info", style: bgstyle }, h("div", { class: "texture", style: texturestyle }), h("ks-img2", { src: this.image })))
     ];
   }
   get root() { return getElement(this); }

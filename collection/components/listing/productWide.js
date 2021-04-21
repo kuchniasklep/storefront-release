@@ -34,6 +34,7 @@ export class ProductWide {
       h("a", { href: this.link, class: "uk-flex-1 uk-padding-small uk-link-reset " + (this.mobile ? "uk-text-center" : "") },
         h("span", { class: "uk-h3 uk-margin-small-bottom" }, this.name),
         h("br", null),
+        this.unavailable ? h("span", { class: "uk-h5 uk-text-normal uk-text-danger" }, "Produkt niedost\u0119pny") : null,
         h("div", { class: "uk-margin-small-top" },
           h("span", { class: "uk-h4 uk-text-bold uk-text-normal uk-text-danger" }, currentPrice),
           this.previousPrice ? h("span", { class: "uk-h4 uk-text-muted uk-margin-left" },

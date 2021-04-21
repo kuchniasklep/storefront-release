@@ -308,6 +308,7 @@ export namespace Components {
         "showFailure": (heading: string, message: string) => Promise<void>;
         "showLoading": () => Promise<void>;
         "showSuccess": (heading: string, message: string) => Promise<void>;
+        "smallmobile": boolean;
     }
     interface KsErrorPopup {
         "hide": () => Promise<void>;
@@ -2466,6 +2467,7 @@ declare namespace LocalJSX {
         "dark"?: boolean;
         "nopadding"?: boolean;
         "onClosed"?: (event: CustomEvent<any>) => void;
+        "smallmobile"?: boolean;
     }
     interface KsErrorPopup {
     }

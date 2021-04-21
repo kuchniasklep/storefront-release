@@ -44,7 +44,7 @@ const PromotionalPopup = class {
       opacity: this.textureOpacity
     };
     return [
-      index.h("ks-dialog", { dark: true, nopadding: true, onClosed: () => this.SetCookie() }, index.h("div", { class: "info", style: bgstyle }, index.h("div", { class: "texture", style: texturestyle }), index.h("ks-img2", { src: this.image })))
+      index.h("ks-dialog", { smallmobile: true, dark: true, nopadding: true, onClosed: () => this.SetCookie() }, index.h("div", { class: "info", style: bgstyle }, index.h("div", { class: "texture", style: texturestyle }), index.h("ks-img2", { src: this.image })))
     ];
   }
   get root() { return index.getElement(this); }

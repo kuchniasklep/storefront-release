@@ -48,7 +48,7 @@ export class dialog {
     }
   }
   render() {
-    return h("ks-overlay", { close: this.close, onClosed: () => this.closeHandler() },
+    return h("ks-overlay", { dark: this.dark, close: this.close, onClosed: () => this.closeHandler() },
       h("div", { class: "content" },
         this.close ?
           h("button", { class: "close", onClick: () => this.hide() },
@@ -107,6 +107,23 @@ export class dialog {
         "text": ""
       },
       "attribute": "dark",
+      "reflect": true
+    },
+    "smallmobile": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "smallmobile",
       "reflect": true
     }
   }; }
