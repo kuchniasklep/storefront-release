@@ -3230,6 +3230,8 @@ const NavbarSearch = class {
           break;
       }
     }
+    if (items.length <= this.select)
+      this.select = -1;
     this.items = items;
   }
   key(e) {
