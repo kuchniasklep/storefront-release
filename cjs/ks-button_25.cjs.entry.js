@@ -3206,9 +3206,9 @@ const NavbarSearch = class {
     }
     let items = new Array();
     const condition = (k, v) => {
-      return k.split(" ").reduce((prev, cur) => {
-        return prev || (cur.toLowerCase().indexOf(v) == 0);
-      }, false);
+      const wordpositions = k.split(" ").map(word => k.indexOf(word));
+      if (wordpositions.includes(k.toLowerCase().indexOf(v)))
+        return true;
     };
     for (const key in this.data.manufacturers) {
       if (condition(key, value)) {
