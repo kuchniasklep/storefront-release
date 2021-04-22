@@ -12,6 +12,7 @@ export declare class Navbar {
   logoutLink: string;
   accountLink: string;
   categoryUrl: string;
+  autocompleteApi: string;
   phone: string;
   email: string;
   contact: string;

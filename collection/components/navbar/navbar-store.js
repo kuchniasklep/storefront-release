@@ -7,5 +7,6 @@ export const store = createStore({
   loginLink: "",
   logoutLink: "",
   accountLink: "",
+  autocompleteApi: "",
   categories: []
 });

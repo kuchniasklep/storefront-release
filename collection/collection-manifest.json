@@ -101,7 +101,6 @@
     "./components/miniCart/miniCart.js",
     "./components/navbar/navbar-button.js",
     "./components/navbar/navbar-categories.js",
-    "./components/navbar/navbar-search-mobile.js",
     "./components/navbar/navbar-search.js",
     "./components/navbar/navbar-sidebar.js",
     "./components/navbar/navbar.js",
@@ -277,7 +276,6 @@
         "ks-navbar-categories",
         "ks-navbar-contact-panel",
         "ks-navbar-search",
-        "ks-navbar-search-mobile",
         "ks-navbar-sidebar",
         "ks-newsletter-popup",
         "ks-section"

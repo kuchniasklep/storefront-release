@@ -15,6 +15,7 @@ export class Navbar {
     store.set("loginLink", this.loginLink);
     store.set("logoutLink", this.logoutLink);
     store.set("accountLink", this.accountLink);
+    store.set("autocompleteApi", this.autocompleteApi);
     this.resizeHandler();
   }
   resizeHandler() {
@@ -69,7 +70,8 @@ export class Navbar {
             : null,
           h("ks-navbar-button", { name: "Menu", icon: "menu", class: "mobile-tablet", onClick: () => this.root.querySelector("ks-navbar-sidebar").toggle() })),
         h("ks-navbar-contact-panel", { phone: this.phone, email: this.email, contact: this.contact })),
-      h("slot", null)
+      h("slot", null),
+      h("ks-navbar-search", { mobile: true })
     ];
   }
   static get is() { return "ks-navbar"; }
@@ -265,6 +267,23 @@ export class Navbar {
         "text": ""
       },
       "attribute": "category-url",
+      "reflect": false
+    },
+    "autocompleteApi": {
+      "type": "string",
+      "mutable": false,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "autocomplete-api",
       "reflect": false
     },
     "phone": {

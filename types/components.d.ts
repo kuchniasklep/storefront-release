@@ -575,6 +575,7 @@ export namespace Components {
         "IncrementCart": (count?: string) => Promise<void>;
         "IncrementHeart": () => Promise<void>;
         "accountLink": string;
+        "autocompleteApi": string;
         "cartCount": number;
         "cartLink": string;
         "categoryUrl": string;
@@ -605,8 +606,7 @@ export namespace Components {
         "toggled": boolean;
     }
     interface KsNavbarSearch {
-    }
-    interface KsNavbarSearchMobile {
+        "mobile": boolean;
     }
     interface KsNavbarSidebar {
         "toggle": () => Promise<void>;
@@ -1565,12 +1565,6 @@ declare global {
         prototype: HTMLKsNavbarSearchElement;
         new (): HTMLKsNavbarSearchElement;
     };
-    interface HTMLKsNavbarSearchMobileElement extends Components.KsNavbarSearchMobile, HTMLStencilElement {
-    }
-    var HTMLKsNavbarSearchMobileElement: {
-        prototype: HTMLKsNavbarSearchMobileElement;
-        new (): HTMLKsNavbarSearchMobileElement;
-    };
     interface HTMLKsNavbarSidebarElement extends Components.KsNavbarSidebar, HTMLStencilElement {
     }
     var HTMLKsNavbarSidebarElement: {
@@ -2099,7 +2093,6 @@ declare global {
         "ks-navbar-categories": HTMLKsNavbarCategoriesElement;
         "ks-navbar-contact-panel": HTMLKsNavbarContactPanelElement;
         "ks-navbar-search": HTMLKsNavbarSearchElement;
-        "ks-navbar-search-mobile": HTMLKsNavbarSearchMobileElement;
         "ks-navbar-sidebar": HTMLKsNavbarSidebarElement;
         "ks-newsletter-popup": HTMLKsNewsletterPopupElement;
         "ks-notfound": HTMLKsNotfoundElement;
@@ -2709,6 +2702,7 @@ declare namespace LocalJSX {
     }
     interface KsNavbar {
         "accountLink"?: string;
+        "autocompleteApi"?: string;
         "cartCount"?: number;
         "cartLink"?: string;
         "categoryUrl"?: string;
@@ -2739,8 +2733,7 @@ declare namespace LocalJSX {
         "toggled"?: boolean;
     }
     interface KsNavbarSearch {
-    }
-    interface KsNavbarSearchMobile {
+        "mobile"?: boolean;
     }
     interface KsNavbarSidebar {
     }
@@ -3213,7 +3206,6 @@ declare namespace LocalJSX {
         "ks-navbar-categories": KsNavbarCategories;
         "ks-navbar-contact-panel": KsNavbarContactPanel;
         "ks-navbar-search": KsNavbarSearch;
-        "ks-navbar-search-mobile": KsNavbarSearchMobile;
         "ks-navbar-sidebar": KsNavbarSidebar;
         "ks-newsletter-popup": KsNewsletterPopup;
         "ks-notfound": KsNotfound;
@@ -3387,7 +3379,6 @@ declare module "@stencil/core" {
             "ks-navbar-categories": LocalJSX.KsNavbarCategories & JSXBase.HTMLAttributes<HTMLKsNavbarCategoriesElement>;
             "ks-navbar-contact-panel": LocalJSX.KsNavbarContactPanel & JSXBase.HTMLAttributes<HTMLKsNavbarContactPanelElement>;
             "ks-navbar-search": LocalJSX.KsNavbarSearch & JSXBase.HTMLAttributes<HTMLKsNavbarSearchElement>;
-            "ks-navbar-search-mobile": LocalJSX.KsNavbarSearchMobile & JSXBase.HTMLAttributes<HTMLKsNavbarSearchMobileElement>;
             "ks-navbar-sidebar": LocalJSX.KsNavbarSidebar & JSXBase.HTMLAttributes<HTMLKsNavbarSidebarElement>;
             "ks-newsletter-popup": LocalJSX.KsNewsletterPopup & JSXBase.HTMLAttributes<HTMLKsNewsletterPopupElement>;
             "ks-notfound": LocalJSX.KsNotfound & JSXBase.HTMLAttributes<HTMLKsNotfoundElement>;

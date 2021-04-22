@@ -6,6 +6,7 @@ export default interface NavbarData {
   loginLink?: string;
   logoutLink?: string;
   accountLink?: string;
+  autocompleteApi?: string;
   categories?: CategoryData[];
 }
 export interface CategoryData {

@@ -1,11 +1,9 @@
-ks-navbar-search {
-    display: block;
-}
+ks-navbar-search         { display: block; }
+ks-navbar-search[mobile] { display: none; }
 
 @media only screen and (max-width: 959px) {
-    ks-navbar-search {
-        display: none;
-    }
+    ks-navbar-search         { display: none; }
+    ks-navbar-search[mobile] { display: block; }
 }
 
 ks-navbar-search form {
@@ -19,7 +17,16 @@ ks-navbar-search form {
     margin: 0;
 }
 
-ks-navbar-search a {
+ks-navbar-search[mobile] form {
+    width: 100%;
+}
+
+ks-navbar-search[mobile] {
+    padding: 15px;
+    background-color: var(--navbar-category-color);
+}
+
+ks-navbar-search form > a {
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;
     display: inline-flex;
@@ -43,11 +50,11 @@ ks-navbar-search a {
     transition: color 0.2s ease;
 }
 
-ks-navbar-search a:hover {
+ks-navbar-search form > a:hover {
     color: #858585;
 }
 
-ks-navbar-search a:active {
+ks-navbar-search form > a:active {
     color: #b5b5b5;
 }
 
@@ -70,6 +77,70 @@ ks-navbar-search input {
     border: none;
 }
 
+ks-navbar-search input::-ms-clear {  display: none; width : 0; height: 0; }
+ks-navbar-search input::-ms-reveal {  display: none; width : 0; height: 0; }
+
+ks-navbar-search input::-webkit-search-decoration,
+ks-navbar-search input::-webkit-search-cancel-button,
+ks-navbar-search input::-webkit-search-results-button,
+ks-navbar-search input::-webkit-search-results-decoration { display: none; }
+
+
 ks-navbar-search input:focus {
     outline:0;
+}
+
+ks-navbar-search .list {
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+
+    margin-top: 10px;
+    border-radius: 20px;
+    
+    color: black;
+}
+
+ks-navbar-search .list a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none !important;
+    color: #151515 !important;
+    background-color: white;
+}
+
+ks-navbar-search .list a:not(:first-child) {
+    border-top: #f2f2f2 1px solid;
+}
+
+ks-navbar-search .list a ks-icon {
+    float: right;
+    color: #d2d2d2;
+}
+
+ks-navbar-search .list a.active {
+    background-color: #252525;
+    color: white !important;
+}
+
+ks-navbar-search .list a.active ks-icon {
+    color: white;
+}
+
+ks-navbar-search .list a:hover {
+    background-color: #f2f2f2;
+}
+
+ks-navbar-search .list a:active {
+    background-color: #e2e2e2;
+}
+
+ks-navbar-search .list a.active:hover {
+    background-color: #2e2e2e;
+}
+
+ks-navbar-search .list a.active:active {
+    background-color: #3b3b3b;
 }

@@ -7,5 +7,6 @@ export declare const store: import("@stencil/store").ObservableMap<{
   loginLink: string;
   logoutLink: string;
   accountLink: string;
+  autocompleteApi: string;
   categories: CategoryData[];
 }>;

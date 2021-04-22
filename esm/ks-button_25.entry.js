@@ -1,34 +1,30 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-const index = require('./index-1e55d229.js');
-const deferredpromise = require('./deferredpromise-4a0fd44b.js');
-const _commonjsHelpers = require('./_commonjsHelpers-bcc1208a.js');
-const index$1 = require('./index-79353176.js');
-const validate = require('./validate-6c61d7c0.js');
+import { r as registerInstance, h, g as getElement, H as Host, c as createEvent } from './index-2d9093e5.js';
+import { w as window_load } from './deferredpromise-0f64146f.js';
+import { c as createCommonjsModule, a as commonjsGlobal, g as getDefaultExportFromCjs } from './_commonjsHelpers-ba3f0406.js';
+import { c as createStore } from './index-324bcb5b.js';
+import { V as ValidateInput } from './validate-cd7ce36d.js';
 
 const buttonCss = "ks-button{display:block}ks-button>*{display:block;text-align:center;-webkit-box-sizing:border-box;box-sizing:border-box;font-size:var(--product-button-size);width:100%;padding:12px 20px;outline-style:none;border-style:none;text-decoration:none !important;cursor:pointer;border-radius:0px;font-family:var(--font-regular);font-size:15px;border:1px solid var(--color-dark);background-color:var(--color-dark);color:var(--text-color-dark) !important;-webkit-transition:var(--transition-background-color),\n                var(--transition-border-color);transition:var(--transition-background-color),\n                var(--transition-border-color)}ks-button:not([transitionless])>*:hover{background-color:var(--color-dark-hover)}ks-button:not([transitionless])>*:active{background-color:var(--color-dark-active)}ks-button[round]>*{border-radius:100px}ks-button[tall]>*{padding:18px 20px}ks-button[primary]>*{color:var(--text-color-primary) !important;background-color:var(--color-primary) !important;border:1px solid var(--color-primary) !important}ks-button[primary]:not([transitionless])>*:hover{background-color:var(--color-primary-hover)}ks-button[primary]:not([transitionless])>*:active{background-color:var(--color-primary-active)}ks-button[secondary]>*{color:var(--text-color-secondary) !important;background-color:var(--color-secondary) !important;border:1px solid var(--color-secondary) !important}ks-button[secondary]:not([transitionless])>*:hover{background-color:var(--color-secondary-hover)}ks-button[secondary]:not([transitionless])>*:active{background-color:var(--color-secondary-active)}ks-button[border]>*{border:1px solid var(--color-dark);color:var(--color-dark) !important;background-color:rgba(0, 0, 0, 0)}ks-button[border]:not([transitionless])>*:hover{background-color:rgba(0, 0, 0, 0.096)}ks-button[border]:not([transitionless])>*:active{background-color:rgba(0, 0, 0, 0.336)}ks-button[border][light]>*{border:1px solid #ffffff;color:var(--text-color-dark) !important;background-color:rgba(255, 255, 255, 0)}ks-button[border][light]:not([transitionless])>*:hover{background-color:rgba(255, 255, 255, 0.096)}ks-button[border][light]:not([transitionless])>*:active{background-color:rgba(255, 255, 255, 0.336)}ks-button[disabled]>*{background-color:#e2e2e2 !important}";
 
 const Button = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.name = "Button";
   }
   render() {
     if (this.submit)
-      return index.h("input", { type: "submit", value: this.name });
+      return h("input", { type: "submit", value: this.name });
     if (this.link)
-      return index.h("a", { href: this.link, rel: this.nofollow ? "nofollow" : null }, this.name);
-    return index.h("button", { disabled: this.disabled }, this.name);
+      return h("a", { href: this.link, rel: this.nofollow ? "nofollow" : null }, this.name);
+    return h("button", { disabled: this.disabled }, this.name);
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 Button.style = buttonCss;
 
 const Card = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.padding = false;
     this.small = false;
     this.margin = false;
@@ -43,16 +39,16 @@ const Card = class {
     const padding = this.padding ? this.small ? "uk-padding-small" : "" : "uk-padding-remove";
     const margin = this.margin ? "uk-margin-bottom" : "";
     const height = this.height ? "uk-height-1-1" : "";
-    return (index.h("div", { class: "uk-card uk-card-default uk-card-body " + padding + " " + margin + " " + height }, index.h("slot", null)));
+    return (h("div", { class: "uk-card uk-card-default uk-card-body " + padding + " " + margin + " " + height }, h("slot", null)));
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 
 const categorySimpleCss = "ks-category-simple{display:inline-block;position:relative;height:32px;outline:1px solid transparent;color:white}ks-category-simple>a{margin:0 20px 0 10px;line-height:35px;text-decoration:none;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;color:white;font-size:.875rem}ks-category-simple[haschildren]>a{margin:0 5px 0 10px}ks-category-simple>ks-icon{margin:0 20px 0 -4px}ks-category-simple>a:hover{text-decoration:none;color:#ffffffbb}ks-category-simple>div{background-color:white;color:#252525;position:absolute;z-index:10000;top:33px;left:0px;min-width:200px;opacity:0.0;-webkit-transition:opacity 0.2s ease;transition:opacity 0.2s ease;-webkit-box-shadow:0 5px 15px rgba(0, 0, 0, 0.26);box-shadow:0 5px 15px rgba(0, 0, 0, 0.26)}ks-category-simple>div a{display:block;padding:9px 15px;text-decoration:none;font-size:14px;text-align:left;-webkit-box-sizing:border-box;box-sizing:border-box;border-bottom:1px solid #f2f2f2;-webkit-transition:background-color 0.3s ease;transition:background-color 0.3s ease;color:#252525}ks-category-simple>div a:hover{text-decoration:none;color:#252525;background-color:#f9f9f9}ks-category-simple>div a:active{text-decoration:none;background-color:#e6e6e6}";
 
 const NavbarCategorySimple = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.hidden = true;
     this.hiddenO = true;
     this.haschildren = false;
@@ -81,11 +77,11 @@ const NavbarCategorySimple = class {
       visibility: this.hidden ? "hidden" : "visible",
       opacity: this.hiddenO ? "0.0" : "1.0"
     };
-    return index.h(index.Host, null, index.h("slot", null), this.haschildren ? index.h("ks-icon", { name: "chevron-down", size: 0.8 }) : null, this.haschildren ?
-      index.h("div", { style: childrenstyle }, index.h("slot", { name: "child" }))
+    return h(Host, null, h("slot", null), this.haschildren ? h("ks-icon", { name: "chevron-down", size: 0.8 }) : null, this.haschildren ?
+      h("div", { style: childrenstyle }, h("slot", { name: "child" }))
       : null);
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 NavbarCategorySimple.style = categorySimpleCss;
 
@@ -93,7 +89,7 @@ const categoryViewCss = "ks-category-view{display:inline-block;height:32px;outli
 
 const NavbarCategoryView = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.hidden = true;
     this.hiddenO = true;
     this.active = 0;
@@ -166,11 +162,11 @@ const NavbarCategoryView = class {
       opacity: this.hiddenO ? "0.0" : "1.0",
       height: (this.count * 40) + "px"
     };
-    return index.h(index.Host, null, index.h("slot", null), " ", index.h("ks-icon", { name: "chevron-down", size: 0.8 }), index.h("div", { class: "children", style: childrenstyle, hidden: this.hidden }, index.h("div", { class: "buttons" }, index.h("slot", { name: "sub" }), index.h("slot", { name: "single-sub" })), index.h("div", { class: "content" }, index.h("slot", { name: "children" })), index.h("div", { class: "graphic" }, this.imageData.map((image, index$1) => "src" in image ?
-      index.h("ks-img2", { vertical: true, src: image.src, width: image.width, height: image.height, target: "ks-category-view > .children > .graphic", style: { display: (this.active == index$1) ? "block" : "none" } })
+    return h(Host, null, h("slot", null), " ", h("ks-icon", { name: "chevron-down", size: 0.8 }), h("div", { class: "children", style: childrenstyle, hidden: this.hidden }, h("div", { class: "buttons" }, h("slot", { name: "sub" }), h("slot", { name: "single-sub" })), h("div", { class: "content" }, h("slot", { name: "children" })), h("div", { class: "graphic" }, this.imageData.map((image, index) => "src" in image ?
+      h("ks-img2", { vertical: true, src: image.src, width: image.width, height: image.height, target: "ks-category-view > .children > .graphic", style: { display: (this.active == index) ? "block" : "none" } })
       : null))));
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
   static get watchers() { return {
     "active": ["activeChange"]
   }; }
@@ -181,11 +177,11 @@ const containerCss = "ks-container{display:block;padding:0px;-webkit-box-sizing:
 
 const Container = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.padding = false;
   }
   render() {
-    return index.h("slot", null);
+    return h("slot", null);
   }
 };
 Container.style = containerCss;
@@ -194,7 +190,7 @@ const cookiePopupCss = "ks-cookie-popup{display:-webkit-box;display:-ms-flexbox;
 
 const CookiePopup = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.delay = 2000;
     this.hide = false;
     this.hidden = true;
@@ -220,15 +216,15 @@ const CookiePopup = class {
     }, this.delay);
   }
   render() {
-    return index.h(index.Host, { hidden: this.hidden, hide: this.hide }, index.h("p", null, this.message), index.h("ks-button", { round: true, border: true, light: true, name: this.button, onClick: () => this.hidepanel() }));
+    return h(Host, { hidden: this.hidden, hide: this.hide }, h("p", null, this.message), h("ks-button", { round: true, border: true, light: true, name: this.button, onClick: () => this.hidepanel() }));
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 CookiePopup.style = cookiePopupCss;
 
 const Flex = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.center = false;
     this.between = false;
     this.around = false;
@@ -251,7 +247,7 @@ const Flex = class {
       : (this.reverse ? "uk-flex-row-reverse" : "");
     const height = this.height ? "uk-height-1-1" : "";
     const match = this.match ? "uk-grid-match" : "";
-    return (index.h("div", { class: [justify, alignment, gutter, size, direction, height, match].join(" "), "uk-grid": true }, index.h("slot", null)));
+    return (h("div", { class: [justify, alignment, gutter, size, direction, height, match].join(" "), "uk-grid": true }, h("slot", null)));
   }
 };
 
@@ -259,13 +255,13 @@ const footerCss = "ks-footer{display:block;background-color:var(--footer-color);
 
 const Footer = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
   }
   render() {
     return [
-      index.h("div", { class: "about" }, index.h("div", { class: "links" }, index.h("slot", null), index.h("div", { class: "contact" }, index.h("span", null, "Kontakt"), index.h("a", { href: `mailto:${this.email}` }, " ", index.h("ks-icon", { name: "mail" }), " ", this.email, " "), index.h("a", { href: `tel:${this.phone}` }, " ", index.h("ks-icon", { name: "phone" }), " ", this.phone, " "), index.h("span", null, index.h("ks-icon", { name: "clock", size: 0.9 }), " ", this.time), index.h("span", null, index.h("ks-icon", { name: "home", size: 0.9 }), " ", this.company), index.h("span", null, index.h("ks-icon", { name: "map-pin", size: 0.9 }), " ", this.address))), index.h("div", { class: "newsletter" }, index.h("div", null, "Zapisz si\u0119 do naszego newslettera i zyskaj"), index.h("div", null, "KUPON 10Z\u0141"), index.h("ks-button", { light: true, border: true, name: "ZAPISZ SI\u0118", onClick: () => document.querySelector('ks-newsletter-popup').Show() }))),
-      index.h("div", { class: "portals" }, index.h("div", null, index.h("slot", { name: "social" })), index.h("div", null, index.h("slot", { name: "reviews" }))),
-      index.h("div", { class: "software" }, index.h("a", { href: this.softwareLink, rel: "nofollow" }, "Oprogramowanie sklepu ShopGold"))
+      h("div", { class: "about" }, h("div", { class: "links" }, h("slot", null), h("div", { class: "contact" }, h("span", null, "Kontakt"), h("a", { href: `mailto:${this.email}` }, " ", h("ks-icon", { name: "mail" }), " ", this.email, " "), h("a", { href: `tel:${this.phone}` }, " ", h("ks-icon", { name: "phone" }), " ", this.phone, " "), h("span", null, h("ks-icon", { name: "clock", size: 0.9 }), " ", this.time), h("span", null, h("ks-icon", { name: "home", size: 0.9 }), " ", this.company), h("span", null, h("ks-icon", { name: "map-pin", size: 0.9 }), " ", this.address))), h("div", { class: "newsletter" }, h("div", null, "Zapisz si\u0119 do naszego newslettera i zyskaj"), h("div", null, "KUPON 10Z\u0141"), h("ks-button", { light: true, border: true, name: "ZAPISZ SI\u0118", onClick: () => document.querySelector('ks-newsletter-popup').Show() }))),
+      h("div", { class: "portals" }, h("div", null, h("slot", { name: "social" })), h("div", null, h("slot", { name: "reviews" }))),
+      h("div", { class: "software" }, h("a", { href: this.softwareLink, rel: "nofollow" }, "Oprogramowanie sklepu ShopGold"))
     ];
   }
 };
@@ -275,12 +271,12 @@ const footerButtonCss = "ks-footer-button{display:block;opacity:1.0;-webkit-tran
 
 const FooterButton = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.width = 120;
     this.height = 50;
   }
   render() {
-    return (index.h("a", { href: this.href, rel: "nofollow" }, index.h("ks-img2", { vertical: true, src: this.image, observerMargin: "500px", width: this.width, height: this.height })));
+    return (h("a", { href: this.href, rel: "nofollow" }, h("ks-img2", { vertical: true, src: this.image, observerMargin: "500px", width: this.width, height: this.height })));
   }
 };
 FooterButton.style = footerButtonCss;
@@ -289,12 +285,12 @@ const footerLinksCss = "ks-footer-links{display:block;margin:0 50px 0 0;min-widt
 
 const FooterLinks = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
   }
   render() {
     return [
-      index.h("slot", { name: "heading" }),
-      index.h("ul", null, index.h("slot", null))
+      h("slot", { name: "heading" }),
+      h("ul", null, h("slot", null))
     ];
   }
 };
@@ -304,19 +300,19 @@ const gridCss = "ks-grid{display:-webkit-box;display:-ms-flexbox;display:flex;-m
 
 const Grid = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.section = false;
   }
   render() {
-    return index.h("slot", null);
+    return h("slot", null);
   }
 };
 Grid.style = gridCss;
 
-var feather = _commonjsHelpers.createCommonjsModule(function (module, exports) {
+var feather = createCommonjsModule(function (module, exports) {
 (function webpackUniversalModuleDefinition(root, factory) {
 	module.exports = factory();
-})(typeof self !== 'undefined' ? self : _commonjsHelpers.commonjsGlobal, function() {
+})(typeof self !== 'undefined' ? self : commonjsGlobal, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -2697,13 +2693,13 @@ module.exports = __webpack_require__(/*! /home/travis/build/feathericons/feather
 
 });
 
-const feather$1 = /*@__PURE__*/_commonjsHelpers.getDefaultExportFromCjs(feather);
+const feather$1 = /*@__PURE__*/getDefaultExportFromCjs(feather);
 
 const iconCss = "ks-icon{display:inline-block;color:inherit}ks-icon svg{stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;fill:none;vertical-align:top}ks-icon svg.thin{stroke-width:1}ks-icon svg.medium{stroke-width:1.3}";
 
 const Icon = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.name = "alert-octagon";
     this.size = 1;
   }
@@ -2731,15 +2727,15 @@ const Icon = class {
     svg.setAttribute("viewBox", `0 0 ${this.attrs.width} ${this.attrs.height}`);
     svg.setAttribute("class", stroke);
     svg.innerHTML = this.svg;
-    return index.h(index.Host, { innerHTML: svg.outerHTML });
+    return h(Host, { innerHTML: svg.outerHTML });
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 Icon.style = iconCss;
 
 const Image = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.sync = false;
     this.cover = false;
     this.contain = false;
@@ -2768,16 +2764,16 @@ const Image = class {
     else if (!this.loadAnimated)
       imageStyle = "uk-animation-fade";
     if (this.sync)
-      return index.h("img", { src: this.src, width: this.width, height: this.height, alt: this.alt });
+      return h("img", { src: this.src, width: this.width, height: this.height, alt: this.alt });
     else if (this.cover)
-      return (index.h("div", { class: "uk-cover-container" }, index.h("canvas", { width: this.width, height: this.height }), !this.loaded ? index.h("div", { class: "ks-spinner uk-position-center" }) : null, index.h("img", { "uk-cover": true, onLoad: e => this.loadCheck(e), class: imageStyle, width: this.width, height: this.height, "data-src": this.src, alt: this.alt, "uk-img": "target: !ks-image" })));
+      return (h("div", { class: "uk-cover-container" }, h("canvas", { width: this.width, height: this.height }), !this.loaded ? h("div", { class: "ks-spinner uk-position-center" }) : null, h("img", { "uk-cover": true, onLoad: e => this.loadCheck(e), class: imageStyle, width: this.width, height: this.height, "data-src": this.src, alt: this.alt, "uk-img": "target: !ks-image" })));
     else if (this.contain)
-      return (index.h("div", { class: "uk-position-relative" }, index.h("canvas", { width: this.width, height: this.height }), !this.loaded ? index.h("div", { class: "ks-spinner uk-position-center" }) : null, index.h("img", { onLoad: e => this.loadCheck(e), class: imageStyle + " uk-position-center uk-responsive-height", "data-src": this.src, width: this.width, height: this.height, alt: this.alt, "uk-img": "target: !ks-image" })));
+      return (h("div", { class: "uk-position-relative" }, h("canvas", { width: this.width, height: this.height }), !this.loaded ? h("div", { class: "ks-spinner uk-position-center" }) : null, h("img", { onLoad: e => this.loadCheck(e), class: imageStyle + " uk-position-center uk-responsive-height", "data-src": this.src, width: this.width, height: this.height, alt: this.alt, "uk-img": "target: !ks-image" })));
     else
-      return (index.h("div", { class: "uk-position-relative" }, !this.loaded ? [
-        index.h("canvas", { width: this.width, height: this.height }),
-        index.h("div", { class: "ks-spinner uk-position-center" })
-      ] : null, index.h("img", { onLoad: e => this.loadCheck(e), class: imageStyle, "data-src": this.src, width: this.width, height: this.height, alt: this.alt, "uk-img": "target: !ks-image" })));
+      return (h("div", { class: "uk-position-relative" }, !this.loaded ? [
+        h("canvas", { width: this.width, height: this.height }),
+        h("div", { class: "ks-spinner uk-position-center" })
+      ] : null, h("img", { onLoad: e => this.loadCheck(e), class: imageStyle, "data-src": this.src, width: this.width, height: this.height, alt: this.alt, "uk-img": "target: !ks-image" })));
   }
   static get watchers() { return {
     "src": ["srcListener"]
@@ -2788,8 +2784,8 @@ const imgCss = "ks-img{display:-webkit-box;display:-ms-flexbox;display:flex;posi
 
 const Img = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
-    this.lazyLoaded = index.createEvent(this, "lazyLoaded", 7);
+    registerInstance(this, hostRef);
+    this.lazyLoaded = createEvent(this, "lazyLoaded", 7);
     this.sync = false;
     this.vertical = false;
     this.contained = false;
@@ -2818,7 +2814,7 @@ const Img = class {
   }
   componentDidLoad() {
     if (!this.sync)
-      deferredpromise.window_load.promise.then(() => this.initializeObserver());
+      window_load.promise.then(() => this.initializeObserver());
   }
   initializeObserver() {
     this.image = this.root.querySelector('img');
@@ -2858,20 +2854,20 @@ const Img = class {
     const classes = [responsive].join(" ");
     const max = this.limit ? { maxWidth: `${this.width}px` } : null;
     if (this.sync)
-      return (index.h("img", { class: classes, src: this.src, alt: this.alt, width: this.width, height: this.height, style: max }));
+      return (h("img", { class: classes, src: this.src, alt: this.alt, width: this.width, height: this.height, style: max }));
     if (this.fill)
       return [
-        index.h("canvas", { width: this.width, height: this.height }),
-        (!this.loaded ? index.h("ks-loader", { dark: true }) : null),
-        index.h("img", { class: classes + " " + loading, alt: this.alt, onLoad: (e) => this.loadHandler(e), "data-src": this.src, width: this.width, height: this.height })
+        h("canvas", { width: this.width, height: this.height }),
+        (!this.loaded ? h("ks-loader", { dark: true }) : null),
+        h("img", { class: classes + " " + loading, alt: this.alt, onLoad: (e) => this.loadHandler(e), "data-src": this.src, width: this.width, height: this.height })
       ];
     return [
-      (!this.loaded ? index.h("ks-loader", { dark: true }) : null),
-      !this.loaded ? index.h("canvas", { width: this.width, height: this.height, style: max }) : null,
-      index.h("img", { class: classes + " " + loading, alt: this.alt, onLoad: (e) => this.loadHandler(e), "data-src": this.src, width: this.width, height: this.height, style: max })
+      (!this.loaded ? h("ks-loader", { dark: true }) : null),
+      !this.loaded ? h("canvas", { width: this.width, height: this.height, style: max }) : null,
+      h("img", { class: classes + " " + loading, alt: this.alt, onLoad: (e) => this.loadHandler(e), "data-src": this.src, width: this.width, height: this.height, style: max })
     ];
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
   static get watchers() { return {
     "src": ["srcListener"]
   }; }
@@ -2882,7 +2878,7 @@ const infoBannerCss = "ks-info-banner{display:block;position:relative;max-height
 
 const InfoBanner = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.disabled = false;
   }
   disable() {
@@ -2897,7 +2893,7 @@ const InfoBanner = class {
   }
   render() {
     if (!this.disabled)
-      return (index.h(index.Host, { style: { backgroundColor: this.color } }, index.h("a", { href: this.link, "aria-label": this.name }, index.h("ks-img", { sync: true, contained: true, center: true, width: this.width, height: this.height, src: this.image, alt: this.name })), index.h("button", { type: "button", "aria-label": "Schowaj banner", onClick: () => this.disable() }, index.h("ks-icon", { name: "x", size: 1.2 }))));
+      return (h(Host, { style: { backgroundColor: this.color } }, h("a", { href: this.link, "aria-label": this.name }, h("ks-img", { sync: true, contained: true, center: true, width: this.width, height: this.height, src: this.image, alt: this.name })), h("button", { type: "button", "aria-label": "Schowaj banner", onClick: () => this.disable() }, h("ks-icon", { name: "x", size: 1.2 }))));
     else
       return;
   }
@@ -2908,7 +2904,7 @@ const infoMessageCss = "ks-info-message[disabled]{display:none}ks-info-message{d
 
 const InfoMessage = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.disabled = false;
     this.animating = false;
     this.id = "";
@@ -2927,11 +2923,11 @@ const InfoMessage = class {
   }
   render() {
     return [
-      index.h("div", { class: "content" }, index.h("slot", null)),
-      index.h("div", { class: "close" }, index.h("ks-icon", { name: "x", onClick: () => this.disable() }))
+      h("div", { class: "content" }, h("slot", null)),
+      h("div", { class: "close" }, h("ks-icon", { name: "x", onClick: () => this.disable() }))
     ];
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 InfoMessage.style = infoMessageCss;
 
@@ -2939,16 +2935,16 @@ const loaderCss = "ks-loader{display:block;position:absolute;width:50px;height:5
 
 const Loader = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.running = true;
   }
   render() {
-    return index.h(index.Host, null);
+    return h(Host, null);
   }
 };
 Loader.style = loaderCss;
 
-const store = index$1.createStore({
+const store = createStore({
   cartLink: "",
   cartCount: 0,
   favouritesLink: "",
@@ -2956,6 +2952,7 @@ const store = index$1.createStore({
   loginLink: "",
   logoutLink: "",
   accountLink: "",
+  autocompleteApi: "",
   categories: []
 });
 
@@ -2963,8 +2960,8 @@ const navbarCss = "ks-navbar{display:block;min-height:104px;background-color:var
 
 const Navbar = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
-    this.navbarRendered = index.createEvent(this, "navbarRendered", 7);
+    registerInstance(this, hostRef);
+    this.navbarRendered = createEvent(this, "navbarRendered", 7);
     this.mobile = false;
   }
   componentDidRender() {
@@ -2978,6 +2975,7 @@ const Navbar = class {
     store.set("loginLink", this.loginLink);
     store.set("logoutLink", this.logoutLink);
     store.set("accountLink", this.accountLink);
+    store.set("autocompleteApi", this.autocompleteApi);
     this.resizeHandler();
   }
   resizeHandler() {
@@ -3006,20 +3004,21 @@ const Navbar = class {
     const favouritesCount = store.get("favouritesCount");
     const cartCount = store.get("cartCount");
     return [
-      index.h("nav", null, index.h("div", { class: "logo" }, index.h("div", null, index.h("a", { href: "/" }, index.h("ks-img", { contained: true, sync: true, src: this.logo, width: 217, height: 35, alt: "kuchniasklep.pl" })), this.promo ? this.promoLink && !this.mobile ?
-        index.h("a", { class: "promo", href: this.promoLink }, this.promo) :
-        index.h("span", { class: "promo" }, this.promo)
-        : null)), index.h("div", { class: "search" }, index.h("ks-navbar-search", null)), index.h("div", { class: "buttons", id: "ks-navbar-menu-buttons" }, index.h("ks-navbar-button", { name: "Kontakt", icon: "phone", class: "tablet-desktop", onClick: () => this.root.querySelector("ks-navbar-contact-panel").Toggle() }), this.accountLink ?
-        index.h("ks-navbar-button", { name: "Twoje konto", link: this.accountLink, icon: "user", class: "desktop" })
-        : null, index.h("ks-navbar-button", { name: "Schowek", link: this.heartLink, icon: "star", count: favouritesCount, class: "tablet-desktop" }), index.h("ks-navbar-button", { name: "Koszyk", link: this.cartLink, icon: "shopping-bag", count: cartCount }), this.loginLink ?
-        index.h("ks-navbar-button", { name: "Zaloguj", link: this.loginLink, icon: "user", class: "desktop" })
+      h("nav", null, h("div", { class: "logo" }, h("div", null, h("a", { href: "/" }, h("ks-img", { contained: true, sync: true, src: this.logo, width: 217, height: 35, alt: "kuchniasklep.pl" })), this.promo ? this.promoLink && !this.mobile ?
+        h("a", { class: "promo", href: this.promoLink }, this.promo) :
+        h("span", { class: "promo" }, this.promo)
+        : null)), h("div", { class: "search" }, h("ks-navbar-search", null)), h("div", { class: "buttons", id: "ks-navbar-menu-buttons" }, h("ks-navbar-button", { name: "Kontakt", icon: "phone", class: "tablet-desktop", onClick: () => this.root.querySelector("ks-navbar-contact-panel").Toggle() }), this.accountLink ?
+        h("ks-navbar-button", { name: "Twoje konto", link: this.accountLink, icon: "user", class: "desktop" })
+        : null, h("ks-navbar-button", { name: "Schowek", link: this.heartLink, icon: "star", count: favouritesCount, class: "tablet-desktop" }), h("ks-navbar-button", { name: "Koszyk", link: this.cartLink, icon: "shopping-bag", count: cartCount }), this.loginLink ?
+        h("ks-navbar-button", { name: "Zaloguj", link: this.loginLink, icon: "user", class: "desktop" })
         : null, this.logoutLink ?
-        index.h("ks-navbar-button", { name: "Wyloguj", link: this.logoutLink, icon: "log-out", class: "desktop" })
-        : null, index.h("ks-navbar-button", { name: "Menu", icon: "menu", class: "mobile-tablet", onClick: () => this.root.querySelector("ks-navbar-sidebar").toggle() })), index.h("ks-navbar-contact-panel", { phone: this.phone, email: this.email, contact: this.contact })),
-      index.h("slot", null)
+        h("ks-navbar-button", { name: "Wyloguj", link: this.logoutLink, icon: "log-out", class: "desktop" })
+        : null, h("ks-navbar-button", { name: "Menu", icon: "menu", class: "mobile-tablet", onClick: () => this.root.querySelector("ks-navbar-sidebar").toggle() })), h("ks-navbar-contact-panel", { phone: this.phone, email: this.email, contact: this.contact })),
+      h("slot", null),
+      h("ks-navbar-search", { mobile: true })
     ];
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 Navbar.style = navbarCss;
 
@@ -3027,14 +3026,14 @@ const navbarButtonCss = "ks-navbar-button{display:block;position:relative;height
 
 const NavbarButton = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
   }
   render() {
     return [
-      index.h("a", { href: this.link, "aria-label": this.name }, index.h("ks-icon", { name: this.icon, size: 1.4 }), this.count && this.count != 0 ?
-        index.h("span", { class: "count" }, this.count)
+      h("a", { href: this.link, "aria-label": this.name }, h("ks-icon", { name: this.icon, size: 1.4 }), this.count && this.count != 0 ?
+        h("span", { class: "count" }, this.count)
         : null),
-      index.h("div", null, this.name)
+      h("div", null, this.name)
     ];
   }
 };
@@ -3044,10 +3043,10 @@ const navbarCategoriesCss = "ks-navbar-categories{display:block}ks-navbar-catego
 
 const NavbarCategories = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
   }
   render() {
-    return index.h("nav", null, index.h("slot", null));
+    return h("nav", null, h("slot", null));
   }
 };
 NavbarCategories.style = navbarCategoriesCss;
@@ -3056,7 +3055,7 @@ const navbarContactPanelCss = "ks-navbar-contact-panel{display:none;-webkit-box-
 
 const NavbarContactPanel = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.toggled = false;
     this.mobile = 0;
     this.height = 0;
@@ -3125,53 +3124,139 @@ const NavbarContactPanel = class {
     }
   }
   render() {
-    return index.h(index.Host, { class: this.visible }, index.h("div", { class: "navbar", style: { width: `${this.menuWidth}px` } }, index.h("ks-navbar-button", { icon: "x", onClick: () => this.Toggle() })), index.h("div", { class: "content" }, this.initialized ?
-      index.h("div", { class: "map" }, index.h("iframe", { frameborder: "0", height: this.height, width: this.width, src: "https://maps.google.pl/maps?ie=UTF8&q=Pozna%C5%84ska+23%2C+58-500+Jelenia+G%C3%B3ra&gl=PL&hl=pl&t=m&iwloc=A&output=embed" }))
-      : null, index.h("div", { class: "info ks-text-decorated" }, index.h("div", { class: "address", innerHTML: this.contact }), index.h("div", { class: "buttons" }, index.h("div", { class: "margin" }, index.h("a", { href: "tel:" + this.phone }, this.phone), index.h("br", null), index.h("a", { href: "mailto:" + this.email }, this.email))))));
+    return h(Host, { class: this.visible }, h("div", { class: "navbar", style: { width: `${this.menuWidth}px` } }, h("ks-navbar-button", { icon: "x", onClick: () => this.Toggle() })), h("div", { class: "content" }, this.initialized ?
+      h("div", { class: "map" }, h("iframe", { frameborder: "0", height: this.height, width: this.width, src: "https://maps.google.pl/maps?ie=UTF8&q=Pozna%C5%84ska+23%2C+58-500+Jelenia+G%C3%B3ra&gl=PL&hl=pl&t=m&iwloc=A&output=embed" }))
+      : null, h("div", { class: "info ks-text-decorated" }, h("div", { class: "address", innerHTML: this.contact }), h("div", { class: "buttons" }, h("div", { class: "margin" }, h("a", { href: "tel:" + this.phone }, this.phone), h("br", null), h("a", { href: "mailto:" + this.email }, this.email))))));
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 NavbarContactPanel.style = navbarContactPanelCss;
 
-const navbarSearchCss = "ks-navbar-search{display:block}@media only screen and (max-width: 959px){ks-navbar-search{display:none}}ks-navbar-search form{display:inline-block;position:relative;-webkit-box-sizing:border-box;box-sizing:border-box;width:350px;max-width:100%;height:40px;margin:0}ks-navbar-search a{display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:absolute;top:0;bottom:0;left:auto;right:0;padding-right:10px;color:#151515;-webkit-transition:color 0.2s ease;transition:color 0.2s ease}ks-navbar-search a:hover{color:#858585}ks-navbar-search a:active{color:#b5b5b5}ks-navbar-search input{width:100%;height:100%;-webkit-box-sizing:border-box;box-sizing:border-box;overflow:visible;-webkit-appearance:none;vertical-align:middle;margin:0;padding-right:50px;font-size:16px;text-align:center;background-color:#fff;border-radius:20px;border:none}ks-navbar-search input:focus{outline:0}";
+const navbarSearchCss = "ks-navbar-search{display:block}ks-navbar-search[mobile]{display:none}@media only screen and (max-width: 959px){ks-navbar-search{display:none}ks-navbar-search[mobile]{display:block}}ks-navbar-search form{display:inline-block;position:relative;-webkit-box-sizing:border-box;box-sizing:border-box;width:350px;max-width:100%;height:40px;margin:0}ks-navbar-search[mobile] form{width:100%}ks-navbar-search[mobile]{padding:15px;background-color:var(--navbar-category-color)}ks-navbar-search form>a{display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:absolute;top:0;bottom:0;left:auto;right:0;padding-right:10px;color:#151515;-webkit-transition:color 0.2s ease;transition:color 0.2s ease}ks-navbar-search form>a:hover{color:#858585}ks-navbar-search form>a:active{color:#b5b5b5}ks-navbar-search input{width:100%;height:100%;-webkit-box-sizing:border-box;box-sizing:border-box;overflow:visible;-webkit-appearance:none;vertical-align:middle;margin:0;padding-right:50px;font-size:16px;text-align:center;background-color:#fff;border-radius:20px;border:none}ks-navbar-search input::-ms-clear{display:none;width:0;height:0}ks-navbar-search input::-ms-reveal{display:none;width:0;height:0}ks-navbar-search input::-webkit-search-decoration,ks-navbar-search input::-webkit-search-cancel-button,ks-navbar-search input::-webkit-search-results-button,ks-navbar-search input::-webkit-search-results-decoration{display:none}ks-navbar-search input:focus{outline:0}ks-navbar-search .list{position:absolute;z-index:10;left:0;right:0;overflow:hidden;margin-top:10px;border-radius:20px;color:black}ks-navbar-search .list a{display:block;padding:10px 20px;text-decoration:none !important;color:#151515 !important;background-color:white}ks-navbar-search .list a:not(:first-child){border-top:#f2f2f2 1px solid}ks-navbar-search .list a ks-icon{float:right;color:#d2d2d2}ks-navbar-search .list a.active{background-color:#252525;color:white !important}ks-navbar-search .list a.active ks-icon{color:white}ks-navbar-search .list a:hover{background-color:#f2f2f2}ks-navbar-search .list a:active{background-color:#e2e2e2}ks-navbar-search .list a.active:hover{background-color:#2e2e2e}ks-navbar-search .list a.active:active{background-color:#3b3b3b}";
 
 const NavbarSearch = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
+    this.active = false;
+    this.select = -1;
+    this.maxCount = 6;
+    this.blurenabled = true;
   }
-  submit() {
+  async getData() {
+    const session = sessionStorage.getItem("navbar-autocomplete");
+    const sessiondate = sessionStorage.getItem("navbar-autocomplete-date");
+    const now = new Date().getTime();
+    if (session && sessiondate) {
+      const time = (now - parseInt(sessiondate)) / 1000 / 60;
+      if (time < 5) {
+        this.data = JSON.parse(sessionStorage.getItem("navbar-autocomplete"));
+        return;
+      }
+    }
+    const headers = new Headers();
+    headers.append('pragma', 'no-cache');
+    headers.append('cache-control', 'no-cache');
+    this.data = await fetch(store.get("autocompleteApi"), {
+      method: 'GET',
+      headers: headers,
+      credentials: "same-origin"
+    })
+      .then(response => response.json());
+    sessionStorage.setItem("navbar-autocomplete", JSON.stringify(this.data));
+    sessionStorage.setItem("navbar-autocomplete-date", now.toString());
+  }
+  submit(e) {
+    if (this.select >= 0) {
+      e.preventDefault();
+      window.location.href = this.items[this.select].url;
+      return;
+    }
     const form = this.root.querySelector("form");
     form.submit();
   }
-  render() {
-    return (index.h("form", { method: "post", action: "szukaj.html" }, index.h("a", { onClick: () => this.submit() }, index.h("ks-icon", { name: "search", size: 1.1 })), index.h("input", { "aria-label": "Szukaj produkt\u00F3w", name: "szukaj", type: "search" }), index.h("input", { type: "hidden", name: "postget", value: "tak" }), index.h("input", { type: "hidden", name: "opis", value: "nie" }), index.h("input", { type: "hidden", name: "nrkat", value: "tak" }), index.h("input", { type: "hidden", name: "kodprod", value: "tak" })));
+  async focus() {
+    if (this.mobile)
+      this.root.scrollIntoView({
+        "behavior": "smooth"
+      });
+    if (this.data) {
+      this.active = true;
+      return;
+    }
+    await this.getData();
+    this.active = true;
   }
-  get root() { return index.getElement(this); }
+  blur() {
+    if (this.blurenabled)
+      this.active = false;
+  }
+  clickListener() {
+    this.blurenabled = false;
+    setTimeout(() => this.blurenabled = true, 0);
+  }
+  input() {
+    const value = this.inputElement.value.toLowerCase();
+    if (value !== undefined && value.length < 3) {
+      this.items = undefined;
+      return;
+    }
+    let items = new Array();
+    for (const key in this.data.manufacturers) {
+      if (key.toLowerCase().includes(value)) {
+        items.push({
+          "name": key,
+          "url": this.data.manufacturers[key],
+          "type": "manufacturer"
+        });
+      }
+      if (items.length >= this.maxCount)
+        break;
+    }
+    if (items.length < this.maxCount) {
+      for (const key in this.data.categories) {
+        if (key.toLowerCase().includes(value)) {
+          items.push({
+            "name": key,
+            "url": this.data.categories[key],
+            "type": "category"
+          });
+        }
+        if (items.length >= this.maxCount)
+          break;
+      }
+    }
+    this.items = items;
+  }
+  key(e) {
+    if (e.key == "ArrowDown") {
+      e.preventDefault();
+      if (this.select < this.items.length - 1)
+        this.select++;
+    }
+    else if (e.key == "ArrowUp") {
+      e.preventDefault();
+      if (this.select >= 0)
+        this.select--;
+    }
+  }
+  componentDidLoad() {
+    this.inputElement = this.root.querySelector('input[name=szukaj]');
+  }
+  render() {
+    var _a;
+    return (h("form", { method: "post", action: "szukaj.html", onSubmit: e => this.submit(e) }, h("a", { onClick: e => this.submit(e) }, h("ks-icon", { name: "search", size: 1.1 })), h("input", { "aria-label": "Szukaj produkt\u00F3w", name: "szukaj", type: "search", autocomplete: "off", onFocus: () => this.focus(), onBlur: () => this.blur(), onInput: () => this.input(), onKeyDown: e => this.key(e) }), h("input", { type: "hidden", name: "postget", value: "tak" }), h("input", { type: "hidden", name: "opis", value: "nie" }), h("input", { type: "hidden", name: "nrkat", value: "tak" }), h("input", { type: "hidden", name: "kodprod", value: "tak" }), this.active && this.items && this.items.length > 0 ?
+      h("div", { class: "list" }, (_a = this.items) === null || _a === void 0 ? void 0 : _a.map((item, index) => h("a", { href: item.url, class: index == this.select ? "active" : "" }, item.name, h("ks-icon", { name: item.type == "category" ? "layers" : "bookmark", size: 0.9 }))))
+      : null));
+  }
+  get root() { return getElement(this); }
 };
 NavbarSearch.style = navbarSearchCss;
-
-const navbarSearchMobileCss = "ks-navbar-search-mobile{display:block}@media only screen and (min-width: 960px){ks-navbar-search-mobile{display:none}}ks-navbar-search-mobile>nav{padding:15px;background-color:var(--navbar-category-color)}ks-navbar-search-mobile form{display:inline-block;position:relative;-webkit-box-sizing:border-box;box-sizing:border-box;width:100%;height:40px;margin:0}ks-navbar-search-mobile a{display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:absolute;top:0;bottom:0;left:auto;right:0;padding-right:10px;color:#151515;-webkit-transition:color 0.2s ease;transition:color 0.2s ease}ks-navbar-search-mobile a:hover{color:#858585}ks-navbar-search-mobile a:active{color:#b5b5b5}ks-navbar-search-mobile input{width:100%;height:100%;-webkit-box-sizing:border-box;box-sizing:border-box;overflow:visible;-webkit-appearance:none;vertical-align:middle;margin:0;padding-right:50px;font-size:16px;text-align:center;background-color:#fff;border-radius:20px;border:none}ks-navbar-search-mobile input:focus{outline:0}";
-
-const NavbarSearchMobile = class {
-  constructor(hostRef) {
-    index.registerInstance(this, hostRef);
-  }
-  submit() {
-    const form = this.root.querySelector("form");
-    form.submit();
-  }
-  render() {
-    return (index.h("nav", null, index.h("form", { method: "post", action: "szukaj.html" }, index.h("a", { onClick: () => this.submit() }, index.h("ks-icon", { name: "search", size: 1.1 })), index.h("input", { "aria-label": "Szukaj produkt\u00F3w", name: "szukaj", type: "search" }), index.h("input", { type: "hidden", name: "postget", value: "tak" }), index.h("input", { type: "hidden", name: "opis", value: "nie" }), index.h("input", { type: "hidden", name: "nrkat", value: "tak" }), index.h("input", { type: "hidden", name: "kodprod", value: "tak" }))));
-  }
-  get root() { return index.getElement(this); }
-};
-NavbarSearchMobile.style = navbarSearchMobileCss;
 
 const navbarSidebarCss = "ks-navbar-sidebar{display:block}ks-navbar-sidebar nav{position:absolute;top:0;right:0;bottom:0;-webkit-box-sizing:border-box;box-sizing:border-box;width:320px;height:100%;padding:25px 30px;overflow-y:auto;background:#ffffff;-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow)}ks-navbar-sidebar nav .close{position:absolute;top:15px;right:25px;padding:5px;color:#252525;-webkit-transition:color .1s ease-in-out;transition:color .1s ease-in-out;cursor:pointer;border:none;outline:none;background-color:transparent}@media only screen and (max-width: 640px){ks-navbar-sidebar nav{width:300px;padding:20px}ks-navbar-sidebar nav .close{right:15px}}ks-navbar-sidebar nav ul{margin:0;padding:0;list-style:none;font-size:16px}ks-navbar-sidebar nav ul .header:first-child{margin-top:0px}ks-navbar-sidebar nav ul .header{margin-top:15px}ks-navbar-sidebar nav ul .divider{padding:0px;margin:5px 0px !important;border-bottom:1px solid #e2e2e2}ks-navbar-sidebar nav ul li{padding:5px 0px}ks-navbar-sidebar nav a{display:block;color:#252525 !important;text-decoration:none !important}ks-navbar-sidebar nav ul ks-icon{float:right}ks-navbar-sidebar nav ul .badge{float:right;display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-sizing:border-box;box-sizing:border-box;min-width:30px;height:30px;padding:0px 0px;border-radius:50px;vertical-align:middle;background:#e21334;color:#ffffff;font-size:16px;-webkit-transform:translateX(4px);-ms-transform:translateX(4px);transform:translateX(4px)}ks-navbar-sidebar nav>a{padding:4px 0px}@media (min-width: 640px){ks-navbar-sidebar nav .small{display:none !important}}";
 
 const NavbarSidebar = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.active = undefined;
     this.toggled = false;
   }
@@ -3191,17 +3276,17 @@ const NavbarSidebar = class {
     const accountLink = store.get("accountLink");
     const logoutLink = store.get("logoutLink");
     const favouritesCount = store.get("favouritesCount");
-    return index.h("ks-sidepanel", null, index.h("nav", null, index.h("button", { class: "close", onClick: () => this.toggle() }, index.h("ks-icon", { name: "x" })), index.h("ul", null, index.h("li", { class: "header" }, "MENU"), index.h("li", { class: "divider" }), loginLink ?
-      index.h("li", null, index.h("a", { href: loginLink }, "Zaloguj si\u0119 ", index.h("ks-icon", { name: "log-in" })))
-      : null, index.h("li", { class: "small" }, index.h("a", { href: favouritesLink }, "Schowek", favouritesCount && favouritesCount != 0 ?
-      index.h("span", { class: "badge" }, favouritesCount) :
-      index.h("ks-icon", { name: "star" }))), accountLink ?
-      index.h("li", null, index.h("a", { href: accountLink }, "Panel Klienta ", index.h("ks-icon", { name: "user" })))
+    return h("ks-sidepanel", null, h("nav", null, h("button", { class: "close", onClick: () => this.toggle() }, h("ks-icon", { name: "x" })), h("ul", null, h("li", { class: "header" }, "MENU"), h("li", { class: "divider" }), loginLink ?
+      h("li", null, h("a", { href: loginLink }, "Zaloguj si\u0119 ", h("ks-icon", { name: "log-in" })))
+      : null, h("li", { class: "small" }, h("a", { href: favouritesLink }, "Schowek", favouritesCount && favouritesCount != 0 ?
+      h("span", { class: "badge" }, favouritesCount) :
+      h("ks-icon", { name: "star" }))), accountLink ?
+      h("li", null, h("a", { href: accountLink }, "Panel Klienta ", h("ks-icon", { name: "user" })))
       : null, logoutLink ?
-      index.h("li", null, index.h("a", { href: logoutLink }, "Wyloguj si\u0119 ", index.h("ks-icon", { name: "log-out" })))
-      : null, index.h("li", { class: "header" }, "KATEGORIE"), index.h("li", { class: "divider" })), index.h("slot", null)));
+      h("li", null, h("a", { href: logoutLink }, "Wyloguj si\u0119 ", h("ks-icon", { name: "log-out" })))
+      : null, h("li", { class: "header" }, "KATEGORIE"), h("li", { class: "divider" })), h("slot", null)));
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 NavbarSidebar.style = navbarSidebarCss;
 
@@ -3209,7 +3294,7 @@ const newsletterPopupCss = "ks-newsletter-popup{display:block}ks-newsletter-popu
 
 const NewsletterPopup = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.displayOnLoad = false;
     this.loggedIn = true;
     this.agreement = "Wyrażam zgodę na przetwarzanie danych osobowych do celów marketingowych, w celu zbadania opinii o sklepie oraz na otrzymywanie informacji handlowych na wskazany przeze mnie adres e-mail.";
@@ -3227,7 +3312,7 @@ const NewsletterPopup = class {
   }
   async requestHandler(event) {
     event.preventDefault();
-    if (!await validate.ValidateInput(this.root.querySelector('form')))
+    if (!await ValidateInput(this.root.querySelector('form')))
       return;
     this.dialog.showLoading();
     const target = event.target;
@@ -3264,21 +3349,21 @@ const NewsletterPopup = class {
   }
   render() {
     return [
-      index.h("ks-dialog", { dark: true, smallmobile: true, nopadding: true, onClosed: () => this.SetCookie() }, index.h("form", { onSubmit: e => this.requestHandler(e) }, index.h("div", { class: "info" }, index.h("svg", { class: "top", viewBox: "0 0 303 15", width: 909, height: 45 }, index.h("text", { x: "0", y: "12" }, "Zapisz si\u0119 do naszego Newslettera i zyskaj")), index.h("svg", { class: "heading", viewBox: "0 0 96 12", width: 960, height: 130 }, index.h("text", { x: "-1", y: "12" }, "KUPON 10Z\u0141")), index.h("p", null, this.infoMessage)), !this.loggedIn ?
-        index.h("div", { class: "buttons" }, index.h("ks-button", { tall: true, name: "ZALOGUJ SI\u0118", link: this.loginLink }), index.h("ks-button", { tall: true, name: "NOWE KONTO", link: this.registerLink }))
+      h("ks-dialog", { dark: true, smallmobile: true, nopadding: true, onClosed: () => this.SetCookie() }, h("form", { onSubmit: e => this.requestHandler(e) }, h("div", { class: "info" }, h("svg", { class: "top", viewBox: "0 0 303 15", width: 909, height: 45 }, h("text", { x: "0", y: "12" }, "Zapisz si\u0119 do naszego Newslettera i zyskaj")), h("svg", { class: "heading", viewBox: "0 0 96 12", width: 960, height: 130 }, h("text", { x: "-1", y: "12" }, "KUPON 10Z\u0141")), h("p", null, this.infoMessage)), !this.loggedIn ?
+        h("div", { class: "buttons" }, h("ks-button", { tall: true, name: "ZALOGUJ SI\u0118", link: this.loginLink }), h("ks-button", { tall: true, name: "NOWE KONTO", link: this.registerLink }))
         : [
-          index.h("ks-input-check", { large: true, required: true, nomessage: true, name: "zgoda", label: this.agreement }),
-          index.h("div", { class: "email-form" }, index.h("ks-input-text", { email: true, required: true, nomessage: true, center: true, name: "email", placeholder: "Adres email", value: this.email ? this.email : null }), index.h("ks-button", { submit: true, name: "ZAPISZ SI\u0118" }))
+          h("ks-input-check", { large: true, required: true, nomessage: true, name: "zgoda", label: this.agreement }),
+          h("div", { class: "email-form" }, h("ks-input-text", { email: true, required: true, nomessage: true, center: true, name: "email", placeholder: "Adres email", value: this.email ? this.email : null }), h("ks-button", { submit: true, name: "ZAPISZ SI\u0118" }))
         ]))
     ];
   }
-  get root() { return index.getElement(this); }
+  get root() { return getElement(this); }
 };
 NewsletterPopup.style = newsletterPopupCss;
 
 const Section = class {
   constructor(hostRef) {
-    index.registerInstance(this, hostRef);
+    registerInstance(this, hostRef);
     this.muted = false;
     this.dark = false;
     this.darker = false;
@@ -3297,33 +3382,8 @@ const Section = class {
         "uk-padding-small uk-padding-remove-vertical ") +
       (this.marginTop ? this.mobileCollapse ? "uk-margin-top@s " : "uk-margin-top " : "");
     const darker = { backgroundColor: "rgb(24, 24, 24)" };
-    return (index.h("div", { class: "uk-section uk-padding-remove-vertical " + sectionStyle, style: this.darker ? darker : null }, index.h("div", { class: "uk-container " + containerSize + " " + margin }, index.h("slot", null))));
+    return (h("div", { class: "uk-section uk-padding-remove-vertical " + sectionStyle, style: this.darker ? darker : null }, h("div", { class: "uk-container " + containerSize + " " + margin }, h("slot", null))));
   }
 };
 
-exports.ks_button = Button;
-exports.ks_card = Card;
-exports.ks_category_simple = NavbarCategorySimple;
-exports.ks_category_view = NavbarCategoryView;
-exports.ks_container = Container;
-exports.ks_cookie_popup = CookiePopup;
-exports.ks_flex = Flex;
-exports.ks_footer = Footer;
-exports.ks_footer_button = FooterButton;
-exports.ks_footer_links = FooterLinks;
-exports.ks_grid = Grid;
-exports.ks_icon = Icon;
-exports.ks_image = Image;
-exports.ks_img = Img;
-exports.ks_info_banner = InfoBanner;
-exports.ks_info_message = InfoMessage;
-exports.ks_loader = Loader;
-exports.ks_navbar = Navbar;
-exports.ks_navbar_button = NavbarButton;
-exports.ks_navbar_categories = NavbarCategories;
-exports.ks_navbar_contact_panel = NavbarContactPanel;
-exports.ks_navbar_search = NavbarSearch;
-exports.ks_navbar_search_mobile = NavbarSearchMobile;
-exports.ks_navbar_sidebar = NavbarSidebar;
-exports.ks_newsletter_popup = NewsletterPopup;
-exports.ks_section = Section;
+export { Button as ks_button, Card as ks_card, NavbarCategorySimple as ks_category_simple, NavbarCategoryView as ks_category_view, Container as ks_container, CookiePopup as ks_cookie_popup, Flex as ks_flex, Footer as ks_footer, FooterButton as ks_footer_button, FooterLinks as ks_footer_links, Grid as ks_grid, Icon as ks_icon, Image as ks_image, Img as ks_img, InfoBanner as ks_info_banner, InfoMessage as ks_info_message, Loader as ks_loader, Navbar as ks_navbar, NavbarButton as ks_navbar_button, NavbarCategories as ks_navbar_categories, NavbarContactPanel as ks_navbar_contact_panel, NavbarSearch as ks_navbar_search, NavbarSidebar as ks_navbar_sidebar, NewsletterPopup as ks_newsletter_popup, Section as ks_section };
