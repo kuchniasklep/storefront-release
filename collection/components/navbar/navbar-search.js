@@ -66,8 +66,13 @@ export class NavbarSearch {
       return;
     }
     let items = new Array();
+    const condition = (k, v) => {
+      return k.split(" ").reduce((prev, cur) => {
+        return prev || (cur.toLowerCase().indexOf(v) == 0);
+      }, false);
+    };
     for (const key in this.data.manufacturers) {
-      if (key.toLowerCase().includes(value)) {
+      if (condition(key, value)) {
         items.push({
           "name": key,
           "url": this.data.manufacturers[key],
@@ -79,7 +84,7 @@ export class NavbarSearch {
     }
     if (items.length < this.maxCount) {
       for (const key in this.data.categories) {
-        if (key.toLowerCase().includes(value)) {
+        if (condition(key, value)) {
           items.push({
             "name": key,
             "url": this.data.categories[key],
