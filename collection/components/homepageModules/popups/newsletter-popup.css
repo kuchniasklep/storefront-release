@@ -67,6 +67,9 @@ ks-newsletter-popup .buttons > * {
             flex: 1;
 }
 
+ks-newsletter-popup .close {
+    color: black !important;
+}
 
 ks-newsletter-popup ks-input-check {
     margin: 20px;
