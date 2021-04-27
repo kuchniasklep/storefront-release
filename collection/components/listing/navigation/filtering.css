@@ -1,0 +1,21 @@
+ks-filtering {
+    display: block;
+}
+
+ks-filtering > ks-button {
+    background-color: white;
+}
+
+
+ks-filtering .heading {
+    display: block;
+    margin-bottom: 30px;
+
+    font-size: 1.3rem;
+    font-family: var(--font-emphasis);
+    font-weight: 700;
+}
+
+ks-filtering .clear {
+    margin: 30px 0 5px 0;
+}

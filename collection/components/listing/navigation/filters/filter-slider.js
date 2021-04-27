@@ -1,9 +1,10 @@
-import { Component, h, Element, Prop, State, Listen } from '@stencil/core';
+import { Component, h, Element, Prop, Listen } from '@stencil/core';
 import noUiSlider from 'nouislider';
 export class FilterSlider {
   constructor() {
     this.snap = false;
     this.step = 0;
+    this.steps = "";
     this.handleActive = false;
   }
   swipeLeftHandler(event) {
@@ -13,71 +14,60 @@ export class FilterSlider {
     event.stopPropagation();
   }
   componentDidLoad() {
-    const slider = this.el.firstElementChild;
-    if (this.ids)
-      this.idArray = this.ids.split(", ");
-    this.valueArray = this.values.replace(",", ".").split("; ");
-    const rangeMap = this.convertValuesToRangeMap(this.valueArray);
+    const slider = this.root.firstElementChild;
+    const steps = this.steps.split(", ").map(value => parseInt(value));
+    const range = this.range(this.values.split(", ").map(value => parseFloat(value)), steps);
+    const step = steps[0] ? steps[0] : this.step;
+    const asint = this.step || this.steps;
     noUiSlider.create(slider, {
-      start: [rangeMap["min"], rangeMap["max"]],
+      start: [range["min"], range["max"]],
       snap: this.snap,
-      step: this.step,
+      step: step,
       tooltips: true,
       connect: true,
-      range: rangeMap,
+      range: range,
       format: {
         to: function (value) {
-          return value;
+          return asint ? Math.round(value) : value;
         },
         from: function (value) {
-          return value;
+          return asint ? Math.round(value) : value;
         }
       }
     });
     const sliderInstance = slider;
-    if (this.ids) {
-      sliderInstance.noUiSlider.on("set", () => {
-        const range = sliderInstance.noUiSlider.get();
-        const from = this.valueArray.findIndex(value => parseFloat(value) == parseFloat(range[0]));
-        const to = this.valueArray.findIndex(value => parseFloat(value) == parseFloat(range[1]));
-        this.fromId = this.idArray[from];
-        this.toId = this.idArray[to];
-      });
-    }
-    const fromIndex = this.idArray.findIndex(id => parseInt(id) == this.from);
-    const toIndex = this.idArray.findIndex(id => parseInt(id) == this.to);
-    const from = this.from ? parseFloat(this.valueArray[fromIndex]) : null;
-    const to = this.to ? parseFloat(this.valueArray[toIndex]) : null;
-    sliderInstance.noUiSlider.set([from, to]);
+    sliderInstance.noUiSlider.on("set", () => {
+      const range = sliderInstance.noUiSlider.get();
+      this.from = parseFloat(range[0]);
+      this.to = parseFloat(range[1]);
+    });
+    sliderInstance.noUiSlider.set([this.from, this.to]);
   }
-  convertValuesToRangeMap(values) {
-    let rangeMap = {};
-    let step = 100 / (values.length - 1);
-    let length = values.length;
-    for (let i = 0; i < length; i++) {
-      const value = parseFloat(values[i]);
-      if (i == 0)
-        rangeMap["min"] = value;
-      else if (i == length - 1)
-        rangeMap["max"] = value;
+  range(values, steps) {
+    return values.reduce((o, value, index) => {
+      const step = steps[index] ? [steps[index]] : [];
+      if (index == 0)
+        o["min"] = [value];
+      else if (index == values.length - 1)
+        o["max"] = [value];
       else
-        rangeMap[(step * i).toString() + "%"] = value;
-    }
-    return rangeMap;
+        o[(index / (values.length - 1)) * 100 + "%"] = [value, ...step];
+      return o;
+    }, {});
   }
   render() {
-    const disabled = !this.fromId || !this.toId;
+    const disabled = !this.from || !this.to;
     return [
       h("div", null),
-      h("input", { type: "hidden", name: this.name, value: this.fromId + "," + this.toId, disabled: disabled })
+      h("input", { type: "hidden", name: this.name, value: this.from + "," + this.to, disabled: disabled })
     ];
   }
   static get is() { return "ks-filter-slider"; }
   static get originalStyleUrls() { return {
-    "$": ["nouislider.css"]
+    "$": ["filter-slider.css"]
   }; }
   static get styleUrls() { return {
-    "$": ["nouislider.css"]
+    "$": ["filter-slider.css"]
   }; }
   static get properties() { return {
     "name": {
@@ -95,23 +85,6 @@ export class FilterSlider {
         "text": ""
       },
       "attribute": "name",
-      "reflect": false
-    },
-    "ids": {
-      "type": "string",
-      "mutable": false,
-      "complexType": {
-        "original": "string",
-        "resolved": "string",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "ids",
       "reflect": false
     },
     "values": {
@@ -167,9 +140,27 @@ export class FilterSlider {
       "reflect": false,
       "defaultValue": "0"
     },
+    "steps": {
+      "type": "string",
+      "mutable": false,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "steps",
+      "reflect": false,
+      "defaultValue": "\"\""
+    },
     "from": {
       "type": "number",
-      "mutable": false,
+      "mutable": true,
       "complexType": {
         "original": "number",
         "resolved": "number",
@@ -186,7 +177,7 @@ export class FilterSlider {
     },
     "to": {
       "type": "number",
-      "mutable": false,
+      "mutable": true,
       "complexType": {
         "original": "number",
         "resolved": "number",
@@ -202,11 +193,7 @@ export class FilterSlider {
       "reflect": false
     }
   }; }
-  static get states() { return {
-    "fromId": {},
-    "toId": {}
-  }; }
-  static get elementRef() { return "el"; }
+  static get elementRef() { return "root"; }
   static get listeners() { return [{
       "name": "swipeLeft",
       "method": "swipeLeftHandler",

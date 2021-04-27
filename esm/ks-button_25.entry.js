@@ -4,7 +4,7 @@ import { c as createCommonjsModule, a as commonjsGlobal, g as getDefaultExportFr
 import { c as createStore } from './index-324bcb5b.js';
 import { V as ValidateInput } from './validate-cd7ce36d.js';
 
-const buttonCss = "ks-button{display:block}ks-button>*{display:block;text-align:center;-webkit-box-sizing:border-box;box-sizing:border-box;font-size:var(--product-button-size);width:100%;padding:12px 20px;outline-style:none;border-style:none;text-decoration:none !important;cursor:pointer;border-radius:0px;font-family:var(--font-regular);font-size:15px;border:1px solid var(--color-dark);background-color:var(--color-dark);color:var(--text-color-dark) !important;-webkit-transition:var(--transition-background-color),\n                var(--transition-border-color);transition:var(--transition-background-color),\n                var(--transition-border-color)}ks-button:not([transitionless])>*:hover{background-color:var(--color-dark-hover)}ks-button:not([transitionless])>*:active{background-color:var(--color-dark-active)}ks-button[round]>*{border-radius:100px}ks-button[tall]>*{padding:18px 20px}ks-button[primary]>*{color:var(--text-color-primary) !important;background-color:var(--color-primary) !important;border:1px solid var(--color-primary) !important}ks-button[primary]:not([transitionless])>*:hover{background-color:var(--color-primary-hover)}ks-button[primary]:not([transitionless])>*:active{background-color:var(--color-primary-active)}ks-button[secondary]>*{color:var(--text-color-secondary) !important;background-color:var(--color-secondary) !important;border:1px solid var(--color-secondary) !important}ks-button[secondary]:not([transitionless])>*:hover{background-color:var(--color-secondary-hover)}ks-button[secondary]:not([transitionless])>*:active{background-color:var(--color-secondary-active)}ks-button[border]>*{border:1px solid var(--color-dark);color:var(--color-dark) !important;background-color:rgba(0, 0, 0, 0)}ks-button[border]:not([transitionless])>*:hover{background-color:rgba(0, 0, 0, 0.096)}ks-button[border]:not([transitionless])>*:active{background-color:rgba(0, 0, 0, 0.336)}ks-button[border][light]>*{border:1px solid #ffffff;color:var(--text-color-dark) !important;background-color:rgba(255, 255, 255, 0)}ks-button[border][light]:not([transitionless])>*:hover{background-color:rgba(255, 255, 255, 0.096)}ks-button[border][light]:not([transitionless])>*:active{background-color:rgba(255, 255, 255, 0.336)}ks-button[disabled]>*{background-color:#e2e2e2 !important}";
+const buttonCss = "ks-button{display:block}ks-button>*{display:block;text-align:center;-webkit-box-sizing:border-box;box-sizing:border-box;font-size:var(--product-button-size);width:100%;padding:12px 20px;outline-style:none;border-style:none;text-decoration:none !important;cursor:pointer;border-radius:0px;font-family:var(--font-regular);font-size:15px;border:1px solid var(--color-dark);background-color:var(--color-dark);color:var(--text-color-dark) !important;-webkit-transition:var(--transition-background-color),\n                var(--transition-border-color);transition:var(--transition-background-color),\n                var(--transition-border-color)}ks-button:not([transitionless])>*:hover{background-color:var(--color-dark-hover)}ks-button:not([transitionless])>*:active{background-color:var(--color-dark-active)}ks-button[round]>*{border-radius:100px}ks-button[narrow]>*{padding:9px 20px}ks-button[tall]>*{padding:18px 20px}ks-button[primary]>*{color:var(--text-color-primary) !important;background-color:var(--color-primary) !important;border:1px solid var(--color-primary) !important}ks-button[primary]:not([transitionless])>*:hover{background-color:var(--color-primary-hover)}ks-button[primary]:not([transitionless])>*:active{background-color:var(--color-primary-active)}ks-button[secondary]>*{color:var(--text-color-secondary) !important;background-color:var(--color-secondary) !important;border:1px solid var(--color-secondary) !important}ks-button[secondary]:not([transitionless])>*:hover{background-color:var(--color-secondary-hover)}ks-button[secondary]:not([transitionless])>*:active{background-color:var(--color-secondary-active)}ks-button[border]>*{border:1px solid var(--color-dark);color:var(--color-dark) !important;background-color:rgba(0, 0, 0, 0)}ks-button[border]:not([transitionless])>*:hover{background-color:rgba(0, 0, 0, 0.096)}ks-button[border]:not([transitionless])>*:active{background-color:rgba(0, 0, 0, 0.336)}ks-button[border][light]>*{border:1px solid #ffffff;color:var(--text-color-dark) !important;background-color:rgba(255, 255, 255, 0)}ks-button[border][light]:not([transitionless])>*:hover{background-color:rgba(255, 255, 255, 0.096)}ks-button[border][light]:not([transitionless])>*:active{background-color:rgba(255, 255, 255, 0.336)}ks-button[disabled]>*{background-color:#e2e2e2 !important}ks-button[border][muted]>*{border:1px solid #e5e5e5}ks-button[border][muted]:not([transitionless])>*:hover{border-color:#bebebe;background-color:rgba(255, 255, 255, 0)}ks-button[border][muted]:not([transitionless])>*:active{border-color:#8d8d8d;background-color:rgba(255, 255, 255, 0)}ks-button ks-icon{margin-left:10px}ks-button[left] ks-icon{margin-right:10px;margin-left:0}";
 
 const Button = class {
   constructor(hostRef) {
@@ -16,7 +16,7 @@ const Button = class {
       return h("input", { type: "submit", value: this.name });
     if (this.link)
       return h("a", { href: this.link, rel: this.nofollow ? "nofollow" : null }, this.name);
-    return h("button", { disabled: this.disabled }, this.name);
+    return h("button", { disabled: this.disabled }, this.icon && this.left ? h("ks-icon", { name: this.icon, size: 0.9 }) : null, this.name, this.icon && !this.left ? h("ks-icon", { name: this.icon, size: 0.9 }) : null);
   }
   get root() { return getElement(this); }
 };
@@ -3013,7 +3013,7 @@ const Navbar = class {
         h("ks-navbar-button", { name: "Zaloguj", link: this.loginLink, icon: "user", class: "desktop" })
         : null, this.logoutLink ?
         h("ks-navbar-button", { name: "Wyloguj", link: this.logoutLink, icon: "log-out", class: "desktop" })
-        : null, h("ks-navbar-button", { name: "Menu", icon: "menu", class: "mobile-tablet", onClick: () => this.root.querySelector("ks-navbar-sidebar").toggle() })), h("ks-navbar-contact-panel", { phone: this.phone, email: this.email, contact: this.contact })),
+        : null, h("ks-navbar-button", { name: "Menu", icon: "menu", class: "mobile-tablet", onClick: () => this.root.querySelector("ks-navbar-sidebar").show() })), h("ks-navbar-contact-panel", { phone: this.phone, email: this.email, contact: this.contact })),
       h("slot", null),
       h("ks-navbar-search", { mobile: true })
     ];
@@ -3259,7 +3259,7 @@ const NavbarSearch = class {
 };
 NavbarSearch.style = navbarSearchCss;
 
-const navbarSidebarCss = "ks-navbar-sidebar{display:block}ks-navbar-sidebar nav{position:absolute;top:0;right:0;bottom:0;-webkit-box-sizing:border-box;box-sizing:border-box;width:320px;height:100%;padding:25px 30px;overflow-y:auto;background:#ffffff;-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow)}ks-navbar-sidebar nav .close{position:absolute;top:15px;right:25px;padding:5px;color:#252525;-webkit-transition:color .1s ease-in-out;transition:color .1s ease-in-out;cursor:pointer;border:none;outline:none;background-color:transparent}@media only screen and (max-width: 640px){ks-navbar-sidebar nav{width:300px;padding:20px}ks-navbar-sidebar nav .close{right:15px}}ks-navbar-sidebar nav ul{margin:0;padding:0;list-style:none;font-size:16px}ks-navbar-sidebar nav ul .header:first-child{margin-top:0px}ks-navbar-sidebar nav ul .header{margin-top:15px}ks-navbar-sidebar nav ul .divider{padding:0px;margin:5px 0px !important;border-bottom:1px solid #e2e2e2}ks-navbar-sidebar nav ul li{padding:5px 0px}ks-navbar-sidebar nav a{display:block;color:#252525 !important;text-decoration:none !important}ks-navbar-sidebar nav ul ks-icon{float:right}ks-navbar-sidebar nav ul .badge{float:right;display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-sizing:border-box;box-sizing:border-box;min-width:30px;height:30px;padding:0px 0px;border-radius:50px;vertical-align:middle;background:#e21334;color:#ffffff;font-size:16px;-webkit-transform:translateX(4px);-ms-transform:translateX(4px);transform:translateX(4px)}ks-navbar-sidebar nav>a{padding:4px 0px}@media (min-width: 640px){ks-navbar-sidebar nav .small{display:none !important}}";
+const navbarSidebarCss = "ks-navbar-sidebar{display:block}ks-navbar-sidebar ul{margin:0;padding:0;list-style:none;font-size:16px}ks-navbar-sidebar ul .header:first-child{margin-top:0px}ks-navbar-sidebar ul .header{margin-top:15px}ks-navbar-sidebar ul .divider{padding:0px;margin:5px 0px !important;border-bottom:1px solid #e2e2e2}ks-navbar-sidebar ul li{padding:5px 0px}ks-navbar-sidebar a{display:block;color:#252525 !important;text-decoration:none !important}ks-navbar-sidebar ul ks-icon{float:right}ks-navbar-sidebar ul .badge{float:right;display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-sizing:border-box;box-sizing:border-box;min-width:30px;height:30px;padding:0px 0px;border-radius:50px;vertical-align:middle;background:#e21334;color:#ffffff;font-size:16px;-webkit-transform:translateX(4px);-ms-transform:translateX(4px);transform:translateX(4px)}ks-navbar-sidebar>a{padding:4px 0px}@media (min-width: 640px){ks-navbar-sidebar .small{display:none !important}}";
 
 const NavbarSidebar = class {
   constructor(hostRef) {
@@ -3270,12 +3270,8 @@ const NavbarSidebar = class {
   componentDidRender() {
     this.sidepanel = this.root.querySelector("ks-sidepanel");
   }
-  async toggle() {
-    if (this.toggled)
-      this.sidepanel.hide();
-    else
-      this.sidepanel.show();
-    this.toggled = !this.toggled;
+  async show() {
+    this.sidepanel.show();
   }
   render() {
     const loginLink = store.get("loginLink");
@@ -3283,7 +3279,7 @@ const NavbarSidebar = class {
     const accountLink = store.get("accountLink");
     const logoutLink = store.get("logoutLink");
     const favouritesCount = store.get("favouritesCount");
-    return h("ks-sidepanel", null, h("nav", null, h("button", { class: "close", onClick: () => this.toggle() }, h("ks-icon", { name: "x" })), h("ul", null, h("li", { class: "header" }, "MENU"), h("li", { class: "divider" }), loginLink ?
+    return h("ks-sidepanel", null, h("ul", null, h("li", { class: "header" }, "MENU"), h("li", { class: "divider" }), loginLink ?
       h("li", null, h("a", { href: loginLink }, "Zaloguj si\u0119 ", h("ks-icon", { name: "log-in" })))
       : null, h("li", { class: "small" }, h("a", { href: favouritesLink }, "Schowek", favouritesCount && favouritesCount != 0 ?
       h("span", { class: "badge" }, favouritesCount) :
@@ -3291,7 +3287,7 @@ const NavbarSidebar = class {
       h("li", null, h("a", { href: accountLink }, "Panel Klienta ", h("ks-icon", { name: "user" })))
       : null, logoutLink ?
       h("li", null, h("a", { href: logoutLink }, "Wyloguj si\u0119 ", h("ks-icon", { name: "log-out" })))
-      : null, h("li", { class: "header" }, "KATEGORIE"), h("li", { class: "divider" })), h("slot", null)));
+      : null, h("li", { class: "header" }, "KATEGORIE"), h("li", { class: "divider" })), h("slot", null));
   }
   get root() { return getElement(this); }
 };

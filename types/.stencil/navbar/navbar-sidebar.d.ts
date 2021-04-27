@@ -4,6 +4,6 @@ export declare class NavbarSidebar {
   sidepanel: HTMLKsSidepanelElement;
   componentDidRender(): void;
   toggled: boolean;
-  toggle(): Promise<void>;
+  show(): Promise<void>;
   render(): any;
 }

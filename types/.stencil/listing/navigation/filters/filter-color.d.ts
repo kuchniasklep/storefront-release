@@ -1,6 +1,6 @@
 export declare class FilterColor {
   name: string;
-  filterId: string;
+  value: string;
   color: string;
   active: boolean;
   hex: string;
@@ -10,5 +10,5 @@ export declare class FilterColor {
   metal: any[];
   wood: any[];
   multicolor: any[];
-  render(): any[];
+  render(): any;
 }

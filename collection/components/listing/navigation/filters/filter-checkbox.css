@@ -1,0 +1,50 @@
+ks-filter-checkbox {
+    display: block;
+    margin-bottom: 8px;
+    line-height: 20px;
+}
+
+ks-filter-checkbox label {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    -webkit-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+
+ks-filter-checkbox input {
+    position: absolute;
+    cursor: pointer;
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+
+ks-filter-checkbox .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+}
+
+ks-filter-checkbox .checkmark:after {
+    content: "✓";
+    position: absolute;
+    display: block;
+    left: 4px;
+
+    color: white;
+    opacity: 0;
+}
+
+ks-filter-checkbox input:checked ~ .checkmark {
+    background-color: #252525;
+}
+
+ks-filter-checkbox input:checked ~ .checkmark:after {
+    opacity: 1;
+}

@@ -4,13 +4,21 @@ export class Filter {
     this.active = false;
   }
   render() {
-    return (h("ul", { "uk-accordion": "animation: false;" },
-      h("li", { class: this.active ? "uk-open" : null },
-        h("a", { class: "uk-accordion-title", href: "#" }, this.name),
-        h("div", { class: "uk-accordion-content" },
-          h("slot", null)))));
+    return [
+      h("div", { onClick: () => this.active = !this.active },
+        this.name,
+        h("ks-icon", { name: this.active ? "minus" : "plus", size: 0.9 })),
+      h("div", { class: "filter-content" },
+        h("slot", null))
+    ];
   }
   static get is() { return "ks-filter"; }
+  static get originalStyleUrls() { return {
+    "$": ["filter.css"]
+  }; }
+  static get styleUrls() { return {
+    "$": ["filter.css"]
+  }; }
   static get properties() { return {
     "name": {
       "type": "string",
@@ -31,7 +39,7 @@ export class Filter {
     },
     "active": {
       "type": "boolean",
-      "mutable": false,
+      "mutable": true,
       "complexType": {
         "original": "boolean",
         "resolved": "boolean",
@@ -44,7 +52,7 @@ export class Filter {
         "text": ""
       },
       "attribute": "active",
-      "reflect": false,
+      "reflect": true,
       "defaultValue": "false"
     }
   }; }

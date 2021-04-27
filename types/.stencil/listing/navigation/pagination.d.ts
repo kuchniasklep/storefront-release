@@ -7,6 +7,6 @@ export declare class Pagination {
   edges: boolean;
   handleResize(): void;
   componentWillLoad(): void;
-  render(): any;
+  render(): any[];
   link(index: number): string;
 }

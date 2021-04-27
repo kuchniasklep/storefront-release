@@ -22,11 +22,6 @@ export class Pagination {
   render() {
     if (!this.count || !this.current || this.count < 2)
       return;
-    const inactive = "uk-button uk-button-default";
-    const active = "uk-button uk-button-secondary";
-    const style = { width: "42px", height: "42px", backgroundColor: "white" };
-    const styleActive = { width: "42px", height: "42px", cursor: "auto" };
-    const styleSeparator = { width: "15px" };
     let pages = new Array();
     pages.push(this.current);
     let space = this.space;
@@ -53,39 +48,40 @@ export class Pagination {
         break;
     }
     pages.sort((a, b) => a - b);
-    return (h("div", { class: "uk-flex uk-flex-center uk-flex-middle uk-padding-small uk-margin-remove" },
+    return [
       this.current > 1 ?
-        h("a", { href: this.link(this.current - 1), class: inactive, style: style },
-          h("span", { "uk-icon": "chevron-left" }))
+        h("a", { href: this.link(this.current - 1) },
+          h("ks-icon", { name: "chevron-left", size: 0.9 }))
         : null,
       pages.map(page => {
-        if (page == this.current) {
-          return h("a", { class: active, style: styleActive }, page);
-        }
+        if (page == this.current)
+          return h("a", { class: "active" }, page.toString());
         if (page == pages[0] && this.edges) {
-          let ret = [h("a", { href: this.link(1), class: inactive, style: style }, "1")];
-          if (page != 1)
-            ret.push(h("div", { style: styleSeparator }));
-          return ret;
+          const ret = h("a", { href: this.link(1) }, "1");
+          return page == 1 ? ret : [ret, h("div", { class: "separator" })];
         }
         if (page == pages[pages.length - 1] && this.edges) {
-          let ret = new Array();
-          if (page != this.count)
-            ret.push(h("div", { style: styleSeparator }));
-          ret.push(h("a", { href: this.link(this.count), class: inactive, style: style }, this.count));
-          return ret;
+          const ret = h("a", { href: this.link(this.count) }, this.count);
+          return page == this.count ? ret : [h("div", { class: "separator" }), ret];
         }
-        return h("a", { href: this.link(page), class: inactive, style: style }, page);
+        return h("a", { href: this.link(page) }, page.toString());
       }),
       this.current < this.count ?
-        h("a", { href: this.link(this.current + 1), "aria-label": this.current + 1, class: inactive, style: style },
-          h("span", { "uk-icon": "icon: chevron-right;" }))
-        : null));
+        h("a", { href: this.link(this.current - 1) },
+          h("ks-icon", { name: "chevron-right", size: 0.9 }))
+        : null
+    ];
   }
   link(index) {
     return this.base + this.pattern + index.toString();
   }
   static get is() { return "ks-pagination"; }
+  static get originalStyleUrls() { return {
+    "$": ["pagination.css"]
+  }; }
+  static get styleUrls() { return {
+    "$": ["pagination.css"]
+  }; }
   static get properties() { return {
     "count": {
       "type": "number",

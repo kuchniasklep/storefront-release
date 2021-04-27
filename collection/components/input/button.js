@@ -8,7 +8,10 @@ export class Button {
       return h("input", { type: "submit", value: this.name });
     if (this.link)
       return h("a", { href: this.link, rel: this.nofollow ? "nofollow" : null }, this.name);
-    return h("button", { disabled: this.disabled }, this.name);
+    return h("button", { disabled: this.disabled },
+      this.icon && this.left ? h("ks-icon", { name: this.icon, size: 0.9 }) : null,
+      this.name,
+      this.icon && !this.left ? h("ks-icon", { name: this.icon, size: 0.9 }) : null);
   }
   static get is() { return "ks-button"; }
   static get originalStyleUrls() { return {
@@ -35,6 +38,23 @@ export class Button {
       "attribute": "name",
       "reflect": false,
       "defaultValue": "\"Button\""
+    },
+    "icon": {
+      "type": "string",
+      "mutable": false,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "icon",
+      "reflect": false
     },
     "submit": {
       "type": "boolean",
@@ -104,7 +124,7 @@ export class Button {
       "attribute": "disabled",
       "reflect": true
     },
-    "round": {
+    "left": {
       "type": "boolean",
       "mutable": false,
       "complexType": {
@@ -118,7 +138,24 @@ export class Button {
         "tags": [],
         "text": ""
       },
-      "attribute": "round",
+      "attribute": "left",
+      "reflect": true
+    },
+    "narrow": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "narrow",
       "reflect": true
     },
     "tall": {
@@ -136,6 +173,23 @@ export class Button {
         "text": ""
       },
       "attribute": "tall",
+      "reflect": true
+    },
+    "round": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "round",
       "reflect": true
     },
     "primary": {
@@ -204,6 +258,23 @@ export class Button {
         "text": ""
       },
       "attribute": "light",
+      "reflect": true
+    },
+    "muted": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "muted",
       "reflect": true
     },
     "transitionless": {

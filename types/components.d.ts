@@ -44,9 +44,13 @@ export namespace Components {
     interface KsButton {
         "border": boolean;
         "disabled": boolean;
+        "icon": string;
+        "left": boolean;
         "light": boolean;
         "link": string;
+        "muted": boolean;
         "name": string;
+        "narrow": boolean;
         "nofollow": boolean;
         "primary": boolean;
         "round": boolean;
@@ -333,26 +337,27 @@ export namespace Components {
     }
     interface KsFilterCheckbox {
         "active": boolean;
-        "filterId": string;
         "name": string;
+        "text": string;
+        "value": string;
     }
     interface KsFilterColor {
         "active": boolean;
         "color": string;
-        "filterId": string;
         "name": string;
-    }
-    interface KsFilterSidebar {
-        "baseUrl": string;
+        "value": string;
     }
     interface KsFilterSlider {
         "from": number;
-        "ids": string;
         "name": string;
         "snap": boolean;
         "step": number;
+        "steps": string;
         "to": number;
         "values": string;
+    }
+    interface KsFiltering {
+        "baseUrl": string;
     }
     interface KsFlex {
         "around": boolean;
@@ -557,6 +562,8 @@ export namespace Components {
     }
     interface KsListingHeader {
     }
+    interface KsListingNavigation {
+    }
     interface KsLoader {
         "dark": boolean;
         "large": boolean;
@@ -609,7 +616,7 @@ export namespace Components {
         "mobile": boolean;
     }
     interface KsNavbarSidebar {
-        "toggle": () => Promise<void>;
+        "show": () => Promise<void>;
     }
     interface KsNewsletterPopup {
         "Show": () => Promise<void>;
@@ -983,6 +990,7 @@ export namespace Components {
     }
     interface KsSidepanel {
         "hide": () => Promise<void>;
+        "left": boolean;
         "show": () => Promise<void>;
     }
     interface KsSorting {
@@ -1361,17 +1369,17 @@ declare global {
         prototype: HTMLKsFilterColorElement;
         new (): HTMLKsFilterColorElement;
     };
-    interface HTMLKsFilterSidebarElement extends Components.KsFilterSidebar, HTMLStencilElement {
-    }
-    var HTMLKsFilterSidebarElement: {
-        prototype: HTMLKsFilterSidebarElement;
-        new (): HTMLKsFilterSidebarElement;
-    };
     interface HTMLKsFilterSliderElement extends Components.KsFilterSlider, HTMLStencilElement {
     }
     var HTMLKsFilterSliderElement: {
         prototype: HTMLKsFilterSliderElement;
         new (): HTMLKsFilterSliderElement;
+    };
+    interface HTMLKsFilteringElement extends Components.KsFiltering, HTMLStencilElement {
+    }
+    var HTMLKsFilteringElement: {
+        prototype: HTMLKsFilteringElement;
+        new (): HTMLKsFilteringElement;
     };
     interface HTMLKsFlexElement extends Components.KsFlex, HTMLStencilElement {
     }
@@ -1516,6 +1524,12 @@ declare global {
     var HTMLKsListingHeaderElement: {
         prototype: HTMLKsListingHeaderElement;
         new (): HTMLKsListingHeaderElement;
+    };
+    interface HTMLKsListingNavigationElement extends Components.KsListingNavigation, HTMLStencilElement {
+    }
+    var HTMLKsListingNavigationElement: {
+        prototype: HTMLKsListingNavigationElement;
+        new (): HTMLKsListingNavigationElement;
     };
     interface HTMLKsLoaderElement extends Components.KsLoader, HTMLStencilElement {
     }
@@ -2059,8 +2073,8 @@ declare global {
         "ks-filter": HTMLKsFilterElement;
         "ks-filter-checkbox": HTMLKsFilterCheckboxElement;
         "ks-filter-color": HTMLKsFilterColorElement;
-        "ks-filter-sidebar": HTMLKsFilterSidebarElement;
         "ks-filter-slider": HTMLKsFilterSliderElement;
+        "ks-filtering": HTMLKsFilteringElement;
         "ks-flex": HTMLKsFlexElement;
         "ks-footer": HTMLKsFooterElement;
         "ks-footer-button": HTMLKsFooterButtonElement;
@@ -2085,6 +2099,7 @@ declare global {
         "ks-input-textarea": HTMLKsInputTextareaElement;
         "ks-lightbox": HTMLKsLightboxElement;
         "ks-listing-header": HTMLKsListingHeaderElement;
+        "ks-listing-navigation": HTMLKsListingNavigationElement;
         "ks-loader": HTMLKsLoaderElement;
         "ks-message-popup": HTMLKsMessagePopupElement;
         "ks-mini-cart": HTMLKsMiniCartElement;
@@ -2202,9 +2217,13 @@ declare namespace LocalJSX {
     interface KsButton {
         "border"?: boolean;
         "disabled"?: boolean;
+        "icon"?: string;
+        "left"?: boolean;
         "light"?: boolean;
         "link"?: string;
+        "muted"?: boolean;
         "name"?: string;
+        "narrow"?: boolean;
         "nofollow"?: boolean;
         "primary"?: boolean;
         "round"?: boolean;
@@ -2483,26 +2502,27 @@ declare namespace LocalJSX {
     }
     interface KsFilterCheckbox {
         "active"?: boolean;
-        "filterId"?: string;
         "name"?: string;
+        "text"?: string;
+        "value"?: string;
     }
     interface KsFilterColor {
         "active"?: boolean;
         "color"?: string;
-        "filterId"?: string;
         "name"?: string;
-    }
-    interface KsFilterSidebar {
-        "baseUrl"?: string;
+        "value"?: string;
     }
     interface KsFilterSlider {
         "from"?: number;
-        "ids"?: string;
         "name"?: string;
         "snap"?: boolean;
         "step"?: number;
+        "steps"?: string;
         "to"?: number;
         "values"?: string;
+    }
+    interface KsFiltering {
+        "baseUrl"?: string;
     }
     interface KsFlex {
         "around"?: boolean;
@@ -2689,6 +2709,8 @@ declare namespace LocalJSX {
         "data"?: LightboxImageData[];
     }
     interface KsListingHeader {
+    }
+    interface KsListingNavigation {
     }
     interface KsLoader {
         "dark"?: boolean;
@@ -3101,6 +3123,7 @@ declare namespace LocalJSX {
         "text"?: string;
     }
     interface KsSidepanel {
+        "left"?: boolean;
     }
     interface KsSorting {
         "post"?: string;
@@ -3172,8 +3195,8 @@ declare namespace LocalJSX {
         "ks-filter": KsFilter;
         "ks-filter-checkbox": KsFilterCheckbox;
         "ks-filter-color": KsFilterColor;
-        "ks-filter-sidebar": KsFilterSidebar;
         "ks-filter-slider": KsFilterSlider;
+        "ks-filtering": KsFiltering;
         "ks-flex": KsFlex;
         "ks-footer": KsFooter;
         "ks-footer-button": KsFooterButton;
@@ -3198,6 +3221,7 @@ declare namespace LocalJSX {
         "ks-input-textarea": KsInputTextarea;
         "ks-lightbox": KsLightbox;
         "ks-listing-header": KsListingHeader;
+        "ks-listing-navigation": KsListingNavigation;
         "ks-loader": KsLoader;
         "ks-message-popup": KsMessagePopup;
         "ks-mini-cart": KsMiniCart;
@@ -3345,8 +3369,8 @@ declare module "@stencil/core" {
             "ks-filter": LocalJSX.KsFilter & JSXBase.HTMLAttributes<HTMLKsFilterElement>;
             "ks-filter-checkbox": LocalJSX.KsFilterCheckbox & JSXBase.HTMLAttributes<HTMLKsFilterCheckboxElement>;
             "ks-filter-color": LocalJSX.KsFilterColor & JSXBase.HTMLAttributes<HTMLKsFilterColorElement>;
-            "ks-filter-sidebar": LocalJSX.KsFilterSidebar & JSXBase.HTMLAttributes<HTMLKsFilterSidebarElement>;
             "ks-filter-slider": LocalJSX.KsFilterSlider & JSXBase.HTMLAttributes<HTMLKsFilterSliderElement>;
+            "ks-filtering": LocalJSX.KsFiltering & JSXBase.HTMLAttributes<HTMLKsFilteringElement>;
             "ks-flex": LocalJSX.KsFlex & JSXBase.HTMLAttributes<HTMLKsFlexElement>;
             "ks-footer": LocalJSX.KsFooter & JSXBase.HTMLAttributes<HTMLKsFooterElement>;
             "ks-footer-button": LocalJSX.KsFooterButton & JSXBase.HTMLAttributes<HTMLKsFooterButtonElement>;
@@ -3371,6 +3395,7 @@ declare module "@stencil/core" {
             "ks-input-textarea": LocalJSX.KsInputTextarea & JSXBase.HTMLAttributes<HTMLKsInputTextareaElement>;
             "ks-lightbox": LocalJSX.KsLightbox & JSXBase.HTMLAttributes<HTMLKsLightboxElement>;
             "ks-listing-header": LocalJSX.KsListingHeader & JSXBase.HTMLAttributes<HTMLKsListingHeaderElement>;
+            "ks-listing-navigation": LocalJSX.KsListingNavigation & JSXBase.HTMLAttributes<HTMLKsListingNavigationElement>;
             "ks-loader": LocalJSX.KsLoader & JSXBase.HTMLAttributes<HTMLKsLoaderElement>;
             "ks-message-popup": LocalJSX.KsMessagePopup & JSXBase.HTMLAttributes<HTMLKsMessagePopupElement>;
             "ks-mini-cart": LocalJSX.KsMiniCart & JSXBase.HTMLAttributes<HTMLKsMiniCartElement>;

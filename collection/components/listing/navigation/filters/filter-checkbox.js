@@ -6,13 +6,18 @@ export class FilterCheckbox {
   render() {
     return [
       h("label", null,
-        h("input", { class: "uk-checkbox", name: this.name + "[" + this.filterId + "]", type: "checkbox", checked: this.active }),
-        " ",
-        h("slot", null)),
-      h("br", null)
+        h("input", { name: `${this.name}[${this.value}]`, type: "checkbox", checked: this.active }),
+        h("span", { class: "checkmark" }),
+        this.text)
     ];
   }
   static get is() { return "ks-filter-checkbox"; }
+  static get originalStyleUrls() { return {
+    "$": ["filter-checkbox.css"]
+  }; }
+  static get styleUrls() { return {
+    "$": ["filter-checkbox.css"]
+  }; }
   static get properties() { return {
     "name": {
       "type": "string",
@@ -31,7 +36,7 @@ export class FilterCheckbox {
       "attribute": "name",
       "reflect": false
     },
-    "filterId": {
+    "value": {
       "type": "string",
       "mutable": false,
       "complexType": {
@@ -45,7 +50,24 @@ export class FilterCheckbox {
         "tags": [],
         "text": ""
       },
-      "attribute": "filter-id",
+      "attribute": "value",
+      "reflect": false
+    },
+    "text": {
+      "type": "string",
+      "mutable": false,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "text",
       "reflect": false
     },
     "active": {

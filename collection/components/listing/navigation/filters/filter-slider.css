@@ -21,7 +21,7 @@
   direction: ltr;
 
   padding: 0 15px;
-  margin: 30px 0 10px 0;
+  margin: 10px 0 40px 0;
 }
 .noUi-base,
 .noUi-connects {
@@ -306,7 +306,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   -ms-transform: translate(-50%, 0);
       transform: translate(-50%, 0);
   left: 50%;
-  bottom: 120%;
+  bottom: -140%;
 }
 .noUi-vertical .noUi-tooltip {
   -webkit-transform: translate(0, -50%);
@@ -314,4 +314,10 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
       transform: translate(0, -50%);
   top: 50%;
   right: 120%;
+}
+
+
+ks-filter-slider {
+    display: block;
+    padding: 0 0 10px 0;
 }

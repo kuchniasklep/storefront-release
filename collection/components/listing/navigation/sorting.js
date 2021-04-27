@@ -4,7 +4,7 @@ export class Sorting {
     return (h("div", null,
       h("form", { action: this.post, method: "post", style: { margin: "0" } },
         h("input", { type: "hidden", name: "sortowanie", value: "0" })),
-      h("button", { class: "uk-button uk-button-danger uk-width-1-1", type: "button" }, "SORTUJ"),
+      h("ks-button", { narrow: true, muted: true, border: true, name: "Sortuj", icon: "shuffle" }),
       h("div", { "uk-dropdown": true, id: "test" },
         h("ul", { class: "uk-nav uk-dropdown-nav" },
           h("li", null,
@@ -39,6 +39,12 @@ export class Sorting {
     this.form.submit();
   }
   static get is() { return "ks-sorting"; }
+  static get originalStyleUrls() { return {
+    "$": ["sorting.css"]
+  }; }
+  static get styleUrls() { return {
+    "$": ["sorting.css"]
+  }; }
   static get properties() { return {
     "post": {
       "type": "string",

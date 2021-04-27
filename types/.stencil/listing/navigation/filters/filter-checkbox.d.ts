@@ -1,6 +1,7 @@
 export declare class FilterCheckbox {
   name: string;
-  filterId: string;
+  value: string;
+  text: string;
   active: boolean;
   render(): any[];
 }

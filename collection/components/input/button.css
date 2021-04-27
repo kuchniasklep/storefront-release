@@ -42,6 +42,10 @@ ks-button[round] > * {
     border-radius: 100px;
 }
 
+ks-button[narrow] > * {
+    padding: 9px 20px;
+}
+
 ks-button[tall] > * {
     padding: 18px 20px;
 }
@@ -84,4 +88,27 @@ ks-button[border][light]:not([transitionless]) > *:active { background-color: rg
 
 ks-button[disabled] > * {
     background-color: #e2e2e2 !important;
+}
+
+ks-button[border][muted] > * {
+    border: 1px solid #e5e5e5;
+}
+
+ks-button[border][muted]:not([transitionless]) > *:hover {
+    border-color: #bebebe;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+ks-button[border][muted]:not([transitionless]) > *:active {
+    border-color: #8d8d8d;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+ks-button ks-icon {
+    margin-left: 10px;
+}
+
+ks-button[left] ks-icon {
+    margin-right: 10px;
+    margin-left: 0;
 }

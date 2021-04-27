@@ -1,28 +1,40 @@
-import { r as registerInstance, h, g as getElement } from './index-2d9093e5.js';
-import { c as createCommonjsModule } from './_commonjsHelpers-ba3f0406.js';
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+const index = require('./index-1e55d229.js');
+const _commonjsHelpers = require('./_commonjsHelpers-bcc1208a.js');
+
+const filterCss = "ks-filter{display:block;margin-bottom:10px;-webkit-user-select:none;-ms-user-select:none;-moz-user-select:none;user-select:none}ks-filter>div{font-family:var(--font-emphasis);font-size:1.1rem}ks-filter>div>ks-icon{float:right}ks-filter .filter-content{display:none;font-size:1rem;padding:10px 0}ks-filter[active] .filter-content{display:block;-webkit-animation:fade-in 0.3s ease 1;animation:fade-in 0.3s ease 1}";
 
 const Filter = class {
   constructor(hostRef) {
-    registerInstance(this, hostRef);
-    this.active = false;
-  }
-  render() {
-    return (h("ul", { "uk-accordion": "animation: false;" }, h("li", { class: this.active ? "uk-open" : null }, h("a", { class: "uk-accordion-title", href: "#" }, this.name), h("div", { class: "uk-accordion-content" }, h("slot", null)))));
-  }
-};
-
-const FilterCheckbox = class {
-  constructor(hostRef) {
-    registerInstance(this, hostRef);
+    index.registerInstance(this, hostRef);
     this.active = false;
   }
   render() {
     return [
-      h("label", null, h("input", { class: "uk-checkbox", name: this.name + "[" + this.filterId + "]", type: "checkbox", checked: this.active }), " ", h("slot", null)),
-      h("br", null)
+      index.h("div", { onClick: () => this.active = !this.active }, this.name, index.h("ks-icon", { name: this.active ? "minus" : "plus", size: 0.9 })),
+      index.h("div", { class: "filter-content" }, index.h("slot", null))
     ];
   }
 };
+Filter.style = filterCss;
+
+const filterCheckboxCss = "ks-filter-checkbox{display:block;margin-bottom:8px;line-height:20px}ks-filter-checkbox label{display:block;position:relative;padding-left:35px;cursor:pointer;-webkit-user-select:none;-ms-user-select:none;-moz-user-select:none;user-select:none}ks-filter-checkbox input{position:absolute;cursor:pointer;opacity:0;height:0;width:0}ks-filter-checkbox .checkmark{position:absolute;top:0;left:0;height:20px;width:20px;background-color:#eee}ks-filter-checkbox .checkmark:after{content:\"✓\";position:absolute;display:block;left:4px;color:white;opacity:0}ks-filter-checkbox input:checked~.checkmark{background-color:#252525}ks-filter-checkbox input:checked~.checkmark:after{opacity:1}";
+
+const FilterCheckbox = class {
+  constructor(hostRef) {
+    index.registerInstance(this, hostRef);
+    this.active = false;
+  }
+  render() {
+    return [
+      index.h("label", null, index.h("input", { name: `${this.name}[${this.value}]`, type: "checkbox", checked: this.active }), index.h("span", { class: "checkmark" }), this.text)
+    ];
+  }
+};
+FilterCheckbox.style = filterCheckboxCss;
 
 const ColorList = [
   { name: "czarny", color: "#000000" },
@@ -52,23 +64,25 @@ const ColorList = [
   { name: "kolorowy", color: "", material: "multicolor" }
 ];
 
+const filterColorCss = "ks-filter-color{display:block;margin-bottom:8px;line-height:20px}ks-filter-color label{display:block;position:relative;padding-left:27px;cursor:pointer;-webkit-user-select:none;-ms-user-select:none;-moz-user-select:none;user-select:none}ks-filter-color input{position:absolute;cursor:pointer;opacity:0;height:0;width:0}ks-filter-color .checkmark{position:absolute;top:2px;left:0;height:20px;width:20px;background-color:#eee}ks-filter-color .checkmark:after{content:\"✓\";position:absolute;display:block;left:4px;color:white;opacity:0}ks-filter-color input:checked~.checkmark{background-color:#252525}ks-filter-color input:checked~.checkmark:after{opacity:1}ks-filter-color svg{margin-right:8px}";
+
 const FilterColor = class {
   constructor(hostRef) {
-    registerInstance(this, hostRef);
+    index.registerInstance(this, hostRef);
     this.active = false;
-    this.size = 16;
+    this.size = 20;
     this.metal = [
-      h("defs", null, h("linearGradient", { id: "Linear1", x1: "0", y1: "0", x2: "1", y2: "0", gradientUnits: "userSpaceOnUse", gradientTransform: "matrix(8,8,-8,8,13,13)" }, h("stop", { offset: "0", style: { stopColor: "white", stopOpacity: "0.4" } }), h("stop", { offset: "1", style: { stopColor: "white", stopOpacity: "0" } }))),
-      h("g", { transform: "matrix(1,0,0,1,-5,-29)" }, h("g", { transform: "matrix(1,0,0,1,0,24)" }, h("path", { d: "M21,21L5,21L21,5L21,21Z", style: { fill: "url(#Linear1)" } })))
+      index.h("defs", null, index.h("linearGradient", { id: "Linear1", x1: "0", y1: "0", x2: "1", y2: "0", gradientUnits: "userSpaceOnUse", gradientTransform: "matrix(8,8,-8,8,13,13)" }, index.h("stop", { offset: "0", style: { stopColor: "white", stopOpacity: "0.4" } }), index.h("stop", { offset: "1", style: { stopColor: "white", stopOpacity: "0" } }))),
+      index.h("g", { transform: "matrix(1.25,0,0,1.25,-6,-36)" }, index.h("g", { transform: "matrix(1,0,0,1,0,24)" }, index.h("path", { d: "M21,21L5,21L21,5L21,21Z", style: { fill: "url(#Linear1)" } })))
     ];
     this.wood = [
-      h("g", { transform: "matrix(0.6,0,0,0.6,-0,-0)" }, h("circle", { cx: "28.634", cy: "28.483", r: "6.483", style: { fill: "none", stroke: "black", strokeOpacity: "0.20", strokeWidth: "3px" } }), h("g", { transform: "matrix(2.30024,0,0,2.30024,-37.2311,-37.0348)" }, h("circle", { cx: "28.634", cy: "28.483", r: "6.483", style: { fill: "none", stroke: "black", strokeOpacity: "0.20", strokeWidth: "1.3px" } })), h("g", { transform: "matrix(3.70926,0,0,3.70926,-77.5769,-77.168)" }, h("circle", { cx: "28.634", cy: "28.483", r: "6.483", style: { fill: "none", stroke: "black", strokeOpacity: "0.20", strokeWidth: "0.94px" } })), h("g", { transform: "matrix(5.16472,0,0,5.16472,-119.253,-118.624)" }, h("circle", { cx: "28.634", cy: "28.483", r: "6.483", style: { fill: "none", stroke: "black", strokeOpacity: "0.20", strokeWidth: "0.77px" } })))
+      index.h("g", { transform: "matrix(0.6,0,0,0.6,-0,-0)" }, index.h("circle", { cx: "28.634", cy: "28.483", r: "6.483", style: { fill: "none", stroke: "black", strokeOpacity: "0.20", strokeWidth: "3px" } }), index.h("g", { transform: "matrix(2.30024,0,0,2.30024,-37.2311,-37.0348)" }, index.h("circle", { cx: "28.634", cy: "28.483", r: "6.483", style: { fill: "none", stroke: "black", strokeOpacity: "0.20", strokeWidth: "1.3px" } })), index.h("g", { transform: "matrix(3.70926,0,0,3.70926,-77.5769,-77.168)" }, index.h("circle", { cx: "28.634", cy: "28.483", r: "6.483", style: { fill: "none", stroke: "black", strokeOpacity: "0.20", strokeWidth: "0.94px" } })), index.h("g", { transform: "matrix(5.16472,0,0,5.16472,-119.253,-118.624)" }, index.h("circle", { cx: "28.634", cy: "28.483", r: "6.483", style: { fill: "none", stroke: "black", strokeOpacity: "0.20", strokeWidth: "0.77px" } })))
     ];
     this.multicolor = [
-      h("rect", { width: this.size / 2, height: this.size / 2, style: { fill: "#fe4a49" }, transform: "translate(0 0)" }),
-      h("rect", { width: this.size / 2, height: this.size / 2, style: { fill: "#2ab7ca" }, transform: "translate(" + this.size / 2 + " 0)" }),
-      h("rect", { width: this.size / 2, height: this.size / 2, style: { fill: "#fed766" }, transform: "translate(0 " + this.size / 2 + ")" }),
-      h("rect", { width: this.size / 2, height: this.size / 2, style: { fill: "#e6e6ea" }, transform: "translate(" + this.size / 2 + " " + this.size / 2 + ")" })
+      index.h("rect", { width: this.size / 2, height: this.size / 2, style: { fill: "#fe4a49" }, transform: "translate(0 0)" }),
+      index.h("rect", { width: this.size / 2, height: this.size / 2, style: { fill: "#2ab7ca" }, transform: "translate(" + this.size / 2 + " 0)" }),
+      index.h("rect", { width: this.size / 2, height: this.size / 2, style: { fill: "#fed766" }, transform: "translate(0 " + this.size / 2 + ")" }),
+      index.h("rect", { width: this.size / 2, height: this.size / 2, style: { fill: "#e6e6ea" }, transform: "translate(" + this.size / 2 + " " + this.size / 2 + ")" })
     ];
   }
   componentWillLoad() {
@@ -79,36 +93,12 @@ const FilterColor = class {
     }
   }
   render() {
-    return [
-      h("label", null, h("svg", { width: this.size, height: this.size }, h("rect", { width: this.size, height: this.size, style: { fill: this.hex } }), this.material == "metal" ? this.metal : null, this.material == "wood" ? this.wood : null, this.material == "multicolor" ? this.multicolor : null), h("input", { style: { marginTop: "-2px" }, class: "uk-checkbox", name: this.name + "[" + this.filterId + "]", type: "checkbox", checked: this.active }), " ", this.color),
-      h("br", null)
-    ];
+    return index.h("label", null, index.h("svg", { width: this.size, height: this.size }, index.h("rect", { width: this.size, height: this.size, style: { fill: this.hex } }), this.material == "metal" ? this.metal : null, this.material == "wood" ? this.wood : null, this.material == "multicolor" ? this.multicolor : null), index.h("input", { name: `${this.name}[${this.value}]`, type: "checkbox", checked: this.active }), index.h("span", { class: "checkmark" }), this.color);
   }
 };
+FilterColor.style = filterColorCss;
 
-const FilterSidebar = class {
-  constructor(hostRef) {
-    registerInstance(this, hostRef);
-  }
-  componentDidLoad() {
-    const overlay = this.root.querySelector("#filter-overlay");
-    overlay.addEventListener("pointerdown", function (event) {
-      const bar = overlay.querySelector("div");
-      if (overlay.classList.contains("uk-open") && event.clientX > bar.offsetWidth) {
-        UIkit.offcanvas(overlay).hide();
-      }
-    });
-  }
-  render() {
-    return [
-      h("button", { class: "uk-button uk-button-danger uk-width-1-1", type: "button", "uk-toggle": "target: #filter-overlay" }, "FILTRUJ"),
-      h("div", { id: "filter-overlay", "uk-offcanvas": "overlay: true; bg-close: false;", style: { zIndex: "2147483648" } }, h("div", { class: "uk-offcanvas-bar uk-padding-small" }, h("div", { class: "uk-flex uk-flex-between uk-flex-top" }, h("span", { style: { marginTop: "5px" }, class: "uk-text-uppercase" }, "Filtrowanie"), h("button", { class: "uk-offcanvas-close", type: "button", "uk-close": true }), h("hr", null)), h("br", null), h("form", { method: "POST", action: this.baseUrl }, h("slot", null), h("a", { href: this.baseUrl, class: "uk-button uk-button-secondary uk-width-1-1 uk-margin-top" }, "WYCZY\u015A\u0106 FILTRY"), h("input", { type: "submit", class: "uk-button uk-button-danger uk-width-1-1 uk-margin-small-top", value: "ZOBACZ FILTRY" }))))
-    ];
-  }
-  get root() { return getElement(this); }
-};
-
-var nouislider = createCommonjsModule(function (module, exports) {
+var nouislider = _commonjsHelpers.createCommonjsModule(function (module, exports) {
 /*! nouislider - 12.1.0 - 10/25/2018 */
 (function(factory) {
     {
@@ -2411,13 +2401,14 @@ var nouislider = createCommonjsModule(function (module, exports) {
 });
 });
 
-const nouisliderCss = "/*! nouislider - 12.1.0 - 10/25/2018 */.noUi-target,.noUi-target *{-webkit-touch-callout:none;-webkit-tap-highlight-color:rgba(0, 0, 0, 0);-webkit-user-select:none;-ms-touch-action:none;touch-action:none;-ms-user-select:none;-moz-user-select:none;user-select:none;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}.noUi-target{position:relative;direction:ltr;padding:0 15px;margin:30px 0 10px 0}.noUi-base,.noUi-connects{width:100%;height:100%;position:relative;z-index:1}.noUi-base:before,.noUi-base:after{width:15px;content:\"\";position:absolute;top:0;height:100%;display:block}.noUi-base:before{left:-15px}.noUi-base:after{left:100%}.noUi-connects{overflow:hidden;z-index:0}.noUi-connect,.noUi-origin{will-change:transform;position:absolute;z-index:1;top:0;left:0;height:100%;width:100%;-ms-transform-origin:0 0;-webkit-transform-origin:0 0;transform-origin:0 0}html:not([dir=\"rtl\"]) .noUi-horizontal .noUi-origin{left:auto;right:0}.noUi-vertical .noUi-origin{width:0}.noUi-horizontal .noUi-origin{height:0}.noUi-handle{position:absolute}.noUi-state-tap .noUi-connect,.noUi-state-tap .noUi-origin{-webkit-transition:transform 0.3s;-webkit-transition:-webkit-transform 0.3s;transition:-webkit-transform 0.3s;transition:transform 0.3s;transition:transform 0.3s, -webkit-transform 0.3s}.noUi-state-drag *{cursor:inherit !important}.noUi-horizontal{height:18px}.noUi-horizontal .noUi-handle{width:34px;height:28px;left:-17px;top:-6px}.noUi-vertical{width:18px}.noUi-vertical .noUi-handle{width:28px;height:34px;left:-6px;top:-17px}html:not([dir=\"rtl\"]) .noUi-horizontal .noUi-handle{right:-17px;left:auto}.noUi-target{background:#FAFAFA;border-radius:4px;border:1px solid #D3D3D3;-webkit-box-shadow:inset 0 1px 1px #F0F0F0, 0 3px 6px -5px #BBB;box-shadow:inset 0 1px 1px #F0F0F0, 0 3px 6px -5px #BBB}.noUi-connects{border-radius:3px}.noUi-connect{background:rgb(54, 54, 54)}.noUi-draggable{cursor:ew-resize}.noUi-vertical .noUi-draggable{cursor:ns-resize}.noUi-handle{border:1px solid #D9D9D9;border-radius:3px;background:#FFF;cursor:default;-webkit-box-shadow:inset 0 0 1px #FFF, inset 0 1px 7px #EBEBEB, 0 3px 6px -3px #BBB;box-shadow:inset 0 0 1px #FFF, inset 0 1px 7px #EBEBEB, 0 3px 6px -3px #BBB}.noUi-active{-webkit-box-shadow:inset 0 0 1px #FFF, inset 0 1px 7px #DDD, 0 3px 6px -3px #BBB;box-shadow:inset 0 0 1px #FFF, inset 0 1px 7px #DDD, 0 3px 6px -3px #BBB}.noUi-handle:before,.noUi-handle:after{content:\"\";display:block;position:absolute;height:14px;width:1px;background:rgb(231, 231, 231);left:14px;top:6px}.noUi-handle:after{left:17px}.noUi-vertical .noUi-handle:before,.noUi-vertical .noUi-handle:after{width:14px;height:1px;left:6px;top:14px}.noUi-vertical .noUi-handle:after{top:17px}[disabled] .noUi-connect{background:#B8B8B8}[disabled].noUi-target,[disabled].noUi-handle,[disabled] .noUi-handle{cursor:not-allowed}.noUi-pips,.noUi-pips *{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}.noUi-pips{position:absolute;color:#AAA}.noUi-value{position:absolute;white-space:nowrap;text-align:center;font-size:14px}.noUi-value-sub{color:#ccc;font-size:10px}.noUi-marker{position:absolute;background:#CCC}.noUi-marker-sub{background:#AAA}.noUi-marker-large{background:#AAA}.noUi-pips-horizontal{padding:15px 0;height:40px;top:100%;left:0;width:90%;margin:0 5%}.noUi-value-horizontal{-webkit-transform:translate(-50%, 50%);-ms-transform:translate(-50%, 50%);transform:translate(-50%, 50%)}.noUi-rtl .noUi-value-horizontal{-webkit-transform:translate(50%, 50%);-ms-transform:translate(50%, 50%);transform:translate(50%, 50%)}.noUi-marker-horizontal.noUi-marker{margin-left:-1px;width:1px;height:5px}.noUi-marker-horizontal.noUi-marker-sub{height:10px}.noUi-marker-horizontal.noUi-marker-large{height:10px}.noUi-pips-vertical{padding:0 10px;height:100%;top:0;left:100%}.noUi-value-vertical{-webkit-transform:translate(0, -50%);-ms-transform:translate(0, -50%, 0);transform:translate(0, -50%, 0);padding-left:25px}.noUi-rtl .noUi-value-vertical{-webkit-transform:translate(0, 50%);-ms-transform:translate(0, 50%);transform:translate(0, 50%)}.noUi-marker-vertical.noUi-marker{width:5px;height:2px;margin-top:-1px}.noUi-marker-vertical.noUi-marker-sub{width:10px}.noUi-marker-vertical.noUi-marker-large{width:15px}.noUi-tooltip{font-size:13px;display:block;position:absolute;border:1px solid #D9D9D9;border-radius:3px;background:#fff;color:#000;padding:4px 7px 3px 7px;text-align:center;white-space:nowrap}.noUi-horizontal .noUi-tooltip{-webkit-transform:translate(-50%, 0);-ms-transform:translate(-50%, 0);transform:translate(-50%, 0);left:50%;bottom:120%}.noUi-vertical .noUi-tooltip{-webkit-transform:translate(0, -50%);-ms-transform:translate(0, -50%);transform:translate(0, -50%);top:50%;right:120%}";
+const filterSliderCss = "/*! nouislider - 12.1.0 - 10/25/2018 */.noUi-target,.noUi-target *{-webkit-touch-callout:none;-webkit-tap-highlight-color:rgba(0, 0, 0, 0);-webkit-user-select:none;-ms-touch-action:none;touch-action:none;-ms-user-select:none;-moz-user-select:none;user-select:none;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}.noUi-target{position:relative;direction:ltr;padding:0 15px;margin:10px 0 40px 0}.noUi-base,.noUi-connects{width:100%;height:100%;position:relative;z-index:1}.noUi-base:before,.noUi-base:after{width:15px;content:\"\";position:absolute;top:0;height:100%;display:block}.noUi-base:before{left:-15px}.noUi-base:after{left:100%}.noUi-connects{overflow:hidden;z-index:0}.noUi-connect,.noUi-origin{will-change:transform;position:absolute;z-index:1;top:0;left:0;height:100%;width:100%;-ms-transform-origin:0 0;-webkit-transform-origin:0 0;transform-origin:0 0}html:not([dir=\"rtl\"]) .noUi-horizontal .noUi-origin{left:auto;right:0}.noUi-vertical .noUi-origin{width:0}.noUi-horizontal .noUi-origin{height:0}.noUi-handle{position:absolute}.noUi-state-tap .noUi-connect,.noUi-state-tap .noUi-origin{-webkit-transition:transform 0.3s;-webkit-transition:-webkit-transform 0.3s;transition:-webkit-transform 0.3s;transition:transform 0.3s;transition:transform 0.3s, -webkit-transform 0.3s}.noUi-state-drag *{cursor:inherit !important}.noUi-horizontal{height:18px}.noUi-horizontal .noUi-handle{width:34px;height:28px;left:-17px;top:-6px}.noUi-vertical{width:18px}.noUi-vertical .noUi-handle{width:28px;height:34px;left:-6px;top:-17px}html:not([dir=\"rtl\"]) .noUi-horizontal .noUi-handle{right:-17px;left:auto}.noUi-target{background:#FAFAFA;border-radius:4px;border:1px solid #D3D3D3;-webkit-box-shadow:inset 0 1px 1px #F0F0F0, 0 3px 6px -5px #BBB;box-shadow:inset 0 1px 1px #F0F0F0, 0 3px 6px -5px #BBB}.noUi-connects{border-radius:3px}.noUi-connect{background:rgb(54, 54, 54)}.noUi-draggable{cursor:ew-resize}.noUi-vertical .noUi-draggable{cursor:ns-resize}.noUi-handle{border:1px solid #D9D9D9;border-radius:3px;background:#FFF;cursor:default;-webkit-box-shadow:inset 0 0 1px #FFF, inset 0 1px 7px #EBEBEB, 0 3px 6px -3px #BBB;box-shadow:inset 0 0 1px #FFF, inset 0 1px 7px #EBEBEB, 0 3px 6px -3px #BBB}.noUi-active{-webkit-box-shadow:inset 0 0 1px #FFF, inset 0 1px 7px #DDD, 0 3px 6px -3px #BBB;box-shadow:inset 0 0 1px #FFF, inset 0 1px 7px #DDD, 0 3px 6px -3px #BBB}.noUi-handle:before,.noUi-handle:after{content:\"\";display:block;position:absolute;height:14px;width:1px;background:rgb(231, 231, 231);left:14px;top:6px}.noUi-handle:after{left:17px}.noUi-vertical .noUi-handle:before,.noUi-vertical .noUi-handle:after{width:14px;height:1px;left:6px;top:14px}.noUi-vertical .noUi-handle:after{top:17px}[disabled] .noUi-connect{background:#B8B8B8}[disabled].noUi-target,[disabled].noUi-handle,[disabled] .noUi-handle{cursor:not-allowed}.noUi-pips,.noUi-pips *{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}.noUi-pips{position:absolute;color:#AAA}.noUi-value{position:absolute;white-space:nowrap;text-align:center;font-size:14px}.noUi-value-sub{color:#ccc;font-size:10px}.noUi-marker{position:absolute;background:#CCC}.noUi-marker-sub{background:#AAA}.noUi-marker-large{background:#AAA}.noUi-pips-horizontal{padding:15px 0;height:40px;top:100%;left:0;width:90%;margin:0 5%}.noUi-value-horizontal{-webkit-transform:translate(-50%, 50%);-ms-transform:translate(-50%, 50%);transform:translate(-50%, 50%)}.noUi-rtl .noUi-value-horizontal{-webkit-transform:translate(50%, 50%);-ms-transform:translate(50%, 50%);transform:translate(50%, 50%)}.noUi-marker-horizontal.noUi-marker{margin-left:-1px;width:1px;height:5px}.noUi-marker-horizontal.noUi-marker-sub{height:10px}.noUi-marker-horizontal.noUi-marker-large{height:10px}.noUi-pips-vertical{padding:0 10px;height:100%;top:0;left:100%}.noUi-value-vertical{-webkit-transform:translate(0, -50%);-ms-transform:translate(0, -50%, 0);transform:translate(0, -50%, 0);padding-left:25px}.noUi-rtl .noUi-value-vertical{-webkit-transform:translate(0, 50%);-ms-transform:translate(0, 50%);transform:translate(0, 50%)}.noUi-marker-vertical.noUi-marker{width:5px;height:2px;margin-top:-1px}.noUi-marker-vertical.noUi-marker-sub{width:10px}.noUi-marker-vertical.noUi-marker-large{width:15px}.noUi-tooltip{font-size:13px;display:block;position:absolute;border:1px solid #D9D9D9;border-radius:3px;background:#fff;color:#000;padding:4px 7px 3px 7px;text-align:center;white-space:nowrap}.noUi-horizontal .noUi-tooltip{-webkit-transform:translate(-50%, 0);-ms-transform:translate(-50%, 0);transform:translate(-50%, 0);left:50%;bottom:-140%}.noUi-vertical .noUi-tooltip{-webkit-transform:translate(0, -50%);-ms-transform:translate(0, -50%);transform:translate(0, -50%);top:50%;right:120%}ks-filter-slider{display:block;padding:0 0 10px 0}";
 
 const FilterSlider = class {
   constructor(hostRef) {
-    registerInstance(this, hostRef);
+    index.registerInstance(this, hostRef);
     this.snap = false;
     this.step = 0;
+    this.steps = "";
     this.handleActive = false;
   }
   swipeLeftHandler(event) {
@@ -2427,96 +2418,113 @@ const FilterSlider = class {
     event.stopPropagation();
   }
   componentDidLoad() {
-    const slider = this.el.firstElementChild;
-    if (this.ids)
-      this.idArray = this.ids.split(", ");
-    this.valueArray = this.values.replace(",", ".").split("; ");
-    const rangeMap = this.convertValuesToRangeMap(this.valueArray);
+    const slider = this.root.firstElementChild;
+    const steps = this.steps.split(", ").map(value => parseInt(value));
+    const range = this.range(this.values.split(", ").map(value => parseFloat(value)), steps);
+    const step = steps[0] ? steps[0] : this.step;
+    const asint = this.step || this.steps;
     nouislider.create(slider, {
-      start: [rangeMap["min"], rangeMap["max"]],
+      start: [range["min"], range["max"]],
       snap: this.snap,
-      step: this.step,
+      step: step,
       tooltips: true,
       connect: true,
-      range: rangeMap,
+      range: range,
       format: {
         to: function (value) {
-          return value;
+          return asint ? Math.round(value) : value;
         },
         from: function (value) {
-          return value;
+          return asint ? Math.round(value) : value;
         }
       }
     });
     const sliderInstance = slider;
-    if (this.ids) {
-      sliderInstance.noUiSlider.on("set", () => {
-        const range = sliderInstance.noUiSlider.get();
-        const from = this.valueArray.findIndex(value => parseFloat(value) == parseFloat(range[0]));
-        const to = this.valueArray.findIndex(value => parseFloat(value) == parseFloat(range[1]));
-        this.fromId = this.idArray[from];
-        this.toId = this.idArray[to];
-      });
-    }
-    const fromIndex = this.idArray.findIndex(id => parseInt(id) == this.from);
-    const toIndex = this.idArray.findIndex(id => parseInt(id) == this.to);
-    const from = this.from ? parseFloat(this.valueArray[fromIndex]) : null;
-    const to = this.to ? parseFloat(this.valueArray[toIndex]) : null;
-    sliderInstance.noUiSlider.set([from, to]);
+    sliderInstance.noUiSlider.on("set", () => {
+      const range = sliderInstance.noUiSlider.get();
+      this.from = parseFloat(range[0]);
+      this.to = parseFloat(range[1]);
+    });
+    sliderInstance.noUiSlider.set([this.from, this.to]);
   }
-  convertValuesToRangeMap(values) {
-    let rangeMap = {};
-    let step = 100 / (values.length - 1);
-    let length = values.length;
-    for (let i = 0; i < length; i++) {
-      const value = parseFloat(values[i]);
-      if (i == 0)
-        rangeMap["min"] = value;
-      else if (i == length - 1)
-        rangeMap["max"] = value;
+  range(values, steps) {
+    return values.reduce((o, value, index) => {
+      const step = steps[index] ? [steps[index]] : [];
+      if (index == 0)
+        o["min"] = [value];
+      else if (index == values.length - 1)
+        o["max"] = [value];
       else
-        rangeMap[(step * i).toString() + "%"] = value;
-    }
-    return rangeMap;
+        o[(index / (values.length - 1)) * 100 + "%"] = [value, ...step];
+      return o;
+    }, {});
   }
   render() {
-    const disabled = !this.fromId || !this.toId;
+    const disabled = !this.from || !this.to;
     return [
-      h("div", null),
-      h("input", { type: "hidden", name: this.name, value: this.fromId + "," + this.toId, disabled: disabled })
+      index.h("div", null),
+      index.h("input", { type: "hidden", name: this.name, value: this.from + "," + this.to, disabled: disabled })
     ];
   }
-  get el() { return getElement(this); }
+  get root() { return index.getElement(this); }
 };
-FilterSlider.style = nouisliderCss;
+FilterSlider.style = filterSliderCss;
+
+const filteringCss = "ks-filtering{display:block}ks-filtering>ks-button{background-color:white}ks-filtering .heading{display:block;margin-bottom:30px;font-size:1.3rem;font-family:var(--font-emphasis);font-weight:700}ks-filtering .clear{margin:30px 0 5px 0}";
+
+const Filtering = class {
+  constructor(hostRef) {
+    index.registerInstance(this, hostRef);
+  }
+  render() {
+    return [
+      index.h("ks-button", { narrow: true, muted: true, border: true, name: "Filtruj", left: true, icon: "filter", onClick: () => this.root.querySelector('ks-sidepanel').show() }),
+      index.h("ks-sidepanel", { left: true }, index.h("span", { class: "heading" }, "Filtrowanie"), index.h("form", { method: "POST", action: this.baseUrl }, index.h("slot", null), index.h("ks-button", { class: "clear", border: true, link: this.baseUrl, name: "Wyczy\u015B\u0107 Filtry" }), index.h("ks-button", { submit: true, secondary: true, name: "Zobacz filtry" })))
+    ];
+  }
+  get root() { return index.getElement(this); }
+};
+Filtering.style = filteringCss;
+
+const listingHeaderCss = "ks-listing-header{display:block;position:relative;z-index:1;padding:15px;-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow);text-align:center;font-size:0.875rem}ks-listing-header *[slot=title]{display:block;margin:0 0 5px 0;font-family:var(--font-emphasis);font-weight:700;font-size:1.3rem;line-height:1.3}@media (max-width: 960px){ks-listing-header *[slot=title]{font-size:1.105rem}}ks-listing-header *[slot=description]{max-width:1200px;margin:0 auto 15px auto;padding:0 15px;line-height:1.5}ks-listing-header *[slot=categories]>*{display:inline-block;padding:3px 10px;margin-bottom:3px;line-height:1.5;background:#222222;color:#ffffff !important;vertical-align:middle;white-space:nowrap;border-radius:2px;text-decoration:none !important}";
 
 const ListingHeader = class {
   constructor(hostRef) {
-    registerInstance(this, hostRef);
+    index.registerInstance(this, hostRef);
+    this.secondSection = false;
+  }
+  componentWillLoad() {
+    if (this.root.querySelector("*[slot=description], *[slot=categories]"))
+      this.secondSection = true;
   }
   render() {
-    return (h("div", { class: "uk-position-relative", style: { minHeight: "45px" } }, h("div", { class: "uk-flex uk-flex-center uk-flex-middle", style: { minHeight: "45px" } }, h("div", null, h("div", { class: "ks-title-slot" }, h("slot", { name: "title" })), h("slot", { name: "breadcrumbs" }))), h("div", { class: "uk-margin-small-top uk-width-1-1", "uk-toggle": "mode: media; media: 641; cls: uk-position-absolute uk-position-top uk-margin-remove" }, h("ks-flex", { between: true, middle: true, gutter: true, reverse: true }, h("slot", null)))));
+    return [
+      index.h("slot", { name: "title" }),
+      index.h("slot", { name: "breadcrumbs" }),
+      this.secondSection ? index.h("hr", null) : null,
+      index.h("slot", { name: "description" }),
+      index.h("slot", { name: "categories" })
+    ];
   }
-  componentDidLoad() {
-    const parent = this.root.querySelector("div > div > ks-flex > div");
-    const elements = parent.querySelectorAll("ks-sorting, ks-filter-sidebar");
-    for (let i = 0; i < elements.length; i++) {
-      const element = elements[i];
-      const div = document.createElement("div");
-      div.setAttribute("uk-toggle", "mode: media; media: (max-width: 640px); cls: uk-flex-1");
-      parent.replaceChild(div, element);
-      div.appendChild(element);
-    }
-    const title = this.root.querySelector(".ks-title-slot > *");
-    title.classList.add("uk-h2", "uk-text-center", "ks-text-decorated", "uk-text-bold");
-    title.style.marginBottom = "3px";
-  }
-  get root() { return getElement(this); }
+  get root() { return index.getElement(this); }
 };
+ListingHeader.style = listingHeaderCss;
+
+const listingNavigationCss = "ks-listing-navigation{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;padding:15px 0px}ks-listing-navigation ks-filtering{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1;margin:0 20px 0 0}ks-listing-navigation ks-sorting{-webkit-box-ordinal-group:4;-ms-flex-order:3;order:3;margin:0 0 0 20px}ks-listing-navigation ks-pagination{-webkit-box-ordinal-group:3;-ms-flex-order:2;order:2}@media (max-width: 640px){ks-listing-navigation{-ms-flex-wrap:wrap;flex-wrap:wrap}ks-listing-navigation ks-filtering{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1;margin:0 3px 6px 0;width:40%;min-width:144px;-webkit-box-sizing:border-box;box-sizing:border-box}ks-listing-navigation ks-sorting{-webkit-box-ordinal-group:3;-ms-flex-order:2;order:2;margin:0 0 6px 3px;width:40%;min-width:144px;-webkit-box-sizing:border-box;box-sizing:border-box}ks-listing-navigation ks-pagination{-webkit-box-ordinal-group:4;-ms-flex-order:3;order:3;-webkit-box-flex:1;-ms-flex:1;flex:1;min-width:100%}}@media (max-width: 344px){ks-listing-navigation ks-filtering,ks-listing-navigation ks-sorting{width:48.7%;min-width:120px}}";
+
+const ListingNavigation = class {
+  constructor(hostRef) {
+    index.registerInstance(this, hostRef);
+  }
+  render() { return index.h("slot", null); }
+};
+ListingNavigation.style = listingNavigationCss;
+
+const paginationCss = "ks-pagination{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}ks-pagination a{display:inline-block;width:42px;height:42px;line-height:42px;padding:0 10px;-webkit-box-sizing:border-box;box-sizing:border-box;border:1px solid #e5e5e5;background-color:white;color:#252525;vertical-align:middle;font-size:.875rem;text-align:center;text-decoration:none;text-transform:none;-webkit-transition:border 0.3s ease;transition:border 0.3s ease}ks-pagination a:hover{border:1px solid #b9b9b9;text-decoration:none;color:#252525}ks-pagination a.active{border:1px solid #252525;background-color:#252525;color:white;cursor:default}.separator{width:15px}";
 
 const Pagination = class {
   constructor(hostRef) {
-    registerInstance(this, hostRef);
+    index.registerInstance(this, hostRef);
     this.base = "";
     this.pattern = "";
     this.space = 6;
@@ -2538,11 +2546,6 @@ const Pagination = class {
   render() {
     if (!this.count || !this.current || this.count < 2)
       return;
-    const inactive = "uk-button uk-button-default";
-    const active = "uk-button uk-button-secondary";
-    const style = { width: "42px", height: "42px", backgroundColor: "white" };
-    const styleActive = { width: "42px", height: "42px", cursor: "auto" };
-    const styleSeparator = { width: "15px" };
     let pages = new Array();
     pages.push(this.current);
     let space = this.space;
@@ -2569,41 +2572,42 @@ const Pagination = class {
         break;
     }
     pages.sort((a, b) => a - b);
-    return (h("div", { class: "uk-flex uk-flex-center uk-flex-middle uk-padding-small uk-margin-remove" }, this.current > 1 ?
-      h("a", { href: this.link(this.current - 1), class: inactive, style: style }, h("span", { "uk-icon": "chevron-left" }))
-      : null, pages.map(page => {
-      if (page == this.current) {
-        return h("a", { class: active, style: styleActive }, page);
-      }
-      if (page == pages[0] && this.edges) {
-        let ret = [h("a", { href: this.link(1), class: inactive, style: style }, "1")];
-        if (page != 1)
-          ret.push(h("div", { style: styleSeparator }));
-        return ret;
-      }
-      if (page == pages[pages.length - 1] && this.edges) {
-        let ret = new Array();
-        if (page != this.count)
-          ret.push(h("div", { style: styleSeparator }));
-        ret.push(h("a", { href: this.link(this.count), class: inactive, style: style }, this.count));
-        return ret;
-      }
-      return h("a", { href: this.link(page), class: inactive, style: style }, page);
-    }), this.current < this.count ?
-      h("a", { href: this.link(this.current + 1), "aria-label": this.current + 1, class: inactive, style: style }, h("span", { "uk-icon": "icon: chevron-right;" }))
-      : null));
+    return [
+      this.current > 1 ?
+        index.h("a", { href: this.link(this.current - 1) }, index.h("ks-icon", { name: "chevron-left", size: 0.9 }))
+        : null,
+      pages.map(page => {
+        if (page == this.current)
+          return index.h("a", { class: "active" }, page.toString());
+        if (page == pages[0] && this.edges) {
+          const ret = index.h("a", { href: this.link(1) }, "1");
+          return page == 1 ? ret : [ret, index.h("div", { class: "separator" })];
+        }
+        if (page == pages[pages.length - 1] && this.edges) {
+          const ret = index.h("a", { href: this.link(this.count) }, this.count);
+          return page == this.count ? ret : [index.h("div", { class: "separator" }), ret];
+        }
+        return index.h("a", { href: this.link(page) }, page.toString());
+      }),
+      this.current < this.count ?
+        index.h("a", { href: this.link(this.current - 1) }, index.h("ks-icon", { name: "chevron-right", size: 0.9 }))
+        : null
+    ];
   }
   link(index) {
     return this.base + this.pattern + index.toString();
   }
 };
+Pagination.style = paginationCss;
+
+const sortingCss = "ks-sorting ks-button{background-color:white}";
 
 const Sorting = class {
   constructor(hostRef) {
-    registerInstance(this, hostRef);
+    index.registerInstance(this, hostRef);
   }
   render() {
-    return (h("div", null, h("form", { action: this.post, method: "post", style: { margin: "0" } }, h("input", { type: "hidden", name: "sortowanie", value: "0" })), h("button", { class: "uk-button uk-button-danger uk-width-1-1", type: "button" }, "SORTUJ"), h("div", { "uk-dropdown": true, id: "test" }, h("ul", { class: "uk-nav uk-dropdown-nav" }, h("li", null, h("a", { onClick: () => this.Sort(1) }, "Polecane ", h("span", { class: "uk-float-right", "uk-icon": "icon: check" }))), h("li", null, h("a", { onClick: () => this.Sort(2) }, "Popularne ", h("span", { class: "uk-float-right", "uk-icon": "icon: users" }))), h("li", null, h("a", { onClick: () => this.Sort(3) }, "Najnowsze ", h("span", { class: "uk-float-right", "uk-icon": "icon: future" }))), h("hr", null), h("li", null, h("a", { onClick: () => this.Sort(4) }, "Najta\u0144sze ", h("span", { class: "uk-float-right", "uk-icon": "icon: minus-circle" }))), h("li", null, h("a", { onClick: () => this.Sort(5) }, "Najdro\u017Csze ", h("span", { class: "uk-float-right", "uk-icon": "icon: plus-circle" })))))));
+    return (index.h("div", null, index.h("form", { action: this.post, method: "post", style: { margin: "0" } }, index.h("input", { type: "hidden", name: "sortowanie", value: "0" })), index.h("ks-button", { narrow: true, muted: true, border: true, name: "Sortuj", icon: "shuffle" }), index.h("div", { "uk-dropdown": true, id: "test" }, index.h("ul", { class: "uk-nav uk-dropdown-nav" }, index.h("li", null, index.h("a", { onClick: () => this.Sort(1) }, "Polecane ", index.h("span", { class: "uk-float-right", "uk-icon": "icon: check" }))), index.h("li", null, index.h("a", { onClick: () => this.Sort(2) }, "Popularne ", index.h("span", { class: "uk-float-right", "uk-icon": "icon: users" }))), index.h("li", null, index.h("a", { onClick: () => this.Sort(3) }, "Najnowsze ", index.h("span", { class: "uk-float-right", "uk-icon": "icon: future" }))), index.h("hr", null), index.h("li", null, index.h("a", { onClick: () => this.Sort(4) }, "Najta\u0144sze ", index.h("span", { class: "uk-float-right", "uk-icon": "icon: minus-circle" }))), index.h("li", null, index.h("a", { onClick: () => this.Sort(5) }, "Najdro\u017Csze ", index.h("span", { class: "uk-float-right", "uk-icon": "icon: plus-circle" })))))));
   }
   componentDidLoad() {
     this.dropdown = this.root.querySelector("div[uk-dropdown]");
@@ -2614,7 +2618,16 @@ const Sorting = class {
     this.input.value = value.toString();
     this.form.submit();
   }
-  get root() { return getElement(this); }
+  get root() { return index.getElement(this); }
 };
+Sorting.style = sortingCss;
 
-export { Filter as ks_filter, FilterCheckbox as ks_filter_checkbox, FilterColor as ks_filter_color, FilterSidebar as ks_filter_sidebar, FilterSlider as ks_filter_slider, ListingHeader as ks_listing_header, Pagination as ks_pagination, Sorting as ks_sorting };
+exports.ks_filter = Filter;
+exports.ks_filter_checkbox = FilterCheckbox;
+exports.ks_filter_color = FilterColor;
+exports.ks_filter_slider = FilterSlider;
+exports.ks_filtering = Filtering;
+exports.ks_listing_header = ListingHeader;
+exports.ks_listing_navigation = ListingNavigation;
+exports.ks_pagination = Pagination;
+exports.ks_sorting = Sorting;

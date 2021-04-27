@@ -1,15 +1,15 @@
-import { Component, h, Prop, State } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 import { ColorList } from './colors';
 export class FilterColor {
   constructor() {
     this.active = false;
-    this.size = 16;
+    this.size = 20;
     this.metal = [
       h("defs", null,
         h("linearGradient", { id: "Linear1", x1: "0", y1: "0", x2: "1", y2: "0", gradientUnits: "userSpaceOnUse", gradientTransform: "matrix(8,8,-8,8,13,13)" },
           h("stop", { offset: "0", style: { stopColor: "white", stopOpacity: "0.4" } }),
           h("stop", { offset: "1", style: { stopColor: "white", stopOpacity: "0" } }))),
-      h("g", { transform: "matrix(1,0,0,1,-5,-29)" },
+      h("g", { transform: "matrix(1.25,0,0,1.25,-6,-36)" },
         h("g", { transform: "matrix(1,0,0,1,0,24)" },
           h("path", { d: "M21,21L5,21L21,5L21,21Z", style: { fill: "url(#Linear1)" } })))
     ];
@@ -38,20 +38,23 @@ export class FilterColor {
     }
   }
   render() {
-    return [
-      h("label", null,
-        h("svg", { width: this.size, height: this.size },
-          h("rect", { width: this.size, height: this.size, style: { fill: this.hex } }),
-          this.material == "metal" ? this.metal : null,
-          this.material == "wood" ? this.wood : null,
-          this.material == "multicolor" ? this.multicolor : null),
-        h("input", { style: { marginTop: "-2px" }, class: "uk-checkbox", name: this.name + "[" + this.filterId + "]", type: "checkbox", checked: this.active }),
-        " ",
-        this.color),
-      h("br", null)
-    ];
+    return h("label", null,
+      h("svg", { width: this.size, height: this.size },
+        h("rect", { width: this.size, height: this.size, style: { fill: this.hex } }),
+        this.material == "metal" ? this.metal : null,
+        this.material == "wood" ? this.wood : null,
+        this.material == "multicolor" ? this.multicolor : null),
+      h("input", { name: `${this.name}[${this.value}]`, type: "checkbox", checked: this.active }),
+      h("span", { class: "checkmark" }),
+      this.color);
   }
   static get is() { return "ks-filter-color"; }
+  static get originalStyleUrls() { return {
+    "$": ["filter-color.css"]
+  }; }
+  static get styleUrls() { return {
+    "$": ["filter-color.css"]
+  }; }
   static get properties() { return {
     "name": {
       "type": "string",
@@ -70,7 +73,7 @@ export class FilterColor {
       "attribute": "name",
       "reflect": false
     },
-    "filterId": {
+    "value": {
       "type": "string",
       "mutable": false,
       "complexType": {
@@ -84,7 +87,7 @@ export class FilterColor {
         "tags": [],
         "text": ""
       },
-      "attribute": "filter-id",
+      "attribute": "value",
       "reflect": false
     },
     "color": {
@@ -122,9 +125,5 @@ export class FilterColor {
       "reflect": false,
       "defaultValue": "false"
     }
-  }; }
-  static get states() { return {
-    "hex": {},
-    "material": {}
   }; }
 }

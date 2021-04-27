@@ -1,5 +1,7 @@
 import { r as registerInstance, h } from './index-2d9093e5.js';
 
+const breadcrumbsCss = "ks-breadcrumbs{display:block}";
+
 const Breadcrumbs = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
@@ -15,5 +17,6 @@ const Breadcrumbs = class {
     return (h("ul", { class: "uk-breadcrumb uk-margin-remove " + alignment }, h("slot", null)));
   }
 };
+Breadcrumbs.style = breadcrumbsCss;
 
 export { Breadcrumbs as ks_breadcrumbs };
