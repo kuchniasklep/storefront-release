@@ -13,10 +13,13 @@ export class FilterSlider {
   clickHandler(event) {
     event.stopPropagation();
   }
+  componentWillLoad() {
+    this.valueArray = this.values.split(", ").map(value => parseFloat(value));
+  }
   componentDidLoad() {
     const slider = this.root.firstElementChild;
     const steps = this.steps.split(", ").map(value => parseInt(value));
-    const range = this.range(this.values.split(", ").map(value => parseFloat(value)), steps);
+    const range = this.range(this.valueArray, steps);
     const step = steps[0] ? steps[0] : this.step;
     const asint = this.step || this.steps;
     noUiSlider.create(slider, {
@@ -56,7 +59,8 @@ export class FilterSlider {
     }, {});
   }
   render() {
-    const disabled = !this.from || !this.to;
+    const disabled = !this.from || !this.to || (this.from == this.valueArray[0] &&
+      this.to == this.valueArray[this.valueArray.length - 1]);
     return [
       h("div", null),
       h("input", { type: "hidden", name: this.name, value: this.from + "," + this.to, disabled: disabled })

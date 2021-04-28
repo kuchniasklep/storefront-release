@@ -7,10 +7,11 @@ export declare class FilterSlider {
   steps: string;
   from: number;
   to: number;
-  valueArray: string[];
+  valueArray: number[];
   handleActive: boolean;
   swipeLeftHandler(event: Event): void;
   clickHandler(event: Event): void;
+  componentWillLoad(): void;
   componentDidLoad(): void;
   private range;
   render(): any[];

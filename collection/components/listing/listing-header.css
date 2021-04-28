@@ -5,6 +5,7 @@ ks-listing-header {
     padding: 15px;
 
     box-shadow: var(--card-shadow);
+    background-color: white;
     text-align: center;
     font-size: 0.875rem;
 }

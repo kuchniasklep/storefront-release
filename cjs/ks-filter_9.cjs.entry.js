@@ -2417,10 +2417,13 @@ const FilterSlider = class {
   clickHandler(event) {
     event.stopPropagation();
   }
+  componentWillLoad() {
+    this.valueArray = this.values.split(", ").map(value => parseFloat(value));
+  }
   componentDidLoad() {
     const slider = this.root.firstElementChild;
     const steps = this.steps.split(", ").map(value => parseInt(value));
-    const range = this.range(this.values.split(", ").map(value => parseFloat(value)), steps);
+    const range = this.range(this.valueArray, steps);
     const step = steps[0] ? steps[0] : this.step;
     const asint = this.step || this.steps;
     nouislider.create(slider, {
@@ -2460,7 +2463,8 @@ const FilterSlider = class {
     }, {});
   }
   render() {
-    const disabled = !this.from || !this.to;
+    const disabled = !this.from || !this.to || (this.from == this.valueArray[0] &&
+      this.to == this.valueArray[this.valueArray.length - 1]);
     return [
       index.h("div", null),
       index.h("input", { type: "hidden", name: this.name, value: this.from + "," + this.to, disabled: disabled })
@@ -2486,7 +2490,7 @@ const Filtering = class {
 };
 Filtering.style = filteringCss;
 
-const listingHeaderCss = "ks-listing-header{display:block;position:relative;z-index:1;padding:15px;-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow);text-align:center;font-size:0.875rem}ks-listing-header *[slot=title]{display:block;margin:0 0 5px 0;font-family:var(--font-emphasis);font-weight:700;font-size:1.3rem;line-height:1.3}@media (max-width: 960px){ks-listing-header *[slot=title]{font-size:1.105rem}}ks-listing-header *[slot=description]{max-width:1200px;margin:0 auto 15px auto;padding:0 15px;line-height:1.5}ks-listing-header *[slot=categories]>*{display:inline-block;padding:3px 10px;margin-bottom:3px;line-height:1.5;background:#222222;color:#ffffff !important;vertical-align:middle;white-space:nowrap;border-radius:2px;text-decoration:none !important}";
+const listingHeaderCss = "ks-listing-header{display:block;position:relative;z-index:1;padding:15px;-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow);background-color:white;text-align:center;font-size:0.875rem}ks-listing-header *[slot=title]{display:block;margin:0 0 5px 0;font-family:var(--font-emphasis);font-weight:700;font-size:1.3rem;line-height:1.3}@media (max-width: 960px){ks-listing-header *[slot=title]{font-size:1.105rem}}ks-listing-header *[slot=description]{max-width:1200px;margin:0 auto 15px auto;padding:0 15px;line-height:1.5}ks-listing-header *[slot=categories]>*{display:inline-block;padding:3px 10px;margin-bottom:3px;line-height:1.5;background:#222222;color:#ffffff !important;vertical-align:middle;white-space:nowrap;border-radius:2px;text-decoration:none !important}";
 
 const ListingHeader = class {
   constructor(hostRef) {
