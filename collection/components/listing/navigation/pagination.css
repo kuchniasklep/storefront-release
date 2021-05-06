@@ -10,6 +10,10 @@ ks-pagination {
             align-items: center;
 }
 
+ks-pagination[count='1'] {
+    display: none;
+}
+
 ks-pagination a {
     display: inline-block;
     width: 42px;

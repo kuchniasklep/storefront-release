@@ -98,7 +98,7 @@ export class Pagination {
         "text": ""
       },
       "attribute": "count",
-      "reflect": false
+      "reflect": true
     },
     "current": {
       "type": "number",
