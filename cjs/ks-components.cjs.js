@@ -1,9 +1,9 @@
 'use strict';
 
-const index = require('./index-1e55d229.js');
+const index = require('./index-aaabf9e8.js');
 
 /*
- Stencil Client Patch Browser v2.3.0 | MIT Licensed | https://stenciljs.com
+ Stencil Client Patch Browser v2.5.2 | MIT Licensed | https://stenciljs.com
  */
 const getDynamicImportFunction = (namespace) => `__sc_import_${namespace.replace(/\s|-/g, '_')}`;
 const patchBrowser = () => {
@@ -12,10 +12,10 @@ const patchBrowser = () => {
         index.plt.$cssShim$ = index.win.__cssshim;
     }
     // @ts-ignore
-    const scriptElm =  Array.from(index.doc.querySelectorAll('script')).find(s => new RegExp(`\/${index.NAMESPACE}(\\.esm)?\\.js($|\\?|#)`).test(s.src) || s.getAttribute('data-stencil-namespace') === index.NAMESPACE)
+    const scriptElm = Array.from(index.doc.querySelectorAll('script')).find(s => new RegExp(`\/${index.NAMESPACE}(\\.esm)?\\.js($|\\?|#)`).test(s.src) || s.getAttribute('data-stencil-namespace') === index.NAMESPACE)
         ;
-    const opts =  scriptElm['data-opts'] || {} ;
-    if ( 'onbeforeload' in scriptElm && !history.scrollRestoration /* IS_ESM_BUILD */) {
+    const opts = scriptElm['data-opts'] || {} ;
+    if ('onbeforeload' in scriptElm && !history.scrollRestoration /* IS_ESM_BUILD */) {
         // Safari < v11 support: This IF is true if it's Safari below v11.
         // This fn cannot use async/await since Safari didn't support it until v11,
         // however, Safari 10 did support modules. Safari 10 also didn't support "nomodule",
@@ -34,10 +34,10 @@ const patchBrowser = () => {
         {
             patchDynamicImport(opts.resourcesUrl, scriptElm);
         }
-        if ( !index.win.customElements) {
+        if (!index.win.customElements) {
             // module support, but no custom elements support (Old Edge)
             // @ts-ignore
-            return Promise.resolve().then(function () { return require(/* webpackChunkName: "polyfills-dom" */ './dom-9c8e2fa2.js'); }).then(() => opts);
+            return Promise.resolve().then(function () { return require(/* webpackChunkName: "polyfills-dom" */ './dom-a5c06362.js'); }).then(() => opts);
         }
     }
     return index.promiseResolve(opts);

@@ -1,7 +1,7 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-2d9093e5.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-4f41a852.js';
 import { w as window_load } from './deferredpromise-0f64146f.js';
-import { b as bindModuleMethods, g as getDocument, n as nextTick, S as Swiper } from './core-class-f05bf7c2.js';
-import { P as Pagination } from './pagination-ca8adc5c.js';
+import { b as bindModuleMethods, g as getDocument, n as nextTick, S as Swiper } from './core-class-3f174cf3.js';
+import { P as Pagination } from './pagination-e5b04709.js';
 
 const bannerCss = "ks-banner{display:block;width:100%;max-height:550px;height:100%}ks-banner.swiper-slide{height:auto}ks-banner>a{height:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;max-height:550px}ks-product-images a{position:relative}ks-product-images a canvas{max-width:100%;max-height:550px}ks-banner a ks-img{position:absolute;top:0;left:0;width:100%;max-height:550px;margin:auto}";
 

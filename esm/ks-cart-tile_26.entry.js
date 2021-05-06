@@ -1,4 +1,4 @@
-import { r as registerInstance, h, g as getElement } from './index-2d9093e5.js';
+import { r as registerInstance, h, g as getElement } from './index-4f41a852.js';
 
 const CartTile = class {
   constructor(hostRef) {
@@ -146,7 +146,7 @@ const OrderCheckSection = class {
   get root() { return getElement(this); }
 };
 
-const OrderForm = class {
+const OrderForm$1 = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
     this.loading = false;
@@ -274,7 +274,7 @@ const OrderEnableection = class {
   get root() { return getElement(this); }
 };
 
-const OrderForm$1 = class {
+const OrderForm = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
     this.loading = false;
@@ -369,7 +369,7 @@ const OrderForm$1 = class {
   get root() { return getElement(this); }
 };
 
-const OrderLoginPrompt = class {
+const OrderLoginPrompt$1 = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
     this.message = "";
@@ -565,7 +565,7 @@ const OrderLogin = class {
   get root() { return getElement(this); }
 };
 
-const OrderLoginPrompt$1 = class {
+const OrderLoginPrompt = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
     this.message = "";
@@ -896,4 +896,4 @@ const RadioTile = class {
 };
 RadioTile.style = radioTileCss;
 
-export { CartTile as ks_cart_tile, OrderAddressField as ks_order_address_field, OrderAddressSection as ks_order_address_section, OrderButton as ks_order_button, OrderButtonPair as ks_order_button_pair, OrderCheckSection as ks_order_check_section, OrderForm as ks_order_confirmation_form, OrderCountrySelect as ks_order_country_select, OrderDocumentSelect as ks_order_document_select, OrderEnableection as ks_order_enable_section, OrderForm$1 as ks_order_form, OrderLoginPrompt as ks_order_form_modal, OrderGuest as ks_order_guest, OrderHeading as ks_order_heading, OrderInpost as ks_order_inpost, OrderLogin as ks_order_login, OrderLoginPrompt$1 as ks_order_login_prompt, OrderPocztapunkt as ks_order_pocztapunkt, OrderProgress as ks_order_progress, OrderSeparator as ks_order_separator, OrderSummaryContainer as ks_order_summary_container, OrderSummaryField as ks_order_summary_field, OrderPayU as ks_order_summary_payment, OrderChoice as ks_order_toggle, OrderToggleSection as ks_order_toggle_section, RadioTile as ks_radio_tile };
+export { CartTile as ks_cart_tile, OrderAddressField as ks_order_address_field, OrderAddressSection as ks_order_address_section, OrderButton as ks_order_button, OrderButtonPair as ks_order_button_pair, OrderCheckSection as ks_order_check_section, OrderForm$1 as ks_order_confirmation_form, OrderCountrySelect as ks_order_country_select, OrderDocumentSelect as ks_order_document_select, OrderEnableection as ks_order_enable_section, OrderForm as ks_order_form, OrderLoginPrompt$1 as ks_order_form_modal, OrderGuest as ks_order_guest, OrderHeading as ks_order_heading, OrderInpost as ks_order_inpost, OrderLogin as ks_order_login, OrderLoginPrompt as ks_order_login_prompt, OrderPocztapunkt as ks_order_pocztapunkt, OrderProgress as ks_order_progress, OrderSeparator as ks_order_separator, OrderSummaryContainer as ks_order_summary_container, OrderSummaryField as ks_order_summary_field, OrderPayU as ks_order_summary_payment, OrderChoice as ks_order_toggle, OrderToggleSection as ks_order_toggle_section, RadioTile as ks_radio_tile };

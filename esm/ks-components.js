@@ -1,7 +1,7 @@
-import { p as plt, w as win, d as doc, N as NAMESPACE, a as promiseResolve, b as bootstrapLazy } from './index-2d9093e5.js';
+import { p as plt, w as win, d as doc, N as NAMESPACE, a as promiseResolve, b as bootstrapLazy } from './index-4f41a852.js';
 
 /*
- Stencil Client Patch Browser v2.3.0 | MIT Licensed | https://stenciljs.com
+ Stencil Client Patch Browser v2.5.2 | MIT Licensed | https://stenciljs.com
  */
 const getDynamicImportFunction = (namespace) => `__sc_import_${namespace.replace(/\s|-/g, '_')}`;
 const patchBrowser = () => {
@@ -10,10 +10,10 @@ const patchBrowser = () => {
         plt.$cssShim$ = win.__cssshim;
     }
     // @ts-ignore
-    const scriptElm =  Array.from(doc.querySelectorAll('script')).find(s => new RegExp(`\/${NAMESPACE}(\\.esm)?\\.js($|\\?|#)`).test(s.src) || s.getAttribute('data-stencil-namespace') === NAMESPACE)
+    const scriptElm = Array.from(doc.querySelectorAll('script')).find(s => new RegExp(`\/${NAMESPACE}(\\.esm)?\\.js($|\\?|#)`).test(s.src) || s.getAttribute('data-stencil-namespace') === NAMESPACE)
         ;
-    const opts =  scriptElm['data-opts'] || {} ;
-    if ( 'onbeforeload' in scriptElm && !history.scrollRestoration /* IS_ESM_BUILD */) {
+    const opts = scriptElm['data-opts'] || {} ;
+    if ('onbeforeload' in scriptElm && !history.scrollRestoration /* IS_ESM_BUILD */) {
         // Safari < v11 support: This IF is true if it's Safari below v11.
         // This fn cannot use async/await since Safari didn't support it until v11,
         // however, Safari 10 did support modules. Safari 10 also didn't support "nomodule",
@@ -32,10 +32,10 @@ const patchBrowser = () => {
         {
             patchDynamicImport(opts.resourcesUrl, scriptElm);
         }
-        if ( !win.customElements) {
+        if (!win.customElements) {
             // module support, but no custom elements support (Old Edge)
             // @ts-ignore
-            return import(/* webpackChunkName: "polyfills-dom" */ './dom-424264d0.js').then(() => opts);
+            return import(/* webpackChunkName: "polyfills-dom" */ './dom-bd0bf1dc.js').then(() => opts);
         }
     }
     return promiseResolve(opts);

@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-1e55d229.js');
+const index = require('./index-aaabf9e8.js');
 
 const CartTile = class {
   constructor(hostRef) {
@@ -150,7 +150,7 @@ const OrderCheckSection = class {
   get root() { return index.getElement(this); }
 };
 
-const OrderForm = class {
+const OrderForm$1 = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.loading = false;
@@ -278,7 +278,7 @@ const OrderEnableection = class {
   get root() { return index.getElement(this); }
 };
 
-const OrderForm$1 = class {
+const OrderForm = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.loading = false;
@@ -373,7 +373,7 @@ const OrderForm$1 = class {
   get root() { return index.getElement(this); }
 };
 
-const OrderLoginPrompt = class {
+const OrderLoginPrompt$1 = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.message = "";
@@ -569,7 +569,7 @@ const OrderLogin = class {
   get root() { return index.getElement(this); }
 };
 
-const OrderLoginPrompt$1 = class {
+const OrderLoginPrompt = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.message = "";
@@ -906,17 +906,17 @@ exports.ks_order_address_section = OrderAddressSection;
 exports.ks_order_button = OrderButton;
 exports.ks_order_button_pair = OrderButtonPair;
 exports.ks_order_check_section = OrderCheckSection;
-exports.ks_order_confirmation_form = OrderForm;
+exports.ks_order_confirmation_form = OrderForm$1;
 exports.ks_order_country_select = OrderCountrySelect;
 exports.ks_order_document_select = OrderDocumentSelect;
 exports.ks_order_enable_section = OrderEnableection;
-exports.ks_order_form = OrderForm$1;
-exports.ks_order_form_modal = OrderLoginPrompt;
+exports.ks_order_form = OrderForm;
+exports.ks_order_form_modal = OrderLoginPrompt$1;
 exports.ks_order_guest = OrderGuest;
 exports.ks_order_heading = OrderHeading;
 exports.ks_order_inpost = OrderInpost;
 exports.ks_order_login = OrderLogin;
-exports.ks_order_login_prompt = OrderLoginPrompt$1;
+exports.ks_order_login_prompt = OrderLoginPrompt;
 exports.ks_order_pocztapunkt = OrderPocztapunkt;
 exports.ks_order_progress = OrderProgress;
 exports.ks_order_separator = OrderSeparator;

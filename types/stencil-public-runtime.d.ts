@@ -1439,10 +1439,10 @@ export declare namespace JSXBase {
         onCompositionUpdateCapture?: (event: CompositionEvent) => void;
         onFocus?: (event: FocusEvent) => void;
         onFocusCapture?: (event: FocusEvent) => void;
-        onFocusIn?: (event: FocusEvent) => void;
-        onFocusInCapture?: (event: FocusEvent) => void;
-        onFocusOut?: (event: FocusEvent) => void;
-        onFocusOutCapture?: (event: FocusEvent) => void;
+        onFocusin?: (event: FocusEvent) => void;
+        onFocusinCapture?: (event: FocusEvent) => void;
+        onFocusout?: (event: FocusEvent) => void;
+        onFocusoutCapture?: (event: FocusEvent) => void;
         onBlur?: (event: FocusEvent) => void;
         onBlurCapture?: (event: FocusEvent) => void;
         onChange?: (event: Event) => void;

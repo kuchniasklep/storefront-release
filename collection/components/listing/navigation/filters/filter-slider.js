@@ -59,7 +59,7 @@ export class FilterSlider {
     }, {});
   }
   render() {
-    const disabled = !this.from || !this.to || (this.from == this.valueArray[0] &&
+    const disabled = this.from === undefined || this.to === undefined || (this.from == this.valueArray[0] &&
       this.to == this.valueArray[this.valueArray.length - 1]);
     return [
       h("div", null),

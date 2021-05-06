@@ -2,10 +2,10 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-1e55d229.js');
+const index = require('./index-aaabf9e8.js');
 const deferredpromise = require('./deferredpromise-4a0fd44b.js');
-const coreClass = require('./core-class-05f4a49b.js');
-const pagination = require('./pagination-6d58af1e.js');
+const coreClass = require('./core-class-37c25aa3.js');
+const pagination = require('./pagination-82b886b5.js');
 
 const bannerCss = "ks-banner{display:block;width:100%;max-height:550px;height:100%}ks-banner.swiper-slide{height:auto}ks-banner>a{height:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;max-height:550px}ks-product-images a{position:relative}ks-product-images a canvas{max-width:100%;max-height:550px}ks-banner a ks-img{position:absolute;top:0;left:0;width:100%;max-height:550px;margin:auto}";
 

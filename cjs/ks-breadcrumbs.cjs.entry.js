@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-1e55d229.js');
+const index = require('./index-aaabf9e8.js');
 
 const breadcrumbsCss = "ks-breadcrumbs{display:block}";
 

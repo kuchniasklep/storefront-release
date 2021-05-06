@@ -2,10 +2,10 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-1e55d229.js');
-const deferredpromise = require('./deferredpromise-4a0fd44b.js');
+const index = require('./index-aaabf9e8.js');
 const _commonjsHelpers = require('./_commonjsHelpers-bcc1208a.js');
-const index$1 = require('./index-79353176.js');
+const deferredpromise = require('./deferredpromise-4a0fd44b.js');
+const index$1 = require('./index-856f0267.js');
 const validate = require('./validate-6c61d7c0.js');
 
 const buttonCss = "ks-button{display:block}ks-button>*{display:block;text-align:center;-webkit-box-sizing:border-box;box-sizing:border-box;font-size:var(--product-button-size);width:100%;padding:12px 20px;outline-style:none;border-style:none;text-decoration:none !important;cursor:pointer;border-radius:0px;font-family:var(--font-regular);font-size:15px;border:1px solid var(--color-dark);background-color:var(--color-dark);color:var(--text-color-dark) !important;-webkit-transition:var(--transition-background-color),\n                var(--transition-border-color);transition:var(--transition-background-color),\n                var(--transition-border-color)}ks-button:not([transitionless])>*:hover{background-color:var(--color-dark-hover)}ks-button:not([transitionless])>*:active{background-color:var(--color-dark-active)}ks-button[round]>*{border-radius:100px}ks-button[narrow]>*{padding:9px 20px}ks-button[tall]>*{padding:18px 20px}ks-button[primary]>*{color:var(--text-color-primary) !important;background-color:var(--color-primary) !important;border:1px solid var(--color-primary) !important}ks-button[primary]:not([transitionless])>*:hover{background-color:var(--color-primary-hover)}ks-button[primary]:not([transitionless])>*:active{background-color:var(--color-primary-active)}ks-button[secondary]>*{color:var(--text-color-secondary) !important;background-color:var(--color-secondary) !important;border:1px solid var(--color-secondary) !important}ks-button[secondary]:not([transitionless])>*:hover{background-color:var(--color-secondary-hover)}ks-button[secondary]:not([transitionless])>*:active{background-color:var(--color-secondary-active)}ks-button[border]>*{border:1px solid var(--color-dark);color:var(--color-dark) !important;background-color:rgba(0, 0, 0, 0)}ks-button[border]:not([transitionless])>*:hover{background-color:rgba(0, 0, 0, 0.096)}ks-button[border]:not([transitionless])>*:active{background-color:rgba(0, 0, 0, 0.336)}ks-button[border][light]>*{border:1px solid #ffffff;color:var(--text-color-dark) !important;background-color:rgba(255, 255, 255, 0)}ks-button[border][light]:not([transitionless])>*:hover{background-color:rgba(255, 255, 255, 0.096)}ks-button[border][light]:not([transitionless])>*:active{background-color:rgba(255, 255, 255, 0.336)}ks-button[disabled]>*{background-color:#e2e2e2 !important}ks-button[border][muted]>*{border:1px solid #e5e5e5}ks-button[border][muted]:not([transitionless])>*:hover{border-color:#bebebe;background-color:rgba(255, 255, 255, 0)}ks-button[border][muted]:not([transitionless])>*:active{border-color:#8d8d8d;background-color:rgba(255, 255, 255, 0)}ks-button ks-icon{margin-left:10px}ks-button[left] ks-icon{margin-right:10px;margin-left:0}";
@@ -2694,7 +2694,7 @@ module.exports = __webpack_require__(/*! /home/travis/build/feathericons/feather
 
 /******/ });
 });
-
+//# sourceMappingURL=feather.js.map
 });
 
 const feather$1 = /*@__PURE__*/_commonjsHelpers.getDefaultExportFromCjs(feather);

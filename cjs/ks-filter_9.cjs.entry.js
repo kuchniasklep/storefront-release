@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-1e55d229.js');
+const index = require('./index-aaabf9e8.js');
 const _commonjsHelpers = require('./_commonjsHelpers-bcc1208a.js');
 
 const filterCss = "ks-filter{display:block;margin-bottom:10px;-webkit-user-select:none;-ms-user-select:none;-moz-user-select:none;user-select:none}ks-filter>div{font-family:var(--font-emphasis);font-size:1.1rem}ks-filter>div>ks-icon{float:right}ks-filter .filter-content{display:none;font-size:1rem;padding:10px 0}ks-filter[active] .filter-content{display:block;-webkit-animation:fade-in 0.3s ease 1;animation:fade-in 0.3s ease 1}";
@@ -2463,7 +2463,7 @@ const FilterSlider = class {
     }, {});
   }
   render() {
-    const disabled = !this.from || !this.to || (this.from == this.valueArray[0] &&
+    const disabled = this.from === undefined || this.to === undefined || (this.from == this.valueArray[0] &&
       this.to == this.valueArray[this.valueArray.length - 1]);
     return [
       index.h("div", null),
@@ -2490,7 +2490,7 @@ const Filtering = class {
 };
 Filtering.style = filteringCss;
 
-const listingHeaderCss = "ks-listing-header{display:block;position:relative;z-index:1;padding:15px;-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow);background-color:white;text-align:center;font-size:0.875rem}ks-listing-header *[slot=title]{display:block;margin:0 0 5px 0;font-family:var(--font-emphasis);font-weight:700;font-size:1.3rem;line-height:1.3}@media (max-width: 960px){ks-listing-header *[slot=title]{font-size:1.105rem}}ks-listing-header *[slot=description]{max-width:1200px;margin:0 auto 15px auto;padding:0 15px;line-height:1.5}ks-listing-header *[slot=categories]>*{display:inline-block;padding:3px 10px;margin-bottom:3px;line-height:1.5;background:#222222;color:#ffffff !important;vertical-align:middle;white-space:nowrap;border-radius:2px;text-decoration:none !important}";
+const listingHeaderCss = "ks-listing-header{display:block;position:relative;z-index:1;padding:15px;-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow);background-color:white;text-align:center;font-size:0.875rem}ks-listing-header *[slot=title]{display:block;margin:0 0 5px 0;font-family:var(--font-emphasis);font-weight:700;font-size:1.3rem;line-height:1.3}@media (max-width: 960px){ks-listing-header *[slot=title]{font-size:1.105rem}}ks-listing-header *[slot=description]{max-width:1200px;margin:0 auto 15px auto;padding:0 15px;line-height:1.5}ks-listing-header *[slot=categories]{max-width:1200px;margin:auto}ks-listing-header *[slot=categories]>*{display:inline-block;padding:3px 10px;margin:2px;margin-bottom:3px;line-height:1.5;background:#222222;color:#ffffff !important;vertical-align:middle;white-space:nowrap;border-radius:2px;text-decoration:none !important}";
 
 const ListingHeader = class {
   constructor(hostRef) {
@@ -2514,7 +2514,7 @@ const ListingHeader = class {
 };
 ListingHeader.style = listingHeaderCss;
 
-const listingNavigationCss = "ks-listing-navigation{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;padding:15px 0px}ks-listing-navigation ks-filtering{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1;margin:0 20px 0 0}ks-listing-navigation ks-sorting{-webkit-box-ordinal-group:4;-ms-flex-order:3;order:3;margin:0 0 0 20px}ks-listing-navigation ks-pagination{-webkit-box-ordinal-group:3;-ms-flex-order:2;order:2}@media (max-width: 640px){ks-listing-navigation{-ms-flex-wrap:wrap;flex-wrap:wrap}ks-listing-navigation ks-filtering{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1;margin:0 3px 6px 0;width:40%;min-width:144px;-webkit-box-sizing:border-box;box-sizing:border-box}ks-listing-navigation ks-sorting{-webkit-box-ordinal-group:3;-ms-flex-order:2;order:2;margin:0 0 6px 3px;width:40%;min-width:144px;-webkit-box-sizing:border-box;box-sizing:border-box}ks-listing-navigation ks-pagination{-webkit-box-ordinal-group:4;-ms-flex-order:3;order:3;-webkit-box-flex:1;-ms-flex:1;flex:1;min-width:100%}}@media (max-width: 344px){ks-listing-navigation ks-filtering,ks-listing-navigation ks-sorting{width:48.7%;min-width:120px}}";
+const listingNavigationCss = "ks-listing-navigation{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}ks-listing-navigation ks-filtering{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1;margin:0 5px}ks-listing-navigation ks-sorting{-webkit-box-ordinal-group:4;-ms-flex-order:3;order:3;margin:0 5px}ks-listing-navigation ks-pagination{-webkit-box-ordinal-group:3;-ms-flex-order:2;order:2;margin:0 10px}@media (max-width: 640px){ks-listing-navigation{-ms-flex-wrap:wrap;flex-wrap:wrap}ks-listing-navigation ks-filtering{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1;margin:0 3px;width:40%;min-width:144px;-webkit-box-sizing:border-box;box-sizing:border-box}ks-listing-navigation ks-sorting{-webkit-box-ordinal-group:3;-ms-flex-order:2;order:2;margin:0 3px;width:40%;min-width:144px;-webkit-box-sizing:border-box;box-sizing:border-box}ks-listing-navigation ks-pagination{-webkit-box-ordinal-group:4;-ms-flex-order:3;order:3;-webkit-box-flex:1;-ms-flex:1;flex:1;min-width:100%;margin-top:6px}}@media (max-width: 344px){ks-listing-navigation ks-filtering,ks-listing-navigation ks-sorting{width:47%;min-width:120px}}";
 
 const ListingNavigation = class {
   constructor(hostRef) {
