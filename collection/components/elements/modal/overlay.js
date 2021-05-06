@@ -7,7 +7,7 @@ export class Overlay {
     this.body = document.body;
   }
   componentDidLoad() {
-    this.root.addEventListener('click', (e) => {
+    this.root.addEventListener('mousedown', (e) => {
       if (e.currentTarget == e.target && this.close)
         this.hide();
     }, false);
