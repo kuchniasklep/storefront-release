@@ -7,6 +7,11 @@ ks-listing-navigation {
             justify-content: center;
 }
 
+ks-listing-navigation[products="0"],
+ks-listing-navigation[products="1"] {
+    display: none;
+}
+
 ks-listing-navigation ks-filtering {
     -webkit-box-ordinal-group: 2;
         -ms-flex-order: 1;

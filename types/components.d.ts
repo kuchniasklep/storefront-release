@@ -563,6 +563,7 @@ export namespace Components {
     interface KsListingHeader {
     }
     interface KsListingNavigation {
+        "products": any;
     }
     interface KsLoader {
         "dark": boolean;
@@ -2711,6 +2712,7 @@ declare namespace LocalJSX {
     interface KsListingHeader {
     }
     interface KsListingNavigation {
+        "products"?: any;
     }
     interface KsLoader {
         "dark"?: boolean;
