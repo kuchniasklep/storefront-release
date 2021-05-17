@@ -131,6 +131,7 @@ const NavbarCategoryView = class {
     const singlesub = this.root.querySelectorAll('a[slot=single-sub]');
     this.children = this.root.querySelectorAll('div[slot=children]');
     this.count = sub.length + singlesub.length;
+    this.last = sub[0];
     sub.forEach((element, index) => {
       if (this.active == index)
         element.classList.add("active");
