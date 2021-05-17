@@ -32,15 +32,16 @@ ks-product-info .left {
             justify-content: center;
 }
 
-ks-product-info .bottom {
-    margin-bottom: 60px;
-}
-
 ks-product-info .buttons {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     margin: 15px -5px 10px 0px;
+}
+
+ks-product-info .bottom {
+    position: relative;
+    padding-bottom: 60px;
 }
 
 @media only screen and (min-width: 960px) {
@@ -87,10 +88,6 @@ ks-product-info .buttons {
         grid-column: 2;
         -ms-grid-row: 2;
         grid-row: 2;
-    }
-
-    ks-product-info .bottom {
-        margin-bottom: 25px;
     }
 }
 
