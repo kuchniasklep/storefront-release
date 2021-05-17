@@ -15,10 +15,12 @@ export class ProductCount {
   }
   render() {
     return store.get("traits").map((trait) => h("div", { class: "trait" },
+      h("label", null,
+        trait.name,
+        ":"),
       h("div", { class: "select" },
         h("select", { onChange: () => this.traitChangeHandler() }, trait.items.map(item => h("option", { value: item.id }, item.name))),
-        h("ks-icon", { name: "chevron-down" })),
-      h("label", null, trait.name)));
+        h("ks-icon", { name: "chevron-down" }))));
   }
   static get is() { return "ks-product-traits"; }
   static get originalStyleUrls() { return {

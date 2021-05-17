@@ -5,6 +5,11 @@ ks-product-brand {
     -webkit-box-pack: end;
         -ms-flex-pack: end;
             justify-content: flex-end;
+
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    right: 30px;
 }
 
 ks-product-brand > a {
@@ -46,11 +51,5 @@ ks-product-brand > a:active {
         -webkit-box-pack: center;
             -ms-flex-pack: center;
                 justify-content: center;
-    }
-}
-
-@media (max-width: 460px) {
-    ks-product-brand {
-        margin-bottom: 20px;
     }
 }

@@ -1,10 +1,11 @@
-import { r as registerInstance, h, g as getElement, c as createEvent, H as Host } from './index-4f41a852.js';
-import { c as createStore } from './index-a8e6b0b4.js';
+import { r as registerInstance, h, g as getElement, c as createEvent } from './index-4f41a852.js';
+import { s as store } from './product-store-dcf22266.js';
 import { w as window_load } from './deferredpromise-0f64146f.js';
 import { S as Swiper } from './core-class-3f174cf3.js';
 import { T as Thumbs } from './thumbs-ca1d86c7.js';
 import { O as OpenSuggestions } from './functions-802032ba.js';
 import { V as ValidateInput } from './validate-cd7ce36d.js';
+import './index-a8e6b0b4.js';
 
 const commentCss = "ks-comment{display:block}ks-comment article{padding:30px}@media (min-width: 1200px){ks-comment article{padding:30px 40px}}ks-comment header{display:-webkit-box;display:-ms-flexbox;display:flex}ks-comment header>div{width:100%}ks-comment header .title{margin:0}ks-comment header .info{font-size:.875rem;line-height:1.4;color:#707070}ks-comment ks-icon{margin-right:20px}ks-comment p{margin-bottom:0px}";
 
@@ -18,20 +19,23 @@ const Comment = class {
 };
 Comment.style = commentCss;
 
-const productAttributeCss = "ks-product-attribute{display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;border-radius:50px;margin:0px 2px 5px 2px;background-color:var(--color-dark);color:var(--text-color-dark);font-family:var(--product-attribute-font);font-size:var(--product-attribute-size);line-height:var(--product-attribute-size)}ks-product-attribute[emphasis]{background-color:var(--color-secondary);color:var(--text-color-secondary)}ks-product-attribute a{color:var(--text-color-dark) !important;text-decoration:none !important;display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin:0;padding:0}ks-product-attribute .name{font-weight:700;margin-right:6px}ks-product-attribute[image=\"\"]{padding:10px 20px}ks-product-attribute:not([image=\"\"]){padding:2px 20px}ks-product-attribute .image{display:inline-block;overflow:hidden;height:28px;margin-left:10px;margin-right:-18px;border-radius:20px}";
+const productAttributeCss = "ks-product-attribute{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin:5px 0px;font-family:var(--font-emphasis);font-size:15px;line-height:15px}ks-product-attribute[danger]{color:var(--color-secondary);font-weight:700;-webkit-animation:blink 1.5s ease-in-out infinite;animation:blink 1.5s ease-in-out infinite}ks-product-attribute[emphasis]{color:var(--color-secondary);font-weight:700}ks-product-attribute[faded]{color:var(--color-faded)}ks-product-attribute a{color:inherit !important;text-decoration:none !important}ks-product-attribute ks-icon{margin-right:10px}ks-product-attribute ks-icon:nth-child(2){margin-left:10px}@media only screen and (max-width: 540px){ks-product-attribute{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin:5px auto}}@media only screen and (max-width: 405px){ks-product-attribute{max-width:68%}}";
 
 const ProductAttribute = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
     this.href = "";
-    this.name = "";
-    this.image = "";
+    this.icon = "";
+    this.size = 1.0;
+    this.danger = false;
     this.emphasis = false;
+    this.faded = false;
   }
   render() {
-    const name = this.name != "" ? h("span", { class: "name" }, this.name, ":") : null;
-    const image = this.image != "" ? h("div", { class: "image" }, h("ks-img", { vertical: true, sync: true, src: this.image })) : null;
-    const content = [name, h("slot", null), image];
+    const content = [
+      h("ks-icon", { name: this.icon, size: this.size }),
+      h("slot", null)
+    ];
     if (this.href != "")
       return h("a", { href: this.href }, content);
     return content;
@@ -39,15 +43,15 @@ const ProductAttribute = class {
 };
 ProductAttribute.style = productAttributeCss;
 
-const productButtonCss = "ks-product-button{display:block;width:100%;margin:5px 0}ks-product-button button{outline-style:none;border-style:none;border-radius:50px;background-color:var(--color-dark);color:var(--text-color-dark);font-family:var(--product-button-font);font-weight:700;width:100%;-webkit-transition:var(--transition-background-color);transition:var(--transition-background-color)}ks-product-button button{font-size:var(--product-button-size);padding:10px 20px}ks-product-button[large] button{font-size:var(--product-button-size-large);padding:15px 40px}ks-product-button[medium] button{font-size:var(--product-button-size-medium);padding:15px 40px}ks-product-button button:hover{background-color:var(--color-dark-hover)}ks-product-button button:active{background-color:var(--color-dark-active)}";
+const productButtonCss = "ks-product-button{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;width:100%;margin:5px 2px}ks-product-button button{outline-style:none;border-style:none;border-radius:50px;padding:12px 30px;background-color:var(--color-dark);color:var(--text-color-dark);font-family:var(--product-button-font);font-size:var(--product-button-size);line-height:var(--product-button-size);-webkit-transition:var(--transition-background-color);transition:var(--transition-background-color)}ks-product-button button:hover{background-color:var(--color-dark-hover)}ks-product-button button:active{background-color:var(--color-dark-active)}ks-product-button[icon]{border-radius:0px;height:40px;margin:0;padding:5px 0px;background-color:var(--color-dark);color:var(--text-color-dark);-webkit-transition:var(--transition-background-color);transition:var(--transition-background-color)}ks-product-button[icon]:hover{background-color:var(--color-dark-hover)}ks-product-button[icon]:active{background-color:var(--color-dark-active)}@media only screen and (max-width: 400px){ks-product-button button{padding:12px 25px}}";
 
 const ProductButton = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
-    this.large = false;
-    this.medium = false;
   }
   render() {
+    if (this.icon)
+      return h("ks-img2", { src: this.icon });
     return h("button", null, h("slot", null));
   }
 };
@@ -137,35 +141,6 @@ const ProductTab$1 = class {
 };
 ProductTab$1.style = productCommentsCss;
 
-const store = createStore({
-  id: "",
-  name: "",
-  breadcrumbs: [],
-  brand: "",
-  brandLink: "",
-  description: "",
-  attributes: [],
-  previousPrice: "",
-  currentPrice: "",
-  shippingPrice: "",
-  shippingTime: "",
-  shippingMessage: "",
-  availability: 0,
-  count: 1,
-  cartLoading: false,
-  favouritesLoading: false,
-  favouritesCompleted: false,
-  images: [],
-  traitIDs: "",
-  traits: [],
-  catalog: "",
-  model: "",
-  ean: "",
-  negotiate: false,
-  externalPoints: false,
-  reviews: {}
-});
-
 const productCountCss = "ks-product-count{display:-webkit-box;display:-ms-flexbox;display:flex;max-width:80px;margin-right:8px;overflow:hidden;border-style:solid;border-radius:50px;border-width:1px;border-color:#cacaca;background-color:var(--product-price-count-color)}ks-product-count input{outline-style:none;border-style:none;background-color:transparent;width:52px;height:100%;-webkit-box-sizing:border-box;box-sizing:border-box;padding:10px 8px 10px 13px;font-family:var(--product-price-count-font);font-size:var(--product-price-size-small);line-height:var(--product-price-size-small);text-align:center;vertical-align:middle}ks-product-count input::-webkit-inner-spin-button,ks-product-count input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}ks-product-count input[type=number]{-moz-appearance:textfield}ks-product-count .spinner{width:auto;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-flow:column nowrap;flex-flow:column nowrap}ks-product-count .spinner button{outline-style:none;border-style:none;line-height:0;height:100%;margin:0;width:28px;-webkit-box-sizing:border-box;box-sizing:border-box;background-color:#e4e4e4;-webkit-transition:var(--transition-background-color);transition:var(--transition-background-color);border-left:solid 1px #cacaca}ks-product-count .spinner button:first-child{padding:8px 8px 3px 3px;border-bottom:solid 1px #cacaca}ks-product-count .spinner button:last-child{padding:3px 8px 8px 3px}ks-product-count .spinner button:hover{background-color:#cecece}ks-product-count .spinner button:active{background-color:#a7a7a7}@media (hover: none){ks-product-count{max-width:70px}ks-product-count input{padding:10px}ks-product-count .spinner{display:none}}";
 
 const ProductCount$1 = class {
@@ -218,7 +193,7 @@ const ProductCount$1 = class {
 };
 ProductCount$1.style = productCountCss;
 
-const productImagesCss = "ks-product-images{display:block;margin-right:30px}ks-product-images .swiper-slide{position:relative}ks-product-images .swiper-slide canvas{max-width:100%;max-height:500px}ks-product-images .preview ks-img{position:absolute;top:0;width:100%;max-height:500px;margin:auto}ks-product-images .thumb{margin-top:20px;position:relative}ks-product-images .thumb::after{content:\"\";position:absolute;top:0;bottom:0;right:0;left:-30px;background:-webkit-gradient(linear, left top, right top, from(rgba(255,255,255,0)), color-stop(85%, rgba(255,255,255,0)), to(rgba(255,255,255,1)));background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 85%, rgba(255,255,255,1) 100%);z-index:2;pointer-events:none}ks-product-images .thumb .swiper-slide{width:70px;height:70px;opacity:0.4;-webkit-transition:var(--transition-opacity);transition:var(--transition-opacity)}ks-product-images .thumb .swiper-slide-thumb-active{opacity:1}@media only screen and (max-width: 959px){ks-product-images{margin-right:0px;margin-top:30px}ks-product-images .thumb{margin-bottom:0px}}@media only screen and (max-width: 460px){ks-product-images .swiper-slide canvas{max-height:300px}ks-product-images .preview ks-img{max-height:300px}}ks-product-images .preview:not(.swiper-container-initialized) .swiper-slide:nth-child(n+2){display:none}ks-product-images .thumb .swiper-wrapper{opacity:1;-webkit-animation:fade-in 0.3s ease;animation:fade-in 0.3s ease}ks-product-images .thumb:not(.swiper-container-initialized) .swiper-wrapper{opacity:0;-webkit-animation:none;animation:none}";
+const productImagesCss = "ks-product-images{display:block;margin-right:30px}ks-product-images .swiper-slide{position:relative}ks-product-images .swiper-slide canvas{max-width:100%;max-height:450px}ks-product-images .preview ks-img{position:absolute;top:0;width:100%;max-height:450px;margin:auto}ks-product-images .thumb{margin-top:20px;position:relative}ks-product-images .thumb::after{content:\"\";position:absolute;top:0;bottom:0;right:0;left:-30px;background:-webkit-gradient(linear, left top, right top, from(rgba(255,255,255,0)), color-stop(85%, rgba(255,255,255,0)), to(rgba(255,255,255,1)));background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 85%, rgba(255,255,255,1) 100%);z-index:2;pointer-events:none}ks-product-images .thumb .swiper-slide{width:70px;height:70px;opacity:0.4;-webkit-transition:var(--transition-opacity);transition:var(--transition-opacity)}ks-product-images .thumb .swiper-slide-thumb-active{opacity:1}@media only screen and (max-width: 959px){ks-product-images{margin-right:0px;margin-top:30px}ks-product-images .thumb{margin-bottom:0px}}@media only screen and (max-width: 460px){ks-product-images .swiper-slide canvas{max-height:300px}ks-product-images .preview ks-img{max-height:300px}}ks-product-images .preview:not(.swiper-container-initialized) .swiper-slide:nth-child(n+2){display:none}ks-product-images .thumb .swiper-wrapper{opacity:1;-webkit-animation:fade-in 0.3s ease;animation:fade-in 0.3s ease}ks-product-images .thumb:not(.swiper-container-initialized) .swiper-wrapper{opacity:0;-webkit-animation:none;animation:none}";
 
 Swiper.use([Thumbs]);
 const ProductImages = class {
@@ -277,9 +252,9 @@ const ProductImages = class {
 };
 ProductImages.style = productImagesCss;
 
-const productInfoCss = "ks-product-info{display:block;-webkit-box-sizing:border-box;box-sizing:border-box;overflow:hidden;width:100%;background:var(--card-background);color:var(--card-text-color);-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow);padding:40px 30px;min-height:420px}ks-product-info>*{margin:0px auto;width:100%;max-width:700px}ks-product-info .left{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}@media only screen and (min-width: 960px){ks-product-info{display:-ms-grid;display:grid;-ms-grid-columns:48% 52%;grid-template-columns:48% 52%;-ms-grid-rows:auto 1fr;grid-template-rows:auto 1fr}ks-product-info>*:nth-child(1){-ms-grid-row:1;-ms-grid-column:1}ks-product-info>*:nth-child(2){-ms-grid-row:1;-ms-grid-column:2}ks-product-info>*:nth-child(3){-ms-grid-row:2;-ms-grid-column:1}ks-product-info>*:nth-child(4){-ms-grid-row:2;-ms-grid-column:2}ks-product-info>.top{-ms-grid-column:2;grid-column:2;-ms-grid-row:1;grid-row:1}ks-product-info>.left{-ms-grid-column:1;grid-column:1;-ms-grid-row:1;-ms-grid-row-span:2;grid-row:1 / 3}ks-product-info>.bottom{-ms-grid-column:2;grid-column:2;-ms-grid-row:2;grid-row:2}}@media only screen and (min-width: 1200px){ks-product-info{padding:40px 30px}}@media only screen and (max-width: 460px){ks-product-info{padding:20px 10px}}ks-product-info ks-product-button[large]{max-width:700px;margin:auto}ks-product-info .installments{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-flow:row nowrap;flex-flow:row nowrap;margin-left:auto;margin-right:auto;max-width:700px}ks-product-info .installments>*:not(:last-child){margin-right:5px}ks-product-info .installments>*:first-child{width:45%}ks-product-info .installments>*:last-child{width:55%}@media only screen and (max-width: 640px){ks-product-info .installments{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-flow:column nowrap;flex-flow:column nowrap}ks-product-info .installments>*{width:100% !important;margin-right:0}}ks-product-info .attributes{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-flow:row wrap;flex-flow:row wrap;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}@media only screen and (max-width: 640px){ks-product-info .attributes{margin-top:20px}}";
+const productInfoCss = "ks-product-info{display:block;position:relative;-webkit-box-sizing:border-box;box-sizing:border-box;width:100%;background:var(--card-background);color:var(--card-text-color);-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow);padding:40px 30px;min-height:420px}ks-product-info>*{margin:0px auto;width:100%;max-width:700px}ks-product-info .left{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}ks-product-info .bottom{margin-bottom:60px}ks-product-info .buttons{display:-webkit-box;display:-ms-flexbox;display:flex;margin:15px -5px 10px 0px}@media only screen and (min-width: 960px){ks-product-info{display:-ms-grid;display:grid;-ms-grid-columns:48% 52%;grid-template-columns:48% 52%;-ms-grid-rows:auto 1fr;grid-template-rows:auto 1fr}ks-product-info>*:nth-child(1){-ms-grid-row:1;-ms-grid-column:1}ks-product-info>*:nth-child(2){-ms-grid-row:1;-ms-grid-column:2}ks-product-info>*:nth-child(3){-ms-grid-row:2;-ms-grid-column:1}ks-product-info>*:nth-child(4){-ms-grid-row:2;-ms-grid-column:2}ks-product-info>.top{-ms-grid-column:2;grid-column:2;-ms-grid-row:1;grid-row:1}ks-product-info>.left{-ms-grid-column:1;grid-column:1;-ms-grid-row:1;-ms-grid-row-span:2;grid-row:1 / 3}ks-product-info>.bottom{-ms-grid-column:2;grid-column:2;-ms-grid-row:2;grid-row:2}ks-product-info .bottom{margin-bottom:25px}}@media only screen and (min-width: 1200px){ks-product-info{padding:40px 30px}}@media only screen and (max-width: 960px){ks-product-info .bottom{margin-top:30px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-ms-flex-align:center;align-items:center}ks-product-info .buttons{display:-webkit-box;display:-ms-flexbox;display:flex;margin:15px 0px 10px 0px}}@media only screen and (max-width: 460px){ks-product-info{padding:40px 10px}}";
 
-const ProductInfo$1 = class {
+const ProductInfo = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
     this.productRendered = createEvent(this, "productRendered", 7);
@@ -416,35 +391,12 @@ const ProductInfo$1 = class {
     return [
       h("div", { class: "top" }, h("slot", { name: "top" })),
       h("div", { class: "left" }, h("slot", { name: "left" })),
-      h("div", { class: "bottom" }, h("slot", null), h("div", { class: "installments" }, h("slot", { name: "inst" })), h("div", { class: "attributes" }, h("slot", { name: "attr" })), h("slot", { name: "brand" }))
+      h("div", { class: "bottom" }, h("slot", null), h("slot", { name: "brand" }))
     ];
   }
   get root() { return getElement(this); }
 };
-ProductInfo$1.style = productInfoCss;
-
-const productInfoPointsCss = "ks-product-info-points{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse;border-radius:15px;background-color:#f2f2f2;margin:10px 0px}ks-product-info-points .count{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;border-radius:15px;padding:15px 20px;font-size:26px;min-width:50px;background-color:var(--color-dark);color:var(--text-color-dark);font-family:var(--font-emphasis);font-weight:700}ks-product-info-points .message{padding:10px 15px;font-size:14px;-webkit-box-align:center;-ms-flex-align:center;align-items:center}ks-product-info-points[external]{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;background-color:#ffffff;-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow);margin:20px 0px}ks-product-info-points[external] .count{padding:20px 60px;font-size:32px}ks-product-info-points[external] .message{display:-webkit-box;display:-ms-flexbox;display:flex;padding:5px 20px}ks-product-info-points.hide{display:none}@media only screen and (max-width: 960px){ks-product-info-points{display:-webkit-box !important;display:-ms-flexbox !important;display:flex !important}ks-product-info-points[external]{display:none !important}}@media only screen and (max-width: 1220px){ks-product-info-points[external]{border-radius:0px}ks-product-info-points[external] .count{border-radius:0px}}@media only screen and (max-width: 460px){ks-product-info-points .message{font-size:12px}}";
-
-const ProductInfo = class {
-  constructor(hostRef) {
-    registerInstance(this, hostRef);
-    this.count = "";
-    this.value = "";
-    this.message = "";
-    this.internal = false;
-    this.external = false;
-  }
-  render() {
-    const hide = store.get("externalPoints") && this.internal ||
-      !store.get("externalPoints") && this.external ?
-      "hide" : "";
-    const message = this.message
-      .replace("{count}", this.count)
-      .replace("{value}", this.value);
-    return h(Host, { class: hide }, h("div", { class: "count" }, this.count), h("div", { class: "message" }, message));
-  }
-};
-ProductInfo.style = productInfoPointsCss;
+ProductInfo.style = productInfoCss;
 
 const productNegotiateCss = "ks-product-negotiate{display:block}ks-product-negotiate fieldset{border:none;margin:0;padding:0}ks-product-negotiate .info{text-align:center}ks-product-negotiate h3{font-family:var(--font-emphasis);font-size:20px;font-weight:700}";
 
@@ -502,7 +454,7 @@ const ProductNegotiate = class {
 };
 ProductNegotiate.style = productNegotiateCss;
 
-const productPointsCss = "ks-product-points{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}ks-product-points>div:first-child{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;width:20%;font-family:var(--font-emphasis);font-weight:700;font-size:32px;color:#ffffff;background-color:#ee1438}ks-product-points>div:last-child{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:1;-ms-flex:1;flex:1;font-size:14px;padding:15px}@media screen and (max-width: 640px){ks-product-points>div:first-child{width:100%;padding:10px 0}}";
+const productPointsCss = "ks-product-points{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}ks-product-points>div:first-child{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;width:20%;font-family:var(--font-emphasis);font-weight:700;font-size:32px;color:#ffffff;background-color:#ee1438}ks-product-points>div:last-child{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:1;-ms-flex:1 0 auto;flex:1 0 auto;font-size:14px;padding:15px}@media screen and (max-width: 640px){ks-product-points>div:first-child{width:100%;padding:10px 0}}";
 
 const ProductPoints = class {
   constructor(hostRef) {
@@ -519,58 +471,25 @@ const ProductPoints = class {
 };
 ProductPoints.style = productPointsCss;
 
-const productPriceCss = "ks-product-price{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;margin:10px 0 20px 0}ks-product-price .price{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-flow:column nowrap;flex-flow:column nowrap;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;padding-bottom:5px;font-family:var(--product-price-font);font-weight:700;margin-right:20px}ks-product-price .price .previous{display:inline-block;color:var(--color-dark);font-size:var(--product-price-size);line-height:var(--product-price-size);position:relative;margin-bottom:5px}ks-product-price .price .previous::after{background-color:var(--color-dark);content:\"\";height:0.1em;left:-3px;right:-3px;position:absolute;top:46%}ks-product-price .price .current{color:var(--color-secondary);font-size:var(--product-price-size-emphasis);line-height:var(--product-price-size)}ks-product-price>button{position:relative;overflow:hidden;-webkit-box-flex:1;-ms-flex:1;flex:1;border-style:none;outline-style:none;border-radius:50px;background-color:var(--color-secondary);color:var(--text-color-secondary);font-family:var(--product-price-font);font-size:var(--product-price-size);font-weight:700;-webkit-transition:var(--transition-background-color),\n                var(--transition-color);transition:var(--transition-background-color),\n                var(--transition-color)}ks-product-price button:disabled{background-color:var(--color-faded) !important;color:var(--text-color-faded)}ks-product-price button:hover{background-color:var(--color-secondary-hover)}ks-product-price button:active{background-color:var(--color-secondary-active)}@media only screen and (max-width: 1200px){ks-product-price button{font-family:var(--product-price-font);font-size:var(--product-price-size-small)}}@media only screen and (max-width: 560px){ks-product-price{-ms-flex-wrap:wrap;flex-wrap:wrap}ks-product-price .price{display:block;width:100%;margin-bottom:20px;margin-right:0px;text-align:center}}ks-product-price .fav{-webkit-box-flex:0;-ms-flex:0 0 auto;flex:0 0 auto;padding:15px 15px;margin-left:8px;line-height:0px}ks-product-price .fav ks-icon{-webkit-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0);-webkit-transition:-webkit-transform 0.1s ease;transition:-webkit-transform 0.1s ease;transition:transform 0.1s ease;transition:transform 0.1s ease, -webkit-transform 0.1s ease}ks-product-price .fav:hover ks-icon{-webkit-transform:rotate(72deg);-ms-transform:rotate(72deg);transform:rotate(72deg)}ks-product-price button.loading{color:transparent}ks-product-price button ks-loader{opacity:0;-webkit-transition:var(--transition-opacity);transition:var(--transition-opacity)}ks-product-price button.loading ks-loader{opacity:1}ks-product-price button.fav.completed{color:transparent;background-color:var(--color-secondary) !important}ks-product-price button.fav ks-icon.completed{position:absolute;top:50%;left:50%;opacity:0;color:white;-webkit-transform:translate(-50%, -50%);-ms-transform:translate(-50%, -50%);transform:translate(-50%, -50%);-webkit-transition:var(--transition-opacity);transition:var(--transition-opacity);-webkit-transition-delay:0.3s;transition-delay:0.3s}ks-product-price button.fav.completed ks-icon.completed{opacity:1}";
+const productPriceCss = "ks-product-price{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin:10px 0 20px;font-family:var(--product-price-font);font-weight:700}ks-product-price .previous{display:inline-block;color:var(--color-faded);font-size:var(--product-price-size);line-height:var(--product-price-size);position:relative;margin-left:15px}ks-product-price .previous::after{background-color:var(--color-faded);content:\"\";height:0.1em;left:-3px;right:-3px;position:absolute;top:46%}ks-product-price .current{color:var(--color-secondary);font-size:var(--product-price-size-emphasis);line-height:var(--product-price-size)}@media only screen and (max-width: 560px){ks-product-price .price{display:block;width:100%;margin-bottom:20px;margin-right:0px;text-align:center}}ks-product-price .currency{width:15px;height:15px;padding:5px;line-height:13px;margin:1px 0 0 10px;border-radius:30px;background-color:var(--color-secondary);color:white;font-family:var(--product-price-font);text-align:center;-webkit-user-select:none;-ms-user-select:none;-moz-user-select:none;user-select:none}";
 
 const ProductPrice = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
-    this.addToCart = createEvent(this, "addToCart", 7);
-    this.addToFavourites = createEvent(this, "addToFavourites", 7);
-    this.cartAnimation = false;
-    this.favouritesAnimation = false;
-  }
-  addToCartHandler() {
-    if (store.get("availability") > 0 && !store.get("cartLoading"))
-      this.addToCart.emit();
-  }
-  addToFavouritesHandler() {
-    if (!store.get("favouritesLoading") && !store.get("favouritesCompleted")) {
-      this.addToFavourites.emit();
-    }
   }
   render() {
     const previousPrice = store.get("previousPrice").replace('.', ',');
-    const currentPrice = store.get("currentPrice").replace('.', ',') + " zł";
-    const available = store.get("availability") > 0;
-    if (store.get("cartLoading"))
-      this.cartAnimation = true;
-    else
-      setTimeout(() => {
-        this.cartAnimation = false;
-      }, 300);
-    if (store.get("favouritesLoading"))
-      this.favouritesAnimation = true;
-    else
-      setTimeout(() => {
-        this.favouritesAnimation = false;
-      }, 300);
-    const favClass = [
-      "fav",
-      store.get("favouritesCompleted") ? "completed" : null,
-      store.get("favouritesLoading") ? "loading" : null
-    ];
+    const currentPrice = store.get("currentPrice").replace('.', ',');
     return [
-      h("div", { class: "price" }, previousPrice ? h("div", { class: "previous" }, previousPrice) : null, h("div", { class: "current" }, currentPrice)),
-      available ? h("ks-product-count", null) : null,
-      h("button", { disabled: !available, onClick: () => this.addToCartHandler(), class: store.get("cartLoading") ? "loading" : "" }, available ? "DO KOSZYKA" : "NIEDOSTĘPNY", h("ks-loader", { oversized: true, running: this.cartAnimation })),
-      h("button", { onClick: () => this.addToFavouritesHandler(), class: favClass.join(" ") }, h("ks-icon", { name: "star" }), h("ks-loader", { running: this.favouritesAnimation }), h("ks-icon", { class: "completed", name: "check" }))
+      h("div", { class: "current" }, currentPrice),
+      h("div", { class: "currency" }, "z\u0142"),
+      previousPrice ? h("div", { class: "previous" }, previousPrice) : null
     ];
   }
-  get root() { return getElement(this); }
 };
 ProductPrice.style = productPriceCss;
 
-const productShippingCss = "ks-product-shipping{display:block;margin-bottom:10px;font-family:var(--product-shipping-font);font-size:var(--product-shipping-size);color:var(--product-shipping-color)}ks-product-shipping .time{display:inline-block;color:var(--color-secondary);font-weight:700}ks-product-shipping .price{display:inline-block;font-weight:700;font-size:var(--product-shipping-size-small)}ks-product-shipping .separator{margin:0px 6px;-webkit-transform:scale(0.9, 0.9);-ms-transform:scale(0.9, 0.9);transform:scale(0.9, 0.9)}ks-product-shipping .message{background-color:var(--color-secondary);font-family:var(--product-shipping-message-font);font-size:var(--product-shipping-message-size);color:var(--text-color-secondary);text-align:center;margin:15px 0px 5px -2px;padding:10px 20px;border-radius:15px}@media only screen and (max-width: 1200px){ks-product-shipping .message{font-size:var(--product-shipping-message-size-small)}}@media only screen and (max-width: 960px){ks-product-shipping{margin-top:20px}ks-product-shipping .shipping{text-align:center;font-size:var(--product-shipping-size)}ks-product-shipping .message{margin-bottom:20px}ks-product-shipping .time{display:block;font-size:var(--product-shipping-size)}ks-product-shipping .price{display:block}ks-product-shipping .separator{display:none}}ks-product-shipping .time-animation{-webkit-animation:blink 1.5s ease-in-out infinite;animation:blink 1.5s ease-in-out infinite}";
+const productShippingCss = "ks-product-shipping{display:block;width:100%}ks-product-shipping .message{font-family:var(--product-shipping-message-font);font-size:15px;color:var(--color-secondary);margin-bottom:15px;border-radius:20px;font-weight:700;max-width:100%}ks-product-shipping .hidden{display:none}@media only screen and (max-width: 960px){ks-product-shipping{display:-webkit-box;display:-ms-flexbox;display:flex;text-align:center;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-ms-flex-align:center;align-items:center}}";
 
 const ProductShipping = class {
   constructor(hostRef) {
@@ -582,14 +501,14 @@ const ProductShipping = class {
     const knownShipping = time.search("godzin") != -1 || time.search("dni") != -1;
     const instantShipping = time.search("24 godziny") != -1;
     let timeprefix = knownShipping ? "Wysyłka w" : "";
-    const timeAnimation = instantShipping ? "" : " time-animation";
     let price = freeShipping ? "Darmowa dostawa" : store.get("shippingPrice").replace(".", ",") + " zł";
     const priceprefix = freeShipping ? "" : "Dostawa od";
+    const message = store.get("shippingMessage");
     return [
-      h("div", { class: "shipping" }, h("span", { class: "time" + timeAnimation }, " ", timeprefix, " ", time, " "), h("span", { class: "separator" }, " \u2022 "), h("span", { class: "price" }, priceprefix, " ", price)),
-      store.get("shippingMessage") ?
-        h("div", { class: "message" }, store.get("shippingMessage"))
-        : null
+      message ? h("div", { class: "message" }, message)
+        : null,
+      h("ks-product-attribute", { icon: "clock", danger: !instantShipping }, timeprefix, " ", time),
+      h("ks-product-attribute", { icon: "package" }, priceprefix, " ", price)
     ];
   }
 };
@@ -777,7 +696,7 @@ const ProductTitle = class {
 };
 ProductTitle.style = productTitleCss;
 
-const productTraitsCss = "ks-product-traits{display:block;font-family:var(--font-regular);font-size:16px;line-height:16px;margin-left:-2px}ks-product-traits:not(:empty){margin-top:20px;margin-bottom:10px}ks-product-traits .trait{display:-webkit-box;display:-ms-flexbox;display:flex;overflow:hidden;border-radius:15px}ks-product-traits .select{position:relative;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:1;-ms-flex:1;flex:1}ks-product-traits label{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:15px 20px 15px 18px;background-color:var(--color-secondary);color:var(--text-color-dark)}ks-product-traits select{-webkit-box-flex:1;-ms-flex:1;flex:1;padding:0px 20px;border-radius:15px 0px 0px 15px;outline-style:none;background-color:#f3f3f3;border:solid 1px #cacaca;font-family:var(--font-regular);font-size:16px;line-height:16px;-moz-appearance:none;-webkit-appearance:none;appearance:none;-webkit-transition:var(--transition-background-color);transition:var(--transition-background-color)}ks-product-traits select::-ms-expand{display:none}ks-product-traits ks-icon{position:absolute;top:12px;right:10px}ks-product-traits .select:hover{background-color:#e2e2e2}ks-product-traits .select:active{background-color:#d3d3d3}ks-product-traits select option{background-color:white !important}@media only screen and (max-width: 1200px){ks-product-traits,ks-product-traits select{font-size:14px;line-height:14px}}";
+const productTraitsCss = "ks-product-traits{display:block;font-family:var(--font-regular);font-size:16px;line-height:16px;margin-left:-2px;max-width:300px}ks-product-traits .trait{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:baseline;-ms-flex-align:baseline;align-items:baseline;overflow:hidden}ks-product-traits .select{position:relative;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:1;-ms-flex:1 0 auto;flex:1 0 auto}ks-product-traits label{padding:5px}ks-product-traits select{-webkit-box-flex:1;-ms-flex:1 0 auto;flex:1 0 auto;padding:7px 35px 7px 10px;margin-left:5px;border-radius:20px;outline-style:none;background-color:#f3f3f3;border:solid 1px #cacaca;font-family:var(--font-regular);font-size:16px;line-height:16px;-moz-appearance:none;-webkit-appearance:none;appearance:none;-webkit-transition:var(--transition-background-color);transition:var(--transition-background-color)}ks-product-traits select::-ms-expand{display:none}ks-product-traits ks-icon{position:absolute;top:5px;right:10px;pointer-events:none}ks-product-traits select option{background-color:white !important}@media only screen and (max-width: 960px){ks-product-traits select{padding:10px 40px 10px 15px}ks-product-traits ks-icon{top:7px}}";
 
 const ProductCount = class {
   constructor(hostRef) {
@@ -797,7 +716,7 @@ const ProductCount = class {
       this.traitChangeHandler();
   }
   render() {
-    return store.get("traits").map((trait) => h("div", { class: "trait" }, h("div", { class: "select" }, h("select", { onChange: () => this.traitChangeHandler() }, trait.items.map(item => h("option", { value: item.id }, item.name))), h("ks-icon", { name: "chevron-down" })), h("label", null, trait.name)));
+    return store.get("traits").map((trait) => h("div", { class: "trait" }, h("label", null, trait.name, ":"), h("div", { class: "select" }, h("select", { onChange: () => this.traitChangeHandler() }, trait.items.map(item => h("option", { value: item.id }, item.name))), h("ks-icon", { name: "chevron-down" }))));
   }
   get root() { return getElement(this); }
 };
@@ -905,4 +824,4 @@ const ProductYoutube = class {
 };
 ProductYoutube.style = productYoutubeCss;
 
-export { Comment as ks_comment, ProductAttribute as ks_product_attribute, ProductButton as ks_product_button, ProductCalculatorCA as ks_product_calculator_ca, ProductCalculatorPayU as ks_product_calculator_payu, ProductTab$1 as ks_product_comments, ProductCount$1 as ks_product_count, ProductImages as ks_product_images, ProductInfo$1 as ks_product_info, ProductInfo as ks_product_info_points, ProductNegotiate as ks_product_negotiate, ProductPoints as ks_product_points, ProductPrice as ks_product_price, ProductShipping as ks_product_shipping, ProductSuggestions as ks_product_suggestions, ProductTab as ks_product_tab, ProductTabs as ks_product_tabs, ProductTitle as ks_product_title, ProductCount as ks_product_traits, ProductVariant as ks_product_variant, ProductVariants as ks_product_variants, ProductYoutube as ks_product_youtube };
+export { Comment as ks_comment, ProductAttribute as ks_product_attribute, ProductButton as ks_product_button, ProductCalculatorCA as ks_product_calculator_ca, ProductCalculatorPayU as ks_product_calculator_payu, ProductTab$1 as ks_product_comments, ProductCount$1 as ks_product_count, ProductImages as ks_product_images, ProductInfo as ks_product_info, ProductNegotiate as ks_product_negotiate, ProductPoints as ks_product_points, ProductPrice as ks_product_price, ProductShipping as ks_product_shipping, ProductSuggestions as ks_product_suggestions, ProductTab as ks_product_tab, ProductTabs as ks_product_tabs, ProductTitle as ks_product_title, ProductCount as ks_product_traits, ProductVariant as ks_product_variant, ProductVariants as ks_product_variants, ProductYoutube as ks_product_youtube };

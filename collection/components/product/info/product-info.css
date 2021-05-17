@@ -1,8 +1,8 @@
 ks-product-info {
     display: block;
+    position: relative;
 
     box-sizing: border-box;
-    overflow: hidden;
     width: 100%;
 
     background: var(--card-background);
@@ -30,6 +30,17 @@ ks-product-info .left {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+}
+
+ks-product-info .bottom {
+    margin-bottom: 60px;
+}
+
+ks-product-info .buttons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 15px -5px 10px 0px;
 }
 
 @media only screen and (min-width: 960px) {
@@ -77,6 +88,10 @@ ks-product-info .left {
         -ms-grid-row: 2;
         grid-row: 2;
     }
+
+    ks-product-info .bottom {
+        margin-bottom: 25px;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -85,74 +100,34 @@ ks-product-info .left {
     }
 }
 
-@media only screen and (max-width: 460px) {
-    ks-product-info {
-        padding: 20px 10px;
-    }
-}
+@media only screen and (max-width: 960px) {
+    ks-product-info .bottom {
+        margin-top: 30px;
 
+        display: -webkit-box;
 
-ks-product-info ks-product-button[large] { 
-    max-width: 700px;
-    margin: auto;
-}
+        display: -ms-flexbox;
 
-ks-product-info .installments { 
-    display: -webkit-box; 
-    display: -ms-flexbox; 
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-flow: row nowrap;
-            flex-flow: row nowrap;
-    margin-left: auto;
-    margin-right: auto;
-
-    max-width: 700px;
-}
-
-ks-product-info .installments > *:not(:last-child) { 
-    margin-right: 5px;
-}
-
-ks-product-info .installments > *:first-child { 
-    width: 45%;
-}
-
-ks-product-info .installments > *:last-child { 
-    width: 55%;
-}
-
-@media only screen and (max-width: 640px) {
-    ks-product-info .installments {
+        display: flex;
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
-            -ms-flex-flow: column nowrap;
-                flex-flow: column nowrap;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
     }
 
-    ks-product-info .installments > * { 
-        width: 100% !important;
-        margin-right: 0;
+    ks-product-info .buttons {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        margin: 15px 0px 10px 0px;
     }
 }
 
-
-ks-product-info .attributes { 
-    display: -webkit-box; 
-    display: -ms-flexbox; 
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-flow: row wrap;
-            flex-flow: row wrap;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-}
-
-@media only screen and (max-width: 640px) {
-    ks-product-info .attributes {
-        margin-top: 20px;
+@media only screen and (max-width: 460px) {
+    ks-product-info {
+        padding: 40px 10px;
     }
 }

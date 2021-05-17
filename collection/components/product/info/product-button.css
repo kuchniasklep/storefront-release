@@ -1,7 +1,12 @@
 ks-product-button {
-    display: block;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     width: 100%;
-    margin: 5px 0;
+    margin: 5px 2px;
 }
 
 ks-product-button button {
@@ -9,29 +14,19 @@ ks-product-button button {
     border-style: none;
     border-radius: 50px;
 
+    padding: 12px 30px;
+
     background-color: var(--color-dark);
     color: var(--text-color-dark);
     font-family: var(--product-button-font);
-    font-weight: 700;
-
-    width: 100%;
-    -webkit-transition: var(--transition-background-color);
-    transition: var(--transition-background-color);
-}
-
-ks-product-button button {
     font-size: var(--product-button-size);
-    padding: 10px 20px;
-}
+    line-height: var(--product-button-size);
+    
 
-ks-product-button[large] button {
-    font-size: var(--product-button-size-large);
-    padding: 15px 40px;
-}
+    -webkit-transition: var(--transition-background-color);
+    
 
-ks-product-button[medium] button {
-    font-size: var(--product-button-size-medium);
-    padding: 15px 40px;
+    transition: var(--transition-background-color);
 }
 
 ks-product-button button:hover {
@@ -39,4 +34,30 @@ ks-product-button button:hover {
 }
 ks-product-button button:active {
     background-color: var(--color-dark-active);
+}
+
+ks-product-button[icon] {
+    border-radius: 0px;
+    height: 40px;
+    margin: 0;
+
+    padding: 5px 0px;
+
+    background-color: var(--color-dark);
+    color: var(--text-color-dark);
+    -webkit-transition: var(--transition-background-color);
+    transition: var(--transition-background-color);
+}
+
+ks-product-button[icon]:hover {
+    background-color: var(--color-dark-hover);
+}
+ks-product-button[icon]:active {
+    background-color: var(--color-dark-active);
+}
+
+@media only screen and (max-width: 400px) {
+    ks-product-button button {
+        padding: 12px 25px;
+    }
 }

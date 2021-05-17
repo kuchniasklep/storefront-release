@@ -1,7 +1,9 @@
 export declare class ProductAttribute {
   href: string;
-  name: string;
-  image: string;
+  icon: string;
+  size: number;
+  danger: boolean;
   emphasis: boolean;
+  faded: boolean;
   render(): any;
 }

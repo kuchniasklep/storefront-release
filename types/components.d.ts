@@ -785,10 +785,12 @@ export namespace Components {
         "warning": string;
     }
     interface KsProductAttribute {
+        "danger": boolean;
         "emphasis": boolean;
+        "faded": boolean;
         "href": string;
-        "image": string;
-        "name": string;
+        "icon": string;
+        "size": number;
     }
     interface KsProductBrand {
         "height": number;
@@ -798,8 +800,7 @@ export namespace Components {
         "width": number;
     }
     interface KsProductButton {
-        "large": boolean;
-        "medium": boolean;
+        "icon": string;
     }
     interface KsProductCalculatorCa {
         "height": number;
@@ -843,12 +844,9 @@ export namespace Components {
         "suggestionApi": string;
         "traitApi": string;
     }
-    interface KsProductInfoPoints {
-        "count": string;
-        "external": boolean;
-        "internal": boolean;
-        "message": string;
-        "value": string;
+    interface KsProductInstallments {
+        "active": boolean;
+        "name": string;
     }
     interface KsProductNegotiate {
         "agreement": string;
@@ -868,6 +866,8 @@ export namespace Components {
         "value": number;
     }
     interface KsProductPrice {
+    }
+    interface KsProductPurchase {
     }
     interface KsProductShipping {
     }
@@ -894,6 +894,10 @@ export namespace Components {
     }
     interface KsProductTitle {
         "brandLink": boolean;
+    }
+    interface KsProductTooltip {
+        "active": boolean;
+        "message": string;
     }
     interface KsProductTraits {
     }
@@ -1832,11 +1836,11 @@ declare global {
         prototype: HTMLKsProductInfoElement;
         new (): HTMLKsProductInfoElement;
     };
-    interface HTMLKsProductInfoPointsElement extends Components.KsProductInfoPoints, HTMLStencilElement {
+    interface HTMLKsProductInstallmentsElement extends Components.KsProductInstallments, HTMLStencilElement {
     }
-    var HTMLKsProductInfoPointsElement: {
-        prototype: HTMLKsProductInfoPointsElement;
-        new (): HTMLKsProductInfoPointsElement;
+    var HTMLKsProductInstallmentsElement: {
+        prototype: HTMLKsProductInstallmentsElement;
+        new (): HTMLKsProductInstallmentsElement;
     };
     interface HTMLKsProductNegotiateElement extends Components.KsProductNegotiate, HTMLStencilElement {
     }
@@ -1855,6 +1859,12 @@ declare global {
     var HTMLKsProductPriceElement: {
         prototype: HTMLKsProductPriceElement;
         new (): HTMLKsProductPriceElement;
+    };
+    interface HTMLKsProductPurchaseElement extends Components.KsProductPurchase, HTMLStencilElement {
+    }
+    var HTMLKsProductPurchaseElement: {
+        prototype: HTMLKsProductPurchaseElement;
+        new (): HTMLKsProductPurchaseElement;
     };
     interface HTMLKsProductShippingElement extends Components.KsProductShipping, HTMLStencilElement {
     }
@@ -1891,6 +1901,12 @@ declare global {
     var HTMLKsProductTitleElement: {
         prototype: HTMLKsProductTitleElement;
         new (): HTMLKsProductTitleElement;
+    };
+    interface HTMLKsProductTooltipElement extends Components.KsProductTooltip, HTMLStencilElement {
+    }
+    var HTMLKsProductTooltipElement: {
+        prototype: HTMLKsProductTooltipElement;
+        new (): HTMLKsProductTooltipElement;
     };
     interface HTMLKsProductTraitsElement extends Components.KsProductTraits, HTMLStencilElement {
     }
@@ -2151,16 +2167,18 @@ declare global {
         "ks-product-count": HTMLKsProductCountElement;
         "ks-product-images": HTMLKsProductImagesElement;
         "ks-product-info": HTMLKsProductInfoElement;
-        "ks-product-info-points": HTMLKsProductInfoPointsElement;
+        "ks-product-installments": HTMLKsProductInstallmentsElement;
         "ks-product-negotiate": HTMLKsProductNegotiateElement;
         "ks-product-points": HTMLKsProductPointsElement;
         "ks-product-price": HTMLKsProductPriceElement;
+        "ks-product-purchase": HTMLKsProductPurchaseElement;
         "ks-product-shipping": HTMLKsProductShippingElement;
         "ks-product-simple": HTMLKsProductSimpleElement;
         "ks-product-suggestions": HTMLKsProductSuggestionsElement;
         "ks-product-tab": HTMLKsProductTabElement;
         "ks-product-tabs": HTMLKsProductTabsElement;
         "ks-product-title": HTMLKsProductTitleElement;
+        "ks-product-tooltip": HTMLKsProductTooltipElement;
         "ks-product-traits": HTMLKsProductTraitsElement;
         "ks-product-variant": HTMLKsProductVariantElement;
         "ks-product-variants": HTMLKsProductVariantsElement;
@@ -2917,10 +2935,12 @@ declare namespace LocalJSX {
         "warning"?: string;
     }
     interface KsProductAttribute {
+        "danger"?: boolean;
         "emphasis"?: boolean;
+        "faded"?: boolean;
         "href"?: string;
-        "image"?: string;
-        "name"?: string;
+        "icon"?: string;
+        "size"?: number;
     }
     interface KsProductBrand {
         "height"?: number;
@@ -2930,8 +2950,7 @@ declare namespace LocalJSX {
         "width"?: number;
     }
     interface KsProductButton {
-        "large"?: boolean;
-        "medium"?: boolean;
+        "icon"?: string;
     }
     interface KsProductCalculatorCa {
         "height"?: number;
@@ -2977,12 +2996,9 @@ declare namespace LocalJSX {
         "suggestionApi"?: string;
         "traitApi"?: string;
     }
-    interface KsProductInfoPoints {
-        "count"?: string;
-        "external"?: boolean;
-        "internal"?: boolean;
-        "message"?: string;
-        "value"?: string;
+    interface KsProductInstallments {
+        "active"?: boolean;
+        "name"?: string;
     }
     interface KsProductNegotiate {
         "agreement"?: string;
@@ -3002,6 +3018,8 @@ declare namespace LocalJSX {
         "value"?: number;
     }
     interface KsProductPrice {
+    }
+    interface KsProductPurchase {
         "onAddToCart"?: (event: CustomEvent<any>) => void;
         "onAddToFavourites"?: (event: CustomEvent<any>) => void;
     }
@@ -3029,6 +3047,10 @@ declare namespace LocalJSX {
     }
     interface KsProductTitle {
         "brandLink"?: boolean;
+    }
+    interface KsProductTooltip {
+        "active"?: boolean;
+        "message"?: string;
     }
     interface KsProductTraits {
         "onTraitChange"?: (event: CustomEvent<[TraitData, TraitDataItem][]>) => void;
@@ -3274,16 +3296,18 @@ declare namespace LocalJSX {
         "ks-product-count": KsProductCount;
         "ks-product-images": KsProductImages;
         "ks-product-info": KsProductInfo;
-        "ks-product-info-points": KsProductInfoPoints;
+        "ks-product-installments": KsProductInstallments;
         "ks-product-negotiate": KsProductNegotiate;
         "ks-product-points": KsProductPoints;
         "ks-product-price": KsProductPrice;
+        "ks-product-purchase": KsProductPurchase;
         "ks-product-shipping": KsProductShipping;
         "ks-product-simple": KsProductSimple;
         "ks-product-suggestions": KsProductSuggestions;
         "ks-product-tab": KsProductTab;
         "ks-product-tabs": KsProductTabs;
         "ks-product-title": KsProductTitle;
+        "ks-product-tooltip": KsProductTooltip;
         "ks-product-traits": KsProductTraits;
         "ks-product-variant": KsProductVariant;
         "ks-product-variants": KsProductVariants;
@@ -3448,16 +3472,18 @@ declare module "@stencil/core" {
             "ks-product-count": LocalJSX.KsProductCount & JSXBase.HTMLAttributes<HTMLKsProductCountElement>;
             "ks-product-images": LocalJSX.KsProductImages & JSXBase.HTMLAttributes<HTMLKsProductImagesElement>;
             "ks-product-info": LocalJSX.KsProductInfo & JSXBase.HTMLAttributes<HTMLKsProductInfoElement>;
-            "ks-product-info-points": LocalJSX.KsProductInfoPoints & JSXBase.HTMLAttributes<HTMLKsProductInfoPointsElement>;
+            "ks-product-installments": LocalJSX.KsProductInstallments & JSXBase.HTMLAttributes<HTMLKsProductInstallmentsElement>;
             "ks-product-negotiate": LocalJSX.KsProductNegotiate & JSXBase.HTMLAttributes<HTMLKsProductNegotiateElement>;
             "ks-product-points": LocalJSX.KsProductPoints & JSXBase.HTMLAttributes<HTMLKsProductPointsElement>;
             "ks-product-price": LocalJSX.KsProductPrice & JSXBase.HTMLAttributes<HTMLKsProductPriceElement>;
+            "ks-product-purchase": LocalJSX.KsProductPurchase & JSXBase.HTMLAttributes<HTMLKsProductPurchaseElement>;
             "ks-product-shipping": LocalJSX.KsProductShipping & JSXBase.HTMLAttributes<HTMLKsProductShippingElement>;
             "ks-product-simple": LocalJSX.KsProductSimple & JSXBase.HTMLAttributes<HTMLKsProductSimpleElement>;
             "ks-product-suggestions": LocalJSX.KsProductSuggestions & JSXBase.HTMLAttributes<HTMLKsProductSuggestionsElement>;
             "ks-product-tab": LocalJSX.KsProductTab & JSXBase.HTMLAttributes<HTMLKsProductTabElement>;
             "ks-product-tabs": LocalJSX.KsProductTabs & JSXBase.HTMLAttributes<HTMLKsProductTabsElement>;
             "ks-product-title": LocalJSX.KsProductTitle & JSXBase.HTMLAttributes<HTMLKsProductTitleElement>;
+            "ks-product-tooltip": LocalJSX.KsProductTooltip & JSXBase.HTMLAttributes<HTMLKsProductTooltipElement>;
             "ks-product-traits": LocalJSX.KsProductTraits & JSXBase.HTMLAttributes<HTMLKsProductTraitsElement>;
             "ks-product-variant": LocalJSX.KsProductVariant & JSXBase.HTMLAttributes<HTMLKsProductVariantElement>;
             "ks-product-variants": LocalJSX.KsProductVariants & JSXBase.HTMLAttributes<HTMLKsProductVariantsElement>;
