@@ -27,10 +27,6 @@ ks-product-title h1 > a:active {
     opacity: 0.5;
 }
 
-ks-product-title > .breadcrumbs {
-    margin-bottom: 10px;
-}
-
 ks-product-title > .breadcrumbs > a {
     font-family: var(--product-breadcrumb-font);
     /* font-size: var(--product-breadcrumb-size); */
