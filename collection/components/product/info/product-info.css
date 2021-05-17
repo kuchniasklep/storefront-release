@@ -9,7 +9,7 @@ ks-product-info {
     color: var(--card-text-color);
     box-shadow: var(--card-shadow);
 
-    padding: 40px 30px;
+    padding: 30px 30px;
     min-height: 420px;
 }
 
@@ -44,7 +44,7 @@ ks-product-info .bottom {
     padding-bottom: 60px;
 }
 
-@media only screen and (min-width: 960px) {
+@media only screen and (min-width: 961px) {
     ks-product-info {
         display: -ms-grid;
         display: grid;
@@ -88,12 +88,13 @@ ks-product-info .bottom {
         grid-column: 2;
         -ms-grid-row: 2;
         grid-row: 2;
+        padding-bottom: 0px;
     }
 }
 
 @media only screen and (min-width: 1200px) {
     ks-product-info {
-        padding: 40px 30px;
+        padding: 30px 30px;
     }
 }
 
