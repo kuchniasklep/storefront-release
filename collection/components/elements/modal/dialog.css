@@ -123,6 +123,7 @@ ks-dialog .overlay > div > * {
             animation: vertical-swipe-in-short 0.5s;
 }
 
+
 ks-dialog .overlay .header {
     font-family: var(--font-emphasis);
     font-size: 20px;

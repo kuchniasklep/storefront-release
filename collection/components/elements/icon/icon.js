@@ -54,7 +54,7 @@ export class Icon {
         "text": ""
       },
       "attribute": "name",
-      "reflect": false,
+      "reflect": true,
       "defaultValue": "\"alert-octagon\""
     },
     "size": {

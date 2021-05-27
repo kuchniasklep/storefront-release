@@ -140,10 +140,6 @@ export class ProductInfo {
         h("slot", { name: "left" })),
       h("div", { class: "bottom" },
         h("slot", null),
-        h("div", { class: "installments" },
-          h("slot", { name: "inst" })),
-        h("div", { class: "attributes" },
-          h("slot", { name: "attr" })),
         h("slot", { name: "brand" }))
     ];
   }

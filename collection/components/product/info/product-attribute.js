@@ -2,17 +2,17 @@ import { Component, h, Prop } from '@stencil/core';
 export class ProductAttribute {
   constructor() {
     this.href = "";
-    this.name = "";
-    this.image = "";
+    this.icon = "";
+    this.size = 1.0;
+    this.danger = false;
     this.emphasis = false;
+    this.faded = false;
   }
   render() {
-    const name = this.name != "" ? h("span", { class: "name" },
-      this.name,
-      ":") : null;
-    const image = this.image != "" ? h("div", { class: "image" },
-      h("ks-img", { vertical: true, sync: true, src: this.image })) : null;
-    const content = [name, h("slot", null), image];
+    const content = [
+      h("ks-icon", { name: this.icon, size: this.size }),
+      h("slot", null)
+    ];
     if (this.href != "")
       return h("a", { href: this.href }, content);
     return content;
@@ -43,7 +43,7 @@ export class ProductAttribute {
       "reflect": false,
       "defaultValue": "\"\""
     },
-    "name": {
+    "icon": {
       "type": "string",
       "mutable": false,
       "complexType": {
@@ -57,16 +57,16 @@ export class ProductAttribute {
         "tags": [],
         "text": ""
       },
-      "attribute": "name",
+      "attribute": "icon",
       "reflect": false,
       "defaultValue": "\"\""
     },
-    "image": {
-      "type": "string",
+    "size": {
+      "type": "number",
       "mutable": false,
       "complexType": {
-        "original": "string",
-        "resolved": "string",
+        "original": "number",
+        "resolved": "number",
         "references": {}
       },
       "required": false,
@@ -75,9 +75,27 @@ export class ProductAttribute {
         "tags": [],
         "text": ""
       },
-      "attribute": "image",
+      "attribute": "size",
+      "reflect": false,
+      "defaultValue": "1.0"
+    },
+    "danger": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "danger",
       "reflect": true,
-      "defaultValue": "\"\""
+      "defaultValue": "false"
     },
     "emphasis": {
       "type": "boolean",
@@ -94,6 +112,24 @@ export class ProductAttribute {
         "text": ""
       },
       "attribute": "emphasis",
+      "reflect": true,
+      "defaultValue": "false"
+    },
+    "faded": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "faded",
       "reflect": true,
       "defaultValue": "false"
     }

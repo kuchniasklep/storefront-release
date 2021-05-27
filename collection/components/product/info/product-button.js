@@ -1,10 +1,8 @@
 import { Component, h, Prop } from '@stencil/core';
 export class ProductButton {
-  constructor() {
-    this.large = false;
-    this.medium = false;
-  }
   render() {
+    if (this.icon)
+      return h("ks-img2", { src: this.icon });
     return h("button", null,
       h("slot", null));
   }
@@ -16,12 +14,12 @@ export class ProductButton {
     "$": ["product-button.css"]
   }; }
   static get properties() { return {
-    "large": {
-      "type": "boolean",
+    "icon": {
+      "type": "string",
       "mutable": false,
       "complexType": {
-        "original": "boolean",
-        "resolved": "boolean",
+        "original": "string",
+        "resolved": "string",
         "references": {}
       },
       "required": false,
@@ -30,27 +28,8 @@ export class ProductButton {
         "tags": [],
         "text": ""
       },
-      "attribute": "large",
-      "reflect": true,
-      "defaultValue": "false"
-    },
-    "medium": {
-      "type": "boolean",
-      "mutable": false,
-      "complexType": {
-        "original": "boolean",
-        "resolved": "boolean",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "medium",
-      "reflect": true,
-      "defaultValue": "false"
+      "attribute": "icon",
+      "reflect": true
     }
   }; }
 }

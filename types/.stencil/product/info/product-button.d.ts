@@ -1,5 +1,4 @@
 export declare class ProductButton {
-  large: boolean;
-  medium: boolean;
+  icon: string;
   render(): any;
 }
