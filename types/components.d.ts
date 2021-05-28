@@ -864,19 +864,13 @@ export namespace Components {
     interface KsProductNotify {
         "agreement": string;
         "api": string;
-        "backorderLabel": string;
-        "existsHeading": string;
-        "existsMessage": string;
-        "faliureHeading": string;
-        "faliureMessage": string;
+        "backorders": string;
+        "errorHeading": string;
+        "errorParagraph": string;
         "heading": string;
         "paragraph": string;
         "product": number;
         "show": () => Promise<void>;
-        "successHeading": string;
-        "successMessage": string;
-        "updatedHeading": string;
-        "updatedMessage": string;
     }
     interface KsProductPoints {
         "count": number;
@@ -3043,18 +3037,12 @@ declare namespace LocalJSX {
     interface KsProductNotify {
         "agreement"?: string;
         "api"?: string;
-        "backorderLabel"?: string;
-        "existsHeading"?: string;
-        "existsMessage"?: string;
-        "faliureHeading"?: string;
-        "faliureMessage"?: string;
+        "backorders"?: string;
+        "errorHeading"?: string;
+        "errorParagraph"?: string;
         "heading"?: string;
         "paragraph"?: string;
         "product"?: number;
-        "successHeading"?: string;
-        "successMessage"?: string;
-        "updatedHeading"?: string;
-        "updatedMessage"?: string;
     }
     interface KsProductPoints {
         "count"?: number;

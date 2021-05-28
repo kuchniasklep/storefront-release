@@ -432,8 +432,8 @@ const ProductNegotiate = class {
       let message = "";
       if (!window.navigator.onLine)
         message = "Brak internetu.";
-      if (error.messsage)
-        message = error.messsage;
+      if (error.message)
+        message = error.message;
       this.dialog.showFailure(this.faliureHeading, message);
     });
   }

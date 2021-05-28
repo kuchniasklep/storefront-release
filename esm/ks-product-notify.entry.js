@@ -7,16 +7,6 @@ const ProductNotify = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
     this.product = 0;
-    this.agreement = "Wyrażam zgodę na przetwarzanie przez sprzedawcę moich danych osobowych zawartych w formularzu w celu poinformowania o dostępności produktu.";
-    this.backorderLabel = "Wyślij powiadomienie przy dostępności na zamówienie.";
-    this.successHeading = "Powiadomienie zarejestrowane";
-    this.successMessage = "Poinformujemy cię jak tylko produkt stanie się dostępny na naszej stronie.";
-    this.updatedHeading = "Powiadomienie zaktualizowane";
-    this.updatedMessage = "Opcja wysyłki powiadomień przy dostępności na zamówienie została zaktualizowana.";
-    this.existsHeading = "Powiadomienie już istnieje";
-    this.existsMessage = "Powiadomienie dla tego produktu już zostało utworzone.";
-    this.faliureHeading = "Błąd rejestracji powiadomienia";
-    this.faliureMessage = "Jeżeli problem się powtarza prosimy o kontakt mailowy lub telefoniczny.";
   }
   async requestHandler(event) {
     event.preventDefault();
@@ -27,24 +17,24 @@ const ProductNotify = class {
     const data = new FormData(target);
     data.append("product", this.product.toString());
     await fetch(this.api, { body: data, method: "post" })
-      .then(async (response) => {
-      const result = await response.text();
-      if (result == "added")
-        this.dialog.showSuccess(this.successHeading, this.successMessage);
-      else if (result == "updated")
-        this.dialog.showSuccess(this.updatedHeading, this.updatedMessage);
-      else if (result == "exists")
-        this.dialog.showFailure(this.existsHeading, this.existsMessage);
+      .then(async (response) => response.json())
+      .then(async (data) => {
+      const containsData = "status" in data && "heading" in data && "paragraph" in data;
+      if (!containsData)
+        throw new Error(this.errorParagraph);
+      if (data.status == "success")
+        this.dialog.showSuccess(data.heading, data.paragraph);
       else
-        this.dialog.showFailure(this.faliureHeading, this.faliureMessage);
+        this.dialog.showFailure(data.heading, data.paragraph);
     })
       .catch(async (error) => {
       let message = "";
       if (!window.navigator.onLine)
         message = "Brak internetu.";
-      if (error.messsage)
-        message = error.messsage;
-      this.dialog.showFailure(this.faliureHeading, message);
+      else if (error.message != "")
+        message = error.message;
+      console.log(error.message);
+      this.dialog.showFailure(this.errorHeading, message);
     });
   }
   async show() {
@@ -54,7 +44,7 @@ const ProductNotify = class {
     this.dialog = this.root.querySelector('ks-dialog');
   }
   render() {
-    return h("ks-dialog", null, h("form", { onSubmit: e => this.requestHandler(e) }, h("fieldset", null, h("div", { class: "info" }, h("h3", null, this.heading), h("p", null, this.paragraph)), h("ks-input-text", { email: true, name: "email", required: true, nomessage: true, placeholder: "E-mail", icon: "mail" }), h("ks-input-check", { checked: true, name: "backorders", nomessage: true, label: this.backorderLabel }), h("ks-input-check", { name: "zgoda", required: true, nomessage: true, label: this.agreement }), h("ks-button", { submit: true, name: "POWIADOM MNIE" }))));
+    return h("ks-dialog", null, h("form", { onSubmit: e => this.requestHandler(e) }, h("fieldset", null, h("div", { class: "info" }, h("h3", null, this.heading), h("p", null, this.paragraph)), h("ks-input-text", { email: true, name: "email", required: true, nomessage: true, placeholder: "E-mail", icon: "mail" }), h("ks-input-check", { checked: true, name: "backorders", nomessage: true, label: this.backorders }), h("ks-input-check", { name: "zgoda", required: true, nomessage: true, label: this.agreement }), h("ks-button", { submit: true, name: "POWIADOM MNIE" }))));
   }
   get root() { return getElement(this); }
 };

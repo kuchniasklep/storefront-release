@@ -1,18 +1,8 @@
-import { Component, h, Element, Prop, Method } from '@stencil/core';
+import { Component, h, Element, Prop, Method, State } from '@stencil/core';
 import ValidateInput from '../input/validate';
 export class ProductNotify {
   constructor() {
     this.product = 0;
-    this.agreement = "Wyrażam zgodę na przetwarzanie przez sprzedawcę moich danych osobowych zawartych w formularzu w celu poinformowania o dostępności produktu.";
-    this.backorderLabel = "Wyślij powiadomienie przy dostępności na zamówienie.";
-    this.successHeading = "Powiadomienie zarejestrowane";
-    this.successMessage = "Poinformujemy cię jak tylko produkt stanie się dostępny na naszej stronie.";
-    this.updatedHeading = "Powiadomienie zaktualizowane";
-    this.updatedMessage = "Opcja wysyłki powiadomień przy dostępności na zamówienie została zaktualizowana.";
-    this.existsHeading = "Powiadomienie już istnieje";
-    this.existsMessage = "Powiadomienie dla tego produktu już zostało utworzone.";
-    this.faliureHeading = "Błąd rejestracji powiadomienia";
-    this.faliureMessage = "Jeżeli problem się powtarza prosimy o kontakt mailowy lub telefoniczny.";
   }
   async requestHandler(event) {
     event.preventDefault();
@@ -23,24 +13,24 @@ export class ProductNotify {
     const data = new FormData(target);
     data.append("product", this.product.toString());
     await fetch(this.api, { body: data, method: "post" })
-      .then(async (response) => {
-      const result = await response.text();
-      if (result == "added")
-        this.dialog.showSuccess(this.successHeading, this.successMessage);
-      else if (result == "updated")
-        this.dialog.showSuccess(this.updatedHeading, this.updatedMessage);
-      else if (result == "exists")
-        this.dialog.showFailure(this.existsHeading, this.existsMessage);
+      .then(async (response) => response.json())
+      .then(async (data) => {
+      const containsData = "status" in data && "heading" in data && "paragraph" in data;
+      if (!containsData)
+        throw new Error(this.errorParagraph);
+      if (data.status == "success")
+        this.dialog.showSuccess(data.heading, data.paragraph);
       else
-        this.dialog.showFailure(this.faliureHeading, this.faliureMessage);
+        this.dialog.showFailure(data.heading, data.paragraph);
     })
       .catch(async (error) => {
       let message = "";
       if (!window.navigator.onLine)
         message = "Brak internetu.";
-      if (error.messsage)
-        message = error.messsage;
-      this.dialog.showFailure(this.faliureHeading, message);
+      else if (error.message != "")
+        message = error.message;
+      console.log(error.message);
+      this.dialog.showFailure(this.errorHeading, message);
     });
   }
   async show() {
@@ -57,7 +47,7 @@ export class ProductNotify {
             h("h3", null, this.heading),
             h("p", null, this.paragraph)),
           h("ks-input-text", { email: true, name: "email", required: true, nomessage: true, placeholder: "E-mail", icon: "mail" }),
-          h("ks-input-check", { checked: true, name: "backorders", nomessage: true, label: this.backorderLabel }),
+          h("ks-input-check", { checked: true, name: "backorders", nomessage: true, label: this.backorders }),
           h("ks-input-check", { name: "zgoda", required: true, nomessage: true, label: this.agreement }),
           h("ks-button", { submit: true, name: "POWIADOM MNIE" }))));
   }
@@ -119,10 +109,9 @@ export class ProductNotify {
         "text": ""
       },
       "attribute": "agreement",
-      "reflect": false,
-      "defaultValue": "\"Wyra\u017Cam zgod\u0119 na przetwarzanie przez sprzedawc\u0119 moich danych osobowych zawartych w formularzu w celu poinformowania o dost\u0119pno\u015Bci produktu.\""
+      "reflect": false
     },
-    "backorderLabel": {
+    "backorders": {
       "type": "string",
       "mutable": false,
       "complexType": {
@@ -136,9 +125,8 @@ export class ProductNotify {
         "tags": [],
         "text": ""
       },
-      "attribute": "backorder-label",
-      "reflect": false,
-      "defaultValue": "\"Wy\u015Blij powiadomienie przy dost\u0119pno\u015Bci na zam\u00F3wienie.\""
+      "attribute": "backorders",
+      "reflect": false
     },
     "heading": {
       "type": "string",
@@ -174,7 +162,7 @@ export class ProductNotify {
       "attribute": "paragraph",
       "reflect": false
     },
-    "successHeading": {
+    "errorHeading": {
       "type": "string",
       "mutable": false,
       "complexType": {
@@ -188,11 +176,10 @@ export class ProductNotify {
         "tags": [],
         "text": ""
       },
-      "attribute": "success-heading",
-      "reflect": false,
-      "defaultValue": "\"Powiadomienie zarejestrowane\""
+      "attribute": "error-heading",
+      "reflect": false
     },
-    "successMessage": {
+    "errorParagraph": {
       "type": "string",
       "mutable": false,
       "complexType": {
@@ -206,118 +193,13 @@ export class ProductNotify {
         "tags": [],
         "text": ""
       },
-      "attribute": "success-message",
-      "reflect": false,
-      "defaultValue": "\"Poinformujemy ci\u0119 jak tylko produkt stanie si\u0119 dost\u0119pny na naszej stronie.\""
-    },
-    "updatedHeading": {
-      "type": "string",
-      "mutable": false,
-      "complexType": {
-        "original": "string",
-        "resolved": "string",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "updated-heading",
-      "reflect": false,
-      "defaultValue": "\"Powiadomienie zaktualizowane\""
-    },
-    "updatedMessage": {
-      "type": "string",
-      "mutable": false,
-      "complexType": {
-        "original": "string",
-        "resolved": "string",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "updated-message",
-      "reflect": false,
-      "defaultValue": "\"Opcja wysy\u0142ki powiadomie\u0144 przy dost\u0119pno\u015Bci na zam\u00F3wienie zosta\u0142a zaktualizowana.\""
-    },
-    "existsHeading": {
-      "type": "string",
-      "mutable": false,
-      "complexType": {
-        "original": "string",
-        "resolved": "string",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "exists-heading",
-      "reflect": false,
-      "defaultValue": "\"Powiadomienie ju\u017C istnieje\""
-    },
-    "existsMessage": {
-      "type": "string",
-      "mutable": false,
-      "complexType": {
-        "original": "string",
-        "resolved": "string",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "exists-message",
-      "reflect": false,
-      "defaultValue": "\"Powiadomienie dla tego produktu ju\u017C zosta\u0142o utworzone.\""
-    },
-    "faliureHeading": {
-      "type": "string",
-      "mutable": false,
-      "complexType": {
-        "original": "string",
-        "resolved": "string",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "faliure-heading",
-      "reflect": false,
-      "defaultValue": "\"B\u0142\u0105d rejestracji powiadomienia\""
-    },
-    "faliureMessage": {
-      "type": "string",
-      "mutable": false,
-      "complexType": {
-        "original": "string",
-        "resolved": "string",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "faliure-message",
-      "reflect": false,
-      "defaultValue": "\"Je\u017Celi problem si\u0119 powtarza prosimy o kontakt mailowy lub telefoniczny.\""
+      "attribute": "error-paragraph",
+      "reflect": false
     }
+  }; }
+  static get states() { return {
+    "resultHeading": {},
+    "resultParagraph": {}
   }; }
   static get methods() { return {
     "show": {
