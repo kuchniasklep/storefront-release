@@ -19,25 +19,28 @@ export class ProductVariants {
   }
   ResizeHandler() {
     const fullWidth = (window.innerWidth <= 1218 ? window.innerWidth : 1218) - 15;
-    const count = Math.round(fullWidth / 120);
+    const count = Math.round(fullWidth / 119);
     this.width = 100 / count;
     this.maxHeight = fullWidth * (this.width / 100);
-    if (window.innerWidth < 640) {
-      this.maxHeight *= 2;
+    this.containerHeight = this.maxHeight;
+    if (window.innerWidth <= 640) {
+      this.containerHeight *= 2;
       this.more = this.variantCount > count * 2 ? true : false;
     }
     else
       this.more = this.variantCount > count ? true : false;
+    this.render();
   }
   render() {
     return [
       h("style", { innerHTML: `
 				ks-product-variants ks-product-variant {
 					width: ${this.width}%;
+					height: ${this.maxHeight}px;
 				}
 
 				ks-product-variants .ks-variant-max-flex-height{
-					max-height: ${this.maxHeight}px;
+					max-height: ${this.containerHeight}px;
 				}
 			` }),
       h("div", { class: "content" },
@@ -61,7 +64,8 @@ export class ProductVariants {
     "more": {},
     "toggle": {},
     "width": {},
-    "maxHeight": {}
+    "maxHeight": {},
+    "containerHeight": {}
   }; }
   static get elementRef() { return "root"; }
   static get watchers() { return [{

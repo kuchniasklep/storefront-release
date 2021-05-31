@@ -29,8 +29,10 @@ ks-product-title h1 > a:active {
 
 ks-product-title > .breadcrumbs > a {
     font-family: var(--product-breadcrumb-font);
-    font-size: var(--product-breadcrumb-size);
+    /* font-size: var(--product-breadcrumb-size); */
+    font-size: 14px !important;
     color: var(--product-breadcrumb-color);
+
     text-decoration: none;
 }
 

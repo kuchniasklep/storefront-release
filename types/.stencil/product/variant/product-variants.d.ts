@@ -8,6 +8,7 @@ export declare class ProductVariants {
   ToggleWatcher(toggle: any): void;
   width: number;
   maxHeight: number;
+  containerHeight: number;
   ResizeHandler(): void;
   render(): any[];
 }

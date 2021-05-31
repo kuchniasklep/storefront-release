@@ -2,7 +2,7 @@ import { Component, h, Prop } from '@stencil/core';
 export class ProductVariant {
   render() {
     return (h("a", { href: this.link, "aria-label": this.name },
-      h("ks-img", { center: true, contained: true, src: this.image, width: 90, height: 90, alt: this.name })));
+      h("ks-img2", { horizontal: true, src: this.image, width: 90, height: 90, alt: this.name })));
   }
   static get is() { return "ks-product-variant"; }
   static get originalStyleUrls() { return {
