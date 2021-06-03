@@ -29,11 +29,6 @@ ks-product-purchase > button {
                 var(--transition-color);
 }
 
-ks-product-purchase button:disabled {
-    background-color: var(--color-faded) !important;
-    color: var(--text-color-faded);
-}
-
 ks-product-purchase button:hover {
     background-color: var(--color-secondary-hover);
 }
@@ -42,11 +37,27 @@ ks-product-purchase button:active {
     background-color: var(--color-secondary-active);
 }
 
+ks-product-purchase button.disabled {
+    background-color: #e4e4e4;
+    color: var(--text-color-faded);
+    font-size: 17px;
+    line-height: 17px;
+}
+
+ks-product-purchase button.disabled:hover {
+    background-color: #cfcfcf;
+}
+
+ks-product-purchase button.disabled:active {
+    background-color: #bdbdbd;
+}
+
 
 @media only screen and (max-width: 1200px) {
     ks-product-purchase button {
         font-family: var(--product-price-font);
         font-size: var(--product-price-size-small);
+        line-height: var(--product-price-size-small);
     }
 }
 

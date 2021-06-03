@@ -432,8 +432,8 @@ const ProductNegotiate = class {
       let message = "";
       if (!window.navigator.onLine)
         message = "Brak internetu.";
-      if (error.messsage)
-        message = error.messsage;
+      if (error.message)
+        message = error.message;
       this.dialog.showFailure(this.faliureHeading, message);
     });
   }
@@ -496,7 +496,9 @@ const ProductShipping = class {
     registerInstance(this, hostRef);
   }
   render() {
-    const time = store.get("shippingTime");
+    const available = store.get('availability') > 0;
+    const time = available ? store.get("shippingTime") : "Niedostępny w magazynie";
+    const timeIcon = available ? "clock" : "alert-circle";
     const freeShipping = parseFloat(store.get("shippingPrice")) == 0;
     const knownShipping = time.search("godzin") != -1 || time.search("dni") != -1;
     const instantShipping = time.search("24 godziny") != -1;
@@ -507,7 +509,7 @@ const ProductShipping = class {
     return [
       message ? h("div", { class: "message" }, message)
         : null,
-      h("ks-product-attribute", { icon: "clock", danger: !instantShipping }, timeprefix, " ", time),
+      h("ks-product-attribute", { icon: timeIcon, danger: !instantShipping }, timeprefix, " ", time),
       h("ks-product-attribute", { icon: "package" }, priceprefix, " ", price)
     ];
   }

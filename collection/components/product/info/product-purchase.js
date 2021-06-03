@@ -1,15 +1,22 @@
-import { Component, h, State, Element, Event } from '@stencil/core';
+import { Component, h, State, Element, Event, Prop } from '@stencil/core';
 import { store } from "../product-store";
 export class ProductPurchase {
   constructor() {
+    this.cartText = "Do koszyka";
+    this.availabilityText = "Powiadom o dostępności";
+    this.favouritesIcon = "star";
     this.cartAnimation = false;
     this.favouritesAnimation = false;
   }
-  addToCartHandler() {
-    if (store.get("availability") > 0 && !store.get("cartLoading"))
-      this.addToCart.emit();
+  CartHandler() {
+    if (store.get("availability") > 0) {
+      if (!store.get("cartLoading"))
+        this.addToCart.emit();
+    }
+    else
+      document.querySelector("ks-product-notify").show();
   }
-  addToFavouritesHandler() {
+  FavouritesHandler() {
     if (!store.get("favouritesLoading") && !store.get("favouritesCompleted")) {
       this.addToFavourites.emit();
     }
@@ -34,12 +41,12 @@ export class ProductPurchase {
       store.get("favouritesLoading") ? "loading" : null
     ];
     return [
-      h("button", { disabled: !available, onClick: () => this.addToCartHandler(), class: "cart " + (store.get("cartLoading") ? "loading" : "") },
-        available ? "DO KOSZYKA" : "NIEDOSTĘPNY",
+      h("button", { onClick: () => this.CartHandler(), class: "cart" + (store.get("cartLoading") ? " loading" : "") + (available ? "" : " disabled") },
+        available ? this.cartText : this.availabilityText,
         h("ks-loader", { oversized: true, running: this.cartAnimation })),
       available ? h("ks-product-count", null) : null,
-      h("button", { onClick: () => this.addToFavouritesHandler(), class: favClass.join(" ") },
-        h("ks-icon", { name: "star" }),
+      h("button", { onClick: () => this.FavouritesHandler(), class: favClass.join(" ") },
+        h("ks-icon", { name: this.favouritesIcon }),
         h("ks-loader", { running: this.favouritesAnimation }),
         h("ks-icon", { class: "completed", name: "check" }))
     ];
@@ -50,6 +57,62 @@ export class ProductPurchase {
   }; }
   static get styleUrls() { return {
     "$": ["product-purchase.css"]
+  }; }
+  static get properties() { return {
+    "cartText": {
+      "type": "string",
+      "mutable": false,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "cart-text",
+      "reflect": false,
+      "defaultValue": "\"Do koszyka\""
+    },
+    "availabilityText": {
+      "type": "string",
+      "mutable": false,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "availability-text",
+      "reflect": false,
+      "defaultValue": "\"Powiadom o dost\u0119pno\u015Bci\""
+    },
+    "favouritesIcon": {
+      "type": "string",
+      "mutable": false,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "favourites-icon",
+      "reflect": false,
+      "defaultValue": "\"star\""
+    }
   }; }
   static get states() { return {
     "cartAnimation": {},

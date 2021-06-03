@@ -2,7 +2,9 @@ import { Component, h } from '@stencil/core';
 import { store } from "../product-store";
 export class ProductShipping {
   render() {
-    const time = store.get("shippingTime");
+    const available = store.get('availability') > 0;
+    const time = available ? store.get("shippingTime") : "Niedostępny w magazynie";
+    const timeIcon = available ? "clock" : "alert-circle";
     const freeShipping = parseFloat(store.get("shippingPrice")) == 0;
     const knownShipping = time.search("godzin") != -1 || time.search("dni") != -1;
     const instantShipping = time.search("24 godziny") != -1;
@@ -13,7 +15,7 @@ export class ProductShipping {
     return [
       message ? h("div", { class: "message" }, message)
         : null,
-      h("ks-product-attribute", { icon: "clock", danger: !instantShipping },
+      h("ks-product-attribute", { icon: timeIcon, danger: !instantShipping },
         timeprefix,
         " ",
         time),

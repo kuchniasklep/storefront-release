@@ -861,6 +861,17 @@ export namespace Components {
         "successHeading": string;
         "successMessage": string;
     }
+    interface KsProductNotify {
+        "agreement": string;
+        "api": string;
+        "backorders": string;
+        "errorHeading": string;
+        "errorParagraph": string;
+        "heading": string;
+        "paragraph": string;
+        "product": number;
+        "show": () => Promise<void>;
+    }
     interface KsProductPoints {
         "count": number;
         "value": number;
@@ -868,6 +879,9 @@ export namespace Components {
     interface KsProductPrice {
     }
     interface KsProductPurchase {
+        "availabilityText": string;
+        "cartText": string;
+        "favouritesIcon": string;
     }
     interface KsProductShipping {
     }
@@ -1848,6 +1862,12 @@ declare global {
         prototype: HTMLKsProductNegotiateElement;
         new (): HTMLKsProductNegotiateElement;
     };
+    interface HTMLKsProductNotifyElement extends Components.KsProductNotify, HTMLStencilElement {
+    }
+    var HTMLKsProductNotifyElement: {
+        prototype: HTMLKsProductNotifyElement;
+        new (): HTMLKsProductNotifyElement;
+    };
     interface HTMLKsProductPointsElement extends Components.KsProductPoints, HTMLStencilElement {
     }
     var HTMLKsProductPointsElement: {
@@ -2169,6 +2189,7 @@ declare global {
         "ks-product-info": HTMLKsProductInfoElement;
         "ks-product-installments": HTMLKsProductInstallmentsElement;
         "ks-product-negotiate": HTMLKsProductNegotiateElement;
+        "ks-product-notify": HTMLKsProductNotifyElement;
         "ks-product-points": HTMLKsProductPointsElement;
         "ks-product-price": HTMLKsProductPriceElement;
         "ks-product-purchase": HTMLKsProductPurchaseElement;
@@ -3013,6 +3034,16 @@ declare namespace LocalJSX {
         "successHeading"?: string;
         "successMessage"?: string;
     }
+    interface KsProductNotify {
+        "agreement"?: string;
+        "api"?: string;
+        "backorders"?: string;
+        "errorHeading"?: string;
+        "errorParagraph"?: string;
+        "heading"?: string;
+        "paragraph"?: string;
+        "product"?: number;
+    }
     interface KsProductPoints {
         "count"?: number;
         "value"?: number;
@@ -3020,6 +3051,9 @@ declare namespace LocalJSX {
     interface KsProductPrice {
     }
     interface KsProductPurchase {
+        "availabilityText"?: string;
+        "cartText"?: string;
+        "favouritesIcon"?: string;
         "onAddToCart"?: (event: CustomEvent<any>) => void;
         "onAddToFavourites"?: (event: CustomEvent<any>) => void;
     }
@@ -3298,6 +3332,7 @@ declare namespace LocalJSX {
         "ks-product-info": KsProductInfo;
         "ks-product-installments": KsProductInstallments;
         "ks-product-negotiate": KsProductNegotiate;
+        "ks-product-notify": KsProductNotify;
         "ks-product-points": KsProductPoints;
         "ks-product-price": KsProductPrice;
         "ks-product-purchase": KsProductPurchase;
@@ -3474,6 +3509,7 @@ declare module "@stencil/core" {
             "ks-product-info": LocalJSX.KsProductInfo & JSXBase.HTMLAttributes<HTMLKsProductInfoElement>;
             "ks-product-installments": LocalJSX.KsProductInstallments & JSXBase.HTMLAttributes<HTMLKsProductInstallmentsElement>;
             "ks-product-negotiate": LocalJSX.KsProductNegotiate & JSXBase.HTMLAttributes<HTMLKsProductNegotiateElement>;
+            "ks-product-notify": LocalJSX.KsProductNotify & JSXBase.HTMLAttributes<HTMLKsProductNotifyElement>;
             "ks-product-points": LocalJSX.KsProductPoints & JSXBase.HTMLAttributes<HTMLKsProductPointsElement>;
             "ks-product-price": LocalJSX.KsProductPrice & JSXBase.HTMLAttributes<HTMLKsProductPriceElement>;
             "ks-product-purchase": LocalJSX.KsProductPurchase & JSXBase.HTMLAttributes<HTMLKsProductPurchaseElement>;

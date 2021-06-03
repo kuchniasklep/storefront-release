@@ -44,17 +44,18 @@ ks-product-card ks-img {
 
 ks-product-card .price > * {
     display: block;
+    font-family: var(--font-emphasis);
 }
 
 ks-product-card .price .previous {
-    color: #707070;
-    font-size: 14px;
+    color: #888888;
+    font-size: 15px;
 }
 
 ks-product-card .price .current {
     color: var(--color-secondary);
     font-weight: bold;
-    font-size: 16px;
+    font-size: 17px;
 }
 
 
@@ -83,6 +84,11 @@ ks-product-card .bottom .link {
     transition: var(--transition-background-color);
 }
 
+ks-product-card .bottom .unavailable {
+    color: #252525;
+    background-color: #f1f1f1;
+}
+
 ks-product-card .bottom .link:hover {
     background-color: var(--color-secondary-hover);
 }
@@ -94,6 +100,10 @@ ks-product-card .bottom .link:active {
 ks-product-card[unavailable] .top,
 ks-product-card[unavailable] .price {
     opacity: 0.6;
+}
+
+ks-product-card[unavailable] .price .current {
+    color: #252525;
 }
 
 @media (max-width: 420px) {

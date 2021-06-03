@@ -22,22 +22,22 @@ export class dialog {
     this.close = false;
   }
   async showSuccess(heading, message) {
-    this.success = true;
     this.heading = heading;
     this.message = message;
     setTimeout(() => {
+      this.success = true;
       this.loading = false;
       this.close = true;
-    }, 300);
+    }, 400);
   }
   async showFailure(heading, message) {
-    this.failure = true;
     this.heading = heading;
     this.message = message;
     setTimeout(() => {
+      this.failure = true;
       this.loading = false;
       this.close = true;
-    }, 300);
+    }, 400);
   }
   closeHandler() {
     if (this.success || this.failure) {

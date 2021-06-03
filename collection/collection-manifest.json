@@ -138,6 +138,7 @@
     "./components/order/summary/summaryPayment.js",
     "./components/product/product-comments.js",
     "./components/product/product-negotiate.js",
+    "./components/product/product-notify.js",
     "./components/product/product-points.js",
     "./components/product/product-suggestions.js",
     "./components/product/product-tab.js",
