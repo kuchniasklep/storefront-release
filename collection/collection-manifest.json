@@ -143,6 +143,7 @@
     "./components/product/product-suggestions.js",
     "./components/product/product-tab.js",
     "./components/product/product-tabs.js",
+    "./components/product/product-tags.js",
     "./components/product/product-youtube.js",
     "./components/product/description/description-image.js",
     "./components/product/description/description-text-image.js",

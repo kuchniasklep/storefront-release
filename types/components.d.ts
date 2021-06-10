@@ -51,6 +51,7 @@ export namespace Components {
         "muted": boolean;
         "name": string;
         "narrow": boolean;
+        "narrower": boolean;
         "nofollow": boolean;
         "primary": boolean;
         "round": boolean;
@@ -58,6 +59,7 @@ export namespace Components {
         "submit": boolean;
         "tall": boolean;
         "transitionless": boolean;
+        "transparent": boolean;
     }
     interface KsButtonCart {
         "AddToCart": (count?: string) => Promise<void>;
@@ -906,6 +908,10 @@ export namespace Components {
     interface KsProductTabs {
         "active": number;
         "names": string;
+    }
+    interface KsProductTags {
+        "expandable": number;
+        "expanded": boolean;
     }
     interface KsProductTitle {
         "brandLink": boolean;
@@ -1917,6 +1923,12 @@ declare global {
         prototype: HTMLKsProductTabsElement;
         new (): HTMLKsProductTabsElement;
     };
+    interface HTMLKsProductTagsElement extends Components.KsProductTags, HTMLStencilElement {
+    }
+    var HTMLKsProductTagsElement: {
+        prototype: HTMLKsProductTagsElement;
+        new (): HTMLKsProductTagsElement;
+    };
     interface HTMLKsProductTitleElement extends Components.KsProductTitle, HTMLStencilElement {
     }
     var HTMLKsProductTitleElement: {
@@ -2199,6 +2211,7 @@ declare global {
         "ks-product-suggestions": HTMLKsProductSuggestionsElement;
         "ks-product-tab": HTMLKsProductTabElement;
         "ks-product-tabs": HTMLKsProductTabsElement;
+        "ks-product-tags": HTMLKsProductTagsElement;
         "ks-product-title": HTMLKsProductTitleElement;
         "ks-product-tooltip": HTMLKsProductTooltipElement;
         "ks-product-traits": HTMLKsProductTraitsElement;
@@ -2265,6 +2278,7 @@ declare namespace LocalJSX {
         "muted"?: boolean;
         "name"?: string;
         "narrow"?: boolean;
+        "narrower"?: boolean;
         "nofollow"?: boolean;
         "primary"?: boolean;
         "round"?: boolean;
@@ -2272,6 +2286,7 @@ declare namespace LocalJSX {
         "submit"?: boolean;
         "tall"?: boolean;
         "transitionless"?: boolean;
+        "transparent"?: boolean;
     }
     interface KsButtonCart {
         "count"?: string;
@@ -3081,6 +3096,10 @@ declare namespace LocalJSX {
         "active"?: number;
         "names"?: string;
     }
+    interface KsProductTags {
+        "expandable"?: number;
+        "expanded"?: boolean;
+    }
     interface KsProductTitle {
         "brandLink"?: boolean;
     }
@@ -3343,6 +3362,7 @@ declare namespace LocalJSX {
         "ks-product-suggestions": KsProductSuggestions;
         "ks-product-tab": KsProductTab;
         "ks-product-tabs": KsProductTabs;
+        "ks-product-tags": KsProductTags;
         "ks-product-title": KsProductTitle;
         "ks-product-tooltip": KsProductTooltip;
         "ks-product-traits": KsProductTraits;
@@ -3520,6 +3540,7 @@ declare module "@stencil/core" {
             "ks-product-suggestions": LocalJSX.KsProductSuggestions & JSXBase.HTMLAttributes<HTMLKsProductSuggestionsElement>;
             "ks-product-tab": LocalJSX.KsProductTab & JSXBase.HTMLAttributes<HTMLKsProductTabElement>;
             "ks-product-tabs": LocalJSX.KsProductTabs & JSXBase.HTMLAttributes<HTMLKsProductTabsElement>;
+            "ks-product-tags": LocalJSX.KsProductTags & JSXBase.HTMLAttributes<HTMLKsProductTagsElement>;
             "ks-product-title": LocalJSX.KsProductTitle & JSXBase.HTMLAttributes<HTMLKsProductTitleElement>;
             "ks-product-tooltip": LocalJSX.KsProductTooltip & JSXBase.HTMLAttributes<HTMLKsProductTooltipElement>;
             "ks-product-traits": LocalJSX.KsProductTraits & JSXBase.HTMLAttributes<HTMLKsProductTraitsElement>;

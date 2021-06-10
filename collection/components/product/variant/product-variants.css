@@ -1,5 +1,11 @@
 ks-product-variants {
-    display: block;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 
 ks-product-variants .content {
@@ -24,35 +30,6 @@ ks-product-variants ks-product-variant {
     box-sizing: border-box;
 }
 
-ks-product-variants .more {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    margin-top: 15px !important;
-}
-
-ks-product-variants .more button {
-    display: inline-block;
-    outline: none;
-    border: none;
-    cursor: pointer;
-
-    box-sizing: border-box;
-    background-color: white;
-
-    padding: 3px 30px;
-    min-height: 46px;
-    min-width: 84px;
-
-    border-radius: 50px;
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.18);
-    -webkit-transition: box-shadow 0.2s ease;
-    transition: box-shadow 0.2s ease;
-}
-
-ks-product-variants .more button:hover {
-    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.18);
+ks-product-variants ks-button {
+    margin-top: 15px;
 }

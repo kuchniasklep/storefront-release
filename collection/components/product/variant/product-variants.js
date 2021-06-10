@@ -46,10 +46,7 @@ export class ProductVariants {
       h("div", { class: "content" },
         h("slot", null)),
       this.more ?
-        h("div", { class: "more" },
-          h("button", { onClick: () => this.toggle = !this.toggle }, this.toggle ?
-            h("ks-icon", { name: "chevron-down" }) :
-            h("ks-icon", { name: "chevron-up" })))
+        h("ks-button", { transparent: true, narrower: true, round: true, icon: this.toggle ? "plus" : "minus", onClick: () => this.toggle = !this.toggle })
         : null
     ];
   }
