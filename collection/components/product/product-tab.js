@@ -33,11 +33,13 @@ export class ProductTab {
       ksImage.className = image.className;
       let height = image.style.height.replace("px", "");
       let width = image.style.width.replace("px", "");
-      if (image.style.maxWidth) {
+      ksImage.style.width = width + "px";
+      ksImage.style.height = "auto";
+      ksImage.style.maxWidth = "100%";
+      if (ksImage.style.width)
+        ksImage.style.width = image.style.width;
+      if (image.style.maxWidth)
         ksImage.style.width = image.style.maxWidth;
-        ksImage.style.maxWidth = "100%";
-        ksImage.style.height = "auto";
-      }
       if (height && !height.includes("%"))
         ksImage.setAttribute("height", height);
       if (width && !width.includes("%"))
