@@ -36,6 +36,7 @@ export class ProductTab {
       if (image.style.maxWidth) {
         ksImage.style.width = image.style.maxWidth;
         ksImage.style.maxWidth = "100%";
+        ksImage.style.height = "auto";
       }
       if (height && !height.includes("%"))
         ksImage.setAttribute("height", height);
