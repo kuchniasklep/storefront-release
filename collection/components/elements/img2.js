@@ -219,6 +219,23 @@ export class Img2 {
       },
       "attribute": "horizontal",
       "reflect": true
+    },
+    "limit": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "limit",
+      "reflect": true
     }
   }; }
   static get states() { return {

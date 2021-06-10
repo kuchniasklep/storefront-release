@@ -613,16 +613,16 @@ const ProductTab = class {
       ksImage.setAttribute("src", image.getAttribute("data-src"));
       ksImage.setAttribute("alt", image.getAttribute("alt"));
       ksImage.setAttribute("horizontal", "horizontal");
+      ksImage.setAttribute("limit", "limit");
       ksImage.className = image.className;
       let height = image.style.height.replace("px", "");
       let width = image.style.width.replace("px", "");
-      ksImage.style.width = width + "px";
+      ksImage.style.maxWidth = width + "px";
       ksImage.style.height = "auto";
-      ksImage.style.maxWidth = "100%";
       if (ksImage.style.width)
-        ksImage.style.width = image.style.width;
+        ksImage.style.maxWidth = image.style.width;
       if (image.style.maxWidth)
-        ksImage.style.width = image.style.maxWidth;
+        ksImage.style.maxWidth = image.style.maxWidth;
       if (height && !height.includes("%"))
         ksImage.setAttribute("height", height);
       if (width && !width.includes("%"))

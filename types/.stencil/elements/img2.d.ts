@@ -10,6 +10,7 @@ export declare class Img2 {
   height: number;
   vertical: boolean;
   horizontal: boolean;
+  limit: boolean;
   loaded: boolean;
   lazyLoaded: EventEmitter;
   loadHandler(e: Event): void;

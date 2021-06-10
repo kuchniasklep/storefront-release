@@ -435,6 +435,7 @@ export namespace Components {
         "alt": string;
         "height": number;
         "horizontal": boolean;
+        "limit": boolean;
         "observerMargin": string;
         "src": string;
         "sync": boolean;
@@ -2640,6 +2641,7 @@ declare namespace LocalJSX {
         "alt"?: string;
         "height"?: number;
         "horizontal"?: boolean;
+        "limit"?: boolean;
         "observerMargin"?: string;
         "onLazyLoaded"?: (event: CustomEvent<any>) => void;
         "src"?: string;

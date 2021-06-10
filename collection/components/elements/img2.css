@@ -45,3 +45,8 @@ ks-img2[horizontal] img {
 ks-img2 img.loading {
     opacity: 0;
 }
+
+ks-img2[limit] img {
+    max-width: 100%;
+    max-height: 100%;
+}
