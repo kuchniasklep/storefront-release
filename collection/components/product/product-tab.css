@@ -53,6 +53,7 @@ ks-product-tab:not([open]) > button:hover > ks-icon {
 
 ks-product-tab > .tab-content {
     display: none;
+    max-width: 100%;
 }
 
 

@@ -584,7 +584,7 @@ const ProductSuggestions = class {
 };
 ProductSuggestions.style = productSuggestionsCss;
 
-const productTabCss = "ks-product-tab{display:block}@media only screen and (min-width: 960px){ks-product-tab .accordion{display:none}}ks-product-tab>button{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;background-color:transparent;color:#151515;width:100%;border:none;outline:none;padding:10px 0px 20px 0px;margin:0;-webkit-transition:color 0.3s ease;transition:color 0.3s ease}ks-product-tab>button:hover{color:#606060}ks-product-tab:not([open])>button>ks-icon{-webkit-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg);-webkit-transition:-webkit-transform 0.3s ease;transition:-webkit-transform 0.3s ease;transition:transform 0.3s ease;transition:transform 0.3s ease, -webkit-transform 0.3s ease}ks-product-tab:not([open])>button:hover>ks-icon{-webkit-transform:rotate(90deg);-ms-transform:rotate(90deg);transform:rotate(90deg)}ks-product-tab>.tab-content{display:none}@media only screen and (min-width: 960px){ks-product-tab[main]>.tab-content{display:block}}@media only screen and (max-width: 960px){ks-product-tab[open]>.tab-content{display:block}}";
+const productTabCss = "ks-product-tab{display:block}@media only screen and (min-width: 960px){ks-product-tab .accordion{display:none}}ks-product-tab>button{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;background-color:transparent;color:#151515;width:100%;border:none;outline:none;padding:10px 0px 20px 0px;margin:0;-webkit-transition:color 0.3s ease;transition:color 0.3s ease}ks-product-tab>button:hover{color:#606060}ks-product-tab:not([open])>button>ks-icon{-webkit-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg);-webkit-transition:-webkit-transform 0.3s ease;transition:-webkit-transform 0.3s ease;transition:transform 0.3s ease;transition:transform 0.3s ease, -webkit-transform 0.3s ease}ks-product-tab:not([open])>button:hover>ks-icon{-webkit-transform:rotate(90deg);-ms-transform:rotate(90deg);transform:rotate(90deg)}ks-product-tab>.tab-content{display:none;max-width:100%}@media only screen and (min-width: 960px){ks-product-tab[main]>.tab-content{display:block}}@media only screen and (max-width: 960px){ks-product-tab[open]>.tab-content{display:block}}";
 
 const ProductTab = class {
   constructor(hostRef) {
@@ -613,30 +613,24 @@ const ProductTab = class {
     const images = this.root.querySelectorAll("img");
     for (let i = 0; i < images.length; i++) {
       const image = images[i];
-      const ksImage = document.createElement("ks-img");
+      const ksImage = document.createElement("ks-img2");
       ksImage.setAttribute("src", image.getAttribute("data-src"));
       ksImage.setAttribute("alt", image.getAttribute("alt"));
-      ksImage.setAttribute("limit", "limit");
+      ksImage.setAttribute("horizontal", "horizontal");
+      ksImage.className = image.className;
       let height = image.style.height.replace("px", "");
       let width = image.style.width.replace("px", "");
-      if (width)
-        ksImage.style.maxWidth = image.style.width;
       if (image.style.maxWidth) {
-        ksImage.style.maxWidth = image.style.maxWidth;
-        width = image.style.maxWidth;
+        ksImage.style.width = image.style.maxWidth;
+        ksImage.style.maxWidth = "100%";
       }
-      ksImage.style.display = "inline-block";
       if (height && !height.includes("%"))
         ksImage.setAttribute("height", height);
       if (width && !width.includes("%"))
         ksImage.setAttribute("width", width);
       const margin = image.style.margin;
-      if (margin.includes("auto"))
-        ksImage.style.margin = "auto";
-      else if (margin) {
-        ksImage.style.padding = margin;
-        ksImage.style.boxSizing = "border-box";
-      }
+      if (margin)
+        ksImage.style.margin = margin;
       image.parentNode.replaceChild(ksImage, image);
     }
   }

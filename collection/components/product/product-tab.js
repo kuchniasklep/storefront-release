@@ -26,30 +26,24 @@ export class ProductTab {
     const images = this.root.querySelectorAll("img");
     for (let i = 0; i < images.length; i++) {
       const image = images[i];
-      const ksImage = document.createElement("ks-img");
+      const ksImage = document.createElement("ks-img2");
       ksImage.setAttribute("src", image.getAttribute("data-src"));
       ksImage.setAttribute("alt", image.getAttribute("alt"));
-      ksImage.setAttribute("limit", "limit");
+      ksImage.setAttribute("horizontal", "horizontal");
+      ksImage.className = image.className;
       let height = image.style.height.replace("px", "");
       let width = image.style.width.replace("px", "");
-      if (width)
-        ksImage.style.maxWidth = image.style.width;
       if (image.style.maxWidth) {
-        ksImage.style.maxWidth = image.style.maxWidth;
-        width = image.style.maxWidth;
+        ksImage.style.width = image.style.maxWidth;
+        ksImage.style.maxWidth = "100%";
       }
-      ksImage.style.display = "inline-block";
       if (height && !height.includes("%"))
         ksImage.setAttribute("height", height);
       if (width && !width.includes("%"))
         ksImage.setAttribute("width", width);
       const margin = image.style.margin;
-      if (margin.includes("auto"))
-        ksImage.style.margin = "auto";
-      else if (margin) {
-        ksImage.style.padding = margin;
-        ksImage.style.boxSizing = "border-box";
-      }
+      if (margin)
+        ksImage.style.margin = margin;
       image.parentNode.replaceChild(ksImage, image);
     }
   }
