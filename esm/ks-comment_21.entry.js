@@ -627,9 +627,6 @@ const ProductTab = class {
         ksImage.setAttribute("height", height);
       if (width && !width.includes("%"))
         ksImage.setAttribute("width", width);
-      const margin = image.style.margin;
-      if (margin)
-        ksImage.style.margin = margin;
       image.parentNode.replaceChild(ksImage, image);
     }
   }
