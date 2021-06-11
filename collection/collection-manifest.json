@@ -84,6 +84,7 @@
     "./components/listing/button-cart.js",
     "./components/listing/button-fav.js",
     "./components/listing/favouritesHeader.js",
+    "./components/listing/listing-footer.js",
     "./components/listing/listing-header.js",
     "./components/listing/product-card.js",
     "./components/listing/product-container.js",

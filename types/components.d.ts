@@ -563,6 +563,8 @@ export namespace Components {
         "hide": () => Promise<void>;
         "show": (index?: number) => Promise<void>;
     }
+    interface KsListingFooter {
+    }
     interface KsListingHeader {
     }
     interface KsListingNavigation {
@@ -1545,6 +1547,12 @@ declare global {
         prototype: HTMLKsLightboxElement;
         new (): HTMLKsLightboxElement;
     };
+    interface HTMLKsListingFooterElement extends Components.KsListingFooter, HTMLStencilElement {
+    }
+    var HTMLKsListingFooterElement: {
+        prototype: HTMLKsListingFooterElement;
+        new (): HTMLKsListingFooterElement;
+    };
     interface HTMLKsListingHeaderElement extends Components.KsListingHeader, HTMLStencilElement {
     }
     var HTMLKsListingHeaderElement: {
@@ -2148,6 +2156,7 @@ declare global {
         "ks-input-text": HTMLKsInputTextElement;
         "ks-input-textarea": HTMLKsInputTextareaElement;
         "ks-lightbox": HTMLKsLightboxElement;
+        "ks-listing-footer": HTMLKsListingFooterElement;
         "ks-listing-header": HTMLKsListingHeaderElement;
         "ks-listing-navigation": HTMLKsListingNavigationElement;
         "ks-loader": HTMLKsLoaderElement;
@@ -2765,6 +2774,8 @@ declare namespace LocalJSX {
     interface KsLightbox {
         "data"?: LightboxImageData[];
     }
+    interface KsListingFooter {
+    }
     interface KsListingHeader {
     }
     interface KsListingNavigation {
@@ -3299,6 +3310,7 @@ declare namespace LocalJSX {
         "ks-input-text": KsInputText;
         "ks-input-textarea": KsInputTextarea;
         "ks-lightbox": KsLightbox;
+        "ks-listing-footer": KsListingFooter;
         "ks-listing-header": KsListingHeader;
         "ks-listing-navigation": KsListingNavigation;
         "ks-loader": KsLoader;
@@ -3477,6 +3489,7 @@ declare module "@stencil/core" {
             "ks-input-text": LocalJSX.KsInputText & JSXBase.HTMLAttributes<HTMLKsInputTextElement>;
             "ks-input-textarea": LocalJSX.KsInputTextarea & JSXBase.HTMLAttributes<HTMLKsInputTextareaElement>;
             "ks-lightbox": LocalJSX.KsLightbox & JSXBase.HTMLAttributes<HTMLKsLightboxElement>;
+            "ks-listing-footer": LocalJSX.KsListingFooter & JSXBase.HTMLAttributes<HTMLKsListingFooterElement>;
             "ks-listing-header": LocalJSX.KsListingHeader & JSXBase.HTMLAttributes<HTMLKsListingHeaderElement>;
             "ks-listing-navigation": LocalJSX.KsListingNavigation & JSXBase.HTMLAttributes<HTMLKsListingNavigationElement>;
             "ks-loader": LocalJSX.KsLoader & JSXBase.HTMLAttributes<HTMLKsLoaderElement>;
