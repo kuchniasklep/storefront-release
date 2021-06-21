@@ -8,11 +8,13 @@ export declare class Button {
   disabled: boolean;
   left: boolean;
   narrow: boolean;
+  narrower: boolean;
   tall: boolean;
   round: boolean;
   primary: boolean;
   secondary: boolean;
   border: boolean;
+  transparent: boolean;
   light: boolean;
   muted: boolean;
   transitionless: boolean;

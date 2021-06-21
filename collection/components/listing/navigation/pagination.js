@@ -67,7 +67,7 @@ export class Pagination {
         return h("a", { href: this.link(page) }, page.toString());
       }),
       this.current < this.count ?
-        h("a", { href: this.link(this.current - 1) },
+        h("a", { href: this.link(this.current + 1) },
           h("ks-icon", { name: "chevron-right", size: 0.9 }))
         : null
     ];

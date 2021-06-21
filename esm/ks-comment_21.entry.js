@@ -730,7 +730,7 @@ const ProductVariant = class {
 };
 ProductVariant.style = productVariantCss;
 
-const productVariantsCss = "ks-product-variants{display:block}ks-product-variants .content{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;overflow:hidden;-webkit-box-sizing:border-box;box-sizing:border-box;width:100%;max-width:100%;max-width:calc(100% + 18px);width:200%;margin:-9px}ks-product-variants ks-product-variant{padding:9px;-webkit-box-sizing:border-box;box-sizing:border-box}ks-product-variants .more{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;margin-top:15px !important}ks-product-variants .more button{display:inline-block;outline:none;border:none;cursor:pointer;-webkit-box-sizing:border-box;box-sizing:border-box;background-color:white;padding:3px 30px;min-height:46px;min-width:84px;border-radius:50px;-webkit-box-shadow:0px 2px 6px rgba(0, 0, 0, 0.18);box-shadow:0px 2px 6px rgba(0, 0, 0, 0.18);-webkit-transition:box-shadow 0.2s ease;-webkit-transition:-webkit-box-shadow 0.2s ease;transition:-webkit-box-shadow 0.2s ease;transition:box-shadow 0.2s ease;transition:box-shadow 0.2s ease, -webkit-box-shadow 0.2s ease}ks-product-variants .more button:hover{-webkit-box-shadow:0px 2px 12px rgba(0, 0, 0, 0.18);box-shadow:0px 2px 12px rgba(0, 0, 0, 0.18)}";
+const productVariantsCss = "ks-product-variants{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}ks-product-variants .content{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;overflow:hidden;-webkit-box-sizing:border-box;box-sizing:border-box;width:100%;max-width:100%;max-width:calc(100% + 18px);width:200%;margin:-9px}ks-product-variants ks-product-variant{padding:9px;-webkit-box-sizing:border-box;box-sizing:border-box}ks-product-variants ks-button{margin-top:15px}";
 
 const ProductVariants = class {
   constructor(hostRef) {
@@ -779,9 +779,7 @@ const ProductVariants = class {
 			` }),
       h("div", { class: "content" }, h("slot", null)),
       this.more ?
-        h("div", { class: "more" }, h("button", { onClick: () => this.toggle = !this.toggle }, this.toggle ?
-          h("ks-icon", { name: "chevron-down" }) :
-          h("ks-icon", { name: "chevron-up" })))
+        h("ks-button", { transparent: true, narrower: true, round: true, icon: this.toggle ? "plus" : "minus", onClick: () => this.toggle = !this.toggle })
         : null
     ];
   }

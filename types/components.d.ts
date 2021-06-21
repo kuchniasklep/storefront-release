@@ -51,6 +51,7 @@ export namespace Components {
         "muted": boolean;
         "name": string;
         "narrow": boolean;
+        "narrower": boolean;
         "nofollow": boolean;
         "primary": boolean;
         "round": boolean;
@@ -58,6 +59,7 @@ export namespace Components {
         "submit": boolean;
         "tall": boolean;
         "transitionless": boolean;
+        "transparent": boolean;
     }
     interface KsButtonCart {
         "AddToCart": (count?: string) => Promise<void>;
@@ -561,6 +563,8 @@ export namespace Components {
         "hide": () => Promise<void>;
         "show": (index?: number) => Promise<void>;
     }
+    interface KsListingFooter {
+    }
     interface KsListingHeader {
     }
     interface KsListingNavigation {
@@ -906,6 +910,10 @@ export namespace Components {
     interface KsProductTabs {
         "active": number;
         "names": string;
+    }
+    interface KsProductTags {
+        "expandable": number;
+        "expanded": boolean;
     }
     interface KsProductTitle {
         "brandLink": boolean;
@@ -1539,6 +1547,12 @@ declare global {
         prototype: HTMLKsLightboxElement;
         new (): HTMLKsLightboxElement;
     };
+    interface HTMLKsListingFooterElement extends Components.KsListingFooter, HTMLStencilElement {
+    }
+    var HTMLKsListingFooterElement: {
+        prototype: HTMLKsListingFooterElement;
+        new (): HTMLKsListingFooterElement;
+    };
     interface HTMLKsListingHeaderElement extends Components.KsListingHeader, HTMLStencilElement {
     }
     var HTMLKsListingHeaderElement: {
@@ -1917,6 +1931,12 @@ declare global {
         prototype: HTMLKsProductTabsElement;
         new (): HTMLKsProductTabsElement;
     };
+    interface HTMLKsProductTagsElement extends Components.KsProductTags, HTMLStencilElement {
+    }
+    var HTMLKsProductTagsElement: {
+        prototype: HTMLKsProductTagsElement;
+        new (): HTMLKsProductTagsElement;
+    };
     interface HTMLKsProductTitleElement extends Components.KsProductTitle, HTMLStencilElement {
     }
     var HTMLKsProductTitleElement: {
@@ -2136,6 +2156,7 @@ declare global {
         "ks-input-text": HTMLKsInputTextElement;
         "ks-input-textarea": HTMLKsInputTextareaElement;
         "ks-lightbox": HTMLKsLightboxElement;
+        "ks-listing-footer": HTMLKsListingFooterElement;
         "ks-listing-header": HTMLKsListingHeaderElement;
         "ks-listing-navigation": HTMLKsListingNavigationElement;
         "ks-loader": HTMLKsLoaderElement;
@@ -2199,6 +2220,7 @@ declare global {
         "ks-product-suggestions": HTMLKsProductSuggestionsElement;
         "ks-product-tab": HTMLKsProductTabElement;
         "ks-product-tabs": HTMLKsProductTabsElement;
+        "ks-product-tags": HTMLKsProductTagsElement;
         "ks-product-title": HTMLKsProductTitleElement;
         "ks-product-tooltip": HTMLKsProductTooltipElement;
         "ks-product-traits": HTMLKsProductTraitsElement;
@@ -2265,6 +2287,7 @@ declare namespace LocalJSX {
         "muted"?: boolean;
         "name"?: string;
         "narrow"?: boolean;
+        "narrower"?: boolean;
         "nofollow"?: boolean;
         "primary"?: boolean;
         "round"?: boolean;
@@ -2272,6 +2295,7 @@ declare namespace LocalJSX {
         "submit"?: boolean;
         "tall"?: boolean;
         "transitionless"?: boolean;
+        "transparent"?: boolean;
     }
     interface KsButtonCart {
         "count"?: string;
@@ -2750,6 +2774,8 @@ declare namespace LocalJSX {
     interface KsLightbox {
         "data"?: LightboxImageData[];
     }
+    interface KsListingFooter {
+    }
     interface KsListingHeader {
     }
     interface KsListingNavigation {
@@ -3081,6 +3107,10 @@ declare namespace LocalJSX {
         "active"?: number;
         "names"?: string;
     }
+    interface KsProductTags {
+        "expandable"?: number;
+        "expanded"?: boolean;
+    }
     interface KsProductTitle {
         "brandLink"?: boolean;
     }
@@ -3280,6 +3310,7 @@ declare namespace LocalJSX {
         "ks-input-text": KsInputText;
         "ks-input-textarea": KsInputTextarea;
         "ks-lightbox": KsLightbox;
+        "ks-listing-footer": KsListingFooter;
         "ks-listing-header": KsListingHeader;
         "ks-listing-navigation": KsListingNavigation;
         "ks-loader": KsLoader;
@@ -3343,6 +3374,7 @@ declare namespace LocalJSX {
         "ks-product-suggestions": KsProductSuggestions;
         "ks-product-tab": KsProductTab;
         "ks-product-tabs": KsProductTabs;
+        "ks-product-tags": KsProductTags;
         "ks-product-title": KsProductTitle;
         "ks-product-tooltip": KsProductTooltip;
         "ks-product-traits": KsProductTraits;
@@ -3457,6 +3489,7 @@ declare module "@stencil/core" {
             "ks-input-text": LocalJSX.KsInputText & JSXBase.HTMLAttributes<HTMLKsInputTextElement>;
             "ks-input-textarea": LocalJSX.KsInputTextarea & JSXBase.HTMLAttributes<HTMLKsInputTextareaElement>;
             "ks-lightbox": LocalJSX.KsLightbox & JSXBase.HTMLAttributes<HTMLKsLightboxElement>;
+            "ks-listing-footer": LocalJSX.KsListingFooter & JSXBase.HTMLAttributes<HTMLKsListingFooterElement>;
             "ks-listing-header": LocalJSX.KsListingHeader & JSXBase.HTMLAttributes<HTMLKsListingHeaderElement>;
             "ks-listing-navigation": LocalJSX.KsListingNavigation & JSXBase.HTMLAttributes<HTMLKsListingNavigationElement>;
             "ks-loader": LocalJSX.KsLoader & JSXBase.HTMLAttributes<HTMLKsLoaderElement>;
@@ -3520,6 +3553,7 @@ declare module "@stencil/core" {
             "ks-product-suggestions": LocalJSX.KsProductSuggestions & JSXBase.HTMLAttributes<HTMLKsProductSuggestionsElement>;
             "ks-product-tab": LocalJSX.KsProductTab & JSXBase.HTMLAttributes<HTMLKsProductTabElement>;
             "ks-product-tabs": LocalJSX.KsProductTabs & JSXBase.HTMLAttributes<HTMLKsProductTabsElement>;
+            "ks-product-tags": LocalJSX.KsProductTags & JSXBase.HTMLAttributes<HTMLKsProductTagsElement>;
             "ks-product-title": LocalJSX.KsProductTitle & JSXBase.HTMLAttributes<HTMLKsProductTitleElement>;
             "ks-product-tooltip": LocalJSX.KsProductTooltip & JSXBase.HTMLAttributes<HTMLKsProductTooltipElement>;
             "ks-product-traits": LocalJSX.KsProductTraits & JSXBase.HTMLAttributes<HTMLKsProductTraitsElement>;

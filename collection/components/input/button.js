@@ -1,7 +1,7 @@
 import { Component, h, Prop, Element } from '@stencil/core';
 export class Button {
   constructor() {
-    this.name = "Button";
+    this.name = "";
   }
   render() {
     if (this.submit)
@@ -37,7 +37,7 @@ export class Button {
       },
       "attribute": "name",
       "reflect": false,
-      "defaultValue": "\"Button\""
+      "defaultValue": "\"\""
     },
     "icon": {
       "type": "string",
@@ -158,6 +158,23 @@ export class Button {
       "attribute": "narrow",
       "reflect": true
     },
+    "narrower": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "narrower",
+      "reflect": true
+    },
     "tall": {
       "type": "boolean",
       "mutable": false,
@@ -241,6 +258,23 @@ export class Button {
         "text": ""
       },
       "attribute": "border",
+      "reflect": true
+    },
+    "transparent": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "transparent",
       "reflect": true
     },
     "light": {
