@@ -14,6 +14,6 @@ export declare class TikTokTracker implements ITracker {
     content_type: string;
     content_name: string;
     quantity: number;
-    price: string;
+    price: number;
   }[];
 }

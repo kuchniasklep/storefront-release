@@ -10,7 +10,8 @@ export interface ITracker {
 export interface ITrackerProduct {
   id: string;
   name: string;
-  price: string;
+  price: number;
+  quantity: number;
 }
 export declare let resolve: any;
 export declare const tracker: import("@stencil/store").ObservableMap<{

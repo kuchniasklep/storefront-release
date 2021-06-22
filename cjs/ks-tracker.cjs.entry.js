@@ -88,8 +88,8 @@ class TikTokTracker {
         content_id: product.id,
         content_type: 'product',
         content_name: product.name,
-        quantity: 1,
-        price: product.price,
+        quantity: product.quantity,
+        price: product.price
       };
     });
   }
