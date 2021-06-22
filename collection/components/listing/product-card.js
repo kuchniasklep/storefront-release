@@ -20,7 +20,7 @@ export class ProductCard {
         : this.linkOnly ? h("a", { href: this.link, class: "link" }, "ZOBACZ WI\u0118CEJ")
           : [
             h("ks-button-fav", { "product-id": this.productId }),
-            h("ks-button-cart", { expand: true, "product-id": this.productId, name: this.name })
+            h("ks-button-cart", { expand: true, "product-id": this.productId, name: this.name, price: parseFloat(this.currentPrice) })
           ])
     ];
   }

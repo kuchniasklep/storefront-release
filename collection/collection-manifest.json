@@ -172,7 +172,12 @@
     "./components/recipe/recipe-info.js",
     "./components/recipe/recipe-ingredient.js",
     "./components/recipe/recipe-nutrition.js",
-    "./components/recipe/recipe-procedure.js"
+    "./components/recipe/recipe-procedure.js",
+    "./components/tracking/order.js",
+    "./components/tracking/pageview.js",
+    "./components/tracking/product.js",
+    "./components/tracking/search.js",
+    "./components/tracking/tracker.js"
   ],
   "compiler": {
     "name": "@stencil/core",

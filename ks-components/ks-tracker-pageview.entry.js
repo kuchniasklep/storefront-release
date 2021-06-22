@@ -1,0 +1,1 @@
+import{r as o}from"./index-aa615a50.js";import{e as s}from"./store-49d14f1e.js";import"./index-6936e5a4.js";const r=class{constructor(s){o(this,s)}componentWillLoad(){s((o=>null==o?void 0:o.pageview()))}};export{r as ks_tracker_pageview}

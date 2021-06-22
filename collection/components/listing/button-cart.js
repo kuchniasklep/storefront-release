@@ -1,5 +1,6 @@
 import { Component, h, Prop, State, Element, Method } from '@stencil/core';
 import { AddToCart } from '../functions';
+import { eachTracker } from '../tracking/store';
 export class ButtonCart {
   constructor() {
     this.count = "1";
@@ -26,6 +27,7 @@ export class ButtonCart {
     }
     else
       this.loading = false;
+    eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(this.productId, this.productId, this.price, 1, "PLN"));
   }
   async AddToCart(count) {
     this.ClickHandler(count);
@@ -80,6 +82,23 @@ export class ButtonCart {
         "text": ""
       },
       "attribute": "name",
+      "reflect": true
+    },
+    "price": {
+      "type": "number",
+      "mutable": false,
+      "complexType": {
+        "original": "number",
+        "resolved": "number",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "price",
       "reflect": true
     },
     "count": {

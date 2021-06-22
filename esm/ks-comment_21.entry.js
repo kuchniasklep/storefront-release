@@ -1,11 +1,12 @@
-import { r as registerInstance, h, g as getElement, c as createEvent } from './index-4f41a852.js';
-import { s as store } from './product-store-dcf22266.js';
+import { r as registerInstance, h, g as getElement, e as createEvent } from './index-f323e182.js';
+import { s as store } from './product-store-db88169f.js';
 import { w as window_load } from './deferredpromise-0f64146f.js';
 import { S as Swiper } from './core-class-3f174cf3.js';
 import { T as Thumbs } from './thumbs-ca1d86c7.js';
 import { O as OpenSuggestions } from './functions-802032ba.js';
+import { e as eachTracker } from './store-06ef0521.js';
 import { V as ValidateInput } from './validate-cd7ce36d.js';
-import './index-a8e6b0b4.js';
+import './index-6478ec90.js';
 
 const commentCss = "ks-comment{display:block}ks-comment article{padding:30px}@media (min-width: 1200px){ks-comment article{padding:30px 40px}}ks-comment header{display:-webkit-box;display:-ms-flexbox;display:flex}ks-comment header>div{width:100%}ks-comment header .title{margin:0}ks-comment header .info{font-size:.875rem;line-height:1.4;color:#707070}ks-comment ks-icon{margin-right:20px}ks-comment p{margin-bottom:0px}";
 
@@ -352,6 +353,7 @@ const ProductInfo = class {
         .then(() => {
         this.navbar.IncrementCart(count);
         OpenSuggestions(id, name);
+        eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(id, name, parseFloat(store.get("currentPrice")), store.get("count"), "PLN"));
       })
         .catch(error => this.errorPopup.show(error));
     })
