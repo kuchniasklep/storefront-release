@@ -1,5 +1,5 @@
 import { r as registerInstance, h, g as getElement } from './index-f323e182.js';
-import { A as AddToCart, R as RemoveFromFavourites, a as AddToFavourites } from './functions-802032ba.js';
+import { A as AddToCart, R as RemoveFromFavourites, a as AddToFavourites } from './functions-a8bb690e.js';
 import { e as eachTracker } from './store-06ef0521.js';
 import './index-6478ec90.js';
 
@@ -29,10 +29,10 @@ const ButtonCart = class {
       const navbar = document.querySelector("ks-navbar");
       navbar.IncrementCart(this.count);
       setTimeout(() => this.loading = false, 1000);
+      eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(this.productId, this.productId, this.price, 1, "PLN"));
     }
     else
       this.loading = false;
-    eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(this.productId, this.productId, this.price, 1, "PLN"));
   }
   async AddToCart(count) {
     this.ClickHandler(count);

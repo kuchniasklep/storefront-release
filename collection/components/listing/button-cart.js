@@ -24,10 +24,10 @@ export class ButtonCart {
       const navbar = document.querySelector("ks-navbar");
       navbar.IncrementCart(this.count);
       setTimeout(() => this.loading = false, 1000);
+      eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(this.productId, this.productId, this.price, 1, "PLN"));
     }
     else
       this.loading = false;
-    eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(this.productId, this.productId, this.price, 1, "PLN"));
   }
   async AddToCart(count) {
     this.ClickHandler(count);

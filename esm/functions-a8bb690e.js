@@ -1,5 +1,3 @@
-'use strict';
-
 async function cartfetch(url, body) {
   const headers = new Headers();
   headers.append('pragma', 'no-cache');
@@ -66,6 +64,8 @@ function AddToCart(id, count, traits, place, name, finished) {
       }
       navbar.IncrementCart(count);
       OpenSuggestions(id, name);
+      if (finished)
+        finished(true);
     })
       .catch(error => {
       errorpopup.show(error);
@@ -118,8 +118,4 @@ function OpenSuggestions(id, name) {
   suggestions.show(id, name);
 }
 
-exports.AddToCart = AddToCart;
-exports.AddToFavourites = AddToFavourites;
-exports.OpenSuggestions = OpenSuggestions;
-exports.RemoveAllFavourites = RemoveAllFavourites;
-exports.RemoveFromFavourites = RemoveFromFavourites;
+export { AddToCart as A, OpenSuggestions as O, RemoveFromFavourites as R, AddToFavourites as a, RemoveAllFavourites as b };

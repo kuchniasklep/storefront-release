@@ -64,6 +64,8 @@ export function AddToCart(id, count, traits, place, name, finished) {
       }
       navbar.IncrementCart(count);
       OpenSuggestions(id, name);
+      if (finished)
+        finished(true);
     })
       .catch(error => {
       errorpopup.show(error);

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-7d3fd69d.js');
-const functions = require('./functions-37701883.js');
+const functions = require('./functions-4166ed17.js');
 const store = require('./store-c010abe7.js');
 require('./index-b0bdcebf.js');
 
@@ -33,10 +33,10 @@ const ButtonCart = class {
       const navbar = document.querySelector("ks-navbar");
       navbar.IncrementCart(this.count);
       setTimeout(() => this.loading = false, 1000);
+      store.eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(this.productId, this.productId, this.price, 1, "PLN"));
     }
     else
       this.loading = false;
-    store.eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(this.productId, this.productId, this.price, 1, "PLN"));
   }
   async AddToCart(count) {
     this.ClickHandler(count);

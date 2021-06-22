@@ -7,7 +7,7 @@ const productStore = require('./product-store-536ff8e4.js');
 const deferredpromise = require('./deferredpromise-4a0fd44b.js');
 const coreClass = require('./core-class-37c25aa3.js');
 const thumbs = require('./thumbs-466e1eba.js');
-const functions = require('./functions-37701883.js');
+const functions = require('./functions-4166ed17.js');
 const store = require('./store-c010abe7.js');
 const validate = require('./validate-6c61d7c0.js');
 require('./index-b0bdcebf.js');

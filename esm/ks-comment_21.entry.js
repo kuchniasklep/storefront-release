@@ -3,7 +3,7 @@ import { s as store } from './product-store-db88169f.js';
 import { w as window_load } from './deferredpromise-0f64146f.js';
 import { S as Swiper } from './core-class-3f174cf3.js';
 import { T as Thumbs } from './thumbs-ca1d86c7.js';
-import { O as OpenSuggestions } from './functions-802032ba.js';
+import { O as OpenSuggestions } from './functions-a8bb690e.js';
 import { e as eachTracker } from './store-06ef0521.js';
 import { V as ValidateInput } from './validate-cd7ce36d.js';
 import './index-6478ec90.js';
