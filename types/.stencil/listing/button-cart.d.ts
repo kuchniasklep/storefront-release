@@ -2,6 +2,7 @@ export declare class ButtonCart {
   root: HTMLElement;
   productId: string;
   name: string;
+  price: number;
   count: string;
   traits: string;
   expand: boolean;

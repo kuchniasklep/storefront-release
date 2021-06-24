@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-aaabf9e8.js');
+const index = require('./index-7d3fd69d.js');
 
 const descriptionTextCss = "ks-description-text{display:block;margin-bottom:40px}";
 

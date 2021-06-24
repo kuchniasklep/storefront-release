@@ -1,0 +1,1 @@
+import{r as s}from"./index-aa615a50.js";import{e as o}from"./store-49d14f1e.js";import"./index-6936e5a4.js";const r=class{constructor(o){s(this,o)}componentWillLoad(){o((s=>null==s?void 0:s.search(this.query)))}};export{r as ks_tracker_search}

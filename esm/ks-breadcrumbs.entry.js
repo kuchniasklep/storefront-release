@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-4f41a852.js';
+import { r as registerInstance, h } from './index-f323e182.js';
 
 const breadcrumbsCss = "ks-breadcrumbs{display:block}";
 

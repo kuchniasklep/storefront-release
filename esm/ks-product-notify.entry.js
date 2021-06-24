@@ -1,4 +1,4 @@
-import { r as registerInstance, h, g as getElement } from './index-4f41a852.js';
+import { r as registerInstance, h, g as getElement } from './index-f323e182.js';
 import { V as ValidateInput } from './validate-cd7ce36d.js';
 
 const productNotifyCss = "ks-product-notify{display:block}ks-product-notify fieldset{border:none;margin:0;padding:0}ks-product-notify .info{text-align:center;margin-bottom:40px}ks-product-notify h3{font-family:var(--font-emphasis);font-size:20px;font-weight:700}ks-product-notify ks-input-check{margin-bottom:5px}ks-product-notify ks-button{margin-top:20px}";

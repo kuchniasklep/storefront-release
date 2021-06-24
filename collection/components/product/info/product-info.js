@@ -1,5 +1,6 @@
 import { Component, h, Prop, Element, Listen, Event } from '@stencil/core';
 import { OpenSuggestions } from "../../functions";
+import { eachTracker } from '../../tracking/store';
 import { store } from "../product-store";
 export class ProductInfo {
   constructor() {
@@ -97,6 +98,7 @@ export class ProductInfo {
         .then(() => {
         this.navbar.IncrementCart(count);
         OpenSuggestions(id, name);
+        eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(id, name, parseFloat(store.get("currentPrice")), store.get("count"), "PLN"));
       })
         .catch(error => this.errorPopup.show(error));
     })

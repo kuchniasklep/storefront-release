@@ -45,7 +45,7 @@ export class ProductWide {
         h("ks-button-fav", { subtract: true, padding: true, expand: true, "product-id": this.productId }),
         this.unavailable ?
           h("ks-button-cart", { icon: true, padding: true, expand: true, disabled: true }) :
-          h("ks-button-cart", { icon: true, padding: true, expand: true, "product-id": this.productId, name: this.name }))));
+          h("ks-button-cart", { icon: true, padding: true, expand: true, "product-id": this.productId, name: this.name, price: parseFloat(this.currentPrice) }))));
   }
   static get is() { return "ks-product-wide"; }
   static get properties() { return {

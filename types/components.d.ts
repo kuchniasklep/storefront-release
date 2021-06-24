@@ -9,6 +9,7 @@ import { deal } from "./components/cart/cart-data";
 import { CategoryData } from "./components/navbar/navbar-data";
 import { LightboxImageData } from "./components/elements/modal/lightbox-data";
 import { TraitData, TraitDataItem } from "./components/product/product-data";
+import { ITrackerProduct } from "./components/tracking/store";
 export namespace Components {
     interface KsAlert {
         "message": string;
@@ -70,6 +71,7 @@ export namespace Components {
         "icon": boolean;
         "name": string;
         "padding": boolean;
+        "price": number;
         "product": boolean;
         "productId": string;
         "traits": string;
@@ -1028,6 +1030,28 @@ export namespace Components {
         "name": string;
         "newsletter": Function;
         "shipping": string;
+    }
+    interface KsTracker {
+        "tiktok": boolean;
+    }
+    interface KsTrackerOrder {
+        "checkout": boolean;
+        "currency": string;
+        "form": boolean;
+        "placed": boolean;
+        "products": ITrackerProduct[] | string;
+        "value": number;
+    }
+    interface KsTrackerPageview {
+    }
+    interface KsTrackerProduct {
+        "currency": string;
+        "name": string;
+        "price": number;
+        "productId": string;
+    }
+    interface KsTrackerSearch {
+        "query": string;
     }
 }
 declare global {
@@ -2069,6 +2093,36 @@ declare global {
         prototype: HTMLKsTopBannerElement;
         new (): HTMLKsTopBannerElement;
     };
+    interface HTMLKsTrackerElement extends Components.KsTracker, HTMLStencilElement {
+    }
+    var HTMLKsTrackerElement: {
+        prototype: HTMLKsTrackerElement;
+        new (): HTMLKsTrackerElement;
+    };
+    interface HTMLKsTrackerOrderElement extends Components.KsTrackerOrder, HTMLStencilElement {
+    }
+    var HTMLKsTrackerOrderElement: {
+        prototype: HTMLKsTrackerOrderElement;
+        new (): HTMLKsTrackerOrderElement;
+    };
+    interface HTMLKsTrackerPageviewElement extends Components.KsTrackerPageview, HTMLStencilElement {
+    }
+    var HTMLKsTrackerPageviewElement: {
+        prototype: HTMLKsTrackerPageviewElement;
+        new (): HTMLKsTrackerPageviewElement;
+    };
+    interface HTMLKsTrackerProductElement extends Components.KsTrackerProduct, HTMLStencilElement {
+    }
+    var HTMLKsTrackerProductElement: {
+        prototype: HTMLKsTrackerProductElement;
+        new (): HTMLKsTrackerProductElement;
+    };
+    interface HTMLKsTrackerSearchElement extends Components.KsTrackerSearch, HTMLStencilElement {
+    }
+    var HTMLKsTrackerSearchElement: {
+        prototype: HTMLKsTrackerSearchElement;
+        new (): HTMLKsTrackerSearchElement;
+    };
     interface HTMLElementTagNameMap {
         "ks-alert": HTMLKsAlertElement;
         "ks-article-card": HTMLKsArticleCardElement;
@@ -2243,6 +2297,11 @@ declare global {
         "ks-sidepanel": HTMLKsSidepanelElement;
         "ks-sorting": HTMLKsSortingElement;
         "ks-top-banner": HTMLKsTopBannerElement;
+        "ks-tracker": HTMLKsTrackerElement;
+        "ks-tracker-order": HTMLKsTrackerOrderElement;
+        "ks-tracker-pageview": HTMLKsTrackerPageviewElement;
+        "ks-tracker-product": HTMLKsTrackerProductElement;
+        "ks-tracker-search": HTMLKsTrackerSearchElement;
     }
 }
 declare namespace LocalJSX {
@@ -2304,6 +2363,7 @@ declare namespace LocalJSX {
         "icon"?: boolean;
         "name"?: string;
         "padding"?: boolean;
+        "price"?: number;
         "product"?: boolean;
         "productId"?: string;
         "traits"?: string;
@@ -3223,6 +3283,28 @@ declare namespace LocalJSX {
         "newsletter"?: Function;
         "shipping"?: string;
     }
+    interface KsTracker {
+        "tiktok"?: boolean;
+    }
+    interface KsTrackerOrder {
+        "checkout"?: boolean;
+        "currency"?: string;
+        "form"?: boolean;
+        "placed"?: boolean;
+        "products"?: ITrackerProduct[] | string;
+        "value"?: number;
+    }
+    interface KsTrackerPageview {
+    }
+    interface KsTrackerProduct {
+        "currency"?: string;
+        "name"?: string;
+        "price"?: number;
+        "productId"?: string;
+    }
+    interface KsTrackerSearch {
+        "query"?: string;
+    }
     interface IntrinsicElements {
         "ks-alert": KsAlert;
         "ks-article-card": KsArticleCard;
@@ -3397,6 +3479,11 @@ declare namespace LocalJSX {
         "ks-sidepanel": KsSidepanel;
         "ks-sorting": KsSorting;
         "ks-top-banner": KsTopBanner;
+        "ks-tracker": KsTracker;
+        "ks-tracker-order": KsTrackerOrder;
+        "ks-tracker-pageview": KsTrackerPageview;
+        "ks-tracker-product": KsTrackerProduct;
+        "ks-tracker-search": KsTrackerSearch;
     }
 }
 export { LocalJSX as JSX };
@@ -3576,6 +3663,11 @@ declare module "@stencil/core" {
             "ks-sidepanel": LocalJSX.KsSidepanel & JSXBase.HTMLAttributes<HTMLKsSidepanelElement>;
             "ks-sorting": LocalJSX.KsSorting & JSXBase.HTMLAttributes<HTMLKsSortingElement>;
             "ks-top-banner": LocalJSX.KsTopBanner & JSXBase.HTMLAttributes<HTMLKsTopBannerElement>;
+            "ks-tracker": LocalJSX.KsTracker & JSXBase.HTMLAttributes<HTMLKsTrackerElement>;
+            "ks-tracker-order": LocalJSX.KsTrackerOrder & JSXBase.HTMLAttributes<HTMLKsTrackerOrderElement>;
+            "ks-tracker-pageview": LocalJSX.KsTrackerPageview & JSXBase.HTMLAttributes<HTMLKsTrackerPageviewElement>;
+            "ks-tracker-product": LocalJSX.KsTrackerProduct & JSXBase.HTMLAttributes<HTMLKsTrackerProductElement>;
+            "ks-tracker-search": LocalJSX.KsTrackerSearch & JSXBase.HTMLAttributes<HTMLKsTrackerSearchElement>;
         }
     }
 }

@@ -2,14 +2,15 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-aaabf9e8.js');
-const productStore = require('./product-store-16a88a54.js');
+const index = require('./index-7d3fd69d.js');
+const productStore = require('./product-store-536ff8e4.js');
 const deferredpromise = require('./deferredpromise-4a0fd44b.js');
 const coreClass = require('./core-class-37c25aa3.js');
 const thumbs = require('./thumbs-466e1eba.js');
-const functions = require('./functions-37701883.js');
+const functions = require('./functions-4166ed17.js');
+const store = require('./store-c010abe7.js');
 const validate = require('./validate-6c61d7c0.js');
-require('./index-856f0267.js');
+require('./index-b0bdcebf.js');
 
 const commentCss = "ks-comment{display:block}ks-comment article{padding:30px}@media (min-width: 1200px){ks-comment article{padding:30px 40px}}ks-comment header{display:-webkit-box;display:-ms-flexbox;display:flex}ks-comment header>div{width:100%}ks-comment header .title{margin:0}ks-comment header .info{font-size:.875rem;line-height:1.4;color:#707070}ks-comment ks-icon{margin-right:20px}ks-comment p{margin-bottom:0px}";
 
@@ -356,6 +357,7 @@ const ProductInfo = class {
         .then(() => {
         this.navbar.IncrementCart(count);
         functions.OpenSuggestions(id, name);
+        store.eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(id, name, parseFloat(productStore.store.get("currentPrice")), productStore.store.get("count"), "PLN"));
       })
         .catch(error => this.errorPopup.show(error));
     })

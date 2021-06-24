@@ -2,8 +2,10 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-aaabf9e8.js');
-const functions = require('./functions-37701883.js');
+const index = require('./index-7d3fd69d.js');
+const functions = require('./functions-4166ed17.js');
+const store = require('./store-c010abe7.js');
+require('./index-b0bdcebf.js');
 
 const buttonCartCss = "ks-button-cart{display:block;height:100%}ks-button-cart[expand]{-webkit-box-flex:1;-ms-flex:1;flex:1}ks-button-cart[padding] button{padding:5px;min-height:50px}@media (min-width: 700px){ks-button-cart[padding] button{padding:10px;min-height:60px}}ks-button-cart button{position:relative;display:block;width:100%;height:100%;min-height:42px;min-width:44px;padding:1px 10px;font-size:.875rem;line-height:40px;text-align:center;text-decoration:none;text-transform:none;font-family:var(--font-regular);outline:none;border:none;border-radius:0px;color:white;background-color:var(--product-card-primary);-webkit-transition:var(--transition-background-color);transition:var(--transition-background-color)}ks-button-cart button:hover{background-color:var(--product-card-primary-hover)}ks-button-cart button:active{background-color:var(--product-card-primary-active)}ks-button-cart[disabled] button{background-color:var(--product-card-disabled-color) !important;color:var(--product-card-disabled-text) !important}";
 
@@ -28,9 +30,8 @@ const ButtonCart = class {
   ResultHandler(state) {
     this.loading = true;
     if (state) {
-      const navbar = document.querySelector("ks-navbar");
-      navbar.IncrementCart(this.count);
       setTimeout(() => this.loading = false, 1000);
+      store.eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(this.productId, this.productId, this.price, 1, "PLN"));
     }
     else
       this.loading = false;
@@ -101,7 +102,7 @@ const ProductCard = class {
     const currentPrice = this.currentPrice ? this.currentPrice.replace(".", ",") + " zł" : "";
     const previousPrice = this.previousPrice ? this.previousPrice.replace(".", ",") + " zł" : "";
     return [
-      index.h("a", { href: this.link, "aria-label": this.name, class: "top" }, index.h("ks-img", { fill: true, src: this.img, width: 280, height: 280, alt: "zdj\u0119cie produktu" }), index.h("span", null, this.name)),
+      index.h("a", { href: this.link, "aria-label": this.name, class: "top" }, index.h("ks-img", { fill: true, src: this.img, width: 280, height: 280, alt: this.name }), index.h("span", null, this.name)),
       index.h("div", { class: "price" }, this.previousPrice ?
         index.h("s", { class: "previous" }, previousPrice)
         : null, index.h("span", { class: "current" }, currentPrice)),
@@ -109,7 +110,7 @@ const ProductCard = class {
         : this.linkOnly ? index.h("a", { href: this.link, class: "link" }, "ZOBACZ WI\u0118CEJ")
           : [
             index.h("ks-button-fav", { "product-id": this.productId }),
-            index.h("ks-button-cart", { expand: true, "product-id": this.productId, name: this.name })
+            index.h("ks-button-cart", { expand: true, "product-id": this.productId, name: this.name, price: parseFloat(this.currentPrice) })
           ])
     ];
   }

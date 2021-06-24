@@ -1,5 +1,6 @@
 import { Component, h, Prop, State, Element, Method } from '@stencil/core';
 import { AddToCart } from '../functions';
+import { eachTracker } from '../tracking/store';
 export class ButtonCart {
   constructor() {
     this.count = "1";
@@ -20,9 +21,8 @@ export class ButtonCart {
   ResultHandler(state) {
     this.loading = true;
     if (state) {
-      const navbar = document.querySelector("ks-navbar");
-      navbar.IncrementCart(this.count);
       setTimeout(() => this.loading = false, 1000);
+      eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(this.productId, this.productId, this.price, 1, "PLN"));
     }
     else
       this.loading = false;
@@ -80,6 +80,23 @@ export class ButtonCart {
         "text": ""
       },
       "attribute": "name",
+      "reflect": true
+    },
+    "price": {
+      "type": "number",
+      "mutable": false,
+      "complexType": {
+        "original": "number",
+        "resolved": "number",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "price",
       "reflect": true
     },
     "count": {

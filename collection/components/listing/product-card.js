@@ -9,7 +9,7 @@ export class ProductCard {
     const previousPrice = this.previousPrice ? this.previousPrice.replace(".", ",") + " zł" : "";
     return [
       h("a", { href: this.link, "aria-label": this.name, class: "top" },
-        h("ks-img", { fill: true, src: this.img, width: 280, height: 280, alt: "zdj\u0119cie produktu" }),
+        h("ks-img", { fill: true, src: this.img, width: 280, height: 280, alt: this.name }),
         h("span", null, this.name)),
       h("div", { class: "price" },
         this.previousPrice ?
@@ -20,7 +20,7 @@ export class ProductCard {
         : this.linkOnly ? h("a", { href: this.link, class: "link" }, "ZOBACZ WI\u0118CEJ")
           : [
             h("ks-button-fav", { "product-id": this.productId }),
-            h("ks-button-cart", { expand: true, "product-id": this.productId, name: this.name })
+            h("ks-button-cart", { expand: true, "product-id": this.productId, name: this.name, price: parseFloat(this.currentPrice) })
           ])
     ];
   }
