@@ -2,6 +2,7 @@ export declare class PromotionalPopup {
   root: HTMLElement;
   dialog: HTMLKsDialogElement;
   name: string;
+  href: string;
   image: string;
   color: string;
   texture: string;

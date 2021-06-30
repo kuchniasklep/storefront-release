@@ -37,7 +37,7 @@ export class PromotionalPopup {
     };
     return [
       h("ks-dialog", { smallmobile: true, dark: true, nopadding: true, onClosed: () => this.SetCookie() },
-        h("div", { class: "info", style: bgstyle },
+        h("a", { href: this.href, class: "info", style: bgstyle },
           h("div", { class: "texture", style: texturestyle }),
           h("ks-img2", { src: this.image })))
     ];
@@ -65,6 +65,23 @@ export class PromotionalPopup {
         "text": ""
       },
       "attribute": "name",
+      "reflect": false
+    },
+    "href": {
+      "type": "string",
+      "mutable": false,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "href",
       "reflect": false
     },
     "image": {

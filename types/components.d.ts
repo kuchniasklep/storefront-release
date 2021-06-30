@@ -952,6 +952,7 @@ export namespace Components {
         "Show": () => Promise<void>;
         "color": string;
         "displayOnLoad": boolean;
+        "href": string;
         "image": string;
         "name": string;
         "texture": string;
@@ -3206,6 +3207,7 @@ declare namespace LocalJSX {
     interface KsPromotionalPopup {
         "color"?: string;
         "displayOnLoad"?: boolean;
+        "href"?: string;
         "image"?: string;
         "name"?: string;
         "texture"?: string;
