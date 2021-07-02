@@ -68,9 +68,15 @@ ks-input-check input[type="radio"] {
 
 ks-input-check ks-icon {
     position: absolute;
-    top: 4.5px;
-    left: 0.7px;
+    top: 4px;
+    left: 0.5px;
     color: #e7e7e7;
+}
+
+@media (max-width: 420px) {
+    ks-input-check ks-icon {
+        top: 2px;
+    }
 }
 
 ks-input-check input[type="radio"]:checked::after {
