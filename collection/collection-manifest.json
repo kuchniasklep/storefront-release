@@ -43,6 +43,7 @@
     "./components/elements/img.js",
     "./components/elements/img2.js",
     "./components/elements/loader.js",
+    "./components/elements/notification.js",
     "./components/elements/section-heading.js",
     "./components/elements/section.js",
     "./components/elements/icon/icon.js",

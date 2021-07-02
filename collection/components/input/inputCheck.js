@@ -15,6 +15,9 @@ export class InputCheck {
             this.currentCheck = event.target.checked;
             this.Validate();
           } }),
+        type == "checkbox" ?
+          h("ks-icon", { name: "check", size: 0.64 })
+          : null,
         h("span", { innerHTML: this.label })),
       this.invalid && this.required && !this.nomessage ?
         h("p", null, this.invalidMessage)

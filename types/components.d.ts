@@ -644,6 +644,10 @@ export namespace Components {
         "linkName": string;
         "status": string;
     }
+    interface KsNotification {
+        "icon": string;
+        "red": boolean;
+    }
     interface KsOrderAddressField {
         "name": string;
     }
@@ -1656,6 +1660,12 @@ declare global {
         prototype: HTMLKsNotfoundElement;
         new (): HTMLKsNotfoundElement;
     };
+    interface HTMLKsNotificationElement extends Components.KsNotification, HTMLStencilElement {
+    }
+    var HTMLKsNotificationElement: {
+        prototype: HTMLKsNotificationElement;
+        new (): HTMLKsNotificationElement;
+    };
     interface HTMLKsOrderAddressFieldElement extends Components.KsOrderAddressField, HTMLStencilElement {
     }
     var HTMLKsOrderAddressFieldElement: {
@@ -2225,6 +2235,7 @@ declare global {
         "ks-navbar-sidebar": HTMLKsNavbarSidebarElement;
         "ks-newsletter-popup": HTMLKsNewsletterPopupElement;
         "ks-notfound": HTMLKsNotfoundElement;
+        "ks-notification": HTMLKsNotificationElement;
         "ks-order-address-field": HTMLKsOrderAddressFieldElement;
         "ks-order-address-section": HTMLKsOrderAddressSectionElement;
         "ks-order-button": HTMLKsOrderButtonElement;
@@ -2906,6 +2917,10 @@ declare namespace LocalJSX {
         "linkName"?: string;
         "status"?: string;
     }
+    interface KsNotification {
+        "icon"?: string;
+        "red"?: boolean;
+    }
     interface KsOrderAddressField {
         "name"?: string;
     }
@@ -3408,6 +3423,7 @@ declare namespace LocalJSX {
         "ks-navbar-sidebar": KsNavbarSidebar;
         "ks-newsletter-popup": KsNewsletterPopup;
         "ks-notfound": KsNotfound;
+        "ks-notification": KsNotification;
         "ks-order-address-field": KsOrderAddressField;
         "ks-order-address-section": KsOrderAddressSection;
         "ks-order-button": KsOrderButton;
@@ -3592,6 +3608,7 @@ declare module "@stencil/core" {
             "ks-navbar-sidebar": LocalJSX.KsNavbarSidebar & JSXBase.HTMLAttributes<HTMLKsNavbarSidebarElement>;
             "ks-newsletter-popup": LocalJSX.KsNewsletterPopup & JSXBase.HTMLAttributes<HTMLKsNewsletterPopupElement>;
             "ks-notfound": LocalJSX.KsNotfound & JSXBase.HTMLAttributes<HTMLKsNotfoundElement>;
+            "ks-notification": LocalJSX.KsNotification & JSXBase.HTMLAttributes<HTMLKsNotificationElement>;
             "ks-order-address-field": LocalJSX.KsOrderAddressField & JSXBase.HTMLAttributes<HTMLKsOrderAddressFieldElement>;
             "ks-order-address-section": LocalJSX.KsOrderAddressSection & JSXBase.HTMLAttributes<HTMLKsOrderAddressSectionElement>;
             "ks-order-button": LocalJSX.KsOrderButton & JSXBase.HTMLAttributes<HTMLKsOrderButtonElement>;

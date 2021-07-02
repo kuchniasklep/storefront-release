@@ -65,12 +65,12 @@ ks-input-check input[type="radio"] {
     border-radius: 50%;
 }
 
-ks-input-check input:checked::after {
-    content: "🗸";
-    color: white;
 
-    margin-top: 3px;
-    font-size: 16px !important;
+ks-input-check ks-icon {
+    position: absolute;
+    top: 4.5px;
+    left: 0.7px;
+    color: #e7e7e7;
 }
 
 ks-input-check input[type="radio"]:checked::after {
