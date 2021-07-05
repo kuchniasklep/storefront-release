@@ -129,23 +129,27 @@ class FacebookTracker {
     });
   }
   product(productId, name, price, currency) {
-    fbq('track', "ViewContent", {
-      content_type: 'product',
-      content_name: name,
-      value: price,
-      currency: currency,
-      content_ids: [productId]
+    this.pixel.then(fbq => {
+      fbq('track', "ViewContent", {
+        content_type: 'product',
+        content_name: name,
+        value: price,
+        currency: currency,
+        content_ids: [productId]
+      });
     });
   }
   addToCart(productId, name, price, quantity, currency) {
-    fbq('track', 'AddToCart', {
-      content_type: 'product',
-      content_name: name,
-      value: price,
-      currency: currency,
-      contents: [
-        { id: productId, quantity: quantity }
-      ]
+    this.pixel.then(fbq => {
+      fbq('track', 'AddToCart', {
+        content_type: 'product',
+        content_name: name,
+        value: price,
+        currency: currency,
+        contents: [
+          { id: productId, quantity: quantity }
+        ]
+      });
     });
   }
   order_checkout(products, value, currency) {
@@ -161,11 +165,13 @@ class FacebookTracker {
   order_form(products, value, currency) {
   }
   order_placed(products, value, currency) {
-    fbq('track', 'Purchase', {
-      contents: this.transformProducts(products),
-      content_type: 'product',
-      value: value,
-      currency: currency
+    this.pixel.then(fbq => {
+      fbq('track', 'Purchase', {
+        contents: this.transformProducts(products),
+        content_type: 'product',
+        value: value,
+        currency: currency
+      });
     });
   }
   search(query) {
