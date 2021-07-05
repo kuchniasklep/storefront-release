@@ -1037,6 +1037,7 @@ export namespace Components {
         "shipping": string;
     }
     interface KsTracker {
+        "facebook": string;
         "tiktok": boolean;
     }
     interface KsTrackerOrder {
@@ -3301,6 +3302,7 @@ declare namespace LocalJSX {
         "shipping"?: string;
     }
     interface KsTracker {
+        "facebook"?: string;
         "tiktok"?: boolean;
     }
     interface KsTrackerOrder {
