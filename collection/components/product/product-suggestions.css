@@ -136,6 +136,7 @@ ks-product-suggestions .swiper-slide {
 }
 
 ks-product-suggestions .swiper-slide > * {
+    height: 100%;
     width: 230px;
 }
 
