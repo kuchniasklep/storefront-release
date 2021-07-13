@@ -67,12 +67,14 @@ export class TikTokTracker {
       });
     });
   }
+  // @ts-ignore
   search(query) {
+    /*
     this.ttq.then(ttq => {
-      ttq.track('Search', {
-        query: query
-      });
-    });
+        ttq.track('Search', {
+            query: query
+        });
+    });*/
   }
   transformProducts(products) {
     return products.map(product => {
