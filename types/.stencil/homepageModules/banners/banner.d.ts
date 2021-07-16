@@ -6,5 +6,9 @@ export declare class Banner {
   sync: boolean;
   width: number;
   height: number;
+  active: boolean;
+  navbarTheme: string;
+  theme: any;
+  componentWillLoad(): void;
   render(): any;
 }

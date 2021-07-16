@@ -2,6 +2,8 @@ ks-navbar {
     display: block;
     min-height: 104px;
     background-color: var(--navbar-color);
+    -webkit-transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease;
 }
 
 ks-navbar > nav {
@@ -12,7 +14,6 @@ ks-navbar > nav {
     position: relative;
 
     color: var(--navbar-text-color);
-    background-color: var(--navbar-color);
 }
 
 ks-navbar > nav > .logo {

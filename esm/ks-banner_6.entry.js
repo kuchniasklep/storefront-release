@@ -9,8 +9,21 @@ const Banner = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
   }
+  componentWillLoad() {
+    if (this.navbarTheme)
+      this.theme = JSON.parse(this.navbarTheme);
+  }
   render() {
-    return h(Host, { class: "swiper-slide", style: { backgroundColor: this.color } }, h("a", { href: this.link }, h("canvas", { width: this.width, height: this.height }), h("ks-img", { vertical: true, sync: this.sync, src: this.image, alt: this.name, width: this.width, height: this.height })));
+    const theme = (this.active && this.theme) ? `:root {
+			--navbar-color: ${this.theme.navbarColor} !important;
+			--navbar-color-hover: ${this.theme.navbarColorHover} !important;
+			--navbar-color-active: ${this.theme.navbarColorActive} !important;
+			--navbar-category-color: ${this.theme.categoryColor} !important;
+			--navbar-category-hover: ${this.theme.categoryColorHover} !important;
+			--navbar-category-active: ${this.theme.categoryColorActive} !important;
+			--navbar-category-backdrop: ${this.theme.categoryColorBackdrop} !important;
+		}` : null;
+    return h(Host, { class: "swiper-slide", style: { backgroundColor: this.color } }, h("a", { href: this.link }, h("canvas", { width: this.width, height: this.height }), h("ks-img", { vertical: true, sync: this.sync, src: this.image, alt: this.name, width: this.width, height: this.height })), theme ? h("style", { innerHTML: theme }) : null);
   }
 };
 Banner.style = bannerCss;
@@ -223,6 +236,14 @@ const BannerContainer = class {
           el: '.swiper-pagination',
           clickable: true
         },
+      });
+      this.carousel.on('slideChange', () => {
+        this.root.querySelectorAll('ks-banner').forEach((element, index) => {
+          if (index == this.carousel.activeIndex)
+            element.setAttribute('active', 'active');
+          else
+            element.removeAttribute('active');
+        });
       });
       this.loaded = true;
     }, this.delay);
