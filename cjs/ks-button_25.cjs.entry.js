@@ -2895,10 +2895,22 @@ const InfoBanner = class {
     const id = "ks-info-banner-" + this.name.replace(" ", "");
     if (sessionStorage.getItem(id))
       this.disabled = true;
+    if (this.navbarTheme)
+      this.theme = JSON.parse(this.navbarTheme);
   }
   render() {
-    if (!this.disabled)
-      return (index.h(index.Host, { style: { backgroundColor: this.color } }, index.h("a", { href: this.link, "aria-label": this.name }, index.h("ks-img", { sync: true, contained: true, center: true, width: this.width, height: this.height, src: this.image, alt: this.name })), index.h("button", { type: "button", "aria-label": "Schowaj banner", onClick: () => this.disable() }, index.h("ks-icon", { name: "x", size: 1.2 }))));
+    if (!this.disabled) {
+      const theme = this.theme ? `:root {
+        --navbar-color: ${this.theme.navbarColor} !important;
+        --navbar-color-hover: ${this.theme.navbarColorHover} !important;
+        --navbar-color-active: ${this.theme.navbarColorActive} !important;
+        --navbar-category-color: ${this.theme.categoryColor} !important;
+        --navbar-category-hover: ${this.theme.categoryColorHover} !important;
+        --navbar-category-active: ${this.theme.categoryColorActive} !important;
+        --navbar-category-backdrop: ${this.theme.categoryColorBackdrop} !important;
+      }` : null;
+      return (index.h(index.Host, { style: { backgroundColor: this.color } }, index.h("a", { href: this.link, "aria-label": this.name }, index.h("ks-img", { sync: true, contained: true, center: true, width: this.width, height: this.height, src: this.image, alt: this.name })), index.h("button", { type: "button", "aria-label": "Schowaj banner", onClick: () => this.disable() }, index.h("ks-icon", { name: "x", size: 1.2 })), theme ? index.h("style", { innerHTML: theme }) : null));
+    }
     else
       return;
   }

@@ -455,6 +455,7 @@ export namespace Components {
         "image": string;
         "link": string;
         "name": string;
+        "navbarTheme": string;
         "width": number;
     }
     interface KsInfoMessage {
@@ -2757,6 +2758,7 @@ declare namespace LocalJSX {
         "image"?: string;
         "link"?: string;
         "name"?: string;
+        "navbarTheme"?: string;
         "width"?: number;
     }
     interface KsInfoMessage {
