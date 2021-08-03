@@ -25,11 +25,13 @@ export namespace Components {
     interface KsArticleContainer {
     }
     interface KsBanner {
+        "active": boolean;
         "color": string;
         "height": number;
         "image": string;
         "link": string;
         "name": string;
+        "navbarTheme": string;
         "sync": boolean;
         "width": number;
     }
@@ -453,6 +455,7 @@ export namespace Components {
         "image": string;
         "link": string;
         "name": string;
+        "navbarTheme": string;
         "width": number;
     }
     interface KsInfoMessage {
@@ -2332,11 +2335,13 @@ declare namespace LocalJSX {
     interface KsArticleContainer {
     }
     interface KsBanner {
+        "active"?: boolean;
         "color"?: string;
         "height"?: number;
         "image"?: string;
         "link"?: string;
         "name"?: string;
+        "navbarTheme"?: string;
         "sync"?: boolean;
         "width"?: number;
     }
@@ -2753,6 +2758,7 @@ declare namespace LocalJSX {
         "image"?: string;
         "link"?: string;
         "name"?: string;
+        "navbarTheme"?: string;
         "width"?: number;
     }
     interface KsInfoMessage {

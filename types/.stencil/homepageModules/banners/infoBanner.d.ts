@@ -5,6 +5,8 @@ export declare class InfoBanner {
   link: string;
   width: number;
   height: number;
+  navbarTheme: string;
+  theme: any;
   disabled: boolean;
   disable(): void;
   componentWillLoad(): void;

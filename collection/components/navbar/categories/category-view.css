@@ -48,6 +48,8 @@ ks-category-view > div {
 
 ks-category-view .buttons {
     background-color: var(--navbar-category-backdrop);
+    -webkit-transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease;
     width: 230px;
 }
 
@@ -58,6 +60,8 @@ ks-category-view .buttons a {
     height: 40px;
     
     background-color: var(--navbar-category-color);
+    -webkit-transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease;
     color: white;
     border: none;
     outline: none;

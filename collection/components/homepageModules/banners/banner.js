@@ -1,10 +1,24 @@
 import { Component, h, Prop, Host } from '@stencil/core';
 export class Banner {
+  componentWillLoad() {
+    if (this.navbarTheme)
+      this.theme = JSON.parse(this.navbarTheme);
+  }
   render() {
+    const theme = (this.active && this.theme) ? `:root {
+			--navbar-color: ${this.theme.navbarColor} !important;
+			--navbar-color-hover: ${this.theme.navbarColorHover} !important;
+			--navbar-color-active: ${this.theme.navbarColorActive} !important;
+			--navbar-category-color: ${this.theme.categoryColor} !important;
+			--navbar-category-hover: ${this.theme.categoryColorHover} !important;
+			--navbar-category-active: ${this.theme.categoryColorActive} !important;
+			--navbar-category-backdrop: ${this.theme.categoryColorBackdrop} !important;
+		}` : null;
     return h(Host, { class: "swiper-slide", style: { backgroundColor: this.color } },
       h("a", { href: this.link },
         h("canvas", { width: this.width, height: this.height }),
-        h("ks-img", { vertical: true, sync: this.sync, src: this.image, alt: this.name, width: this.width, height: this.height })));
+        h("ks-img", { vertical: true, sync: this.sync, src: this.image, alt: this.name, width: this.width, height: this.height })),
+      theme ? h("style", { innerHTML: theme }) : null);
   }
   static get is() { return "ks-banner"; }
   static get originalStyleUrls() { return {
@@ -131,6 +145,40 @@ export class Banner {
         "text": ""
       },
       "attribute": "height",
+      "reflect": false
+    },
+    "active": {
+      "type": "boolean",
+      "mutable": true,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "active",
+      "reflect": true
+    },
+    "navbarTheme": {
+      "type": "string",
+      "mutable": false,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "navbar-theme",
       "reflect": false
     }
   }; }

@@ -30,6 +30,14 @@ export class BannerContainer {
           clickable: true
         },
       });
+      this.carousel.on('slideChange', () => {
+        this.root.querySelectorAll('ks-banner').forEach((element, index) => {
+          if (index == this.carousel.activeIndex)
+            element.setAttribute('active', 'active');
+          else
+            element.removeAttribute('active');
+        });
+      });
       this.loaded = true;
     }, this.delay);
   }

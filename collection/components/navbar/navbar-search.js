@@ -37,7 +37,8 @@ export class NavbarSearch {
       return;
     }
     const form = this.root.querySelector("form");
-    form.submit();
+    if (form.checkValidity())
+      form.submit();
   }
   async focus() {
     if (this.mobile)
@@ -119,7 +120,7 @@ export class NavbarSearch {
     return (h("form", { method: "post", action: "szukaj.html", onSubmit: e => this.submit(e) },
       h("a", { onClick: e => this.submit(e) },
         h("ks-icon", { name: "search", size: 1.1 })),
-      h("input", { "aria-label": "Szukaj produkt\u00F3w", name: "szukaj", type: "search", autocomplete: "off", onFocus: () => this.focus(), onBlur: () => this.blur(), onInput: () => this.input(), onKeyDown: e => this.key(e) }),
+      h("input", { "aria-label": "Szukaj produkt\u00F3w", name: "szukaj", type: "search", autocomplete: "off", required: true, onFocus: () => this.focus(), onBlur: () => this.blur(), onInput: () => this.input(), onKeyDown: e => this.key(e) }),
       h("input", { type: "hidden", name: "postget", value: "tak" }),
       h("input", { type: "hidden", name: "opis", value: "nie" }),
       h("input", { type: "hidden", name: "nrkat", value: "tak" }),
