@@ -2599,6 +2599,8 @@ const Pagination = class {
     ];
   }
   link(index) {
+    if (index == 1)
+      return this.base;
     return this.base + this.pattern + index.toString();
   }
 };

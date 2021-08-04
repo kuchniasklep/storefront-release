@@ -73,6 +73,8 @@ export class Pagination {
     ];
   }
   link(index) {
+    if (index == 1)
+      return this.base;
     return this.base + this.pattern + index.toString();
   }
   static get is() { return "ks-pagination"; }
