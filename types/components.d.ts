@@ -41,8 +41,6 @@ export namespace Components {
         "loaded": boolean;
     }
     interface KsBreadcrumbs {
-        "center": boolean;
-        "mobile": boolean;
     }
     interface KsButton {
         "border": boolean;
@@ -1036,6 +1034,8 @@ export namespace Components {
         "show": () => Promise<void>;
     }
     interface KsSorting {
+        "current": number;
+        "enabled": boolean;
         "post": string;
     }
     interface KsTopBanner {
@@ -2355,8 +2355,6 @@ declare namespace LocalJSX {
         "loaded"?: boolean;
     }
     interface KsBreadcrumbs {
-        "center"?: boolean;
-        "mobile"?: boolean;
     }
     interface KsButton {
         "border"?: boolean;
@@ -3308,6 +3306,8 @@ declare namespace LocalJSX {
         "left"?: boolean;
     }
     interface KsSorting {
+        "current"?: number;
+        "enabled"?: boolean;
         "post"?: string;
     }
     interface KsTopBanner {

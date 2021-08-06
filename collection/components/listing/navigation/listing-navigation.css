@@ -5,6 +5,7 @@ ks-listing-navigation {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    margin: 15px 0;
 }
 
 ks-listing-navigation[products="0"],

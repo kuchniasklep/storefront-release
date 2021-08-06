@@ -2514,7 +2514,7 @@ const ListingHeader = class {
 };
 ListingHeader.style = listingHeaderCss;
 
-const listingNavigationCss = "ks-listing-navigation{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}ks-listing-navigation[products=\"0\"],ks-listing-navigation[products=\"1\"]{display:none}ks-listing-navigation ks-filtering{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1;margin:0 5px}ks-listing-navigation ks-sorting{-webkit-box-ordinal-group:4;-ms-flex-order:3;order:3;margin:0 5px}ks-listing-navigation ks-pagination{-webkit-box-ordinal-group:3;-ms-flex-order:2;order:2;margin:0 10px}@media (max-width: 640px){ks-listing-navigation{-ms-flex-wrap:wrap;flex-wrap:wrap}ks-listing-navigation ks-filtering{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1;margin:0 3px;width:40%;min-width:144px;-webkit-box-sizing:border-box;box-sizing:border-box}ks-listing-navigation ks-sorting{-webkit-box-ordinal-group:3;-ms-flex-order:2;order:2;margin:0 3px;width:40%;min-width:144px;-webkit-box-sizing:border-box;box-sizing:border-box}ks-listing-navigation ks-pagination{-webkit-box-ordinal-group:4;-ms-flex-order:3;order:3;-webkit-box-flex:1;-ms-flex:1;flex:1;min-width:100%;margin-top:6px}}@media (max-width: 344px){ks-listing-navigation ks-filtering,ks-listing-navigation ks-sorting{width:47%;min-width:120px}}";
+const listingNavigationCss = "ks-listing-navigation{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;margin:15px 0}ks-listing-navigation[products=\"0\"],ks-listing-navigation[products=\"1\"]{display:none}ks-listing-navigation ks-filtering{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1;margin:0 5px}ks-listing-navigation ks-sorting{-webkit-box-ordinal-group:4;-ms-flex-order:3;order:3;margin:0 5px}ks-listing-navigation ks-pagination{-webkit-box-ordinal-group:3;-ms-flex-order:2;order:2;margin:0 10px}@media (max-width: 640px){ks-listing-navigation{-ms-flex-wrap:wrap;flex-wrap:wrap}ks-listing-navigation ks-filtering{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1;margin:0 3px;width:40%;min-width:144px;-webkit-box-sizing:border-box;box-sizing:border-box}ks-listing-navigation ks-sorting{-webkit-box-ordinal-group:3;-ms-flex-order:2;order:2;margin:0 3px;width:40%;min-width:144px;-webkit-box-sizing:border-box;box-sizing:border-box}ks-listing-navigation ks-pagination{-webkit-box-ordinal-group:4;-ms-flex-order:3;order:3;-webkit-box-flex:1;-ms-flex:1;flex:1;min-width:100%;margin-top:6px}}@media (max-width: 344px){ks-listing-navigation ks-filtering,ks-listing-navigation ks-sorting{width:47%;min-width:120px}}";
 
 const ListingNavigation = class {
   constructor(hostRef) {
@@ -2606,23 +2606,30 @@ const Pagination = class {
 };
 Pagination.style = paginationCss;
 
-const sortingCss = "ks-sorting ks-button{background-color:white}";
+const sortingCss = "ks-sorting{display:block;position:relative}ks-sorting ks-button{background-color:white}ks-sorting .dropdown{display:none;position:absolute;z-index:1020;-webkit-box-sizing:border-box;box-sizing:border-box;min-width:200px;padding:18px 25px;margin-top:8px;background:#fff;color:#373737;-webkit-box-shadow:0 5px 20px rgb(0 0 0 / 20%);box-shadow:0 5px 20px rgb(0 0 0 / 20%)}ks-sorting[enabled] .dropdown{display:block}ks-sorting a{color:var(--color-dark);text-decoration:none !important;font-size:15px;line-height:29px}ks-sorting a:hover{color:var(--color-dark-hover)}ks-sorting a:active{color:var(--color-dark-active)}ks-sorting ks-icon{float:right}ks-sorting hr{overflow:visible;margin:10px 0;border:0;border-top:1px solid #e5e5e5}";
 
 const Sorting = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
+    this.enabled = false;
   }
   render() {
-    return (index.h("div", null, index.h("form", { action: this.post, method: "post", style: { margin: "0" } }, index.h("input", { type: "hidden", name: "sortowanie", value: "0" })), index.h("ks-button", { narrow: true, muted: true, border: true, name: "Sortuj", icon: "shuffle" }), index.h("div", { "uk-dropdown": true, id: "test" }, index.h("ul", { class: "uk-nav uk-dropdown-nav" }, index.h("li", null, index.h("a", { onClick: () => this.Sort(1) }, "Polecane ", index.h("span", { class: "uk-float-right", "uk-icon": "icon: check" }))), index.h("li", null, index.h("a", { onClick: () => this.Sort(2) }, "Popularne ", index.h("span", { class: "uk-float-right", "uk-icon": "icon: users" }))), index.h("li", null, index.h("a", { onClick: () => this.Sort(3) }, "Najnowsze ", index.h("span", { class: "uk-float-right", "uk-icon": "icon: future" }))), index.h("hr", null), index.h("li", null, index.h("a", { onClick: () => this.Sort(4) }, "Najta\u0144sze ", index.h("span", { class: "uk-float-right", "uk-icon": "icon: minus-circle" }))), index.h("li", null, index.h("a", { onClick: () => this.Sort(5) }, "Najdro\u017Csze ", index.h("span", { class: "uk-float-right", "uk-icon": "icon: plus-circle" })))))));
+    return (index.h("div", null, index.h("form", { action: this.post, method: "post", style: { margin: "0" } }, index.h("input", { type: "hidden", name: "sortowanie", value: "0" })), index.h("ks-button", { onClick: () => this.toggle(), narrow: true, muted: true, border: true, name: "Sortuj", icon: "shuffle" }), index.h("div", { class: "dropdown" }, index.h("a", { onClick: () => this.sort(1) }, "Polecane ", index.h("ks-icon", { name: "check", size: 0.9 })), index.h("a", { onClick: () => this.sort(2) }, "Popularne ", index.h("ks-icon", { name: "users", size: 0.9 })), index.h("a", { onClick: () => this.sort(3) }, "Najnowsze ", index.h("ks-icon", { name: "clock", size: 0.9 })), index.h("hr", null), index.h("a", { onClick: () => this.sort(4) }, "Najta\u0144sze ", index.h("ks-icon", { name: "plus-circle", size: 0.9 })), index.h("a", { onClick: () => this.sort(5) }, "Najdro\u017Csze ", index.h("ks-icon", { name: "minus-circle", size: 0.9 })))));
   }
   componentDidLoad() {
-    this.dropdown = this.root.querySelector("div[uk-dropdown]");
     this.form = this.root.querySelector("form");
     this.input = this.form.querySelector("input");
   }
-  Sort(value) {
+  sort(value) {
     this.input.value = value.toString();
     this.form.submit();
+  }
+  toggle() {
+    this.enabled = !this.enabled;
+  }
+  disable(e) {
+    if (!this.root.contains(e.target))
+      this.enabled = false;
   }
   get root() { return index.getElement(this); }
 };

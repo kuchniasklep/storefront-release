@@ -1,10 +1,13 @@
 export declare class Sorting {
   root: HTMLElement;
   post: string;
+  current: number;
+  enabled: boolean;
   render(): any;
-  dropdown: HTMLElement;
   form: HTMLFormElement;
   input: HTMLInputElement;
   componentDidLoad(): void;
-  Sort(value: number): void;
+  sort(value: number): void;
+  toggle(): void;
+  disable(e: Event): void;
 }

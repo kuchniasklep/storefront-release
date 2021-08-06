@@ -1,7 +1,48 @@
 ks-sorting {
-
+    display: block;
+    position: relative;
 }
 
 ks-sorting ks-button {
     background-color: white;
+}
+
+ks-sorting .dropdown {
+    display: none;
+    position: absolute;
+    z-index: 1020;
+
+    box-sizing: border-box;
+    min-width: 200px;
+    padding: 18px 25px;
+    margin-top: 8px;
+
+    background: #fff;
+    color: #373737;
+    box-shadow: 0 5px 20px rgb(0 0 0 / 20%);
+}
+
+ks-sorting[enabled] .dropdown {
+    display: block;
+}
+
+ks-sorting a {
+    color: var(--color-dark);
+    text-decoration: none !important;
+    font-size: 15px;
+    line-height: 29px;
+}
+
+ks-sorting a:hover { color: var(--color-dark-hover); }
+ks-sorting a:active { color: var(--color-dark-active); }
+
+ks-sorting ks-icon {
+    float: right;
+}
+
+ks-sorting hr {
+    overflow: visible;
+    margin: 10px 0;
+    border: 0;
+    border-top: 1px solid #e5e5e5;
 }
