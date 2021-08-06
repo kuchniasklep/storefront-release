@@ -54,3 +54,13 @@ ks-listing-header *[slot=categories] > * {
 
     text-decoration: none !important;
 }
+
+ks-listing-header hr {
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+    text-align: inherit;
+    margin: 15px 0 15px 0;
+    border: 0;
+    border-top: 1px solid #e5e5e5;
+}
