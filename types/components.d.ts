@@ -439,6 +439,7 @@ export namespace Components {
     }
     interface KsImg2 {
         "alt": string;
+        "center": boolean;
         "height": number;
         "horizontal": boolean;
         "limit": boolean;
@@ -986,12 +987,15 @@ export namespace Components {
     }
     interface KsRecipeCard {
         "category": string;
+        "categoryLink": string;
         "cuisine": string;
+        "cuisineLink": string;
         "heading": string;
+        "height": number;
         "hideOnOdd": boolean;
         "image": string;
         "link": string;
-        "views": string;
+        "width": number;
     }
     interface KsRecipeInfo {
         "category": string;
@@ -2741,6 +2745,7 @@ declare namespace LocalJSX {
     }
     interface KsImg2 {
         "alt"?: string;
+        "center"?: boolean;
         "height"?: number;
         "horizontal"?: boolean;
         "limit"?: boolean;
@@ -3256,12 +3261,15 @@ declare namespace LocalJSX {
     }
     interface KsRecipeCard {
         "category"?: string;
+        "categoryLink"?: string;
         "cuisine"?: string;
+        "cuisineLink"?: string;
         "heading"?: string;
+        "height"?: number;
         "hideOnOdd"?: boolean;
         "image"?: string;
         "link"?: string;
-        "views"?: string;
+        "width"?: number;
     }
     interface KsRecipeInfo {
         "category"?: string;

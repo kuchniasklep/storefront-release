@@ -5,17 +5,13 @@ export class RecipeCard {
   }
   render() {
     return (h("a", { href: this.link },
-      h("ks-img", { src: this.image, alt: this.heading, center: true }),
+      h("ks-img2", { horizontal: true, src: this.image, width: this.width, height: this.height, alt: this.heading }),
       h("div", { class: "info" },
         h("h3", null, this.heading),
         h("div", null,
-          h("span", null, this.cuisine),
+          h("a", { href: this.cuisineLink }, this.cuisine),
           h("span", { class: "dot" }, "\u2022"),
-          h("span", null, this.category))),
-      h("div", { class: "views" },
-        h("ks-icon", { name: "search", size: 0.75 }),
-        " ",
-        this.views)));
+          h("a", { href: this.categoryLink }, this.category)))));
   }
   static get is() { return "ks-recipe-card"; }
   static get originalStyleUrls() { return {
@@ -40,6 +36,40 @@ export class RecipeCard {
         "text": ""
       },
       "attribute": "image",
+      "reflect": false
+    },
+    "width": {
+      "type": "number",
+      "mutable": false,
+      "complexType": {
+        "original": "number",
+        "resolved": "number",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "width",
+      "reflect": false
+    },
+    "height": {
+      "type": "number",
+      "mutable": false,
+      "complexType": {
+        "original": "number",
+        "resolved": "number",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "height",
       "reflect": false
     },
     "heading": {
@@ -93,23 +123,6 @@ export class RecipeCard {
       "attribute": "category",
       "reflect": false
     },
-    "views": {
-      "type": "string",
-      "mutable": false,
-      "complexType": {
-        "original": "string",
-        "resolved": "string",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "views",
-      "reflect": false
-    },
     "link": {
       "type": "string",
       "mutable": false,
@@ -125,6 +138,40 @@ export class RecipeCard {
         "text": ""
       },
       "attribute": "link",
+      "reflect": false
+    },
+    "cuisineLink": {
+      "type": "string",
+      "mutable": false,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "cuisine-link",
+      "reflect": false
+    },
+    "categoryLink": {
+      "type": "string",
+      "mutable": false,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "category-link",
       "reflect": false
     },
     "hideOnOdd": {

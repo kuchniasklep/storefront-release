@@ -114,9 +114,17 @@ ks-recipe-info .nutrition {
 }
 
 ks-recipe-info .image {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+
     background-color: #F5F5F5;
     overflow: hidden;
 
+    max-height: 400px;
     height: 400px;
 }
 

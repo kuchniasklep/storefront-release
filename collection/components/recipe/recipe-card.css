@@ -17,27 +17,11 @@ ks-recipe-card > a {
             flex-direction: column;
 
     position: relative;
+    max-width: 100%;
 }
 
-ks-recipe-card .views {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-
-    position: absolute;
-    top: 8px;
-    right: 12px;
-
-    color: transparent;
-    -webkit-transition: color 0.3s ease;
-    transition: color 0.3s ease;
-}
-
-ks-recipe-card .views ks-icon {
-    margin-right: 3px;
+ks-recipe-card a {
+    color: inherit;
 }
 
 ks-recipe-card .info {
@@ -49,8 +33,8 @@ ks-recipe-card .info {
     text-align: center;
     text-decoration: none !important;
     color: #707070;
-    -webkit-transition: color 0.3s ease;
-    transition: color 0.3s ease;
+    -webkit-transition: color 0.3s ease, opacity 0.3s ease;
+    transition: color 0.3s ease, opacity 0.3s ease;
 }
 
 ks-recipe-card h3 {
@@ -68,8 +52,11 @@ ks-recipe-card .dot { margin: 0 8px; }
 ks-recipe-card a:hover { text-decoration: none }
 ks-recipe-card > a:hover .info { color: var(--color-secondary) }
 ks-recipe-card > a:hover h3 { color: var(--color-secondary) }
-ks-recipe-card > a:hover .views { color: #ffffff }
 
+
+ks-recipe-card .info a:hover {
+    opacity: 0.6;
+}
 
 @media screen and (min-width: 960px) and (max-width: 1199px) {
     ks-recipe-card[hide-on-odd] {

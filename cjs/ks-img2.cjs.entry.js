@@ -5,7 +5,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 const index = require('./index-7d3fd69d.js');
 const deferredpromise = require('./deferredpromise-4a0fd44b.js');
 
-const img2Css = "ks-img2{display:inline-block;-webkit-box-sizing:border-box;box-sizing:border-box;max-height:inherit;max-width:inherit;height:100%;position:relative}ks-img2 img{display:inline-block;width:auto;height:auto;max-width:inherit;max-height:inherit;opacity:1;-webkit-transition:opacity 0.3s ease;transition:opacity 0.3s ease}ks-img2[src*=\".svg\"] img{display:inline-block;height:100%;width:100%;max-width:inherit;max-height:inherit;overflow:visible;opacity:1;-webkit-transition:opacity 0.3s ease;transition:opacity 0.3s ease}ks-img2[vertical] img{width:auto}ks-img2[horizontal] img{height:auto}ks-img2 img.loading{opacity:0}ks-img2[limit] img{max-width:100%;max-height:100%}";
+const img2Css = "ks-img2{display:inline-block;-webkit-box-sizing:border-box;box-sizing:border-box;max-height:inherit;max-width:inherit;height:100%;font-size:0;position:relative}ks-img2 img{display:inline-block;width:auto;height:auto;max-width:inherit;max-height:inherit;font-size:0;opacity:1;-webkit-transition:opacity 0.3s ease;transition:opacity 0.3s ease}ks-img2[src*=\".svg\"] img{display:inline-block;font-size:0;height:100%;width:100%;max-width:inherit;max-height:inherit;overflow:visible;opacity:1;-webkit-transition:opacity 0.3s ease;transition:opacity 0.3s ease}ks-img2[vertical] img{width:auto}ks-img2[horizontal] img{height:auto}ks-img2 img.loading{opacity:0;height:0}ks-img2[limit] img{max-width:100%;max-height:100%}";
 
 const Img2 = class {
   constructor(hostRef) {
@@ -62,9 +62,9 @@ const Img2 = class {
     if (this.sync)
       return (index.h("img", { src: this.src, alt: this.alt, width: this.width, height: this.height }));
     return [
+      index.h("img", { class: loading, alt: this.alt, onLoad: (e) => this.loadHandler(e), "data-src": this.src, width: this.width, height: this.height }),
       (!this.loaded ? index.h("ks-loader", { dark: true }) : null),
       !this.loaded ? index.h("canvas", { width: this.width, height: this.height }) : null,
-      index.h("img", { class: loading, alt: this.alt, onLoad: (e) => this.loadHandler(e), "data-src": this.src, width: this.width, height: this.height })
     ];
   }
   get root() { return index.getElement(this); }

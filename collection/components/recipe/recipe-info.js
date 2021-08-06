@@ -26,7 +26,7 @@ export class RecipeInfo {
         h("div", { class: "nutrition" },
           h("slot", { name: "nutrition" }))),
       h("div", { class: "image" },
-        h("ks-img", { vertical: true, center: true, src: this.image }))
+        h("ks-img2", { vertical: true, src: this.image }))
     ];
   }
   link(name, url) {

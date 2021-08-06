@@ -53,9 +53,9 @@ export class Img2 {
     if (this.sync)
       return (h("img", { src: this.src, alt: this.alt, width: this.width, height: this.height }));
     return [
+      h("img", { class: loading, alt: this.alt, onLoad: (e) => this.loadHandler(e), "data-src": this.src, width: this.width, height: this.height }),
       (!this.loaded ? h("ks-loader", { dark: true }) : null),
       !this.loaded ? h("canvas", { width: this.width, height: this.height }) : null,
-      h("img", { class: loading, alt: this.alt, onLoad: (e) => this.loadHandler(e), "data-src": this.src, width: this.width, height: this.height })
     ];
   }
   static get is() { return "ks-img2"; }
@@ -235,6 +235,23 @@ export class Img2 {
         "text": ""
       },
       "attribute": "limit",
+      "reflect": true
+    },
+    "center": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "center",
       "reflect": true
     }
   }; }

@@ -5,6 +5,7 @@ ks-img2 {
     max-height: inherit;
     max-width: inherit;
     height: 100%;
+    font-size: 0;
 
     position: relative;
 }
@@ -15,6 +16,7 @@ ks-img2 img {
     height : auto;
     max-width: inherit;
     max-height: inherit;
+    font-size: 0;
 
     opacity: 1;
     -webkit-transition: opacity 0.3s ease;
@@ -23,6 +25,7 @@ ks-img2 img {
 
 ks-img2[src*=".svg"] img {
     display: inline-block;
+    font-size: 0;
     height: 100%;
     width: 100%;
     max-width: inherit;
@@ -44,6 +47,7 @@ ks-img2[horizontal] img {
 
 ks-img2 img.loading {
     opacity: 0;
+    height: 0;
 }
 
 ks-img2[limit] img {
