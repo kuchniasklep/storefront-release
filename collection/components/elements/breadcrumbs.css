@@ -17,6 +17,9 @@ ks-breadcrumbs > * {
     margin: 2px 4px 2px 5px;
     display: inline-block;
 
+    height: 22px;
+    box-sizing: border-box;
+
     -webkit-transition: background-color 0.3s ease;
 
     transition: background-color 0.3s ease;
@@ -28,7 +31,7 @@ ks-breadcrumbs > *:after {
     position: absolute;
     top: 0;
     border: 0 solid var(--breadcrumb-color);
-    border-width: 11.5px 5px;
+    border-width: 11px 5px;
     width: 0;
     height: 0;
     border-left-color: transparent;
