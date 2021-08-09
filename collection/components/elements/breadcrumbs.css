@@ -1,5 +1,12 @@
 ks-breadcrumbs {
-    display: block;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
     margin: 10px 0;
 }
 
@@ -7,7 +14,7 @@ ks-breadcrumbs > * {
     position: relative;
     padding: 2px 10px;
     background-color: var(--breadcrumb-color);
-    margin: 2px 0px 2px 5px;
+    margin: 2px 4px 2px 5px;
     display: inline-block;
 
     -webkit-transition: background-color 0.3s ease;
