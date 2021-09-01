@@ -66,7 +66,7 @@ class TikTokTracker {
       });
     });
   }
-  order_placed(products, value, currency) {
+  order_placed(products, value, currency, _id) {
     this.ttq.then(ttq => {
       ttq.track('Checkout', {
         contents: this.transformProducts(products),
@@ -168,13 +168,15 @@ class FacebookTracker {
   // @ts-ignore
   order_form(products, value, currency) {
   }
-  order_placed(products, value, currency) {
+  order_placed(products, value, currency, id) {
     this.pixel.then(fbq => {
       fbq('track', 'Purchase', {
         contents: this.transformProducts(products),
         content_type: 'product',
         value: value,
         currency: currency
+      }, {
+        eventID: id
       });
     });
   }

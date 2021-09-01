@@ -8,6 +8,7 @@ const TrackerOrder = class {
     this.checkout = false;
     this.form = false;
     this.placed = false;
+    this.orderId = "";
     this.currency = "PLN";
   }
   componentWillLoad() {
@@ -19,7 +20,7 @@ const TrackerOrder = class {
       else if (this.form)
         item === null || item === void 0 ? void 0 : item.order_form(products, this.value, this.currency);
       else if (this.placed)
-        item === null || item === void 0 ? void 0 : item.order_placed(products, this.value, this.currency);
+        item === null || item === void 0 ? void 0 : item.order_placed(products, this.value, this.currency, this.orderId);
     });
   }
 };

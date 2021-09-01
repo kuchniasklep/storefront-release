@@ -1051,6 +1051,7 @@ export namespace Components {
         "checkout": boolean;
         "currency": string;
         "form": boolean;
+        "orderId": string;
         "placed": boolean;
         "products": ITrackerProduct[] | string;
         "value": number;
@@ -3323,6 +3324,7 @@ declare namespace LocalJSX {
         "checkout"?: boolean;
         "currency"?: string;
         "form"?: boolean;
+        "orderId"?: string;
         "placed"?: boolean;
         "products"?: ITrackerProduct[] | string;
         "value"?: number;

@@ -5,7 +5,7 @@ export interface ITracker {
   addToCart?: (productId: string, name: string, price: number, quantity: number, currency: string) => void;
   order_checkout?: (products: ITrackerProduct[], value: number, currency: string) => void;
   order_form?: (products: ITrackerProduct[], value: number, currency: string) => void;
-  order_placed?: (products: ITrackerProduct[], value: number, currency: string) => void;
+  order_placed?: (products: ITrackerProduct[], value: number, currency: string, id: string) => void;
 }
 export interface ITrackerProduct {
   id: string;

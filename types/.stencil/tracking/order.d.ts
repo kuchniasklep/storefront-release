@@ -5,6 +5,7 @@ export declare class TrackerOrder {
   placed: boolean;
   products: ITrackerProduct[] | string;
   value: number;
+  orderId: string;
   currency: string;
   componentWillLoad(): void;
 }

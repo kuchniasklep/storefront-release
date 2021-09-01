@@ -58,7 +58,7 @@ export class TikTokTracker {
       });
     });
   }
-  order_placed(products, value, currency) {
+  order_placed(products, value, currency, _id) {
     this.ttq.then(ttq => {
       ttq.track('Checkout', {
         contents: this.transformProducts(products),

@@ -5,6 +5,7 @@ export class TrackerOrder {
     this.checkout = false;
     this.form = false;
     this.placed = false;
+    this.orderId = "";
     this.currency = "PLN";
   }
   componentWillLoad() {
@@ -16,7 +17,7 @@ export class TrackerOrder {
       else if (this.form)
         item === null || item === void 0 ? void 0 : item.order_form(products, this.value, this.currency);
       else if (this.placed)
-        item === null || item === void 0 ? void 0 : item.order_placed(products, this.value, this.currency);
+        item === null || item === void 0 ? void 0 : item.order_placed(products, this.value, this.currency, this.orderId);
     });
   }
   static get is() { return "ks-tracker-order"; }
@@ -113,6 +114,24 @@ export class TrackerOrder {
       },
       "attribute": "value",
       "reflect": false
+    },
+    "orderId": {
+      "type": "string",
+      "mutable": false,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "order-id",
+      "reflect": false,
+      "defaultValue": "\"\""
     },
     "currency": {
       "type": "string",
