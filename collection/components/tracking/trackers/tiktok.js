@@ -14,7 +14,7 @@ export class TikTokTracker {
       ttq.track("Browse");
     });
   }
-  product(productId, name, price, currency) {
+  product(_eventID, productId, name, price, currency) {
     this.ttq.then(ttq => {
       ttq.track('ViewContent', {
         content_type: 'product',
@@ -27,7 +27,7 @@ export class TikTokTracker {
       });
     });
   }
-  addToCart(productId, name, price, quantity, currency) {
+  addToCart(_eventID, productId, name, price, quantity, currency) {
     this.ttq.then(ttq => {
       ttq.track('AddToCart', {
         content_type: 'product',
@@ -40,7 +40,7 @@ export class TikTokTracker {
       });
     });
   }
-  order_checkout(products, value, currency) {
+  order_checkout(_eventID, products, value, currency) {
     this.ttq.then(ttq => {
       ttq.track('StartCheckout', {
         contents: this.transformProducts(products),
@@ -49,7 +49,7 @@ export class TikTokTracker {
       });
     });
   }
-  order_form(products, value, currency) {
+  order_form(_eventID, products, value, currency) {
     this.ttq.then(ttq => {
       ttq.track('AddBilling', {
         contents: this.transformProducts(products),
@@ -58,7 +58,7 @@ export class TikTokTracker {
       });
     });
   }
-  order_placed(products, value, currency, _id) {
+  order_placed(_eventID, products, value, currency) {
     this.ttq.then(ttq => {
       ttq.track('Checkout', {
         contents: this.transformProducts(products),

@@ -3,9 +3,9 @@ export declare class TrackerOrder {
   checkout: boolean;
   form: boolean;
   placed: boolean;
+  eventId: string;
   products: ITrackerProduct[] | string;
   value: number;
-  orderId: string;
   currency: string;
   componentWillLoad(): void;
 }

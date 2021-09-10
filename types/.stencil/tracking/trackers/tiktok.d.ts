@@ -3,11 +3,11 @@ export declare class TikTokTracker implements ITracker {
   ttq: Promise<any>;
   constructor();
   pageview(): void;
-  product(productId: string, name: string, price: number, currency: string): void;
-  addToCart(productId: string, name: string, price: number, quantity: number, currency: string): void;
-  order_checkout(products: ITrackerProduct[], value: number, currency: string): void;
-  order_form(products: ITrackerProduct[], value: number, currency: string): void;
-  order_placed(products: ITrackerProduct[], value: number, currency: string, _id: string): void;
+  product(_eventID: string, productId: string, name: string, price: number, currency: string): void;
+  addToCart(_eventID: string, productId: string, name: string, price: number, quantity: number, currency: string): void;
+  order_checkout(_eventID: string, products: ITrackerProduct[], value: number, currency: string): void;
+  order_form(_eventID: string, products: ITrackerProduct[], value: number, currency: string): void;
+  order_placed(_eventID: string, products: ITrackerProduct[], value: number, currency: string): void;
   search(query: string): void;
   transformProducts(products: ITrackerProduct[]): {
     content_id: string;

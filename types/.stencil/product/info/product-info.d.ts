@@ -11,6 +11,7 @@ export declare class ProductInfo {
   suggestionApi: string;
   navbar: HTMLKsNavbarElement;
   errorPopup: HTMLKsErrorPopupElement;
+  messagePopup: HTMLKsMessagePopupElement;
   componentDidLoad(): void;
   CountChange(event: CustomEvent<number>): Promise<void>;
   TraitChange(event: CustomEvent<[TraitData, TraitDataItem][]>): Promise<void>;

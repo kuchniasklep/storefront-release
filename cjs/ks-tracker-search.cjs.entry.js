@@ -9,9 +9,10 @@ require('./index-b0bdcebf.js');
 const TrackerProduct = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
+    this.eventId = "";
   }
   componentWillLoad() {
-    store.eachTracker(item => item === null || item === void 0 ? void 0 : item.search(this.query));
+    store.eachTracker(item => item === null || item === void 0 ? void 0 : item.search(this.eventId, this.query));
   }
 };
 

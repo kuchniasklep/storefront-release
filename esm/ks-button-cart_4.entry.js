@@ -1,5 +1,5 @@
 import { r as registerInstance, h, g as getElement } from './index-f323e182.js';
-import { A as AddToCart, R as RemoveFromFavourites, a as AddToFavourites } from './functions-a8bb690e.js';
+import { O as OpenSuggestions, R as RemoveFromFavourites, A as AddToFavourites } from './functions-d67550e3.js';
 import { e as eachTracker } from './store-06ef0521.js';
 import './index-6478ec90.js';
 
@@ -17,21 +17,60 @@ const ButtonCart = class {
     this.loading = false;
   }
   ClickHandler(count) {
-    const productCount = count || this.count;
     if (!this.disabled && !this.loading) {
-      this.loading = true;
-      AddToCart(this.productId, productCount, this.traits, this.product ? "0" : "1", this.name, (s) => this.ResultHandler(s));
+      this.cart(count || this.count);
     }
   }
-  ResultHandler(state) {
+  async fetch(url, body) {
+    const headers = new Headers();
+    headers.append('pragma', 'no-cache');
+    headers.append('cache-control', 'no-cache');
+    return fetch(url, {
+      method: 'POST',
+      body: body,
+      headers: headers,
+      credentials: "same-origin"
+    })
+      .then(response => {
+      if (!response.ok)
+        throw { name: response.status, message: response.statusText };
+      return response;
+    });
+  }
+  async cart(count) {
     this.loading = true;
-    if (state) {
-      setTimeout(() => this.loading = false, 1000);
-      eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(this.productId, this.productId, this.price, 1, "PLN"));
-    }
-    else
-      this.loading = false;
+    const errorpopup = document.querySelector('ks-error-popup');
+    const messagepopup = document.querySelector('ks-message-popup');
+    const navbar = document.querySelector('ks-navbar');
+    let body = new FormData();
+    body.append("id", this.productId);
+    body.append("ilosc", count);
+    body.append("nazwa", this.name);
+    body.append("value", this.price.toString());
+    body.append("cechy", this.traits);
+    body.append("akcja", 'dodaj');
+    body.append("miejsce", '1');
+    // Replace link string with state during prerendering rework
+    await this.fetch("api/cart/product_add.php?tok=" + ksCartToken, body)
+      .then(async (data) => data.json())
+      .then(async (body) => {
+      if (!body.status) {
+        if (body.productLink)
+          messagepopup.show("Wymagany wybór cechy", body.message, "Przejdź do produktu", this.url);
+        else
+          messagepopup.show("Błąd dodawania produktu", body.message);
+        return;
+      }
+      navbar.IncrementCart(count);
+      OpenSuggestions(this.productId, this.name);
+      eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart("test", this.productId, this.name, this.price, 1, "PLN"));
+    })
+      .catch(error => {
+      errorpopup.show(error);
+    });
+    this.loading = false;
   }
+  ;
   async AddToCart(count) {
     this.ClickHandler(count);
   }
@@ -106,7 +145,7 @@ const ProductCard = class {
         : this.linkOnly ? h("a", { href: this.link, class: "link" }, "ZOBACZ WI\u0118CEJ")
           : [
             h("ks-button-fav", { "product-id": this.productId }),
-            h("ks-button-cart", { expand: true, "product-id": this.productId, name: this.name, price: parseFloat(this.currentPrice) })
+            h("ks-button-cart", { expand: true, "product-id": this.productId, name: this.name, price: parseFloat(this.currentPrice), url: this.link })
           ])
     ];
   }

@@ -75,6 +75,7 @@ export namespace Components {
         "product": boolean;
         "productId": string;
         "traits": string;
+        "url": string;
     }
     interface KsButtonFav {
         "expand": boolean;
@@ -1050,21 +1051,24 @@ export namespace Components {
     interface KsTrackerOrder {
         "checkout": boolean;
         "currency": string;
+        "eventId": string;
         "form": boolean;
-        "orderId": string;
         "placed": boolean;
         "products": ITrackerProduct[] | string;
         "value": number;
     }
     interface KsTrackerPageview {
+        "eventId": string;
     }
     interface KsTrackerProduct {
         "currency": string;
+        "eventId": string;
         "name": string;
         "price": number;
         "productId": string;
     }
     interface KsTrackerSearch {
+        "eventId": string;
         "query": string;
     }
 }
@@ -2388,6 +2392,7 @@ declare namespace LocalJSX {
         "product"?: boolean;
         "productId"?: string;
         "traits"?: string;
+        "url"?: string;
     }
     interface KsButtonFav {
         "expand"?: boolean;
@@ -3323,21 +3328,24 @@ declare namespace LocalJSX {
     interface KsTrackerOrder {
         "checkout"?: boolean;
         "currency"?: string;
+        "eventId"?: string;
         "form"?: boolean;
-        "orderId"?: string;
         "placed"?: boolean;
         "products"?: ITrackerProduct[] | string;
         "value"?: number;
     }
     interface KsTrackerPageview {
+        "eventId"?: string;
     }
     interface KsTrackerProduct {
         "currency"?: string;
+        "eventId"?: string;
         "name"?: string;
         "price"?: number;
         "productId"?: string;
     }
     interface KsTrackerSearch {
+        "eventId"?: string;
         "query"?: string;
     }
     interface IntrinsicElements {

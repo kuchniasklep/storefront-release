@@ -28,12 +28,12 @@ export class FacebookTracker {
       resolve(fbq);
     });
   }
-  pageview() {
+  pageview(eventID) {
     this.pixel.then(fbq => {
-      fbq('track', 'PageView');
+      fbq('track', 'PageView', {}, { eventID: eventID });
     });
   }
-  product(productId, name, price, currency) {
+  product(eventID, productId, name, price, currency) {
     this.pixel.then(fbq => {
       fbq('track', "ViewContent", {
         content_type: 'product',
@@ -41,10 +41,12 @@ export class FacebookTracker {
         value: price,
         currency: currency,
         content_ids: [productId]
+      }, {
+        eventID: eventID
       });
     });
   }
-  addToCart(productId, name, price, quantity, currency) {
+  addToCart(eventID, productId, name, price, quantity, currency) {
     this.pixel.then(fbq => {
       fbq('track', 'AddToCart', {
         content_type: 'product',
@@ -54,22 +56,26 @@ export class FacebookTracker {
         contents: [
           { id: productId, quantity: quantity }
         ]
+      }, {
+        eventID: eventID
       });
     });
   }
-  order_checkout(products, value, currency) {
+  order_checkout(eventID, products, value, currency) {
     this.pixel.then(fbq => {
       fbq('track', "InitiateCheckout", {
         contents: this.transformProducts(products),
         value: value,
         currency: currency
+      }, {
+        eventID: eventID
       });
     });
   }
   // @ts-ignore
-  order_form(products, value, currency) {
+  order_form(eventID, products, value, currency) {
   }
-  order_placed(products, value, currency, id) {
+  order_placed(eventID, products, value, currency) {
     this.pixel.then(fbq => {
       fbq('track', 'Purchase', {
         contents: this.transformProducts(products),
@@ -77,7 +83,7 @@ export class FacebookTracker {
         value: value,
         currency: currency
       }, {
-        eventID: id
+        eventID: eventID
       });
     });
   }

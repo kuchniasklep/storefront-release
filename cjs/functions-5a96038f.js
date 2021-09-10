@@ -1,3 +1,5 @@
+'use strict';
+
 async function cartfetch(url, body) {
   const headers = new Headers();
   headers.append('pragma', 'no-cache');
@@ -14,7 +16,7 @@ async function cartfetch(url, body) {
     return response;
   });
 }
-export function AddToFavourites(id, finished) {
+function AddToFavourites(id, finished) {
   const navbar = document.querySelector('ks-navbar');
   const errorpopup = document.querySelector('ks-error-popup');
   let cartBody = new FormData();
@@ -31,8 +33,7 @@ export function AddToFavourites(id, finished) {
       finished();
   });
 }
-;
-export function RemoveFromFavourites(id, finished) {
+function RemoveFromFavourites(id, finished) {
   $.post("inne/do_schowka.php?tok=" + ksFavouritesRemoveToken, {
     id: id,
     akcja: 'usun'
@@ -42,16 +43,19 @@ export function RemoveFromFavourites(id, finished) {
       finished();
   });
 }
-;
-export function RemoveAllFavourites(finished) {
+function RemoveAllFavourites(finished) {
   $.post("inne/schowek_usun.php?tok=" + ksFavouritesRemoveAllToken, {}, function () {
     window.location.reload();
     if (finished)
       finished();
   });
 }
-;
-export function OpenSuggestions(id, name) {
+function OpenSuggestions(id, name) {
   const suggestions = document.querySelector("ks-product-suggestions");
   suggestions.show(id, name);
 }
+
+exports.AddToFavourites = AddToFavourites;
+exports.OpenSuggestions = OpenSuggestions;
+exports.RemoveAllFavourites = RemoveAllFavourites;
+exports.RemoveFromFavourites = RemoveFromFavourites;

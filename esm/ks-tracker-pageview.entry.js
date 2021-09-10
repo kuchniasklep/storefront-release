@@ -5,9 +5,10 @@ import './index-6478ec90.js';
 const TrackerPageView = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
+    this.eventId = "";
   }
   componentWillLoad() {
-    eachTracker(item => item === null || item === void 0 ? void 0 : item.pageview());
+    eachTracker(item => item === null || item === void 0 ? void 0 : item.pageview(this.eventId));
   }
 };
 

@@ -2,13 +2,32 @@ import { Component, Prop } from '@stencil/core';
 import { eachTracker } from './store';
 export class TrackerProduct {
   constructor() {
+    this.eventId = "";
     this.currency = "PLN";
   }
   componentWillLoad() {
-    eachTracker(item => item === null || item === void 0 ? void 0 : item.product(this.productId, this.name, this.price, this.currency));
+    eachTracker(item => item === null || item === void 0 ? void 0 : item.product(this.eventId, this.productId, this.name, this.price, this.currency));
   }
   static get is() { return "ks-tracker-product"; }
   static get properties() { return {
+    "eventId": {
+      "type": "string",
+      "mutable": false,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "event-id",
+      "reflect": false,
+      "defaultValue": "\"\""
+    },
     "productId": {
       "type": "string",
       "mutable": false,

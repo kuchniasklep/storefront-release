@@ -7,7 +7,7 @@ const productStore = require('./product-store-536ff8e4.js');
 const deferredpromise = require('./deferredpromise-4a0fd44b.js');
 const coreClass = require('./core-class-37c25aa3.js');
 const thumbs = require('./thumbs-466e1eba.js');
-const functions = require('./functions-4166ed17.js');
+const functions = require('./functions-5a96038f.js');
 const store = require('./store-c010abe7.js');
 const validate = require('./validate-6c61d7c0.js');
 require('./index-b0bdcebf.js');
@@ -274,6 +274,7 @@ const ProductInfo = class {
   componentDidLoad() {
     this.navbar = document.querySelector("ks-navbar");
     this.errorPopup = document.querySelector("ks-error-popup");
+    this.messagePopup = document.querySelector('ks-message-popup');
     const dataElement = document.getElementById(this.dataId);
     const data = JSON.parse(dataElement.innerHTML);
     Object.keys(data).map(key => {
@@ -337,29 +338,24 @@ const ProductInfo = class {
     const count = productStore.store.get("count").toString();
     const traitIDs = productStore.store.get("traitIDs");
     const name = productStore.store.get("name");
+    const value = productStore.store.get("currentPrice");
     let countBody = new FormData();
     countBody.append("id", id);
     countBody.append("ilosc", count);
+    countBody.append("nazwa", name);
+    countBody.append("value", value);
     countBody.append("cechy", traitIDs);
     countBody.append("akcja", 'dodaj');
-    await this.fetch(this.cartCountApi, countBody)
-      .then(async () => {
-      let cartBody = new FormData();
-      cartBody.append("id", id);
-      cartBody.append("ilosc", count);
-      cartBody.append("cechy", traitIDs);
-      cartBody.append("komentarz", "");
-      cartBody.append("komentarz", "");
-      cartBody.append("txt", "");
-      cartBody.append("wroc", "");
-      cartBody.append("miejsce", "0");
-      await this.fetch(this.cartApi, cartBody)
-        .then(() => {
-        this.navbar.IncrementCart(count);
-        functions.OpenSuggestions(id, name);
-        store.eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(id, name, parseFloat(productStore.store.get("currentPrice")), productStore.store.get("count"), "PLN"));
-      })
-        .catch(error => this.errorPopup.show(error));
+    countBody.append("miejsce", '0');
+    await this.fetch(this.cartApi, countBody)
+      .then(response => response.json())
+      .then(async (body) => {
+      if (!body.status) {
+        this.messagePopup.show("Błąd dodawania produktu", body.message);
+        return;
+      }
+      functions.OpenSuggestions(id, name);
+      store.eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(body.event, id, name, parseFloat(productStore.store.get("currentPrice")), productStore.store.get("count"), "PLN"));
     })
       .catch(error => this.errorPopup.show(error));
     productStore.store.set("cartLoading", false);

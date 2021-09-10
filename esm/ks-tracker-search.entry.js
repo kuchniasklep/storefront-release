@@ -5,9 +5,10 @@ import './index-6478ec90.js';
 const TrackerProduct = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
+    this.eventId = "";
   }
   componentWillLoad() {
-    eachTracker(item => item === null || item === void 0 ? void 0 : item.search(this.query));
+    eachTracker(item => item === null || item === void 0 ? void 0 : item.search(this.eventId, this.query));
   }
 };
 
