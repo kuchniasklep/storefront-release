@@ -63,7 +63,8 @@ const ButtonCart = class {
       }
       navbar.IncrementCart(count);
       OpenSuggestions(this.productId, this.name);
-      eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart("test", this.productId, this.name, this.price, 1, "PLN"));
+      if (body.event)
+        eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(body.event, this.productId, this.name, this.price, 1, "PLN"));
     })
       .catch(error => {
       errorpopup.show(error);

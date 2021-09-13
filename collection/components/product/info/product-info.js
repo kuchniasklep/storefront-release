@@ -96,7 +96,8 @@ export class ProductInfo {
         return;
       }
       OpenSuggestions(id, name);
-      eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(body.event, id, name, parseFloat(store.get("currentPrice")), store.get("count"), "PLN"));
+      if (body.event)
+        eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(body.event, id, name, parseFloat(store.get("currentPrice")), store.get("count"), "PLN"));
     })
       .catch(error => this.errorPopup.show(error));
     store.set("cartLoading", false);

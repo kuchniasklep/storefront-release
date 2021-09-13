@@ -355,7 +355,8 @@ const ProductInfo = class {
         return;
       }
       functions.OpenSuggestions(id, name);
-      store.eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(body.event, id, name, parseFloat(productStore.store.get("currentPrice")), productStore.store.get("count"), "PLN"));
+      if (body.event)
+        store.eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(body.event, id, name, parseFloat(productStore.store.get("currentPrice")), productStore.store.get("count"), "PLN"));
     })
       .catch(error => this.errorPopup.show(error));
     productStore.store.set("cartLoading", false);
