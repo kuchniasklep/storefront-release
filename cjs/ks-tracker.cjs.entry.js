@@ -164,6 +164,7 @@ class FacebookTracker {
     this.pixel.then(fbq => {
       fbq('track', "InitiateCheckout", {
         contents: this.transformProducts(products),
+        content_type: 'product',
         value: value,
         currency: currency
       }, {

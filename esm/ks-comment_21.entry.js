@@ -335,24 +335,24 @@ const ProductInfo = class {
     const traitIDs = store.get("traitIDs");
     const name = store.get("name");
     const value = store.get("currentPrice");
-    let countBody = new FormData();
-    countBody.append("id", id);
-    countBody.append("ilosc", count);
-    countBody.append("nazwa", name);
-    countBody.append("value", value);
-    countBody.append("cechy", traitIDs);
-    countBody.append("akcja", 'dodaj');
-    countBody.append("miejsce", '0');
-    await this.fetch(this.cartApi, countBody)
+    let body = new FormData();
+    body.append("id", id);
+    body.append("ilosc", count);
+    body.append("nazwa", name);
+    body.append("value", value);
+    body.append("cechy", traitIDs);
+    body.append("akcja", 'dodaj');
+    body.append("miejsce", '0');
+    await this.fetch(this.cartApi, body)
       .then(response => response.json())
-      .then(async (body) => {
-      if (!body.status) {
-        this.messagePopup.show("Błąd dodawania produktu", body.message);
+      .then(async (data) => {
+      if (!data.status) {
+        this.messagePopup.show("Błąd dodawania produktu", data.message);
         return;
       }
       OpenSuggestions(id, name);
-      if (body.event)
-        eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(body.event, id, name, parseFloat(store.get("currentPrice")), store.get("count"), "PLN"));
+      if (data.event)
+        eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(data.event, id, name, parseFloat(store.get("currentPrice")), store.get("count"), "PLN"));
     })
       .catch(error => this.errorPopup.show(error));
     store.set("cartLoading", false);

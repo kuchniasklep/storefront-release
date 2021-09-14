@@ -48,18 +48,18 @@ export class ButtonCart {
     // Replace link string with state during prerendering rework
     await this.fetch("api/cart/product_add.php?tok=" + ksCartToken, body)
       .then(async (data) => data.json())
-      .then(async (body) => {
-      if (!body.status) {
-        if (body.productLink)
-          messagepopup.show("Wymagany wybór cechy", body.message, "Przejdź do produktu", this.url);
+      .then(async (data) => {
+      if (!data.status) {
+        if (data.productLink)
+          messagepopup.show("Wymagany wybór cechy", data.message, "Przejdź do produktu", this.url);
         else
-          messagepopup.show("Błąd dodawania produktu", body.message);
+          messagepopup.show("Błąd dodawania produktu", data.message);
         return;
       }
       navbar.IncrementCart(count);
       OpenSuggestions(this.productId, this.name);
-      if (body.event)
-        eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(body.event, this.productId, this.name, this.price, 1, "PLN"));
+      if (data.event)
+        eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(data.event, this.productId, this.name, this.price, 1, "PLN"));
     })
       .catch(error => {
       errorpopup.show(error);
