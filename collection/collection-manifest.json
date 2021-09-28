@@ -120,6 +120,7 @@
     "./components/order/confirmation/orderAddressField.js",
     "./components/order/confirmation/orderButton.js",
     "./components/order/confirmation/orderConfirmationForm.js",
+    "./components/order/confirmation/orderDPD.js",
     "./components/order/confirmation/orderDocumentSelect.js",
     "./components/order/confirmation/orderHeading.js",
     "./components/order/confirmation/orderTile.js",

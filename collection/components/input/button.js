@@ -1,8 +1,5 @@
 import { Component, h, Prop, Element } from '@stencil/core';
 export class Button {
-  constructor() {
-    this.name = "";
-  }
   render() {
     if (this.submit)
       return h("input", { type: "submit", value: this.name });
@@ -36,8 +33,7 @@ export class Button {
         "text": ""
       },
       "attribute": "name",
-      "reflect": false,
-      "defaultValue": "\"\""
+      "reflect": true
     },
     "icon": {
       "type": "string",
@@ -54,7 +50,7 @@ export class Button {
         "text": ""
       },
       "attribute": "icon",
-      "reflect": false
+      "reflect": true
     },
     "submit": {
       "type": "boolean",

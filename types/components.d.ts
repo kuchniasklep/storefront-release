@@ -690,6 +690,16 @@ export namespace Components {
         "api": string;
         "name": string;
     }
+    interface KsOrderDpd {
+        "IsValid": () => Promise<boolean>;
+        "Validate": () => Promise<void>;
+        "api": string;
+        "button": string;
+        "description": string;
+        "missingMessage": string;
+        "pointMessage": string;
+        "select": (point: string) => Promise<void>;
+    }
     interface KsOrderEnableSection {
         "active": boolean;
         "heading": string;
@@ -1727,6 +1737,12 @@ declare global {
         prototype: HTMLKsOrderDocumentSelectElement;
         new (): HTMLKsOrderDocumentSelectElement;
     };
+    interface HTMLKsOrderDpdElement extends Components.KsOrderDpd, HTMLStencilElement {
+    }
+    var HTMLKsOrderDpdElement: {
+        prototype: HTMLKsOrderDpdElement;
+        new (): HTMLKsOrderDpdElement;
+    };
     interface HTMLKsOrderEnableSectionElement extends Components.KsOrderEnableSection, HTMLStencilElement {
     }
     var HTMLKsOrderEnableSectionElement: {
@@ -2257,6 +2273,7 @@ declare global {
         "ks-order-confirmation-form": HTMLKsOrderConfirmationFormElement;
         "ks-order-country-select": HTMLKsOrderCountrySelectElement;
         "ks-order-document-select": HTMLKsOrderDocumentSelectElement;
+        "ks-order-dpd": HTMLKsOrderDpdElement;
         "ks-order-enable-section": HTMLKsOrderEnableSectionElement;
         "ks-order-form": HTMLKsOrderFormElement;
         "ks-order-form-modal": HTMLKsOrderFormModalElement;
@@ -2974,6 +2991,13 @@ declare namespace LocalJSX {
         "api"?: string;
         "name"?: string;
     }
+    interface KsOrderDpd {
+        "api"?: string;
+        "button"?: string;
+        "description"?: string;
+        "missingMessage"?: string;
+        "pointMessage"?: string;
+    }
     interface KsOrderEnableSection {
         "active"?: boolean;
         "heading"?: string;
@@ -3458,6 +3482,7 @@ declare namespace LocalJSX {
         "ks-order-confirmation-form": KsOrderConfirmationForm;
         "ks-order-country-select": KsOrderCountrySelect;
         "ks-order-document-select": KsOrderDocumentSelect;
+        "ks-order-dpd": KsOrderDpd;
         "ks-order-enable-section": KsOrderEnableSection;
         "ks-order-form": KsOrderForm;
         "ks-order-form-modal": KsOrderFormModal;
@@ -3643,6 +3668,7 @@ declare module "@stencil/core" {
             "ks-order-confirmation-form": LocalJSX.KsOrderConfirmationForm & JSXBase.HTMLAttributes<HTMLKsOrderConfirmationFormElement>;
             "ks-order-country-select": LocalJSX.KsOrderCountrySelect & JSXBase.HTMLAttributes<HTMLKsOrderCountrySelectElement>;
             "ks-order-document-select": LocalJSX.KsOrderDocumentSelect & JSXBase.HTMLAttributes<HTMLKsOrderDocumentSelectElement>;
+            "ks-order-dpd": LocalJSX.KsOrderDpd & JSXBase.HTMLAttributes<HTMLKsOrderDpdElement>;
             "ks-order-enable-section": LocalJSX.KsOrderEnableSection & JSXBase.HTMLAttributes<HTMLKsOrderEnableSectionElement>;
             "ks-order-form": LocalJSX.KsOrderForm & JSXBase.HTMLAttributes<HTMLKsOrderFormElement>;
             "ks-order-form-modal": LocalJSX.KsOrderFormModal & JSXBase.HTMLAttributes<HTMLKsOrderFormModalElement>;

@@ -159,7 +159,7 @@ const OrderForm$1 = class {
   async Submit(event) {
     event.preventDefault();
     const form = this.root.querySelector("form");
-    const inputs = form.querySelectorAll("ks-input-dynamic, ks-order-document-select, ks-input-text, ks-input-textarea, ks-input-check, ks-order-inpost, ks-order-pocztapunkt");
+    const inputs = form.querySelectorAll("ks-input-dynamic, ks-order-document-select, ks-input-text, ks-input-textarea, ks-input-check, ks-order-inpost, ks-order-pocztapunkt, ks-order-dpd");
     let highestPosition = Number.MAX_VALUE;
     let valid = true;
     for (let i = 0; i < inputs.length; i++) {
