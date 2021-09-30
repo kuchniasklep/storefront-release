@@ -33,8 +33,6 @@ ks-sidepanel .content .close {
     padding: 5px;
     color: #252525;
 
-    -webkit-transition: color .1s ease-in-out;
-
     transition: color .1s ease-in-out;
     cursor: pointer;
 
@@ -60,7 +58,6 @@ ks-sidepanel .content {
     -webkit-transform:translateX(100%);
         -ms-transform:translateX(100%);
             transform:translateX(100%);
-    -webkit-transition: -webkit-transform 0.3s ease;
     transition: -webkit-transform 0.3s ease;
     transition: transform 0.3s ease;
     transition: transform 0.3s ease, -webkit-transform 0.3s ease;

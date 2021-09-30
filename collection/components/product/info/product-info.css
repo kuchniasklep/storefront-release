@@ -20,20 +20,15 @@ ks-product-info > * {
 }
 
 ks-product-info .left {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -ms-flex-pack: center;
+        justify-content: center;
 }
 
 ks-product-info .buttons {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     margin: 15px -5px 10px 0px;
@@ -102,22 +97,16 @@ ks-product-info .bottom {
     ks-product-info .bottom {
         margin-top: 30px;
 
-        display: -webkit-box;
-
         display: -ms-flexbox;
 
         display: flex;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-            -ms-flex-direction: column;
-                flex-direction: column;
-        -webkit-box-align: center;
-            -ms-flex-align: center;
-                align-items: center;
+        -ms-flex-direction: column;
+            flex-direction: column;
+        -ms-flex-align: center;
+            align-items: center;
     }
 
     ks-product-info .buttons {
-        display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
         margin: 15px 0px 10px 0px;

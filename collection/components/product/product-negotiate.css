@@ -1,5 +1,7 @@
 ks-product-negotiate {
     display: block;
+    position: relative;
+    z-index: 2;
 }
 
 ks-product-negotiate fieldset {

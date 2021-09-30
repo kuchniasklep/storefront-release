@@ -1,12 +1,9 @@
 ks-navbar-contact-panel {
     display: none;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: end;
-        -ms-flex-align: end;
-            align-items: flex-end;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -ms-flex-align: end;
+        align-items: flex-end;
 
     position: absolute;
     top: 0px;
@@ -32,19 +29,15 @@ ks-navbar-contact-panel.hidden {
 }
 
 ks-navbar-contact-panel[toggled] {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
 }
 
 ks-navbar-contact-panel .navbar {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: row-reverse;
-            flex-direction: row-reverse;
+    -ms-flex-direction: row-reverse;
+        flex-direction: row-reverse;
 
     position: relative;
     right: 0px;
@@ -54,7 +47,6 @@ ks-navbar-contact-panel .navbar {
 }
 
 ks-navbar-contact-panel .content {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     width: 100%;
@@ -64,30 +56,24 @@ ks-navbar-contact-panel .content {
 }
 
 ks-navbar-contact-panel .map {
-    -webkit-box-flex: 0;
-        -ms-flex: none;
-            flex: none;
+    -ms-flex: none;
+        flex: none;
     background-color: #eeeeee;
 }
 
 ks-navbar-contact-panel .info {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
 
-    -webkit-box-flex: 1;
+    -ms-flex: 1;
 
-        -ms-flex: 1;
-
-            flex: 1;
+        flex: 1;
     padding: 20px;
 
     font-size: 16px;
@@ -154,10 +140,8 @@ ks-navbar-contact-panel .buttons a {
 
 @media only screen and (max-width: 1200px) {
     ks-navbar-contact-panel .content {
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: reverse;
-            -ms-flex-direction: column-reverse;
-                flex-direction: column-reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
         height: calc(100vh - 72px);
     }
 }

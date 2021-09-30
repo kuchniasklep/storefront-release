@@ -1,10 +1,8 @@
 ks-see-more {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+        justify-content: center;
     margin: 15px 0;
 }
 
@@ -28,9 +26,6 @@ ks-see-more a {
         -ms-transform: scale(1);
 
             transform: scale(1);
-
-    -webkit-transition: box-shadow 0.2s ease,
-                -webkit-transform 0.2s ease;
 
     transition: box-shadow 0.2s ease,
                 -webkit-transform 0.2s ease;

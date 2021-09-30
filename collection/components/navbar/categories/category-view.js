@@ -1,4 +1,4 @@
-import { Component, h, Prop, State, Element, Listen, Host, Watch } from '@stencil/core';
+import { Component, h, Prop, State, Element, Listen, Host } from '@stencil/core';
 export class NavbarCategoryView {
   constructor() {
     this.hidden = true;
@@ -26,7 +26,7 @@ export class NavbarCategoryView {
     }, 200);
   }
   NavbarColor(state) {
-    const bar = document.querySelector("ks-navbar-categories > nav");
+    const bar = document.querySelector("ks-navbar-categories");
     if (!bar)
       return;
     bar.style.backgroundColor = state ? "var(--navbar-category-color)" : "var(--navbar-color)";
@@ -34,40 +34,7 @@ export class NavbarCategoryView {
     bar.style.borderBottom = bar.style.borderTop;
   }
   componentWillLoad() {
-    const sub = this.root.querySelectorAll('a[slot=sub]');
-    const singlesub = this.root.querySelectorAll('a[slot=single-sub]');
-    this.children = this.root.querySelectorAll('div[slot=children]');
-    this.count = sub.length + singlesub.length;
-    this.last = sub[0];
-    sub.forEach((element, index) => {
-      if (this.active == index)
-        element.classList.add("active");
-      element.addEventListener("mouseover", () => {
-        this.active = index;
-        element.classList.add("active");
-        if (this.last && this.last !== element)
-          this.last.classList.remove("active");
-        this.last = element;
-      });
-    });
-    singlesub.forEach(element => {
-      if (element.children.length > 0)
-        return;
-      let icon = document.createElement("ks-icon");
-      icon.setAttribute("name", "link");
-      icon.setAttribute("size", "0.65");
-      element.appendChild(icon);
-    });
-    this.children.forEach((element, index) => {
-      if (index == 0)
-        return;
-      element.setAttribute("hidden", "hidden");
-    });
-    this.imageData = JSON.parse(this.images);
-  }
-  activeChange(current, old) {
-    this.children[current].removeAttribute("hidden");
-    this.children[old].setAttribute("hidden", "hidden");
+    this.count = this.category.children.length;
   }
   render() {
     const childrenstyle = {
@@ -75,17 +42,18 @@ export class NavbarCategoryView {
       height: (this.count * 40) + "px"
     };
     return h(Host, null,
-      h("slot", null),
-      " ",
+      h("a", { href: this.category.url }, this.category.name),
       h("ks-icon", { name: "chevron-down", size: 0.8 }),
       h("div", { class: "children", style: childrenstyle, hidden: this.hidden },
-        h("div", { class: "buttons" },
-          h("slot", { name: "sub" }),
-          h("slot", { name: "single-sub" })),
-        h("div", { class: "content" },
-          h("slot", { name: "children" })),
-        h("div", { class: "graphic" }, this.imageData.map((image, index) => "src" in image ?
-          h("ks-img2", { vertical: true, src: image.src, width: image.width, height: image.height, target: "ks-category-view > .children > .graphic", style: { display: (this.active == index) ? "block" : "none" } })
+        h("div", { class: "buttons" }, this.category.children.map((child, index) => h("a", { href: child.url, class: 'children' in child && index == this.active ? "active" : null, onMouseOver: () => 'children' in child ? this.active = index : null },
+          child.name,
+          'children' in child ? null :
+            h("ks-icon", { name: "link", size: 0.65 })))),
+        h("div", { class: "content" }, this.category.children.map((child, index) => 'children' in child ?
+          h("div", { hidden: index != this.active }, child.children.map(sub => h("a", { href: sub.url }, sub.name)))
+          : null)),
+        h("div", { class: "graphic" }, this.category.children.map((category, index) => "image" in category ?
+          h("ks-img2", { vertical: true, src: category.image.url, width: category.image.width, height: category.image.height, target: "ks-category-view > .children > .graphic", style: { display: (this.active == index) ? "block" : "none" } })
           : null))));
   }
   static get is() { return "ks-category-view"; }
@@ -96,22 +64,25 @@ export class NavbarCategoryView {
     "$": ["category-view.css"]
   }; }
   static get properties() { return {
-    "images": {
-      "type": "string",
+    "category": {
+      "type": "unknown",
       "mutable": false,
       "complexType": {
-        "original": "string",
-        "resolved": "string",
-        "references": {}
+        "original": "Category",
+        "resolved": "Category",
+        "references": {
+          "Category": {
+            "location": "import",
+            "path": "../../../global/data/common"
+          }
+        }
       },
       "required": false,
       "optional": false,
       "docs": {
         "tags": [],
         "text": ""
-      },
-      "attribute": "images",
-      "reflect": false
+      }
     }
   }; }
   static get states() { return {
@@ -120,10 +91,6 @@ export class NavbarCategoryView {
     "active": {}
   }; }
   static get elementRef() { return "root"; }
-  static get watchers() { return [{
-      "propName": "active",
-      "methodName": "activeChange"
-    }]; }
   static get listeners() { return [{
       "name": "mouseenter",
       "method": "MouseOverHandler",

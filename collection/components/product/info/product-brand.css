@@ -1,10 +1,8 @@
 ks-product-brand {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
+    -ms-flex-pack: end;
+        justify-content: flex-end;
 
     position: absolute;
 	bottom: 0;
@@ -17,9 +15,6 @@ ks-product-brand > a {
 
     max-width: 150px;
     height: 60px;
-
-    -webkit-transition: opacity 0.3s ease,
-                -webkit-transform 0.3s ease;
 
     transition: opacity 0.3s ease,
                 -webkit-transform 0.3s ease;
@@ -49,8 +44,7 @@ ks-product-brand img {
 
 @media(max-width: 960px) {
     ks-product-brand {
-        -webkit-box-pack: center;
-            -ms-flex-pack: center;
-                justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     }
 }

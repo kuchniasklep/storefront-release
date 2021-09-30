@@ -1,20 +1,20 @@
 import { Component, h, Element, Event } from '@stencil/core';
-import { store } from "../product-store";
+import { product } from "../../../global/data/product";
 export class ProductCount {
   traitChangeHandler() {
     const selects = this.root.querySelectorAll(".trait select");
-    const data = store.get("traits").map((trait, index) => {
+    const data = product.get("traits").map((trait, index) => {
       const select = selects[index];
       return [trait, trait.items[select.selectedIndex]];
     });
     this.traitChange.emit(data);
   }
   componentDidRender() {
-    if (store.get("traits").length > 0)
+    if (product.get("traits").length > 0)
       this.traitChangeHandler();
   }
   render() {
-    return store.get("traits").map((trait) => h("div", { class: "trait" },
+    return product.get("traits").map((trait) => h("div", { class: "trait" },
       h("label", null,
         trait.name,
         ":"),
@@ -45,11 +45,11 @@ export class ProductCount {
         "references": {
           "TraitData": {
             "location": "import",
-            "path": "../product-data"
+            "path": "../../../global/data/product"
           },
           "TraitDataItem": {
             "location": "import",
-            "path": "../product-data"
+            "path": "../../../global/data/product"
           }
         }
       }

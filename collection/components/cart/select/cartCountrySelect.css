@@ -1,13 +1,10 @@
 ks-cart-country-select {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    -ms-flex-align: center;
+        align-items: center;
 }
 
 ks-cart-country-select .select {
@@ -27,7 +24,6 @@ ks-cart-country-select .select .icons {
     pointer-events: none;
 
     opacity: 1.0;
-    -webkit-transition: opacity 0.3s ease;
     transition: opacity 0.3s ease;
 }
 
@@ -45,12 +41,13 @@ ks-cart-country-select .select select {
 	-webkit-appearance: none;
 	appearance: none;
 
-    text-align-last: right;
+    -moz-text-align-last: right;
+
+         text-align-last: right;
     font-size: 18px;
     font-family: 'Nunito', sans-serif;
 
     color: #151515;
-    -webkit-transition: color 0.3s ease;
     transition: color 0.3s ease;
 }
 
@@ -79,7 +76,9 @@ ks-cart-country-select .select:hover span:last-of-type { opacity: 1.0; }
         background-color: #f8f8f8;
         border: 1px solid #d2d2d2;
 
-        text-align-last: left;
+        -moz-text-align-last: left;
+
+             text-align-last: left;
         font-size: 16px;
     }
 

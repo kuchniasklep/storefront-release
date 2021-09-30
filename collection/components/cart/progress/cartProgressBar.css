@@ -2,18 +2,14 @@ ks-cart-progress-bar {
   display: block;
   padding: 25px 30px 30px 30px;
 
-  -webkit-transition: background-color 0.3s ease;
-
   transition: background-color 0.3s ease;
 }
 
 ks-cart-progress-bar .heading {
-  display: -webkit-box;
   display: -ms-flexbox;
   display: flex; 
-  -webkit-box-pack: justify; 
-      -ms-flex-pack: justify; 
-          justify-content: space-between;
+  -ms-flex-pack: justify; 
+      justify-content: space-between;
 
   margin-bottom: 10px;
 
@@ -23,12 +19,10 @@ ks-cart-progress-bar .heading {
 }
 
 ks-cart-progress-bar .progress {
-  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+      align-items: center;
 
   width: 100%;
   height: 35px;
@@ -42,22 +36,15 @@ ks-cart-progress-bar .progress-fill {
   height: 100%;
   border-radius: inherit;
 
-  -webkit-transition: width 0.3s ease;
-
   transition: width 0.3s ease;
-
-  display: -webkit-box;
 
   display: -ms-flexbox;
 
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-direction: row-reverse;
+      flex-direction: row-reverse;
 
   padding: 0 15px;
   box-sizing: border-box;

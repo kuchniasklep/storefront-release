@@ -71,11 +71,11 @@ ks-input-text[invalid] input::-webkit-input-placeholder {
     color: var(--color-secondary);
 }
 
-ks-input-text[invalid] input:-ms-input-placeholder {
+ks-input-text[invalid] input::-moz-placeholder {
     color: var(--color-secondary);
 }
 
-ks-input-text[invalid] input::-ms-input-placeholder {
+ks-input-text[invalid] input:-ms-input-placeholder {
     color: var(--color-secondary);
 }
 

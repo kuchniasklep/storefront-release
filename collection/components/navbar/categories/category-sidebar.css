@@ -17,8 +17,6 @@ ks-category-sidebar > .children {
     
     font-size: 16px;
 
-    -webkit-transition: opacity 0.5s ease;
-
     transition: opacity 0.5s ease;
 }
 

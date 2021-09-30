@@ -4,9 +4,8 @@ ks-button-cart {
 }
 
 ks-button-cart[expand] {
-    -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
+    -ms-flex: 1;
+        flex: 1;
 }
 
 ks-button-cart[padding] button {
@@ -44,7 +43,6 @@ ks-button-cart button {
 
     color: white;
     background-color: var(--product-card-primary);
-    -webkit-transition: var(--transition-background-color);
     transition: var(--transition-background-color);
 }
 

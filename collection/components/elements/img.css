@@ -1,19 +1,15 @@
 ks-img {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     position: relative;
     height: 100%;
     width: 100%;
 
-    -webkit-box-align: center;
+    -ms-flex-align: center;
 
-        -ms-flex-align: center;
-
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+        align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
     overflow: hidden;
 }
 
@@ -28,7 +24,6 @@ ks-img img {
     box-sizing: border-box;
 
     opacity: 1;
-    -webkit-transition: opacity 0.3s ease;
     transition: opacity 0.3s ease;
 }
 
@@ -61,21 +56,18 @@ ks-img[src*=".svg"] .contained {
 }
 
 ks-img.left {
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
+    -ms-flex-pack: start;
+        justify-content: flex-start;
 }
 
 ks-img.right {
-    -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
+    -ms-flex-pack: end;
+        justify-content: flex-end;
 }
 
 ks-img.center {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+        justify-content: center;
 }
 
 ks-img img.loading {

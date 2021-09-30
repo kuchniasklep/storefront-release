@@ -1,13 +1,10 @@
 ks-description-text-image {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
 
     -ms-flex-wrap: wrap;
 
@@ -19,21 +16,18 @@ ks-description-text-image {
 }
 
 ks-description-text-image[align="top"] {
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
+    -ms-flex-align: start;
+        align-items: flex-start;
 }
 
 ks-description-text-image[align="middle"] {
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+        align-items: center;
 }
 
 ks-description-text-image[align="bottom"] {
-    -webkit-box-align: end;
-        -ms-flex-align: end;
-            align-items: flex-end;
+    -ms-flex-align: end;
+        align-items: flex-end;
 }
 
 ks-description-text-image .image {
@@ -59,9 +53,8 @@ ks-description-text-image .image {
 
 @media (min-width: 640px) {
     ks-description-text-image .text {
-        -webkit-box-flex: 1 !important;
-            -ms-flex: 1 !important;
-                flex: 1 !important;
+        -ms-flex: 1 !important;
+            flex: 1 !important;
     }
 }
 

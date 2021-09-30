@@ -1,10 +1,8 @@
 ks-product-price {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+        align-items: center;
     margin: 10px 0 20px;
 
     font-family: var(--product-price-font);
@@ -62,6 +60,7 @@ ks-product-price .currency {
     font-family: var(--product-price-font);
     text-align: center;
     -webkit-user-select: none;
+       -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
 }

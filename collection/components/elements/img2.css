@@ -19,7 +19,6 @@ ks-img2 img {
     font-size: 0;
 
     opacity: 1;
-    -webkit-transition: opacity 0.3s ease;
     transition: opacity 0.3s ease;
 }
 
@@ -33,7 +32,6 @@ ks-img2[src*=".svg"] img {
     overflow: visible;
 
     opacity: 1;
-    -webkit-transition: opacity 0.3s ease;
     transition: opacity 0.3s ease;
 }
 

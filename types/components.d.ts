@@ -6,9 +6,9 @@
  */
 import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
 import { deal } from "./components/cart/cart-data";
-import { CategoryData } from "./components/navbar/navbar-data";
+import { Category } from "./global/data/common";
 import { LightboxImageData } from "./components/elements/modal/lightbox-data";
-import { TraitData, TraitDataItem } from "./components/product/product-data";
+import { TraitData, TraitDataItem } from "./global/data/product";
 import { ITrackerProduct } from "./components/tracking/store";
 export namespace Components {
     interface KsAlert {
@@ -266,18 +266,17 @@ export namespace Components {
         "price": string;
     }
     interface KsCategorySidebar {
+        "category": Category;
         "hide": () => Promise<void>;
         "hideWithChildren": boolean;
         "keepSiblingsOpen": boolean;
-        "name": string;
         "open": boolean;
     }
     interface KsCategorySimple {
-        "category": CategoryData;
-        "haschildren": boolean;
+        "category": Category;
     }
     interface KsCategoryView {
-        "images": string;
+        "category": Category;
     }
     interface KsComment {
         "author": string;
@@ -592,21 +591,6 @@ export namespace Components {
         "DecrementHeart": () => Promise<void>;
         "IncrementCart": (count?: string) => Promise<void>;
         "IncrementHeart": () => Promise<void>;
-        "accountLink": string;
-        "autocompleteApi": string;
-        "cartCount": number;
-        "cartLink": string;
-        "categoryUrl": string;
-        "contact": string;
-        "email": string;
-        "heartCount": number;
-        "heartLink": string;
-        "loginLink": string;
-        "logo": string;
-        "logoutLink": string;
-        "phone": string;
-        "promo": string;
-        "promoLink": string;
     }
     interface KsNavbarButton {
         "count": number;
@@ -786,6 +770,19 @@ export namespace Components {
         "hide": () => Promise<void>;
         "show": () => Promise<void>;
     }
+    interface KsPageBase {
+        "commonData": string;
+        "commonDynamicData": string;
+    }
+    interface KsPageFooter {
+    }
+    interface KsPageHeader {
+    }
+    interface KsPageProduct {
+        "commonData": string;
+        "commonDynamicData": string;
+        "productData": string;
+    }
     interface KsPagination {
         "base": string;
         "count": number;
@@ -817,11 +814,6 @@ export namespace Components {
         "size": number;
     }
     interface KsProductBrand {
-        "height": number;
-        "href": string;
-        "logo": string;
-        "name": string;
-        "width": number;
     }
     interface KsProductButton {
         "icon": string;
@@ -860,13 +852,6 @@ export namespace Components {
         "delay": number;
     }
     interface KsProductInfo {
-        "cartApi": string;
-        "cartCountApi": string;
-        "dataId": string;
-        "favouritesApi": string;
-        "shippingApi": string;
-        "suggestionApi": string;
-        "traitApi": string;
     }
     interface KsProductInstallments {
         "active": boolean;
@@ -874,26 +859,14 @@ export namespace Components {
     }
     interface KsProductNegotiate {
         "agreement": string;
-        "api": string;
         "faliureHeading": string;
         "faliureMessage": string;
         "heading": string;
-        "name": string;
-        "oldPrice": string;
         "paragraph": string;
-        "price": string;
         "successHeading": string;
         "successMessage": string;
     }
     interface KsProductNotify {
-        "agreement": string;
-        "api": string;
-        "backorders": string;
-        "errorHeading": string;
-        "errorParagraph": string;
-        "heading": string;
-        "paragraph": string;
-        "product": number;
         "show": () => Promise<void>;
     }
     interface KsProductPoints {
@@ -1845,6 +1818,30 @@ declare global {
         prototype: HTMLKsOverlayElement;
         new (): HTMLKsOverlayElement;
     };
+    interface HTMLKsPageBaseElement extends Components.KsPageBase, HTMLStencilElement {
+    }
+    var HTMLKsPageBaseElement: {
+        prototype: HTMLKsPageBaseElement;
+        new (): HTMLKsPageBaseElement;
+    };
+    interface HTMLKsPageFooterElement extends Components.KsPageFooter, HTMLStencilElement {
+    }
+    var HTMLKsPageFooterElement: {
+        prototype: HTMLKsPageFooterElement;
+        new (): HTMLKsPageFooterElement;
+    };
+    interface HTMLKsPageHeaderElement extends Components.KsPageHeader, HTMLStencilElement {
+    }
+    var HTMLKsPageHeaderElement: {
+        prototype: HTMLKsPageHeaderElement;
+        new (): HTMLKsPageHeaderElement;
+    };
+    interface HTMLKsPageProductElement extends Components.KsPageProduct, HTMLStencilElement {
+    }
+    var HTMLKsPageProductElement: {
+        prototype: HTMLKsPageProductElement;
+        new (): HTMLKsPageProductElement;
+    };
     interface HTMLKsPaginationElement extends Components.KsPagination, HTMLStencilElement {
     }
     var HTMLKsPaginationElement: {
@@ -2291,6 +2288,10 @@ declare global {
         "ks-order-toggle": HTMLKsOrderToggleElement;
         "ks-order-toggle-section": HTMLKsOrderToggleSectionElement;
         "ks-overlay": HTMLKsOverlayElement;
+        "ks-page-base": HTMLKsPageBaseElement;
+        "ks-page-footer": HTMLKsPageFooterElement;
+        "ks-page-header": HTMLKsPageHeaderElement;
+        "ks-page-product": HTMLKsPageProductElement;
         "ks-pagination": HTMLKsPaginationElement;
         "ks-product-admin": HTMLKsProductAdminElement;
         "ks-product-admin-distributor": HTMLKsProductAdminDistributorElement;
@@ -2601,17 +2602,16 @@ declare namespace LocalJSX {
         "price"?: string;
     }
     interface KsCategorySidebar {
+        "category"?: Category;
         "hideWithChildren"?: boolean;
         "keepSiblingsOpen"?: boolean;
-        "name"?: string;
         "open"?: boolean;
     }
     interface KsCategorySimple {
-        "category"?: CategoryData;
-        "haschildren"?: boolean;
+        "category"?: Category;
     }
     interface KsCategoryView {
-        "images"?: string;
+        "category"?: Category;
     }
     interface KsComment {
         "author"?: string;
@@ -2897,22 +2897,7 @@ declare namespace LocalJSX {
     interface KsMiniCart {
     }
     interface KsNavbar {
-        "accountLink"?: string;
-        "autocompleteApi"?: string;
-        "cartCount"?: number;
-        "cartLink"?: string;
-        "categoryUrl"?: string;
-        "contact"?: string;
-        "email"?: string;
-        "heartCount"?: number;
-        "heartLink"?: string;
-        "loginLink"?: string;
-        "logo"?: string;
-        "logoutLink"?: string;
         "onNavbarRendered"?: (event: CustomEvent<any>) => void;
-        "phone"?: string;
-        "promo"?: string;
-        "promoLink"?: string;
     }
     interface KsNavbarButton {
         "count"?: number;
@@ -3077,6 +3062,19 @@ declare namespace LocalJSX {
         "dark"?: boolean;
         "onClosed"?: (event: CustomEvent<any>) => void;
     }
+    interface KsPageBase {
+        "commonData"?: string;
+        "commonDynamicData"?: string;
+    }
+    interface KsPageFooter {
+    }
+    interface KsPageHeader {
+    }
+    interface KsPageProduct {
+        "commonData"?: string;
+        "commonDynamicData"?: string;
+        "productData"?: string;
+    }
     interface KsPagination {
         "base"?: string;
         "count"?: number;
@@ -3108,11 +3106,6 @@ declare namespace LocalJSX {
         "size"?: number;
     }
     interface KsProductBrand {
-        "height"?: number;
-        "href"?: string;
-        "logo"?: string;
-        "name"?: string;
-        "width"?: number;
     }
     interface KsProductButton {
         "icon"?: string;
@@ -3152,14 +3145,7 @@ declare namespace LocalJSX {
         "delay"?: number;
     }
     interface KsProductInfo {
-        "cartApi"?: string;
-        "cartCountApi"?: string;
-        "dataId"?: string;
-        "favouritesApi"?: string;
         "onProductRendered"?: (event: CustomEvent<any>) => void;
-        "shippingApi"?: string;
-        "suggestionApi"?: string;
-        "traitApi"?: string;
     }
     interface KsProductInstallments {
         "active"?: boolean;
@@ -3167,26 +3153,14 @@ declare namespace LocalJSX {
     }
     interface KsProductNegotiate {
         "agreement"?: string;
-        "api"?: string;
         "faliureHeading"?: string;
         "faliureMessage"?: string;
         "heading"?: string;
-        "name"?: string;
-        "oldPrice"?: string;
         "paragraph"?: string;
-        "price"?: string;
         "successHeading"?: string;
         "successMessage"?: string;
     }
     interface KsProductNotify {
-        "agreement"?: string;
-        "api"?: string;
-        "backorders"?: string;
-        "errorHeading"?: string;
-        "errorParagraph"?: string;
-        "heading"?: string;
-        "paragraph"?: string;
-        "product"?: number;
     }
     interface KsProductPoints {
         "count"?: number;
@@ -3500,6 +3474,10 @@ declare namespace LocalJSX {
         "ks-order-toggle": KsOrderToggle;
         "ks-order-toggle-section": KsOrderToggleSection;
         "ks-overlay": KsOverlay;
+        "ks-page-base": KsPageBase;
+        "ks-page-footer": KsPageFooter;
+        "ks-page-header": KsPageHeader;
+        "ks-page-product": KsPageProduct;
         "ks-pagination": KsPagination;
         "ks-product-admin": KsProductAdmin;
         "ks-product-admin-distributor": KsProductAdminDistributor;
@@ -3686,6 +3664,10 @@ declare module "@stencil/core" {
             "ks-order-toggle": LocalJSX.KsOrderToggle & JSXBase.HTMLAttributes<HTMLKsOrderToggleElement>;
             "ks-order-toggle-section": LocalJSX.KsOrderToggleSection & JSXBase.HTMLAttributes<HTMLKsOrderToggleSectionElement>;
             "ks-overlay": LocalJSX.KsOverlay & JSXBase.HTMLAttributes<HTMLKsOverlayElement>;
+            "ks-page-base": LocalJSX.KsPageBase & JSXBase.HTMLAttributes<HTMLKsPageBaseElement>;
+            "ks-page-footer": LocalJSX.KsPageFooter & JSXBase.HTMLAttributes<HTMLKsPageFooterElement>;
+            "ks-page-header": LocalJSX.KsPageHeader & JSXBase.HTMLAttributes<HTMLKsPageHeaderElement>;
+            "ks-page-product": LocalJSX.KsPageProduct & JSXBase.HTMLAttributes<HTMLKsPageProductElement>;
             "ks-pagination": LocalJSX.KsPagination & JSXBase.HTMLAttributes<HTMLKsPaginationElement>;
             "ks-product-admin": LocalJSX.KsProductAdmin & JSXBase.HTMLAttributes<HTMLKsProductAdminElement>;
             "ks-product-admin-distributor": LocalJSX.KsProductAdminDistributor & JSXBase.HTMLAttributes<HTMLKsProductAdminDistributorElement>;

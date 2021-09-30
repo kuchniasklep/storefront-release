@@ -12,8 +12,6 @@ ks-navbar-button > a {
 
     color: var(--navbar-text-color) !important;
 
-    -webkit-transition: var(--transition-background-color);
-
     transition: var(--transition-background-color);
 }
 
@@ -39,9 +37,9 @@ ks-navbar-button > div {
     color: var(--navbar-text-color);
 
     opacity: 0;
-    -webkit-transition: opacity 0.3s ease;
     transition: opacity 0.3s ease;
     -webkit-user-select: none;
+       -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
     pointer-events: none;
@@ -80,29 +78,22 @@ ks-navbar-button .count {
     color: var(--navbar-text-color);
     font-size: 16px;
 
-    display: -webkit-inline-box;
-
     display: -ms-inline-flexbox;
 
     display: inline-flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
 }
 
 ks-navbar-button > a {
-    display: -webkit-box !important;
     display: -ms-flexbox !important;
     display: flex !important;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
     height: 100%;
 }
 

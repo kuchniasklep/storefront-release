@@ -1,18 +1,14 @@
 ks-cart-select-item {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+        align-items: center;
     height: 50px;
 
     cursor: pointer;
 
     z-index: 10;
     position: relative;
-
-    -webkit-transition: background-color 0.3s ease;
 
     transition: background-color 0.3s ease;
 }
@@ -32,9 +28,8 @@ ks-cart-select-item .logo {
 }
 
 ks-cart-select-item .name {
-    -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
+    -ms-flex: 1;
+        flex: 1;
 
     padding: 0 20px;
     font-size: 16px;

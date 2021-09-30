@@ -8,20 +8,17 @@ ks-cart-easyprotect.hidden {
 }
 
 ks-cart-easyprotect .top {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
+    -ms-flex-align: start;
+        align-items: flex-start;
     width: 100%;
     position: relative;
 }
 
 ks-cart-easyprotect .top .content {
-    -webkit-box-flex: 1;
-        -ms-flex: 1 1 auto;
-            flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
 }
 
 ks-cart-easyprotect .top .content h2 {
@@ -44,12 +41,10 @@ ks-cart-easyprotect .insured {
 }
 
 ks-cart-easyprotect .insured .item {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+        align-items: center;
     margin-top: 10px;
 
     font-family: var(--font-emphasis);
@@ -60,9 +55,8 @@ ks-cart-easyprotect .insured .item {
 }
 
 ks-cart-easyprotect .insured .item .name {
-    -webkit-box-flex: 1;
-        -ms-flex: 1 1 auto;
-            flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
     padding: 5px;
 
     background-color: #f2f2f2;

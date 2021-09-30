@@ -1,14 +1,10 @@
 ks-product-card {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
     
     width: 100%;
     text-align: center;
@@ -60,7 +56,6 @@ ks-product-card .price .current {
 
 
 ks-product-card .bottom {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     margin-top: 10px;
@@ -80,7 +75,6 @@ ks-product-card .bottom .link {
 
     color: white;
     background-color: var(--color-secondary);
-    -webkit-transition: var(--transition-background-color);
     transition: var(--transition-background-color);
 }
 

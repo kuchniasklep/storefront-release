@@ -5,16 +5,12 @@ ks-recipe-card {
 }
 
 ks-recipe-card > a {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    -ms-flex-direction: column;
+        flex-direction: column;
 
     position: relative;
     max-width: 100%;
@@ -33,7 +29,6 @@ ks-recipe-card .info {
     text-align: center;
     text-decoration: none !important;
     color: #707070;
-    -webkit-transition: color 0.3s ease, opacity 0.3s ease;
     transition: color 0.3s ease, opacity 0.3s ease;
 }
 
@@ -41,7 +36,6 @@ ks-recipe-card h3 {
     font-family: var(--font-emphasis);
     font-size: 20px;
     color: #252525;
-    -webkit-transition: color 0.3s ease;
     transition: color 0.3s ease;
 
     margin-bottom: 5px;

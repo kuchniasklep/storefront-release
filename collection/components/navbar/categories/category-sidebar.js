@@ -4,16 +4,9 @@ export class NavbarCategorySidebar {
     this.open = false;
     this.keepSiblingsOpen = false;
     this.hideWithChildren = false;
-    this.haschildren = false;
-  }
-  componentWillLoad() {
-    this.haschildren = !!this.root.querySelector('*');
-  }
-  componentDidLoad() {
-    this.children = this.root.querySelector(".children").children;
   }
   click() {
-    if (this.haschildren) {
+    if ('children' in this.category) {
       this.open = !this.open;
       if (!this.keepSiblingsOpen) {
         Array.from(this.root.parentElement.children).forEach((element) => {
@@ -22,7 +15,7 @@ export class NavbarCategorySidebar {
         });
       }
       if (this.open && this.hideWithChildren) {
-        Array.from(this.children).forEach((element) => {
+        Array.from(this.root.parentElement.children).forEach((element) => {
           if (element != this.root && "hide" in element)
             element.hide();
         });
@@ -30,18 +23,19 @@ export class NavbarCategorySidebar {
     }
   }
   async hide() {
-    if (this.haschildren) {
-      this.open = false;
-    }
+    this.open = false;
   }
   render() {
     return h(Host, null,
       h("div", { class: "name", onClick: () => this.click() },
-        h("span", null, this.name),
-        this.haschildren ? h("ks-icon", { name: this.open ? "minus" : "plus" }) : null),
-      this.haschildren ?
+        h("span", null, this.category.name),
+        'children' in this.category ? h("ks-icon", { name: this.open ? "minus" : "plus" }) : null),
+      'children' in this.category ?
         h("div", { class: "children" },
-          h("slot", null))
+          this.category.children.map(category => 'children' in category ?
+            h("ks-category-sidebar", { category: category }) :
+            h("a", { href: category.url }, category.name)),
+          h("a", { href: this.category.url, class: "seeall" }, "Zobacz wszystko"))
         : null);
   }
   static get is() { return "ks-category-sidebar"; }
@@ -52,22 +46,25 @@ export class NavbarCategorySidebar {
     "$": ["category-sidebar.css"]
   }; }
   static get properties() { return {
-    "name": {
-      "type": "string",
+    "category": {
+      "type": "unknown",
       "mutable": false,
       "complexType": {
-        "original": "string",
-        "resolved": "string",
-        "references": {}
+        "original": "Category",
+        "resolved": "Category",
+        "references": {
+          "Category": {
+            "location": "import",
+            "path": "../../../global/data/common"
+          }
+        }
       },
       "required": false,
       "optional": false,
       "docs": {
         "tags": [],
         "text": ""
-      },
-      "attribute": "name",
-      "reflect": false
+      }
     },
     "open": {
       "type": "boolean",

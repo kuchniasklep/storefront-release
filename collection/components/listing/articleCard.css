@@ -1,14 +1,10 @@
 ks-article-card {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
 
     background-color: white;
     box-shadow: var(--card-shadow);
@@ -28,9 +24,8 @@ ks-article-card .image > * {
 
 ks-article-card .info {
     padding: 15px;
-    -webkit-box-flex: 1;
-        -ms-flex: 1 0 auto;
-            flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+        flex: 1 0 auto;
 
     font-size: .875rem;
     line-height: 1.5;
@@ -44,7 +39,6 @@ ks-article-card .info h3 {
 ks-article-card .info a {
     text-decoration: none !important;
     color: #151515;
-    -webkit-transition: var(--transition-color);
     transition: var(--transition-color);
 }
 
@@ -79,6 +73,7 @@ ks-article-card .footer {
 ks-article-card .footer a {
     text-decoration: none !important;
     -webkit-user-select: none;
+       -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
     color: #151515;
@@ -87,7 +82,6 @@ ks-article-card .footer a {
     position: relative;
 
     opacity: 1;
-    -webkit-transition: opacity 0.2s ease;
     transition: opacity 0.2s ease;
 }
 
@@ -109,7 +103,6 @@ ks-article-card .footer a:before {
     border-bottom: 1px solid #151515;
 
     opacity: 1;
-    -webkit-transition: width 0.3s ease, opacity 0.2s ease;
     transition: width 0.3s ease, opacity 0.2s ease;
 }
 

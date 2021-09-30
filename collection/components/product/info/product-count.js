@@ -1,5 +1,5 @@
 import { Component, h, Element, Event } from '@stencil/core';
-import { store } from "../product-store";
+import { product } from "../../../global/data/product";
 export class ProductCount {
   componentDidLoad() {
     this.input = this.root.querySelector("input");
@@ -12,8 +12,8 @@ export class ProductCount {
       this.input.value = this.input.value.substr(0, 3);
   }
   ClampValue() {
-    if (parseInt(this.input.value) > store.get("availability")) {
-      this.input.value = store.get("availability").toString();
+    if (parseInt(this.input.value) > product.get("availability")) {
+      this.input.value = product.get("availability").toString();
     }
     if (parseInt(this.input.value) < 1) {
       this.input.value = "1";
@@ -21,7 +21,7 @@ export class ProductCount {
   }
   Increment() {
     const value = parseInt(this.input.value) + 1;
-    if (value <= store.get("availability")) {
+    if (value <= product.get("availability")) {
       this.input.value = value.toString();
       this.CountChangeHandler();
     }
@@ -38,7 +38,7 @@ export class ProductCount {
   }
   render() {
     return [
-      h("input", { type: "number", min: 1, max: store.get("availability"), value: 1, "aria-label": "Ilo\u015B\u0107", onInput: () => this.ClampLength(), onChange: () => { this.ClampValue(); this.CountChangeHandler(); } }),
+      h("input", { type: "number", min: 1, max: product.get("availability"), value: 1, "aria-label": "Ilo\u015B\u0107", onInput: () => this.ClampLength(), onChange: () => { this.ClampValue(); this.CountChangeHandler(); } }),
       h("div", { class: "spinner" },
         h("button", { onClick: () => this.Increment() }, "+"),
         h("button", { onClick: () => this.Decrement() }, "-"))

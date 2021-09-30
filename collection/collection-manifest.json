@@ -139,6 +139,10 @@
     "./components/order/summary/summaryContainer.js",
     "./components/order/summary/summaryField.js",
     "./components/order/summary/summaryPayment.js",
+    "./components/pages/base.js",
+    "./components/pages/footer.js",
+    "./components/pages/header.js",
+    "./components/pages/product.js",
     "./components/product/product-comments.js",
     "./components/product/product-negotiate.js",
     "./components/product/product-notify.js",
@@ -183,7 +187,7 @@
   ],
   "compiler": {
     "name": "@stencil/core",
-    "version": "2.5.2",
+    "version": "2.7.1",
     "typescriptVersion": "4.2.3"
   },
   "collections": [],

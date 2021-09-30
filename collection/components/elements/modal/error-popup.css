@@ -11,19 +11,16 @@ ks-error-popup .content  {
 }
 
 ks-error-popup .bar {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+        align-items: center;
     background-color: var(--color-secondary);
 }
 
 ks-error-popup .title  {
-    -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
+    -ms-flex: 1;
+        flex: 1;
     padding: 10px 20px;
     
     font-size: 20px;
@@ -35,7 +32,6 @@ ks-error-popup .close  {
     padding: 10px;
     background-color: var(--color-secondary);
     opacity: 1;
-    -webkit-transition: var(--transition-opacity);
     transition: var(--transition-opacity);
 }
 

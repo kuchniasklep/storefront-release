@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-7d3fd69d.js');
+const index = require('./index-d2dd4d1b.js');
 
 const RecentCard = class {
   constructor(hostRef) {

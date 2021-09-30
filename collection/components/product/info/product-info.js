@@ -1,85 +1,66 @@
-import { Component, h, Prop, Element, Listen, Event } from '@stencil/core';
+import { Component, h, Element, Listen, Event } from '@stencil/core';
 import { OpenSuggestions } from "../../functions";
 import { eachTracker } from '../../tracking/store';
-import { store } from "../product-store";
+import { product } from "../../../global/data/product";
 export class ProductInfo {
-  constructor() {
-    this.dataId = "";
-    this.shippingApi = "";
-    this.traitApi = "";
-    this.cartApi = "";
-    this.cartCountApi = "";
-    this.favouritesApi = "";
-    this.suggestionApi = "";
-  }
   componentDidLoad() {
     this.navbar = document.querySelector("ks-navbar");
     this.errorPopup = document.querySelector("ks-error-popup");
     this.messagePopup = document.querySelector('ks-message-popup');
-    const dataElement = document.getElementById(this.dataId);
-    const data = JSON.parse(dataElement.innerHTML);
-    Object.keys(data).map(key => {
-      store.set(key, data[key]);
-    });
-    if (store.get("negotiate") && store.get("shippingMessage")) {
-      store.set("externalPoints", true);
-    }
   }
   async CountChange(event) {
-    store.set("count", event.detail);
+    product.set("count", event.detail);
     let body = new FormData();
-    body.append("id", store.get("id"));
+    body.append("id", product.get("id"));
     body.append("count", event.detail.toString());
-    store.set("cartLoading", true);
-    await this.fetch(this.shippingApi, body)
+    product.set("cartLoading", true);
+    await this.fetch(product.get("api").shipping, body)
       .then(response => response.json())
       .then(json => {
-      store.set("shippingTime", json.shippingTime);
-      store.set("shippingMessage", json.shippingMessage);
-      if (store.get("negotiate") && store.get("shippingMessage"))
-        store.set("externalPoints", true);
+      product.set("shippingTime", json.shippingTime);
+      product.set("shippingMessage", json.shippingMessage);
     })
       .catch(error => this.errorPopup.show(error));
-    store.set("cartLoading", false);
+    product.set("cartLoading", false);
   }
   async TraitChange(event) {
-    store.set("cartLoading", true);
+    product.set("cartLoading", true);
     const traits = event.detail.reduce((accumulator, trait) => {
       return accumulator + "x" + trait[0].id + "-" + trait[1].id;
     }, "");
     let body = new FormData();
-    body.append("id", store.get("id"));
+    body.append("id", product.get("id"));
     body.append("traits", traits);
-    await this.fetch(this.traitApi, body)
+    await this.fetch(product.get("api").trait, body)
       .then(response => response.json())
       .then(json => {
       if (json.currentPrice != undefined)
-        store.set("currentPrice", json.currentPrice);
+        product.set("currentPrice", json.currentPrice);
       if (json.previousPrice != undefined)
-        store.set("previousPrice", json.previousPrice);
+        product.set("previousPrice", json.previousPrice);
       if (json.ean != undefined)
-        store.set("ean", json.ean);
+        product.set("ean", json.ean);
       if (json.catalog != undefined)
-        store.set("catalog", json.catalog);
-      store.set("traitIDs", traits);
+        product.set("catalog", json.catalog);
+      product.set("traitIDs", traits);
       if (json.image != undefined) {
-        const images = store.get("images");
+        const images = product.get("images");
         images[0].full = json.image.full;
         images[0].preview = json.image.preview;
         images[0].thumb = json.image.thumb;
-        store.set("images", images);
+        product.set("images", images);
       }
     })
       .catch(error => this.errorPopup.show(error));
-    store.set("cartLoading", false);
+    product.set("cartLoading", false);
   }
   async AddToCart() {
-    store.set("cartLoading", true);
-    const id = store.get("id");
-    const count = store.get("count").toString();
-    const traitIDs = store.get("traitIDs");
-    const name = store.get("name");
-    const value = store.get("currentPrice");
+    product.set("cartLoading", true);
+    const id = product.get("id");
+    const count = product.get("count").toString();
+    const traitIDs = product.get("traitIDs");
+    const name = product.get("name");
+    const value = product.get("currentPrice");
     let body = new FormData();
     body.append("id", id);
     body.append("ilosc", count);
@@ -88,7 +69,7 @@ export class ProductInfo {
     body.append("cechy", traitIDs);
     body.append("akcja", 'dodaj');
     body.append("miejsce", '0');
-    await this.fetch(this.cartApi, body)
+    await this.fetch(product.get("api").cart, body)
       .then(response => response.json())
       .then(async (data) => {
       if (!data.status) {
@@ -97,20 +78,20 @@ export class ProductInfo {
       }
       OpenSuggestions(id, name);
       if (data.event)
-        eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(data.event, id, name, parseFloat(store.get("currentPrice")), store.get("count"), "PLN"));
+        eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(data.event, id, name, parseFloat(product.get("currentPrice")), product.get("count"), "PLN"));
     })
       .catch(error => this.errorPopup.show(error));
-    store.set("cartLoading", false);
+    product.set("cartLoading", false);
   }
   async AddToFavourites() {
-    store.set("favouritesLoading", true);
+    product.set("favouritesLoading", true);
     let body = new FormData();
-    body.append("id", store.get("id"));
-    await this.fetch(this.favouritesApi, body)
+    body.append("id", product.get("id"));
+    await this.fetch(product.get("api").favourites, body)
       .then(() => this.navbar.IncrementHeart())
       .catch(error => this.errorPopup.show(error));
-    store.set("favouritesCompleted", true);
-    store.set("favouritesLoading", false);
+    product.set("favouritesCompleted", true);
+    product.set("favouritesLoading", false);
   }
   async fetch(url, body) {
     const headers = new Headers();
@@ -148,134 +129,6 @@ export class ProductInfo {
   }; }
   static get styleUrls() { return {
     "$": ["product-info.css"]
-  }; }
-  static get properties() { return {
-    "dataId": {
-      "type": "string",
-      "mutable": false,
-      "complexType": {
-        "original": "string",
-        "resolved": "string",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "data-id",
-      "reflect": false,
-      "defaultValue": "\"\""
-    },
-    "shippingApi": {
-      "type": "string",
-      "mutable": false,
-      "complexType": {
-        "original": "string",
-        "resolved": "string",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "shipping-api",
-      "reflect": false,
-      "defaultValue": "\"\""
-    },
-    "traitApi": {
-      "type": "string",
-      "mutable": false,
-      "complexType": {
-        "original": "string",
-        "resolved": "string",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "trait-api",
-      "reflect": false,
-      "defaultValue": "\"\""
-    },
-    "cartApi": {
-      "type": "string",
-      "mutable": false,
-      "complexType": {
-        "original": "string",
-        "resolved": "string",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "cart-api",
-      "reflect": false,
-      "defaultValue": "\"\""
-    },
-    "cartCountApi": {
-      "type": "string",
-      "mutable": false,
-      "complexType": {
-        "original": "string",
-        "resolved": "string",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "cart-count-api",
-      "reflect": false,
-      "defaultValue": "\"\""
-    },
-    "favouritesApi": {
-      "type": "string",
-      "mutable": false,
-      "complexType": {
-        "original": "string",
-        "resolved": "string",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "favourites-api",
-      "reflect": false,
-      "defaultValue": "\"\""
-    },
-    "suggestionApi": {
-      "type": "string",
-      "mutable": false,
-      "complexType": {
-        "original": "string",
-        "resolved": "string",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "suggestion-api",
-      "reflect": false,
-      "defaultValue": "\"\""
-    }
   }; }
   static get events() { return [{
       "method": "productRendered",

@@ -18,19 +18,14 @@ ks-cart-discount-points-login a:first-child {
 
 
 ks-cart-discount-points-login .messsage {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: row-reverse;
-            flex-direction: row-reverse;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-direction: row-reverse;
+        flex-direction: row-reverse;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
 
     height: 100px;
 
@@ -63,9 +58,8 @@ ks-cart-discount-points-login .messsage {
 
 
 ks-cart-discount-points-login .messsage > .info {
-    -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
+    -ms-flex: 1;
+        flex: 1;
     padding: 10px 20px;
     font-size: 15px;
 }
@@ -75,15 +69,12 @@ ks-cart-discount-points-login .messsage .points {
 }
 
 ks-cart-discount-points-login .points {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
 
     box-sizing: border-box;
     padding: 6px 30px;

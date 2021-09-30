@@ -1,5 +1,4 @@
 ks-product-points {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
@@ -7,15 +6,12 @@ ks-product-points {
 }
 
 ks-product-points > div:first-child {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
 
     width: 20%;
 
@@ -28,12 +24,10 @@ ks-product-points > div:first-child {
 }
 
 ks-product-points > div:last-child {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-flex: 1;
-        -ms-flex: 1 0 auto;
-            flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+        flex: 1 0 auto;
     font-size: 14px;
     padding: 15px;
 }

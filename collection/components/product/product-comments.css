@@ -7,18 +7,15 @@ ks-product-comments {
 }
 
 ks-product-comments .message {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+        align-items: center;
     margin: 0;
     padding: 30px;
 }
 
 ks-product-comments .message ks-icon {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     margin-right: 15px;
@@ -56,7 +53,6 @@ ks-product-comments .add {
     text-transform: none;
 
     color: white !important;
-    -webkit-transition: var(--transition-background-color);
     transition: var(--transition-background-color);
 }
 

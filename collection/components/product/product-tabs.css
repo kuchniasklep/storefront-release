@@ -31,7 +31,6 @@ ks-product-tabs button {
 
     color: #252525;
     background-color: #f6f6f6;
-    -webkit-transition: background-color 0.3s ease, color 0.3s ease;
     transition: background-color 0.3s ease, color 0.3s ease;
     
     border: none;

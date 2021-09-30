@@ -27,15 +27,12 @@ ks-navbar-search[mobile] {
 }
 
 ks-navbar-search form > a {
-    display: -webkit-inline-box;
     display: -ms-inline-flexbox;
     display: inline-flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
 
     position: absolute;
     top: 0;
@@ -46,7 +43,6 @@ ks-navbar-search form > a {
     padding-right: 10px;
 
     color: #151515;
-    -webkit-transition: color 0.2s ease;
     transition: color 0.2s ease;
 }
 

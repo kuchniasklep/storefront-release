@@ -1,0 +1,8 @@
+ks-page-product > h3 {
+    text-align: center;
+    margin-top: 15px;
+}
+
+ks-page-product > ks-product-container {
+    margin-bottom: 15px;
+}

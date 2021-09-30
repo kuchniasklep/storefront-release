@@ -2,7 +2,6 @@ ks-footer-button {
     display: block;
 
     opacity: 1.0;
-    -webkit-transition: opacity 0.2s ease;
     transition: opacity 0.2s ease;
 
     margin: 0 3px;

@@ -9,12 +9,12 @@ ks-top-banner {
     line-height: 16px;
     font-weight: 700;
     -webkit-user-select: none;
+       -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
     cursor: pointer;
 
     background-color: var(--color-yellow);
-    -webkit-transition: var(--transition-background-color);
     transition: var(--transition-background-color);
 }
 
@@ -27,15 +27,12 @@ ks-top-banner:active {
 }
 
 ks-top-banner a {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
     height: 100%;
 
     color: inherit !important;
@@ -57,7 +54,6 @@ ks-top-banner .close {
 
     background-color: transparent;
     opacity: 1.0;
-    -webkit-transition: var(--transition-opacity);
     transition: var(--transition-opacity);
 }
 

@@ -20,15 +20,12 @@ ks-dialog[nopadding] .content {
 
 @media (max-width: 720px) {
     ks-dialog .content {
-        display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
-        -webkit-box-pack: center;
-            -ms-flex-pack: center;
-                justify-content: center;
-        -webkit-box-align: center;
-            -ms-flex-align: center;
-                align-items: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+        -ms-flex-align: center;
+            align-items: center;
         height: 100%;
         padding: 20px;
     }

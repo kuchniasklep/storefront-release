@@ -1,10 +1,8 @@
 ks-product-attribute {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+        align-items: center;
     margin: 5px 0px;
 
     font-family: var(--font-emphasis);
@@ -46,16 +44,13 @@ ks-product-attribute ks-icon:nth-child(2) {
 
 @media only screen and (max-width: 540px) {
     ks-product-attribute {
-        display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
-        -webkit-box-pack: center;
-            -ms-flex-pack: center;
-                justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
         text-align: center;
-        -webkit-box-align: center;
-            -ms-flex-align: center;
-                align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
         margin: 5px auto;
     }
 }

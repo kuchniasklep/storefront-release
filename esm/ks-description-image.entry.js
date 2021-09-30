@@ -1,6 +1,6 @@
-import { r as registerInstance, h } from './index-f323e182.js';
+import { r as registerInstance, h } from './index-5edb5049.js';
 
-const descriptionImageCss = "ks-description-image{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;margin-bottom:40px}";
+const descriptionImageCss = "ks-description-image{display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;margin-bottom:40px}";
 
 const DescriptionImage = class {
   constructor(hostRef) {

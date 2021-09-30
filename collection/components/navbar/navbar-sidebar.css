@@ -42,17 +42,13 @@ ks-navbar-sidebar ul ks-icon {
 ks-navbar-sidebar ul .badge {
     float: right;
 
-    display: -webkit-inline-box;
-
     display: -ms-inline-flexbox;
 
     display: inline-flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
 
     box-sizing: border-box;
     min-width: 30px;

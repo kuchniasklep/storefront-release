@@ -6,6 +6,10 @@ export class ProductTab {
     this.hasMore = false;
     this.expand = false;
   }
+  componentWillLoad() {
+    if (this.root.querySelector("*[slot='hidden']"))
+      this.hasMore = true;
+  }
   render() {
     return [
       h("div", { class: "message" },

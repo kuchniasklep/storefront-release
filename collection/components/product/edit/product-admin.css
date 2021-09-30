@@ -4,15 +4,12 @@ ks-product-admin {
 }
 
 ks-product-admin .bar {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    -ms-flex-align: center;
+        align-items: center;
     
     background-color: #181818;
     color: white;
@@ -24,18 +21,14 @@ ks-product-admin .bar > div:not(.links) {
 }
 
 ks-product-admin .bar > .links {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
+    -ms-flex-pack: end;
+        justify-content: flex-end;
 
-    -webkit-box-flex: 1;
+    -ms-flex: 1;
 
-        -ms-flex: 1;
-
-            flex: 1;
+        flex: 1;
 }
 
 ks-product-admin .bar > .links .button {
@@ -45,12 +38,12 @@ ks-product-admin .bar > .links .button {
     color: white;
 
     background-color: #252525;
-    -webkit-transition: background-color 0.3s ease;
     transition: background-color 0.3s ease;
 
     border-style: none;
     outline-style: none;
     -webkit-user-select: none;
+       -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
 }

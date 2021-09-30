@@ -1,13 +1,10 @@
 ks-cookie-popup {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
 
     position: fixed;
     overflow: hidden;
@@ -56,10 +53,8 @@ ks-cookie-popup ks-button {
 
 @media (max-width: 1400px) {
     ks-cookie-popup {
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-            -ms-flex-direction: column;
-                flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
     }
 
     ks-cookie-popup p {

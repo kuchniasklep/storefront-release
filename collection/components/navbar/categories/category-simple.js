@@ -3,7 +3,6 @@ export class NavbarCategorySimple {
   constructor() {
     this.hidden = true;
     this.hiddenO = true;
-    this.haschildren = false;
   }
   MouseOverHandler() {
     clearTimeout(this.timeout);
@@ -21,21 +20,17 @@ export class NavbarCategorySimple {
       }, 200);
     }, 200);
   }
-  componentWillLoad() {
-    this.haschildren = !!this.root.querySelector('a[slot=child]');
-  }
   render() {
     const childrenstyle = {
       visibility: this.hidden ? "hidden" : "visible",
       opacity: this.hiddenO ? "0.0" : "1.0"
     };
     return h(Host, null,
-      h("slot", null),
-      this.haschildren ? h("ks-icon", { name: "chevron-down", size: 0.8 }) : null,
-      this.haschildren ?
-        h("div", { style: childrenstyle },
-          h("slot", { name: "child" }))
-        : null);
+      h("a", { href: this.category.url }, this.category.name),
+      'children' in this.category ? [
+        h("ks-icon", { name: "chevron-down", size: 0.8 }),
+        h("div", { style: childrenstyle }, this.category.children.map(child => h("a", { href: child.url }, child.name)))
+      ] : null);
   }
   static get is() { return "ks-category-simple"; }
   static get originalStyleUrls() { return {
@@ -49,12 +44,12 @@ export class NavbarCategorySimple {
       "type": "unknown",
       "mutable": false,
       "complexType": {
-        "original": "CategoryData",
-        "resolved": "CategoryData",
+        "original": "Category",
+        "resolved": "Category",
         "references": {
-          "CategoryData": {
+          "Category": {
             "location": "import",
-            "path": "../navbar-data"
+            "path": "../../../global/data/common"
           }
         }
       },
@@ -64,24 +59,6 @@ export class NavbarCategorySimple {
         "tags": [],
         "text": ""
       }
-    },
-    "haschildren": {
-      "type": "boolean",
-      "mutable": true,
-      "complexType": {
-        "original": "boolean",
-        "resolved": "boolean",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "haschildren",
-      "reflect": true,
-      "defaultValue": "false"
     }
   }; }
   static get states() { return {

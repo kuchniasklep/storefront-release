@@ -1,15 +1,16 @@
 import { Component, h, Prop } from '@stencil/core';
-import { store } from "../product-store";
+import { product } from "../../../global/data/product";
 export class ProductTitle {
   constructor() {
     this.brandLink = false;
   }
   render() {
-    const name = store.get("name");
+    const name = product.get("name");
+    const brand = product.get("brand");
     let title = h("h1", null, name);
     if (this.brandLink) {
-      const brandLength = store.get("brand").length;
-      const brandLink = store.get("brandLink");
+      const brandLength = brand.name.length;
+      const brandLink = brand.link;
       const index = this.brandIndex();
       if (index !== -1) {
         const prefix = name.substr(0, index);
@@ -22,12 +23,12 @@ export class ProductTitle {
       }
     }
     return [
-      h("div", { class: "breadcrumbs" }, store.get("breadcrumbs").map(item => h("a", { href: item.link }, item.name))),
+      h("div", { class: "breadcrumbs" }, product.get("breadcrumbs").map(item => h("a", { href: item.link }, item.name))),
       title
     ];
   }
   brandIndex() {
-    return store.get("name").toLowerCase().indexOf(store.get("brand").toLowerCase());
+    return product.get("name").toLowerCase().indexOf(product.get("brand").name.toLowerCase());
   }
   static get is() { return "ks-product-title"; }
   static get originalStyleUrls() { return {

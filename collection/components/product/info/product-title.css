@@ -15,7 +15,6 @@ ks-product-title h1 > a {
     text-decoration: none !important;
     color: var(--product-title-brand-color) !important;
     opacity: 1;
-    -webkit-transition: var(--transition-opacity);
     transition: var(--transition-opacity);
 }
 

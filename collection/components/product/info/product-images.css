@@ -34,8 +34,6 @@ ks-product-images .thumb::after {
     right: 0;
     left: -30px;
 
-    background: -webkit-gradient(linear, left top, right top, from(rgba(255,255,255,0)), color-stop(85%, rgba(255,255,255,0)), to(rgba(255,255,255,1)));
-
     background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 85%, rgba(255,255,255,1) 100%);
     z-index: 2;
     pointer-events: none;
@@ -45,7 +43,6 @@ ks-product-images .thumb .swiper-slide {
     width: 70px;
     height: 70px;
     opacity: 0.4;
-    -webkit-transition: var(--transition-opacity);
     transition: var(--transition-opacity);
 }
 

@@ -1,10 +1,8 @@
 ks-product-button {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+        justify-content: center;
     width: 100%;
     margin: 5px 2px;
 }
@@ -21,9 +19,6 @@ ks-product-button button {
     font-family: var(--product-button-font);
     font-size: var(--product-button-size);
     line-height: var(--product-button-size);
-    
-
-    -webkit-transition: var(--transition-background-color);
     
 
     transition: var(--transition-background-color);
@@ -45,7 +40,6 @@ ks-product-button[icon] {
 
     background-color: var(--color-dark);
     color: var(--text-color-dark);
-    -webkit-transition: var(--transition-background-color);
     transition: var(--transition-background-color);
 }
 

@@ -1,8 +1,10 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h } from '@stencil/core';
+import { product } from "../../../global/data/product";
 export class ProductBrand {
   render() {
-    return h("a", { href: this.href },
-      h("ks-img2", { src: this.logo, alt: this.name, width: this.width, height: this.height }));
+    const brand = product.get("brand");
+    return h("a", { href: brand.link },
+      h("ks-img2", { src: brand.logo, alt: brand.name, width: brand.width, height: brand.height }));
   }
   static get is() { return "ks-product-brand"; }
   static get originalStyleUrls() { return {
@@ -10,92 +12,5 @@ export class ProductBrand {
   }; }
   static get styleUrls() { return {
     "$": ["product-brand.css"]
-  }; }
-  static get properties() { return {
-    "href": {
-      "type": "string",
-      "mutable": false,
-      "complexType": {
-        "original": "string",
-        "resolved": "string",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "href",
-      "reflect": false
-    },
-    "name": {
-      "type": "string",
-      "mutable": false,
-      "complexType": {
-        "original": "string",
-        "resolved": "string",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "name",
-      "reflect": false
-    },
-    "logo": {
-      "type": "string",
-      "mutable": false,
-      "complexType": {
-        "original": "string",
-        "resolved": "string",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "logo",
-      "reflect": false
-    },
-    "width": {
-      "type": "number",
-      "mutable": false,
-      "complexType": {
-        "original": "number",
-        "resolved": "number",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "width",
-      "reflect": false
-    },
-    "height": {
-      "type": "number",
-      "mutable": false,
-      "complexType": {
-        "original": "number",
-        "resolved": "number",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "height",
-      "reflect": false
-    }
   }; }
 }

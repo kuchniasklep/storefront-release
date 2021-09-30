@@ -13,7 +13,6 @@ ks-comment article {
 }
 
 ks-comment header {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
 }

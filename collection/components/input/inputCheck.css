@@ -8,15 +8,12 @@ ks-input-check label {
 }
 
 ks-input-check input {
-    display: -webkit-inline-box;
     display: -ms-inline-flexbox;
     display: inline-flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
 
     height: 16px;
     width: 16px;
@@ -36,10 +33,7 @@ ks-input-check input {
     border-radius: 0;
     font: inherit;
 
-    -webkit-transition: .2s ease-in-out;
-
     transition: .2s ease-in-out;
-    -webkit-transition-property: background-color,border;
     transition-property: background-color,border;
 }
 
@@ -102,7 +96,6 @@ ks-input-check[invalid] p {
 
 
 ks-input-check[large] label {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
 }

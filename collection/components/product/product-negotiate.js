@@ -1,4 +1,5 @@
 import { Component, h, Element, Prop } from '@stencil/core';
+import { product } from "../../global/data/product";
 import ValidateInput from '../input/validate';
 export class ProductNegotiate {
   constructor() {
@@ -16,10 +17,10 @@ export class ProductNegotiate {
     const target = event.target;
     const data = new FormData(target);
     data.append("productUrl", document.location.href);
-    data.append("productPrice", this.price);
-    data.append("productOldPrice", this.oldPrice);
-    data.append("productName", this.name);
-    await fetch(this.api, { body: data, method: "post" })
+    data.append("productPrice", product.get('currentPrice'));
+    data.append("productOldPrice", product.get('previousPrice'));
+    data.append("productName", product.get('name'));
+    await fetch(product.get('api').negotiate, { body: data, method: "post" })
       .then(async (response) => {
       const result = await response.text();
       if (result == "success")
@@ -68,74 +69,6 @@ export class ProductNegotiate {
     "$": ["product-negotiate.css"]
   }; }
   static get properties() { return {
-    "api": {
-      "type": "string",
-      "mutable": false,
-      "complexType": {
-        "original": "string",
-        "resolved": "string",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "api",
-      "reflect": false
-    },
-    "price": {
-      "type": "string",
-      "mutable": false,
-      "complexType": {
-        "original": "string",
-        "resolved": "string",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "price",
-      "reflect": false
-    },
-    "oldPrice": {
-      "type": "string",
-      "mutable": false,
-      "complexType": {
-        "original": "string",
-        "resolved": "string",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "old-price",
-      "reflect": false
-    },
-    "name": {
-      "type": "string",
-      "mutable": false,
-      "complexType": {
-        "original": "string",
-        "resolved": "string",
-        "references": {}
-      },
-      "required": false,
-      "optional": false,
-      "docs": {
-        "tags": [],
-        "text": ""
-      },
-      "attribute": "name",
-      "reflect": false
-    },
     "agreement": {
       "type": "string",
       "mutable": false,

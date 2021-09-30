@@ -1,5 +1,5 @@
 import { Component, h, Element, State, Prop } from '@stencil/core';
-import { store } from "../product-store";
+import { product } from "../../../global/data/product";
 import { window_load } from '../../deferredpromise';
 import Swiper, { Thumbs } from 'swiper';
 Swiper.use([Thumbs]);
@@ -18,7 +18,7 @@ export class ProductImages {
   initialize() {
     setTimeout(() => {
       this.lightbox = this.root.querySelector("ks-lightbox");
-      const thumbs_enabled = store.get("images").length > 1;
+      const thumbs_enabled = product.get("images").length > 1;
       if (thumbs_enabled) {
         this.thumbs = new Swiper('.thumb', {
           observer: true,
@@ -48,16 +48,16 @@ export class ProductImages {
   render() {
     return [
       h("div", { class: "swiper-container preview" },
-        h("div", { class: "swiper-wrapper" }, store.get("images").map((image, index) => h("div", { class: "swiper-slide" },
+        h("div", { class: "swiper-wrapper" }, product.get("images").map((image, index) => h("div", { class: "swiper-slide" },
           h("canvas", { width: image.preview.width, height: image.preview.height }),
           h("ks-img", { contained: true, center: true, sync: index == 0, src: image.preview.url, width: image.preview.width, height: image.preview.height, onClick: () => this.lightbox.show(index) }))))),
-      store.get("images").length > 1 ?
+      product.get("images").length > 1 ?
         h("div", { class: "swiper-container thumb" },
           this.loaded ? null : h("ks-loader", { dark: true }),
-          h("div", { class: "swiper-wrapper" }, store.get("images").map((image, index) => h("div", { class: "swiper-slide" },
+          h("div", { class: "swiper-wrapper" }, product.get("images").map((image, index) => h("div", { class: "swiper-slide" },
             h("ks-img", { sync: index < 6, contained: true, center: true, src: image.thumb.url, width: image.thumb.width, height: image.thumb.height })))))
         : null,
-      h("ks-lightbox", { data: store.get("images") })
+      h("ks-lightbox", { data: product.get("images") })
     ];
   }
   static get is() { return "ks-product-images"; }

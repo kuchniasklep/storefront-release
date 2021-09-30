@@ -1,5 +1,4 @@
 ks-featured-container {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     max-width: 1200px;
@@ -9,16 +8,14 @@ ks-featured-container {
 }
 
 ks-featured-container > .left {
-    -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
+    -ms-flex: 1;
+        flex: 1;
     margin-right: 5px;
 }
 
 ks-featured-container > .right {
-    -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
+    -ms-flex: 1;
+        flex: 1;
     margin-left: 5px;
 }
 

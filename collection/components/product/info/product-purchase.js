@@ -1,5 +1,5 @@
 import { Component, h, State, Element, Event, Prop } from '@stencil/core';
-import { store } from "../product-store";
+import { product } from "../../../global/data/product";
 export class ProductPurchase {
   constructor() {
     this.cartText = "Do koszyka";
@@ -9,27 +9,27 @@ export class ProductPurchase {
     this.favouritesAnimation = false;
   }
   CartHandler() {
-    if (store.get("availability") > 0) {
-      if (!store.get("cartLoading"))
+    if (product.get("availability") > 0) {
+      if (!product.get("cartLoading"))
         this.addToCart.emit();
     }
     else
       document.querySelector("ks-product-notify").show();
   }
   FavouritesHandler() {
-    if (!store.get("favouritesLoading") && !store.get("favouritesCompleted")) {
+    if (!product.get("favouritesLoading") && !product.get("favouritesCompleted")) {
       this.addToFavourites.emit();
     }
   }
   render() {
-    const available = store.get("availability") > 0;
-    if (store.get("cartLoading"))
+    const available = product.get("availability") > 0;
+    if (product.get("cartLoading"))
       this.cartAnimation = true;
     else
       setTimeout(() => {
         this.cartAnimation = false;
       }, 300);
-    if (store.get("favouritesLoading"))
+    if (product.get("favouritesLoading"))
       this.favouritesAnimation = true;
     else
       setTimeout(() => {
@@ -37,11 +37,11 @@ export class ProductPurchase {
       }, 300);
     const favClass = [
       "fav",
-      store.get("favouritesCompleted") ? "completed" : null,
-      store.get("favouritesLoading") ? "loading" : null
+      product.get("favouritesCompleted") ? "completed" : null,
+      product.get("favouritesLoading") ? "loading" : null
     ];
     return [
-      h("button", { onClick: () => this.CartHandler(), class: "cart" + (store.get("cartLoading") ? " loading" : "") + (available ? "" : " disabled") },
+      h("button", { onClick: () => this.CartHandler(), class: "cart" + (product.get("cartLoading") ? " loading" : "") + (available ? "" : " disabled") },
         available ? this.cartText : this.availabilityText,
         h("ks-loader", { oversized: true, running: this.cartAnimation })),
       available ? h("ks-product-count", null) : null,

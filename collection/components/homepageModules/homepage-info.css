@@ -18,16 +18,14 @@ ks-homepage-info .main {
 ks-homepage-info .more {
     max-width: 1200px;
     margin: auto;
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     text-align: justify;
 }
 
 ks-homepage-info .more > div {
-    -webkit-box-flex: 1;
-        -ms-flex: 1 1 auto;
-            flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
     margin: 0px 20px;
 }
 
