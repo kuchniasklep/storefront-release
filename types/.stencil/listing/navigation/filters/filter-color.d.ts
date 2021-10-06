@@ -10,5 +10,6 @@ export declare class FilterColor {
   metal: any[];
   wood: any[];
   multicolor: any[];
+  change(e: Event): void;
   render(): any;
 }

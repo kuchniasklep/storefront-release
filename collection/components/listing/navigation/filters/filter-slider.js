@@ -61,9 +61,10 @@ export class FilterSlider {
   render() {
     const disabled = this.from === undefined || this.to === undefined || (this.from == this.valueArray[0] &&
       this.to == this.valueArray[this.valueArray.length - 1]);
+    const value = !disabled ? this.from + "-" + this.to : "";
     return [
       h("div", null),
-      h("input", { type: "hidden", name: this.name, value: this.from + "," + this.to, disabled: disabled })
+      h("input", { type: "hidden", name: this.name, value: value, disabled: disabled })
     ];
   }
   static get is() { return "ks-filter-slider"; }

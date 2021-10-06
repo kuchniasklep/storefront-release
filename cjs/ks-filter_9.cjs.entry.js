@@ -28,9 +28,12 @@ const FilterCheckbox = class {
     index.registerInstance(this, hostRef);
     this.active = false;
   }
+  change(e) {
+    this.active = e.target.checked;
+  }
   render() {
     return [
-      index.h("label", null, index.h("input", { name: `${this.name}[${this.value}]`, type: "checkbox", checked: this.active }), index.h("span", { class: "checkmark" }), this.text)
+      index.h("label", null, index.h("input", { name: this.name, value: this.active ? this.value : "", type: "checkbox", checked: this.active, onChange: e => this.change(e) }), index.h("span", { class: "checkmark" }), this.text)
     ];
   }
 };
@@ -92,8 +95,11 @@ const FilterColor = class {
       this.material = found[0].material;
     }
   }
+  change(e) {
+    this.active = e.target.checked;
+  }
   render() {
-    return index.h("label", null, index.h("svg", { width: this.size, height: this.size }, index.h("rect", { width: this.size, height: this.size, style: { fill: this.hex } }), this.material == "metal" ? this.metal : null, this.material == "wood" ? this.wood : null, this.material == "multicolor" ? this.multicolor : null), index.h("input", { name: `${this.name}[${this.value}]`, type: "checkbox", checked: this.active }), index.h("span", { class: "checkmark" }), this.color);
+    return index.h("label", null, index.h("svg", { width: this.size, height: this.size }, index.h("rect", { width: this.size, height: this.size, style: { fill: this.hex } }), this.material == "metal" ? this.metal : null, this.material == "wood" ? this.wood : null, this.material == "multicolor" ? this.multicolor : null), index.h("input", { name: this.name, value: this.active ? this.value : "", type: "checkbox", checked: this.active, onChange: e => this.change(e) }), index.h("span", { class: "checkmark" }), this.color);
   }
 };
 FilterColor.style = filterColorCss;
@@ -2465,9 +2471,10 @@ const FilterSlider = class {
   render() {
     const disabled = this.from === undefined || this.to === undefined || (this.from == this.valueArray[0] &&
       this.to == this.valueArray[this.valueArray.length - 1]);
+    const value = !disabled ? this.from + "-" + this.to : "";
     return [
       index.h("div", null),
-      index.h("input", { type: "hidden", name: this.name, value: this.from + "," + this.to, disabled: disabled })
+      index.h("input", { type: "hidden", name: this.name, value: value, disabled: disabled })
     ];
   }
   get root() { return index.getElement(this); }
@@ -2480,10 +2487,29 @@ const Filtering = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
   }
+  submit(e) {
+    e.preventDefault();
+    const inputs = this.root.querySelectorAll("form input");
+    let data = new Object();
+    inputs.forEach(input => {
+      if (input.value == "" || input.name == "")
+        return;
+      if (input.name in data)
+        data[input.name] += `-${input.value}`;
+      else
+        data[input.name] = input.value;
+    });
+    let url = this.baseUrl;
+    for (const name in data) {
+      url += `/${name}=${data[name]}`;
+    }
+    window.location.href = url;
+    return false;
+  }
   render() {
     return [
       index.h("ks-button", { narrow: true, muted: true, border: true, name: "Filtruj", left: true, icon: "filter", onClick: () => this.root.querySelector('ks-sidepanel').show() }),
-      index.h("ks-sidepanel", { left: true }, index.h("span", { class: "heading" }, "Filtrowanie"), index.h("form", { method: "POST", action: this.baseUrl }, index.h("slot", null), index.h("ks-button", { class: "clear", border: true, link: this.baseUrl, name: "Wyczy\u015B\u0107 Filtry" }), index.h("ks-button", { submit: true, secondary: true, name: "Zobacz filtry" })))
+      index.h("ks-sidepanel", { left: true }, index.h("span", { class: "heading" }, "Filtrowanie"), index.h("form", { onSubmit: e => this.submit(e) }, index.h("slot", null), index.h("ks-button", { class: "clear", border: true, link: this.baseUrl, name: "Wyczy\u015B\u0107 Filtry" }), index.h("ks-button", { submit: true, secondary: true, name: "Zobacz filtry" })))
     ];
   }
   get root() { return index.getElement(this); }

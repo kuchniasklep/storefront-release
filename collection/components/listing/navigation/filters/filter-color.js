@@ -37,6 +37,9 @@ export class FilterColor {
       this.material = found[0].material;
     }
   }
+  change(e) {
+    this.active = e.target.checked;
+  }
   render() {
     return h("label", null,
       h("svg", { width: this.size, height: this.size },
@@ -44,7 +47,7 @@ export class FilterColor {
         this.material == "metal" ? this.metal : null,
         this.material == "wood" ? this.wood : null,
         this.material == "multicolor" ? this.multicolor : null),
-      h("input", { name: `${this.name}[${this.value}]`, type: "checkbox", checked: this.active }),
+      h("input", { name: this.name, value: this.active ? this.value : "", type: "checkbox", checked: this.active, onChange: e => this.change(e) }),
       h("span", { class: "checkmark" }),
       this.color);
   }
@@ -109,7 +112,7 @@ export class FilterColor {
     },
     "active": {
       "type": "boolean",
-      "mutable": false,
+      "mutable": true,
       "complexType": {
         "original": "boolean",
         "resolved": "boolean",

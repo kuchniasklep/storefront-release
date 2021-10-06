@@ -24,9 +24,12 @@ const FilterCheckbox = class {
     registerInstance(this, hostRef);
     this.active = false;
   }
+  change(e) {
+    this.active = e.target.checked;
+  }
   render() {
     return [
-      h("label", null, h("input", { name: `${this.name}[${this.value}]`, type: "checkbox", checked: this.active }), h("span", { class: "checkmark" }), this.text)
+      h("label", null, h("input", { name: this.name, value: this.active ? this.value : "", type: "checkbox", checked: this.active, onChange: e => this.change(e) }), h("span", { class: "checkmark" }), this.text)
     ];
   }
 };
@@ -88,8 +91,11 @@ const FilterColor = class {
       this.material = found[0].material;
     }
   }
+  change(e) {
+    this.active = e.target.checked;
+  }
   render() {
-    return h("label", null, h("svg", { width: this.size, height: this.size }, h("rect", { width: this.size, height: this.size, style: { fill: this.hex } }), this.material == "metal" ? this.metal : null, this.material == "wood" ? this.wood : null, this.material == "multicolor" ? this.multicolor : null), h("input", { name: `${this.name}[${this.value}]`, type: "checkbox", checked: this.active }), h("span", { class: "checkmark" }), this.color);
+    return h("label", null, h("svg", { width: this.size, height: this.size }, h("rect", { width: this.size, height: this.size, style: { fill: this.hex } }), this.material == "metal" ? this.metal : null, this.material == "wood" ? this.wood : null, this.material == "multicolor" ? this.multicolor : null), h("input", { name: this.name, value: this.active ? this.value : "", type: "checkbox", checked: this.active, onChange: e => this.change(e) }), h("span", { class: "checkmark" }), this.color);
   }
 };
 FilterColor.style = filterColorCss;
@@ -2461,9 +2467,10 @@ const FilterSlider = class {
   render() {
     const disabled = this.from === undefined || this.to === undefined || (this.from == this.valueArray[0] &&
       this.to == this.valueArray[this.valueArray.length - 1]);
+    const value = !disabled ? this.from + "-" + this.to : "";
     return [
       h("div", null),
-      h("input", { type: "hidden", name: this.name, value: this.from + "," + this.to, disabled: disabled })
+      h("input", { type: "hidden", name: this.name, value: value, disabled: disabled })
     ];
   }
   get root() { return getElement(this); }
@@ -2476,10 +2483,29 @@ const Filtering = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
   }
+  submit(e) {
+    e.preventDefault();
+    const inputs = this.root.querySelectorAll("form input");
+    let data = new Object();
+    inputs.forEach(input => {
+      if (input.value == "" || input.name == "")
+        return;
+      if (input.name in data)
+        data[input.name] += `-${input.value}`;
+      else
+        data[input.name] = input.value;
+    });
+    let url = this.baseUrl;
+    for (const name in data) {
+      url += `/${name}=${data[name]}`;
+    }
+    window.location.href = url;
+    return false;
+  }
   render() {
     return [
       h("ks-button", { narrow: true, muted: true, border: true, name: "Filtruj", left: true, icon: "filter", onClick: () => this.root.querySelector('ks-sidepanel').show() }),
-      h("ks-sidepanel", { left: true }, h("span", { class: "heading" }, "Filtrowanie"), h("form", { method: "POST", action: this.baseUrl }, h("slot", null), h("ks-button", { class: "clear", border: true, link: this.baseUrl, name: "Wyczy\u015B\u0107 Filtry" }), h("ks-button", { submit: true, secondary: true, name: "Zobacz filtry" })))
+      h("ks-sidepanel", { left: true }, h("span", { class: "heading" }, "Filtrowanie"), h("form", { onSubmit: e => this.submit(e) }, h("slot", null), h("ks-button", { class: "clear", border: true, link: this.baseUrl, name: "Wyczy\u015B\u0107 Filtry" }), h("ks-button", { submit: true, secondary: true, name: "Zobacz filtry" })))
     ];
   }
   get root() { return getElement(this); }

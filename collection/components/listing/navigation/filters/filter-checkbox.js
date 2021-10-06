@@ -3,10 +3,13 @@ export class FilterCheckbox {
   constructor() {
     this.active = false;
   }
+  change(e) {
+    this.active = e.target.checked;
+  }
   render() {
     return [
       h("label", null,
-        h("input", { name: `${this.name}[${this.value}]`, type: "checkbox", checked: this.active }),
+        h("input", { name: this.name, value: this.active ? this.value : "", type: "checkbox", checked: this.active, onChange: e => this.change(e) }),
         h("span", { class: "checkmark" }),
         this.text)
     ];
@@ -72,7 +75,7 @@ export class FilterCheckbox {
     },
     "active": {
       "type": "boolean",
-      "mutable": false,
+      "mutable": true,
       "complexType": {
         "original": "boolean",
         "resolved": "boolean",

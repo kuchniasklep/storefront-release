@@ -3,5 +3,6 @@ export declare class FilterCheckbox {
   value: string;
   text: string;
   active: boolean;
+  change(e: Event): void;
   render(): any[];
 }
