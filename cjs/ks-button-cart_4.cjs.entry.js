@@ -121,8 +121,8 @@ const ButtonFav = class {
       navbar.DecrementHeart();
   }
   render() {
-    return (index.h("button", { "aria-label": "Do koszyka", onClick: () => this.ClickHandler() }, this.loading ?
-      index.h("ks-loader", null) : index.h("ks-icon", { name: this.subtract ? "x" : "star" }), this.success ?
+    return (index.h("button", { "aria-label": "Do koszyka", onClick: () => this.ClickHandler() }, this.loading ? index.h("ks-loader", null) :
+      index.h("ks-icon", { name: this.subtract ? "x" : "star" }), this.success ?
       index.h("div", { class: "success" }, index.h("ks-icon", { name: "check" }))
       : null));
   }
@@ -130,7 +130,46 @@ const ButtonFav = class {
 };
 ButtonFav.style = buttonFavCss;
 
-const productCardCss = "ks-product-card{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:justify;justify-content:space-between;width:100%;text-align:center;background:var(--card-background);color:var(--card-text-color);-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow)}@media (min-width: 360px){ks-product-card{width:calc(50% - 15px)}}@media (min-width: 640px){ks-product-card{width:228px}}ks-product-card .top{display:block;padding:15px;min-height:200px;color:inherit !important;text-decoration:none !important;font-size:14px}ks-product-card ks-img{height:auto;margin-bottom:10px}ks-product-card .price>*{display:block;font-family:var(--font-emphasis)}ks-product-card .price .previous{color:#888888;font-size:15px}ks-product-card .price .current{color:var(--color-secondary);font-weight:bold;font-size:17px}ks-product-card .bottom{display:-ms-flexbox;display:flex;margin-top:10px}ks-product-card .bottom .unavailable,ks-product-card .bottom .link{display:block;width:100%;padding:10px 10px;font-size:.875rem;text-align:center;text-decoration:none;text-transform:none;color:white;background-color:var(--color-secondary);-webkit-transition:var(--transition-background-color);transition:var(--transition-background-color)}ks-product-card .bottom .unavailable{color:#252525;background-color:#f1f1f1}ks-product-card .bottom .link:hover{background-color:var(--color-secondary-hover)}ks-product-card .bottom .link:active{background-color:var(--color-secondary-active)}ks-product-card[unavailable] .top,ks-product-card[unavailable] .price{opacity:0.6}ks-product-card[unavailable] .price .current{color:#252525}@media (max-width: 420px){ks-product-card .top{font-size:13px;padding:8px}ks-product-card .price{line-height:18px}}";
+async function addToCart(id, count, name, price, traits, token) {
+  this.loading = true;
+  const errorpopup = document.querySelector('ks-error-popup');
+  const messagepopup = document.querySelector('ks-message-popup');
+  const navbar = document.querySelector('ks-navbar');
+  let body = new FormData();
+  body.append("id", id);
+  body.append("ilosc", count);
+  body.append("nazwa", name);
+  body.append("value", price.toString());
+  body.append("cechy", traits);
+  body.append("akcja", 'dodaj');
+  body.append("miejsce", '1');
+  // Replace link string with state during prerendering rework
+  await this.fetch("api/cart/product_add.php?tok=" + token, body)
+    .then(async (data) => data.json())
+    .then(async (data) => {
+    if (!data.status) {
+      if (data.productLink)
+        messagepopup.show("Wymagany wybór cechy", data.message, "Przejdź do produktu", this.url);
+      else
+        messagepopup.show("Błąd dodawania produktu", data.message);
+      return;
+    }
+    navbar.IncrementCart(count);
+    OpenSuggestions(this.productId, this.name);
+    if (data.event)
+      store.eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(data.event, this.productId, this.name, this.price, 1, "PLN"));
+  })
+    .catch(error => {
+    errorpopup.show(error);
+  });
+  this.loading = false;
+}
+function OpenSuggestions(id, name) {
+  const suggestions = document.querySelector("ks-product-suggestions");
+  suggestions.show(id, name);
+}
+
+const productCardCss = "ks-product-card{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:justify;justify-content:space-between;width:100%;text-align:center;background:var(--card-background);color:var(--card-text-color);-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow)}@media (min-width: 360px){ks-product-card{width:calc(50% - 15px)}}@media (min-width: 640px){ks-product-card{width:228px}}ks-product-card .top{display:block;padding:15px;min-height:200px;color:inherit !important;text-decoration:none !important;font-size:14px}ks-product-card ks-img{height:auto;margin-bottom:10px}ks-product-card .price>*{display:block;font-family:var(--font-emphasis)}ks-product-card .price .previous{color:#888888;font-size:15px}ks-product-card .price .current{color:var(--color-secondary);font-weight:bold;font-size:17px}ks-product-card .bottom{display:-ms-flexbox;display:flex;margin-top:10px}ks-product-card .bottom .unavailable,ks-product-card .bottom .link{display:block;width:100%;padding:10px 10px;font-size:.875rem;text-align:center;text-decoration:none;text-transform:none;color:white;background-color:var(--color-secondary);-webkit-transition:var(--transition-background-color);transition:var(--transition-background-color)}ks-product-card .bottom .unavailable{color:#252525;background-color:#f1f1f1}ks-product-card .bottom .link:hover{background-color:var(--color-secondary-hover)}ks-product-card .bottom .link:active{background-color:var(--color-secondary-active)}ks-product-card[unavailable] .top,ks-product-card[unavailable] .price{opacity:0.6}ks-product-card[unavailable] .price .current{color:#252525}@media (max-width: 420px){ks-product-card .top{font-size:13px;padding:8px}ks-product-card .price{line-height:18px}}ks-product-card .cart{position:relative;display:block;width:100%;height:100%;min-height:42px;min-width:44px;padding:1px 10px;font-size:.875rem;line-height:40px;text-align:center;text-decoration:none;text-transform:none;font-family:var(--font-regular);outline:none;border:none;border-radius:0px;color:white;background-color:var(--product-card-primary);-webkit-transition:var(--transition-background-color);transition:var(--transition-background-color)}ks-product-card .cart button:hover{background-color:var(--product-card-primary-hover)}ks-product-card .cart button:active{background-color:var(--product-card-primary-active)}";
 
 const ProductCard = class {
   constructor(hostRef) {
@@ -138,6 +177,9 @@ const ProductCard = class {
     this.unavailable = false;
     this.linkOnly = false;
     this.uniqueId = "";
+  }
+  cart() {
+    addToCart(this.productId, 1, this.name, this.currentPrice, "", "123");
   }
   render() {
     const currentPrice = this.currentPrice ? this.currentPrice.replace(".", ",") + " zł" : "";
@@ -150,8 +192,8 @@ const ProductCard = class {
       index.h("div", { class: "bottom" }, this.unavailable ? index.h("a", { href: this.link, class: "unavailable" }, "NIEDOST\u0118PNY")
         : this.linkOnly ? index.h("a", { href: this.link, class: "link" }, "ZOBACZ WI\u0118CEJ")
           : [
-          //<ks-button-fav product-id={this.productId}></ks-button-fav>,
-          //<ks-button-cart expand product-id={this.productId} name={this.name} price={parseFloat(this.currentPrice)} url={this.link}></ks-button-cart>
+            index.h("ks-button-fav", { "product-id": this.productId }),
+            index.h("button", { class: "cart", onClick: () => this.cart() }, "DO KOSZYKA")
           ])
     ];
   }

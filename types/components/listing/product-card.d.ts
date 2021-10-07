@@ -8,5 +8,6 @@ export declare class ProductCard {
   previousPrice: string;
   productId: string;
   uniqueId: string;
+  cart(): void;
   render(): any[];
 }

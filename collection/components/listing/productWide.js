@@ -44,8 +44,8 @@ export class ProductWide {
       h("div", { class: "uk-flex " + (this.mobile ? "uk-width-1-1" : "uk-flex-column") },
         h("ks-button-fav", { subtract: true, padding: true, expand: true, "product-id": this.productId }),
         this.unavailable ?
-          h("ks-button-cart", { icon: true, padding: true, expand: true, disabled: true }) :
-          h("ks-button-cart", { icon: true, padding: true, expand: true, "product-id": this.productId, name: this.name, price: parseFloat(this.currentPrice) }))));
+          h("ks-button-cart", { padding: true, expand: true, disabled: true }) :
+          h("ks-button-cart", { padding: true, expand: true, "product-id": this.productId, name: this.name, price: parseFloat(this.currentPrice) }))));
   }
   static get is() { return "ks-product-wide"; }
   static get properties() { return {

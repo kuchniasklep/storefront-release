@@ -26,8 +26,8 @@ export class ButtonFav {
   }
   render() {
     return (h("button", { "aria-label": "Do koszyka", onClick: () => this.ClickHandler() },
-      this.loading ?
-        h("ks-loader", null) : h("ks-icon", { name: this.subtract ? "x" : "star" }),
+      this.loading ? h("ks-loader", null) :
+        h("ks-icon", { name: this.subtract ? "x" : "star" }),
       this.success ?
         h("div", { class: "success" },
           h("ks-icon", { name: "check" }))

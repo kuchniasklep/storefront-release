@@ -1,9 +1,13 @@
 import { Component, h, Prop } from '@stencil/core';
+import { addToCart } from '../../global/functions';
 export class ProductCard {
   constructor() {
     this.unavailable = false;
     this.linkOnly = false;
     this.uniqueId = "";
+  }
+  cart() {
+    addToCart(this.productId, 1, this.name, this.currentPrice, "", "123");
   }
   render() {
     const currentPrice = this.currentPrice ? this.currentPrice.replace(".", ",") + " zł" : "";
@@ -20,8 +24,8 @@ export class ProductCard {
       h("div", { class: "bottom" }, this.unavailable ? h("a", { href: this.link, class: "unavailable" }, "NIEDOST\u0118PNY")
         : this.linkOnly ? h("a", { href: this.link, class: "link" }, "ZOBACZ WI\u0118CEJ")
           : [
-          //<ks-button-fav product-id={this.productId}></ks-button-fav>,
-          //<ks-button-cart expand product-id={this.productId} name={this.name} price={parseFloat(this.currentPrice)} url={this.link}></ks-button-cart>
+            h("ks-button-fav", { "product-id": this.productId }),
+            h("button", { class: "cart", onClick: () => this.cart() }, "DO KOSZYKA")
           ])
     ];
   }
