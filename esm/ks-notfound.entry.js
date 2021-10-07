@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-5edb5049.js';
+import { r as registerInstance, h } from './index-a14dfead.js';
 
 const notfoundCss = "ks-notfound{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center;padding:50px 30px 70px 30px;min-height:25vw;text-align:center}ks-notfound .status{color:black;font-size:128px;line-height:128px;font-family:var(--font-emphasis);font-weight:700;margin-right:20px}ks-notfound .content{max-width:800px;margin:15px 0}ks-notfound .content h1{font-size:1.275rem;font-family:var(--font-emphasis);font-weight:700}ks-notfound .content h1{font-size:1.275rem}@media (max-width: 640px){ks-notfound{padding:30px 15px 50px 15px}ks-notfound .status{font-size:100px;line-height:100px}}@media (max-width: 460px){ks-notfound .status{font-size:72px;line-height:72px}}";
 

@@ -2,15 +2,15 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-d2dd4d1b.js');
-const product = require('./product-6e95d2af.js');
+const index = require('./index-0dd0274e.js');
+const product = require('./product-f27c8db5.js');
 const deferredpromise = require('./deferredpromise-4a0fd44b.js');
 const coreClass = require('./core-class-37c25aa3.js');
 const thumbs = require('./thumbs-466e1eba.js');
 const functions = require('./functions-5a96038f.js');
-const store = require('./store-6d62b819.js');
+const store = require('./store-2513a9ba.js');
 const validate = require('./validate-6c61d7c0.js');
-require('./index-08350893.js');
+require('./index-afac6374.js');
 
 const commentCss = "ks-comment{display:block}ks-comment article{padding:30px}@media (min-width: 1200px){ks-comment article{padding:30px 40px}}ks-comment header{display:-ms-flexbox;display:flex}ks-comment header>div{width:100%}ks-comment header .title{margin:0}ks-comment header .info{font-size:.875rem;line-height:1.4;color:#707070}ks-comment ks-icon{margin-right:20px}ks-comment p{margin-bottom:0px}";
 

@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-5edb5049.js';
+import { r as registerInstance, h } from './index-a14dfead.js';
 
 const SectionHeading = class {
   constructor(hostRef) {

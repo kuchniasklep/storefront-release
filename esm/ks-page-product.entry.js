@@ -1,8 +1,8 @@
-import { r as registerInstance, h, H as Host } from './index-5edb5049.js';
-import { c as common } from './common-9b5185b8.js';
-import { p as product } from './product-7a93d05c.js';
-import { c as commonDynamic } from './commonDynamic-c7aff401.js';
-import './index-4223a160.js';
+import { r as registerInstance, h, H as Host } from './index-a14dfead.js';
+import { c as common } from './common-47e1fd41.js';
+import { p as product } from './product-22d38c43.js';
+import { c as commonDynamic } from './commonDynamic-4e28152d.js';
+import './index-c53317e0.js';
 
 const productCss = "ks-page-product>h3{text-align:center;margin-top:15px}ks-page-product>ks-product-container{margin-bottom:15px}";
 
@@ -70,11 +70,11 @@ const PageProduct = class {
         : null)
       : null, similar ? [
       h("h3", null, product.get('similarHeading')),
-      h("ks-product-container", null, similar.map(card => h("ks-product-card", { name: card.name, img: card.image, "current-price": card.currentPrice, "previous-price": card.previousPrice })))
+      h("ks-product-container", null, similar.map(card => h("ks-product-card", { "product-id": 0, name: card.name, img: card.image, "current-price": card.currentPrice, "previous-price": card.previousPrice })))
     ]
       : null, accessories ? [
       h("h3", null, product.get('accessoriesHeading')),
-      h("ks-product-container", null, accessories.map(card => h("ks-product-card", { name: card.name, img: card.image, "current-price": card.currentPrice, "previous-price": card.previousPrice })))
+      h("ks-product-container", null, accessories.map(card => h("ks-product-card", { "product-id": 0, name: card.name, img: card.image, "current-price": card.currentPrice, "previous-price": card.previousPrice })))
     ]
       : null, h("ks-page-footer", null));
   }

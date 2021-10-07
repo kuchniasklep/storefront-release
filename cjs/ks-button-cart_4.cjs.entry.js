@@ -2,10 +2,10 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-d2dd4d1b.js');
+const index = require('./index-0dd0274e.js');
 const functions = require('./functions-5a96038f.js');
-const store = require('./store-6d62b819.js');
-require('./index-08350893.js');
+const store = require('./store-2513a9ba.js');
+require('./index-afac6374.js');
 
 const buttonCartCss = "ks-button-cart{display:block;height:100%}ks-button-cart[expand]{-ms-flex:1;flex:1}ks-button-cart[padding] button{padding:5px;min-height:50px}@media (min-width: 700px){ks-button-cart[padding] button{padding:10px;min-height:60px}}ks-button-cart button{position:relative;display:block;width:100%;height:100%;min-height:42px;min-width:44px;padding:1px 10px;font-size:.875rem;line-height:40px;text-align:center;text-decoration:none;text-transform:none;font-family:var(--font-regular);outline:none;border:none;border-radius:0px;color:white;background-color:var(--product-card-primary);-webkit-transition:var(--transition-background-color);transition:var(--transition-background-color)}ks-button-cart button:hover{background-color:var(--product-card-primary-hover)}ks-button-cart button:active{background-color:var(--product-card-primary-active)}ks-button-cart[disabled] button{background-color:var(--product-card-disabled-color) !important;color:var(--product-card-disabled-text) !important}";
 
@@ -137,6 +137,7 @@ const ProductCard = class {
     index.registerInstance(this, hostRef);
     this.unavailable = false;
     this.linkOnly = false;
+    this.uniqueId = "";
   }
   render() {
     const currentPrice = this.currentPrice ? this.currentPrice.replace(".", ",") + " zł" : "";
@@ -149,8 +150,8 @@ const ProductCard = class {
       index.h("div", { class: "bottom" }, this.unavailable ? index.h("a", { href: this.link, class: "unavailable" }, "NIEDOST\u0118PNY")
         : this.linkOnly ? index.h("a", { href: this.link, class: "link" }, "ZOBACZ WI\u0118CEJ")
           : [
-            index.h("ks-button-fav", { "product-id": this.productId }),
-            index.h("ks-button-cart", { expand: true, "product-id": this.productId, name: this.name, price: parseFloat(this.currentPrice), url: this.link })
+          //<ks-button-fav product-id={this.productId}></ks-button-fav>,
+          //<ks-button-cart expand product-id={this.productId} name={this.name} price={parseFloat(this.currentPrice)} url={this.link}></ks-button-cart>
           ])
     ];
   }

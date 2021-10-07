@@ -3,6 +3,7 @@ export class ProductCard {
   constructor() {
     this.unavailable = false;
     this.linkOnly = false;
+    this.uniqueId = "";
   }
   render() {
     const currentPrice = this.currentPrice ? this.currentPrice.replace(".", ",") + " zł" : "";
@@ -19,8 +20,8 @@ export class ProductCard {
       h("div", { class: "bottom" }, this.unavailable ? h("a", { href: this.link, class: "unavailable" }, "NIEDOST\u0118PNY")
         : this.linkOnly ? h("a", { href: this.link, class: "link" }, "ZOBACZ WI\u0118CEJ")
           : [
-            h("ks-button-fav", { "product-id": this.productId }),
-            h("ks-button-cart", { expand: true, "product-id": this.productId, name: this.name, price: parseFloat(this.currentPrice), url: this.link })
+          //<ks-button-fav product-id={this.productId}></ks-button-fav>,
+          //<ks-button-cart expand product-id={this.productId} name={this.name} price={parseFloat(this.currentPrice)} url={this.link}></ks-button-cart>
           ])
     ];
   }
@@ -185,7 +186,8 @@ export class ProductCard {
         "text": ""
       },
       "attribute": "unique-id",
-      "reflect": false
+      "reflect": false,
+      "defaultValue": "\"\""
     }
   }; }
 }

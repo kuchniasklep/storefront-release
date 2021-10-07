@@ -104,12 +104,12 @@ export class PageProduct {
         : null,
       similar ? [
         h("h3", null, product.get('similarHeading')),
-        h("ks-product-container", null, similar.map(card => h("ks-product-card", { name: card.name, img: card.image, "current-price": card.currentPrice, "previous-price": card.previousPrice })))
+        h("ks-product-container", null, similar.map(card => h("ks-product-card", { "product-id": 0, name: card.name, img: card.image, "current-price": card.currentPrice, "previous-price": card.previousPrice })))
       ]
         : null,
       accessories ? [
         h("h3", null, product.get('accessoriesHeading')),
-        h("ks-product-container", null, accessories.map(card => h("ks-product-card", { name: card.name, img: card.image, "current-price": card.currentPrice, "previous-price": card.previousPrice })))
+        h("ks-product-container", null, accessories.map(card => h("ks-product-card", { "product-id": 0, name: card.name, img: card.image, "current-price": card.currentPrice, "previous-price": card.previousPrice })))
       ]
         : null,
       h("ks-page-footer", null));

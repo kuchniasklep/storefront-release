@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-d2dd4d1b.js');
+const index = require('./index-0dd0274e.js');
 
 const SectionHeading = class {
   constructor(hostRef) {

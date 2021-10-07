@@ -1,0 +1,1 @@
+import{c as o}from"./index-8363a60e.js";const t=o({loggedIn:!1,cartCount:0,heartCount:0});export{t as c}

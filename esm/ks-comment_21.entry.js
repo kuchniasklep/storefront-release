@@ -1,12 +1,12 @@
-import { r as registerInstance, h, g as getElement, e as createEvent } from './index-5edb5049.js';
-import { p as product } from './product-7a93d05c.js';
+import { r as registerInstance, h, g as getElement, e as createEvent } from './index-a14dfead.js';
+import { p as product } from './product-22d38c43.js';
 import { w as window_load } from './deferredpromise-0f64146f.js';
 import { S as Swiper } from './core-class-3f174cf3.js';
 import { T as Thumbs } from './thumbs-ca1d86c7.js';
 import { O as OpenSuggestions } from './functions-d67550e3.js';
-import { e as eachTracker } from './store-a33839ba.js';
+import { e as eachTracker } from './store-90a4ba2a.js';
 import { V as ValidateInput } from './validate-cd7ce36d.js';
-import './index-4223a160.js';
+import './index-c53317e0.js';
 
 const commentCss = "ks-comment{display:block}ks-comment article{padding:30px}@media (min-width: 1200px){ks-comment article{padding:30px 40px}}ks-comment header{display:-ms-flexbox;display:flex}ks-comment header>div{width:100%}ks-comment header .title{margin:0}ks-comment header .info{font-size:.875rem;line-height:1.4;color:#707070}ks-comment ks-icon{margin-right:20px}ks-comment p{margin-bottom:0px}";
 

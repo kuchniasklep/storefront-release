@@ -2,11 +2,11 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-d2dd4d1b.js');
-const common = require('./common-2d31a768.js');
-const product = require('./product-6e95d2af.js');
-const commonDynamic = require('./commonDynamic-c29d1c0d.js');
-require('./index-08350893.js');
+const index = require('./index-0dd0274e.js');
+const common = require('./common-5efb1936.js');
+const product = require('./product-f27c8db5.js');
+const commonDynamic = require('./commonDynamic-a356749f.js');
+require('./index-afac6374.js');
 
 const productCss = "ks-page-product>h3{text-align:center;margin-top:15px}ks-page-product>ks-product-container{margin-bottom:15px}";
 
@@ -74,11 +74,11 @@ const PageProduct = class {
         : null)
       : null, similar ? [
       index.h("h3", null, product.product.get('similarHeading')),
-      index.h("ks-product-container", null, similar.map(card => index.h("ks-product-card", { name: card.name, img: card.image, "current-price": card.currentPrice, "previous-price": card.previousPrice })))
+      index.h("ks-product-container", null, similar.map(card => index.h("ks-product-card", { "product-id": 0, name: card.name, img: card.image, "current-price": card.currentPrice, "previous-price": card.previousPrice })))
     ]
       : null, accessories ? [
       index.h("h3", null, product.product.get('accessoriesHeading')),
-      index.h("ks-product-container", null, accessories.map(card => index.h("ks-product-card", { name: card.name, img: card.image, "current-price": card.currentPrice, "previous-price": card.previousPrice })))
+      index.h("ks-product-container", null, accessories.map(card => index.h("ks-product-card", { "product-id": 0, name: card.name, img: card.image, "current-price": card.currentPrice, "previous-price": card.previousPrice })))
     ]
       : null, index.h("ks-page-footer", null));
   }

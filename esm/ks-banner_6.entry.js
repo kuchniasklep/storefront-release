@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-5edb5049.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-a14dfead.js';
 import { w as window_load } from './deferredpromise-0f64146f.js';
 import { b as bindModuleMethods, g as getDocument, n as nextTick, S as Swiper } from './core-class-3f174cf3.js';
 import { P as Pagination } from './pagination-e5b04709.js';
