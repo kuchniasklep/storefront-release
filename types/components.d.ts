@@ -9,7 +9,7 @@ import { deal } from "./components/cart/cart-data";
 import { Category } from "./global/data/common";
 import { LightboxImageData } from "./components/elements/modal/lightbox-data";
 import { TraitData, TraitDataItem } from "./global/data/product";
-import { ITrackerProduct } from "./components/tracking/store";
+import { ITrackerProduct } from "./global/data/tracker";
 export namespace Components {
     interface KsAlert {
         "message": string;
@@ -830,19 +830,16 @@ export namespace Components {
         "price": string;
     }
     interface KsProductCard {
-        "currentPrice": string;
+        "currentPrice": number;
         "img": string;
         "link": string;
         "linkOnly": boolean;
         "name": string;
-        "previousPrice": string;
+        "previousPrice": number;
         "productId": string;
         "unavailable": boolean;
-        "uniqueId": string;
     }
     interface KsProductComments {
-        "link": string;
-        "message": string;
     }
     interface KsProductContainer {
     }
@@ -895,6 +892,7 @@ export namespace Components {
         "suggestionHeading": string;
     }
     interface KsProductTab {
+        "content": string;
         "main": boolean;
         "name": string;
         "open": boolean;
@@ -3122,19 +3120,16 @@ declare namespace LocalJSX {
         "price"?: string;
     }
     interface KsProductCard {
-        "currentPrice"?: string;
+        "currentPrice"?: number;
         "img"?: string;
         "link"?: string;
         "linkOnly"?: boolean;
         "name"?: string;
-        "previousPrice"?: string;
+        "previousPrice"?: number;
         "productId"?: string;
         "unavailable"?: boolean;
-        "uniqueId"?: string;
     }
     interface KsProductComments {
-        "link"?: string;
-        "message"?: string;
     }
     interface KsProductContainer {
     }
@@ -3189,6 +3184,7 @@ declare namespace LocalJSX {
         "suggestionHeading"?: string;
     }
     interface KsProductTab {
+        "content"?: string;
         "main"?: boolean;
         "name"?: string;
         "open"?: boolean;

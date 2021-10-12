@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-0dd0274e.js');
-const store = require('./store-2513a9ba.js');
+const tracker = require('./tracker-dc1bc991.js');
 require('./index-afac6374.js');
 
 const TrackerOrder = class {
@@ -18,7 +18,7 @@ const TrackerOrder = class {
   componentWillLoad() {
     const products = typeof this.products == "string" ?
       JSON.parse(this.products) : this.products;
-    store.eachTracker(item => {
+    tracker.eachTracker(item => {
       if (this.checkout)
         item === null || item === void 0 ? void 0 : item.order_checkout(this.eventId, products, this.value, this.currency);
       else if (this.form)

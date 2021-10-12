@@ -93,14 +93,13 @@ export class PageProduct {
         : null,
       tabs ?
         h("ks-container", null,
-          h("ks-product-tabs", { names: tabs.map(tab => tab.name).join(", ") }, tabs.map((tab, index) => h("ks-product-tab", { name: tab.name, open: index == 0, main: index == 0, innerHTML: tab.content }))))
+          h("ks-product-tabs", { names: tabs.map(tab => tab.name).join(", ") }, tabs.map((tab, index) => h("ks-product-tab", { name: tab.name, open: index == 0, main: index == 0, content: tab.content }))))
         : null,
+      "t",
       youtube || comments ?
         h("ks-container", null,
           youtube.map(id => h("ks-product-youtube", { "video-id": id })),
-          comments ?
-            h("ks-product-comments", { link: comments.addLink, message: comments.addMessage }, comments.entries.map((comment, index) => h("ks-comment", { author: comment.author, when: comment.when, innerHTML: comment.content, slot: index > (comments.hideAfter - 1) ? "hidden" : null })))
-            : null)
+          comments ? h("ks-product-comments", null) : null)
         : null,
       similar ? [
         h("h3", null, product.get('similarHeading')),

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-0dd0274e.js');
-const common = require('./common-5efb1936.js');
+const common = require('./common-c36c5464.js');
 const product = require('./product-f27c8db5.js');
 const commonDynamic = require('./commonDynamic-a356749f.js');
 require('./index-afac6374.js');
@@ -67,11 +67,9 @@ const PageProduct = class {
         index.h("ks-product-variants", null, variants.map(variant => index.h("ks-product-variant", { link: variant.link, image: variant.image, active: variant.active, unavailable: variant.unavailable })))
         : null)
       : null, tabs ?
-      index.h("ks-container", null, index.h("ks-product-tabs", { names: tabs.map(tab => tab.name).join(", ") }, tabs.map((tab, index$1) => index.h("ks-product-tab", { name: tab.name, open: index$1 == 0, main: index$1 == 0, innerHTML: tab.content }))))
-      : null, youtube || comments ?
-      index.h("ks-container", null, youtube.map(id => index.h("ks-product-youtube", { "video-id": id })), comments ?
-        index.h("ks-product-comments", { link: comments.addLink, message: comments.addMessage }, comments.entries.map((comment, index$1) => index.h("ks-comment", { author: comment.author, when: comment.when, innerHTML: comment.content, slot: index$1 > (comments.hideAfter - 1) ? "hidden" : null })))
-        : null)
+      index.h("ks-container", null, index.h("ks-product-tabs", { names: tabs.map(tab => tab.name).join(", ") }, tabs.map((tab, index$1) => index.h("ks-product-tab", { name: tab.name, open: index$1 == 0, main: index$1 == 0, content: tab.content }))))
+      : null, "t", youtube || comments ?
+      index.h("ks-container", null, youtube.map(id => index.h("ks-product-youtube", { "video-id": id })), comments ? index.h("ks-product-comments", null) : null)
       : null, similar ? [
       index.h("h3", null, product.product.get('similarHeading')),
       index.h("ks-product-container", null, similar.map(card => index.h("ks-product-card", { "product-id": 0, name: card.name, img: card.image, "current-price": card.currentPrice, "previous-price": card.previousPrice })))

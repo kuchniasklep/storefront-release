@@ -8,7 +8,7 @@ const deferredpromise = require('./deferredpromise-4a0fd44b.js');
 const coreClass = require('./core-class-37c25aa3.js');
 const thumbs = require('./thumbs-466e1eba.js');
 const functions = require('./functions-5a96038f.js');
-const store = require('./store-2513a9ba.js');
+const tracker = require('./tracker-dc1bc991.js');
 const validate = require('./validate-6c61d7c0.js');
 require('./index-afac6374.js');
 
@@ -124,25 +124,25 @@ const productCommentsCss = "ks-product-comments{display:block;-webkit-box-shadow
 const ProductTab$1 = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
-    this.link = "";
-    this.message = "";
     this.hasMore = false;
     this.expand = false;
   }
   componentWillLoad() {
-    if (this.root.querySelector("*[slot='hidden']"))
+    const comments = product.product.get('comments');
+    if (comments.entries.length > comments.hideAfter)
       this.hasMore = true;
   }
   render() {
+    const comments = product.product.get('comments');
     return [
-      index.h("div", { class: "message" }, index.h("ks-icon", { name: "mail", size: 2.5 }), index.h("p", null, this.message)),
-      index.h("slot", null),
-      index.h("div", { class: "more", hidden: !this.expand }, index.h("slot", { name: "hidden" })),
+      index.h("div", { class: "message" }, index.h("ks-icon", { name: "mail", size: 2.5 }), index.h("p", null, comments.addMessage)),
+      comments.entries.slice(0, comments.hideAfter).map(comment => index.h("ks-comment", { author: comment.author, when: comment.when, innerHTML: comment.content })),
+      index.h("div", { class: "more", hidden: !this.expand }, comments.entries.slice(comments.hideAfter).map(comment => index.h("ks-comment", { author: comment.author, when: comment.when, innerHTML: comment.content }))),
       this.hasMore ?
         index.h("button", { onClick: () => this.expand = !this.expand, class: "expand" }, index.h("ks-icon", { name: this.expand ? "chevron-up" : "chevron-down", size: 1.5 }))
         : null,
-      this.link ?
-        index.h("a", { href: this.link, rel: "nofollow", class: "add", "aria-label": "Napisz recenzj\u0119" }, index.h("ks-icon", { name: "plus-circle", size: 1.5 }))
+      comments.addLink ?
+        index.h("a", { href: comments.addLink, rel: "nofollow", class: "add", "aria-label": "Napisz recenzj\u0119" }, index.h("ks-icon", { name: "plus-circle", size: 1.5 }))
         : null
     ];
   }
@@ -343,7 +343,7 @@ const ProductInfo = class {
       }
       functions.OpenSuggestions(id, name);
       if (data.event)
-        store.eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(data.event, id, name, parseFloat(product.product.get("currentPrice")), product.product.get("count"), "PLN"));
+        tracker.eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(data.event, id, name, parseFloat(product.product.get("currentPrice")), product.product.get("count"), "PLN"));
     })
       .catch(error => this.errorPopup.show(error));
     product.product.set("cartLoading", false);
@@ -564,7 +564,7 @@ const ProductSuggestions = class {
     }
   }
   render() {
-    return index.h("ks-overlay", null, index.h("div", { class: "content" }, index.h("div", { class: "top" }, index.h("div", { class: "heading" }, "Dodano do koszyka"), index.h("div", { class: "name" }, this.name), index.h("div", { class: "buttons" }, index.h("ks-button", { secondary: true, name: "Przejd\u017A do koszyka", onClick: () => this.toCart() }), index.h("ks-button", { name: "Przegl\u0105daj dalej", onClick: () => this.hide() }))), index.h("div", { class: "bottom" }, this.loading ? null : index.h("h3", { class: "suggestion-heading" }, this.suggestionHeading), this.loading ? index.h("ks-loader", { dark: true, large: true }) : null, index.h("div", { class: "swiper-container product-suggestions", style: { display: this.loading ? "none" : "block" } }, index.h("div", { class: "swiper-wrapper" }, this.products.map((product) => index.h("div", { class: "swiper-slide" }, index.h("ks-product-card", { "link-only": true, name: product.name, img: product.image, link: product.link, currentPrice: product.currentPrice, previousPrice: product.previousPrice != "0.00" ? product.previousPrice : null }))))), index.h("div", { class: "fade-left" }), index.h("div", { class: "fade-right" }))));
+    return index.h("ks-overlay", null, index.h("div", { class: "content" }, index.h("div", { class: "top" }, index.h("div", { class: "heading" }, "Dodano do koszyka"), index.h("div", { class: "name" }, this.name), index.h("div", { class: "buttons" }, index.h("ks-button", { secondary: true, name: "Przejd\u017A do koszyka", onClick: () => this.toCart() }), index.h("ks-button", { name: "Przegl\u0105daj dalej", onClick: () => this.hide() }))), index.h("div", { class: "bottom" }, this.loading ? null : index.h("h3", { class: "suggestion-heading" }, this.suggestionHeading), this.loading ? index.h("ks-loader", { dark: true, large: true }) : null, index.h("div", { class: "swiper-container product-suggestions", style: { display: this.loading ? "none" : "block" } }, index.h("div", { class: "swiper-wrapper" }, this.products.map((product) => index.h("div", { class: "swiper-slide" }, index.h("ks-product-card", { "link-only": true, name: product.name, img: product.image, link: product.link, currentPrice: parseFloat(product.currentPrice), previousPrice: product.previousPrice != "0.00" ? parseFloat(product.previousPrice) : null }))))), index.h("div", { class: "fade-left" }), index.h("div", { class: "fade-right" }))));
   }
   get root() { return index.getElement(this); }
 };
@@ -577,12 +577,12 @@ const ProductTab = class {
     index.registerInstance(this, hostRef);
   }
   componentWillLoad() {
-    this.ImageReplacer();
+    this.transformedContent = this.ImageReplacer(this.content);
   }
   render() {
     return [
       index.h("button", { class: "accordion", onClick: () => this.onOpen() }, this.name, index.h("ks-icon", { name: this.open ? "minus" : "plus" })),
-      index.h("div", { class: "tab-content" }, index.h("slot", null))
+      index.h("div", { class: "tab-content", innerHTML: this.transformedContent })
     ];
   }
   onOpen() {
@@ -595,8 +595,10 @@ const ProductTab = class {
       this.root.closest('ks-product-tabs').active = index;
     }
   }
-  ImageReplacer() {
-    const images = this.root.querySelectorAll("img");
+  ImageReplacer(data) {
+    let parser = new DOMParser();
+    let description = parser.parseFromString(data, 'text/html');
+    const images = description.querySelectorAll("img");
     for (let i = 0; i < images.length; i++) {
       const image = images[i];
       const ksImage = document.createElement("ks-img2");
@@ -619,12 +621,13 @@ const ProductTab = class {
         ksImage.setAttribute("width", width);
       image.parentNode.replaceChild(ksImage, image);
     }
+    return description.documentElement.innerHTML;
   }
   get root() { return index.getElement(this); }
 };
 ProductTab.style = productTabCss;
 
-const productTabsCss = "ks-product-tabs{display:block;position:relative;-webkit-box-sizing:border-box;box-sizing:border-box;padding:0;background:var(--card-background);color:var(--card-text-color);-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow)}ks-product-tabs nav{background-color:#f6f6f6;border-bottom:1px solid #e8e8e8}@media only screen and (max-width: 960px){ks-product-tabs nav{display:none}}ks-product-tabs button{position:relative;padding:20px 40px;margin:0;font-family:inherit;font-size:18px;color:#252525;background-color:#f6f6f6;-webkit-transition:background-color 0.3s ease, color 0.3s ease;transition:background-color 0.3s ease, color 0.3s ease;border:none;outline:none;border-right:1px solid #e8e8e8}ks-product-tabs button.active{color:#252525 !important;background-color:#FFFFFF}ks-product-tabs button:hover{color:#808080}ks-product-tabs>.content{padding:30px}@media only screen and (max-width: 520px){ks-product-tabs>.content{padding:30px 20px}}";
+const productTabsCss = "ks-product-tabs{display:block;position:relative;-webkit-box-sizing:border-box;box-sizing:border-box;padding:0;background:var(--card-background);color:var(--card-text-color);-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow)}ks-product-tabs nav{background-color:#f6f6f6;border-bottom:1px solid #e8e8e8;display:-ms-flexbox;display:flex}@media only screen and (max-width: 960px){ks-product-tabs nav{display:none}}ks-product-tabs button{position:relative;padding:20px 40px;margin:0;font-family:inherit;font-size:18px;color:#252525;background-color:#f6f6f6;-webkit-transition:background-color 0.3s ease, color 0.3s ease;transition:background-color 0.3s ease, color 0.3s ease;border:none;outline:none;border-right:1px solid #e8e8e8}ks-product-tabs button.active{color:#252525 !important;background-color:#FFFFFF}ks-product-tabs button:hover{color:#808080}ks-product-tabs>.content{padding:30px}@media only screen and (max-width: 520px){ks-product-tabs>.content{padding:30px 20px}}";
 
 const ProductTabs = class {
   constructor(hostRef) {

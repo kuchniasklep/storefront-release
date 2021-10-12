@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-0dd0274e.js');
-const store = require('./store-2513a9ba.js');
+const tracker = require('./tracker-dc1bc991.js');
 require('./index-afac6374.js');
 
 class TikTokTracker {
@@ -209,16 +209,16 @@ const Tracker = class {
     index.registerInstance(this, hostRef);
   }
   componentWillLoad() {
-    store.tracker.get("loaded").then(() => {
+    tracker.tracker.get("loaded").then(() => {
       if (this.tiktok)
         this.appendTracker(new TikTokTracker());
       if (this.facebook)
         this.appendTracker(new FacebookTracker(this.facebook));
-      store.resolve();
+      tracker.resolve();
     });
   }
   appendTracker(obj) {
-    store.tracker.set("trackers", [...store.tracker.get('trackers'), obj]);
+    tracker.tracker.set("trackers", [...tracker.tracker.get('trackers'), obj]);
   }
 };
 

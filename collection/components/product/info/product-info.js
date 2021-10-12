@@ -1,6 +1,6 @@
 import { Component, h, Element, Listen, Event } from '@stencil/core';
 import { OpenSuggestions } from "../../functions";
-import { eachTracker } from '../../tracking/store';
+import { eachTracker } from '../../../global/data/tracker';
 import { product } from "../../../global/data/product";
 export class ProductInfo {
   componentDidLoad() {

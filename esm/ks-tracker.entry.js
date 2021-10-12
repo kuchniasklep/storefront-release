@@ -1,5 +1,5 @@
 import { r as registerInstance } from './index-a14dfead.js';
-import { t as tracker, r as resolve } from './store-90a4ba2a.js';
+import { t as tracker, r as resolve } from './tracker-dce0f039.js';
 import './index-c53317e0.js';
 
 class TikTokTracker {

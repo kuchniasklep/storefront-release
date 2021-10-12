@@ -3,8 +3,10 @@ export declare class ProductTab {
   main: boolean;
   open: boolean;
   name: string;
+  content: string;
+  transformedContent: string;
   componentWillLoad(): void;
   render(): any[];
   onOpen(): void;
-  ImageReplacer(): void;
+  ImageReplacer(data: string): string;
 }

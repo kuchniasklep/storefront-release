@@ -28,6 +28,18 @@ export interface CommonData {
   social: FooterImageLink[];
   reviewers: FooterImageLink[];
   footerLinks: FooterLinkSection[];
+  api: CommonApi;
+  translations: Translations;
+}
+export interface CommonApi {
+  addToCart: string;
+  addToFavourites: string;
+  removeFromFavourites: string;
+}
+export interface Translations {
+  addToCart: string;
+  unavailable: string;
+  seeMore: string;
 }
 export interface Category {
   name: string;

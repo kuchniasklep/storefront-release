@@ -4,7 +4,8 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-0dd0274e.js');
 const functions = require('./functions-5a96038f.js');
-const store = require('./store-2513a9ba.js');
+const tracker = require('./tracker-dc1bc991.js');
+const common = require('./common-c36c5464.js');
 require('./index-afac6374.js');
 
 const buttonCartCss = "ks-button-cart{display:block;height:100%}ks-button-cart[expand]{-ms-flex:1;flex:1}ks-button-cart[padding] button{padding:5px;min-height:50px}@media (min-width: 700px){ks-button-cart[padding] button{padding:10px;min-height:60px}}ks-button-cart button{position:relative;display:block;width:100%;height:100%;min-height:42px;min-width:44px;padding:1px 10px;font-size:.875rem;line-height:40px;text-align:center;text-decoration:none;text-transform:none;font-family:var(--font-regular);outline:none;border:none;border-radius:0px;color:white;background-color:var(--product-card-primary);-webkit-transition:var(--transition-background-color);transition:var(--transition-background-color)}ks-button-cart button:hover{background-color:var(--product-card-primary-hover)}ks-button-cart button:active{background-color:var(--product-card-primary-active)}ks-button-cart[disabled] button{background-color:var(--product-card-disabled-color) !important;color:var(--product-card-disabled-text) !important}";
@@ -68,7 +69,7 @@ const ButtonCart = class {
       navbar.IncrementCart(count);
       functions.OpenSuggestions(this.productId, this.name);
       if (data.event)
-        store.eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(data.event, this.productId, this.name, this.price, 1, "PLN"));
+        tracker.eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(data.event, this.productId, this.name, this.price, 1, "PLN"));
     })
       .catch(error => {
       errorpopup.show(error);
@@ -130,21 +131,37 @@ const ButtonFav = class {
 };
 ButtonFav.style = buttonFavCss;
 
-async function addToCart(id, count, name, price, traits, token) {
-  this.loading = true;
+async function Fetch(url, body) {
+  const headers = new Headers();
+  headers.append('pragma', 'no-cache');
+  headers.append('cache-control', 'no-cache');
+  return fetch(url, {
+    method: 'POST',
+    body: body,
+    headers: headers,
+    credentials: "same-origin"
+  })
+    .then(response => {
+    if (!response.ok)
+      throw { name: response.status, message: response.statusText };
+    return response;
+  });
+}
+
+async function addToCart(id, count, name, price, traits = "", place = 1) {
   const errorpopup = document.querySelector('ks-error-popup');
   const messagepopup = document.querySelector('ks-message-popup');
   const navbar = document.querySelector('ks-navbar');
   let body = new FormData();
   body.append("id", id);
-  body.append("ilosc", count);
+  body.append("ilosc", count.toString());
   body.append("nazwa", name);
   body.append("value", price.toString());
   body.append("cechy", traits);
   body.append("akcja", 'dodaj');
-  body.append("miejsce", '1');
-  // Replace link string with state during prerendering rework
-  await this.fetch("api/cart/product_add.php?tok=" + token, body)
+  body.append("miejsce", place.toString());
+  const api = common.common.get('api').addToCart;
+  return Fetch(api, body)
     .then(async (data) => data.json())
     .then(async (data) => {
     if (!data.status) {
@@ -154,46 +171,93 @@ async function addToCart(id, count, name, price, traits, token) {
         messagepopup.show("Błąd dodawania produktu", data.message);
       return;
     }
-    navbar.IncrementCart(count);
+    navbar.IncrementCart(count.toString());
     OpenSuggestions(this.productId, this.name);
     if (data.event)
-      store.eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(data.event, this.productId, this.name, this.price, 1, "PLN"));
+      tracker.eachTracker(item => item === null || item === void 0 ? void 0 : item.addToCart(data.event, this.productId, this.name, this.price, 1, "PLN"));
   })
     .catch(error => {
     errorpopup.show(error);
   });
-  this.loading = false;
 }
 function OpenSuggestions(id, name) {
   const suggestions = document.querySelector("ks-product-suggestions");
   suggestions.show(id, name);
 }
 
-const productCardCss = "ks-product-card{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:justify;justify-content:space-between;width:100%;text-align:center;background:var(--card-background);color:var(--card-text-color);-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow)}@media (min-width: 360px){ks-product-card{width:calc(50% - 15px)}}@media (min-width: 640px){ks-product-card{width:228px}}ks-product-card .top{display:block;padding:15px;min-height:200px;color:inherit !important;text-decoration:none !important;font-size:14px}ks-product-card ks-img{height:auto;margin-bottom:10px}ks-product-card .price>*{display:block;font-family:var(--font-emphasis)}ks-product-card .price .previous{color:#888888;font-size:15px}ks-product-card .price .current{color:var(--color-secondary);font-weight:bold;font-size:17px}ks-product-card .bottom{display:-ms-flexbox;display:flex;margin-top:10px}ks-product-card .bottom .unavailable,ks-product-card .bottom .link{display:block;width:100%;padding:10px 10px;font-size:.875rem;text-align:center;text-decoration:none;text-transform:none;color:white;background-color:var(--color-secondary);-webkit-transition:var(--transition-background-color);transition:var(--transition-background-color)}ks-product-card .bottom .unavailable{color:#252525;background-color:#f1f1f1}ks-product-card .bottom .link:hover{background-color:var(--color-secondary-hover)}ks-product-card .bottom .link:active{background-color:var(--color-secondary-active)}ks-product-card[unavailable] .top,ks-product-card[unavailable] .price{opacity:0.6}ks-product-card[unavailable] .price .current{color:#252525}@media (max-width: 420px){ks-product-card .top{font-size:13px;padding:8px}ks-product-card .price{line-height:18px}}ks-product-card .cart{position:relative;display:block;width:100%;height:100%;min-height:42px;min-width:44px;padding:1px 10px;font-size:.875rem;line-height:40px;text-align:center;text-decoration:none;text-transform:none;font-family:var(--font-regular);outline:none;border:none;border-radius:0px;color:white;background-color:var(--product-card-primary);-webkit-transition:var(--transition-background-color);transition:var(--transition-background-color)}ks-product-card .cart button:hover{background-color:var(--product-card-primary-hover)}ks-product-card .cart button:active{background-color:var(--product-card-primary-active)}";
+async function addToFavourites(id) {
+  const errorpopup = document.querySelector('ks-error-popup');
+  const navbar = document.querySelector('ks-navbar');
+  let cartBody = new FormData();
+  cartBody.append("id", id);
+  const api = common.common.get('api').addToFavourites;
+  return Fetch(api, cartBody)
+    .then(() => navbar.IncrementHeart())
+    .catch(error => errorpopup.show(error));
+}
+async function removeFromFavourites(id) {
+  const errorpopup = document.querySelector('ks-error-popup');
+  const navbar = document.querySelector('ks-navbar');
+  let cartBody = new FormData();
+  cartBody.append("id", id);
+  cartBody.append("akcja", "usun");
+  const api = common.common.get('api').removeFromFavourites;
+  return Fetch(api, cartBody)
+    .then(() => navbar.DecrementHeart())
+    .catch(error => errorpopup.show(error));
+}
+
+const productCardCss = "ks-product-card{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:justify;justify-content:space-between;width:100%;text-align:center;background:var(--card-background);color:var(--card-text-color);-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow)}@media (min-width: 360px){ks-product-card{width:calc(50% - 15px)}}@media (min-width: 640px){ks-product-card{width:228px}}ks-product-card .top{display:block;padding:15px;min-height:200px;color:inherit !important;text-decoration:none !important;font-size:14px}ks-product-card ks-img{height:auto;margin-bottom:10px}ks-product-card .price>*{display:block;font-family:var(--font-emphasis)}ks-product-card .price .previous{color:#888888;font-size:15px}ks-product-card .price .current{color:var(--color-secondary);font-weight:bold;font-size:17px}ks-product-card .bottom{display:-ms-flexbox;display:flex;margin-top:10px}ks-product-card .bottom .unavailable,ks-product-card .bottom .link{display:block;width:100%;padding:10px 10px;font-size:.875rem;text-align:center;text-decoration:none;text-transform:none;color:white;background-color:var(--color-secondary);-webkit-transition:var(--transition-background-color);transition:var(--transition-background-color)}ks-product-card .bottom .unavailable{color:#252525;background-color:#f1f1f1}ks-product-card .bottom .link:hover{background-color:var(--color-secondary-hover)}ks-product-card .bottom .link:active{background-color:var(--color-secondary-active)}ks-product-card[unavailable] .top,ks-product-card[unavailable] .price{opacity:0.6}ks-product-card[unavailable] .price .current{color:#252525}@media (max-width: 420px){ks-product-card .top{font-size:13px;padding:8px}ks-product-card .price{line-height:18px}}ks-product-card .cart{position:relative;display:block;width:100%;height:100%;min-height:42px;min-width:44px;padding:1px 10px;font-size:.875rem;line-height:40px;text-align:center;text-decoration:none;text-transform:none;font-family:var(--font-regular);outline:none;border:none;border-radius:0px;color:white;background-color:var(--product-card-primary);-webkit-transition:var(--transition-background-color);transition:var(--transition-background-color)}ks-product-card .cart:hover{background-color:var(--product-card-primary-hover)}ks-product-card .cart:active{background-color:var(--product-card-primary-active)}ks-product-card .fav{position:relative;display:block;height:100%;min-height:42px;min-width:44px;padding:1px 10px;font-size:.875rem;line-height:40px;text-align:center;text-decoration:none;text-transform:none;outline:none;border:none;border-radius:0px;color:white;background-color:var(--product-card-secondary);-webkit-transition:var(--transition-background-color);transition:var(--transition-background-color)}ks-product-card .fav:hover{background-color:var(--product-card-secondary-hover)}ks-product-card .fav:active{background-color:var(--product-card-secondary-active)}ks-product-card .fav .success{display:-ms-flexbox;display:flex;position:absolute;top:0;left:0;width:100%;height:100%;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;background-color:var(--product-card-secondary);-webkit-animation:fade-in 0.2s 1;animation:fade-in 0.2s 1}";
 
 const ProductCard = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.unavailable = false;
     this.linkOnly = false;
-    this.uniqueId = "";
+    this.cartLoading = false;
+    this.favLoading = false;
+    this.favSuccess = false;
   }
   cart() {
-    addToCart(this.productId, 1, this.name, this.currentPrice, "", "123");
+    this.cartLoading = true;
+    addToCart(this.productId, 1, this.name, this.currentPrice)
+      .then(() => this.cartLoading = false);
+  }
+  favourites() {
+    if (this.favLoading)
+      return;
+    this.favLoading = true;
+    if (this.favSuccess) {
+      this.favSuccess = false;
+      removeFromFavourites(this.productId).then(() => {
+        this.favLoading = false;
+      });
+    }
+    else {
+      addToFavourites(this.productId).then(() => {
+        this.favSuccess = true;
+        setTimeout(() => this.favLoading = false, 200);
+      });
+    }
   }
   render() {
-    const currentPrice = this.currentPrice ? this.currentPrice.replace(".", ",") + " zł" : "";
-    const previousPrice = this.previousPrice ? this.previousPrice.replace(".", ",") + " zł" : "";
+    const currentPrice = this.currentPrice ? this.currentPrice.toFixed(2) + " zł" : "";
+    const previousPrice = this.previousPrice ? this.previousPrice.toFixed(2) + " zł" : "";
+    const translations = common.common.get('translations');
     return [
       index.h("a", { href: this.link, "aria-label": this.name, class: "top" }, index.h("ks-img", { fill: true, src: this.img, width: 280, height: 280, alt: this.name }), index.h("span", null, this.name)),
       index.h("div", { class: "price" }, this.previousPrice ?
         index.h("s", { class: "previous" }, previousPrice)
         : null, index.h("span", { class: "current" }, currentPrice)),
-      index.h("div", { class: "bottom" }, this.unavailable ? index.h("a", { href: this.link, class: "unavailable" }, "NIEDOST\u0118PNY")
-        : this.linkOnly ? index.h("a", { href: this.link, class: "link" }, "ZOBACZ WI\u0118CEJ")
+      index.h("div", { class: "bottom" }, this.unavailable ? index.h("a", { href: this.link, class: "unavailable" }, translations.unavailable)
+        : this.linkOnly ? index.h("a", { href: this.link, class: "link" }, translations.seeMore)
           : [
-            index.h("ks-button-fav", { "product-id": this.productId }),
-            index.h("button", { class: "cart", onClick: () => this.cart() }, "DO KOSZYKA")
+            index.h("button", { class: "fav", onClick: () => this.favourites() }, this.favLoading ? index.h("ks-loader", null) : index.h("ks-icon", { name: "star" }), this.favSuccess ?
+              index.h("div", { class: "success" }, index.h("ks-icon", { name: "check" }))
+              : null),
+            index.h("button", { class: "cart", onClick: () => this.cart() }, this.cartLoading ?
+              index.h("ks-loader", { large: true }) :
+              index.h("span", null, translations.addToCart))
           ])
     ];
   }

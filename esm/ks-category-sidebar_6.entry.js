@@ -2,7 +2,7 @@ import { r as registerInstance, h, H as Host, g as getElement } from './index-a1
 import { S as Swiper } from './core-class-3f174cf3.js';
 import { P as Pagination } from './pagination-e5b04709.js';
 import { T as Thumbs } from './thumbs-ca1d86c7.js';
-import { c as common } from './common-47e1fd41.js';
+import { c as common } from './common-cf003c43.js';
 import './index-c53317e0.js';
 
 const categorySidebarCss = "ks-category-sidebar>.name{position:relative;cursor:pointer;padding:7px 0px 5px 0px}ks-category-sidebar>.name>ks-icon{position:absolute;top:6px;right:0px}ks-category-sidebar>.children{overflow:hidden;padding:0px 0px 0px 10px;font-size:16px;-webkit-transition:opacity 0.5s ease;transition:opacity 0.5s ease}ks-category-sidebar>.children>a{padding:4px 0px}ks-category-sidebar:not([open])>.children{max-height:0px !important;opacity:0}ks-category-sidebar[open]>.children{padding:5px 0px 8px 10px;opacity:1}ks-category-sidebar .seeall{color:#bbbbbb  !important}";

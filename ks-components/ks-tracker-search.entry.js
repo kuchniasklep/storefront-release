@@ -1,1 +1,1 @@
-import{r as s}from"./index-09939813.js";import{e as o}from"./store-fafb7d22.js";import"./index-8363a60e.js";const t=class{constructor(o){s(this,o),this.eventId=""}componentWillLoad(){o((s=>null==s?void 0:s.search(this.eventId,this.query)))}};export{t as ks_tracker_search}
+import{r as s}from"./index-09939813.js";import{e as r}from"./tracker-9b27da13.js";import"./index-8363a60e.js";const t=class{constructor(r){s(this,r),this.eventId=""}componentWillLoad(){r((s=>null==s?void 0:s.search(this.eventId,this.query)))}};export{t as ks_tracker_search}

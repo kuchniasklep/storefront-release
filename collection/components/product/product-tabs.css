@@ -13,6 +13,8 @@ ks-product-tabs {
 ks-product-tabs nav {
     background-color: #f6f6f6;
     border-bottom: 1px solid #e8e8e8;
+    display: -ms-flexbox;
+    display: flex;
 }
 
 @media only screen and (max-width: 960px) {

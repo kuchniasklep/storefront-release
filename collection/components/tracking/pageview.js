@@ -1,5 +1,5 @@
 import { Component, Prop } from '@stencil/core';
-import { eachTracker } from './store';
+import { eachTracker } from '../../global/data/tracker';
 export class TrackerPageView {
   constructor() {
     this.eventId = "";

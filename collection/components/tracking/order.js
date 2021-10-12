@@ -1,5 +1,5 @@
 import { Component, Prop } from '@stencil/core';
-import { eachTracker } from './store';
+import { eachTracker } from '../../global/data/tracker';
 export class TrackerOrder {
   constructor() {
     this.checkout = false;
@@ -103,7 +103,7 @@ export class TrackerOrder {
         "references": {
           "ITrackerProduct": {
             "location": "import",
-            "path": "./store"
+            "path": "../../global/data/tracker"
           }
         }
       },

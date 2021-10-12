@@ -1,4 +1,4 @@
-import { ITracker, ITrackerProduct } from '../store';
+import { ITracker, ITrackerProduct } from '../data/tracker';
 export declare class TikTokTracker implements ITracker {
   ttq: Promise<any>;
   constructor();

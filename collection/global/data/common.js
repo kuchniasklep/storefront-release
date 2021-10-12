@@ -26,5 +26,6 @@ export const common = createStore({
   categories: [],
   social: [],
   reviewers: [],
-  footerLinks: []
+  footerLinks: [],
+  translations: {}
 });

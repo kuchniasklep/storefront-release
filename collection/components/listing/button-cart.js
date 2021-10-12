@@ -1,6 +1,6 @@
 import { Component, h, Prop, State, Element, Method } from '@stencil/core';
 import { OpenSuggestions } from "../functions";
-import { eachTracker } from '../tracking/store';
+import { eachTracker } from '../../global/data/tracker';
 export class ButtonCart {
   constructor() {
     this.count = "1";

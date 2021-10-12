@@ -1,4 +1,4 @@
-import { ITracker } from './store';
+import { ITracker } from '../../global/data/tracker';
 export declare class Tracker {
   tiktok: boolean;
   facebook: string;

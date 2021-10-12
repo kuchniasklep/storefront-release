@@ -29,7 +29,8 @@ const common = index.createStore({
   categories: [],
   social: [],
   reviewers: [],
-  footerLinks: []
+  footerLinks: [],
+  translations: {}
 });
 
 exports.common = common;

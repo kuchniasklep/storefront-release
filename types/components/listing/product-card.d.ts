@@ -4,10 +4,13 @@ export declare class ProductCard {
   name: string;
   img: string;
   link: string;
-  currentPrice: string;
-  previousPrice: string;
+  currentPrice: number;
+  previousPrice: number;
   productId: string;
-  uniqueId: string;
+  cartLoading: boolean;
+  favLoading: boolean;
+  favSuccess: boolean;
   cart(): void;
+  favourites(): void;
   render(): any[];
 }

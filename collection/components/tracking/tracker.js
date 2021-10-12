@@ -1,7 +1,7 @@
 import { Component, Prop } from '@stencil/core';
-import { tracker, resolve } from './store';
-import { TikTokTracker } from './trackers/tiktok';
-import { FacebookTracker } from './trackers/facebook';
+import { tracker, resolve } from '../../global/data/tracker';
+import { TikTokTracker } from '../../global/trackers/tiktok';
+import { FacebookTracker } from '../../global/trackers/facebook';
 export class Tracker {
   componentWillLoad() {
     tracker.get("loaded").then(() => {

@@ -68,7 +68,7 @@ export class ProductSuggestions {
           this.loading ? h("ks-loader", { dark: true, large: true }) : null,
           h("div", { class: "swiper-container product-suggestions", style: { display: this.loading ? "none" : "block" } },
             h("div", { class: "swiper-wrapper" }, this.products.map((product) => h("div", { class: "swiper-slide" },
-              h("ks-product-card", { "link-only": true, name: product.name, img: product.image, link: product.link, currentPrice: product.currentPrice, previousPrice: product.previousPrice != "0.00" ? product.previousPrice : null }))))),
+              h("ks-product-card", { "link-only": true, name: product.name, img: product.image, link: product.link, currentPrice: parseFloat(product.currentPrice), previousPrice: product.previousPrice != "0.00" ? parseFloat(product.previousPrice) : null }))))),
           h("div", { class: "fade-left" }),
           h("div", { class: "fade-right" }))));
   }

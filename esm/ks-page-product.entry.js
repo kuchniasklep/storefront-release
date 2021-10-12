@@ -1,5 +1,5 @@
 import { r as registerInstance, h, H as Host } from './index-a14dfead.js';
-import { c as common } from './common-47e1fd41.js';
+import { c as common } from './common-cf003c43.js';
 import { p as product } from './product-22d38c43.js';
 import { c as commonDynamic } from './commonDynamic-4e28152d.js';
 import './index-c53317e0.js';
@@ -63,11 +63,9 @@ const PageProduct = class {
         h("ks-product-variants", null, variants.map(variant => h("ks-product-variant", { link: variant.link, image: variant.image, active: variant.active, unavailable: variant.unavailable })))
         : null)
       : null, tabs ?
-      h("ks-container", null, h("ks-product-tabs", { names: tabs.map(tab => tab.name).join(", ") }, tabs.map((tab, index) => h("ks-product-tab", { name: tab.name, open: index == 0, main: index == 0, innerHTML: tab.content }))))
-      : null, youtube || comments ?
-      h("ks-container", null, youtube.map(id => h("ks-product-youtube", { "video-id": id })), comments ?
-        h("ks-product-comments", { link: comments.addLink, message: comments.addMessage }, comments.entries.map((comment, index) => h("ks-comment", { author: comment.author, when: comment.when, innerHTML: comment.content, slot: index > (comments.hideAfter - 1) ? "hidden" : null })))
-        : null)
+      h("ks-container", null, h("ks-product-tabs", { names: tabs.map(tab => tab.name).join(", ") }, tabs.map((tab, index) => h("ks-product-tab", { name: tab.name, open: index == 0, main: index == 0, content: tab.content }))))
+      : null, "t", youtube || comments ?
+      h("ks-container", null, youtube.map(id => h("ks-product-youtube", { "video-id": id })), comments ? h("ks-product-comments", null) : null)
       : null, similar ? [
       h("h3", null, product.get('similarHeading')),
       h("ks-product-container", null, similar.map(card => h("ks-product-card", { "product-id": 0, name: card.name, img: card.image, "current-price": card.currentPrice, "previous-price": card.previousPrice })))

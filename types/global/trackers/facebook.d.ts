@@ -1,4 +1,4 @@
-import { ITracker, ITrackerProduct } from '../store';
+import { ITracker, ITrackerProduct } from '../data/tracker';
 export declare class FacebookTracker implements ITracker {
   pixel: Promise<any>;
   constructor(ids: string);

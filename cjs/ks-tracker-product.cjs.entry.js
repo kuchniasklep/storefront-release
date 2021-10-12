@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-0dd0274e.js');
-const store = require('./store-2513a9ba.js');
+const tracker = require('./tracker-dc1bc991.js');
 require('./index-afac6374.js');
 
 const TrackerProduct = class {
@@ -13,7 +13,7 @@ const TrackerProduct = class {
     this.currency = "PLN";
   }
   componentWillLoad() {
-    store.eachTracker(item => item === null || item === void 0 ? void 0 : item.product(this.eventId, this.productId, this.name, this.price, this.currency));
+    tracker.eachTracker(item => item === null || item === void 0 ? void 0 : item.product(this.eventId, this.productId, this.name, this.price, this.currency));
   }
 };
 

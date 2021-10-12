@@ -1,4 +1,4 @@
-import { ITrackerProduct } from './store';
+import { ITrackerProduct } from '../../global/data/tracker';
 export declare class TrackerOrder {
   checkout: boolean;
   form: boolean;

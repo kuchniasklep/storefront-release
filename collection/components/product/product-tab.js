@@ -1,15 +1,14 @@
 import { Component, h, Prop, Element } from '@stencil/core';
 export class ProductTab {
   componentWillLoad() {
-    this.ImageReplacer();
+    this.transformedContent = this.ImageReplacer(this.content);
   }
   render() {
     return [
       h("button", { class: "accordion", onClick: () => this.onOpen() },
         this.name,
         h("ks-icon", { name: this.open ? "minus" : "plus" })),
-      h("div", { class: "tab-content" },
-        h("slot", null))
+      h("div", { class: "tab-content", innerHTML: this.transformedContent })
     ];
   }
   onOpen() {
@@ -22,8 +21,10 @@ export class ProductTab {
       this.root.closest('ks-product-tabs').active = index;
     }
   }
-  ImageReplacer() {
-    const images = this.root.querySelectorAll("img");
+  ImageReplacer(data) {
+    let parser = new DOMParser();
+    let description = parser.parseFromString(data, 'text/html');
+    const images = description.querySelectorAll("img");
     for (let i = 0; i < images.length; i++) {
       const image = images[i];
       const ksImage = document.createElement("ks-img2");
@@ -46,6 +47,7 @@ export class ProductTab {
         ksImage.setAttribute("width", width);
       image.parentNode.replaceChild(ksImage, image);
     }
+    return description.documentElement.innerHTML;
   }
   static get is() { return "ks-product-tab"; }
   static get originalStyleUrls() { return {
@@ -104,6 +106,23 @@ export class ProductTab {
         "text": ""
       },
       "attribute": "name",
+      "reflect": false
+    },
+    "content": {
+      "type": "string",
+      "mutable": false,
+      "complexType": {
+        "original": "string",
+        "resolved": "string",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": ""
+      },
+      "attribute": "content",
       "reflect": false
     }
   }; }
