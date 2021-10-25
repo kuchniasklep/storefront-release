@@ -116,6 +116,7 @@ export class Cart {
     return dataWithoutProducts;
   }
   SetAmount(amount, querySelector) {
+    console.log("test");
     const component = document.querySelector(querySelector);
     if (component && 'SetAmount' in component)
       component.SetAmount(amount);
@@ -131,6 +132,7 @@ export class Cart {
       else
         this.update(data);
     }
+    document.querySelectorAll(`ks-cart-product ks-cart-spinner`).forEach(spinner => spinner.ResetAmount());
   }
   async CountryChange(event) {
     const code = event.detail;

@@ -12,5 +12,6 @@ export declare class CartSpinner {
   changed: EventEmitter;
   onChangedHandler(current: number, last: number): void;
   SetAmount(amount: number): Promise<void>;
+  ResetAmount(): Promise<void>;
   render(): any;
 }
