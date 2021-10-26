@@ -237,6 +237,7 @@ const Cart = class {
     Object.keys(data).map(key => {
       cartStore.store.set(key, data[key]);
     });
+    console.log("update");
   }
   render() {
     return index.h("slot", null);
@@ -1058,8 +1059,8 @@ const CartSpinner = class {
     this.value = amount;
   }
   async ResetAmount() {
+    console.log(this.initialValue);
     this.value = this.initialValue;
-    this.root.querySelector('input').value = this.value.toString();
   }
   render() {
     return (this.max == 1 ?

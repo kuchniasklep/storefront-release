@@ -44,8 +44,8 @@ export class CartSpinner {
     this.value = amount;
   }
   async ResetAmount() {
+    console.log(this.initialValue);
     this.value = this.initialValue;
-    this.root.querySelector('input').value = this.value.toString();
   }
   render() {
     return (this.max == 1 ?

@@ -229,6 +229,7 @@ export class Cart {
     Object.keys(data).map(key => {
       store.set(key, data[key]);
     });
+    console.log("update");
   }
   render() {
     return h("slot", null);
