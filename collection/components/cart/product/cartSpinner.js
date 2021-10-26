@@ -94,7 +94,7 @@ export class CartSpinner {
         "text": ""
       },
       "attribute": "initial-value",
-      "reflect": false,
+      "reflect": true,
       "defaultValue": "1"
     },
     "max": {

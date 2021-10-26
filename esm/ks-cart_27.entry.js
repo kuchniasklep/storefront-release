@@ -130,12 +130,11 @@ const Cart = class {
     store.set("loadingDeals", true);
     const data = await this.fetch(this.addDeal, { "id": id });
     store.set("loadingDeals", false);
-    if (data) {
-      if ('error' in data)
-        this.messagePopup.show("Błąd dodawania gratisu", data.error.message);
-      else
-        this.update(data);
-    }
+    if (data && 'error' in data)
+      this.messagePopup.show("Błąd dodawania gratisu", data.error.message);
+    else
+      return;
+    await this.update(data);
     this.render();
     document.querySelectorAll(`ks-cart-product ks-cart-spinner`).forEach(spinner => spinner.ResetAmount());
   }
