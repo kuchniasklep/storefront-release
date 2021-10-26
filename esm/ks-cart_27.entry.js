@@ -126,6 +126,7 @@ const Cart = class {
       component.SetAmount(amount);
   }
   async AddDeal(event) {
+    var _a;
     const id = event.detail;
     store.set("loadingDeals", true);
     const data = await this.fetch(this.addDeal, { "id": id });
@@ -136,7 +137,11 @@ const Cart = class {
     }
     else
       await this.update(data);
-    document.querySelectorAll(`ks-cart-product ks-cart-spinner`).forEach(spinner => spinner.ResetAmount());
+    for (const key in store.get('products')) {
+      const product = store.get('products')[key];
+      const spinner = document.querySelector(`ks-cart-product[product-id="${product.id}"] ks-cart-spinner`);
+      (_a = spinner) === null || _a === void 0 ? void 0 : _a.SetAmount(product.amount);
+    }
   }
   async CountryChange(event) {
     const code = event.detail;
@@ -233,7 +238,6 @@ const Cart = class {
     Object.keys(data).map(key => {
       store.set(key, data[key]);
     });
-    console.log("update");
   }
   render() {
     return h("slot", null);
@@ -1053,10 +1057,6 @@ const CartSpinner = class {
   }
   async SetAmount(amount) {
     this.value = amount;
-  }
-  async ResetAmount() {
-    console.log(this.initialValue);
-    this.value = this.initialValue;
   }
   render() {
     return (this.max == 1 ?

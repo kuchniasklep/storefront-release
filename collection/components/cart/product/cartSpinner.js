@@ -43,10 +43,6 @@ export class CartSpinner {
   async SetAmount(amount) {
     this.value = amount;
   }
-  async ResetAmount() {
-    console.log(this.initialValue);
-    this.value = this.initialValue;
-  }
   render() {
     return (this.max == 1 ?
       h("div", null, "1 szt.") :
@@ -143,22 +139,6 @@ export class CartSpinner {
             "tags": [],
             "text": ""
           }],
-        "references": {
-          "Promise": {
-            "location": "global"
-          }
-        },
-        "return": "Promise<void>"
-      },
-      "docs": {
-        "text": "",
-        "tags": []
-      }
-    },
-    "ResetAmount": {
-      "complexType": {
-        "signature": "() => Promise<void>",
-        "parameters": [],
         "references": {
           "Promise": {
             "location": "global"

@@ -246,7 +246,6 @@ export namespace Components {
     interface KsCartShippingMessage {
     }
     interface KsCartSpinner {
-        "ResetAmount": () => Promise<void>;
         "SetAmount": (amount: number) => Promise<void>;
         "initialValue": number;
         "max": number;
