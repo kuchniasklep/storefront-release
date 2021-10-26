@@ -1,4 +1,4 @@
-import { Component, h, Prop, Event, Method, State } from '@stencil/core';
+import { Component, h, Prop, Event, Method, State, Element } from '@stencil/core';
 export class CartSpinner {
   constructor() {
     this.initialValue = 1;
@@ -45,6 +45,7 @@ export class CartSpinner {
   }
   async ResetAmount() {
     this.value = this.initialValue;
+    this.root.querySelector('input').value = this.value.toString();
   }
   render() {
     return (this.max == 1 ?
@@ -171,4 +172,5 @@ export class CartSpinner {
       }
     }
   }; }
+  static get elementRef() { return "root"; }
 }

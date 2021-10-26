@@ -1055,12 +1055,14 @@ const CartSpinner = class {
   }
   async ResetAmount() {
     this.value = this.initialValue;
+    this.root.querySelector('input').value = this.value.toString();
   }
   render() {
     return (this.max == 1 ?
       h("div", null, "1 szt.") :
       h("div", null, h("button", { class: "uk-button uk-button-muted", onClick: () => this.Decrement() }, "-"), h("input", { type: "text", maxlength: "3", value: this.value, name: this.name, onChange: (e) => this.Change(e), class: "uk-input" }), h("button", { class: "uk-button uk-button-muted", onClick: () => this.Increment() }, "+")));
   }
+  get root() { return getElement(this); }
 };
 CartSpinner.style = cartSpinnerCss;
 

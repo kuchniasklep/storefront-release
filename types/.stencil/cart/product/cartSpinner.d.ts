@@ -1,5 +1,6 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
 export declare class CartSpinner {
+  root: HTMLElement;
   name: string;
   initialValue: number;
   max: number;
