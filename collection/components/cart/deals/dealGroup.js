@@ -1,8 +1,6 @@
 import { Component, h, Prop, Event, State } from '@stencil/core';
+import { store } from '../cart-store';
 export class CartDealGroup {
-  constructor() {
-    this.loading = false;
-  }
   componentWillLoad() {
     this.currentDeal = this.deals[0];
   }
@@ -11,7 +9,6 @@ export class CartDealGroup {
     this.currentDeal = this.deals[select.selectedIndex];
   }
   Add() {
-    this.loading = true;
     this.addDeal.emit(this.currentDeal.id);
   }
   render() {
@@ -36,8 +33,8 @@ export class CartDealGroup {
             h("select", { class: "ks-text-decorated", onChange: event => this.change(event.target) }, this.deals.map(deal => h("option", null, deal.name))))),
         h("div", { class: "bottom" },
           this.currentDeal.price,
-          h("button", { class: "ks-text-decorated small", onClick: () => this.Add() }, this.loading ? h("div", { "uk-spinner": "ratio: 0.8" }) : h("span", null, "DODAJ DO KOSZYKA")))),
-      h("button", { class: "ks-text-decorated large", onClick: () => this.Add() }, this.loading ? h("div", { "uk-spinner": "ratio: 0.8" }) : h("span", null, "DODAJ DO KOSZYKA"))
+          h("button", { class: "ks-text-decorated small", onClick: () => this.Add() }, store.get('loadingDeals') ? h("div", { "uk-spinner": "ratio: 0.8" }) : h("span", null, "DODAJ DO KOSZYKA")))),
+      h("button", { class: "ks-text-decorated large", onClick: () => this.Add() }, store.get('loadingDeals') ? h("div", { "uk-spinner": "ratio: 0.8" }) : h("span", null, "DODAJ DO KOSZYKA"))
     ];
   }
   static get is() { return "ks-cart-deal-group"; }
@@ -104,8 +101,7 @@ export class CartDealGroup {
     }
   }; }
   static get states() { return {
-    "currentDeal": {},
-    "loading": {}
+    "currentDeal": {}
   }; }
   static get events() { return [{
       "method": "addDeal",

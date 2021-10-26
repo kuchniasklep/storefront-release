@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-7d3fd69d.js');
-const cartStore = require('./cart-store-4bf60634.js');
+const cartStore = require('./cart-store-5805cf52.js');
 require('./index-b0bdcebf.js');
 
 const cartCss = "ks-cart{display:block;-webkit-box-sizing:border-box;box-sizing:border-box;overflow:hidden;width:100%;background:var(--card-background);color:var(--card-text-color);-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow)}";
@@ -131,15 +131,16 @@ const Cart = class {
   }
   async AddDeal(event) {
     const id = event.detail;
-    const data = await this.ProductLoadingWrapper(async () => {
-      return this.fetch(this.addDeal, { "id": id });
-    });
+    cartStore.store.set("loadingDeals", true);
+    const data = await this.fetch(this.addDeal, { "id": id });
+    cartStore.store.set("loadingDeals", false);
     if (data) {
       if ('error' in data)
         this.messagePopup.show("Błąd dodawania gratisu", data.error.message);
       else
         this.update(data);
     }
+    this.render();
     document.querySelectorAll(`ks-cart-product ks-cart-spinner`).forEach(spinner => spinner.ResetAmount());
   }
   async CountryChange(event) {
@@ -323,14 +324,13 @@ const CartDeal = class {
     this.loading = false;
   }
   Add() {
-    this.loading = true;
     this.addDeal.emit(this.ikey);
   }
   render() {
     return [
       index.h("a", { href: this.link }, index.h("div", { class: "image" }, index.h("div", { class: "circle center" }, index.h("ks-img", { src: this.img, alt: this.name, vertical: true, center: true })), index.h("svg", { class: "fx fx1 center", width: "250", height: "250" }, index.h("circle", { cx: "125", cy: "125", r: "80", fill: "transparent", stroke: "white", "stroke-width": "3", "stroke-dasharray": "50, 32" })), index.h("svg", { class: "fx fx2 center", width: "250", height: "250" }, index.h("circle", { cx: "125", cy: "125", r: "88", fill: "transparent", stroke: "white", "stroke-width": "3", "stroke-dasharray": "50,59" })), index.h("svg", { class: "fx fx3 center", width: "250", height: "250" }, index.h("circle", { cx: "125", cy: "125", r: "96", fill: "transparent", stroke: "white", "stroke-width": "3", "stroke-dasharray": "30,30" })), index.h("svg", { class: "fx fx4 center", width: "250", height: "250" }, index.h("circle", { cx: "125", cy: "125", r: "106", fill: "transparent", stroke: "white", "stroke-width": "3", "stroke-dasharray": "70,60" })))),
-      index.h("div", { class: "text ks-text-decorated" }, index.h("div", { class: "top" }, index.h("a", { href: this.link }, this.name)), index.h("div", { class: "bottom" }, this.price, index.h("button", { class: "ks-text-decorated small", onClick: () => this.Add() }, this.loading ? index.h("div", { "uk-spinner": "ratio: 0.8" }) : index.h("span", null, "DODAJ DO KOSZYKA")))),
-      index.h("button", { class: "ks-text-decorated large", onClick: () => this.Add() }, this.loading ? index.h("div", { "uk-spinner": "ratio: 0.8" }) : index.h("span", null, "DODAJ DO KOSZYKA"))
+      index.h("div", { class: "text ks-text-decorated" }, index.h("div", { class: "top" }, index.h("a", { href: this.link }, this.name)), index.h("div", { class: "bottom" }, this.price, index.h("button", { class: "ks-text-decorated small", onClick: () => this.Add() }, cartStore.store.get('loadingDeals') ? index.h("div", { "uk-spinner": "ratio: 0.8" }) : index.h("span", null, "DODAJ DO KOSZYKA")))),
+      index.h("button", { class: "ks-text-decorated large", onClick: () => this.Add() }, cartStore.store.get('loadingDeals') ? index.h("div", { "uk-spinner": "ratio: 0.8" }) : index.h("span", null, "DODAJ DO KOSZYKA"))
     ];
   }
 };
@@ -355,7 +355,6 @@ const CartDealGroup = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.addDeal = index.createEvent(this, "addDeal", 7);
-    this.loading = false;
   }
   componentWillLoad() {
     this.currentDeal = this.deals[0];
@@ -365,14 +364,13 @@ const CartDealGroup = class {
     this.currentDeal = this.deals[select.selectedIndex];
   }
   Add() {
-    this.loading = true;
     this.addDeal.emit(this.currentDeal.id);
   }
   render() {
     return [
       index.h("a", { href: this.currentDeal.link }, index.h("div", { class: "image" }, index.h("div", { class: "circle center" }, index.h("ks-img", { src: this.currentDeal.img, alt: this.name, vertical: true, center: true })), index.h("svg", { class: "fx fx1 center", width: "250", height: "250" }, index.h("circle", { cx: "125", cy: "125", r: "80", fill: "transparent", stroke: "white", "stroke-width": "3", "stroke-dasharray": "50, 32" })), index.h("svg", { class: "fx fx2 center", width: "250", height: "250" }, index.h("circle", { cx: "125", cy: "125", r: "88", fill: "transparent", stroke: "white", "stroke-width": "3", "stroke-dasharray": "50,59" })), index.h("svg", { class: "fx fx3 center", width: "250", height: "250" }, index.h("circle", { cx: "125", cy: "125", r: "96", fill: "transparent", stroke: "white", "stroke-width": "3", "stroke-dasharray": "30,30" })), index.h("svg", { class: "fx fx4 center", width: "250", height: "250" }, index.h("circle", { cx: "125", cy: "125", r: "106", fill: "transparent", stroke: "white", "stroke-width": "3", "stroke-dasharray": "70,60" })))),
-      index.h("div", { class: "text ks-text-decorated" }, index.h("div", { class: "top" }, index.h("a", { href: this.currentDeal.link }, this.name), index.h("div", { class: "variants" }, index.h("label", null, "Wybierz kolor:"), index.h("select", { class: "ks-text-decorated", onChange: event => this.change(event.target) }, this.deals.map(deal => index.h("option", null, deal.name))))), index.h("div", { class: "bottom" }, this.currentDeal.price, index.h("button", { class: "ks-text-decorated small", onClick: () => this.Add() }, this.loading ? index.h("div", { "uk-spinner": "ratio: 0.8" }) : index.h("span", null, "DODAJ DO KOSZYKA")))),
-      index.h("button", { class: "ks-text-decorated large", onClick: () => this.Add() }, this.loading ? index.h("div", { "uk-spinner": "ratio: 0.8" }) : index.h("span", null, "DODAJ DO KOSZYKA"))
+      index.h("div", { class: "text ks-text-decorated" }, index.h("div", { class: "top" }, index.h("a", { href: this.currentDeal.link }, this.name), index.h("div", { class: "variants" }, index.h("label", null, "Wybierz kolor:"), index.h("select", { class: "ks-text-decorated", onChange: event => this.change(event.target) }, this.deals.map(deal => index.h("option", null, deal.name))))), index.h("div", { class: "bottom" }, this.currentDeal.price, index.h("button", { class: "ks-text-decorated small", onClick: () => this.Add() }, cartStore.store.get('loadingDeals') ? index.h("div", { "uk-spinner": "ratio: 0.8" }) : index.h("span", null, "DODAJ DO KOSZYKA")))),
+      index.h("button", { class: "ks-text-decorated large", onClick: () => this.Add() }, cartStore.store.get('loadingDeals') ? index.h("div", { "uk-spinner": "ratio: 0.8" }) : index.h("span", null, "DODAJ DO KOSZYKA"))
     ];
   }
 };
@@ -1061,7 +1059,6 @@ const CartSpinner = class {
     this.value = amount;
   }
   async ResetAmount() {
-    console.log("reset");
     this.value = this.initialValue;
   }
   render() {

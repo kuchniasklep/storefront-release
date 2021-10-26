@@ -5,7 +5,6 @@ export declare class CartDealGroup {
   name: string;
   deals: deal[];
   currentDeal: deal;
-  loading: boolean;
   componentWillLoad(): void;
   change(target: EventTarget): void;
   addDeal: EventEmitter<string>;

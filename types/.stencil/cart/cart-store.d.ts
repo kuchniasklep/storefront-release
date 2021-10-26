@@ -21,6 +21,7 @@ export declare const store: import("@stencil/store").ObservableMap<{
   discount: cart.discount;
   loading: number;
   loadingProducts: number;
+  loadingDeals: boolean;
   easyprotect: cart.easyprotect;
   insured: cart.easyprotectInsured;
 }>;

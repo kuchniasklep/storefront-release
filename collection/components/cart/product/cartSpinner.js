@@ -44,7 +44,6 @@ export class CartSpinner {
     this.value = amount;
   }
   async ResetAmount() {
-    console.log("reset");
     this.value = this.initialValue;
   }
   render() {

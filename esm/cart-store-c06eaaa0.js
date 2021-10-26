@@ -1,6 +1,35 @@
-import { createStore } from "@stencil/store";
-import { jsonfetch, formfetch } from "../fetch";
-export const store = createStore({
+import { c as createStore } from './index-6478ec90.js';
+
+async function formfetch(url, formProperties) {
+  let body = null;
+  if (formProperties) {
+    body = new FormData();
+    Object.entries(formProperties).forEach(([key, value]) => {
+      body.append(key, value);
+    });
+  }
+  return internalfetch(url, body);
+}
+async function jsonfetch(url, data) {
+  return internalfetch(url, JSON.stringify(data));
+}
+async function internalfetch(url, body) {
+  const headers = new Headers();
+  headers.append('pragma', 'no-cache');
+  headers.append('cache-control', 'no-cache');
+  return fetch(url, {
+    method: 'POST',
+    body: body,
+    headers: headers,
+    credentials: "same-origin"
+  }).then(response => {
+    if (!response.ok)
+      throw { name: response.status, message: response.statusText };
+    return response;
+  });
+}
+
+const store = createStore({
   api: {},
   totalValue: 0,
   productValue: 0,
@@ -26,7 +55,7 @@ export const store = createStore({
   easyprotect: {},
   insured: {},
 });
-export async function easyprotectChange(insured) {
+async function easyprotectChange(insured) {
   const api = store.get("api").easyprotectChange;
   loading();
   await jsonfetch(api, insured)
@@ -34,7 +63,7 @@ export async function easyprotectChange(insured) {
     .then(json => update(json));
   loaded();
 }
-export async function easyprotectRemove(id) {
+async function easyprotectRemove(id) {
   const api = store.get("api").easyprotectRemove;
   loading();
   await formfetch(api, { "id": id })
@@ -53,3 +82,5 @@ function loading() {
 function loaded() {
   store.set("loading", store.get("loading") - 1);
 }
+
+export { easyprotectRemove as a, easyprotectChange as e, formfetch as f, store as s };

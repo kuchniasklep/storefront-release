@@ -1,10 +1,10 @@
 import { Component, h, Prop, State, Event } from '@stencil/core';
+import { store } from '../cart-store';
 export class CartDeal {
   constructor() {
     this.loading = false;
   }
   Add() {
-    this.loading = true;
     this.addDeal.emit(this.ikey);
   }
   render() {
@@ -26,8 +26,8 @@ export class CartDeal {
           h("a", { href: this.link }, this.name)),
         h("div", { class: "bottom" },
           this.price,
-          h("button", { class: "ks-text-decorated small", onClick: () => this.Add() }, this.loading ? h("div", { "uk-spinner": "ratio: 0.8" }) : h("span", null, "DODAJ DO KOSZYKA")))),
-      h("button", { class: "ks-text-decorated large", onClick: () => this.Add() }, this.loading ? h("div", { "uk-spinner": "ratio: 0.8" }) : h("span", null, "DODAJ DO KOSZYKA"))
+          h("button", { class: "ks-text-decorated small", onClick: () => this.Add() }, store.get('loadingDeals') ? h("div", { "uk-spinner": "ratio: 0.8" }) : h("span", null, "DODAJ DO KOSZYKA")))),
+      h("button", { class: "ks-text-decorated large", onClick: () => this.Add() }, store.get('loadingDeals') ? h("div", { "uk-spinner": "ratio: 0.8" }) : h("span", null, "DODAJ DO KOSZYKA"))
     ];
   }
   static get is() { return "ks-cart-deal"; }

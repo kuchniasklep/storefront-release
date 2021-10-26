@@ -22,6 +22,7 @@ export interface data {
   discount?: discount;
   loading?: number;
   loadingProducts?: number;
+  loadingDeals?: boolean;
   easyprotect?: easyprotect;
   insured?: easyprotectInsured;
 }
