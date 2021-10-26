@@ -134,7 +134,7 @@ const Cart = class {
     cartStore.store.set("loadingDeals", true);
     const data = await this.fetch(this.addDeal, { "id": id });
     cartStore.store.set("loadingDeals", false);
-    if (data && 'error' in data) {
+    if (!data || 'error' in data) {
       this.messagePopup.show("Błąd dodawania gratisu", data.error.message);
       return;
     }
