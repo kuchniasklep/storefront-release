@@ -60,21 +60,21 @@ const PageProduct = class {
         : null, installments.caParameters ?
         index.h("ks-product-calculator-ca", { price: product.product.get("currentPrice"), parameters: installments.caParameters }, index.h("ks-product-button", { icon: installments.caIcon }))
         : null)
-      : null), index.h("ks-product-brand", { slot: "brand" }))), tags || variants ?
-      index.h("ks-container", { padding: true }, tags ?
+      : null), index.h("ks-product-brand", { slot: "brand" }))), (tags === null || tags === void 0 ? void 0 : tags.length) > 0 || (variants === null || variants === void 0 ? void 0 : variants.length) > 0 ?
+      index.h("ks-container", { padding: true }, (tags === null || tags === void 0 ? void 0 : tags.length) > 0 ?
         index.h("ks-product-tags", null, tags.map(tag => index.h("a", { href: tag.link }, tag.name)))
-        : null, variants ?
+        : null, (variants === null || variants === void 0 ? void 0 : variants.length) > 0 ?
         index.h("ks-product-variants", null, variants.map(variant => index.h("ks-product-variant", { link: variant.link, image: variant.image, active: variant.active, unavailable: variant.unavailable })))
         : null)
-      : null, tabs ?
+      : null, (tabs === null || tabs === void 0 ? void 0 : tabs.length) > 0 ?
       index.h("ks-container", null, index.h("ks-product-tabs", { names: tabs.map(tab => tab.name).join(", ") }, tabs.map((tab, index$1) => index.h("ks-product-tab", { name: tab.name, open: index$1 == 0, main: index$1 == 0, content: tab.content }))))
-      : null, "t", youtube || comments ?
+      : null, youtube || comments ?
       index.h("ks-container", null, youtube.map(id => index.h("ks-product-youtube", { "video-id": id })), comments ? index.h("ks-product-comments", null) : null)
-      : null, similar ? [
+      : null, (similar === null || similar === void 0 ? void 0 : similar.length) > 0 ? [
       index.h("h3", null, product.product.get('similarHeading')),
       index.h("ks-product-container", null, similar.map(card => index.h("ks-product-card", { "product-id": 0, name: card.name, img: card.image, "current-price": card.currentPrice, "previous-price": card.previousPrice })))
     ]
-      : null, accessories ? [
+      : null, (accessories === null || accessories === void 0 ? void 0 : accessories.length) > 0 ? [
       index.h("h3", null, product.product.get('accessoriesHeading')),
       index.h("ks-product-container", null, accessories.map(card => index.h("ks-product-card", { "product-id": 0, name: card.name, img: card.image, "current-price": card.currentPrice, "previous-price": card.previousPrice })))
     ]

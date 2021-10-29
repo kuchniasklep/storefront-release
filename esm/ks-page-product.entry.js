@@ -56,21 +56,21 @@ const PageProduct = class {
         : null, installments.caParameters ?
         h("ks-product-calculator-ca", { price: product.get("currentPrice"), parameters: installments.caParameters }, h("ks-product-button", { icon: installments.caIcon }))
         : null)
-      : null), h("ks-product-brand", { slot: "brand" }))), tags || variants ?
-      h("ks-container", { padding: true }, tags ?
+      : null), h("ks-product-brand", { slot: "brand" }))), (tags === null || tags === void 0 ? void 0 : tags.length) > 0 || (variants === null || variants === void 0 ? void 0 : variants.length) > 0 ?
+      h("ks-container", { padding: true }, (tags === null || tags === void 0 ? void 0 : tags.length) > 0 ?
         h("ks-product-tags", null, tags.map(tag => h("a", { href: tag.link }, tag.name)))
-        : null, variants ?
+        : null, (variants === null || variants === void 0 ? void 0 : variants.length) > 0 ?
         h("ks-product-variants", null, variants.map(variant => h("ks-product-variant", { link: variant.link, image: variant.image, active: variant.active, unavailable: variant.unavailable })))
         : null)
-      : null, tabs ?
+      : null, (tabs === null || tabs === void 0 ? void 0 : tabs.length) > 0 ?
       h("ks-container", null, h("ks-product-tabs", { names: tabs.map(tab => tab.name).join(", ") }, tabs.map((tab, index) => h("ks-product-tab", { name: tab.name, open: index == 0, main: index == 0, content: tab.content }))))
-      : null, "t", youtube || comments ?
+      : null, youtube || comments ?
       h("ks-container", null, youtube.map(id => h("ks-product-youtube", { "video-id": id })), comments ? h("ks-product-comments", null) : null)
-      : null, similar ? [
+      : null, (similar === null || similar === void 0 ? void 0 : similar.length) > 0 ? [
       h("h3", null, product.get('similarHeading')),
       h("ks-product-container", null, similar.map(card => h("ks-product-card", { "product-id": 0, name: card.name, img: card.image, "current-price": card.currentPrice, "previous-price": card.previousPrice })))
     ]
-      : null, accessories ? [
+      : null, (accessories === null || accessories === void 0 ? void 0 : accessories.length) > 0 ? [
       h("h3", null, product.get('accessoriesHeading')),
       h("ks-product-container", null, accessories.map(card => h("ks-product-card", { "product-id": 0, name: card.name, img: card.image, "current-price": card.currentPrice, "previous-price": card.previousPrice })))
     ]
