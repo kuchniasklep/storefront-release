@@ -84,7 +84,7 @@ export class PageProduct {
           h("ks-product-brand", { slot: "brand" }))),
       (tags === null || tags === void 0 ? void 0 : tags.length) > 0 || (variants === null || variants === void 0 ? void 0 : variants.length) > 0 ?
         h("ks-container", { padding: true },
-          (tags === null || tags === void 0 ? void 0 : tags.length) > 0 ?
+          (tags === null || tags === void 0 ? void 0 : tags.length) > 0 && !((variants === null || variants === void 0 ? void 0 : variants.length) > 0) ?
             h("ks-product-tags", null, tags.map(tag => h("a", { href: tag.link }, tag.name)))
             : null,
           (variants === null || variants === void 0 ? void 0 : variants.length) > 0 ?
@@ -94,6 +94,10 @@ export class PageProduct {
       (tabs === null || tabs === void 0 ? void 0 : tabs.length) > 0 ?
         h("ks-container", null,
           h("ks-product-tabs", { names: tabs.map(tab => tab.name).join(", ") }, tabs.map((tab, index) => h("ks-product-tab", { name: tab.name, open: index == 0, main: index == 0, content: tab.content }))))
+        : null,
+      (tags === null || tags === void 0 ? void 0 : tags.length) > 0 && (variants === null || variants === void 0 ? void 0 : variants.length) > 0 ?
+        h("ks-container", { padding: true },
+          h("ks-product-tags", null, tags.map(tag => h("a", { href: tag.link }, tag.name))))
         : null,
       youtube || comments ?
         h("ks-container", null,
