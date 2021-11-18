@@ -39,6 +39,8 @@ let NavbarCategorySidebar = class {
     this.open = false;
   }
   render() {
+    if (!this.category)
+      return;
     return index.h(index.Host, null, index.h("div", { class: "name", onClick: () => this.click() }, index.h("span", null, this.category.name), 'children' in this.category ? index.h("ks-icon", { name: this.open ? "minus" : "plus" }) : null), 'children' in this.category ?
       index.h("div", { class: "children" }, this.category.children.map(category => 'children' in category ?
         index.h("ks-category-sidebar", { category: category }) :

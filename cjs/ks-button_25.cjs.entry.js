@@ -74,6 +74,8 @@ let NavbarCategorySimple = class {
     }, 200);
   }
   render() {
+    if (!this.category)
+      return;
     const childrenstyle = {
       visibility: this.hidden ? "hidden" : "visible",
       opacity: this.hiddenO ? "0.0" : "1.0"

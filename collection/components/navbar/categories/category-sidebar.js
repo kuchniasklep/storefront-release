@@ -26,6 +26,8 @@ export class NavbarCategorySidebar {
     this.open = false;
   }
   render() {
+    if (!this.category)
+      return;
     return h(Host, null,
       h("div", { class: "name", onClick: () => this.click() },
         h("span", null, this.category.name),
