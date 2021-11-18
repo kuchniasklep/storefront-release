@@ -108,7 +108,6 @@ ks-product-purchase > button.fav {
 
 ks-product-purchase > button.fav ks-icon {
     -webkit-transform: rotate(0);
-        -ms-transform: rotate(0);
             transform: rotate(0);
     transition: -webkit-transform 0.1s ease;
     transition: transform 0.1s ease;
@@ -117,7 +116,6 @@ ks-product-purchase > button.fav ks-icon {
 
 ks-product-purchase > button.fav:hover ks-icon {
     -webkit-transform: rotate(72deg);
-        -ms-transform: rotate(72deg);
             transform: rotate(72deg);
 }
 
@@ -151,8 +149,6 @@ ks-product-purchase button.fav ks-icon.completed {
     color: white;
 
     -webkit-transform: translate(-50%, -50%);
-
-        -ms-transform: translate(-50%, -50%);
 
             transform: translate(-50%, -50%);
     transition: var(--transition-opacity);

@@ -1,7 +1,7 @@
-import { r as registerInstance, h, g as getElement } from './index-a14dfead.js';
+import { r as registerInstance, h, g as getElement } from './index-7a533c43.js';
 import { a as RemoveAllFavourites } from './functions-d67550e3.js';
 
-const FavouritesHeader = class {
+let FavouritesHeader = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
   }
@@ -12,7 +12,8 @@ const FavouritesHeader = class {
       h("ks-flex", { between: true, middle: true, gutter: true }, h("div", { class: "uk-text-center uk-width-1-1 uk-width-auto@m ks-text-decorated", style: { padding: "0 20px" } }, h("span", { class: "uk-h1" }, "SCHOWEK: "), h("span", { class: "uk-h1 uk-text-danger uk-text-bold", style: { marginLeft: "10px" } }, value)), h("div", { class: "uk-text-center uk-width-1-1 uk-width-auto@m" }, h("button", { class: "uk-button uk-button-danger uk-border-pill", style: { padding: "3px 30px" }, onClick: () => {
           RemoveAllFavourites();
         } }, "WYCZY\u015A\u0106 SCHOWEK"))),
-      h("br", { class: "uk-hidden@m" }), h("hr", null)
+      h("br", { class: "uk-hidden@m" }),
+      h("hr", null)
     ];
   }
   get root() { return getElement(this); }

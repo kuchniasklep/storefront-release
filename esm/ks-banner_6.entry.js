@@ -1,11 +1,11 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-a14dfead.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-7a533c43.js';
 import { w as window_load } from './deferredpromise-0f64146f.js';
-import { b as bindModuleMethods, g as getDocument, n as nextTick, S as Swiper } from './core-class-3f174cf3.js';
-import { P as Pagination } from './pagination-e5b04709.js';
+import { b as bindModuleMethods, g as getDocument, n as nextTick, S as Swiper } from './core-class-5b6160e1.js';
+import { P as Pagination } from './pagination-c9190fdf.js';
 
 const bannerCss = "ks-banner{display:block;width:100%;max-height:550px;height:100%}ks-banner.swiper-slide{height:auto}ks-banner>a{height:100%;display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;max-height:550px}ks-product-images a{position:relative}ks-product-images a canvas{max-width:100%;max-height:550px}ks-banner a ks-img{position:absolute;top:0;left:0;width:100%;max-height:550px;margin:auto}";
 
-const Banner = class {
+let Banner = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
   }
@@ -110,8 +110,9 @@ var Autoplay = {
       swiper.autoplay.paused = false;
       swiper.autoplay.run();
     } else {
-      swiper.$wrapperEl[0].addEventListener('transitionend', swiper.autoplay.onTransitionEnd);
-      swiper.$wrapperEl[0].addEventListener('webkitTransitionEnd', swiper.autoplay.onTransitionEnd);
+      ['transitionend', 'webkitTransitionEnd'].forEach(function (event) {
+        swiper.$wrapperEl[0].addEventListener(event, swiper.autoplay.onTransitionEnd);
+      });
     }
   },
   onVisibilityChange: function onVisibilityChange() {
@@ -131,8 +132,9 @@ var Autoplay = {
     var swiper = this;
     if (!swiper || swiper.destroyed || !swiper.$wrapperEl) return;
     if (e.target !== swiper.$wrapperEl[0]) return;
-    swiper.$wrapperEl[0].removeEventListener('transitionend', swiper.autoplay.onTransitionEnd);
-    swiper.$wrapperEl[0].removeEventListener('webkitTransitionEnd', swiper.autoplay.onTransitionEnd);
+    ['transitionend', 'webkitTransitionEnd'].forEach(function (event) {
+      swiper.$wrapperEl[0].removeEventListener(event, swiper.autoplay.onTransitionEnd);
+    });
     swiper.autoplay.paused = false;
 
     if (!swiper.autoplay.running) {
@@ -140,6 +142,42 @@ var Autoplay = {
     } else {
       swiper.autoplay.run();
     }
+  },
+  onMouseEnter: function onMouseEnter() {
+    var swiper = this;
+
+    if (swiper.params.autoplay.disableOnInteraction) {
+      swiper.autoplay.stop();
+    } else {
+      swiper.autoplay.pause();
+    }
+
+    ['transitionend', 'webkitTransitionEnd'].forEach(function (event) {
+      swiper.$wrapperEl[0].removeEventListener(event, swiper.autoplay.onTransitionEnd);
+    });
+  },
+  onMouseLeave: function onMouseLeave() {
+    var swiper = this;
+
+    if (swiper.params.autoplay.disableOnInteraction) {
+      return;
+    }
+
+    swiper.autoplay.paused = false;
+    swiper.autoplay.run();
+  },
+  attachMouseEvents: function attachMouseEvents() {
+    var swiper = this;
+
+    if (swiper.params.autoplay.pauseOnMouseEnter) {
+      swiper.$el.on('mouseenter', swiper.autoplay.onMouseEnter);
+      swiper.$el.on('mouseleave', swiper.autoplay.onMouseLeave);
+    }
+  },
+  detachMouseEvents: function detachMouseEvents() {
+    var swiper = this;
+    swiper.$el.off('mouseenter', swiper.autoplay.onMouseEnter);
+    swiper.$el.off('mouseleave', swiper.autoplay.onMouseLeave);
   }
 };
 const Autoplay$1 = {
@@ -151,7 +189,8 @@ const Autoplay$1 = {
       waitForTransition: true,
       disableOnInteraction: true,
       stopOnLastSlide: false,
-      reverseDirection: false
+      reverseDirection: false,
+      pauseOnMouseEnter: false
     }
   },
   create: function create() {
@@ -169,6 +208,7 @@ const Autoplay$1 = {
         swiper.autoplay.start();
         var document = getDocument();
         document.addEventListener('visibilitychange', swiper.autoplay.onVisibilityChange);
+        swiper.autoplay.attachMouseEvents();
       }
     },
     beforeTransitionStart: function beforeTransitionStart(swiper, speed, internal) {
@@ -195,6 +235,8 @@ const Autoplay$1 = {
       }
     },
     destroy: function destroy(swiper) {
+      swiper.autoplay.detachMouseEvents();
+
       if (swiper.autoplay.running) {
         swiper.autoplay.stop();
       }
@@ -208,7 +250,7 @@ const Autoplay$1 = {
 const bannerContainerCss = "ks-banner-container{display:block;position:relative}ks-banner-container .swiper-wrapper{max-height:550px;height:100%}ks-banner-container a{position:relative}ks-banner-container .pagination{position:absolute;left:0;right:0;bottom:-35px;height:35px;display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;opacity:0;-webkit-transition:opacity 0.5s ease;transition:opacity 0.5s ease}ks-banner-container[loaded] .pagination{opacity:1}ks-banner-container .swiper-pagination{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;position:relative;padding:10px;background-color:#dcdcdc}ks-banner-container .swiper-pagination-bullet{background-color:rgba(29, 29, 29, 0);border:rgb(133, 133, 133) 1px solid;height:10px;width:10px;margin:0 5px;opacity:1;-webkit-transition:background-color 0.3s ease,\n                border 0.3s ease;transition:background-color 0.3s ease,\n                border 0.3s ease}ks-banner-container .swiper-pagination-bullet:hover{background-color:rgba(29, 29, 29, 0.192)}ks-banner-container .swiper-pagination-bullet-active{background-color:rgb(29, 29, 29) !important;border:rgba(133, 133, 133, 0) 1px solid;opacity:1}ks-banner-container .pagination svg{fill:#dcdcdc}@media (max-width: 638px){ks-banner-container .pagination{display:none}}";
 
 Swiper.use([Pagination, Autoplay$1]);
-const BannerContainer = class {
+let BannerContainer = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
     this.delay = 0;
@@ -257,7 +299,7 @@ BannerContainer.style = bannerContainerCss;
 
 const featuredCss = "ks-featured{display:block;position:relative}ks-featured a{display:block;opacity:1;-webkit-transition:opacity 0.3s ease;transition:opacity 0.3s ease}ks-featured a:hover{display:block;opacity:0.97}ks-featured a:active{display:block;opacity:0.92}";
 
-const Featured = class {
+let Featured = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
     this.color = "#0f0f0f";
@@ -270,7 +312,7 @@ Featured.style = featuredCss;
 
 const featuredContainerCss = "ks-featured-container{display:-ms-flexbox;display:flex;max-width:1200px;width:100%;margin:auto;min-height:10px}ks-featured-container>.left{-ms-flex:1;flex:1;margin-right:5px}ks-featured-container>.right{-ms-flex:1;flex:1;margin-left:5px}ks-featured-container>div>*:not(:last-child){margin-bottom:10px}@media (max-width: 840px){ks-featured-container{display:block}ks-featured-container>div:first-child>*{margin-bottom:10px}}";
 
-const FeaturedContainer = class {
+let FeaturedContainer = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
   }
@@ -285,7 +327,7 @@ FeaturedContainer.style = featuredContainerCss;
 
 const homepageInfoCss = "ks-homepage-info{display:block;padding:60px 20px 30px 20px;background-image:linear-gradient(19deg, \n        rgb(226, 226, 226) 0%, \n        rgb(245, 245, 245) 100%\n    )}ks-homepage-info .main{max-width:800px;margin:0px auto 30px auto;text-align:center}ks-homepage-info .more{max-width:1200px;margin:auto;display:-ms-flexbox;display:flex;text-align:justify}ks-homepage-info .more>div{-ms-flex:1 1 auto;flex:1 1 auto;margin:0px 20px}ks-homepage-info h1,h2{font-family:Lato, sans-serif !important;font-weight:700 !important;text-align:center}ks-homepage-info h1{text-transform:uppercase}ks-homepage-info h2{font-size:1.2rem;line-height:1.4}ks-homepage-info p{font-size:0.875rem;line-height:1.5}ks-homepage-info ks-button{display:none;margin:10px auto;max-width:400px}@media (max-width: 1000px){ks-homepage-info .more{display:block;max-width:600px;text-align:center}}@media (max-width: 800px){ks-homepage-info ks-button{display:block}ks-homepage-info .more{display:none}ks-homepage-info[expanded] .more{display:block}}@media (max-width: 639px){ks-homepage-info{padding:50px 20px 40px 20px}}@media (max-width: 400px){ks-homepage-info{padding:40px 20px 40px 20px}}";
 
-const HomepageInfo = class {
+let HomepageInfo = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
     this.expanded = false;
@@ -302,7 +344,7 @@ HomepageInfo.style = homepageInfoCss;
 
 const homepageProductsCss = "ks-homepage-products{display:block;margin-top:20px}ks-homepage-products .buttons{display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;margin-bottom:20px}ks-homepage-products .buttons>*{max-width:200px;margin:0px 2px}ks-homepage-products .buttons>*>*{border:none !important}ks-homepage-products .content{position:relative;margin:20px auto 30px auto}ks-homepage-products .content>*{position:relative;top:0px;left:0px;right:0px;-webkit-animation:homepage-products-swipe-in 0.6s;animation:homepage-products-swipe-in 0.6s;z-index:2;opacity:1}ks-homepage-products:not([active='0']) .content>*:nth-child(1),ks-homepage-products:not([active='1']) .content>*:nth-child(2),ks-homepage-products:not([active='2']) .content>*:nth-child(3){-webkit-animation:fade-out 0.3s;animation:fade-out 0.3s;opacity:0;top:15px;z-index:1;position:absolute}@media (max-width: 640px){ks-homepage-products .buttons>*{max-width:150px}ks-homepage-products .buttons>*>*{font-size:14px;padding:10px 15px}}@-webkit-keyframes homepage-products-swipe-in{0%{-webkit-transform:translateY(-15px);transform:translateY(-15px);opacity:0}50%{-webkit-transform:translateY(-15px);transform:translateY(-15px);opacity:0}100%{-webkit-transform:translateY(0px);transform:translateY(0px);opacity:1}}@keyframes homepage-products-swipe-in{0%{-webkit-transform:translateY(-15px);transform:translateY(-15px);opacity:0}50%{-webkit-transform:translateY(-15px);transform:translateY(-15px);opacity:0}100%{-webkit-transform:translateY(0px);transform:translateY(0px);opacity:1}}";
 
-const ProductContainer = class {
+let ProductContainer = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
     this.active = 0;

@@ -2,9 +2,9 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-0dd0274e.js');
+const index = require('./index-601dda3f.js');
 
-const Contact = class {
+let Contact = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
   }

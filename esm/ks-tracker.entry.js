@@ -1,6 +1,6 @@
-import { r as registerInstance } from './index-a14dfead.js';
-import { t as tracker, r as resolve } from './tracker-dce0f039.js';
-import './index-c53317e0.js';
+import { r as registerInstance } from './index-7a533c43.js';
+import { t as tracker, r as resolve } from './tracker-aaf72a89.js';
+import './index-07d7bd8b.js';
 
 class TikTokTracker {
   constructor() {
@@ -200,7 +200,7 @@ class FacebookTracker {
   }
 }
 
-const Tracker = class {
+let Tracker = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
   }

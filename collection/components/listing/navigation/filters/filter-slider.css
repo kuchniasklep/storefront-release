@@ -238,13 +238,11 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 }
 .noUi-value-horizontal {
   -webkit-transform: translate(-50%, 50%);
-  -ms-transform: translate(-50%, 50%);
-      transform: translate(-50%, 50%);
+  transform: translate(-50%, 50%);
 }
 .noUi-rtl .noUi-value-horizontal {
   -webkit-transform: translate(50%, 50%);
-  -ms-transform: translate(50%, 50%);
-      transform: translate(50%, 50%);
+  transform: translate(50%, 50%);
 }
 .noUi-marker-horizontal.noUi-marker {
   margin-left: -1px;
@@ -268,14 +266,12 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 }
 .noUi-value-vertical {
   -webkit-transform: translate(0, -50%);
-  -ms-transform: translate(0, -50%, 0);
-      transform: translate(0, -50%, 0);
+  transform: translate(0, -50%, 0);
   padding-left: 25px;
 }
 .noUi-rtl .noUi-value-vertical {
   -webkit-transform: translate(0, 50%);
-  -ms-transform: translate(0, 50%);
-      transform: translate(0, 50%);
+  transform: translate(0, 50%);
 }
 .noUi-marker-vertical.noUi-marker {
   width: 5px;
@@ -302,15 +298,13 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 }
 .noUi-horizontal .noUi-tooltip {
   -webkit-transform: translate(-50%, 0);
-  -ms-transform: translate(-50%, 0);
-      transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
   left: 50%;
   bottom: -140%;
 }
 .noUi-vertical .noUi-tooltip {
   -webkit-transform: translate(0, -50%);
-  -ms-transform: translate(0, -50%);
-      transform: translate(0, -50%);
+  transform: translate(0, -50%);
   top: 50%;
   right: 120%;
 }

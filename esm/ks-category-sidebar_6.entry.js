@@ -1,13 +1,13 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-a14dfead.js';
-import { S as Swiper } from './core-class-3f174cf3.js';
-import { P as Pagination } from './pagination-e5b04709.js';
-import { T as Thumbs } from './thumbs-ca1d86c7.js';
-import { c as common } from './common-cf003c43.js';
-import './index-c53317e0.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-7a533c43.js';
+import { S as Swiper } from './core-class-5b6160e1.js';
+import { P as Pagination } from './pagination-c9190fdf.js';
+import { T as Thumbs } from './thumbs-e8e6436d.js';
+import { c as common } from './common-d9c1845a.js';
+import './index-07d7bd8b.js';
 
 const categorySidebarCss = "ks-category-sidebar>.name{position:relative;cursor:pointer;padding:7px 0px 5px 0px}ks-category-sidebar>.name>ks-icon{position:absolute;top:6px;right:0px}ks-category-sidebar>.children{overflow:hidden;padding:0px 0px 0px 10px;font-size:16px;-webkit-transition:opacity 0.5s ease;transition:opacity 0.5s ease}ks-category-sidebar>.children>a{padding:4px 0px}ks-category-sidebar:not([open])>.children{max-height:0px !important;opacity:0}ks-category-sidebar[open]>.children{padding:5px 0px 8px 10px;opacity:1}ks-category-sidebar .seeall{color:#bbbbbb  !important}";
 
-const NavbarCategorySidebar = class {
+let NavbarCategorySidebar = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
     this.open = false;
@@ -48,7 +48,7 @@ NavbarCategorySidebar.style = categorySidebarCss;
 const errorPopupCss = "ks-error-popup{display:block}ks-error-popup .content{max-width:800px;width:100%;background-color:var(--card-background);-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow)}ks-error-popup .bar{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;background-color:var(--color-secondary)}ks-error-popup .title{-ms-flex:1;flex:1;padding:10px 20px;font-size:20px;font-weight:700;font-family:var(--font-emphasis)}ks-error-popup .close{padding:10px;background-color:var(--color-secondary);opacity:1;-webkit-transition:var(--transition-opacity);transition:var(--transition-opacity)}ks-error-popup .close:hover{opacity:0.6}ks-error-popup .message{padding:30px 30px;color:var(--card-text-color);text-align:center;font-size:18px}ks-error-popup .data{text-align:center;border-top:1px solid #e2e2e2;padding:20px;color:var(--card-text-color);background-color:#f2f2f2;font-size:14px}ks-error-popup .data .stack{display:block;margin-top:10px}ks-error-popup .content.visible{-webkit-animation:0.4s vertical-swipe-in 1;animation:0.4s vertical-swipe-in 1}ks-error-popup .content.hidden{-webkit-animation:0.4s vertical-swipe-out 1;animation:0.4s vertical-swipe-out 1}";
 
 Swiper.use([Pagination, Thumbs]);
-const ErrorPopup = class {
+let ErrorPopup = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
     this.name = "";
@@ -95,7 +95,7 @@ ErrorPopup.style = errorPopupCss;
 const messagePopupCss = "ks-message-popup{display:block}ks-message-popup .title{margin-top:10px;text-align:center;font-size:20px;font-weight:700;font-family:var(--font-emphasis)}ks-message-popup .message{padding:15px 30px;color:var(--card-text-color);text-align:center;font-size:18px}ks-message-popup ks-button{margin-bottom:10px}";
 
 Swiper.use([Pagination, Thumbs]);
-const MessagePopup = class {
+let MessagePopup = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
     this.name = "";
@@ -128,7 +128,7 @@ const MessagePopup = class {
 };
 MessagePopup.style = messagePopupCss;
 
-const PageFooter = class {
+let PageFooter = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
   }
@@ -137,7 +137,7 @@ const PageFooter = class {
   }
 };
 
-const PageHeader = class {
+let PageHeader = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
   }
@@ -146,10 +146,10 @@ const PageHeader = class {
   }
 };
 
-const sidepanelCss = "ks-sidepanel{display:block;position:absolute}ks-sidepanel .content{position:absolute;z-index:100000;top:0;right:0;bottom:0;-webkit-box-sizing:border-box;box-sizing:border-box;width:320px;height:100%;padding:15px 30px;overflow-y:auto;color:black;background:#ffffff}ks-sidepanel[left] .content{left:0}ks-sidepanel .content .close{position:absolute;top:15px;right:25px;padding:5px;color:#252525;-webkit-transition:color .1s ease-in-out;transition:color .1s ease-in-out;cursor:pointer;border:none;outline:none;background-color:transparent}@media only screen and (max-width: 640px){ks-sidepanel .content{width:300px;padding:20px}ks-sidepanel .content .close{right:15px}}ks-sidepanel .content{-webkit-transform:translateX(100%);-ms-transform:translateX(100%);transform:translateX(100%);transition:-webkit-transform 0.3s ease;-webkit-transition:-webkit-transform 0.3s ease;transition:transform 0.3s ease;transition:transform 0.3s ease, -webkit-transform 0.3s ease}ks-sidepanel[left] .content{-webkit-transform:translateX(-100%);-ms-transform:translateX(-100%);transform:translateX(-100%)}ks-sidepanel .visible{-webkit-transform:translateX(0%) !important;-ms-transform:translateX(0%) !important;transform:translateX(0%) !important}ks-sidepanel .hidden{-webkit-transform:translateX(100%);-ms-transform:translateX(100%);transform:translateX(100%)}ks-sidepanel[left] .hidden{-webkit-transform:translateX(-100%);-ms-transform:translateX(-100%);transform:translateX(-100%)}";
+const sidepanelCss = "ks-sidepanel{display:block;position:absolute}ks-sidepanel .content{position:absolute;z-index:100000;top:0;right:0;bottom:0;-webkit-box-sizing:border-box;box-sizing:border-box;width:320px;height:100%;padding:15px 30px;overflow-y:auto;color:black;background:#ffffff}ks-sidepanel[left] .content{left:0}ks-sidepanel .content .close{position:absolute;top:15px;right:25px;padding:5px;color:#252525;-webkit-transition:color .1s ease-in-out;transition:color .1s ease-in-out;cursor:pointer;border:none;outline:none;background-color:transparent}@media only screen and (max-width: 640px){ks-sidepanel .content{width:300px;padding:20px}ks-sidepanel .content .close{right:15px}}ks-sidepanel .content{-webkit-transform:translateX(100%);transform:translateX(100%);transition:-webkit-transform 0.3s ease;-webkit-transition:-webkit-transform 0.3s ease;transition:transform 0.3s ease;transition:transform 0.3s ease, -webkit-transform 0.3s ease}ks-sidepanel[left] .content{-webkit-transform:translateX(-100%);transform:translateX(-100%)}ks-sidepanel .visible{-webkit-transform:translateX(0%) !important;transform:translateX(0%) !important}ks-sidepanel .hidden{-webkit-transform:translateX(100%);transform:translateX(100%)}ks-sidepanel[left] .hidden{-webkit-transform:translateX(-100%);transform:translateX(-100%)}";
 
 Swiper.use([Pagination, Thumbs]);
-const SidePanel = class {
+let SidePanel = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
     this.name = "";

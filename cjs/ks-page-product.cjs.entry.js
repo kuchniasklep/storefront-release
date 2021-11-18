@@ -2,15 +2,15 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-0dd0274e.js');
-const common = require('./common-c36c5464.js');
-const product = require('./product-f27c8db5.js');
-const commonDynamic = require('./commonDynamic-a356749f.js');
-require('./index-afac6374.js');
+const index = require('./index-601dda3f.js');
+const common = require('./common-986d3afc.js');
+const product = require('./product-36eb00ad.js');
+const commonDynamic = require('./commonDynamic-24bec319.js');
+require('./index-6a08c494.js');
 
 const productCss = "ks-page-product>h3{text-align:center;margin-top:15px}ks-page-product>ks-product-container{margin-bottom:15px}";
 
-const PageProduct = class {
+let PageProduct = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
   }
@@ -34,6 +34,8 @@ const PageProduct = class {
     }
   }
   render() {
+    if (!(product.product === null || product.product === void 0 ? void 0 : product.product.get('name')))
+      return false;
     const infoBanner = product.product.get("infoBanner");
     const points = product.product.get("points");
     const installments = product.product.get('installments');

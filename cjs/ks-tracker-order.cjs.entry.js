@@ -2,11 +2,11 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-0dd0274e.js');
-const tracker = require('./tracker-dc1bc991.js');
-require('./index-afac6374.js');
+const index = require('./index-601dda3f.js');
+const tracker = require('./tracker-75afa313.js');
+require('./index-6a08c494.js');
 
-const TrackerOrder = class {
+let TrackerOrder = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.checkout = false;

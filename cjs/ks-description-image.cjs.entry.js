@@ -2,11 +2,11 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-0dd0274e.js');
+const index = require('./index-601dda3f.js');
 
 const descriptionImageCss = "ks-description-image{display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;margin-bottom:40px}";
 
-const DescriptionImage = class {
+let DescriptionImage = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
   }

@@ -2,9 +2,9 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-0dd0274e.js');
+const index = require('./index-601dda3f.js');
 
-const CartTile = class {
+let CartTile = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
   }
@@ -38,7 +38,7 @@ const CartTile = class {
   get root() { return index.getElement(this); }
 };
 
-const OrderAddressField = class {
+let OrderAddressField = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
   }
@@ -54,7 +54,7 @@ const OrderAddressField = class {
   get root() { return index.getElement(this); }
 };
 
-const OrderAddressSection = class {
+let OrderAddressSection = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.hideOnMobile = false;
@@ -79,7 +79,7 @@ const OrderAddressSection = class {
   get root() { return index.getElement(this); }
 };
 
-const OrderButton = class {
+let OrderButton = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.mobile = false;
@@ -98,7 +98,7 @@ const OrderButton = class {
   get root() { return index.getElement(this); }
 };
 
-const OrderButtonPair = class {
+let OrderButtonPair = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.mobile = false;
@@ -120,7 +120,7 @@ const OrderButtonPair = class {
   get root() { return index.getElement(this); }
 };
 
-const OrderCheckSection = class {
+let OrderCheckSection = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.active = false;
@@ -150,7 +150,7 @@ const OrderCheckSection = class {
   get root() { return index.getElement(this); }
 };
 
-const OrderForm$1 = class {
+let OrderForm$1 = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.loading = false;
@@ -200,7 +200,7 @@ const OrderForm$1 = class {
   get root() { return index.getElement(this); }
 };
 
-const OrderCountrySelect = class {
+let OrderCountrySelect = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.lightUp = false;
@@ -218,7 +218,7 @@ const OrderCountrySelect = class {
   }
 };
 
-const OrderDocumentSelect = class {
+let OrderDocumentSelect = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
   }
@@ -259,7 +259,7 @@ const OrderDocumentSelect = class {
   get root() { return index.getElement(this); }
 };
 
-const OrderEnableection = class {
+let OrderEnableection = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.active = false;
@@ -278,7 +278,7 @@ const OrderEnableection = class {
   get root() { return index.getElement(this); }
 };
 
-const OrderForm = class {
+let OrderForm = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.loading = false;
@@ -373,7 +373,7 @@ const OrderForm = class {
   get root() { return index.getElement(this); }
 };
 
-const OrderLoginPrompt$1 = class {
+let OrderLoginPrompt$1 = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.message = "";
@@ -392,7 +392,7 @@ const OrderLoginPrompt$1 = class {
   get root() { return index.getElement(this); }
 };
 
-const OrderGuest = class {
+let OrderGuest = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
   }
@@ -407,7 +407,7 @@ const OrderGuest = class {
   get root() { return index.getElement(this); }
 };
 
-const OrderHeading = class {
+let OrderHeading = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
   }
@@ -422,7 +422,7 @@ const OrderHeading = class {
   get root() { return index.getElement(this); }
 };
 
-const OrderInpost = class {
+let OrderInpost = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.search = "Wrocław, Polska";
@@ -507,7 +507,7 @@ const OrderInpost = class {
   get root() { return index.getElement(this); }
 };
 
-const OrderLogin = class {
+let OrderLogin = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.api = "";
@@ -569,7 +569,7 @@ const OrderLogin = class {
   get root() { return index.getElement(this); }
 };
 
-const OrderLoginPrompt = class {
+let OrderLoginPrompt = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.message = "";
@@ -590,7 +590,7 @@ const OrderLoginPrompt = class {
   get root() { return index.getElement(this); }
 };
 
-const OrderPocztapunkt = class {
+let OrderPocztapunkt = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.search = "Wrocław, Polska";
@@ -652,7 +652,7 @@ const OrderPocztapunkt = class {
   get root() { return index.getElement(this); }
 };
 
-const OrderProgress = class {
+let OrderProgress = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.mobile = false;
@@ -696,7 +696,7 @@ const OrderProgress = class {
   get root() { return index.getElement(this); }
 };
 
-const OrderSeparator = class {
+let OrderSeparator = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.dark = false;
@@ -711,7 +711,7 @@ const OrderSeparator = class {
   get root() { return index.getElement(this); }
 };
 
-const OrderSummaryContainer = class {
+let OrderSummaryContainer = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.heading = "";
@@ -730,7 +730,7 @@ const OrderSummaryContainer = class {
   get root() { return index.getElement(this); }
 };
 
-const OrderSummaryField = class {
+let OrderSummaryField = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.dark = false;
@@ -751,7 +751,7 @@ const OrderSummaryField = class {
   get root() { return index.getElement(this); }
 };
 
-const OrderPayU = class {
+let OrderPayU = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.unique = "";
@@ -784,7 +784,7 @@ const OrderPayU = class {
   get root() { return index.getElement(this); }
 };
 
-const OrderChoice = class {
+let OrderChoice = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
   }
@@ -816,7 +816,7 @@ const OrderChoice = class {
   get root() { return index.getElement(this); }
 };
 
-const OrderToggleSection = class {
+let OrderToggleSection = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.value = "left";
@@ -837,7 +837,7 @@ const OrderToggleSection = class {
 
 const radioTileCss = "ks-radio-tile .hover:hover{background-color:#b2b2b2 !important}";
 
-const RadioTile = class {
+let RadioTile = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.mobile = false;

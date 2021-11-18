@@ -95,7 +95,6 @@ ks-cart-discount-points-message .points {
 
 ks-cart-discount-points-message .points > span {
     -webkit-transform: translateX(-5px);
-        -ms-transform: translateX(-5px);
             transform: translateX(-5px);
 }
 

@@ -1,6 +1,6 @@
-import { r as registerInstance, h } from './index-a14dfead.js';
+import { r as registerInstance, h } from './index-7a533c43.js';
 
-const SectionHeading = class {
+let SectionHeading = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
   }

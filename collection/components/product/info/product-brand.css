@@ -34,7 +34,6 @@ ks-product-brand > a:hover {
 ks-product-brand > a:active {
     opacity: 0.5;
     -webkit-transform: scale(0.95);
-        -ms-transform: scale(0.95);
             transform: scale(0.95);
 }
 

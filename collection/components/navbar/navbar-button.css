@@ -39,7 +39,6 @@ ks-navbar-button > div {
     opacity: 0;
     transition: opacity 0.3s ease;
     -webkit-user-select: none;
-       -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
     pointer-events: none;

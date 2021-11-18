@@ -1,8 +1,8 @@
-import { r as registerInstance } from './index-a14dfead.js';
-import { e as eachTracker } from './tracker-dce0f039.js';
-import './index-c53317e0.js';
+import { r as registerInstance } from './index-7a533c43.js';
+import { e as eachTracker } from './tracker-aaf72a89.js';
+import './index-07d7bd8b.js';
 
-const TrackerOrder = class {
+let TrackerOrder = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
     this.checkout = false;

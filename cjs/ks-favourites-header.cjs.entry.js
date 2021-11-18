@@ -2,10 +2,10 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-0dd0274e.js');
+const index = require('./index-601dda3f.js');
 const functions = require('./functions-5a96038f.js');
 
-const FavouritesHeader = class {
+let FavouritesHeader = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
   }
@@ -16,7 +16,8 @@ const FavouritesHeader = class {
       index.h("ks-flex", { between: true, middle: true, gutter: true }, index.h("div", { class: "uk-text-center uk-width-1-1 uk-width-auto@m ks-text-decorated", style: { padding: "0 20px" } }, index.h("span", { class: "uk-h1" }, "SCHOWEK: "), index.h("span", { class: "uk-h1 uk-text-danger uk-text-bold", style: { marginLeft: "10px" } }, value)), index.h("div", { class: "uk-text-center uk-width-1-1 uk-width-auto@m" }, index.h("button", { class: "uk-button uk-button-danger uk-border-pill", style: { padding: "3px 30px" }, onClick: () => {
           functions.RemoveAllFavourites();
         } }, "WYCZY\u015A\u0106 SCHOWEK"))),
-      index.h("br", { class: "uk-hidden@m" }), index.h("hr", null)
+      index.h("br", { class: "uk-hidden@m" }),
+      index.h("hr", null)
     ];
   }
   get root() { return index.getElement(this); }

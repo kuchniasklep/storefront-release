@@ -73,7 +73,6 @@ ks-article-card .footer {
 ks-article-card .footer a {
     text-decoration: none !important;
     -webkit-user-select: none;
-       -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
     color: #151515;
@@ -95,7 +94,6 @@ ks-article-card .footer a:before {
     left: 50%;
     bottom: -2px;
     -webkit-transform: translateX(-50%);
-        -ms-transform: translateX(-50%);
             transform: translateX(-50%);
 
     height: 1px;

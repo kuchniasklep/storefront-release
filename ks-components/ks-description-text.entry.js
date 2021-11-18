@@ -1,1 +1,1 @@
-import{r as t,h as s}from"./index-09939813.js";const r=class{constructor(s){t(this,s)}render(){return s("slot",null)}};r.style="ks-description-text{display:block;margin-bottom:40px}";export{r as ks_description_text}
+import{r as t,h as r}from"./index-e340c957.js";let s=class{constructor(r){t(this,r)}render(){return r("slot",null)}};s.style="ks-description-text{display:block;margin-bottom:40px}";export{s as ks_description_text}

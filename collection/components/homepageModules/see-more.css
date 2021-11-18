@@ -23,8 +23,6 @@ ks-see-more a {
 
     -webkit-transform: scale(1);
 
-        -ms-transform: scale(1);
-
             transform: scale(1);
 
     transition: box-shadow 0.2s ease,
@@ -40,14 +38,12 @@ ks-see-more a {
 
 ks-see-more a:hover {
     -webkit-transform: scale(1.05);
-        -ms-transform: scale(1.05);
             transform: scale(1.05);
     box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.18);
 }
 
 ks-see-more a:active {
     -webkit-transform: scale(1.02);
-        -ms-transform: scale(1.02);
             transform: scale(1.02);
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.18);
 }

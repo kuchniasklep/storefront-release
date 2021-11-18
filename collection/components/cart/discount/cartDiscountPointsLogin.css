@@ -87,7 +87,6 @@ ks-cart-discount-points-login .points {
 
 ks-cart-discount-points-login .points > span {
     -webkit-transform: translateX(-5px);
-        -ms-transform: translateX(-5px);
             transform: translateX(-5px);
 }
 

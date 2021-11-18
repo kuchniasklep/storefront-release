@@ -1,8 +1,8 @@
-import { r as registerInstance, h } from './index-a14dfead.js';
+import { r as registerInstance, h } from './index-7a533c43.js';
 
 const productAdminDistributorCss = "ks-product-admin-distributor{color:#ffffff;display:table-row}ks-product-admin-distributor[overwrite]{color:var(--color-secondary)}";
 
-const ProductAdminDistributor = class {
+let ProductAdminDistributor = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
     this.name = "";

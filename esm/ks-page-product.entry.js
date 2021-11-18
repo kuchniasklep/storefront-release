@@ -1,12 +1,12 @@
-import { r as registerInstance, h, H as Host } from './index-a14dfead.js';
-import { c as common } from './common-cf003c43.js';
-import { p as product } from './product-22d38c43.js';
-import { c as commonDynamic } from './commonDynamic-4e28152d.js';
-import './index-c53317e0.js';
+import { r as registerInstance, h, H as Host } from './index-7a533c43.js';
+import { c as common } from './common-d9c1845a.js';
+import { p as product } from './product-bf792dd4.js';
+import { c as commonDynamic } from './commonDynamic-9ee92324.js';
+import './index-07d7bd8b.js';
 
 const productCss = "ks-page-product>h3{text-align:center;margin-top:15px}ks-page-product>ks-product-container{margin-bottom:15px}";
 
-const PageProduct = class {
+let PageProduct = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
   }
@@ -30,6 +30,8 @@ const PageProduct = class {
     }
   }
   render() {
+    if (!(product === null || product === void 0 ? void 0 : product.get('name')))
+      return false;
     const infoBanner = product.get("infoBanner");
     const points = product.get("points");
     const installments = product.get('installments');

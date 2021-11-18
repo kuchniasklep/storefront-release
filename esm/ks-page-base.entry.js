@@ -1,9 +1,9 @@
-import { r as registerInstance, h, H as Host } from './index-a14dfead.js';
-import { c as common } from './common-cf003c43.js';
-import { c as commonDynamic } from './commonDynamic-4e28152d.js';
-import './index-c53317e0.js';
+import { r as registerInstance, h, H as Host } from './index-7a533c43.js';
+import { c as common } from './common-d9c1845a.js';
+import { c as commonDynamic } from './commonDynamic-9ee92324.js';
+import './index-07d7bd8b.js';
 
-const PageBase = class {
+let PageBase = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
   }

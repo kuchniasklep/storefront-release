@@ -2,11 +2,11 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-0dd0274e.js');
+const index = require('./index-601dda3f.js');
 
 const productAdminDistributorCss = "ks-product-admin-distributor{color:#ffffff;display:table-row}ks-product-admin-distributor[overwrite]{color:var(--color-secondary)}";
 
-const ProductAdminDistributor = class {
+let ProductAdminDistributor = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.name = "";

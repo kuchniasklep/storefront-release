@@ -6,7 +6,6 @@ ks-product-tooltip {
 ks-product-tooltip .message,
 ks-product-tooltip .arrow {
     -webkit-user-select: none;
-       -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
     pointer-events: none;
@@ -32,7 +31,6 @@ ks-product-tooltip .arrow {
     bottom: -10px;
     left: 80px;
     -webkit-transform: translateX(-5px);
-        -ms-transform: translateX(-5px);
             transform: translateX(-5px);
 
     width: 0; 

@@ -13,7 +13,8 @@ export class FavouritesHeader {
           h("button", { class: "uk-button uk-button-danger uk-border-pill", style: { padding: "3px 30px" }, onClick: () => {
               RemoveAllFavourites();
             } }, "WYCZY\u015A\u0106 SCHOWEK"))),
-      h("br", { class: "uk-hidden@m" }), h("hr", null)
+      h("br", { class: "uk-hidden@m" }),
+      h("hr", null)
     ];
   }
   static get is() { return "ks-favourites-header"; }

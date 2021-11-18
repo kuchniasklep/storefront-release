@@ -13,7 +13,6 @@ ks-lightbox .content  {
     height: 100%;
     box-sizing: border-box;
     -webkit-user-select: none;
-       -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
 }
@@ -32,7 +31,6 @@ ks-lightbox .close {
 
     cursor: pointer;
     -webkit-user-select: none;
-       -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
 
@@ -49,14 +47,12 @@ ks-lightbox .close {
 ks-lightbox .close:hover {
     background-color: var(--lightbox-element-color-hover);
     -webkit-transform: scale(1.05, 1.05);
-        -ms-transform: scale(1.05, 1.05);
             transform: scale(1.05, 1.05);
 }
 
 ks-lightbox .close:active {
     background-color: var(--lightbox-element-color-active);
     -webkit-transform: scale(0.95, 0.95);
-        -ms-transform: scale(0.95, 0.95);
             transform: scale(0.95, 0.95);
 }
 

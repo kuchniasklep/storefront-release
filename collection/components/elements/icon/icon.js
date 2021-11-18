@@ -15,6 +15,8 @@ export class Icon {
     this.root.style.lineHeight = `${this.attrs.width * this.size}px`;
   }
   render() {
+    if (!this.attrs)
+      return;
     let stroke = "";
     if (this.size >= 1.3 && this.size < 2)
       stroke = "medium";

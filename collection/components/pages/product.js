@@ -23,6 +23,8 @@ export class PageProduct {
     }
   }
   render() {
+    if (!(product === null || product === void 0 ? void 0 : product.get('name')))
+      return false;
     const infoBanner = product.get("infoBanner");
     const points = product.get("points");
     const installments = product.get('installments');

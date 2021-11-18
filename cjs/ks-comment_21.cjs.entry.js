@@ -2,19 +2,19 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-0dd0274e.js');
-const product = require('./product-f27c8db5.js');
+const index = require('./index-601dda3f.js');
+const product = require('./product-36eb00ad.js');
 const deferredpromise = require('./deferredpromise-4a0fd44b.js');
-const coreClass = require('./core-class-37c25aa3.js');
-const thumbs = require('./thumbs-466e1eba.js');
+const coreClass = require('./core-class-be7c7c21.js');
+const thumbs = require('./thumbs-62d86163.js');
 const functions = require('./functions-5a96038f.js');
-const tracker = require('./tracker-dc1bc991.js');
+const tracker = require('./tracker-75afa313.js');
 const validate = require('./validate-6c61d7c0.js');
-require('./index-afac6374.js');
+require('./index-6a08c494.js');
 
 const commentCss = "ks-comment{display:block}ks-comment article{padding:30px}@media (min-width: 1200px){ks-comment article{padding:30px 40px}}ks-comment header{display:-ms-flexbox;display:flex}ks-comment header>div{width:100%}ks-comment header .title{margin:0}ks-comment header .info{font-size:.875rem;line-height:1.4;color:#707070}ks-comment ks-icon{margin-right:20px}ks-comment p{margin-bottom:0px}";
 
-const Comment = class {
+let Comment = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
   }
@@ -26,7 +26,7 @@ Comment.style = commentCss;
 
 const productAttributeCss = "ks-product-attribute{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;margin:5px 0px;font-family:var(--font-emphasis);font-size:15px;line-height:15px}ks-product-attribute[danger]{color:var(--color-secondary);font-weight:700;-webkit-animation:blink 1.5s ease-in-out infinite;animation:blink 1.5s ease-in-out infinite}ks-product-attribute[emphasis]{color:var(--color-secondary);font-weight:700}ks-product-attribute[faded]{color:var(--color-faded)}ks-product-attribute a{color:inherit !important;text-decoration:none !important}ks-product-attribute ks-icon{margin-right:10px}ks-product-attribute ks-icon:nth-child(2){margin-left:10px}@media only screen and (max-width: 540px){ks-product-attribute{display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;text-align:center;-ms-flex-align:center;align-items:center;margin:5px auto}}@media only screen and (max-width: 405px){ks-product-attribute{max-width:68%}}";
 
-const ProductAttribute = class {
+let ProductAttribute = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.href = "";
@@ -50,7 +50,7 @@ ProductAttribute.style = productAttributeCss;
 
 const productButtonCss = "ks-product-button{display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;width:100%;margin:5px 2px}ks-product-button button{outline-style:none;border-style:none;border-radius:50px;padding:12px 25px;background-color:var(--color-dark);color:var(--text-color-dark);font-family:var(--product-button-font);font-size:var(--product-button-size);line-height:var(--product-button-size);-webkit-transition:var(--transition-background-color);transition:var(--transition-background-color)}ks-product-button button:hover{background-color:var(--color-dark-hover)}ks-product-button button:active{background-color:var(--color-dark-active)}ks-product-button[icon]{border-radius:0px;height:40px;margin:0;padding:5px 0px;background-color:var(--color-dark);color:var(--text-color-dark);-webkit-transition:var(--transition-background-color);transition:var(--transition-background-color)}ks-product-button[icon]:hover{background-color:var(--color-dark-hover)}ks-product-button[icon]:active{background-color:var(--color-dark-active)}@media only screen and (max-width: 400px){ks-product-button button{padding:12px 25px}}";
 
-const ProductButton = class {
+let ProductButton = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
   }
@@ -62,7 +62,7 @@ const ProductButton = class {
 };
 ProductButton.style = productButtonCss;
 
-const ProductCalculatorCA = class {
+let ProductCalculatorCA = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.price = "";
@@ -78,7 +78,7 @@ const ProductCalculatorCA = class {
   }
 };
 
-const ProductCalculatorPayU = class {
+let ProductCalculatorPayU = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.price = "";
@@ -121,7 +121,7 @@ const ProductCalculatorPayU = class {
 
 const productCommentsCss = "ks-product-comments{display:block;-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow);background-color:var(--card-background);color:var(--card-text-color)}ks-product-comments .message{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;margin:0;padding:30px}ks-product-comments .message ks-icon{display:-ms-flexbox;display:flex;margin-right:15px;max-width:50px;width:100%}ks-product-comments .message p{width:100%;text-align:center}@media (min-width: 1200px){ks-product-comments .message{padding:30px 40px}}ks-product-comments hr,ks-product-comments .more{margin:0}ks-product-comments .expand,ks-product-comments .add{width:100%;line-height:40px;padding:0 10px;outline:none;border:none;text-align:center;text-decoration:none;text-transform:none;color:white !important;-webkit-transition:var(--transition-background-color);transition:var(--transition-background-color)}ks-product-comments .expand{width:100%;line-height:40px;padding:0 10px;vertical-align:middle;background-color:var(--color-dark)}ks-product-comments .expand:hover{background-color:var(--color-dark-hover)}ks-product-comments .expand:active{background-color:var(--color-dark-active)}ks-product-comments .add{display:block;-webkit-box-sizing:border-box;box-sizing:border-box;width:100%;padding:8px;background-color:var(--color-secondary)}ks-product-comments .add:hover{background-color:var(--color-secondary-hover)}ks-product-comments .add:active{background-color:var(--color-secondary-active)}ks-product-comments ks-comment{border-top:solid 1px #dddddd}";
 
-const ProductTab$1 = class {
+let ProductTab$1 = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.hasMore = false;
@@ -152,7 +152,7 @@ ProductTab$1.style = productCommentsCss;
 
 const productCountCss = "ks-product-count{display:-ms-flexbox;display:flex;max-width:80px;margin-right:8px;overflow:hidden;border-style:solid;border-radius:50px;border-width:1px;border-color:#cacaca;background-color:var(--product-price-count-color)}ks-product-count input{outline-style:none;border-style:none;background-color:transparent;width:52px;height:100%;-webkit-box-sizing:border-box;box-sizing:border-box;padding:10px 8px 10px 13px;font-family:var(--product-price-count-font);font-size:var(--product-price-size-small);line-height:var(--product-price-size-small);text-align:center;vertical-align:middle}ks-product-count input::-webkit-inner-spin-button,ks-product-count input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}ks-product-count input[type=number]{-moz-appearance:textfield}ks-product-count .spinner{width:auto;display:-ms-flexbox;display:flex;-ms-flex-flow:column nowrap;flex-flow:column nowrap}ks-product-count .spinner button{outline-style:none;border-style:none;line-height:0;height:100%;margin:0;width:28px;-webkit-box-sizing:border-box;box-sizing:border-box;background-color:#e4e4e4;-webkit-transition:var(--transition-background-color);transition:var(--transition-background-color);border-left:solid 1px #cacaca}ks-product-count .spinner button:first-child{padding:8px 8px 3px 3px;border-bottom:solid 1px #cacaca}ks-product-count .spinner button:last-child{padding:3px 8px 8px 3px}ks-product-count .spinner button:hover{background-color:#cecece}ks-product-count .spinner button:active{background-color:#a7a7a7}@media (hover: none){ks-product-count{max-width:70px}ks-product-count input{padding:10px}ks-product-count .spinner{display:none}}";
 
-const ProductCount$1 = class {
+let ProductCount$1 = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.countChange = index.createEvent(this, "countChange", 7);
@@ -205,7 +205,7 @@ ProductCount$1.style = productCountCss;
 const productImagesCss = "ks-product-images{display:block;margin-right:30px}ks-product-images .swiper-slide{position:relative}ks-product-images .swiper-slide canvas{max-width:100%;max-height:450px}ks-product-images .preview ks-img{position:absolute;top:0;width:100%;max-height:450px;margin:auto}ks-product-images .thumb{margin-top:20px;position:relative}ks-product-images .thumb::after{content:\"\";position:absolute;top:0;bottom:0;right:0;left:-30px;background:-webkit-gradient(linear, left top, right top, from(rgba(255,255,255,0)), color-stop(85%, rgba(255,255,255,0)), to(rgba(255,255,255,1)));background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 85%, rgba(255,255,255,1) 100%);z-index:2;pointer-events:none}ks-product-images .thumb .swiper-slide{width:70px;height:70px;opacity:0.4;-webkit-transition:var(--transition-opacity);transition:var(--transition-opacity)}ks-product-images .thumb .swiper-slide-thumb-active{opacity:1}@media only screen and (max-width: 959px){ks-product-images{margin-right:0px;margin-top:30px}ks-product-images .thumb{margin-bottom:0px}}@media only screen and (max-width: 460px){ks-product-images .swiper-slide canvas{max-height:300px}ks-product-images .preview ks-img{max-height:300px}}ks-product-images .preview:not(.swiper-container-initialized) .swiper-slide:nth-child(n+2){display:none}ks-product-images .thumb .swiper-wrapper{opacity:1;-webkit-animation:fade-in 0.3s ease;animation:fade-in 0.3s ease}ks-product-images .thumb:not(.swiper-container-initialized) .swiper-wrapper{opacity:0;-webkit-animation:none;animation:none}";
 
 coreClass.Swiper.use([thumbs.Thumbs]);
-const ProductImages = class {
+let ProductImages = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.delay = 0;
@@ -263,7 +263,7 @@ ProductImages.style = productImagesCss;
 
 const productInfoCss = "ks-product-info{display:block;position:relative;-webkit-box-sizing:border-box;box-sizing:border-box;width:100%;background:var(--card-background);color:var(--card-text-color);-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow);padding:30px 30px;min-height:420px}ks-product-info>*{margin:0px auto;width:100%;max-width:700px}ks-product-info .left{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center}ks-product-info .buttons{display:-ms-flexbox;display:flex;margin:15px -5px 10px 0px}ks-product-info .bottom{position:relative;padding-bottom:60px}@media only screen and (min-width: 961px){ks-product-info{display:-ms-grid;display:grid;-ms-grid-columns:48% 52%;grid-template-columns:48% 52%;-ms-grid-rows:auto 1fr;grid-template-rows:auto 1fr}ks-product-info>*:nth-child(1){-ms-grid-row:1;-ms-grid-column:1}ks-product-info>*:nth-child(2){-ms-grid-row:1;-ms-grid-column:2}ks-product-info>*:nth-child(3){-ms-grid-row:2;-ms-grid-column:1}ks-product-info>*:nth-child(4){-ms-grid-row:2;-ms-grid-column:2}ks-product-info>.top{-ms-grid-column:2;grid-column:2;-ms-grid-row:1;grid-row:1}ks-product-info>.left{-ms-grid-column:1;grid-column:1;-ms-grid-row:1;-ms-grid-row-span:2;grid-row:1 / 3}ks-product-info>.bottom{-ms-grid-column:2;grid-column:2;-ms-grid-row:2;grid-row:2;padding-bottom:0px}}@media only screen and (min-width: 1200px){ks-product-info{padding:30px 30px}}@media only screen and (max-width: 960px){ks-product-info .bottom{margin-top:30px;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-align:center;align-items:center}ks-product-info .buttons{display:-ms-flexbox;display:flex;margin:15px 0px 10px 0px}}@media only screen and (max-width: 460px){ks-product-info{padding:40px 10px}}";
 
-const ProductInfo = class {
+let ProductInfo = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.productRendered = index.createEvent(this, "productRendered", 7);
@@ -390,7 +390,7 @@ ProductInfo.style = productInfoCss;
 
 const productNegotiateCss = "ks-product-negotiate{display:block;position:relative;z-index:2}ks-product-negotiate fieldset{border:none;margin:0;padding:0}ks-product-negotiate .info{text-align:center}ks-product-negotiate h3{font-family:var(--font-emphasis);font-size:20px;font-weight:700}";
 
-const ProductNegotiate = class {
+let ProductNegotiate = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.agreement = "Wyrażam zgodę na przetwarzanie przez Sprzedawcę moich danych osobowych zawartych w formularzu w celu udzielenia odpowiedzi na zadane poprzez formularz pytania.";
@@ -446,7 +446,7 @@ ProductNegotiate.style = productNegotiateCss;
 
 const productPointsCss = "ks-product-points{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}ks-product-points>div:first-child{display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center;width:20%;font-family:var(--font-emphasis);font-weight:700;font-size:32px;color:#ffffff;background-color:#ee1438}ks-product-points>div:last-child{display:-ms-flexbox;display:flex;-ms-flex:1 0 auto;flex:1 0 auto;font-size:14px;padding:15px}@media screen and (max-width: 640px){ks-product-points>div:first-child{width:100%;padding:10px 0}}";
 
-const ProductPoints = class {
+let ProductPoints = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.count = 0;
@@ -461,9 +461,9 @@ const ProductPoints = class {
 };
 ProductPoints.style = productPointsCss;
 
-const productPriceCss = "ks-product-price{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;margin:10px 0 20px;font-family:var(--product-price-font);font-weight:700}ks-product-price .previous{display:inline-block;color:var(--color-faded);font-size:var(--product-price-size);line-height:var(--product-price-size);position:relative;margin-left:15px}ks-product-price .previous::after{background-color:var(--color-faded);content:\"\";height:0.1em;left:-3px;right:-3px;position:absolute;top:46%}ks-product-price .current{color:var(--color-secondary);font-size:var(--product-price-size-emphasis);line-height:var(--product-price-size)}@media only screen and (max-width: 560px){ks-product-price .price{display:block;width:100%;margin-bottom:20px;margin-right:0px;text-align:center}}ks-product-price .currency{width:15px;height:15px;padding:5px;line-height:13px;margin:1px 0 0 10px;border-radius:30px;background-color:var(--color-secondary);color:white;font-family:var(--product-price-font);text-align:center;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}";
+const productPriceCss = "ks-product-price{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;margin:10px 0 20px;font-family:var(--product-price-font);font-weight:700}ks-product-price .previous{display:inline-block;color:var(--color-faded);font-size:var(--product-price-size);line-height:var(--product-price-size);position:relative;margin-left:15px}ks-product-price .previous::after{background-color:var(--color-faded);content:\"\";height:0.1em;left:-3px;right:-3px;position:absolute;top:46%}ks-product-price .current{color:var(--color-secondary);font-size:var(--product-price-size-emphasis);line-height:var(--product-price-size)}@media only screen and (max-width: 560px){ks-product-price .price{display:block;width:100%;margin-bottom:20px;margin-right:0px;text-align:center}}ks-product-price .currency{width:15px;height:15px;padding:5px;line-height:13px;margin:1px 0 0 10px;border-radius:30px;background-color:var(--color-secondary);color:white;font-family:var(--product-price-font);text-align:center;-webkit-user-select:none;-ms-user-select:none;-moz-user-select:none;user-select:none}";
 
-const ProductPrice = class {
+let ProductPrice = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
   }
@@ -481,7 +481,7 @@ ProductPrice.style = productPriceCss;
 
 const productShippingCss = "ks-product-shipping{display:block;width:100%}ks-product-shipping .message{font-family:var(--product-shipping-message-font);font-size:15px;color:var(--color-secondary);margin-bottom:15px;border-radius:20px;font-weight:700;max-width:100%}ks-product-shipping .hidden{display:none}@media only screen and (max-width: 960px){ks-product-shipping{display:-ms-flexbox;display:flex;text-align:center;-ms-flex-direction:column;flex-direction:column;-ms-flex-align:center;align-items:center}}";
 
-const ProductShipping = class {
+let ProductShipping = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
   }
@@ -508,7 +508,7 @@ ProductShipping.style = productShippingCss;
 
 const productSuggestionsCss = "ks-product-suggestions{display:block}ks-product-suggestions .content{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;width:100%;height:100%;overflow-y:auto;background-color:white;text-align:center}ks-product-suggestions .content>.top{display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center;-ms-flex-direction:column;flex-direction:column;-webkit-box-sizing:border-box;box-sizing:border-box;height:100%;padding:40px 20px;max-height:400px}ks-product-suggestions .content>.top>.heading{font-family:var(--font-emphasis);font-size:20px;font-weight:700}ks-product-suggestions .content>.top>.name{font-family:var(--font-emphasis);font-size:18px}ks-product-suggestions .content>.top>.buttons{display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;margin-top:20px;max-width:600px;width:100%}ks-product-suggestions .content>.top>.buttons>*{-ms-flex:1 0 auto;flex:1 0 auto;margin:5px}ks-product-suggestions .content>.bottom{display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center;-ms-flex-direction:column;flex-direction:column;position:relative;-webkit-box-sizing:border-box;box-sizing:border-box;padding:10px 0px;height:100%;background-color:#f2f2f2}ks-product-suggestions .content>.bottom>.fade-left,ks-product-suggestions .content>.bottom>.fade-right{position:absolute;top:0;height:100%;width:50px;z-index:1}ks-product-suggestions .content>.bottom>.fade-left{background-image:-webkit-gradient(linear, left top, right top, from(#f2f2f2), to(rgba(242, 242, 242, 0)));background-image:linear-gradient(to right, #f2f2f2, rgba(242, 242, 242, 0));left:0}ks-product-suggestions .content>.bottom>.fade-right{background-image:-webkit-gradient(linear, right top, left top, from(#f2f2f2), to(rgba(242, 242, 242, 0)));background-image:linear-gradient(to left, #f2f2f2, rgba(242, 242, 242, 0));right:0}ks-product-suggestions .swiper-container{width:100%;margin-bottom:15px}ks-product-suggestions .swiper-slide{height:100%;width:auto;max-width:230px;overflow:hidden;-webkit-animation:fade-in 0.8s ease 1;animation:fade-in 0.8s ease 1}ks-product-suggestions .swiper-slide>*{height:100%;width:230px}ks-product-suggestions .suggestion-heading{font-size:18px;margin:10px 0 20px 0;text-align:center}ks-product-suggestions ks-product-card .top{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;max-height:230px}@media (max-width: 560px){ks-product-suggestions .content>.top{padding:20px 10px}ks-product-suggestions .content>.top>.buttons{width:100%;-ms-flex-direction:column;flex-direction:column;-ms-flex-align:stretch;align-items:stretch;margin-top:10px}ks-product-suggestions ks-product-card .top{min-height:210px;max-height:210px}}@media (max-width: 370px){ks-product-suggestions .content>.top>.buttons>*>button{padding-top:12px;padding-bottom:12px}ks-product-suggestions .content>.top>.heading{font-size:18px}ks-product-suggestions .content>.top>.name{font-family:var(--font-regular);font-size:14px}ks-product-suggestions .swiper-slide>*{width:200px}ks-product-suggestions ks-product-card .top{min-height:180px;max-height:180px}ks-product-suggestions .suggestion-heading{font-size:16px;margin:3px 0 10px 0}}";
 
-const ProductSuggestions = class {
+let ProductSuggestions = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.suggestionHeading = "Produkty sugerowane";
@@ -570,9 +570,9 @@ const ProductSuggestions = class {
 };
 ProductSuggestions.style = productSuggestionsCss;
 
-const productTabCss = "ks-product-tab{display:block}@media only screen and (min-width: 960px){ks-product-tab .accordion{display:none}}ks-product-tab>button{display:-ms-flexbox;display:flex;-ms-flex-pack:justify;justify-content:space-between;background-color:transparent;color:#151515;width:100%;border:none;outline:none;padding:10px 0px 20px 0px;margin:0;-webkit-transition:color 0.3s ease;transition:color 0.3s ease}ks-product-tab>button:hover{color:#606060}ks-product-tab:not([open])>button>ks-icon{-webkit-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg);transition:-webkit-transform 0.3s ease;-webkit-transition:-webkit-transform 0.3s ease;transition:transform 0.3s ease;transition:transform 0.3s ease, -webkit-transform 0.3s ease}ks-product-tab:not([open])>button:hover>ks-icon{-webkit-transform:rotate(90deg);-ms-transform:rotate(90deg);transform:rotate(90deg)}ks-product-tab>.tab-content{display:none;max-width:100%}@media only screen and (min-width: 960px){ks-product-tab[main]>.tab-content{display:block}}@media only screen and (max-width: 960px){ks-product-tab[open]>.tab-content{display:block}}";
+const productTabCss = "ks-product-tab{display:block}@media only screen and (min-width: 960px){ks-product-tab .accordion{display:none}}ks-product-tab>button{display:-ms-flexbox;display:flex;-ms-flex-pack:justify;justify-content:space-between;background-color:transparent;color:#151515;width:100%;border:none;outline:none;padding:10px 0px 20px 0px;margin:0;-webkit-transition:color 0.3s ease;transition:color 0.3s ease}ks-product-tab>button:hover{color:#606060}ks-product-tab:not([open])>button>ks-icon{-webkit-transform:rotate(0deg);transform:rotate(0deg);transition:-webkit-transform 0.3s ease;-webkit-transition:-webkit-transform 0.3s ease;transition:transform 0.3s ease;transition:transform 0.3s ease, -webkit-transform 0.3s ease}ks-product-tab:not([open])>button:hover>ks-icon{-webkit-transform:rotate(90deg);transform:rotate(90deg)}ks-product-tab>.tab-content{display:none;max-width:100%}@media only screen and (min-width: 960px){ks-product-tab[main]>.tab-content{display:block}}@media only screen and (max-width: 960px){ks-product-tab[open]>.tab-content{display:block}}";
 
-const ProductTab = class {
+let ProductTab = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
   }
@@ -629,7 +629,7 @@ ProductTab.style = productTabCss;
 
 const productTabsCss = "ks-product-tabs{display:block;position:relative;-webkit-box-sizing:border-box;box-sizing:border-box;padding:0;background:var(--card-background);color:var(--card-text-color);-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow)}ks-product-tabs nav{background-color:#f6f6f6;border-bottom:1px solid #e8e8e8;display:-ms-flexbox;display:flex}@media only screen and (max-width: 960px){ks-product-tabs nav{display:none}}ks-product-tabs button{position:relative;padding:20px 40px;margin:0;font-family:inherit;font-size:18px;color:#252525;background-color:#f6f6f6;-webkit-transition:background-color 0.3s ease, color 0.3s ease;transition:background-color 0.3s ease, color 0.3s ease;border:none;outline:none;border-right:1px solid #e8e8e8}ks-product-tabs button.active{color:#252525 !important;background-color:#FFFFFF}ks-product-tabs button:hover{color:#808080}ks-product-tabs>.content{padding:30px}@media only screen and (max-width: 520px){ks-product-tabs>.content{padding:30px 20px}}";
 
-const ProductTabs = class {
+let ProductTabs = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.names = "";
@@ -655,7 +655,7 @@ ProductTabs.style = productTabsCss;
 
 const productTitleCss = "ks-product-title{display:block}ks-product-title h1{font-family:var(--product-title-font);font-size:var(--product-title-size);color:var(--product-title-color);font-weight:700;margin-bottom:2px}ks-product-title h1>a{text-decoration:none !important;color:var(--product-title-brand-color) !important;opacity:1;-webkit-transition:var(--transition-opacity);transition:var(--transition-opacity)}ks-product-title h1>a:hover{opacity:0.7}ks-product-title h1>a:active{opacity:0.5}ks-product-title>.breadcrumbs>a{font-family:var(--product-breadcrumb-font);font-size:14px !important;color:var(--product-breadcrumb-color);text-decoration:none}ks-product-title>.breadcrumbs>a:not(:last-child):after{content:\"/\";color:var(--product-breadcrumb-color);margin:0 15px}ks-product-title>.breadcrumbs>a:focus{color:var(--product-breadcrumb-color)}ks-product-title>.breadcrumbs>a:hover{color:var(--product-breadcrumb-color-hover)}ks-product-title>.breadcrumbs>a:active{color:var(--product-breadcrumb-color-active)}@media only screen and (max-width: 960px){ks-product-title{text-align:center}}@media only screen and (max-width: 1100px){ks-product-title>.breadcrumbs+*{font-size:var(--product-title-size-small)}}@media only screen and (max-width: 460px){ks-product-title>.breadcrumbs{margin-bottom:10px}ks-product-title>.breadcrumbs>a{font-size:14px}ks-product-title>.breadcrumbs>a:not(:last-child):after{margin:0 10px}}";
 
-const ProductTitle = class {
+let ProductTitle = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.brandLink = false;
@@ -688,7 +688,7 @@ ProductTitle.style = productTitleCss;
 
 const productTraitsCss = "ks-product-traits{display:block;font-family:var(--font-regular);font-size:16px;line-height:16px;margin-left:-2px;max-width:300px}ks-product-traits .trait{display:-ms-flexbox;display:flex;-ms-flex-align:baseline;align-items:baseline;overflow:hidden}ks-product-traits .select{position:relative;display:-ms-flexbox;display:flex;-ms-flex:1 0 auto;flex:1 0 auto}ks-product-traits label{padding:5px}ks-product-traits select{-ms-flex:1 0 auto;flex:1 0 auto;padding:7px 35px 7px 10px;margin-left:5px;border-radius:20px;outline-style:none;background-color:#f3f3f3;border:solid 1px #cacaca;font-family:var(--font-regular);font-size:16px;line-height:16px;-moz-appearance:none;-webkit-appearance:none;appearance:none;-webkit-transition:var(--transition-background-color);transition:var(--transition-background-color)}ks-product-traits select::-ms-expand{display:none}ks-product-traits ks-icon{position:absolute;top:5px;right:10px;pointer-events:none}ks-product-traits select option{background-color:white !important}@media only screen and (max-width: 960px){ks-product-traits select{padding:10px 40px 10px 15px}ks-product-traits ks-icon{top:7px}}";
 
-const ProductCount = class {
+let ProductCount = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.traitChange = index.createEvent(this, "traitChange", 7);
@@ -714,7 +714,7 @@ ProductCount.style = productTraitsCss;
 
 const productVariantCss = "ks-product-variant{display:block;height:100%}ks-product-variant a{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;-webkit-box-sizing:border-box;box-sizing:border-box;max-width:100%;max-height:100%;height:100%;background-color:white;-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow);padding:7px}ks-product-variant[active] a{border:2px solid #222}ks-product-variant ks-img2{height:auto;opacity:1;-webkit-transition:opacity 0.2s ease;transition:opacity 0.2s ease}ks-product-variant[unavailable] ks-img2{opacity:0.2}ks-product-variant:not([unavailable]) a:hover ks-img2{opacity:0.8}ks-product-variant[unavailable] a:hover ks-img2{opacity:0.15}";
 
-const ProductVariant = class {
+let ProductVariant = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
   }
@@ -726,7 +726,7 @@ ProductVariant.style = productVariantCss;
 
 const productVariantsCss = "ks-product-variants{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column}ks-product-variants .content{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;overflow:hidden;-webkit-box-sizing:border-box;box-sizing:border-box;width:100%;max-width:100%;max-width:calc(100% + 18px);width:200%;margin:-9px}ks-product-variants ks-product-variant{padding:9px;-webkit-box-sizing:border-box;box-sizing:border-box}ks-product-variants ks-button{margin-top:15px}";
 
-const ProductVariants = class {
+let ProductVariants = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.more = false;
@@ -786,7 +786,7 @@ ProductVariants.style = productVariantsCss;
 
 const productYoutubeCss = "ks-product-youtube{display:block;position:relative;overflow:hidden;-webkit-box-sizing:border-box;box-sizing:border-box;padding-top:56.25%;background-color:black}ks-product-youtube iframe{position:absolute;top:0;left:0;bottom:0;right:0;width:100%;height:100%}";
 
-const ProductYoutube = class {
+let ProductYoutube = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.videoId = "";

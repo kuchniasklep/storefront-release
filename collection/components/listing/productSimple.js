@@ -19,7 +19,8 @@ export class ProductSimple {
       h("div", { class: "uk-text-xsmall uk-text-center uk-position-relative", style: { pointerEvents: "none" } },
         this.previousPrice ? [
           h("span", { class: "uk-text-muted" },
-            h("s", null, previousPrice)), h("br", null)
+            h("s", null, previousPrice)),
+          h("br", null)
         ] : null,
         h("span", { class: "uk-text-bold uk-text-normal uk-text-danger" }, currentPrice))));
   }

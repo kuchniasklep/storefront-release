@@ -34,9 +34,12 @@ export class NavbarCategoryView {
     bar.style.borderBottom = bar.style.borderTop;
   }
   componentWillLoad() {
-    this.count = this.category.children.length;
+    var _a, _b, _c;
+    this.count = (_c = (_b = (_a = this.category) === null || _a === void 0 ? void 0 : _a.children) === null || _b === void 0 ? void 0 : _b.length) !== null && _c !== void 0 ? _c : 0;
   }
   render() {
+    if (!this.category)
+      return;
     const childrenstyle = {
       opacity: this.hiddenO ? "0.0" : "1.0",
       height: (this.count * 40) + "px"

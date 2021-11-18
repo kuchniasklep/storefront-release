@@ -56,7 +56,6 @@ ks-sidepanel .content .close {
 
 ks-sidepanel .content {
     -webkit-transform:translateX(100%);
-        -ms-transform:translateX(100%);
             transform:translateX(100%);
     transition: -webkit-transform 0.3s ease;
     transition: transform 0.3s ease;
@@ -65,24 +64,20 @@ ks-sidepanel .content {
 
 ks-sidepanel[left] .content {
     -webkit-transform:translateX(-100%);
-        -ms-transform:translateX(-100%);
             transform:translateX(-100%);
 }
 
 ks-sidepanel .visible {
     -webkit-transform:translateX(0%) !important;
-        -ms-transform:translateX(0%) !important;
             transform:translateX(0%) !important;
 }
 
 ks-sidepanel .hidden {
     -webkit-transform:translateX(100%);
-        -ms-transform:translateX(100%);
             transform:translateX(100%);
 }
 
 ks-sidepanel[left] .hidden {
     -webkit-transform:translateX(-100%);
-        -ms-transform:translateX(-100%);
             transform:translateX(-100%);
 }

@@ -10,7 +10,6 @@ ks-product-installments > .arrow {
     bottom: -5px;
     left: 50%;
     -webkit-transform: translateX(-5px);
-        -ms-transform: translateX(-5px);
             transform: translateX(-5px);
 
     width: 0; 

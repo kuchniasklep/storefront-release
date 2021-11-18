@@ -2,13 +2,13 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-0dd0274e.js');
-const cartStore = require('./cart-store-fdf984af.js');
-require('./index-afac6374.js');
+const index = require('./index-601dda3f.js');
+const cartStore = require('./cart-store-bc8fd611.js');
+require('./index-6a08c494.js');
 
 const cartCss = "ks-cart{display:block;-webkit-box-sizing:border-box;box-sizing:border-box;overflow:hidden;width:100%;background:var(--card-background);color:var(--card-text-color);-webkit-box-shadow:var(--card-shadow);box-shadow:var(--card-shadow)}";
 
-const Cart = class {
+let Cart = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.dataId = "";
@@ -244,7 +244,7 @@ Cart.style = cartCss;
 
 const cartButtonsCss = "ks-cart-buttons{display:block}ks-cart-buttons>.confirm{-ms-flex:1;flex:1;width:100%;font-size:28px;font-weight:700;padding:20px}";
 
-const CartButtons = class {
+let CartButtons = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.href = "";
@@ -293,7 +293,7 @@ CartButtons.style = cartButtonsCss;
 
 const cartCountrySelectCss = "ks-cart-country-select{display:-ms-flexbox;display:flex;-ms-flex-pack:justify;justify-content:space-between;-ms-flex-align:center;align-items:center}ks-cart-country-select .select{position:relative;height:35px;margin-bottom:20px}ks-cart-country-select .select .icons{position:absolute;width:25px;height:25px;top:5px;right:4px;pointer-events:none;opacity:1.0;-webkit-transition:opacity 0.3s ease;transition:opacity 0.3s ease}ks-cart-country-select .select .icons span{position:absolute}ks-cart-country-select .select span:last-of-type{opacity:0.0}ks-cart-country-select .select select{height:100%;padding:3px 35px 3px 5px;outline:none;border:none;-moz-appearance:none;-webkit-appearance:none;appearance:none;-moz-text-align-last:right;text-align-last:right;font-size:18px;font-family:'Nunito', sans-serif;color:#151515;-webkit-transition:color 0.3s ease;transition:color 0.3s ease}ks-cart-country-select .select option{font-size:16px}ks-cart-country-select .select:hover select{color:#606060}ks-cart-country-select .select:hover span:first-of-type{opacity:0.0}ks-cart-country-select .select:hover span:last-of-type{opacity:1.0}@media only screen and (max-width: 520px){ks-cart-country-select{display:block}ks-cart-country-select .select{margin-bottom:35px}ks-cart-country-select .select select{height:50px;width:100%;padding:0 20px;background-color:#f8f8f8;border:1px solid #d2d2d2;-moz-text-align-last:left;text-align-last:left;font-size:16px}ks-cart-country-select .select .icons{height:50px;width:50px;top:0;right:0;-webkit-box-sizing:border-box;box-sizing:border-box;padding:13px;background-color:#252525;color:white}ks-cart-country-select .select span:first-of-type{opacity:0.0 !important}ks-cart-country-select .select span:last-of-type{opacity:1.0 !important}}";
 
-const CartCountrySelect = class {
+let CartCountrySelect = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.countryChange = index.createEvent(this, "countryChange", 7);
@@ -312,9 +312,9 @@ const CartCountrySelect = class {
 };
 CartCountrySelect.style = cartCountrySelectCss;
 
-const dealCss = "ks-cart-deal{display:-ms-flexbox;display:flex;overflow:hidden;-ms-flex-pack:space-evenly;justify-content:space-evenly;-ms-flex-align:center;align-items:center;background-color:#252525;padding:0 30px;-webkit-box-sizing:border-box;box-sizing:border-box;margin:0 0 30px 0}ks-cart-deal .image{position:relative;-webkit-box-sizing:border-box;box-sizing:border-box;width:180px;height:180px;-webkit-transform:translateX(-20px);-ms-transform:translateX(-20px);transform:translateX(-20px)}ks-cart-deal .circle{position:absolute;-webkit-box-sizing:border-box;box-sizing:border-box;overflow:hidden;width:145px;height:145px;padding:10px;border-radius:100%;background-color:white}ks-cart-deal .fx{position:absolute;width:250px;height:250px;max-width:initial;-webkit-animation-name:rotate;animation-name:rotate;-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite;-webkit-animation-timing-function:linear;animation-timing-function:linear}ks-cart-deal .fx1{-webkit-animation-duration:50s;animation-duration:50s}ks-cart-deal .fx2{-webkit-animation-duration:40s;animation-duration:40s;animation-direction:reverse}ks-cart-deal .fx3{-webkit-animation-duration:40s;animation-duration:40s}ks-cart-deal .fx4{-webkit-animation-duration:50s;animation-duration:50s;animation-direction:reverse}@-webkit-keyframes rotate{from{-webkit-transform:translate(-50%, -50%) rotate(0deg);transform:translate(-50%, -50%) rotate(0deg)}to{-webkit-transform:translate(-50%, -50%) rotate(360deg);transform:translate(-50%, -50%) rotate(360deg)}}@keyframes rotate{from{-webkit-transform:translate(-50%, -50%) rotate(0deg);transform:translate(-50%, -50%) rotate(0deg)}to{-webkit-transform:translate(-50%, -50%) rotate(360deg);transform:translate(-50%, -50%) rotate(360deg)}}ks-cart-deal .center{top:50%;left:50%;-webkit-transform:translate(-50%, -50%);-ms-transform:translate(-50%, -50%);transform:translate(-50%, -50%)}ks-cart-deal .text{color:white;font-size:18px;text-align:center}ks-cart-deal .top>a{color:white;text-decoration:none}ks-cart-deal .text>.bottom{display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center;font-size:34px;font-weight:700}ks-cart-deal button{margin-left:20px;padding:8px 30px 10px 30px;border-radius:50px;border-style:none;outline-style:none;font-weight:700;font-size:18px;width:260px;background-color:#ff3838;color:white;-webkit-transition:background-color 0.3s;transition:background-color 0.3s}ks-cart-deal button:hover{background-color:#e62c2c}ks-cart-deal button:active{background-color:#d41e1e;-webkit-transition:background-color 0.1s;transition:background-color 0.1s}@media only screen and (max-width: 760px){ks-cart-deal{display:block;padding:20px}ks-cart-deal .image{-webkit-transform:translateX(0px);-ms-transform:translateX(0px);transform:translateX(0px);margin:10px auto 30px auto}}@media only screen and (max-width: 460px){ks-cart-deal .text>.bottom{-ms-flex-direction:column;flex-direction:column;font-size:34px}ks-cart-deal button{margin:5px 0 0 0}}ks-cart-deal .large{display:none}@media only screen and (min-width: 1100px){ks-cart-deal{-ms-flex-pack:distribute;justify-content:space-around}ks-cart-deal .large{display:block}ks-cart-deal .small{display:none}ks-cart-deal .text{text-align:left;min-width:400px}ks-cart-deal .text>.bottom{display:block;font-size:34px;line-height:34px}ks-cart-deal button{margin-left:0;padding:15px 30px 17px 30px;border-radius:50px;border-style:none;outline-style:none;font-weight:700;font-size:18px;background-color:#ff3838;color:white}}";
+const dealCss = "ks-cart-deal{display:-ms-flexbox;display:flex;overflow:hidden;-ms-flex-pack:space-evenly;justify-content:space-evenly;-ms-flex-align:center;align-items:center;background-color:#252525;padding:0 30px;-webkit-box-sizing:border-box;box-sizing:border-box;margin:0 0 30px 0}ks-cart-deal .image{position:relative;-webkit-box-sizing:border-box;box-sizing:border-box;width:180px;height:180px;-webkit-transform:translateX(-20px);transform:translateX(-20px)}ks-cart-deal .circle{position:absolute;-webkit-box-sizing:border-box;box-sizing:border-box;overflow:hidden;width:145px;height:145px;padding:10px;border-radius:100%;background-color:white}ks-cart-deal .fx{position:absolute;width:250px;height:250px;max-width:initial;-webkit-animation-name:rotate;animation-name:rotate;-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite;-webkit-animation-timing-function:linear;animation-timing-function:linear}ks-cart-deal .fx1{-webkit-animation-duration:50s;animation-duration:50s}ks-cart-deal .fx2{-webkit-animation-duration:40s;animation-duration:40s;animation-direction:reverse}ks-cart-deal .fx3{-webkit-animation-duration:40s;animation-duration:40s}ks-cart-deal .fx4{-webkit-animation-duration:50s;animation-duration:50s;animation-direction:reverse}@-webkit-keyframes rotate{from{-webkit-transform:translate(-50%, -50%) rotate(0deg);transform:translate(-50%, -50%) rotate(0deg)}to{-webkit-transform:translate(-50%, -50%) rotate(360deg);transform:translate(-50%, -50%) rotate(360deg)}}@keyframes rotate{from{-webkit-transform:translate(-50%, -50%) rotate(0deg);transform:translate(-50%, -50%) rotate(0deg)}to{-webkit-transform:translate(-50%, -50%) rotate(360deg);transform:translate(-50%, -50%) rotate(360deg)}}ks-cart-deal .center{top:50%;left:50%;-webkit-transform:translate(-50%, -50%);transform:translate(-50%, -50%)}ks-cart-deal .text{color:white;font-size:18px;text-align:center}ks-cart-deal .top>a{color:white;text-decoration:none}ks-cart-deal .text>.bottom{display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center;font-size:34px;font-weight:700}ks-cart-deal button{margin-left:20px;padding:8px 30px 10px 30px;border-radius:50px;border-style:none;outline-style:none;font-weight:700;font-size:18px;width:260px;background-color:#ff3838;color:white;-webkit-transition:background-color 0.3s;transition:background-color 0.3s}ks-cart-deal button:hover{background-color:#e62c2c}ks-cart-deal button:active{background-color:#d41e1e;-webkit-transition:background-color 0.1s;transition:background-color 0.1s}@media only screen and (max-width: 760px){ks-cart-deal{display:block;padding:20px}ks-cart-deal .image{-webkit-transform:translateX(0px);transform:translateX(0px);margin:10px auto 30px auto}}@media only screen and (max-width: 460px){ks-cart-deal .text>.bottom{-ms-flex-direction:column;flex-direction:column;font-size:34px}ks-cart-deal button{margin:5px 0 0 0}}ks-cart-deal .large{display:none}@media only screen and (min-width: 1100px){ks-cart-deal{-ms-flex-pack:distribute;justify-content:space-around}ks-cart-deal .large{display:block}ks-cart-deal .small{display:none}ks-cart-deal .text{text-align:left;min-width:400px}ks-cart-deal .text>.bottom{display:block;font-size:34px;line-height:34px}ks-cart-deal button{margin-left:0;padding:15px 30px 17px 30px;border-radius:50px;border-style:none;outline-style:none;font-weight:700;font-size:18px;background-color:#ff3838;color:white}}";
 
-const CartDeal = class {
+let CartDeal = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.addDeal = index.createEvent(this, "addDeal", 7);
@@ -334,7 +334,7 @@ const CartDeal = class {
 };
 CartDeal.style = dealCss;
 
-const CartDealContainer = class {
+let CartDealContainer = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
   }
@@ -347,9 +347,9 @@ const CartDealContainer = class {
   get root() { return index.getElement(this); }
 };
 
-const dealGroupCss = "ks-cart-deal-group{display:-ms-flexbox;display:flex;overflow:hidden;-ms-flex-pack:space-evenly;justify-content:space-evenly;-ms-flex-align:center;align-items:center;background-color:#252525;padding:0 30px;-webkit-box-sizing:border-box;box-sizing:border-box;margin:0 0 30px 0}ks-cart-deal-group .image{position:relative;-webkit-box-sizing:border-box;box-sizing:border-box;width:180px;height:180px;-webkit-transform:translateX(-20px);-ms-transform:translateX(-20px);transform:translateX(-20px)}ks-cart-deal-group .circle{position:absolute;-webkit-box-sizing:border-box;box-sizing:border-box;overflow:hidden;width:145px;height:145px;padding:10px;border-radius:100%;background-color:white}ks-cart-deal-group .fx{position:absolute;width:250px;height:250px;max-width:initial;-webkit-animation-name:rotate;animation-name:rotate;-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite;-webkit-animation-timing-function:linear;animation-timing-function:linear}ks-cart-deal-group .fx1{-webkit-animation-duration:50s;animation-duration:50s}ks-cart-deal-group .fx2{-webkit-animation-duration:40s;animation-duration:40s;animation-direction:reverse}ks-cart-deal-group .fx3{-webkit-animation-duration:40s;animation-duration:40s}ks-cart-deal-group .fx4{-webkit-animation-duration:50s;animation-duration:50s;animation-direction:reverse}@-webkit-keyframes rotate{from{-webkit-transform:translate(-50%, -50%) rotate(0deg);transform:translate(-50%, -50%) rotate(0deg)}to{-webkit-transform:translate(-50%, -50%) rotate(360deg);transform:translate(-50%, -50%) rotate(360deg)}}@keyframes rotate{from{-webkit-transform:translate(-50%, -50%) rotate(0deg);transform:translate(-50%, -50%) rotate(0deg)}to{-webkit-transform:translate(-50%, -50%) rotate(360deg);transform:translate(-50%, -50%) rotate(360deg)}}ks-cart-deal-group .center{top:50%;left:50%;-webkit-transform:translate(-50%, -50%);-ms-transform:translate(-50%, -50%);transform:translate(-50%, -50%)}ks-cart-deal-group .text{color:white;font-size:18px;text-align:center}ks-cart-deal-group .top>a{color:white;text-decoration:none}ks-cart-deal-group .text>.bottom{display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center;font-size:34px;font-weight:700}ks-cart-deal-group button{margin-left:20px;padding:8px 30px 10px 30px;border-radius:50px;border-style:none;outline-style:none;font-weight:700;font-size:18px;width:260px;background-color:#ff3838;color:white;-webkit-transition:background-color 0.3s;transition:background-color 0.3s}ks-cart-deal-group button:hover{background-color:#e62c2c}ks-cart-deal-group button:active{background-color:#d41e1e;-webkit-transition:background-color 0.1s;transition:background-color 0.1s}ks-cart-deal-group .variants{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center}ks-cart-deal-group .variants label{display:block;-webkit-box-sizing:border-box;box-sizing:border-box;padding:6px 20px 8px 15px;font-size:15px;background-color:#4d4d4d;-ms-flex-negative:0;flex-shrink:0;height:36px}ks-cart-deal-group select{display:block;margin:15px 0;padding:8px 40px 10px 10px;width:100%;height:36px;font-size:15px;-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:#353535;color:#f2f2f2 !important;border:none;background-image:url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23ffffff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');background-repeat:no-repeat, repeat;background-position:right 15px top 50%, 0 0;background-size:10px auto, 100%;-webkit-transition:background-color 0.3s ease;transition:background-color 0.3s ease}ks-cart-deal-group select::-ms-expand{display:none}ks-cart-deal-group select:hover{background-color:#404040}ks-cart-deal-group select:focus{outline:none}ks-cart-deal-group select option{font-weight:normal}@media only screen and (max-width: 760px){ks-cart-deal-group{display:block;padding:20px}ks-cart-deal-group .image{-webkit-transform:translateX(0px);-ms-transform:translateX(0px);transform:translateX(0px);margin:10px auto 30px auto}ks-cart-deal-group .variants{-ms-flex-pack:center;justify-content:center}ks-cart-deal-group select{max-width:220px;text-align:center;-moz-text-align-last:center;text-align-last:center}}@media only screen and (max-width: 460px){ks-cart-deal-group .text>.bottom{-ms-flex-direction:column;flex-direction:column;font-size:34px !important}ks-cart-deal-group button{margin:5px 0 0 0}}ks-cart-deal-group .large{display:none}@media only screen and (min-width: 1100px){ks-cart-deal-group{-ms-flex-pack:distribute;justify-content:space-around}ks-cart-deal-group .large{display:block}ks-cart-deal-group .small{display:none}ks-cart-deal-group .text{text-align:left;min-width:400px}ks-cart-deal-group .text>.bottom{display:block;font-size:34px;line-height:34px}ks-cart-deal-group button{margin-left:0;padding:15px 30px 17px 30px;border-radius:50px;border-style:none;outline-style:none;font-weight:700;font-size:18px;background-color:#ff3838;color:white}ks-cart-deal-group select{margin:8px 0px 8px 0px;width:auto}}";
+const dealGroupCss = "ks-cart-deal-group{display:-ms-flexbox;display:flex;overflow:hidden;-ms-flex-pack:space-evenly;justify-content:space-evenly;-ms-flex-align:center;align-items:center;background-color:#252525;padding:0 30px;-webkit-box-sizing:border-box;box-sizing:border-box;margin:0 0 30px 0}ks-cart-deal-group .image{position:relative;-webkit-box-sizing:border-box;box-sizing:border-box;width:180px;height:180px;-webkit-transform:translateX(-20px);transform:translateX(-20px)}ks-cart-deal-group .circle{position:absolute;-webkit-box-sizing:border-box;box-sizing:border-box;overflow:hidden;width:145px;height:145px;padding:10px;border-radius:100%;background-color:white}ks-cart-deal-group .fx{position:absolute;width:250px;height:250px;max-width:initial;-webkit-animation-name:rotate;animation-name:rotate;-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite;-webkit-animation-timing-function:linear;animation-timing-function:linear}ks-cart-deal-group .fx1{-webkit-animation-duration:50s;animation-duration:50s}ks-cart-deal-group .fx2{-webkit-animation-duration:40s;animation-duration:40s;animation-direction:reverse}ks-cart-deal-group .fx3{-webkit-animation-duration:40s;animation-duration:40s}ks-cart-deal-group .fx4{-webkit-animation-duration:50s;animation-duration:50s;animation-direction:reverse}@-webkit-keyframes rotate{from{-webkit-transform:translate(-50%, -50%) rotate(0deg);transform:translate(-50%, -50%) rotate(0deg)}to{-webkit-transform:translate(-50%, -50%) rotate(360deg);transform:translate(-50%, -50%) rotate(360deg)}}@keyframes rotate{from{-webkit-transform:translate(-50%, -50%) rotate(0deg);transform:translate(-50%, -50%) rotate(0deg)}to{-webkit-transform:translate(-50%, -50%) rotate(360deg);transform:translate(-50%, -50%) rotate(360deg)}}ks-cart-deal-group .center{top:50%;left:50%;-webkit-transform:translate(-50%, -50%);transform:translate(-50%, -50%)}ks-cart-deal-group .text{color:white;font-size:18px;text-align:center}ks-cart-deal-group .top>a{color:white;text-decoration:none}ks-cart-deal-group .text>.bottom{display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center;font-size:34px;font-weight:700}ks-cart-deal-group button{margin-left:20px;padding:8px 30px 10px 30px;border-radius:50px;border-style:none;outline-style:none;font-weight:700;font-size:18px;width:260px;background-color:#ff3838;color:white;-webkit-transition:background-color 0.3s;transition:background-color 0.3s}ks-cart-deal-group button:hover{background-color:#e62c2c}ks-cart-deal-group button:active{background-color:#d41e1e;-webkit-transition:background-color 0.1s;transition:background-color 0.1s}ks-cart-deal-group .variants{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center}ks-cart-deal-group .variants label{display:block;-webkit-box-sizing:border-box;box-sizing:border-box;padding:6px 20px 8px 15px;font-size:15px;background-color:#4d4d4d;-ms-flex-negative:0;flex-shrink:0;height:36px}ks-cart-deal-group select{display:block;margin:15px 0;padding:8px 40px 10px 10px;width:100%;height:36px;font-size:15px;-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:#353535;color:#f2f2f2 !important;border:none;background-image:url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23ffffff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');background-repeat:no-repeat, repeat;background-position:right 15px top 50%, 0 0;background-size:10px auto, 100%;-webkit-transition:background-color 0.3s ease;transition:background-color 0.3s ease}ks-cart-deal-group select::-ms-expand{display:none}ks-cart-deal-group select:hover{background-color:#404040}ks-cart-deal-group select:focus{outline:none}ks-cart-deal-group select option{font-weight:normal}@media only screen and (max-width: 760px){ks-cart-deal-group{display:block;padding:20px}ks-cart-deal-group .image{-webkit-transform:translateX(0px);transform:translateX(0px);margin:10px auto 30px auto}ks-cart-deal-group .variants{-ms-flex-pack:center;justify-content:center}ks-cart-deal-group select{max-width:220px;text-align:center;-moz-text-align-last:center;text-align-last:center}}@media only screen and (max-width: 460px){ks-cart-deal-group .text>.bottom{-ms-flex-direction:column;flex-direction:column;font-size:34px !important}ks-cart-deal-group button{margin:5px 0 0 0}}ks-cart-deal-group .large{display:none}@media only screen and (min-width: 1100px){ks-cart-deal-group{-ms-flex-pack:distribute;justify-content:space-around}ks-cart-deal-group .large{display:block}ks-cart-deal-group .small{display:none}ks-cart-deal-group .text{text-align:left;min-width:400px}ks-cart-deal-group .text>.bottom{display:block;font-size:34px;line-height:34px}ks-cart-deal-group button{margin-left:0;padding:15px 30px 17px 30px;border-radius:50px;border-style:none;outline-style:none;font-weight:700;font-size:18px;background-color:#ff3838;color:white}ks-cart-deal-group select{margin:8px 0px 8px 0px;width:auto}}";
 
-const CartDealGroup = class {
+let CartDealGroup = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.addDeal = index.createEvent(this, "addDeal", 7);
@@ -378,7 +378,7 @@ CartDealGroup.style = dealGroupCss;
 
 const cartDiscountCodeCss = "ks-cart-discount-code{display:block}ks-cart-discount-code>form:first-child{display:-ms-flexbox;display:flex}ks-cart-discount-code ks-input-text{display:block;-ms-flex:1;flex:1}ks-cart-discount-code ks-input-text input{height:50px !important}ks-cart-discount-code ks-input-text>div{margin-bottom:3px !important}ks-cart-discount-code button{padding:0 30px !important;height:50px}@media only screen and (max-width: 560px){ks-cart-discount-code>form:first-child{display:block}ks-cart-discount-code button{width:100%}}ks-cart-discount-code .messsage{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;height:100px;margin-top:7px;background-color:#222222;-webkit-transition:background-color 0.3s ease;transition:background-color 0.3s ease}ks-cart-discount-code .messsage:hover{background-color:#303030}@media only screen and (max-width: 470px){ks-cart-discount-code .messsage{height:25vw}}";
 
-const CartDiscountCode = class {
+let CartDiscountCode = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.discountCodeAdd = index.createEvent(this, "discountCodeAdd", 7);
@@ -419,7 +419,7 @@ CartDiscountCode.style = cartDiscountCodeCss;
 
 const cartDiscountContainerCss = "ks-cart-discount-container{display:block;min-height:123px}ks-cart-discount-container>.flex{display:-ms-flexbox;display:flex;-ms-flex-pack:justify;justify-content:space-between}ks-cart-discount-container>.flex>*{width:calc(50% - 4px)}@media only screen and (max-width: 1100px){ks-cart-discount-container>.flex{display:block}ks-cart-discount-container>.flex>*{width:100%;margin-bottom:30px}}";
 
-const CartDiscountContainer = class {
+let CartDiscountContainer = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.codeBanner = "";
@@ -477,7 +477,7 @@ CartDiscountContainer.style = cartDiscountContainerCss;
 
 const cartDiscountTicketCss$1 = "ks-cart-discount-ticket{display:-ms-flexbox;display:flex;width:100%;min-height:70px;-webkit-box-sizing:border-box;box-sizing:border-box;background-color:#ff3838;color:white;font-size:20px}ks-cart-discount-ticket .content{-ms-flex:1;flex:1;display:-ms-flexbox;display:flex;-ms-flex-pack:justify;justify-content:space-between;-ms-flex-align:center;align-items:center;padding:10px 20px}ks-cart-discount-ticket .name{-ms-flex:1;flex:1;font-weight:700}ks-cart-discount-ticket .remove{display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center;width:70px;background-color:transparent;-webkit-transition:background-color 0.2s ease;transition:background-color 0.2s ease}ks-cart-discount-ticket .remove:hover{background-color:rgba(0, 0, 0, 0.068)}ks-cart-discount-ticket .remove:active{background-color:rgba(0, 0, 0, 0.137)}@media only screen and (max-width: 560px){ks-cart-discount-ticket .content{display:block}ks-cart-discount-ticket .value{font-size:16px}}";
 
-const CartDiscountTicket$1 = class {
+let CartDiscountTicket$1 = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.name = "";
@@ -490,9 +490,9 @@ const CartDiscountTicket$1 = class {
 };
 CartDiscountTicket$1.style = cartDiscountTicketCss$1;
 
-const cartDiscountPointsCss = "ks-cart-discount-points{display:block}ks-cart-discount-points>form{display:-ms-flexbox;display:flex}ks-cart-discount-points ks-input-number{display:block;-ms-flex:1;flex:1}ks-cart-discount-points ks-input-number input{height:50px !important}ks-cart-discount-points ks-input-number>div{margin-bottom:3px !important}ks-cart-discount-points button{padding:0 30px !important;height:50px}@media only screen and (max-width: 600px){ks-cart-discount-points>form{display:block}ks-cart-discount-points button{width:100%}}ks-cart-discount-points .messsage{display:-ms-flexbox;display:flex;-ms-flex-direction:row-reverse;flex-direction:row-reverse;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;height:100px;margin-top:7px;background-color:#222222;color:white}ks-cart-discount-points .messsage:hover{color:white;text-decoration:none}ks-cart-discount-points .messsage:visited{color:white;text-decoration:none}ks-cart-discount-points .messsage>.bottom{-ms-flex:1;flex:1;padding:10px 20px;font-size:15px}ks-cart-discount-points .messsage .points{height:100%}ks-cart-discount-points .points>div{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;-webkit-box-sizing:border-box;box-sizing:border-box;padding:6px 30px;height:50%;font-size:26px;font-weight:700}ks-cart-discount-points .points>div>span{-webkit-transform:translateX(-5px);-ms-transform:translateX(-5px);transform:translateX(-5px)}ks-cart-discount-points .points>.top{background-color:#303030}ks-cart-discount-points .points>.bottom{background-color:#ff3c3c}@media only screen and (max-width: 600px){ks-cart-discount-points .messsage{display:block;height:auto;text-align:center}ks-cart-discount-points .messsage .points{display:none}}";
+const cartDiscountPointsCss = "ks-cart-discount-points{display:block}ks-cart-discount-points>form{display:-ms-flexbox;display:flex}ks-cart-discount-points ks-input-number{display:block;-ms-flex:1;flex:1}ks-cart-discount-points ks-input-number input{height:50px !important}ks-cart-discount-points ks-input-number>div{margin-bottom:3px !important}ks-cart-discount-points button{padding:0 30px !important;height:50px}@media only screen and (max-width: 600px){ks-cart-discount-points>form{display:block}ks-cart-discount-points button{width:100%}}ks-cart-discount-points .messsage{display:-ms-flexbox;display:flex;-ms-flex-direction:row-reverse;flex-direction:row-reverse;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;height:100px;margin-top:7px;background-color:#222222;color:white}ks-cart-discount-points .messsage:hover{color:white;text-decoration:none}ks-cart-discount-points .messsage:visited{color:white;text-decoration:none}ks-cart-discount-points .messsage>.bottom{-ms-flex:1;flex:1;padding:10px 20px;font-size:15px}ks-cart-discount-points .messsage .points{height:100%}ks-cart-discount-points .points>div{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;-webkit-box-sizing:border-box;box-sizing:border-box;padding:6px 30px;height:50%;font-size:26px;font-weight:700}ks-cart-discount-points .points>div>span{-webkit-transform:translateX(-5px);transform:translateX(-5px)}ks-cart-discount-points .points>.top{background-color:#303030}ks-cart-discount-points .points>.bottom{background-color:#ff3c3c}@media only screen and (max-width: 600px){ks-cart-discount-points .messsage{display:block;height:auto;text-align:center}ks-cart-discount-points .messsage .points{display:none}}";
 
-const CartDiscountPoints = class {
+let CartDiscountPoints = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.discountPointsAdd = index.createEvent(this, "discountPointsAdd", 7);
@@ -529,9 +529,9 @@ const CartDiscountPoints = class {
 };
 CartDiscountPoints.style = cartDiscountPointsCss;
 
-const cartDiscountPointsLoginCss = "ks-cart-discount-points-login{display:block}ks-cart-discount-points-login a{padding:4px 5px !important;height:50px;width:100%;font-size:18px !important;font-weight:700 !important;text-transform:uppercase !important}ks-cart-discount-points-login a:first-child{border-right:1px solid #303030}ks-cart-discount-points-login .messsage{display:-ms-flexbox;display:flex;-ms-flex-direction:row-reverse;flex-direction:row-reverse;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;height:100px;-webkit-box-sizing:border-box;box-sizing:border-box;margin-top:7px;background-color:#222222;color:white}@media only screen and (max-width: 600px){ks-cart-discount-points-login .messsage{display:block;height:auto;text-align:center;font-size:14px}ks-cart-discount-points-login a{font-size:14px !important;font-weight:400 !important;text-transform:none !important}}ks-cart-discount-points-login .messsage>.info{-ms-flex:1;flex:1;padding:10px 20px;font-size:15px}ks-cart-discount-points-login .messsage .points{height:100%}ks-cart-discount-points-login .points{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;-webkit-box-sizing:border-box;box-sizing:border-box;padding:6px 30px;font-size:32px;font-weight:700;background-color:#ff3c3c}ks-cart-discount-points-login .points>span{-webkit-transform:translateX(-5px);-ms-transform:translateX(-5px);transform:translateX(-5px)}@media only screen and (max-width: 600px){ks-cart-discount-points-login .messsage .points{display:none}}";
+const cartDiscountPointsLoginCss = "ks-cart-discount-points-login{display:block}ks-cart-discount-points-login a{padding:4px 5px !important;height:50px;width:100%;font-size:18px !important;font-weight:700 !important;text-transform:uppercase !important}ks-cart-discount-points-login a:first-child{border-right:1px solid #303030}ks-cart-discount-points-login .messsage{display:-ms-flexbox;display:flex;-ms-flex-direction:row-reverse;flex-direction:row-reverse;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;height:100px;-webkit-box-sizing:border-box;box-sizing:border-box;margin-top:7px;background-color:#222222;color:white}@media only screen and (max-width: 600px){ks-cart-discount-points-login .messsage{display:block;height:auto;text-align:center;font-size:14px}ks-cart-discount-points-login a{font-size:14px !important;font-weight:400 !important;text-transform:none !important}}ks-cart-discount-points-login .messsage>.info{-ms-flex:1;flex:1;padding:10px 20px;font-size:15px}ks-cart-discount-points-login .messsage .points{height:100%}ks-cart-discount-points-login .points{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;-webkit-box-sizing:border-box;box-sizing:border-box;padding:6px 30px;font-size:32px;font-weight:700;background-color:#ff3c3c}ks-cart-discount-points-login .points>span{-webkit-transform:translateX(-5px);transform:translateX(-5px)}@media only screen and (max-width: 600px){ks-cart-discount-points-login .messsage .points{display:none}}";
 
-const CartDiscountPointsLogin = class {
+let CartDiscountPointsLogin = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.message = "";
@@ -547,9 +547,9 @@ const CartDiscountPointsLogin = class {
 };
 CartDiscountPointsLogin.style = cartDiscountPointsLoginCss;
 
-const cartDiscountPointsMessageCss = "ks-cart-discount-points-message{display:block}ks-cart-discount-points-message>div:first-child{display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center;-webkit-box-sizing:border-box;box-sizing:border-box;height:50px;padding:4px 5px !important;background-color:#222222;color:white;font-size:18px !important;font-weight:700 !important;text-transform:uppercase !important}ks-cart-discount-points-message .messsage{display:-ms-flexbox;display:flex;-ms-flex-direction:row-reverse;flex-direction:row-reverse;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;height:100px;font-size:15px;-webkit-box-sizing:border-box;box-sizing:border-box;margin-top:7px;background-color:#222222;color:white}@media only screen and (max-width: 600px){ks-cart-discount-points-message .messsage{display:block;height:auto;text-align:center;font-size:14px}ks-cart-discount-points-message div:first-child{font-size:14px !important;font-weight:400 !important;text-transform:none !important}}ks-cart-discount-points-message .messsage>.info{-ms-flex:1;flex:1;padding:10px 20px;font-size:15px}ks-cart-discount-points-message .messsage .points{height:100%}ks-cart-discount-points-message .points{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;-webkit-box-sizing:border-box;box-sizing:border-box;padding:6px 30px;font-size:32px;font-weight:700;background-color:#ff3c3c}ks-cart-discount-points-message .points>span{-webkit-transform:translateX(-5px);-ms-transform:translateX(-5px);transform:translateX(-5px)}@media only screen and (max-width: 600px){ks-cart-discount-points-message .messsage .points{display:none}}";
+const cartDiscountPointsMessageCss = "ks-cart-discount-points-message{display:block}ks-cart-discount-points-message>div:first-child{display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center;-webkit-box-sizing:border-box;box-sizing:border-box;height:50px;padding:4px 5px !important;background-color:#222222;color:white;font-size:18px !important;font-weight:700 !important;text-transform:uppercase !important}ks-cart-discount-points-message .messsage{display:-ms-flexbox;display:flex;-ms-flex-direction:row-reverse;flex-direction:row-reverse;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;height:100px;font-size:15px;-webkit-box-sizing:border-box;box-sizing:border-box;margin-top:7px;background-color:#222222;color:white}@media only screen and (max-width: 600px){ks-cart-discount-points-message .messsage{display:block;height:auto;text-align:center;font-size:14px}ks-cart-discount-points-message div:first-child{font-size:14px !important;font-weight:400 !important;text-transform:none !important}}ks-cart-discount-points-message .messsage>.info{-ms-flex:1;flex:1;padding:10px 20px;font-size:15px}ks-cart-discount-points-message .messsage .points{height:100%}ks-cart-discount-points-message .points{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;-webkit-box-sizing:border-box;box-sizing:border-box;padding:6px 30px;font-size:32px;font-weight:700;background-color:#ff3c3c}ks-cart-discount-points-message .points>span{-webkit-transform:translateX(-5px);transform:translateX(-5px)}@media only screen and (max-width: 600px){ks-cart-discount-points-message .messsage .points{display:none}}";
 
-const CartDiscountPointsMessage = class {
+let CartDiscountPointsMessage = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.heading = "";
@@ -567,7 +567,7 @@ CartDiscountPointsMessage.style = cartDiscountPointsMessageCss;
 
 const cartDiscountTicketCss = "ks-cart-discount-ticket{display:-ms-flexbox;display:flex;width:100%;min-height:70px;-webkit-box-sizing:border-box;box-sizing:border-box;background-color:#ff3838;color:white;font-size:20px}ks-cart-discount-ticket .content{-ms-flex:1;flex:1;display:-ms-flexbox;display:flex;-ms-flex-pack:justify;justify-content:space-between;-ms-flex-align:center;align-items:center;padding:10px 20px}ks-cart-discount-ticket .name{-ms-flex:1;flex:1;font-weight:700}ks-cart-discount-ticket .remove{display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center;width:70px;background-color:transparent;-webkit-transition:background-color 0.2s ease;transition:background-color 0.2s ease}ks-cart-discount-ticket .remove:hover{background-color:rgba(0, 0, 0, 0.068)}ks-cart-discount-ticket .remove:active{background-color:rgba(0, 0, 0, 0.137)}@media only screen and (max-width: 560px){ks-cart-discount-ticket .content{display:block}ks-cart-discount-ticket .value{font-size:16px}}";
 
-const CartDiscountTicket = class {
+let CartDiscountTicket = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.discountRemove = index.createEvent(this, "discountRemove", 7);
@@ -591,7 +591,7 @@ const CartDiscountTicket = class {
 };
 CartDiscountTicket.style = cartDiscountTicketCss;
 
-const CartHeading = class {
+let CartHeading = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.center = false;
@@ -612,7 +612,7 @@ const CartHeading = class {
 
 const cartMessageCss = "ks-cart-message{display:block;text-align:center;color:white;background-color:var(--color-secondary);overflow:hidden;opacity:0.0;max-height:0px;height:auto;-webkit-transition:opacity 0.5s ease, max-height 0.5s ease;transition:opacity 0.5s ease, max-height 0.5s ease}ks-cart-message.show{opacity:1.0;max-height:100px}ks-cart-message.hide{opacity:0.0;max-height:0px}ks-cart-message>p{margin:10px}";
 
-const CartMessage = class {
+let CartMessage = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.message = "";
@@ -645,7 +645,7 @@ CartMessage.style = cartMessageCss;
 
 const cartProductCss = "ks-cart-product{display:block}ks-cart-product>div{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;font-size:18px}ks-cart-product .description{-ms-flex:1;flex:1}ks-cart-product .description a{color:inherit !important;text-decoration:none !important}ks-cart-product .numbers{font-weight:700}ks-cart-product .price{text-align:center;width:100px}ks-cart-product .amount{text-align:center;width:120px;margin-left:15px}@media only screen and (max-width: 959px){ks-cart-product .price{text-align:initial;width:initial;color:#e21334}ks-cart-product .shipping{margin-left:10px}ks-cart-product .amount{text-align:initial;width:initial;margin-left:0px}ks-cart-product ks-cart-spinner{margin-top:10px}}@media only screen and (max-width: 640px){ks-cart-product>div{-ms-flex-direction:column;flex-direction:column;position:relative}ks-cart-product .description{text-align:center}ks-cart-product .shipping{display:block;font-size:16px;margin-bottom:5px;margin-left:0px;margin-top:-3px}ks-cart-product .numbers{margin-top:7px}ks-cart-product .amount{text-align:center}}";
 
-const CartProduct = class {
+let CartProduct = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.removeProduct = index.createEvent(this, "removeProduct", 7);
@@ -707,7 +707,7 @@ const CartProduct = class {
 };
 CartProduct.style = cartProductCss;
 
-const CartProductContainer = class {
+let CartProductContainer = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
   }
@@ -722,7 +722,7 @@ const CartProductContainer = class {
   get root() { return index.getElement(this); }
 };
 
-const CartProductHeading = class {
+let CartProductHeading = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
   }
@@ -742,7 +742,7 @@ const CartProductHeading = class {
 
 const cartProductPriceCss = "ks-cart-product-price{display:block}ks-cart-product-price>div{display:-ms-flexbox;display:flex;-ms-flex-direction:row-reverse;flex-direction:row-reverse;-ms-flex-align:center;align-items:center;-ms-flex-wrap:wrap;flex-wrap:wrap}ks-cart-product-price .sentence{-ms-flex:1;flex:1;font-size:18px;font-weight:700;text-align:center}ks-cart-product-price .price{color:#e21334}ks-cart-product-price .shipping{display:inline-block;margin-left:15px}ks-cart-product-price .edit{-webkit-box-sizing:border-box;box-sizing:border-box;width:auto;max-width:100%}ks-cart-product-price .edit a{padding:3px 20px}@media only screen and (min-width: 960px){ks-cart-product-price .sentence{text-align:right}}@media only screen and (max-width: 959px){ks-cart-product-price .edit{margin-top:10px;width:100%}}@media only screen and (max-width: 640px){ks-cart-product-price .shipping{display:block;margin-left:0;font-size:16px}}";
 
-const CartProductPrice = class {
+let CartProductPrice = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.shippingTime = "";
@@ -799,7 +799,7 @@ CartProductPrice.style = cartProductPriceCss;
 
 const cartProgressBarCss = "ks-cart-progress-bar{display:block;padding:25px 30px 30px 30px;-webkit-transition:background-color 0.3s ease;transition:background-color 0.3s ease}ks-cart-progress-bar .heading{display:-ms-flexbox;display:flex;-ms-flex-pack:justify;justify-content:space-between;margin-bottom:10px;font-size:20px;text-shadow:0 0 10px rgba(0, 0, 0, 0.25);color:white}ks-cart-progress-bar .progress{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;width:100%;height:35px;border-radius:3px;background-color:rgba(255, 255, 255, 0.219)}ks-cart-progress-bar .progress-fill{height:100%;border-radius:inherit;-webkit-transition:width 0.3s ease;transition:width 0.3s ease;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-direction:row-reverse;flex-direction:row-reverse;padding:0 15px;-webkit-box-sizing:border-box;box-sizing:border-box;background-color:white}ks-cart-progress-bar .progress-number{color:#252525;font-size:17px;font-weight:700}ks-cart-progress-bar .outside{color:white;font-size:18px;font-weight:400;margin-left:10px}@media only screen and (max-width: 959px){ks-cart-progress-bar{padding:15px 20px 20px 20px}}@media only screen and (max-width: 520px){ks-cart-progress-bar .heading{display:block;text-align:center}ks-cart-progress-bar .heading>div:first-child{display:block;font-weight:700}}";
 
-const CartProgressBar = class {
+let CartProgressBar = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.numberPlacement = false;
@@ -850,7 +850,7 @@ CartProgressBar.style = cartProgressBarCss;
 
 const cartSelectItemCss = "ks-cart-select-item{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;height:50px;cursor:pointer;z-index:10;position:relative;-webkit-transition:background-color 0.3s ease;transition:background-color 0.3s ease}ks-cart-select-item .logo{background-color:#252525;height:100%;width:150px;padding:5px;border-top:1px solid rgba(0, 0, 0, 0.1);-webkit-box-sizing:border-box;box-sizing:border-box}@media only screen and (max-width: 720px){ks-cart-select-item .logo{display:none}}ks-cart-select-item .name{-ms-flex:1;flex:1;padding:0 20px;font-size:16px}ks-cart-select-item .price{padding:0 20px;font-size:16px}@media only screen and (max-width: 420px){ks-cart-select-item .name{padding:0 5px 0 20px;font-size:14px}ks-cart-select-item .price{padding:0 10px 0 5px;font-size:14px}}";
 
-const CartSelectItem = class {
+let CartSelectItem = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.logo = "";
@@ -874,7 +874,7 @@ CartSelectItem.style = cartSelectItemCss;
 
 const cartSelectCss$1 = ".ks-cart-select{display:block;position:relative;height:50px}.ks-cart-select .animation{-webkit-animation:start 1.0s ease;animation:start 1.0s ease}@-webkit-keyframes start{from{opacity:0}to{opacity:1}}@keyframes start{from{opacity:0}to{opacity:1}}.ks-cart-select>.center{display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center;height:50px}.ks-cart-select .select{display:-ms-flexbox;display:flex;background-color:#f8f8f8;-webkit-transition:background-color 0.3s ease;transition:background-color 0.3s ease;outline:1px solid #d2d2d2;outline-offset:-1px}.ks-cart-select .select:hover{background-color:#f2f2f2}.ks-cart-select[error] .select{background-color:#ffc5c5;color:#ff0000;outline-color:#ff0000}.ks-cart-select[error] .select:hover{background-color:#ff8a8a}.ks-cart-select .selectSlot{-ms-flex:1;flex:1}.ks-cart-select .selectIcon{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;z-index:10;width:50px;height:50px;background-color:#252525;color:white;-webkit-transition:background-color 0.3s ease;transition:background-color 0.3s ease}.ks-cart-select .select:hover .selectIcon{background-color:#353535}.ks-cart-select .items{position:absolute;top:50px;left:0;width:100%;z-index:20;background-color:#f8f8f8;-webkit-box-shadow:0px 3px 20px -5px rgba(0, 0, 0, 0.349);box-shadow:0px 3px 20px -5px rgba(0, 0, 0, 0.349)}.ks-cart-select .items .ks-cart-select-item:hover{background-color:#f0f0f0}@media only screen and (max-width: 420px){.ks-cart-select .select .ks-cart-select-item .price{display:none}}";
 
-const CartSelectPayment = class {
+let CartSelectPayment = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.paymentChange = index.createEvent(this, "paymentChange", 7);
@@ -938,7 +938,7 @@ CartSelectPayment.style = cartSelectCss$1;
 
 const cartSelectCss = ".ks-cart-select{display:block;position:relative;height:50px}.ks-cart-select .animation{-webkit-animation:start 1.0s ease;animation:start 1.0s ease}@-webkit-keyframes start{from{opacity:0}to{opacity:1}}@keyframes start{from{opacity:0}to{opacity:1}}.ks-cart-select>.center{display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center;height:50px}.ks-cart-select .select{display:-ms-flexbox;display:flex;background-color:#f8f8f8;-webkit-transition:background-color 0.3s ease;transition:background-color 0.3s ease;outline:1px solid #d2d2d2;outline-offset:-1px}.ks-cart-select .select:hover{background-color:#f2f2f2}.ks-cart-select[error] .select{background-color:#ffc5c5;color:#ff0000;outline-color:#ff0000}.ks-cart-select[error] .select:hover{background-color:#ff8a8a}.ks-cart-select .selectSlot{-ms-flex:1;flex:1}.ks-cart-select .selectIcon{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;z-index:10;width:50px;height:50px;background-color:#252525;color:white;-webkit-transition:background-color 0.3s ease;transition:background-color 0.3s ease}.ks-cart-select .select:hover .selectIcon{background-color:#353535}.ks-cart-select .items{position:absolute;top:50px;left:0;width:100%;z-index:20;background-color:#f8f8f8;-webkit-box-shadow:0px 3px 20px -5px rgba(0, 0, 0, 0.349);box-shadow:0px 3px 20px -5px rgba(0, 0, 0, 0.349)}.ks-cart-select .items .ks-cart-select-item:hover{background-color:#f0f0f0}@media only screen and (max-width: 420px){.ks-cart-select .select .ks-cart-select-item .price{display:none}}";
 
-const CartSelectShipping = class {
+let CartSelectShipping = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.shippingChange = index.createEvent(this, "shippingChange", 7);
@@ -1001,7 +1001,7 @@ const CartSelectShipping = class {
 };
 CartSelectShipping.style = cartSelectCss;
 
-const CartShippingMessage = class {
+let CartShippingMessage = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
   }
@@ -1012,7 +1012,7 @@ const CartShippingMessage = class {
 
 const cartSpinnerCss = "ks-cart-spinner{display:inline-block;text-align:center}ks-cart-spinner input{width:50px !important;margin:0 !important;font-size:14px !important;text-align:center !important}";
 
-const CartSpinner = class {
+let CartSpinner = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.changed = index.createEvent(this, "changed", 7);
@@ -1066,7 +1066,7 @@ const CartSpinner = class {
 };
 CartSpinner.style = cartSpinnerCss;
 
-const CartSummary = class {
+let CartSummary = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.emphasis = false;
@@ -1096,7 +1096,7 @@ const CartSummary = class {
   get root() { return index.getElement(this); }
 };
 
-const CartSummaryContainer = class {
+let CartSummaryContainer = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
   }

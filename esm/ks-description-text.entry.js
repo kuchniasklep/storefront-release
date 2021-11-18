@@ -1,8 +1,8 @@
-import { r as registerInstance, h } from './index-a14dfead.js';
+import { r as registerInstance, h } from './index-7a533c43.js';
 
 const descriptionTextCss = "ks-description-text{display:block;margin-bottom:40px}";
 
-const DescriptionText = class {
+let DescriptionText = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
   }

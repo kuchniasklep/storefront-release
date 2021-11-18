@@ -25,8 +25,6 @@ ks-cart-deal .image {
 
     -webkit-transform: translateX(-20px);
 
-        -ms-transform: translateX(-20px);
-
             transform: translateX(-20px);
 }
 
@@ -94,7 +92,6 @@ ks-cart-deal .center {
     top: 50%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
 }
 
@@ -158,7 +155,6 @@ ks-cart-deal button:active {
 
     ks-cart-deal .image {
         -webkit-transform: translateX(0px);
-            -ms-transform: translateX(0px);
                 transform: translateX(0px);
         margin: 10px auto 30px auto;
     }

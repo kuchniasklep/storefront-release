@@ -1,8 +1,8 @@
-import { r as registerInstance, h, g as getElement } from './index-a14dfead.js';
+import { r as registerInstance, h, g as getElement } from './index-7a533c43.js';
 
 const orderDPDCss = "ks-order-dpd .content{background-color:#e8e8e8;position:relative;-webkit-box-sizing:border-box;box-sizing:border-box;width:100%;height:100%}ks-order-dpd>ks-button{max-width:300px;margin:15px auto 0 auto}ks-order-dpd .topBar{display:-ms-flexbox;display:flex;-ms-flex-pack:justify;justify-content:space-between;-ms-flex-align:center;align-items:center;background-color:#dc0032}ks-order-dpd .missing{color:#dc0032}ks-order-dpd .topBar ks-img2{height:40px}";
 
-const OrderDPD = class {
+let OrderDPD = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
     this.api = "";

@@ -2,11 +2,11 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-0dd0274e.js');
+const index = require('./index-601dda3f.js');
 
 const descriptionTextCss = "ks-description-text{display:block;margin-bottom:40px}";
 
-const DescriptionText = class {
+let DescriptionText = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
   }

@@ -60,7 +60,6 @@ ks-product-price .currency {
     font-family: var(--product-price-font);
     text-align: center;
     -webkit-user-select: none;
-       -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
 }

@@ -1,8 +1,8 @@
-import { r as registerInstance, h } from './index-a14dfead.js';
+import { r as registerInstance, h } from './index-7a533c43.js';
 
 const descriptionImageCss = "ks-description-image{display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;margin-bottom:40px}";
 
-const DescriptionImage = class {
+let DescriptionImage = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
   }

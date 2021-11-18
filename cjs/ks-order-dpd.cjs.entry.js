@@ -2,11 +2,11 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-0dd0274e.js');
+const index = require('./index-601dda3f.js');
 
 const orderDPDCss = "ks-order-dpd .content{background-color:#e8e8e8;position:relative;-webkit-box-sizing:border-box;box-sizing:border-box;width:100%;height:100%}ks-order-dpd>ks-button{max-width:300px;margin:15px auto 0 auto}ks-order-dpd .topBar{display:-ms-flexbox;display:flex;-ms-flex-pack:justify;justify-content:space-between;-ms-flex-align:center;align-items:center;background-color:#dc0032}ks-order-dpd .missing{color:#dc0032}ks-order-dpd .topBar ks-img2{height:40px}";
 
-const OrderDPD = class {
+let OrderDPD = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
     this.api = "";

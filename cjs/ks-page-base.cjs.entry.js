@@ -2,12 +2,12 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-0dd0274e.js');
-const common = require('./common-c36c5464.js');
-const commonDynamic = require('./commonDynamic-a356749f.js');
-require('./index-afac6374.js');
+const index = require('./index-601dda3f.js');
+const common = require('./common-986d3afc.js');
+const commonDynamic = require('./commonDynamic-24bec319.js');
+require('./index-6a08c494.js');
 
-const PageBase = class {
+let PageBase = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
   }

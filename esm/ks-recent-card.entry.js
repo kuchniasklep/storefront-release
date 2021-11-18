@@ -1,6 +1,6 @@
-import { r as registerInstance, h, g as getElement } from './index-a14dfead.js';
+import { r as registerInstance, h, g as getElement } from './index-7a533c43.js';
 
-const RecentCard = class {
+let RecentCard = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
   }

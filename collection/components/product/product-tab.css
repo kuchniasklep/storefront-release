@@ -33,7 +33,6 @@ ks-product-tab > button:hover {
 
 ks-product-tab:not([open]) > button > ks-icon {
     -webkit-transform: rotate(0deg);
-        -ms-transform: rotate(0deg);
             transform: rotate(0deg);
     transition: -webkit-transform 0.3s ease;
     transition: transform 0.3s ease;
@@ -42,7 +41,6 @@ ks-product-tab:not([open]) > button > ks-icon {
 
 ks-product-tab:not([open]) > button:hover > ks-icon {
     -webkit-transform: rotate(90deg);
-        -ms-transform: rotate(90deg);
             transform: rotate(90deg);
 }
 

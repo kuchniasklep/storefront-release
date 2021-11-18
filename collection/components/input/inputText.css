@@ -71,10 +71,6 @@ ks-input-text[invalid] input::-webkit-input-placeholder {
     color: var(--color-secondary);
 }
 
-ks-input-text[invalid] input::-moz-placeholder {
-    color: var(--color-secondary);
-}
-
 ks-input-text[invalid] input:-ms-input-placeholder {
     color: var(--color-secondary);
 }
@@ -97,7 +93,6 @@ ks-input-text .wrapper ks-icon {
     top: 50%;
     left: 12px;
     -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
             transform: translateY(-50%);
 }
 
